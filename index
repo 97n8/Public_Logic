@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="no-js" data-theme="auto">
+<head>
+  <!--
+    TODOs (replace before go-live):
+    - Update <title> and <meta> description if your messaging evolves.
+    - Replace href values for:
+      • Canonical URL
+      • Social links (#footer-social)
+      • Book a discovery call buttons (#cta)
+      • Mailto contact (data-mailto on #contact form)
+    - Add real /assets/ files:
+      • /assets/publiclogic-logo.svg  (simple SVG logotype)
+      • /assets/favicon.ico
+      • /assets/site.webmanifest      (include icons 192/512, maskable)
+      • /assets/og-publiclogic.png    (1200x630 Open Graph)
+      • /assets/placeholder.pdf       (one-pager)
+      • Partner/logo placeholders as needed
+    - Verify JSON-LD “sameAs” array and contactPoint telephone/email.
+    - Run Lighthouse & axe, address any environment-specific flags.
+  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PublicLogic™ — Compliance-first modernization for small towns</title>
+  <meta name="description" content="PublicLogic™ builds frameworks—not vendor lock-in—so staff stay comfortable, records stay auditable, and residents get clear answers." />
+  <link rel="canonical" href="https://www.publiclogic.example/" />
+  <meta name="theme-color" content="#1F2A44" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PublicLogic™ — Compliance-first modernization for small towns" />
+  <meta property="og:description" content="Practitioner-led modernization frameworks for Massachusetts towns. Vendor-friendly, town-owned logic layer with auditability by default." />
+  <meta property="og:image" content="/assets/og-publiclogic.png" />
+  <meta property="og:url" content="https://www.publiclogic.example/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PublicLogic™ — Compliance-first modernization for small towns" />
+  <meta name="twitter:description" content="Compliance-first modernization that protects staff and simplifies resident service." />
+  <meta name="twitter:image" content="/assets/og-publiclogic.png" />
+
+  <!-- Favicons / Manifest -->
+  <link rel="icon" href="/assets/favicon.ico" />
+  <link rel="manifest" href="/assets/site.webmanifest" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- No cookies. Optional analytics placeholder (off by default) in app.js -->
+
+  <noscript>
+    <style>
+      .js-only { display:none !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="#top" class="brand" aria-label="PublicLogic home">
+        <img src="/assets/publiclogic-logo.svg" width="168" height="36" alt="PublicLogic™" />
+      </a>
+
+      <!-- Mobile nav toggle using details/summary for native accessibility -->
+      <details class="site-nav site-nav--mobile">
+        <summary class="site-nav__summary" aria-label="Toggle navigation">
+          Menu
+        </summary>
+        <nav class="site-nav__panel" aria-label="Primary">
+          <ul class="site-nav__list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#frameworks">Frameworks</a></li>
+            <li><a href="#modules">Modules</a></li>
+            <li><a href="#cases">Case Studies</a></li>
+            <li><a href="#partners">Partners</a></li>
+            <li><a href="#compliance">Compliance &amp; Funding</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="site-nav__cta"><a class="btn btn--primary" id="cta-mobile" href="#contact">Book a discovery call</a></li>
+          </ul>
+        </nav>
+      </details>
+
+      <!-- Desktop nav -->
+      <nav class="site-nav site-nav--desktop" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#frameworks">Frameworks</a></li>
+          <li><a href="#modules">Modules</a></li>
+          <li><a href="#cases">Case Studies</a></li>
+          <li><a href="#partners">Partners</a></li>
+          <li><a href="#compliance">Compliance &amp; Funding</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Theme controls -->
+      <form class="theme-controls" aria-label="Theme controls">
+        <fieldset class="theme-controls__set">
+          <legend class="sr-only">Theme</legend>
+          <label class="theme-controls__option">
+            <input type="radio" name="theme" value="light" aria-label="Light theme">
+            <span>Light</span>
+          </label>
+          <label class="theme-controls__option">
+            <input type="radio" name="theme" value="dark" aria-label="Dark theme">
+            <span>Dark</span>
+          </label>
+          <label class="theme-controls__option">
+            <input type="radio" name="theme" value="auto" aria-label="System theme (auto)" checked>
+            <span>Auto</span>
+          </label>
+          <button type="button" class="btn btn--ghost theme-controls__hc" id="hc-toggle" aria-pressed="false" aria-label="Toggle High Contrast mode">High Contrast</button>
+        </fieldset>
+      </form>
+
+      <a class="btn btn--primary site-header__cta" id="cta" href="#contact">Book a discovery call</a>
+    </div>
+  </header>
+
+  <main id="main" class="site-main" role="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <h1 id="hero-title">Compliance-first modernization for small towns.</h1>
+        <p class="lead">PublicLogic™ builds frameworks—not vendor lock-in—so your staff stay comfortable, your records stay auditable, and your residents get clear answers.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--primary" href="#contact">Book a discovery call</a>
+          <a class="btn btn--secondary" href="/assets/placeholder.pdf" download>Download one-pager</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem → Solution -->
+    <section class="section" id="problems" aria-labelledby="problems-title">
+      <div class="container">
+        <h2 id="problems-title">Problem → Solution</h2>
+        <div class="grid grid--3">
+          <article class="card">
+            <h3 class="card__eyebrow">Problem</h3>
+            <h3 class="card__title">Ambiguous workflows</h3>
+            <p>Unclear steps mean delays, rework, and finger-pointing.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__eyebrow">Problem</h3>
+            <h3 class="card__title">Scattered systems</h3>
+            <p>Departments juggle portals and spreadsheets that don’t align.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__eyebrow">Problem</h3>
+            <h3 class="card__title">Staff risk &amp; liability</h3>
+            <p>Without audit trails and retention, staff carry unnecessary risk.</p>
+          </article>
+        </div>
+
+        <div class="grid grid--3 solutions">
+          <article class="card card--solution">
+            <h3 class="card__eyebrow">PublicLogic Solution</h3>
+            <h3 class="card__title">Compliance-first SOPs &amp; audit trails</h3>
+            <p>Plain-language SOPs with built-in transparency that protect staff and satisfy auditors.</p>
+          </article>
+          <article class="card card--solution">
+            <h3 class="card__eyebrow">PublicLogic Solution</h3>
+            <h3 class="card__title">Vendor-friendly, town-owned logic layer</h3>
+            <p>We make your vendors successful while your town retains ownership and control.</p>
+          </article>
+          <article class="card card--solution">
+            <h3 class="card__eyebrow">PublicLogic Solution</h3>
+            <h3 class="card__title">Staff-friendly portals &amp; retention by default</h3>
+            <p>Fewer clicks for staff, clear status for residents, and retention aligned to state schedules.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title">About PublicLogic</h2>
+        <div class="about">
+          <div class="about__copy">
+            <p><strong>Nathan Boudreau, MPA, MCPPO</strong> is the Town Administrator of Hubbardston, MA and the founder of PublicLogic™. He’s a practitioner-builder who aligns policy, procurement, and day-to-day workflows so staff can serve residents with less risk and fewer clicks.</p>
+            <p>PublicLogic™ is a practitioner-led firm that delivers modernization frameworks for towns. We build compliance-first strategies and prototypes that meet Massachusetts law and keep municipal ownership in the driver’s seat.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frameworks (High-level only) -->
+    <section class="section" id="frameworks" aria-labelledby="frameworks-title">
+      <div class="container">
+        <h2 id="frameworks-title">Frameworks</h2>
+        <div class="grid grid--2">
+          <article class="feature">
+            <h3>VAULT™</h3>
+            <p><em>Verified Automation &amp; Unified Logic for Towns.</em> Ensures routing, retention, transparency, and auditability across modules.</p>
+          </article>
+          <article class="feature">
+            <h3>ARCHIEVE™</h3>
+            <p><em>Rules &amp; retention enforcement engine.</em> Applies policy consistently, with logs your auditors will actually use.</p>
+          </article>
+        </div>
+        <p class="disclaimer">VAULT™ and ARCHIEVE™ are referenced at a high level; implementation logic is proprietary.</p>
+      </div>
+    </section>
+
+    <!-- Modules Grid -->
+    <section class="section" id="modules" aria-labelledby="modules-title">
+      <div class="container">
+        <h2 id="modules-title">Modules</h2>
+        <div class="grid grid--3 modules">
+          <!-- Each module card includes audience and an accessible details/summary -->
+          <article class="module">
+            <h3 class="module__title">CLERK</h3>
+            <p class="module__outcome">Clear filings, PRR tracking, and board-ready outputs.</p>
+            <p class="module__aud">Benefits: Residents, Staff, Boards</p>
+            <details class="accordion">
+              <summary>See sample workflow</summary>
+              <div class="accordion__content">
+                <ol>
+                  <li>Resident submits Public Records Request (M.G.L. c.66 §10).</li>
+                  <li>Staff triage with due dates and retention tags.</li>
+                  <li>Response packaged with audit log and accessibility check.</li>
+                </ol>
+              </div>
+            </details>
+          </article>
+
+          <article class="module">
+            <h3 class="module__title">FIX</h3>
+            <p class="module__outcome">Issue reporting with status that sticks across departments.</p>
+            <p class="module__aud">Benefits: Residents, DPW, Admin</p>
+            <details class="accordion">
+              <summary>See sample workflow</summary>
+              <div class="accordion__content">
+                <ol>
+                  <li>Resident reports pothole with location and photos.</li>
+                  <li>DPW receives route-ready work order.</li>
+                  <li>Status visible to resident; retention aligned to schedules.</li>
+                </ol>
+              </div>
+            </details>
+          </article>
+
+          <article class="module">
+            <h3 class="module__title">FISCAL</h3>
+            <p class="module__outcome">Budget narratives and capital pipelines in plain language.</p>
+            <p class="module__aud">Benefits: Finance, Select Board, Residents</p>
+            <details class="accordion">
+              <summary>See sample workflow</summary>
+              <div class="accordion__content">
+                <ol>
+                  <li>Department submits CIP request with scoring.</li>
+                  <li>Review aligns to Community Compact and One Stop pathways.</li>
+                  <li>Packet exports for boards with traceable edits.</li>
+                </ol>
+              </div>
+            </details>
+          </article>
+
+          <article class="module">
+            <h3 class="module__title">APEX</h3>
+            <p class="module__outcome">Executive dashboards and grant-ready briefs.</p>
+            <p class="module__aud">Benefits: Town Administrator, Boards</p>
+            <details class="accordion">
+              <summary>See sample workflow</summary>
+              <div class="accordion__content">
+                <ol>
+                  <li>Gather department KPIs and narratives.</li>
+                  <li>Auto-generate board packet one-pagers.</li>
+                  <li>Publish to resident-friendly site with archives.</li>
+                </ol>
+              </div>
+            </details>
+          </article>
+
+          <article class="module">
+            <h3 class="module__title">AGENDA</h3>
+            <p class="module__outcome">Open Meeting Law compliant agendas &amp; minutes.</p>
+            <p class="module__aud">Benefits: Clerk, Boards, Residents</p>
+            <details class="accordion">
+              <summary>See sample workflow</summary>
+              <div class="accordion__content">
+                <ol>
+                  <li>Draft agenda with plain-language topics (M.G.L. c.30A).</li>
+                  <li>Publish with accessible PDFs and timestamps.</li>
+                  <li>Auto-archive with retention labels.</li>
+                </ol>
+              </div>
+            </details>
+          </article>
+
+          <article class="module">
+            <h3 class="module__title">INSPECT</h3>
+            <p class="module__outcome">Field-ready inspections with photos and citations.</p>
+            <p class="module__aud">Benefits: Building, Health, Fire</p>
+            <details class="accordion">
+              <summary>See sample workflow</summary>
+              <div class="accordion__content">
+                <ol>
+                  <li>Schedule inspections and send prep checklist.</li>
+                  <li>Capture findings against M.G.L. c.143 standards.</li>
+                  <li>Issue clear orders with follow-up reminders.</li>
+                </ol>
+              </div>
+            </details>
+          </article>
+
+          <article class="module">
+            <h3 class="module__title">PERMIT</h3>
+            <p class="module__outcome">Licensing &amp; permits with auditable decisions.</p>
+            <p class="module__aud">Benefits: Clerk, Select Board, Applicants</p>
+            <details class="accordion">
+              <summary>See sample workflow</summary>
+              <div class="accordion__content">
+                <ol>
+                  <li>Applicant submits license (M.G.L. c.140 / c.138).</li>
+                  <li>Staff review with checklists and public notices.</li>
+                  <li>Decision letter and conditions mailed with logs.</li>
+                </ol>
+              </div>
+            </details>
+          </article>
+
+          <article class="module">
+            <h3 class="module__title">HR</h3>
+            <p class="module__outcome">Onboarding with policies residents can actually find.</p>
+            <p class="module__aud">Benefits: Staff, HR, Applicants</p>
+            <details class="accordion">
+              <summary>See sample workflow</summary>
+              <div class="accordion__content">
+                <ol>
+                  <li>Post openings with inclusive language.</li>
+                  <li>Route applications with blinded screening, if needed.</li>
+                  <li>Onboard with training and policy acknowledgements.</li>
+                </ol>
+              </div>
+            </details>
+          </article>
+
+          <article class="module">
+            <h3 class="module__title">TIME</h3>
+            <p class="module__outcome">Timesheets and approvals that match policies.</p>
+            <p class="module__aud">Benefits: Staff, Finance</p>
+            <details class="accordion">
+              <summary>See sample workflow</summary>
+              <div class="accordion__content">
+                <ol>
+                  <li>Staff submit time from any device.</li>
+                  <li>Supervisors approve with policy prompts.</li>
+                  <li>Export to payroll with audit trail.</li>
+                </ol>
+              </div>
+            </details>
+          </article>
+
+          <article class="module">
+            <h3 class="module__title">VAULT</h3>
+            <p class="module__outcome">Unified routing &amp; retention across modules.</p>
+            <p class="module__aud">Benefits: All Departments</p>
+            <details class="accordion">
+              <summary>See sample workflow</summary>
+              <div class="accordion__content">
+                <p>High-level only here. VAULT orchestrates handoffs and retention; mechanics remain proprietary.</p>
+              </div>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="section" id="cases" aria-labelledby="cases-title">
+      <div class="container">
+        <h2 id="cases-title">Case Studies</h2>
+        <div class="grid grid--2">
+          <article class="case card">
+            <h3>HubbCONNECT (Hubbardston, MA)</h3>
+            <p class="muted">Proof-of-concept digital government platform (~30% live) on CivicOptimize + Power Automate + Microsoft 365.</p>
+            <div class="case__cols">
+              <div>
+                <h4>Challenge</h4>
+                <ul>
+                  <li>Residents couldn’t see status across departments.</li>
+                  <li>Staff time lost to duplicate entry.</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Approach</h4>
+                <ul>
+                  <li>Mapped policies and retention to state schedules.</li>
+                  <li>Built vendor-friendly flows with town-owned logic.</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Outcome</h4>
+                <ul>
+                  <li>Board-ready exports and PRR-friendly logs.</li>
+                  <li>Fewer clicks for staff; clearer answers for residents.</li>
+                </ul>
+              </div>
+            </div>
+            <p class="note">What we learned: start small, ship fast, and align to audits early.</p>
+            <a class="btn btn--secondary" href="#contact">Replicate this pattern</a>
+          </article>
+
+          <article class="case card">
+            <h3>SuttonCLERK + SuttonFIX (with Polimorphic)</h3>
+            <p class="muted">Front-end simplicity with town-owned logic.</p>
+            <div class="case__cols">
+              <div>
+                <h4>Challenge</h4>
+                <ul>
+                  <li>Multiple intake points; unclear status.</li>
+                  <li>Staff carrying retention risk.</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Approach</h4>
+                <ul>
+                  <li>Unified forms; clear SOPs; automated handoffs.</li>
+                  <li>Aligned to OML and PRR with consistent labeling.</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Outcome</h4>
+                <ul>
+                  <li>Resident-facing clarity; internal accountability.</li>
+                  <li>Vendor success without lock-in.</li>
+                </ul>
+              </div>
+            </div>
+            <p class="note">What we learned: keep the front end simple; keep the logic yours.</p>
+            <a class="btn btn--secondary" href="#contact">Replicate this pattern</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="section" id="partners" aria-labelledby="partners-title">
+      <div class="container">
+        <h2 id="partners-title">Partners</h2>
+        <div class="grid grid--3 partners">
+          <article class="partner">
+            <img src="/assets/partner-polimorphic.svg" loading="lazy" decoding="async" alt="Polimorphic logo (placeholder)" width="160" height="48" />
+            <h3>Polimorphic</h3>
+            <p>AI municipal platform partner (front end). We make vendors successful while preserving municipal ownership and control.</p>
+          </article>
+          <article class="partner">
+            <img src="/assets/partner-css.svg" loading="lazy" decoding="async" alt="Capital Strategic Solutions logo (placeholder)" width="160" height="48" />
+            <h3>CSS (Capital Strategic Solutions)</h3>
+            <p>Finance/CIP partner connecting projects to funding and capital planning.</p>
+          </article>
+          <article class="partner">
+            <img src="/assets/partner-collins.svg" loading="lazy" decoding="async" alt="UMass Boston Collins Center logo (placeholder)" width="160" height="48" />
+            <h3>Collins Center</h3>
+            <p>Training and policy alignment partner to sustain adoption.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compliance & Funding -->
+    <section class="section" id="compliance" aria-labelledby="compliance-title">
+      <div class="container">
+        <h2 id="compliance-title">Compliance &amp; Funding</h2>
+        <div class="grid grid--2">
+          <div>
+            <h3>Massachusetts Alignment</h3>
+            <ul class="checklist">
+              <li>M.G.L. c.30A — Open Meeting Law (OML)</li>
+              <li>M.G.L. c.66 §10 — Public Records Requests (PRR)</li>
+              <li>M.G.L. c.140 / c.138 — Licensing (general + alcohol)</li>
+              <li>M.G.L. c.143 — Building/inspections</li>
+              <li>M.G.L. c.40 §§6C–6D — Roads/private ways</li>
+              <li>201 CMR 17.00 — Data security</li>
+              <li>ADA — Accessibility compliance</li>
+              <li>State retention schedules</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Funding &amp; ROI</h3>
+            <ul class="checklist">
+              <li>Community Compact</li>
+              <li>One Stop for Growth</li>
+              <li>MassWorks</li>
+              <li>LRPIP</li>
+              <li>Shared Services</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="table-wrap" aria-labelledby="grant-fit-title">
+          <h3 id="grant-fit-title" class="mt-lg">Problem → Grant fit</h3>
+          <table class="table" role="table">
+            <thead>
+              <tr>
+                <th scope="col">Problem</th>
+                <th scope="col">Module</th>
+                <th scope="col">Potential Pathway</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Backlogged PRRs and meeting materials</td>
+                <td>CLERK, AGENDA</td>
+                <td>Community Compact IT &amp; Efficiency</td>
+              </tr>
+              <tr>
+                <td>Road/DPW issue tracking &amp; communication</td>
+                <td>FIX</td>
+                <td>One Stop for Growth / MassWorks</td>
+              </tr>
+              <tr>
+                <td>Capacity and shared administrative functions</td>
+                <td>HR, TIME, APEX</td>
+                <td>Shared Services / LRPIP</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title">FAQ</h2>
+        <div class="faq">
+          <details class="accordion">
+            <summary>Do we need to switch vendors?</summary>
+            <div class="accordion__content">
+              <p>No. We design around your current stack and make vendors successful while the town keeps ownership and control.</p>
+            </div>
+          </details>
+          <details class="accordion">
+            <summary>How do you protect staff comfort?</summary>
+            <div class="accordion__content">
+              <p>Plain-language SOPs, fewer steps, and clear guardrails. Staff see what to do and when—without guessing.</p>
+            </div>
+          </details>
+          <details class="accordion">
+            <summary>How do VAULT™/ARCHIEVE™ work?</summary>
+            <div class="accordion__content">
+              <p>High-level only here: VAULT coordinates routing/retention; ARCHIEVE enforces rules and logs. Implementation details remain proprietary.</p>
+            </div>
+          </details>
+          <details class="accordion">
+            <summary>Are you Massachusetts-compliant?</summary>
+            <div class="accordion__content">
+              <p>Yes. We align to OML (M.G.L. c.30A), PRR (c.66 §10), Licensing (c.140/c.138), Building (c.143), Roads (c.40 §§6C–6D), 201 CMR 17.00, ADA, and state retention schedules.</p>
+            </div>
+          </details>
+          <details class="accordion">
+            <summary>Will residents understand it?</summary>
+            <div class="accordion__content">
+              <p>Yes. We use plain language, clear status, and mobile-first forms. Accessibility and translation are planned from day one.</p>
+            </div>
+          </details>
+          <details class="accordion">
+            <summary>Who owns the data and logic?</summary>
+            <div class="accordion__content">
+              <p>Your town. We build frameworks that keep control local and portable.</p>
+            </div>
+          </details>
+          <details class="accordion">
+            <summary>How do we start?</summary>
+            <div class="accordion__content">
+              <p>Book a short discovery call. We’ll map a 60–90 day pilot and align it to funding pathways.</p>
+            </div>
+          </details>
+          <details class="accordion">
+            <summary>What about privacy?</summary>
+            <div class="accordion__content">
+              <p>No tracking cookies by default. Minimal JS. Clear retention and access controls.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title">Contact</h2>
+        <p class="muted">No tracking cookies. We’ll only use your details to reply.</p>
+
+        <form class="form" data-mailto="hello@publiclogic.example" novalidate>
+          <div class="grid grid--2 form__grid">
+            <div class="form__field">
+              <label for="name">Name<span aria-hidden="true"> *</span></label>
+              <input id="name" name="name" type="text" required autocomplete="name" />
+              <p class="form__error" id="err-name" role="alert"></p>
+            </div>
+
+            <div class="form__field">
+              <label for="email">Email<span aria-hidden="true"> *</span></label>
+              <input id="email" name="email" type="email" required autocomplete="email" />
+              <p class="form__error" id="err-email" role="alert"></p>
+            </div>
+
+            <div class="form__field">
+              <label for="role">Role</label>
+              <input id="role" name="role" type="text" autocomplete="organization-title" />
+              <p class="form__error" id="err-role" role="alert"></p>
+            </div>
+
+            <div class="form__field">
+              <label for="town">Town</label>
+              <input id="town" name="town" type="text" autocomplete="address-level2" />
+              <p class="form__error" id="err-town" role="alert"></p>
+            </div>
+
+            <div class="form__field form__field--full">
+              <label for="message">Message<span aria-hidden="true"> *</span></label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+              <p class="form__error" id="err-message" role="alert"></p>
+            </div>
+
+            <!-- Honeypot -->
+            <div class="form__field hp" aria-hidden="true">
+              <label for="company">Company</label>
+              <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="form__actions">
+            <button class="btn btn--primary" type="submit">Send inquiry</button>
+            <a class="btn btn--secondary" href="#contact" id="book-call">Book a discovery call</a>
+          </div>
+          <p class="form__note">Accessibility: all fields are keyboard operable and screen-reader friendly.</p>
+
+          <div class="form__messages" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container site-footer__inner">
+      <div class="site-footer__cols">
+        <nav aria-label="Footer">
+          <ul class="footer-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#frameworks">Frameworks</a></li>
+            <li><a href="#modules">Modules</a></li>
+            <li><a href="#cases">Case Studies</a></li>
+            <li><a href="#partners">Partners</a></li>
+            <li><a href="#compliance">Compliance &amp; Funding</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#accessibility">Accessibility Statement</a></li>
+            <li><a href="#privacy">Privacy Notice</a></li>
+          </ul>
+        </nav>
+
+        <div id="footer-social" class="footer-social">
+          <p class="muted">Social (placeholders):</p>
+          <ul class="footer-links">
+            <li><a href="#" aria-label="LinkedIn (placeholder)">LinkedIn</a></li>
+            <li><a href="#" aria-label="Twitter/X (placeholder)">Twitter/X</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="ip-notice">
+        VAULT™ and ARCHIEVE™ referenced at a high level; implementation logic is proprietary. © <span id="year"></span> PublicLogic™.
+      </p>
+    </div>
+
+    <!-- Accessibility Statement -->
+    <section class="legal" id="accessibility" aria-labelledby="access-title">
+      <div class="container">
+        <h2 id="access-title">Accessibility Statement</h2>
+        <p>This site follows WCAG 2.1 AA guidelines with keyboard navigation, focus states, skip links, and reduced motion. If you encounter a barrier, please contact us and we’ll address it.</p>
+      </div>
+    </section>
+
+    <!-- Privacy Notice -->
+    <section class="legal" id="privacy" aria-labelledby="privacy-title">
+      <div class="container">
+        <h2 id="privacy-title">Privacy Notice</h2>
+        <p>No tracking cookies by default. We collect only what you submit through the contact form to respond to your inquiry.</p>
+      </div>
+    </section>
+  </footer>
+
+  <!-- Optional cookie banner (off by default). Informational only; no cookies set. -->
+  <!--
+  <aside class="cookie js-only" role="region" aria-label="Cookie notice" hidden>
+    <div class="container cookie__inner">
+      <p>We don’t use tracking cookies. This banner is informational only.</p>
+      <button class="btn btn--ghost" data-cookie-dismiss>Dismiss</button>
+    </div>
+  </aside>
+  -->
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PublicLogic",
+    "url": "https://www.publiclogic.example/",
+    "logo": "https://www.publiclogic.example/assets/publiclogic-logo.svg",
+    "sameAs": [
+      "https://www.linkedin.com/company/publiclogic",
+      "https://twitter.com/publiclogic"
+    ],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "Municipal Services",
+      "email": "hello@publiclogic.example",
+      "areaServed": "US-MA",
+      "availableLanguage": ["en"]
+    }]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do we need to switch vendors?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. We design around your current stack and make vendors successful while the town keeps ownership and control." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you protect staff comfort?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Plain-language SOPs, fewer steps, and clear guardrails. Staff see what to do and when—without guessing." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do VAULT™/ARCHIEVE™ work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "High-level only: VAULT coordinates routing/retention; ARCHIEVE enforces rules and logs. Implementation details remain proprietary." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are you Massachusetts-compliant?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. We align to OML (M.G.L. c.30A), PRR (c.66 §10), Licensing (c.140/c.138), Building (c.143), Roads (c.40 §§6C–6D), 201 CMR 17.00, ADA, and state retention schedules." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will residents understand it?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. We use plain language, clear status, and mobile-first forms. Accessibility and translation are planned from day one." }
+      },
+      {
+        "@type": "Question",
+        "name": "Who owns the data and logic?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Your town. We build frameworks that keep control local and portable." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do we start?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Book a short discovery call. We’ll map a 60–90 day pilot and align it to funding pathways." }
+      },
+      {
+        "@type": "Question",
+        "name": "What about privacy?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No tracking cookies by default. Minimal JS. Clear retention and access controls." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

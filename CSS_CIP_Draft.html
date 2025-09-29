@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Public Logic × Capital Strategic Solutions — CIP Partnership Exploration (Draft)</title>
-  <meta name="description" content="Draft partnership exploration between Public Logic and Capital Strategic Solutions to pilot and roll out a Capital Improvement Plan (CIP) Module with a client town." />
+  <title>Public Logic × Capital Strategic Solutions × Polimorphic — CIP Partnership Exploration (Draft)</title>
+  <meta name="description" content="Draft partnership exploration to pilot and roll out a Capital Improvement Plan (CIP) Module with a client town." />
 
   <style>
-  /* Public Logic × CSS — CIP Partnership (final, non-sticky, contrast-safe) */
   .cip-doc, .cip-doc * { box-sizing: border-box; }
 
   .cip-doc {
     margin: 0;
     font: 400 16px/1.6 system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial, sans-serif;
-    color: #101828;                 /* dark ink */
-    background: #ffffff;            /* pure white */
+    color: #101828;
+    background: #ffffff;
   }
 
   a { color: #2c6fb3; text-decoration: none; }
@@ -22,7 +21,6 @@
 
   .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-  /* HERO */
   header.hero {
     background: #183028;
     color: #ffffff;
@@ -32,27 +30,19 @@
   .brand h1 { margin: 0 0 .5rem; font-size: clamp(1.4rem, 3.2vw, 2.3rem); font-weight: 800; }
   .brand p { margin: 0; color: #e6eef0; }
 
-  /* Partnership triangle */
   .partnership-triangle { display: grid; gap: 16px; justify-items: center; margin: 24px 0; }
   .triangle-top, .triangle-partner {
     background: #204136; border: 1px solid #3d6a5a; border-radius: 10px;
     color: #ffffff; padding: 16px 18px;
   }
-  .triangle-top h2, .triangle-partner h3 { margin: 0 0 .5rem; }
-  .triangle-top p, .triangle-top ul, .triangle-partner ul { margin: 0; }
   .triangle-center { display: flex; justify-content: center; align-items: center; height: 24px; }
   .center-x { color: #b6d4ff; }
 
-  /* Chips/meta */
   .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .chip {
-    background: #113024; color: #e8f3ef; border: 1px solid #2c6fb3;
-    border-radius: 6px; padding: 6px 10px; font-weight: 600;
-  }
+  .chip { background: #113024; color: #e8f3ef; border: 1px solid #2c6fb3; border-radius: 6px; padding: 6px 10px; font-weight: 600; }
 
-  /* TOC nav — NOT STICKY */
   nav.toc {
-    position: relative;            /* no sticky */
+    position: relative;
     background: #ffffff;
     border-bottom: 1px solid #e5e7eb;
     box-shadow: 0 2px 8px rgba(0,0,0,.05);
@@ -65,194 +55,165 @@
   }
   nav.toc a:hover { background: #eef2f7; }
 
-  /* Sections */
   section { padding: 44px 0; border-bottom: 1px solid #eef2f7; }
   h2 { margin: 0 0 14px; font-size: clamp(1.25rem, 2.6vw, 1.75rem); font-weight: 800; }
   h3 { margin: 18px 0 8px; font-size: clamp(1.05rem, 2.2vw, 1.3rem); font-weight: 700; }
   p { margin: 10px 0; }
   .lead { font-size: 1.1rem; color: #243447; }
 
-  /* Grid */
   .grid { display: grid; gap: 18px; margin-top: 16px; }
   @media (min-width: 768px) {
     .grid-2 { grid-template-columns: 1fr 1fr; }
     .grid-3 { grid-template-columns: repeat(3,1fr); }
   }
 
-  /* Cards */
-  .card {
-    background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px;
-    padding: 18px; box-shadow: 0 2px 10px rgba(0,0,0,.06);
-  }
-  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,.08); transform: translateY(-1px); transition: .2s ease; }
-  .card ul { padding-left: 1.15rem; margin: .5rem 0; }
-  .card li { margin: .35rem 0; }
-
-  /* Tables */
-  table {
-    width: 100%; border-collapse: separate; border-spacing: 0;
-    background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0,0,0,.05); margin: 16px 0;
-  }
+  .card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; margin: 16px 0; }
   th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #e5e7eb; }
-  thead th { background: #f8fafc; color: #0f172a; font-weight: 800; }
-  tbody tr:hover { background: #f6f8fb; }
-  tbody tr:last-child td { border-bottom: none; }
+  thead th { background: #f8fafc; font-weight: 800; }
 
-  /* Benefit / Success / Cost */
-  .benefit-card {
-    background: #ffffff; border-left: 4px solid #1f7a52; border-radius: 12px;
-    padding: 16px; box-shadow: 0 2px 10px rgba(0,0,0,.06);
-  }
+  .benefit-card { background: #ffffff; border-left: 4px solid #1f7a52; border-radius: 12px; padding: 16px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
   .benefit-card:nth-child(2) { border-left-color: #2c6fb3; }
   .benefit-card:nth-child(3) { border-left-color: #6b7280; }
-  .success-metric {
-    background: #ffffff; border-left: 3px solid #2c6fb3; border-radius: 10px;
-    padding: 14px; margin: 10px 0;
-  }
-  .cost-box {
-    background: #ffffff; border: 2px solid #1f7a52; border-radius: 12px;
-    padding: 16px; margin: 16px 0;
-  }
 
-  /* Footer */
-  footer {
-    background: #183028; color: #ffffff; text-align: center;
-    padding: 28px 0; border-top: 3px solid #2c6fb3;
-  }
+  .success-metric { background: #ffffff; border-left: 3px solid #2c6fb3; border-radius: 10px; padding: 14px; margin: 10px 0; }
+  .cost-box { background: #ffffff; border: 2px solid #1f7a52; border-radius: 12px; padding: 16px; margin: 16px 0; }
+
+  footer { background: #183028; color: #ffffff; text-align: center; padding: 28px 0; border-top: 3px solid #2c6fb3; }
   </style>
 </head>
 
 <body class="cip-doc">
-  <!-- HERO -->
   <header class="hero">
     <div class="wrap">
       <div class="brand">
-        <h1>Public Logic × Capital Strategic Solutions — CIP Partnership Exploration (Draft)</h1>
-        <p>For a CSS client town to explore a practical Capital Improvement Plan (CIP) program and rollout.</p>
+        <h1>Public Logic × Capital Strategic Solutions × Polimorphic — CIP Partnership Exploration (Draft)</h1>
+        <p>A municipal-first partnership to build and sustain a real Capital Improvement Plan (CIP).</p>
       </div>
 
-      <!-- Partnership triangle -->
       <div class="partnership-triangle">
         <div class="triangle-top">
           <h2>Public Logic</h2>
-          <p>Templates & Standards</p>
           <ul>
-            <li>Plain-language playbooks</li>
+            <li>Frameworks and playbooks</li>
             <li>Process standards & calendars</li>
-            <li>Website content & FAQs</li>
-            <li>Anonymized lessons learned</li>
+            <li>Meeting-ready templates</li>
+            <li>Reusable lessons</li>
           </ul>
         </div>
-
-        <div class="triangle-center">
-          <span class="center-x">✕</span>
-        </div>
-
+        <div class="triangle-center"><span class="center-x">✕</span></div>
         <div class="triangle-bottom" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
           <div class="triangle-partner">
             <h3>Capital Strategic Solutions</h3>
             <ul>
               <li>Client relationships</li>
-              <li>Implementation leadership</li>
-              <li>Workshop facilitation</li>
-              <li>Board packet prep</li>
+              <li>On-the-ground delivery</li>
+              <li>Board/committee facilitation</li>
+              <li>Adoption support</li>
+            </ul>
+          </div>
+          <div class="triangle-partner">
+            <h3>Polimorphic</h3>
+            <ul>
+              <li>Low-code platform</li>
+              <li>Workflow automation</li>
+              <li>AI-assisted intake and reporting</li>
+              <li>Data integration</li>
             </ul>
           </div>
           <div class="triangle-partner">
             <h3>Pilot Municipality</h3>
             <ul>
-              <li>Local knowledge</li>
-              <li>Data ownership</li>
+              <li>Local data & priorities</li>
               <li>Policy adoption</li>
+              <li>Staff engagement</li>
               <li>Real-world testing</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Meta chips -->
       <div class="meta">
         <span class="chip">Author: Nathan Boudreau, MPA, MCPPO</span>
-        <span class="chip">Release: Draft — September 2025</span>
+        <span class="chip">Draft — September 2025</span>
         <span class="chip">Audience: Town/City Admin • Finance • Capital Committee • Select Board/Council</span>
       </div>
     </div>
   </header>
 
-  <!-- TOC (not sticky) -->
   <nav class="toc">
     <div class="wrap">
       <a href="#summary">Summary</a>
+      <a href="#cip">What is a CIP?</a>
       <a href="#model">Partnership Model</a>
-      <a href="#cip">What the CIP Module Does</a>
       <a href="#process">Process</a>
       <a href="#prioritization">Prioritization</a>
-      <a href="#funding">Funding & Affordability</a>
+      <a href="#funding">Funding</a>
       <a href="#deliverables">Deliverables</a>
       <a href="#timeline">90-Day Pilot</a>
-      <a href="#roles">Who Does What</a>
-      <a href="#benefits">Why This Works</a>
-      <a href="#success">Success Metrics</a>
+      <a href="#roles">Roles</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#success">Metrics</a>
       <a href="#investment">Investment</a>
       <a href="#next">Next Steps</a>
     </div>
   </nav>
 
-  <!-- CONTENT -->
   <main class="wrap">
     <section id="summary">
       <h2>Summary</h2>
-      <p class="lead">Public Logic and Capital Strategic Solutions (CSS) propose a municipal-first partnership to launch a Capital Improvement Plan (CIP) program with a CSS client town. CSS leads delivery and rollout. Public Logic supplies templates, process standards, and meeting-ready materials. The town keeps ownership and control of its plan and data.</p>
-      <p>This is a draft for discussion. It is meant to help a town quickly see what the program looks like, how decisions are made, and what it takes to adopt and maintain a CIP.</p>
-    </section>
-
-    <section id="model">
-      <h2>Partnership Model (Like Sutton/Polimorphic—Made for CSS)</h2>
-      <div class="card">
-        <p style="font-weight:600;color:#183028;margin-bottom:12px;">A reusable framework that travels town to town, producing consistent, defensible outcomes.</p>
-        <ul>
-          <li><strong>CSS leads implementation:</strong> run intake, workshops, scoring, affordability review, board packet prep, and public communications.</li>
-          <li><strong>Public Logic supplies standards:</strong> plain-language templates, process playbooks, calendars, and checklists that travel town to town.</li>
-          <li><strong>Town owns outcomes:</strong> final plan, data, schedules, and adoption decisions stay with the municipality.</li>
-          <li><strong>Shared learning:</strong> CSS and Public Logic reuse anonymized lessons, templates, and metrics to improve future rollouts — a win-win-win.</li>
-        </ul>
-      </div>
+      <p class="lead">A Capital Improvement Plan (CIP) is how towns plan, prioritize, and fund their big-ticket needs: roads, buildings, vehicles, technology, and infrastructure. It’s the bridge between today’s operating budget and tomorrow’s capital reality.</p>
+      <p>Why is it hard? Because building a CIP means herding dozens of requests, aligning them with financial limits, balancing politics, and producing something staff and boards can actually keep alive year after year. Most communities either never start or let their plan lapse after a year or two.</p>
+      <p>This partnership is designed to fix that: CSS leads delivery, Public Logic provides the frameworks, and Polimorphic makes the workflows and data entry sustainable. The pilot municipality gets a working CIP they can actually maintain.</p>
     </section>
 
     <section id="cip">
-      <h2>What the CIP Module Does</h2>
+      <h2>What a CIP Really Does</h2>
+      <div class="card">
+        <p>A strong CIP is not just a spreadsheet of projects. It is:</p>
+        <ul>
+          <li>A structured intake so every department submits requests the same way</li>
+          <li>A scoring rubric that boards and staff agree on in advance</li>
+          <li>A 5–10 year financial view of debt, pay-go, and grants</li>
+          <li>A pipeline of adoptable budgets and shovel-ready projects</li>
+          <li>Public-facing materials that explain decisions clearly</li>
+        </ul>
+        <p>Without these elements, CIPs collapse under politics or staff workload. With them, towns have a roadmap that can survive elections and transitions.</p>
+      </div>
+    </section>
+
+    <section id="model">
+      <h2>Partnership Model</h2>
       <div class="card">
         <ul>
-          <li>Delivers a rolling 5–10 year plan with an adoptable Year 1 capital budget.</li>
-          <li>Defines “what counts as capital,” sets thresholds, and standardizes project sheets.</li>
-          <li>Ranks projects with a transparent rubric so boards and residents can see the “why.”</li>
-          <li>Shows affordability: debt capacity, pay-go, grants, and operating impacts.</li>
-          <li>Produces public-facing summaries for meetings and the website.</li>
+          <li><strong>Capital Strategic Solutions:</strong> leads workshops, scoring, affordability reviews, and board packet prep.</li>
+          <li><strong>Public Logic:</strong> delivers templates, calendars, playbooks, and standardized processes that travel town to town.</li>
+          <li><strong>Polimorphic:</strong> provides the platform — low-code forms, AI-assisted intake, dashboards, and document automation.</li>
+          <li><strong>The Town:</strong> owns the data, adopts the plan, and uses the tools to keep it alive year after year.</li>
         </ul>
       </div>
     </section>
 
     <section id="process">
-      <h2>Process (Simple and Repeatable)</h2>
+      <h2>Process (Repeatable Annual Cycle)</h2>
       <div class="grid grid-2">
         <div class="card">
           <h3>Annual Cycle</h3>
           <ul>
             <li>Fall: project intake and updates</li>
             <li>Winter: scoring, draft plan, affordability checks</li>
-            <li>Spring: public meetings and adoption</li>
+            <li>Spring: board/committee review and adoption</li>
             <li>Summer: grant work and project tracking</li>
           </ul>
         </div>
         <div class="card">
-          <h3>Meeting-Ready Materials</h3>
+          <h3>Outputs</h3>
           <ul>
-            <li>Capital policy statement (draft)</li>
+            <li>Capital policy statement</li>
             <li>Project one-pagers (scope, cost, funding, O&amp;M)</li>
-            <li>Ranked list with scoring notes</li>
-            <li>Slide deck for public hearing</li>
-            <li>Website summary and FAQ</li>
+            <li>Ranked project list with scoring notes</li>
+            <li>Board packets and public hearing decks</li>
+            <li>Website summaries and FAQs</li>
           </ul>
         </div>
       </div>
@@ -262,18 +223,17 @@
       <h2>Prioritization (Transparent Scoring)</h2>
       <div class="card">
         <table>
-          <thead><tr><th>Criterion</th><th>What We Look For</th></tr></thead>
+          <thead><tr><th>Criterion</th><th>What It Means</th></tr></thead>
           <tbody>
-            <tr><td>Health &amp; Safety</td><td>Known hazards, code issues, risk of failure</td></tr>
-            <tr><td>Legal/Regulatory</td><td>Mandates, time-bound orders or agreements</td></tr>
-            <tr><td>Asset Condition</td><td>Inspection results, useful life, deferred maintenance</td></tr>
-            <tr><td>Service Impact</td><td>Maintains core services or expands capacity</td></tr>
+            <tr><td>Health &amp; Safety</td><td>Risks, code issues, hazards</td></tr>
+            <tr><td>Legal/Regulatory</td><td>Mandates, time-bound orders</td></tr>
+            <tr><td>Asset Condition</td><td>Useful life, deferred maintenance</td></tr>
+            <tr><td>Service Impact</td><td>Maintains or expands critical services</td></tr>
             <tr><td>External Funding</td><td>Grants, reimbursements, partner dollars</td></tr>
-            <tr><td>Readiness</td><td>Scope clarity, design/permitting status</td></tr>
-            <tr><td>Operating Impact</td><td>Staffing and O&amp;M costs identified early</td></tr>
+            <tr><td>Readiness</td><td>Scope, design, permitting status</td></tr>
+            <tr><td>Operating Impact</td><td>Staffing and O&amp;M identified early</td></tr>
           </tbody>
         </table>
-        <p class="lead" style="font-size:1rem;">The rubric is built with department heads and finance so everyone agrees on the rules before ranking.</p>
       </div>
     </section>
 
@@ -281,19 +241,19 @@
       <h2>Funding &amp; Affordability</h2>
       <div class="grid grid-2">
         <div class="card">
-          <h3>Affordability Guardrails</h3>
+          <h3>Guardrails</h3>
           <ul>
-            <li>Five-year debt profile and bonding capacity</li>
-            <li>Pay-go vs. debt mix with policy targets</li>
-            <li>Operating budget impacts surfaced before adoption</li>
+            <li>Debt profile and bonding capacity</li>
+            <li>Mix of debt vs. pay-go</li>
+            <li>Impact on operating budgets</li>
           </ul>
         </div>
         <div class="card">
-          <h3>Funding Sources</h3>
+          <h3>Sources</h3>
           <ul>
             <li>General fund, enterprise, stabilization</li>
-            <li>State/federal grants and reimbursements</li>
-            <li>Partner or private contributions where applicable</li>
+            <li>State and federal grants</li>
+            <li>Partnership or private contributions</li>
           </ul>
         </div>
       </div>
@@ -307,16 +267,15 @@
           <ul>
             <li>Adoptable Year 1 capital budget</li>
             <li>5–10 year plan with ranked list</li>
-            <li>Public hearing slide deck</li>
-            <li>Website content (summary + FAQ)</li>
+            <li>Hearing deck and web content</li>
           </ul>
         </div>
         <div class="card">
           <h3>Management Tools</h3>
           <ul>
-            <li>Fillable intake and scoring forms</li>
-            <li>Ranking workbook with notes</li>
-            <li>Grant tracker and milestones</li>
+            <li>Intake and scoring forms</li>
+            <li>Ranking workbook</li>
+            <li>Grant tracker</li>
             <li>Quarterly update checklist</li>
           </ul>
         </div>
@@ -324,7 +283,7 @@
     </section>
 
     <section id="timeline">
-      <h2>90-Day Pilot Timeline (Example)</h2>
+      <h2>90-Day Pilot Timeline</h2>
       <table>
         <thead><tr><th>Weeks</th><th>Focus</th><th>Milestones</th></tr></thead>
         <tbody>
@@ -337,110 +296,116 @@
     </section>
 
     <section id="roles">
-      <h2>Who Does What</h2>
-      <div class="grid grid-2">
+      <h2>Roles</h2>
+      <div class="grid grid-3">
         <div class="card">
           <h3>Capital Strategic Solutions</h3>
           <ul>
-            <li>Lead project intake and scoring workshops</li>
-            <li>Draft plan, policy updates, and board materials</li>
-            <li>Coordinate departments, finance, and communications</li>
-            <li>Guide public engagement and hearing preparation</li>
+            <li>Lead intake and scoring workshops</li>
+            <li>Draft plan and board materials</li>
+            <li>Coordinate departments and finance</li>
           </ul>
         </div>
         <div class="card">
           <h3>Public Logic</h3>
           <ul>
-            <li>Provide templates, playbooks, and calendars</li>
-            <li>Prepare website content and FAQs</li>
-            <li>Support grant alignment and reporting</li>
-            <li>Document lessons learned for reuse (anonymized)</li>
+            <li>Provide playbooks and calendars</li>
+            <li>Templates for meetings and web</li>
+            <li>Document lessons for reuse</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Polimorphic</h3>
+          <ul>
+            <li>Low-code intake and scoring forms</li>
+            <li>Dashboards and automation</li>
+            <li>AI-assisted reporting and analysis</li>
           </ul>
         </div>
       </div>
       <div class="card" style="margin-top:16px;">
         <h3>Municipality</h3>
         <ul>
-          <li>Owns the plan, data, and adoption decisions</li>
-          <li>Names a project owner and capital team</li>
-          <li>Approves policies and participates in workshops</li>
+          <li>Owns the plan, data, and adoption</li>
+          <li>Names a project owner and team</li>
+          <li>Adopts policies and participates</li>
         </ul>
       </div>
     </section>
 
     <section id="benefits">
-      <h2>Why This Works (Win-Win-Win)</h2>
+      <h2>Why This Works</h2>
       <div class="grid grid-3">
         <div class="benefit-card">
           <h3>For CSS</h3>
           <ul>
-            <li>Program you can roll out repeatedly</li>
-            <li>Plain-language materials that travel</li>
-            <li>Documented success stories</li>
+            <li>A structured CIP program that can be rolled out town to town</li>
+            <li>Meeting-ready materials that save staff time</li>
+            <li>Clear, repeatable success stories for clients</li>
           </ul>
         </div>
         <div class="benefit-card">
           <h3>For the Town</h3>
           <ul>
-            <li>Clear, defensible plan and budget</li>
-            <li>Transparent scoring and funding path</li>
-            <li>Meeting-ready materials and website copy</li>
+            <li>A transparent, defensible plan</li>
+            <li>Funding guardrails that prevent surprises</li>
+            <li>Public communication that builds trust</li>
           </ul>
         </div>
         <div class="benefit-card">
-          <h3>For Public Logic</h3>
+          <h3>For Public Logic &amp; Polimorphic</h3>
           <ul>
-            <li>Improved templates from real pilots</li>
-            <li>Reusable lessons and calendars</li>
-            <li>Faster future rollouts with CSS</li>
+            <li>Improved frameworks from real pilots</li>
+            <li>Reusable playbooks and automated workflows</li>
+            <li>A model that scales to more communities</li>
           </ul>
         </div>
       </div>
     </section>
 
     <section id="success">
-      <h2>Success Metrics (How We Know It Worked)</h2>
+      <h2>Success Metrics</h2>
       <div class="success-metric">
         <h4>Adoption Rate</h4>
-        <p>Town adopts Year 1 capital budget by Spring Town Meeting with no major revisions.</p>
+        <p>The town adopts a Year 1 capital budget on time with minimal revisions.</p>
       </div>
       <div class="success-metric">
-        <h4>Transparency Score</h4>
-        <p>All projects have scoring notes visible to boards and public; residents can see the “why” behind rankings.</p>
+        <h4>Transparency</h4>
+        <p>Every project has a score, rationale, and clear funding pathway visible to boards and the public.</p>
       </div>
       <div class="success-metric">
-        <h4>Efficiency Gain</h4>
-        <p>Staff time savings: intake and ranking take 40% less time in Year 2 vs. pre-CIP process.</p>
+        <h4>Efficiency</h4>
+        <p>Departments spend 40% less time on intake and ranking in Year 2 vs. baseline.</p>
       </div>
       <div class="success-metric">
         <h4>Reusability</h4>
-        <p>CSS deploys CIP program to second town within 6 months using refined templates and playbooks.</p>
+        <p>CSS deploys the refined CIP program to a second town within six months.</p>
       </div>
       <div class="success-metric">
         <h4>Funding Alignment</h4>
-        <p>Plan shows clear debt capacity runway and operating impacts before adoption — no surprises.</p>
+        <p>Debt and O&amp;M impacts are visible before adoption — no surprises at budget time.</p>
       </div>
     </section>
 
     <section id="investment">
       <h2>Investment Framework (Pilot)</h2>
       <div class="cost-box">
-        <h4>What the Pilot Costs (Typical Range)</h4>
+        <h4>What the Pilot Costs</h4>
         <ul>
-          <li><strong>CSS professional services:</strong> Implementation, workshops, board packet prep, and coordination.</li>
-          <li><strong>Public Logic standards package:</strong> Templates, playbooks, calendars, and website content.</li>
+          <li><strong>CSS services:</strong> Implementation, workshops, board packet prep, and coordination.</li>
+          <li><strong>Public Logic package:</strong> Templates, playbooks, calendars, and web content.</li>
+          <li><strong>Polimorphic platform:</strong> Forms, dashboards, and automation workflows.</li>
           <li><strong>Municipality staff time:</strong> Project owner (20–30 hrs), department heads (10–15 hrs each), finance (15–20 hrs).</li>
         </ul>
-        <p class="lead" style="font-size:1rem;">Exact pricing depends on town size, complexity, and existing CIP maturity. CSS provides a custom scope and fee proposal based on discovery call.</p>
       </div>
       <div class="cost-box">
-        <h4>What the Town Gets (ROI)</h4>
+        <h4>What the Town Gets</h4>
         <ul>
-          <li>Adoptable 5–10 year CIP with Year 1 budget ready for Town Meeting.</li>
-          <li>Transparent scoring system that travels year to year.</li>
-          <li>Public-facing materials (slide deck, website summary, FAQ).</li>
-          <li>Reduced staff time in future years (templates and checklists reused annually).</li>
-          <li>Stronger grant positioning (clear project pipeline and priorities).</li>
+          <li>An adoptable 5–10 year CIP with Year 1 budget</li>
+          <li>A transparent scoring system for all projects</li>
+          <li>Meeting-ready materials (slide deck, web summary, FAQ)</li>
+          <li>Reduced staff workload in future years</li>
+          <li>Stronger positioning for grants</li>
         </ul>
       </div>
     </section>
@@ -448,19 +413,19 @@
     <section id="next">
       <h2>Next Steps</h2>
       <ol class="card">
-        <li>CSS identifies a client town interested in a 90-day pilot.</li>
+        <li>CSS identifies a client town ready to pilot a CIP.</li>
         <li>Confirm calendar, roles, and adoption schedule.</li>
-        <li>Public Logic delivers tailored templates and web copy for that town’s pilot.</li>
-        <li>Kickoff workshop; publish intake; schedule scoring and affordability sessions.</li>
-        <li>Prepare board hearing materials; present; adopt Year 1 and publish the plan.</li>
+        <li>Public Logic delivers tailored templates and content.</li>
+        <li>Polimorphic sets up intake, scoring, and dashboards.</li>
+        <li>Town kickoff workshop; scoring and affordability sessions held.</li>
+        <li>Board hearing and adoption of Year 1 CIP and multi-year plan.</li>
       </ol>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <div class="wrap">
-      <p><strong>Public Logic</strong> × <strong>Capital Strategic Solutions</strong></p>
+      <p><strong>Public Logic</strong> × <strong>Capital Strategic Solutions</strong> × <strong>Polimorphic</strong></p>
       <p>© 2025. Draft for discussion. VAULT™ / ARCHIEVE™ are trademarks of Public Logic.</p>
     </div>
   </footer>

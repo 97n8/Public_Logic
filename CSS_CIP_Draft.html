@@ -7,159 +7,156 @@
   <title>Public Logic × Capital Strategic Solutions — CIP Partnership Exploration (Draft)</title>
   <meta name="description" content="Draft partnership exploration between Public Logic and Capital Strategic Solutions to pilot and roll out a Capital Improvement Plan (CIP) Module with a client town." />
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;font-size:16px}
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
-      color:#1a1a1a;background:#fafafa;line-height:1.6;font-weight:400
+    /* Reset and override any site styles */
+    .cip-doc *{box-sizing:border-box}
+    .cip-doc{margin:0;padding:0;font-size:16px}
+    .cip-doc body,
+    .cip-doc{
+      margin:0 !important;
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif !important;
+      color:#1a1a1a !important;background:#fafafa !important;line-height:1.6 !important;font-weight:400 !important
     }
-    a{color:#4a7a4a;text-decoration:none;transition:color .2s}
-    a:hover{color:#3a5a3a}
+    .cip-doc a{color:#4a7a4a !important;text-decoration:none !important;transition:color .2s !important}
+    .cip-doc a:hover{color:#3a5a3a !important}
 
 ```
-header.hero{
-  background:#1f2e1f;
-  color:#ffffff;padding:3.5rem 1.25rem 2.5rem;border-bottom:3px solid #3a5a3a
+.cip-doc header.hero{
+  background:#1f2e1f !important;
+  color:#ffffff !important;padding:3.5rem 1.25rem 2.5rem !important;border-bottom:3px solid #3a5a3a !important;
+  margin:0 !important;width:100% !important
 }
-.wrap{max-width:68.75rem;margin:0 auto;padding:0 1.25rem}
+.cip-doc .wrap{max-width:68.75rem !important;margin:0 auto !important;padding:0 1.25rem !important}
 
-.partnership-triangle{
-  display:flex;flex-direction:column;align-items:center;margin:2.25rem 0 1.5rem;gap:1rem
+.cip-doc .partnership-triangle{
+  display:flex !important;flex-direction:column !important;align-items:center !important;margin:2.25rem 0 1.5rem !important;gap:1rem !important
 }
-.triangle-top{
-  background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);
-  border-radius:0.75rem;padding:1.25rem 1.75rem;text-align:center;max-width:21.25rem;
+.cip-doc .triangle-top{
+  background:rgba(255,255,255,.25) !important;border:2px solid rgba(255,255,255,.5) !important;
+  border-radius:0.75rem !important;padding:1.25rem 1.75rem !important;text-align:center !important;max-width:21.25rem !important;
 }
-.triangle-top h2{margin:0 0 0.375rem;font-size:1.25rem;font-weight:600;color:#ffffff}
-.triangle-top p{margin:0;font-size:0.875rem;color:#ffffff;font-weight:400;opacity:.95}
-.triangle-top ul{text-align:left;font-size:0.8125rem;margin:0.625rem 0 0;padding-left:1.125rem;line-height:1.6;color:#ffffff;opacity:.9}
+.cip-doc .triangle-top h2{margin:0 0 0.375rem !important;font-size:1.25rem !important;font-weight:600 !important;color:#ffffff !important}
+.cip-doc .triangle-top p{margin:0 !important;font-size:0.875rem !important;color:#ffffff !important;font-weight:400 !important;opacity:1 !important}
+.cip-doc .triangle-top ul{text-align:left !important;font-size:0.8125rem !important;margin:0.625rem 0 0 !important;padding-left:1.125rem !important;line-height:1.6 !important;color:#ffffff !important;opacity:1 !important}
 
-.triangle-center{
-  position:relative;width:100%;max-width:34.375rem;height:2.75rem;
-  display:flex;justify-content:center;align-items:center
+.cip-doc .triangle-center{
+  position:relative !important;width:100% !important;max-width:34.375rem !important;height:2.75rem !important;
+  display:flex !important;justify-content:center !important;align-items:center !important
 }
-.triangle-center::before,.triangle-center::after{
-  content:'';position:absolute;height:2px;width:40%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);top:50%
+.cip-doc .triangle-center::before,.cip-doc .triangle-center::after{
+  content:'' !important;position:absolute !important;height:2px !important;width:40% !important;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent) !important;top:50% !important
 }
-.triangle-center::before{left:0;transform:rotate(-28deg) translateY(-0.25rem)}
-.triangle-center::after{right:0;transform:rotate(28deg) translateY(-0.25rem)}
-.center-x{font-size:2rem;font-weight:600;color:#ffffff;letter-spacing:0.125rem;z-index:1}
+.cip-doc .triangle-center::before{left:0 !important;transform:rotate(-28deg) translateY(-0.25rem) !important}
+.cip-doc .triangle-center::after{right:0 !important;transform:rotate(28deg) translateY(-0.25rem) !important}
+.cip-doc .center-x{font-size:2rem !important;font-weight:600 !important;color:#ffffff !important;letter-spacing:0.125rem !important;z-index:1 !important}
 
-.triangle-bottom{display:flex;gap:1.25rem;flex-wrap:wrap;justify-content:center;max-width:43.75rem;margin:0 auto}
-.triangle-partner{
-  background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.35);
-  border-radius:0.75rem;padding:1.25rem;width:19.375rem;
-  transition:all .25s ease
+.cip-doc .triangle-bottom{display:flex !important;gap:1.25rem !important;flex-wrap:wrap !important;justify-content:center !important;max-width:43.75rem !important;margin:0 auto !important}
+.cip-doc .triangle-partner{
+  background:rgba(255,255,255,.25) !important;border:2px solid rgba(255,255,255,.5) !important;
+  border-radius:0.75rem !important;padding:1.25rem !important;width:19.375rem !important;
+  transition:all .25s ease !important
 }
-.triangle-partner:hover{border-color:rgba(255,255,255,.5);transform:translateY(-0.125rem)}
-.triangle-partner h3{margin:0 0 0.625rem;font-size:1.0625rem;font-weight:600;color:#ffffff}
-.triangle-partner ul{margin:0.375rem 0 0;padding-left:1.125rem;font-size:0.8125rem;line-height:1.6;color:#ffffff;opacity:.9}
+.cip-doc .triangle-partner:hover{border-color:rgba(255,255,255,.7) !important;transform:translateY(-0.125rem) !important}
+.cip-doc .triangle-partner h3{margin:0 0 0.625rem !important;font-size:1.0625rem !important;font-weight:600 !important;color:#ffffff !important}
+.cip-doc .triangle-partner ul{margin:0.375rem 0 0 !important;padding-left:1.125rem !important;font-size:0.8125rem !important;line-height:1.6 !important;color:#ffffff !important;opacity:1 !important}
 
-.brand h1{font-size:clamp(1.375rem,4vw,2.375rem);margin:1rem 0 0.625rem;font-weight:700;color:#ffffff}
-.brand p{margin:0;font-size:clamp(0.875rem,2vw,1.0625rem);color:#ffffff;font-weight:400;opacity:.9}
-.meta{display:flex;flex-wrap:wrap;gap:0.625rem;margin-top:1.125rem}
-.meta .chip{
-  background:rgba(255,255,255,.18);padding:0.4375rem 0.875rem;border-radius:0.375rem;
-  font-size:0.8125rem;border:1px solid rgba(255,255,255,.3);font-weight:500;color:#ffffff
+.cip-doc .brand h1{font-size:clamp(1.375rem,4vw,2.375rem) !important;margin:1rem 0 0.625rem !important;font-weight:700 !important;color:#ffffff !important}
+.cip-doc .brand p{margin:0 !important;font-size:clamp(0.875rem,2vw,1.0625rem) !important;color:#ffffff !important;font-weight:400 !important;opacity:1 !important}
+.cip-doc .meta{display:flex !important;flex-wrap:wrap !important;gap:0.625rem !important;margin-top:1.125rem !important}
+.cip-doc .meta .chip{
+  background:rgba(255,255,255,.25) !important;padding:0.4375rem 0.875rem !important;border-radius:0.375rem !important;
+  font-size:0.8125rem !important;border:1px solid rgba(255,255,255,.4) !important;font-weight:500 !important;color:#ffffff !important
 }
 
-nav.toc{
-  background:#ffffff;border-bottom:1px solid #d8d8d8;position:sticky;top:0;z-index:100;
-  box-shadow:0 2px 8px rgba(0,0,0,.08)
+.cip-doc nav.toc{
+  background:#ffffff !important;border-bottom:1px solid #d8d8d8 !important;position:sticky !important;top:0 !important;z-index:100 !important;
+  box-shadow:0 2px 8px rgba(0,0,0,.08) !important
 }
-nav.toc .wrap{display:flex;flex-wrap:wrap;gap:0.375rem;padding:0.875rem 1.25rem}
-nav.toc a{
-  font-size:0.875rem;color:#333333;padding:0.4375rem 0.75rem;border-radius:0.375rem;
-  font-weight:500;transition:all .2s
+.cip-doc nav.toc .wrap{display:flex !important;flex-wrap:wrap !important;gap:0.375rem !important;padding:0.875rem 1.25rem !important}
+.cip-doc nav.toc a{
+  font-size:0.875rem !important;color:#333333 !important;padding:0.4375rem 0.75rem !important;border-radius:0.375rem !important;
+  font-weight:500 !important;transition:all .2s !important
 }
-nav.toc a:hover{background:#f4f6f4;color:#1a1a1a}
+.cip-doc nav.toc a:hover{background:#f4f6f4 !important;color:#1a1a1a !important}
 
-section{padding:3.5rem 0;border-bottom:1px solid #d8d8d8}
-section:nth-child(even){background:#f4f6f4}
-h2{font-size:clamp(1.375rem,3vw,2rem);margin:0 0 1.125rem;font-weight:700;color:#1a1a1a}
-h3{font-size:clamp(1.0625rem,2.5vw,1.375rem);margin:1.5rem 0 0.625rem;font-weight:600;color:#333333}
-p{margin:0.625rem 0;color:#333333;font-weight:400}
-.lead{font-size:1.125rem;color:#1a1a1a;font-weight:500;line-height:1.65}
+.cip-doc section{padding:3.5rem 0 !important;border-bottom:1px solid #d8d8d8 !important}
+.cip-doc section:nth-child(even){background:#f4f6f4 !important}
+.cip-doc h2{font-size:clamp(1.375rem,3vw,2rem) !important;margin:0 0 1.125rem !important;font-weight:700 !important;color:#1a1a1a !important}
+.cip-doc h3{font-size:clamp(1.0625rem,2.5vw,1.375rem) !important;margin:1.5rem 0 0.625rem !important;font-weight:600 !important;color:#333333 !important}
+.cip-doc p{margin:0.625rem 0 !important;color:#333333 !important;font-weight:400 !important}
+.cip-doc .lead{font-size:1.125rem !important;color:#1a1a1a !important;font-weight:500 !important;line-height:1.65 !important}
 
-.grid{display:grid;gap:1.25rem;margin-top:1.625rem}
+.cip-doc .grid{display:grid !important;gap:1.25rem !important;margin-top:1.625rem !important}
 @media(min-width:48rem){
-  .grid-2{grid-template-columns:1fr 1fr}
-  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .cip-doc .grid-2{grid-template-columns:1fr 1fr !important}
+  .cip-doc .grid-3{grid-template-columns:repeat(3,1fr) !important}
 }
 
-.card{
-  background:#ffffff;border:1px solid #d8d8d8;border-radius:0.625rem;
-  padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .25s ease
+.cip-doc .card{
+  background:#ffffff !important;border:1px solid #d8d8d8 !important;border-radius:0.625rem !important;
+  padding:1.5rem !important;box-shadow:0 2px 8px rgba(0,0,0,.08) !important;transition:all .25s ease !important
 }
-.card:hover{box-shadow:0 4px 12px rgba(0,0,0,.1);transform:translateY(-0.0625rem)}
-.card ul{padding-left:1.25rem;margin:0.625rem 0}
-.card li{margin:0.4375rem 0;color:#333333;font-weight:400}
-.card strong{color:#1a1a1a;font-weight:600}
+.cip-doc .card:hover{box-shadow:0 4px 12px rgba(0,0,0,.1) !important;transform:translateY(-0.0625rem) !important}
+.cip-doc .card ul{padding-left:1.25rem !important;margin:0.625rem 0 !important}
+.cip-doc .card li{margin:0.4375rem 0 !important;color:#333333 !important;font-weight:400 !important}
+.cip-doc .card strong{color:#1a1a1a !important;font-weight:600 !important}
 
-table{
-  border-collapse:separate;border-spacing:0;width:100%;background:#ffffff;
-  border:1px solid #d8d8d8;border-radius:0.5rem;overflow:hidden;
-  box-shadow:0 2px 8px rgba(0,0,0,.08);margin:1.125rem 0
+.cip-doc table{
+  border-collapse:separate !important;border-spacing:0 !important;width:100% !important;background:#ffffff !important;
+  border:1px solid #d8d8d8 !important;border-radius:0.5rem !important;overflow:hidden !important;
+  box-shadow:0 2px 8px rgba(0,0,0,.08) !important;margin:1.125rem 0 !important
 }
-th,td{padding:0.75rem 0.875rem;text-align:left;border-bottom:1px solid #d8d8d8;font-size:0.9375rem}
-th{background:#f4f6f4;font-weight:600;color:#1a1a1a}
-tbody tr:hover{background:#f8f8f8}
-tbody tr:last-child td{border-bottom:none}
+.cip-doc th,.cip-doc td{padding:0.75rem 0.875rem !important;text-align:left !important;border-bottom:1px solid #d8d8d8 !important;font-size:0.9375rem !important}
+.cip-doc th{background:#f4f6f4 !important;font-weight:600 !important;color:#1a1a1a !important}
+.cip-doc tbody tr:hover{background:#f8f8f8 !important}
+.cip-doc tbody tr:last-child td{border-bottom:none !important}
 
-.highlight-card{
-  background:#ffffff;border:2px solid #5a7a5a;border-radius:0.625rem;
-  padding:1.75rem;box-shadow:0 4px 12px rgba(0,0,0,.1);margin:1.625rem 0
-}
-
-.benefit-card{
-  background:#ffffff;border-radius:0.625rem;padding:1.5rem;
-  box-shadow:0 2px 8px rgba(0,0,0,.08);border-left:4px solid #5a7a5a;
-  transition:all .25s ease
-}
-.benefit-card:nth-child(2){border-left-color:#3a5a3a}
-.benefit-card:nth-child(3){border-left-color:#7a8a6a}
-.benefit-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.1);transform:translateY(-0.125rem)}
-.benefit-card h3{margin-top:0;font-weight:600;color:#1a1a1a}
-
-.success-metric{
-  background:#ffffff;border-left:3px solid #5a7a5a;padding:1.125rem 1.25rem;
-  border-radius:0.5rem;margin:0.875rem 0;box-shadow:0 2px 8px rgba(0,0,0,.08)
-}
-.success-metric h4{margin:0 0 0.375rem;font-size:1rem;font-weight:600;color:#1a1a1a}
-.success-metric p{margin:0;font-size:0.875rem;color:#333333}
-
-.cost-box{
-  background:#ffffff;border:2px solid #5a7a5a;border-radius:0.625rem;
-  padding:1.375rem;margin:1.375rem 0;box-shadow:0 2px 8px rgba(0,0,0,.08)
-}
-.cost-box h4{margin:0 0 0.625rem;font-size:1.0625rem;font-weight:600;color:#1a1a1a}
-.cost-box ul{margin:0.5rem 0;padding-left:1.25rem}
-.cost-box li{margin:0.375rem 0;color:#333333}
-
-footer{padding:2.75rem 0;background:#1f2e1f;color:#ffffff;text-align:center}
-footer p{margin:0.375rem 0;font-weight:400;opacity:.9}
-
-.note{font-size:0.8125rem;color:#666666;font-style:italic;margin-top:0.875rem}
-ol{counter-reset:item;list-style:none;padding:0}
-ol li{counter-increment:item;padding:0.625rem 0 0.625rem 2.25rem;position:relative;font-weight:400}
-ol li::before{
-  content:counter(item);position:absolute;left:0;top:0.625rem;background:#5a7a5a;
-  color:#fff;width:1.625rem;height:1.625rem;border-radius:50%;display:grid;
-  place-items:center;font-weight:600;font-size:0.8125rem
+.cip-doc .highlight-card{
+  background:#ffffff !important;border:2px solid #5a7a5a !important;border-radius:0.625rem !important;
+  padding:1.75rem !important;box-shadow:0 4px 12px rgba(0,0,0,.1) !important;margin:1.625rem 0 !important
 }
 
-@media print{
-  nav.toc,.meta,.partnership-triangle{display:none}
-  body{color:#000;background:#fff}
-  section{page-break-inside:avoid}
+.cip-doc .benefit-card{
+  background:#ffffff !important;border-radius:0.625rem !important;padding:1.5rem !important;
+  box-shadow:0 2px 8px rgba(0,0,0,.08) !important;border-left:4px solid #5a7a5a !important;
+  transition:all .25s ease !important
+}
+.cip-doc .benefit-card:nth-child(2){border-left-color:#3a5a3a !important}
+.cip-doc .benefit-card:nth-child(3){border-left-color:#7a8a6a !important}
+.cip-doc .benefit-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.1) !important;transform:translateY(-0.125rem) !important}
+.cip-doc .benefit-card h3{margin-top:0 !important;font-weight:600 !important;color:#1a1a1a !important}
+
+.cip-doc .success-metric{
+  background:#ffffff !important;border-left:3px solid #5a7a5a !important;padding:1.125rem 1.25rem !important;
+  border-radius:0.5rem !important;margin:0.875rem 0 !important;box-shadow:0 2px 8px rgba(0,0,0,.08) !important
+}
+.cip-doc .success-metric h4{margin:0 0 0.375rem !important;font-size:1rem !important;font-weight:600 !important;color:#1a1a1a !important}
+.cip-doc .success-metric p{margin:0 !important;font-size:0.875rem !important;color:#333333 !important}
+
+.cip-doc .cost-box{
+  background:#ffffff !important;border:2px solid #5a7a5a !important;border-radius:0.625rem !important;
+  padding:1.375rem !important;margin:1.375rem 0 !important;box-shadow:0 2px 8px rgba(0,0,0,.08) !important
+}
+.cip-doc .cost-box h4{margin:0 0 0.625rem !important;font-size:1.0625rem !important;font-weight:600 !important;color:#1a1a1a !important}
+.cip-doc .cost-box ul{margin:0.5rem 0 !important;padding-left:1.25rem !important}
+.cip-doc .cost-box li{margin:0.375rem 0 !important;color:#333333 !important}
+
+.cip-doc footer{padding:2.75rem 0 !important;background:#1f2e1f !important;color:#ffffff !important;text-align:center !important}
+.cip-doc footer p{margin:0.375rem 0 !important;font-weight:400 !important;opacity:1 !important}
+
+.cip-doc .note{font-size:0.8125rem !important;color:#666666 !important;font-style:italic !important;margin-top:0.875rem !important}
+.cip-doc ol{counter-reset:item !important;list-style:none !important;padding:0 !important}
+.cip-doc ol li{counter-increment:item !important;padding:0.625rem 0 0.625rem 2.25rem !important;position:relative !important;font-weight:400 !important}
+.cip-doc ol li::before{
+  content:counter(item) !important;position:absolute !important;left:0 !important;top:0.625rem !important;background:#5a7a5a !important;
+  color:#fff !important;width:1.625rem !important;height:1.625rem !important;border-radius:50% !important;display:grid !important;
+  place-items:center !important;font-weight:600 !important;font-size:0.8125rem !important
 }
 ```
 
   </style>
 </head>
-<body>
+<body class="cip-doc">
   <header class="hero">
     <div class="wrap">
       <div class="brand">
@@ -446,7 +443,7 @@ ol li::before{
   </div>
   <div class="success-metric">
     <h4>Efficiency Gain</h4>
-  <p>Staff time savings: intake and ranking takes 40% less time in Year 2 vs. pre-CIP process.</p>
+    <p>Staff time savings: intake and ranking takes 40% less time in Year 2 vs. pre-CIP process.</p>
   </div>
   <div class="success-metric">
     <h4>Reusability</h4>
@@ -486,20 +483,4 @@ ol li::before{
   <ol class="card">
     <li>CSS identifies a client town interested in a 90-day pilot.</li>
     <li>Confirm calendar, roles, and adoption schedule.</li>
-    <li>Issue intake packet and schedule workshops.</li>
-    <li>Draft plan, affordability review, and board packet.</li>
-    <li>Public meetings, adoption, and handoff.</li>
-  </ol>
-  <p class="note">Contact: Nathan Boudreau — nathan@publiclogic.io</p>
-</section>
 ```
-
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <p>© 2025 Public Logic — Draft partnership exploration with Capital Strategic Solutions.</p>
-    </div>
-  </footer>
-</body>
-</html>

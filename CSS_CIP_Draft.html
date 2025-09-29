@@ -1,162 +1,161 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Public Logic × Capital Strategic Solutions — CIP Partnership Exploration (Draft)</title>
   <meta name="description" content="Draft partnership exploration between Public Logic and Capital Strategic Solutions to pilot and roll out a Capital Improvement Plan (CIP) Module with a client town." />
+
+  <!-- Final contrast-safe CSS -->
   <style>
-    /* Reset and override any site styles */
-    .cip-doc *{box-sizing:border-box}
-    .cip-doc{margin:0;padding:0;font-size:16px}
-    .cip-doc body,
-    .cip-doc{
-      margin:0 !important;
-      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif !important;
-      color:#1a1a1a !important;background:#fafafa !important;line-height:1.6 !important;font-weight:400 !important
-    }
-    .cip-doc a{color:#4a7a4a !important;text-decoration:none !important;transition:color .2s !important}
-    .cip-doc a:hover{color:#3a5a3a !important}
+  /* Public Logic × CSS — CIP Partnership (final contrast-safe CSS)
+     Self-contained file; no external assets required. */
+  .cip-doc, .cip-doc * { box-sizing: border-box; }
 
-```
-.cip-doc header.hero{
-  background:#1f2e1f !important;
-  color:#ffffff !important;padding:3.5rem 1.25rem 2.5rem !important;border-bottom:3px solid #3a5a3a !important;
-  margin:0 !important;width:100% !important
-}
-.cip-doc .wrap{max-width:68.75rem !important;margin:0 auto !important;padding:0 1.25rem !important}
+  .cip-doc {
+    margin: 0 !important;
+    font: 400 16px/1.6 system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial, sans-serif !important;
+    color: #101828 !important;           /* dark ink */
+    background: #ffffff !important;      /* pure white page */
+  }
 
-.cip-doc .partnership-triangle{
-  display:flex !important;flex-direction:column !important;align-items:center !important;margin:2.25rem 0 1.5rem !important;gap:1rem !important
-}
-.cip-doc .triangle-top{
-  background:rgba(255,255,255,.25) !important;border:2px solid rgba(255,255,255,.5) !important;
-  border-radius:0.75rem !important;padding:1.25rem 1.75rem !important;text-align:center !important;max-width:21.25rem !important;
-}
-.cip-doc .triangle-top h2{margin:0 0 0.375rem !important;font-size:1.25rem !important;font-weight:600 !important;color:#ffffff !important}
-.cip-doc .triangle-top p{margin:0 !important;font-size:0.875rem !important;color:#ffffff !important;font-weight:400 !important;opacity:1 !important}
-.cip-doc .triangle-top ul{text-align:left !important;font-size:0.8125rem !important;margin:0.625rem 0 0 !important;padding-left:1.125rem !important;line-height:1.6 !important;color:#ffffff !important;opacity:1 !important}
+  /* Links */
+  .cip-doc a { color: #2c6fb3 !important; text-decoration: none !important; }
+  .cip-doc a:hover { text-decoration: underline !important; }
 
-.cip-doc .triangle-center{
-  position:relative !important;width:100% !important;max-width:34.375rem !important;height:2.75rem !important;
-  display:flex !important;justify-content:center !important;align-items:center !important
-}
-.cip-doc .triangle-center::before,.cip-doc .triangle-center::after{
-  content:'' !important;position:absolute !important;height:2px !important;width:40% !important;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent) !important;top:50% !important
-}
-.cip-doc .triangle-center::before{left:0 !important;transform:rotate(-28deg) translateY(-0.25rem) !important}
-.cip-doc .triangle-center::after{right:0 !important;transform:rotate(28deg) translateY(-0.25rem) !important}
-.cip-doc .center-x{font-size:2rem !important;font-weight:600 !important;color:#ffffff !important;letter-spacing:0.125rem !important;z-index:1 !important}
+  /* Container */
+  .cip-doc .wrap { max-width: 1100px !important; margin: 0 auto !important; padding: 0 20px !important; }
 
-.cip-doc .triangle-bottom{display:flex !important;gap:1.25rem !important;flex-wrap:wrap !important;justify-content:center !important;max-width:43.75rem !important;margin:0 auto !important}
-.cip-doc .triangle-partner{
-  background:rgba(255,255,255,.25) !important;border:2px solid rgba(255,255,255,.5) !important;
-  border-radius:0.75rem !important;padding:1.25rem !important;width:19.375rem !important;
-  transition:all .25s ease !important
-}
-.cip-doc .triangle-partner:hover{border-color:rgba(255,255,255,.7) !important;transform:translateY(-0.125rem) !important}
-.cip-doc .triangle-partner h3{margin:0 0 0.625rem !important;font-size:1.0625rem !important;font-weight:600 !important;color:#ffffff !important}
-.cip-doc .triangle-partner ul{margin:0.375rem 0 0 !important;padding-left:1.125rem !important;font-size:0.8125rem !important;line-height:1.6 !important;color:#ffffff !important;opacity:1 !important}
+  /* HERO (solid, readable) */
+  .cip-doc header.hero {
+    background: #183028 !important;      /* deep green-blue */
+    color: #ffffff !important;
+    padding: 3rem 1.25rem 2.25rem !important;
+    border-bottom: 3px solid #2c6fb3 !important; /* blue accent */
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  .cip-doc .brand h1 {
+    margin: 0 0 .5rem !important;
+    font-size: clamp(1.4rem, 3.2vw, 2.3rem) !important;
+    font-weight: 800 !important; 
+    color: #ffffff !important;
+  }
+  .cip-doc .brand p { margin: 0 !important; color: #e6eef0 !important; }
 
-.cip-doc .brand h1{font-size:clamp(1.375rem,4vw,2.375rem) !important;margin:1rem 0 0.625rem !important;font-weight:700 !important;color:#ffffff !important}
-.cip-doc .brand p{margin:0 !important;font-size:clamp(0.875rem,2vw,1.0625rem) !important;color:#ffffff !important;font-weight:400 !important;opacity:1 !important}
-.cip-doc .meta{display:flex !important;flex-wrap:wrap !important;gap:0.625rem !important;margin-top:1.125rem !important}
-.cip-doc .meta .chip{
-  background:rgba(255,255,255,.25) !important;padding:0.4375rem 0.875rem !important;border-radius:0.375rem !important;
-  font-size:0.8125rem !important;border:1px solid rgba(255,255,255,.4) !important;font-weight:500 !important;color:#ffffff !important
-}
+  /* Partnership triangle (no transparency) */
+  .cip-doc .partnership-triangle { display: grid !important; gap: 16px !important; justify-items: center !important; margin: 24px 0 !important; }
+  .cip-doc .triangle-top,
+  .cip-doc .triangle-partner {
+    background: #204136 !important;
+    border: 1px solid #3d6a5a !important;
+    border-radius: 10px !important;
+    color: #ffffff !important;
+    padding: 16px 18px !important;
+  }
+  .cip-doc .triangle-top h2,
+  .cip-doc .triangle-partner h3 { margin: 0 0 .5rem !important; color: #ffffff !important; }
+  .cip-doc .triangle-top p,
+  .cip-doc .triangle-top ul,
+  .cip-doc .triangle-partner ul { margin: 0 !important; color: #f5fbff !important; }
+  .cip-doc .triangle-center { display: flex !important; justify-content: center !important; align-items: center !important; height: 24px !important; }
+  .cip-doc .center-x { color: #b6d4ff !important; }
 
-.cip-doc nav.toc{
-  background:#ffffff !important;border-bottom:1px solid #d8d8d8 !important;position:sticky !important;top:0 !important;z-index:100 !important;
-  box-shadow:0 2px 8px rgba(0,0,0,.08) !important
-}
-.cip-doc nav.toc .wrap{display:flex !important;flex-wrap:wrap !important;gap:0.375rem !important;padding:0.875rem 1.25rem !important}
-.cip-doc nav.toc a{
-  font-size:0.875rem !important;color:#333333 !important;padding:0.4375rem 0.75rem !important;border-radius:0.375rem !important;
-  font-weight:500 !important;transition:all .2s !important
-}
-.cip-doc nav.toc a:hover{background:#f4f6f4 !important;color:#1a1a1a !important}
+  /* Chips/meta */
+  .cip-doc .meta { display: flex !important; flex-wrap: wrap !important; gap: 8px !important; margin-top: 12px !important; }
+  .cip-doc .meta .chip {
+    background: #113024 !important;
+    color: #e8f3ef !important;
+    border: 1px solid #2c6fb3 !important;
+    border-radius: 6px !important;
+    padding: 6px 10px !important;
+    font-weight: 600 !important;
+  }
 
-.cip-doc section{padding:3.5rem 0 !important;border-bottom:1px solid #d8d8d8 !important}
-.cip-doc section:nth-child(even){background:#f4f6f4 !important}
-.cip-doc h2{font-size:clamp(1.375rem,3vw,2rem) !important;margin:0 0 1.125rem !important;font-weight:700 !important;color:#1a1a1a !important}
-.cip-doc h3{font-size:clamp(1.0625rem,2.5vw,1.375rem) !important;margin:1.5rem 0 0.625rem !important;font-weight:600 !important;color:#333333 !important}
-.cip-doc p{margin:0.625rem 0 !important;color:#333333 !important;font-weight:400 !important}
-.cip-doc .lead{font-size:1.125rem !important;color:#1a1a1a !important;font-weight:500 !important;line-height:1.65 !important}
+  /* TOC nav (sticky white) */
+  .cip-doc nav.toc {
+    position: sticky !important; top: 0 !important; z-index: 100 !important;
+    background: #ffffff !important; border-bottom: 1px solid #e5e7eb !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,.05) !important;
+  }
+  .cip-doc nav.toc .wrap { display: flex !important; flex-wrap: wrap !important; gap: 8px !important; padding: 10px 20px !important; }
+  .cip-doc nav.toc a {
+    color: #101828 !important; background: #f8fafc !important; border: 1px solid #e5e7eb !important;
+    padding: 8px 12px !important; border-radius: 8px !important; font-weight: 600 !important;
+  }
+  .cip-doc nav.toc a:hover { background: #eef2f7 !important; }
 
-.cip-doc .grid{display:grid !important;gap:1.25rem !important;margin-top:1.625rem !important}
-@media(min-width:48rem){
-  .cip-doc .grid-2{grid-template-columns:1fr 1fr !important}
-  .cip-doc .grid-3{grid-template-columns:repeat(3,1fr) !important}
-}
+  /* Sections: white + soft separators */
+  .cip-doc section { padding: 44px 0 !important; border-bottom: 1px solid #eef2f7 !important; }
+  .cip-doc h2 { margin: 0 0 14px !important; font-size: clamp(1.25rem, 2.6vw, 1.75rem) !important; font-weight: 800 !important; color: #101828 !important; }
+  .cip-doc h3 { margin: 18px 0 8px !important; font-size: clamp(1.05rem, 2.2vw, 1.3rem) !important; font-weight: 700 !important; color: #1f2937 !important; }
+  .cip-doc p { margin: 10px 0 !important; color: #1f2937 !important; }
+  .cip-doc .lead { font-size: 1.1rem !important; color: #243447 !important; }
 
-.cip-doc .card{
-  background:#ffffff !important;border:1px solid #d8d8d8 !important;border-radius:0.625rem !important;
-  padding:1.5rem !important;box-shadow:0 2px 8px rgba(0,0,0,.08) !important;transition:all .25s ease !important
-}
-.cip-doc .card:hover{box-shadow:0 4px 12px rgba(0,0,0,.1) !important;transform:translateY(-0.0625rem) !important}
-.cip-doc .card ul{padding-left:1.25rem !important;margin:0.625rem 0 !important}
-.cip-doc .card li{margin:0.4375rem 0 !important;color:#333333 !important;font-weight:400 !important}
-.cip-doc .card strong{color:#1a1a1a !important;font-weight:600 !important}
+  /* Grid */
+  .cip-doc .grid { display: grid !important; gap: 18px !important; margin-top: 16px !important; }
+  @media (min-width: 768px) { .cip-doc .grid-2 { grid-template-columns: 1fr 1fr !important; } .cip-doc .grid-3 { grid-template-columns: repeat(3,1fr) !important; } }
 
-.cip-doc table{
-  border-collapse:separate !important;border-spacing:0 !important;width:100% !important;background:#ffffff !important;
-  border:1px solid #d8d8d8 !important;border-radius:0.5rem !important;overflow:hidden !important;
-  box-shadow:0 2px 8px rgba(0,0,0,.08) !important;margin:1.125rem 0 !important
-}
-.cip-doc th,.cip-doc td{padding:0.75rem 0.875rem !important;text-align:left !important;border-bottom:1px solid #d8d8d8 !important;font-size:0.9375rem !important}
-.cip-doc th{background:#f4f6f4 !important;font-weight:600 !important;color:#1a1a1a !important}
-.cip-doc tbody tr:hover{background:#f8f8f8 !important}
-.cip-doc tbody tr:last-child td{border-bottom:none !important}
+  /* Cards */
+  .cip-doc .card {
+    background: #ffffff !important; border: 1px solid #e5e7eb !important; border-radius: 12px !important;
+    padding: 18px !important; box-shadow: 0 2px 10px rgba(0,0,0,.06) !important;
+  }
+  .cip-doc .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,.08) !important; transform: translateY(-1px); transition: .2s ease; }
+  .cip-doc .card ul { padding-left: 1.15rem !important; margin: .5rem 0 !important; }
+  .cip-doc .card li { margin: .35rem 0 !important; }
 
-.cip-doc .highlight-card{
-  background:#ffffff !important;border:2px solid #5a7a5a !important;border-radius:0.625rem !important;
-  padding:1.75rem !important;box-shadow:0 4px 12px rgba(0,0,0,.1) !important;margin:1.625rem 0 !important
-}
+  /* Tables */
+  .cip-doc table {
+    width: 100% !important; border-collapse: separate !important; border-spacing: 0 !important;
+    background: #ffffff !important; border: 1px solid #e5e7eb !important; border-radius: 10px !important; overflow: hidden !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,.05) !important; margin: 16px 0 !important;
+  }
+  .cip-doc th, .cip-doc td { padding: 10px 12px !important; text-align: left !important; border-bottom: 1px solid #e5e7eb !important; }
+  .cip-doc thead th { background: #f8fafc !important; color: #0f172a !important; font-weight: 800 !important; }
+  .cip-doc tbody tr:hover { background: #f6f8fb !important; }
+  .cip-doc tbody tr:last-child td { border-bottom: none !important; }
 
-.cip-doc .benefit-card{
-  background:#ffffff !important;border-radius:0.625rem !important;padding:1.5rem !important;
-  box-shadow:0 2px 8px rgba(0,0,0,.08) !important;border-left:4px solid #5a7a5a !important;
-  transition:all .25s ease !important
-}
-.cip-doc .benefit-card:nth-child(2){border-left-color:#3a5a3a !important}
-.cip-doc .benefit-card:nth-child(3){border-left-color:#7a8a6a !important}
-.cip-doc .benefit-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.1) !important;transform:translateY(-0.125rem) !important}
-.cip-doc .benefit-card h3{margin-top:0 !important;font-weight:600 !important;color:#1a1a1a !important}
+  /* Highlight / Benefit / Success blocks */
+  .cip-doc .highlight-card {
+    background: #ffffff !important; border: 2px solid #2c6fb3 !important; border-radius: 12px !important;
+    padding: 20px !important; box-shadow: 0 4px 14px rgba(0,0,0,.08) !important; margin: 18px 0 !important;
+  }
+  .cip-doc .benefit-card {
+    background: #ffffff !important; border-left: 4px solid #1f7a52 !important; border-radius: 12px !important;
+    padding: 16px !important; box-shadow: 0 2px 10px rgba(0,0,0,.06) !important;
+  }
+  .cip-doc .benefit-card:nth-child(2) { border-left-color: #2c6fb3 !important; }
+  .cip-doc .benefit-card:nth-child(3) { border-left-color: #6b7280 !important; }
+  .cip-doc .success-metric {
+    background: #ffffff !important; border-left: 3px solid #2c6fb3 !important; border-radius: 10px !important;
+    padding: 14px !important; box-shadow: 0 2px 10px rgba(0,0,0,.06) !important; margin: 10px 0 !important;
+  }
 
-.cip-doc .success-metric{
-  background:#ffffff !important;border-left:3px solid #5a7a5a !important;padding:1.125rem 1.25rem !important;
-  border-radius:0.5rem !important;margin:0.875rem 0 !important;box-shadow:0 2px 8px rgba(0,0,0,.08) !important
-}
-.cip-doc .success-metric h4{margin:0 0 0.375rem !important;font-size:1rem !important;font-weight:600 !important;color:#1a1a1a !important}
-.cip-doc .success-metric p{margin:0 !important;font-size:0.875rem !important;color:#333333 !important}
+  /* Cost boxes */
+  .cip-doc .cost-box {
+    background: #ffffff !important; border: 2px solid #1f7a52 !important; border-radius: 12px !important;
+    padding: 16px !important; box-shadow: 0 2px 10px rgba(0,0,0,.06) !important; margin: 16px 0 !important;
+  }
+  .cip-doc .cost-box h4 { margin: 0 0 10px !important; }
 
-.cip-doc .cost-box{
-  background:#ffffff !important;border:2px solid #5a7a5a !important;border-radius:0.625rem !important;
-  padding:1.375rem !important;margin:1.375rem 0 !important;box-shadow:0 2px 8px rgba(0,0,0,.08) !important
-}
-.cip-doc .cost-box h4{margin:0 0 0.625rem !important;font-size:1.0625rem !important;font-weight:600 !important;color:#1a1a1a !important}
-.cip-doc .cost-box ul{margin:0.5rem 0 !important;padding-left:1.25rem !important}
-.cip-doc .cost-box li{margin:0.375rem 0 !important;color:#333333 !important}
+  /* Footer */
+  .cip-doc footer {
+    background: #183028 !important; color: #ffffff !important; text-align: center !important;
+    padding: 28px 0 !important; border-top: 3px solid #2c6fb3 !important;
+  }
+  .cip-doc footer p { margin: 6px 0 !important; color: #eaf2f5 !important; }
 
-.cip-doc footer{padding:2.75rem 0 !important;background:#1f2e1f !important;color:#ffffff !important;text-align:center !important}
-.cip-doc footer p{margin:0.375rem 0 !important;font-weight:400 !important;opacity:1 !important}
-
-.cip-doc .note{font-size:0.8125rem !important;color:#666666 !important;font-style:italic !important;margin-top:0.875rem !important}
-.cip-doc ol{counter-reset:item !important;list-style:none !important;padding:0 !important}
-.cip-doc ol li{counter-increment:item !important;padding:0.625rem 0 0.625rem 2.25rem !important;position:relative !important;font-weight:400 !important}
-.cip-doc ol li::before{
-  content:counter(item) !important;position:absolute !important;left:0 !important;top:0.625rem !important;background:#5a7a5a !important;
-  color:#fff !important;width:1.625rem !important;height:1.625rem !important;border-radius:50% !important;display:grid !important;
-  place-items:center !important;font-weight:600 !important;font-size:0.8125rem !important
-}
-```
-
+  /* Safety: nuke any accidental transparency/filters from host site */
+  .cip-doc header, .cip-doc main, .cip-doc section, .cip-doc nav, .cip-doc footer,
+  .cip-doc .card, .cip-doc .benefit-card, .cip-doc .highlight-card, .cip-doc .cost-box {
+    mix-blend-mode: normal !important; filter: none !important; opacity: 1 !important;
+  }
   </style>
 </head>
+
 <body class="cip-doc">
+  <!-- HERO -->
   <header class="hero">
     <div class="wrap">
       <div class="brand">
@@ -164,56 +163,55 @@
         <p>For a CSS client town to explore a practical Capital Improvement Plan (CIP) program and rollout.</p>
       </div>
 
-```
-  <div class="partnership-triangle">
-    <div class="triangle-top">
-      <h2>Public Logic</h2>
-      <p>Templates & Standards</p>
-      <ul>
-        <li>Plain-language playbooks</li>
-        <li>Process standards & calendars</li>
-        <li>Website content & FAQs</li>
-        <li>Anonymized lessons learned</li>
-      </ul>
-    </div>
-    
-    <div class="triangle-center">
-      <span class="center-x">✕</span>
-    </div>
-    
-    <div class="triangle-bottom">
-      <div class="triangle-partner">
-        <h3>Capital Strategic Solutions</h3>
-        <ul>
-          <li>Client relationships</li>
-          <li>Implementation leadership</li>
-          <li>Workshop facilitation</li>
-          <li>Board packet prep</li>
-        </ul>
-      </div>
-      
-      <div class="triangle-partner">
-        <h3>Pilot Municipality</h3>
-        <ul>
-          <li>Local knowledge</li>
-          <li>Data ownership</li>
-          <li>Policy adoption</li>
-          <li>Real-world testing</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  
-  <div class="meta">
-    <span class="chip">Author: Nathan Boudreau, MPA, MCPPO</span>
-    <span class="chip">Release: Draft — September 2025</span>
-    <span class="chip">Audience: Town/City Admin • Finance • Capital Committee • Select Board/Council</span>
-  </div>
-</div>
-```
+      <!-- Partnership triangle -->
+      <div class="partnership-triangle">
+        <div class="triangle-top">
+          <h2>Public Logic</h2>
+          <p>Templates & Standards</p>
+          <ul>
+            <li>Plain-language playbooks</li>
+            <li>Process standards & calendars</li>
+            <li>Website content & FAQs</li>
+            <li>Anonymized lessons learned</li>
+          </ul>
+        </div>
 
+        <div class="triangle-center">
+          <span class="center-x">✕</span>
+        </div>
+
+        <div class="triangle-bottom" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+          <div class="triangle-partner">
+            <h3>Capital Strategic Solutions</h3>
+            <ul>
+              <li>Client relationships</li>
+              <li>Implementation leadership</li>
+              <li>Workshop facilitation</li>
+              <li>Board packet prep</li>
+            </ul>
+          </div>
+          <div class="triangle-partner">
+            <h3>Pilot Municipality</h3>
+            <ul>
+              <li>Local knowledge</li>
+              <li>Data ownership</li>
+              <li>Policy adoption</li>
+              <li>Real-world testing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Meta chips -->
+      <div class="meta">
+        <span class="chip">Author: Nathan Boudreau, MPA, MCPPO</span>
+        <span class="chip">Release: Draft — September 2025</span>
+        <span class="chip">Audience: Town/City Admin • Finance • Capital Committee • Select Board/Council</span>
+      </div>
+    </div>
   </header>
 
+  <!-- TOC -->
   <nav class="toc">
     <div class="wrap">
       <a href="#summary">Summary</a>
@@ -232,6 +230,7 @@
     </div>
   </nav>
 
+  <!-- CONTENT -->
   <main class="wrap">
     <section id="summary">
       <h2>Summary</h2>
@@ -239,248 +238,262 @@
       <p>This is a draft for discussion. It is meant to help a town quickly see what the program looks like, how decisions are made, and what it takes to adopt and maintain a CIP.</p>
     </section>
 
-```
-<section id="model">
-  <h2>Partnership Model (Like Sutton/Polimorphic—Made for CSS)</h2>
-  <div class="card">
-    <p style="font-weight:500;color:#3a5a3a;margin-bottom:0.875rem">This is a polimorphic model — a reusable framework that travels town to town. Just like the Sutton project, where templates and playbooks were refined and then deployed elsewhere, this CIP partnership creates standards that CSS can roll out repeatedly.</p>
-    <ul>
-      <li><strong>CSS leads implementation:</strong> run intake, workshops, scoring, affordability review, board packet prep, and public communications.</li>
-      <li><strong>Public Logic supplies standards:</strong> plain-language templates, process playbooks, calendars, and checklists that travel town to town.</li>
-      <li><strong>Town owns outcomes:</strong> final plan, data, schedules, and adoption decisions stay with the municipality.</li>
-      <li><strong>Shared learning:</strong> CSS and Public Logic reuse anonymized lessons, templates, and metrics to improve future rollouts — a win-win-win.</li>
-    </ul>
-  </div>
-</section>
+    <section id="model">
+      <h2>Partnership Model (Like Sutton/Polimorphic—Made for CSS)</h2>
+      <div class="card">
+        <p style="font-weight:600;color:#183028;margin-bottom:12px;">A reusable framework that travels town to town, producing consistent, defensible outcomes.</p>
+        <ul>
+          <li><strong>CSS leads implementation:</strong> run intake, workshops, scoring, affordability review, board packet prep, and public communications.</li>
+          <li><strong>Public Logic supplies standards:</strong> plain-language templates, process playbooks, calendars, and checklists that travel town to town.</li>
+          <li><strong>Town owns outcomes:</strong> final plan, data, schedules, and adoption decisions stay with the municipality.</li>
+          <li><strong>Shared learning:</strong> CSS and Public Logic reuse anonymized lessons, templates, and metrics to improve future rollouts — a win-win-win.</li>
+        </ul>
+      </div>
+    </section>
 
-<section id="cip">
-  <h2>What the CIP Module Does</h2>
-  <div class="card">
-    <ul>
-      <li>Delivers a rolling 5–10 year plan with an adoptable Year 1 capital budget.</li>
-      <li>Defines "what counts as capital," sets thresholds, and standardizes project sheets.</li>
-      <li>Ranks projects with a transparent rubric so boards and residents can see the "why."</li>
-      <li>Shows affordability: debt capacity, pay-go, grants, and operating impacts.</li>
-      <li>Produces public-facing summaries for meetings and the website.</li>
-    </ul>
-  </div>
-</section>
+    <section id="cip">
+      <h2>What the CIP Module Does</h2>
+      <div class="card">
+        <ul>
+          <li>Delivers a rolling 5–10 year plan with an adoptable Year 1 capital budget.</li>
+          <li>Defines “what counts as capital,” sets thresholds, and standardizes project sheets.</li>
+          <li>Ranks projects with a transparent rubric so boards and residents can see the “why.”</li>
+          <li>Shows affordability: debt capacity, pay-go, grants, and operating impacts.</li>
+          <li>Produces public-facing summaries for meetings and the website.</li>
+        </ul>
+      </div>
+    </section>
 
-<section id="process">
-  <h2>Process (Simple and Repeatable)</h2>
-  <div class="grid grid-2">
-    <div class="card">
-      <h3>Annual Cycle</h3>
-      <ul>
-        <li>Fall: project intake and updates</li>
-        <li>Winter: scoring, draft plan, affordability checks</li>
-        <li>Spring: public meetings and adoption</li>
-        <li>Summer: grant work and project tracking</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Meeting-Ready Materials</h3>
-      <ul>
-        <li>Capital policy statement (draft)</li>
-        <li>Project one-pagers (scope, cost, funding, O&M)</li>
-        <li>Ranked list with scoring notes</li>
-        <li>Slide deck for public hearing</li>
-        <li>Website summary and FAQ</li>
-      </ul>
-    </div>
-  </div>
-</section>
+    <section id="process">
+      <h2>Process (Simple and Repeatable)</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Annual Cycle</h3>
+          <ul>
+            <li>Fall: project intake and updates</li>
+            <li>Winter: scoring, draft plan, affordability checks</li>
+            <li>Spring: public meetings and adoption</li>
+            <li>Summer: grant work and project tracking</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Meeting-Ready Materials</h3>
+          <ul>
+            <li>Capital policy statement (draft)</li>
+            <li>Project one-pagers (scope, cost, funding, O&amp;M)</li>
+            <li>Ranked list with scoring notes</li>
+            <li>Slide deck for public hearing</li>
+            <li>Website summary and FAQ</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<section id="prioritization">
-  <h2>Prioritization (Transparent Scoring)</h2>
-  <div class="card">
-    <table>
-      <thead><tr><th>Criterion</th><th>What We Look For</th></tr></thead>
-      <tbody>
-        <tr><td>Health & Safety</td><td>Known hazards, code issues, risk of failure</td></tr>
-        <tr><td>Legal/Regulatory</td><td>Mandates, time-bound orders or agreements</td></tr>
-        <tr><td>Asset Condition</td><td>Inspection results, useful life, deferred maintenance</td></tr>
-        <tr><td>Service Impact</td><td>Maintains core services or expands capacity</td></tr>
-        <tr><td>External Funding</td><td>Grants, reimbursements, partner dollars</td></tr>
-        <tr><td>Readiness</td><td>Scope clarity, design/permitting status</td></tr>
-        <tr><td>Operating Impact</td><td>Staffing and O&M costs identified early</td></tr>
-      </tbody>
-    </table>
-    <p class="note">The rubric is built with department heads and finance so everyone agrees on the rules before ranking.</p>
-  </div>
-</section>
+    <section id="prioritization">
+      <h2>Prioritization (Transparent Scoring)</h2>
+      <div class="card">
+        <table>
+          <thead><tr><th>Criterion</th><th>What We Look For</th></tr></thead>
+          <tbody>
+            <tr><td>Health &amp; Safety</td><td>Known hazards, code issues, risk of failure</td></tr>
+            <tr><td>Legal/Regulatory</td><td>Mandates, time-bound orders or agreements</td></tr>
+            <tr><td>Asset Condition</td><td>Inspection results, useful life, deferred maintenance</td></tr>
+            <tr><td>Service Impact</td><td>Maintains core services or expands capacity</td></tr>
+            <tr><td>External Funding</td><td>Grants, reimbursements, partner dollars</td></tr>
+            <tr><td>Readiness</td><td>Scope clarity, design/permitting status</td></tr>
+            <tr><td>Operating Impact</td><td>Staffing and O&amp;M costs identified early</td></tr>
+          </tbody>
+        </table>
+        <p class="lead" style="font-size:1rem;">The rubric is built with department heads and finance so everyone agrees on the rules before ranking.</p>
+      </div>
+    </section>
 
-<section id="funding">
-  <h2>Funding & Affordability</h2>
-  <div class="grid grid-2">
-    <div class="card">
-      <h3>Affordability Guardrails</h3>
-      <ul>
-        <li>Five-year debt profile and bonding capacity</li>
-        <li>Pay-go vs. debt mix with policy targets</li>
-        <li>Operating budget impacts surfaced before adoption</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Funding Sources</h3>
-      <ul>
-        <li>General fund, enterprise, stabilization</li>
-        <li>State/federal grants and reimbursements</li>
-        <li>Partner or private contributions where applicable</li>
-      </ul>
-    </div>
-  </div>
-</section>
+    <section id="funding">
+      <h2>Funding &amp; Affordability</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Affordability Guardrails</h3>
+          <ul>
+            <li>Five-year debt profile and bonding capacity</li>
+            <li>Pay-go vs. debt mix with policy targets</li>
+            <li>Operating budget impacts surfaced before adoption</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Funding Sources</h3>
+          <ul>
+            <li>General fund, enterprise, stabilization</li>
+            <li>State/federal grants and reimbursements</li>
+            <li>Partner or private contributions where applicable</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<section id="deliverables">
-  <h2>Deliverables (Pilot Town)</h2>
-  <div class="grid grid-2">
-    <div class="card">
-      <h3>Board-Ready</h3>
-      <ul>
-        <li>Adoptable Year 1 capital budget</li>
-        <li>5–10 year plan with ranked list</li>
-        <li>Public hearing slide deck</li>
-        <li>Website content (summary + FAQ)</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Management Tools</h3>
-      <ul>
-        <li>Fillable intake and scoring forms</li>
-        <li>Ranking workbook with notes</li>
-        <li>Grant tracker and milestones</li>
-        <li>Quarterly update checklist</li>
-      </ul>
-    </div>
-  </div>
-</section>
+    <section id="deliverables">
+      <h2>Deliverables (Pilot Town)</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Board-Ready</h3>
+          <ul>
+            <li>Adoptable Year 1 capital budget</li>
+            <li>5–10 year plan with ranked list</li>
+            <li>Public hearing slide deck</li>
+            <li>Website content (summary + FAQ)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Management Tools</h3>
+          <ul>
+            <li>Fillable intake and scoring forms</li>
+            <li>Ranking workbook with notes</li>
+            <li>Grant tracker and milestones</li>
+            <li>Quarterly update checklist</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<section id="timeline">
-  <h2>90-Day Pilot Timeline (Example)</h2>
-  <table>
-    <thead><tr><th>Weeks</th><th>Focus</th><th>Milestones</th></tr></thead>
-    <tbody>
-      <tr><td>1–3</td><td>Kickoff & Intake</td><td>Policy refresh; forms issued; staff training</td></tr>
-      <tr><td>4–6</td><td>Scoring & Drafting</td><td>Workshops; scoring; draft list and funding view</td></tr>
-      <tr><td>7–9</td><td>Affordability & Phasing</td><td>Debt capacity; O&M impacts; phasing options</td></tr>
-      <tr><td>10–12</td><td>Public Review & Adoption</td><td>Finance/Board meetings; hearing; final plan</td></tr>
-    </tbody>
-  </table>
-</section>
+    <section id="timeline">
+      <h2>90-Day Pilot Timeline (Example)</h2>
+      <table>
+        <thead><tr><th>Weeks</th><th>Focus</th><th>Milestones</th></tr></thead>
+        <tbody>
+          <tr><td>1–3</td><td>Kickoff &amp; Intake</td><td>Policy refresh; forms issued; staff training</td></tr>
+          <tr><td>4–6</td><td>Scoring &amp; Drafting</td><td>Workshops; scoring; draft list and funding view</td></tr>
+          <tr><td>7–9</td><td>Affordability &amp; Phasing</td><td>Debt capacity; O&amp;M impacts; phasing options</td></tr>
+          <tr><td>10–12</td><td>Public Review &amp; Adoption</td><td>Finance/Board meetings; hearing; final plan</td></tr>
+        </tbody>
+      </table>
+    </section>
 
-<section id="roles">
-  <h2>Who Does What</h2>
-  <div class="grid grid-2">
-    <div class="card">
-      <h3>Capital Strategic Solutions</h3>
-      <ul>
-        <li>Lead project intake and scoring workshops</li>
-        <li>Draft plan, policy updates, and board materials</li>
-        <li>Coordinate departments, finance, and communications</li>
-        <li>Guide public engagement and hearing preparation</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Public Logic</h3>
-      <ul>
-        <li>Provide templates, playbooks, and calendars</li>
-        <li>Prepare website content and FAQs</li>
-        <li>Support grant alignment and reporting</li>
-        <li>Document lessons learned for reuse (anonymized)</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card" style="margin-top:1.25rem">
-    <h3>Municipality</h3>
-    <ul>
-      <li>Owns the plan, data, and adoption decisions</li>
-      <li>Names a project owner and capital team</li>
-      <li>Approves policies and participates in workshops</li>
-    </ul>
-  </div>
-</section>
+    <section id="roles">
+      <h2>Who Does What</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Capital Strategic Solutions</h3>
+          <ul>
+            <li>Lead project intake and scoring workshops</li>
+            <li>Draft plan, policy updates, and board materials</li>
+            <li>Coordinate departments, finance, and communications</li>
+            <li>Guide public engagement and hearing preparation</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Public Logic</h3>
+          <ul>
+            <li>Provide templates, playbooks, and calendars</li>
+            <li>Prepare website content and FAQs</li>
+            <li>Support grant alignment and reporting</li>
+            <li>Document lessons learned for reuse (anonymized)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px;">
+        <h3>Municipality</h3>
+        <ul>
+          <li>Owns the plan, data, and adoption decisions</li>
+          <li>Names a project owner and capital team</li>
+          <li>Approves policies and participates in workshops</li>
+        </ul>
+      </div>
+    </section>
 
-<section id="benefits">
-  <h2>Why This Works (Win-Win-Win)</h2>
-  <div class="grid grid-3">
-    <div class="benefit-card">
-      <h3>For CSS</h3>
-      <ul>
-        <li>Program you can roll out repeatedly</li>
-        <li>Plain-language materials that travel</li>
-        <li>Documented success stories</li>
-      </ul>
-    </div>
-    <div class="benefit-card">
-      <h3>For the Town</h3>
-      <ul>
-        <li>Clear, defensible plan and budget</li>
-        <li>Transparent scoring and funding path</li>
-        <li>Meeting-ready materials and website copy</li>
-      </ul>
-    </div>
-    <div class="benefit-card">
-      <h3>For Public Logic</h3>
-      <ul>
-        <li>Improved templates from real pilots</li>
-        <li>Reusable lessons and calendars</li>
-        <li>Faster future rollouts with CSS</li>
-      </ul>
-    </div>
-  </div>
-</section>
+    <section id="benefits">
+      <h2>Why This Works (Win-Win-Win)</h2>
+      <div class="grid grid-3">
+        <div class="benefit-card">
+          <h3>For CSS</h3>
+          <ul>
+            <li>Program you can roll out repeatedly</li>
+            <li>Plain-language materials that travel</li>
+            <li>Documented success stories</li>
+          </ul>
+        </div>
+        <div class="benefit-card">
+          <h3>For the Town</h3>
+          <ul>
+            <li>Clear, defensible plan and budget</li>
+            <li>Transparent scoring and funding path</li>
+            <li>Meeting-ready materials and website copy</li>
+          </ul>
+        </div>
+        <div class="benefit-card">
+          <h3>For Public Logic</h3>
+          <ul>
+            <li>Improved templates from real pilots</li>
+            <li>Reusable lessons and calendars</li>
+            <li>Faster future rollouts with CSS</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<section id="success">
-  <h2>Success Metrics (How We Know It Worked)</h2>
-  <div class="success-metric">
-    <h4>Adoption Rate</h4>
-    <p>Town adopts Year 1 capital budget by Spring Town Meeting with no major revisions.</p>
-  </div>
-  <div class="success-metric">
-    <h4>Transparency Score</h4>
-    <p>All projects have scoring notes visible to boards and public; residents can see "why" behind rankings.</p>
-  </div>
-  <div class="success-metric">
-    <h4>Efficiency Gain</h4>
-    <p>Staff time savings: intake and ranking takes 40% less time in Year 2 vs. pre-CIP process.</p>
-  </div>
-  <div class="success-metric">
-    <h4>Reusability</h4>
-    <p>CSS deploys CIP program to second town within 6 months using refined templates and playbooks.</p>
-  </div>
-  <div class="success-metric">
-    <h4>Funding Alignment</h4>
-    <p>Plan shows clear debt capacity runway and operating impacts before adoption — no surprises.</p>
-  </div>
-</section>
+    <section id="success">
+      <h2>Success Metrics (How We Know It Worked)</h2>
+      <div class="success-metric">
+        <h4>Adoption Rate</h4>
+        <p>Town adopts Year 1 capital budget by Spring Town Meeting with no major revisions.</p>
+      </div>
+      <div class="success-metric">
+        <h4>Transparency Score</h4>
+        <p>All projects have scoring notes visible to boards and public; residents can see the “why” behind rankings.</p>
+      </div>
+      <div class="success-metric">
+        <h4>Efficiency Gain</h4>
+        <p>Staff time savings: intake and ranking take 40% less time in Year 2 vs. pre-CIP process.</p>
+      </div>
+      <div class="success-metric">
+        <h4>Reusability</h4>
+        <p>CSS deploys CIP program to second town within 6 months using refined templates and playbooks.</p>
+      </div>
+      <div class="success-metric">
+        <h4>Funding Alignment</h4>
+        <p>Plan shows clear debt capacity runway and operating impacts before adoption — no surprises.</p>
+      </div>
+    </section>
 
-<section id="investment">
-  <h2>Investment Framework (Pilot)</h2>
-  <div class="cost-box">
-    <h4>What the Pilot Costs (Typical Range)</h4>
-    <ul>
-      <li><strong>CSS professional services:</strong> Implementation, workshops, board packet prep, and coordination.</li>
-      <li><strong>Public Logic standards package:</strong> Templates, playbooks, calendars, and website content.</li>
-      <li><strong>Municipality staff time:</strong> Project owner (20–30 hrs), department heads (10–15 hrs each), finance (15–20 hrs).</li>
-    </ul>
-    <p class="note">Exact pricing depends on town size, complexity, and existing CIP maturity. CSS provides a custom scope and fee proposal based on discovery call.</p>
-  </div>
-  <div class="cost-box">
-    <h4>What the Town Gets (ROI)</h4>
-    <ul>
-      <li>Adoptable 5–10 year CIP with Year 1 budget ready for Town Meeting.</li>
-      <li>Transparent scoring system that travels year to year.</li>
-      <li>Public-facing materials (slide deck, website summary, FAQ).</li>
-      <li>Reduced staff time in future years (templates and checklists reused annually).</li>
-      <li>Stronger grant positioning (clear project pipeline and priorities).</li>
-    </ul>
-  </div>
-</section>
+    <section id="investment">
+      <h2>Investment Framework (Pilot)</h2>
+      <div class="cost-box">
+        <h4>What the Pilot Costs (Typical Range)</h4>
+        <ul>
+          <li><strong>CSS professional services:</strong> Implementation, workshops, board packet prep, and coordination.</li>
+          <li><strong>Public Logic standards package:</strong> Templates, playbooks, calendars, and website content.</li>
+          <li><strong>Municipality staff time:</strong> Project owner (20–30 hrs), department heads (10–15 hrs each), finance (15–20 hrs).</li>
+        </ul>
+        <p class="lead" style="font-size:1rem;">Exact pricing depends on town size, complexity, and existing CIP maturity. CSS provides a custom scope and fee proposal based on discovery call.</p>
+      </div>
+      <div class="cost-box">
+        <h4>What the Town Gets (ROI)</h4>
+        <ul>
+          <li>Adoptable 5–10 year CIP with Year 1 budget ready for Town Meeting.</li>
+          <li>Transparent scoring system that travels year to year.</li>
+          <li>Public-facing materials (slide deck, website summary, FAQ).</li>
+          <li>Reduced staff time in future years (templates and checklists reused annually).</li>
+          <li>Stronger grant positioning (clear project pipeline and priorities).</li>
+        </ul>
+      </div>
+    </section>
 
-<section id="next">
-  <h2>Next Steps</h2>
-  <ol class="card">
-    <li>CSS identifies a client town interested in a 90-day pilot.</li>
-    <li>Confirm calendar, roles, and adoption schedule.</li>
-```
+    <section id="next">
+      <h2>Next Steps</h2>
+      <ol class="card">
+        <li>CSS identifies a client town interested in a 90-day pilot.</li>
+        <li>Confirm calendar, roles, and adoption schedule.</li>
+        <li>Public Logic delivers tailored templates and web copy for that town’s pilot.</li>
+        <li>Kickoff workshop; publish intake; schedule scoring and affordability sessions.</li>
+        <li>Prepare board hearing materials; present; adopt Year 1 and publish the plan.</li>
+      </ol>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <p><strong>Public Logic</strong> × <strong>Capital Strategic Solutions</strong></p>
+      <p>© 2025. Draft for discussion. VAULT™ / ARCHIEVE™ are trademarks of Public Logic.</p>
+    </div>
+  </footer>
+</body>
+</html>

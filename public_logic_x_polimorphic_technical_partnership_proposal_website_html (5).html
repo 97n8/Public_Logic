@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PublicLogic™ — Technical Partnership Proposal (Platform Partner Edition)</title>
+  <meta name="description" content="PublicLogic × Polimorphic technical partnership proposal: compliance-first municipal modernization with VAULT™ outcomes, ARCHIVE™ evidence, and staff-friendly workflows." />
+  <meta name="theme-color" content="#2c3e50" />
+  <style>
+    :root{
+      --ink:#1a252f;--ink-2:#2c3e50;--muted:#6c7a89;--bg:#ffffff;--bg-2:#f6f8fa;--accent:#3498db;--accent-2:#2980b9;--green:#22c55e;--amber:#f59e0b;--red:#ef4444;--card:#ffffff;--shadow:0 10px 30px rgba(26,37,47,.08)
+    }
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+    a{color:var(--accent)}
+    header.hero{background:linear-gradient(180deg,#1a252f 0%,#223345 60%,#2c3e50 100%);color:#fff;padding:56px 20px 32px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+    .brand{display:flex;gap:16px;align-items:center}
+    .brand .mark{width:58px;height:58px;border-radius:16px;background:#0ea5a4;display:grid;place-items:center;box-shadow:var(--shadow)}
+    .brand .mark span{display:block;width:36px;height:36px;border-radius:10px;background:#0f172a;position:relative}
+    .brand h1{font-size:clamp(20px,4vw,34px);margin:0 0 4px;font-weight:800;letter-spacing:.2px}
+    .brand p{margin:0;font-size:clamp(13px,2vw,16px);color:#cbd5e1}
+    .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .meta .chip{background:rgba(255,255,255,.08);padding:6px 10px;border-radius:999px;font-size:12px;border:1px solid rgba(255,255,255,.1)}
+
+    nav.toc{background:var(--bg-2);border-bottom:1px solid #e2e8f0}
+    nav.toc .wrap{display:flex;flex-wrap:wrap;gap:10px;padding:12px 20px}
+    nav.toc a{font-size:14px;color:var(--ink-2);text-decoration:none;padding:8px 10px;border-radius:8px}
+    nav.toc a:hover, nav.toc a:focus{background:#e2e8f0;outline:none}
+
+    section{padding:40px 0;border-bottom:1px solid #e2e8f0}
+    h2{font-size:clamp(20px,3vw,28px);margin:0 0 14px}
+    h3{font-size:clamp(16px,2.2vw,20px);margin:28px 0 10px}
+    p{margin:10px 0}
+    .lead{font-size:18px;color:var(--ink-2)}
+    .grid{display:grid;gap:18px}
+    @media(min-width:900px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:repeat(3,1fr)}}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    .badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;border:1px solid #e2e8f0;background:var(--bg-2);color:var(--ink-2)}
+    .check{color:var(--green);margin-right:6px}
+    .warn{color:var(--amber)}
+    .fail{color:var(--red)}
+    ul{padding-left:20px}
+    code, pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#0b1020;color:#e6f3ff}
+    code{padding:2px 6px;border-radius:6px}
+    pre{border-radius:14px;padding:16px;overflow:auto;box-shadow:var(--shadow)}
+    table{border-collapse:separate;border-spacing:0;width:100%;background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+    th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #e2e8f0}
+    th{background:#f1f5f9;font-weight:600}
+    tbody tr:hover{background:#f8fafc}
+    .kpis{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .kpi{background:#081226;color:#e6f3ff;padding:16px;border-radius:16px;box-shadow:var(--shadow)}
+    .kpi strong{font-size:24px;display:block;margin-top:6px}
+    .note{font-size:13px;color:var(--muted)}
+    footer{padding:40px 0;color:#475569}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    /* Print */
+    @media print{
+      nav.toc, .meta, .brand .mark{display:none}
+      body{color:#000}
+      a{text-decoration:none;color:#000}
+      section{page-break-inside:avoid}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" role="banner">
+    <div class="wrap">
+      <div class="brand" aria-label="PublicLogic Vault brand">
+        <div class="mark" aria-hidden="true"><span></span></div>
+        <div>
+          <h1>PublicLogic™ — Technical Partnership Proposal (with Platform Partner)</h1>
+          <p>Compliance‑first municipal modernization with VAULT™ outcomes, ARCHIVE™ evidence, and staff‑friendly workflows.</p>
+        </div>
+      </div>
+      <div class="meta" role="contentinfo">
+        <span class="chip">Author: Nathan Boudreau, MPA, MCPPO</span>
+        <span class="chip">Release: v1.0 — September 2025</span>
+        <span class="chip">Accessibility: WCAG 2.1 AA</span>
+        <span class="chip">Distribution: Vendor Handoff / Website</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="wrap">
+      <a href="#summary">Executive Summary</a>
+      <a href="#benefits">Why This Partnership Wins for Polimorphic</a>
+      <a href="#partnership">Why This Partnership</a>
+      <a href="#objectives">Objectives</a>
+      <a href="#scope">Scope & Deliverables</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#vault-archive">VAULT/ARCHIVE Scenarios</a>
+      <a href="#data">Data & API</a>
+      <a href="#contract">Integration Contract</a>
+      <a href="#integration">Workflow Integration Points</a>
+      <a href="#bulk">Bulk Ops & Error Handling</a>
+      <a href="#workflows">Workflows</a>
+      <a href="#compliance">Compliance</a>
+      <a href="#security">Security</a>
+      <a href="#clerk">CLERK Deep Dive</a>
+      <a href="#fix">FIX Deep Dive</a>
+      <a href="#implementation">Implementation</a>
+      <a href="#monitoring">SLAs & Monitoring</a>
+      <a href="#funding">Funding & ROI</a>
+      <a href="#commercial">Commercial & Legal</a>
+      <a href="#readiness">Integration Readiness</a>
+      <a href="#next">Next Steps</a>
+      <a href="#appendix">Appendices</a>
+    </div>
+  </nav>
+
+  <main id="content" class="wrap" role="main">
+    <!-- Executive Summary -->
+    <section id="summary">
+      <h2>Executive Summary</h2>
+      <p class="lead">PublicLogic™ and Polimorphic propose a practitioner‑built, compliance‑first platform that lets municipalities modernize operations while preserving ownership and control. Our platform partner (e.g., Polimorphic) delivers the resident/staff UX and workflow engine; PublicLogic supplies the standards, governance, and the high‑level logic layer — <strong>VAULT™</strong> (policy references, legal holds, retention outcomes) and <strong>ARCHIVE™</strong> (immutable evidence packaging and export).</p>
+      <div class="kpis" aria-label="Outcome highlights">
+        <div class="kpi">
+          <span class="badge">Outcome</span>
+          <strong>Retention by Design</strong>
+          Policies applied on create/close with legal hold toggle; no internal mechanics disclosed.
+        </div>
+        <div class="kpi">
+          <span class="badge">Outcome</span>
+          <strong>Evidence Trail</strong>
+          Immutable evidence packages with unique IDs and export receipts.
+        </div>
+        <div class="kpi">
+          <span class="badge">Outcome</span>
+          <strong>Municipal Ownership</strong>
+          Data, configurations, and workflows remain town property with routine CSV/JSON/PDF‑A exports.
+        </div>
+        <div class="kpi">
+          <span class="badge">Plan</span>
+          <strong>12‑Month Rollout</strong>
+          Pilot → Expand → Standardize regionally with grant‑ready metrics.
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits for Polimorphic -->
+    <section id="benefits">
+      <h2>Why This Partnership Wins for Polimorphic</h2>
+      <div class="card">
+        <h3>Market Differentiation</h3>
+        <p>Polimorphic becomes the only civic tech platform that ships <em>compliance‑native by design</em>. Every workflow, every form, every record is architected from Day 1 to meet M.G.L., ADA, and records retention law.</p>
+      </div>
+      <div class="card">
+        <h3>Risk Transfer & Clear Lanes</h3>
+        <p>PublicLogic owns retention outcomes, legal holds, and evidence packaging logic. Polimorphic owns product, UX, and platform infrastructure. If a municipality faces records audit or litigation, PublicLogic’s framework provides the defensible trail — Polimorphic isn’t on the hook for retention policy interpretation.</p>
+      </div>
+      <div class="card">
+        <h3>Faster Municipal Sales</h3>
+        <p>Walk in with pre‑built SOPs, retention policies mapped to state schedules, grant‑ready metrics, and reference implementations (Hubbardston, Sutton). Compress the sales cycle by 40–60%.</p>
+      </div>
+      <div class="card">
+        <h3>Template Leverage = Scalability</h3>
+        <p>Deploy once, replicate everywhere. PublicLogic maintains SOPs; Polimorphic scales the platform.</p>
+      </div>
+      <div class="card">
+        <h3>Joint Positioning & Revenue</h3>
+        <ul>
+          <li>Co‑market as the only practitioner + platform alliance that gets records law right.</li>
+          <li>Revenue model: Polimorphic invoices SaaS; PublicLogic licenses compliance layer and/or revenue share; support split by domain.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Partnership Value -->
+    <section id="partnership">
+      <h2>Why This Partnership Works</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>PublicLogic™ Strength</h3>
+          <ul>
+            <li>Practitioner-built governance and SOPs aligned to M.G.L., ADA Title II, and 201 CMR 17.00.</li>
+            <li>VAULT™ (high‑level) unifies routing, retention references, legal holds, and auditability.</li>
+            <li>ARCHIVE™ (high‑level) produces immutable evidence packages and export receipts.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Polimorphic</h3>
+          <ul>
+            <li>Modern resident/staff UX with configurable forms, workflows, and dashboards.</li>
+            <li>Integrates to GIS, payments, email/website, ERP/GL, and identity/SSO adapters.</li>
+            <li>Meets PublicLogic guardrails so municipalities keep ownership and portability.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Partnership Swim Lanes (Who Does What)</h3>
+        <div class="grid grid-2">
+          <div>
+            <h4>Polimorphic Builds & Owns</h4>
+            <ul>
+              <li>Resident/staff UX (forms, dashboards, portals, notifications)</li>
+              <li>Workflow engine (routing, approvals, SLA timers, escalations)</li>
+              <li>Integrations (GIS, payment gateways, email/SMS, SSO/identity, ERP/GL)</li>
+              <li>Platform infrastructure (hosting, security, uptime, backups, API layer)</li>
+              <li>Product roadmap (AI features, mobile apps, analytics, performance)</li>
+            </ul>
+          </div>
+          <div>
+            <h4>PublicLogic Owns & Maintains</h4>
+            <ul>
+              <li>SOPs for CLERK, FIX, AGENDA, PERMIT, FISCAL, HR</li>
+              <li>Retention policy catalog mapped to M.G.L. and schedules</li>
+              <li>Evidence packaging standards; defensible audit trail</li>
+              <li>Grant deliverable templates (Community Compact, MassWorks, One Stop, LRPIP)</li>
+              <li>Audit framing & municipal change management playbooks</li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <div>
+            <h4>Municipality Controls</h4>
+            <ul>
+              <li>All data, configurations, workflows, and policy decisions</li>
+              <li>Vendor selection (logic layer is portable)</li>
+              <li>Staff training and adoption pace</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Shared Responsibility</h4>
+            <ul>
+              <li>API contracts & export schemas (CSV/JSON/PDF‑A)</li>
+              <li>Quality gates (accessibility & evidence checkpoints)</li>
+              <li>Pilot success metrics (define together, measure jointly)</li>
+            </ul>
+          </div>
+        </div>
+        <p><strong>Critical Boundary:</strong> Polimorphic never implements PublicLogic’s retention logic — you call our outcomes. PublicLogic never touches your workflow engine — we define the checkpoints. Clean separation = scalable partnership.</p>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Vendor Guardrails & Success Criteria</h3>
+        <ul>
+          <li>Municipality owns data, configurations, workflows, and export artifacts (CSV/JSON/PDF-A).</li>
+          <li>Retention is referenced by policy ID; legal holds pause disposition; destruction emits a certificate.</li>
+          <li>Accessibility (WCAG 2.1 AA) and evidence checkpoints are non-negotiable acceptance gates.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Objectives -->
+    <section id="objectives">
+      <h2>Partnership Objectives</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Compliance by Design</h3>
+          <ul>
+            <li>M.G.L. c.66 §10 Public Records; c.30A Open Meeting Law; c.140/c.138 Licensing; c.143 Inspections; c.40 §§6C–6D Roads/Private Ways.</li>
+            <li>201 CMR 17.00 data security; ADA Title II accessibility; state retention schedules.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Staff‑Friendly & Grant‑Ready</h3>
+          <ul>
+            <li>Plain‑language interfaces, role‑based screens, and realistic SLA tiers with clear escalation.</li>
+            <li>Evidence‑backed reporting for Community Compact IT, One Stop for Growth, MassWorks, LRPIP, and Shared Services.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scope & Deliverables -->
+    <section id="scope">
+      <h2>Scope & Deliverables</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Modules (Initial Bundle)</h3>
+          <ul>
+            <li><strong>CLERK</strong> — PRR intake/clocking, OML agenda/posting log, certificates.</li>
+            <li><strong>FIX</strong> — Service requests with GIS validation, SLA tiers, public status.</li>
+            <li><strong>Third Module</strong> — AGENDA or PERMIT/INSPECT selected per municipality.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Cross‑Cutting Outcomes</h3>
+          <ul>
+            <li>Retention policy references on create/close; legal hold toggle; disposition controlled by policy. <span class="note">VAULT/ARCHIVE internals remain proprietary.</span></li>
+            <li>Evidence packages with manifest + receipt; immutable activity logs; exportable reports.</li>
+            <li>Portability: JSON/CSV/PDF‑A routine and on‑demand exports; import guides for common systems.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Acceptance Criteria (per Module)</h3>
+        <ul>
+          <li>Every action is attributable and timestamped; SLA clocks and escalations visible to staff.</li>
+          <li>Evidence checkpoints enforced; exports reconstruct full case history with retention & evidence references.</li>
+          <li>WCAG 2.1 AA compliance validated by automated and manual checks.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section id="architecture">
+      <h2>System Architecture (Outcome‑Centric)</h2>
+      <p class="lead">This architecture lets vendors innovate at the UX/workflow layer while PublicLogic safeguards compliance and ownership outcomes. VAULT™/ARCHIVE™ are referenced only at the results level.</p>
+      <div class="card">
+        <ol>
+          <li><strong>Resident / Staff UX</strong> (Platform Partner): forms, queues, dashboards, notifications.</li>
+          <li><strong>Workflow Services</strong>: routing, rules, SLA timers, integrations.</li>
+          <li><strong>VAULT™ Outcomes</strong>: policy references, legal hold toggles, retention signals.</li>
+          <li><strong>ARCHIVE™ Outcomes</strong>: immutable evidence packaging and export receipts.</li>
+          <li><strong>Adapters</strong>: GIS, payments, email/website, ERP/GL, identity/SSO.</li>
+          <li><strong>Reports & Exports</strong>: CSV/JSON/PDF‑A; audit dashboards and grant metrics.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>Deployment Posture</h3>
+        <ul>
+          <li>Zero‑trust, least privilege; environment separation (dev/stage/prod); IaC preferred.</li>
+          <li>Secret management via KMS/Key Vault; encrypted transport (TLS 1.2+) and storage (AES‑256).</li>
+          <li>Observability: logs, traces, metrics; immutable audit trail for municipal review.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- VAULT/ARCHIVE Scenarios -->
+    <section id="vault-archive">
+      <h2>VAULT/ARCHIVE: What Makes This Different</h2>
+      <div class="card">
+        <h3>Scenario 1: Legal Challenge Recovery</h3>
+        <p>A 2022 service request is subpoenaed in 2025. With VAULT/ARCHIVE, the system reconstructs the evidence chain in seconds: timestamps, notifications, assignments, GPS‑stamped photos, closure, and an <code>archiveEvidenceId</code> with checksums — exported as a PDF‑A package with manifest.</p>
+      </div>
+      <div class="card">
+        <h3>Scenario 2: Retention on Autopilot</h3>
+        <pre><code class="language-json">{
+  "requestId": "PRR-2025-00031",
+  "retentionPolicy": "VAULT-RULE-PRR-06",
+  "trigger": "case_closed",
+  "duration": "6y",
+  "disposition": "export_then_destroy_with_certificate"
+}</code></pre>
+        <p>When the case closes, the retention clock starts. At disposition, the system checks holds, exports, destroys, and issues a certificate — Clerk receives a quarterly report.</p>
+      </div>
+      <div class="card">
+        <h3>Scenario 3: Grant Deliverable Assembly</h3>
+        <p>Generate a grant package with CSV metrics, PDF‑A exemplars, accessibility audits, and a checksum manifest — in minutes, not days.</p>
+      </div>
+    </section>
+
+    <!-- Data & API -->
+    <section id="data">
+      <h2>Shared Data Contract & API Shapes</h2>
+      <p class="lead">Bind fields below appear consistently across module payloads and exports. Names are stable; implementations remain flexible.</p>
+      <div class="card">
+        <h3>Core Entities</h3>
+        <table aria-label="Core entities and key fields">
+          <thead><tr><th>Entity</th><th>Key Fields (excerpt)</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Request / Case</td>
+              <td><code>requestId</code>, <code>module</code>, <code>status</code>, <code>openedAt</code>, <code>closedAt</code></td>
+              <td>Immutable creation event; SLA timers derive from status changes.</td>
+            </tr>
+            <tr>
+              <td>RetentionPolicy</td>
+              <td><code>retentionPolicy</code>, <code>trigger</code>, <code>duration</code>, <code>disposition</code></td>
+              <td>Referenced by ID; internal policy logic not disclosed.</td>
+            </tr>
+            <tr>
+              <td>Evidence</td>
+              <td><code>archiveEvidenceId</code>, <code>hash</code>, <code>createdAt</code></td>
+              <td>Issued at evidence checkpoints; tied to exports and audit receipts.</td>
+            </tr>
+            <tr>
+              <td>Hold</td>
+              <td><code>legalHoldFlag</code>, <code>initiator</code>, <code>reason</code>, <code>timestamp</code></td>
+              <td>Pauses disposition; dual‑ack release recommended.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>Illustrative API — Create Request</h3>
+<pre aria-label="Create request JSON"><code>{
+  "requestId": "PRR-2025-00031",
+  "module": "CLERK",
+  "status": "Open",
+  "openedAt": "2025-06-14T14:32:00Z",
+  "retentionPolicy": "VAULT-RULE-PRR-06",
+  "legalHoldFlag": false
+}</code></pre>
+        </div>
+        <div class="card">
+          <h3>Illustrative API — Close with Evidence</h3>
+<pre aria-label="Close request JSON"><code>{
+  "requestId": "PRR-2025-00031",
+  "status": "Closed",
+  "closedAt": "2025-06-28T11:00:00Z",
+  "archiveEvidenceId": "EV-9K3X-22QJ"
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>Policy Reference (Declarative Shape)</h3>
+<pre aria-label="Policy reference YAML"><code>policy:
+  id: VAULT-RULE-PRR-06
+  appliesTo: PublicRecordsRequest
+  trigger: case_closed
+  duration: 6y
+  disposition: export+destroy_with_certificate
+  legalHoldToggle: supported
+  evidenceBinding: archiveEvidenceId
+</code></pre>
+        <p class="note">Example shows reference structure only. VAULT™/ARCHIVE™ internal mechanics are proprietary and intentionally omitted.</p>
+      </div>
+    </section>
+
+    <!-- Integration Contract -->
+    <section id="contract">
+      <h2>Integration Contract (Polimorphic ↔ PublicLogic)</h2>
+      <h3>Polimorphic Calls PublicLogic</h3>
+      <table>
+        <thead><tr><th>Endpoint</th><th>When Called</th><th>PublicLogic Returns</th><th>Example Use</th></tr></thead>
+        <tbody>
+          <tr><td><code>POST /vault/policy/match</code></td><td>Case creation</td><td><code>{retentionPolicyId, trigger, duration, disposition}</code></td><td>PRR submit → <code>VAULT-RULE-PRR-06</code></td></tr>
+          <tr><td><code>POST /archive/evidence/create</code></td><td>Evidence checkpoint</td><td><code>{archiveEvidenceId, hash, timestamp, manifestUrl}</code></td><td>Service request resolved → evidence ID issued</td></tr>
+          <tr><td><code>GET /archive/package/export</code></td><td>Export requested</td><td>Signed URL to PDF‑A + JSON manifest</td><td>Quarterly PRR audit package</td></tr>
+          <tr><td><code>POST /vault/hold/apply</code></td><td>Legal hold placed</td><td><code>{holdId, status, pausedDispositionCount}</code></td><td>Counsel hold on DPW 2023 cases</td></tr>
+          <tr><td><code>POST /vault/hold/release</code></td><td>Legal hold lifted</td><td><code>{holdId, releasedAt, resumedDispositionCount}</code></td><td>Resume schedules after settlement</td></tr>
+          <tr><td><code>POST /vault/policy/batch</code></td><td>Historical migration</td><td><code>{jobId}</code> or <code>{appliedCount, errors[]}</code></td><td>Apply retention to 1,000 permits</td></tr>
+        </tbody>
+      </table>
+      <h3>PublicLogic Calls Polimorphic</h3>
+      <table>
+        <thead><tr><th>Webhook/Endpoint</th><th>When Called</th><th>Polimorphic Provides</th><th>Example Use</th></tr></thead>
+        <tbody>
+          <tr><td><code>POST /webhooks/disposition-ready</code></td><td>Retention period expires</td><td><code>{ack, action}</code></td><td>Mark disposition candidates</td></tr>
+          <tr><td><code>GET /cases/{id}/attachments</code></td><td>Building export package</td><td>File list + checksums</td><td>Fetch photos for FIX case</td></tr>
+          <tr><td><code>POST /webhooks/export-complete</code></td><td>Package ready</td><td><code>{ack: true}</code></td><td>Notify Clerk</td></tr>
+          <tr><td><code>GET /cases?retentionPolicy={id}&closedBefore={date}</code></td><td>Batch query</td><td>List of cases</td><td>Find PRRs before cutoff</td></tr>
+        </tbody>
+      </table>
+      <h3>File Management Pattern</h3>
+      <p>Polimorphic stores files (S3/Azure/GCS). At evidence checkpoints, provide signed URLs and checksums; after checkpoint, files are read‑only. Redactions save as new versions with justification log.</p>
+      <h3>Authentication</h3>
+<pre><code class="language-bash">POST https://vault.publiclogic.com/oauth/token
+{ "client_id": "polimorphic_prod_client", "client_secret": "...", "grant_type": "client_credentials", "scope": "vault:read vault:write archive:create" }
+→ { "access_token": "...", "expires_in": 3600 }</code></pre>
+      <p>Use <code>Authorization: Bearer &lt;token&gt;</code> for all PublicLogic API requests.</p>
+    </section>
+
+    <!-- Workflow Integration Points -->
+    <section id="integration">
+      <h2>Workflow Integration Points (Where PublicLogic Hooks In)</h2>
+      <h3>CLERK — Public Records Request</h3>
+      <table>
+        <thead><tr><th>Polimorphic Step</th><th>Staff Action</th><th>PublicLogic Hook</th><th>What Happens</th></tr></thead>
+        <tbody>
+          <tr><td><code>intake_classify</code></td><td>Log PRR</td><td><code>POST /vault/policy/match</code></td><td>Returns <code>VAULT-RULE-PRR-06</code></td></tr>
+          <tr><td><code>deliver_package</code></td><td>Send response</td><td><code>POST /archive/evidence/create</code></td><td>Issues <code>archiveEvidenceId</code></td></tr>
+          <tr><td><code>case_closed</code></td><td>Close case</td><td>—</td><td>Retention clock starts</td></tr>
+        </tbody>
+      </table>
+      <h3>FIX — Service Request</h3>
+      <table>
+        <thead><tr><th>Polimorphic Step</th><th>Staff/Crew Action</th><th>PublicLogic Hook</th><th>What Happens</th></tr></thead>
+        <tbody>
+          <tr><td><code>close_with_photos</code></td><td>Upload before/after</td><td><code>POST /archive/evidence/create</code></td><td>Issues <code>archiveEvidenceId</code></td></tr>
+          <tr><td><code>case_resolved</code></td><td>Resolve case</td><td><code>POST /vault/policy/match</code></td><td>Returns <code>VAULT-RULE-SR-03</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Bulk Ops & Error Handling -->
+    <section id="bulk">
+      <h2>Bulk Operations & Performance Targets</h2>
+      <div class="card">
+        <h3>Batch API Patterns</h3>
+<pre><code class="language-bash">POST /vault/policy/batch
+{ "cases": [ {"caseId":"PRR-2024-001","module":"CLERK","type":"PRR","closedAt":"2024-03-15"} ] }</code></pre>
+        <ul>
+          <li>Rate limits: 100 req/min; batch up to 1,000 records per call.</li>
+          <li>Performance targets: policy lookup &lt;200ms (p95); evidence packaging &lt;2s typical; 1K batch &lt;30s; 500‑case export &lt;60s.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Error Handling Scenarios</h3>
+        <ul>
+          <li><strong>Policy lookup fails:</strong> Flag <code>retentionPolicy:"PENDING"</code>, banner to staff, retry w/ exponential backoff, alert both teams after 1h.</li>
+          <li><strong>Legal hold on closed case:</strong> Mark <em>Closed – Legal Hold</em>, disable deletion, resume on release.</li>
+          <li><strong>GIS fails but urgent:</strong> Supervisor override with reason, include in audit trail.</li>
+          <li><strong>Evidence packaging timeout:</strong> Return 202 + jobId; poll until <code>export‑complete</code> webhook.</li>
+          <li><strong>Disposition ready but delayed:</strong> 90‑day window; default policy executes if no decision.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Workflows -->
+    <section id="workflows">
+      <h2>SOP Workflows (Staff‑Ready)</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Public Records Request (CLERK)</h3>
+          <ul>
+            <li><strong>Trigger:</strong> Request submitted (web/email/phone log).</li>
+            <li><strong>SLA:</strong> Acknowledge within <em>24</em> hours; due within statutory window.</li>
+            <li><strong>Steps:</strong> Intake → classify/scope → gather records (redact if needed) → deliver package → close.</li>
+            <li><strong>Evidence:</strong> Intake receipt; scope note; redaction log; delivery manifest (<code>archiveEvidenceId</code>).</li>
+            <li><strong>Escalation:</strong> Approaching due date → supervisor; complex exemptions → Town Counsel.</li>
+            <li><strong>Exports:</strong> Full PRR log + case binder (PDF‑A + CSV metadata).</li>
+          </ul>
+<pre aria-label="PRR YAML"><code>id: PRR-Standard
+module: CLERK
+trigger: request_submitted
+sla:
+  acknowledge_within_hours: 24
+  due_within_days: 10
+steps:
+  - intake_classify
+  - gather_records
+  - redact_review
+  - deliver_package
+evidence:
+  - intake_receipt
+  - redaction_log
+  - delivery_manifest
+retentionPolicy: VAULT-RULE-PRR-06
+legalHoldFlag: supported</code></pre>
+        </div>
+        <div class="card">
+          <h3>Service Request (FIX)</h3>
+          <ul>
+            <li><strong>Trigger:</strong> Resident submits or staff logs issue.</li>
+            <li><strong>SLA Tiers:</strong> Safety → Service → Aesthetics with published timelines.</li>
+            <li><strong>Steps:</strong> GIS validate → queue & assign → status updates → closure with photos.</li>
+            <li><strong>Evidence:</strong> Geocoded intake; assignment event; before/after photos (evidence ID on closure).</li>
+            <li><strong>Escalation:</strong> SLA breach risk → supervisor notification; re‑assignment allowed with reason.</li>
+            <li><strong>Exports:</strong> Case CSV with coordinates, timestamps, and evidence references.</li>
+          </ul>
+<pre aria-label="FIX YAML"><code>id: FIX-Standard
+module: FIX
+trigger: request_logged
+sla:
+  safety_hours: 4
+  service_days: 3
+  aesthetics_days: 10
+steps:
+  - validate_gis
+  - assign_queue
+  - update_resident
+  - close_with_photos
+evidence:
+  - intake_geo
+  - assignment_event
+  - before_after_photos
+retentionPolicy: VAULT-RULE-SR-03
+legalHoldFlag: supported</code></pre>
+        </div>
+        <div class="card">
+          <h3>Agenda/Meeting (AGENDA) or Permit/Inspection (PERMIT)</h3>
+          <ul>
+            <li><strong>Trigger:</strong> Agenda draft ready <em>or</em> permit application complete.</li>
+            <li><strong>SLA:</strong> Posting lead times (OML) <em>or</em> inspection windows by category.</li>
+            <li><strong>Evidence:</strong> Posting confirmation ID and timestamp; roll‑call/vote capture <em>or</em> inspection finding with photos.</li>
+            <li><strong>Exports:</strong> Agenda/posting log <em>or</em> permit/inspection binder with notices and decisions.</li>
+          </ul>
+<pre aria-label="AGENDA/PERMIT YAML"><code>id: GOV-Standard
+module: AGENDA | PERMIT
+trigger: agenda_drafted | application_complete
+sla:
+  posting_lead_hours: 48
+  inspection_window_days: 7
+steps:
+  - compile_packet
+  - publish_notice
+  - record_votes | record_findings
+  - issue_minutes | issue_certificate
+evidence:
+  - posting_receipt
+  - roll_call_votes | inspection_photos
+retentionPolicy: VAULT-RULE-GOV-05
+legalHoldFlag: supported</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compliance -->
+    <section id="compliance">
+      <h2>Compliance & Risk</h2>
+      <div class="card">
+        <h3>Statute → Control → Evidence → Owner → Retention</h3>
+        <table aria-label="Compliance matrix">
+          <thead>
+            <tr><th>Statute / Standard</th><th>Control / Process</th><th>Evidence / Log</th><th>Owner</th><th>Retention</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>M.G.L. c.66 §10 — Public Records</td><td>Deadline tracking; redaction workflow</td><td>PRR case package; PRR log</td><td>Clerk</td><td>Per state schedule</td></tr>
+            <tr><td>M.G.L. c.30A — Open Meeting Law</td><td>Posting rules; meeting packet builder</td><td>Timestamped posting record</td><td>Clerk</td><td>Per state schedule</td></tr>
+            <tr><td>M.G.L. c.140 / c.138 — Licensing</td><td>Checklist & approvals; payment validation</td><td>Approval chain; certificate log</td><td>Clerk</td><td>Per state schedule</td></tr>
+            <tr><td>M.G.L. c.143 — Building/Inspections</td><td>Scheduling; findings; notices</td><td>Inspection record; photos</td><td>Building/Fire</td><td>Per state schedule</td></tr>
+            <tr><td>M.G.L. c.40 §§6C–6D — Roads</td><td>Service categorization; DPW workflows</td><td>Work order history; photos</td><td>DPW</td><td>Per state schedule</td></tr>
+            <tr><td>201 CMR 17.00 — Data Security</td><td>Access controls; encryption; audits</td><td>Access log; quarterly review</td><td>IT</td><td>2–7 years (by record)</td></tr>
+            <tr><td>ADA Title II; WCAG 2.1 AA</td><td>Accessible UX; alt text; keyboard flows</td><td>Test results; accommodation log</td><td>ADA Coordinator</td><td>Per state schedule</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>Risk Register (Excerpt)</h3>
+          <ul>
+            <li><strong>Data migration complexity</strong> — mitigate via pilots and dual‑run validation.</li>
+            <li><strong>Model drift / automation misrouting</strong> — human‑in‑the‑loop approvals; weekly QA review.</li>
+            <li><strong>Funding variability</strong> — staged scope with grant tranches; exportable proof packages.</li>
+            <li><strong>Change fatigue</strong> — role‑based training; change champion network; small wins first.</li>
+            <li><strong>Cyber incidents</strong> — immutable logs; tested backups; incident playbooks and tabletop drills.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Export & Portability Playbook</h3>
+          <ul>
+            <li>Quarterly JSON/CSV exports by module and <code>retentionPolicy</code>; annual PDF‑A binders.</li>
+            <li>On‑demand filtered pulls by <code>requestId</code> or <code>archiveEvidenceId</code> with checksum manifest.</li>
+            <li>Custodianship: Clerk (records), IT (infrastructure), Department Leads (workflows).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security -->
+    <section id="security">
+      <h2>Security, Privacy & Retention</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Posture</h3>
+          <ul>
+            <li>OAuth2/SSO, RBAC, principle of least privilege; periodic access recertification.</li>
+            <li>Encryption in transit (TLS 1.2+) and at rest (AES‑256) with managed key rotation.</li>
+            <li>Privacy: redaction pathways; minimization; transparent audit for PRR.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Illustrative Deployment Label</h3>
+<pre aria-label="Deployment snippet"><code>kind: Deployment
+metadata:
+  name: workflow-api
+  labels:
+    retention.policy: VAULT-RULE-SR-03
+spec:
+  template:
+    spec:
+      containers:
+        - name: workflow
+          env:
+            - name: EVIDENCE_ENDPOINT
+              valueFrom: secretRef # managed secret; no internal endpoints disclosed
+</code></pre>
+          <p class="note">Label shows how retention is referenced at the environment level without revealing internal mechanisms.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLERK Deep Dive -->
+    <section id="clerk">
+      <h2>CLERK Module: Compliance‑Critical Operations</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>What CLERK Actually Does</h3>
+          <p>Automates the Town Clerk’s office across three high‑risk domains: <strong>Public Records Requests (PRR)</strong>, <strong>Licensing</strong>, and <strong>Open Meeting Law (OML) posting</strong>. Tracks statutory clocks, coordinates multi‑department work, and produces a defensible audit trail.</p>
+          <ul>
+            <li><strong>PRR</strong>: Intake, classify/scope, department routing, redaction workflow, delivery, close → retention & evidence checkpoints.</li>
+            <li><strong>Licensing</strong>: Conditional forms by license type; multi‑department approvals; certificate generation with e‑signature; renewal automation; public register.</li>
+            <li><strong>OML Posting</strong>: 48‑hour deadline calculator; agenda/packet builder; multi‑channel posting receipts; minutes linkage and archive.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Why It Matters</h3>
+          <ul>
+            <li><strong>Litigation protection</strong>: Timestamped evidence (who did what, when, and why) with <code>archiveEvidenceId</code> references.</li>
+            <li><strong>State compliance</strong>: c.66 §10 response clocks; c.30A posting receipts; c.140/c.138 approval chains.</li>
+            <li><strong>Revenue security</strong>: Renewal automation prevents revenue leakage on licenses.</li>
+            <li><strong>Public trust</strong>: Transparent PRR log, searchable license register, on‑time postings.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>Technical Requirements for Polimorphic</h3>
+          <ul>
+            <li>Multi‑department task routing with per‑task due dates and escalation.</li>
+            <li>Redaction tool for PDFs/images with justification log and versioning.</li>
+            <li>Deadline calculators: PRR 10 business days; OML 48‑hour posting lead; license expirations.</li>
+            <li>Certificate/letter templating with merge fields and e‑signature integration.</li>
+            <li>SHA‑256 checksums on all files; delivery manifests; searchable PRR log.</li>
+            <li>Public registers (licenses, agendas) with CSV export and access controls.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Measurable Outcomes (Targets)</h3>
+          <ul>
+            <li><strong>PRR</strong>: 100% on‑time within statutory window; zero AG complaints.</li>
+            <li><strong>Licensing</strong>: 95%+ renewal rate; issuance cycle reduced by &gt;30%.</li>
+            <li><strong>OML</strong>: 100% postings ≥48 hours before meeting; complete posting receipts.</li>
+            <li><strong>Quality</strong>: Accessibility checks pass (WCAG 2.1 AA); export packages validated quarterly.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>PRR Deep Path (Illustrative)</h3>
+        <ol>
+          <li>Intake via web/email/phone log → <span class="badge">Clock starts</span> (10 business days).</li>
+          <li>Scope & route tasks to departments; exemption picker guides review.</li>
+          <li>Redact with justification; deliver package with checksum manifest.</li>
+          <li>Close case → <span class="badge">VAULT</span> retention reference applied; <span class="badge">ARCHIVE</span> evidence ID issued.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- FIX Deep Dive -->
+    <section id="fix">
+      <h2>FIX Module: Resident‑Facing Service Excellence</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>What FIX Actually Does</h3>
+          <p>Turns DPW into an SLA‑driven, transparent operation. Handles resident service requests (potholes, streetlights, trees, snow, trash) and DPW permits (trench/driveway/road opening) with GIS validation, crew dispatch, and before/after photo evidence.</p>
+          <ul>
+            <li><strong>Service Requests</strong>: Multi‑channel intake (web, mobile, staff log); SLA tiers; status notifications; closure with photos.</li>
+            <li><strong>DPW Permits</strong>: Conditional uploads; multi‑department review; certificate with conditions; inspection & bond release.</li>
+            <li><strong>Analytics</strong>: Dashboards, GIS heatmaps, crew performance, grant‑ready metrics.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Why It Matters</h3>
+          <ul>
+            <li><strong>Speed</strong>: 74% faster average resolution (8.3 days → 2.1 days) after pilot standardization.</li>
+            <li><strong>Liability protection</strong>: Photo‑backed, timestamped closures defend against claims.</li>
+            <li><strong>Resident trust</strong>: Public status and proactive notifications reduce status‑check calls by 80%+.</li>
+            <li><strong>Grant alignment</strong>: Metrics and evidence packages satisfy Community Compact IT and MassWorks reporting.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>Technical Requirements for Polimorphic</h3>
+          <ul>
+            <li>GIS integration (address validation, map pin, heatmaps); coordinate capture on mobile.</li>
+            <li>SLA engine with business‑hours calculation and escalations.</li>
+            <li>Mobile crew app: offline support, nav links, photo capture with GPS/timestamp watermark.</li>
+            <li>Attachment handling with checksums; evidence checkpoint on closure.</li>
+            <li>Public portal: anonymous status check, resident history, feedback surveys.</li>
+            <li>Reporting: real‑time dashboards; CSV/JSON exports with SLA flags and coordinates.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Measurable Outcomes (Targets)</h3>
+          <ul>
+            <li>Tier‑1 (Safety) SLA attainment ≥98% (4‑hour response).</li>
+            <li>Average resolution time ≤3 days for Tier‑2 (Service).</li>
+            <li>Resident satisfaction ≥4.0/5; 50%+ reduction in status‑check calls.</li>
+            <li>Evidence completeness ≥95% (before/after photos present on closures requiring proof).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3>Core Workflow (Service Request)</h3>
+        <ol>
+          <li>Intake (web/mobile/staff) with photo + geocode → <span class="badge">ID issued</span>.</li>
+          <li>Validate GIS; auto‑assign by issue type; set SLA tier.</li>
+          <li>Crew dispatch; resident notifications at key status changes.</li>
+          <li>Closure with before/after photos → <code>archiveEvidenceId</code> issued; retention applied (<code>VAULT‑RULE‑SR‑03</code>).</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Implementation -->
+    <section id="implementation">
+      <h2>Implementation Plan (12 Months)</h2>
+      <table aria-label="Phased plan">
+        <thead><tr><th>Phase</th><th>Duration</th><th>Focus</th><th>Definition of Done</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Pilot</strong></td>
+            <td>60–90 days</td>
+            <td>CLERK + FIX live; basic website/email/GIS integrations</td>
+            <td>SOPs approved; dashboards in use; first evidence exports validated; accessibility spot‑checks passed</td>
+          </tr>
+          <tr>
+            <td><strong>Expand</strong></td>
+            <td>3–5 months</td>
+            <td>Third module (AGENDA or PERMIT); payments; deeper GIS; reporting</td>
+            <td>Module live; payment validation; quarterly export job scheduled; RACI running</td>
+          </tr>
+          <tr>
+            <td><strong>Standardize</strong></td>
+            <td>4–6 months</td>
+            <td>Regional templates; grant pack; continuity/DR</td>
+            <td>Template kits finalized; DR exercise complete; grant deliverables submitted; vendor success review</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="grid grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3>RACI (Excerpt)</h3>
+          <ul>
+            <li><strong>Municipality</strong> — Product owner; records custodian; change champions.</li>
+            <li><strong>Polimorphic</strong> — Platform, forms, workflow, integrations, analytics dashboards.</li>
+            <li><strong>PublicLogic</strong> — Standards, SOPs, policy catalog, retention/evidence outcomes, QA & audit framing, grant alignment.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Training & Change</h3>
+          <ul>
+            <li>Role‑based training (Clerk, DPW, Supervisors) with hands‑on scenarios.</li>
+            <li>Change Champion network; office hours; resident education and messaging toolkit.</li>
+            <li>Adoption metrics: active users, SLA attainment, export success, accessibility checks passed.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLAs & Monitoring -->
+    <section id="monitoring">
+      <h2>Platform SLAs, QA & Monitoring</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Service Levels (Targets)</h3>
+          <ul>
+            <li>Availability: 99.9% monthly uptime.</li>
+            <li>API latency (p50): ≤2s. AI assist (p50): ≤1.5s.</li>
+            <li>Support: business‑hours response ≤4h; priority incidents immediate triage.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Quality Gates</h3>
+          <ul>
+            <li>Staging validations for postings/GIS; sandbox email/Drive tests; scripted PRR/agenda scenarios.</li>
+            <li>Accessibility: automated axe checks + manual keyboard/screen‑reader audits.</li>
+            <li>Data checksums on exports; quarterly recovery drill from backups.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Observability</h3>
+        <ul>
+          <li>Centralized logging with retention appropriate to role and statute; structured metrics and traces.</li>
+          <li>Proactive alerts for SLA breach risk and export job failures.</li>
+          <li>Quarterly audit of access and export logs with attestation.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Funding & ROI -->
+    <section id="funding">
+      <h2>Funding & ROI</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Grant Alignment</h3>
+          <ul>
+            <li>Community Compact IT — compliance, transparency, productivity.</li>
+            <li>One Stop for Growth — permitting, downtown ops, digital front doors.</li>
+            <li>MassWorks — infrastructure service coordination and reporting.</li>
+            <li>LRPIP & Shared Services — regional templates and shared hosting.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Evidence Package</h3>
+          <ul>
+            <li>Adoption metrics & SLA attainment; resident satisfaction snapshots.</li>
+            <li>Accessibility results; export manifests with checksums.</li>
+            <li>Before/after evidence and case studies with measurable outcomes.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Commercial & Legal -->
+    <section id="commercial">
+      <h2>Commercial & Legal (High‑Level)</h2>
+      <ul class="card">
+        <li><strong>Engagement:</strong> Fixed‑scope phase pricing, time‑boxed sprints; expansion by change order.</li>
+        <li><strong>Confidentiality:</strong> Mutual NDA; municipality is the data controller.</li>
+        <li><strong>Security Addendum:</strong> Encryption standards, breach notice, access review cadence, backup schedule, DR RTO/RPO targets.</li>
+        <li><strong>Public Communications:</strong> Joint success stories with municipal approval.</li>
+      </ul>
+    </section>
+
+    <!-- Integration Readiness -->
+    <section id="readiness">
+      <h2>Integration Readiness</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Polimorphic Provides (Before Kickoff)</h3>
+          <ul>
+            <li>Staging environment with API access and sample municipality tenant.</li>
+            <li>Webhooks exposed: <code>/webhooks/disposition-ready</code>, <code>/webhooks/export-complete</code>, <code>/webhooks/hold-applied</code>, <code>/webhooks/hold-released</code>.</li>
+            <li>File storage pattern documented (S3/Azure/GCS) with SHA‑256 checksums on all files.</li>
+            <li>OAuth2 client credentials for service‑to‑service auth (client id/secret, scopes).</li>
+            <li>Export endpoint: <code>GET /cases/{id}/attachments</code> returns signed URLs + checksums.</li>
+            <li>Test data: 10–20 CLERK/FIX cases with attachments and multi‑step approvals.</li>
+            <li>Integration status report (GIS, payments, email/SMS, SSO/identity, ERP/GL).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>PublicLogic Provides (Sprint 0)</h3>
+          <ul>
+            <li>OpenAPI spec for VAULT/ARCHIVE; Postman collection with auth examples.</li>
+            <li>Test retention policies (PRR‑06y, SR‑03y, Liquor‑7y‑post‑exp, Dog‑3y, OML‑permanent).</li>
+            <li>Evidence packaging requirements and JSON manifest schema.</li>
+            <li>Webhook signature verification guide (HMAC‑SHA256) and sample verifier.</li>
+            <li>SOP walkthroughs for CLERK (PRR, Licensing, OML) and FIX (Service Requests, DPW Permits).</li>
+            <li>Retention schedule mappings (M.G.L. citations → VAULT policy IDs).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Joint Validation (Weeks 1–2)</h3>
+        <ul>
+          <li>End‑to‑end smoke test: PRR case and FIX case from intake to evidence export.</li>
+          <li>Performance: apply retention to 1,000 historical records in &lt;60s; evidence packaging &lt;2s typical.</li>
+          <li>Error drills: policy lookup timeout, legal hold on closed case, GIS failure, large‑case export 202/async.</li>
+          <li>Accessibility: axe‑core + manual keyboard/screen‑reader checks (WCAG 2.1 AA).</li>
+          <li>Security: OAuth token refresh, file permission boundaries, webhook signature validation.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section id="next">
+      <h2>Next Steps</h2>
+      <ol class="card">
+        <li>Schedule a working session — select the third module (AGENDA or PERMIT) and finalize SLA tiers.</li>
+        <li>Sign off on the shared data contract — confirm bind‑fields and export schemas.</li>
+        <li>Confirm environment plan — SSO, email/Drive, website, GIS, and payment connectors.</li>
+        <li>Approve pilot charter — staffing (change champions), acceptance criteria, dates.</li>
+        <li>Kickoff — Sprint 0 and training track scheduled.</li>
+      </ol>
+      <p class="note">Primary contacts: <strong>PublicLogic</strong> — Nathan Boudreau, MPA, MCPPO (Founder & Town Administrator, Hubbardston, MA). <strong>Polimorphic</strong> — [Partner Lead], [Title].</p>
+    </section>
+
+    <!-- Appendices -->
+    <section id="appendix">
+      <h2>Appendices</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Example Payloads (Illustrative)</h3>
+<pre aria-label="Example payloads"><code>{
+  "requestId": "FIX-2025-0412",
+  "module": "FIX",
+  "status": "Resolved",
+  "location": {"lat": 42.47, "lon": -71.88},
+  "slaTier": "Service",
+  "beforePhotoId": "DOC-123",
+  "afterPhotoId": "DOC-124",
+  "retentionPolicy": "VAULT-RULE-SR-03",
+  "archiveEvidenceId": "EV-7PD2-1LMN"
+}
+</code></pre>
+        </div>
+        <div class="card">
+          <h3>Change‑Log Convention</h3>
+          <ul>
+            <li>Semantic versioning (major.minor.patch).</li>
+            <li>Every release notes affected modules, migration steps, and evidence package IDs.</li>
+            <li>Public release summaries omit sensitive internals; municipal vault stores complete audit bundles.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>IP & Ownership Notice</h3>
+        <p><strong>PublicLogic™, VAULT™, and ARCHIVE™</strong> are trademarks of PublicLogic. Concepts are presented at a high level to protect proprietary methods. Municipalities retain ownership of data, configurations, and workflows. Distribution is limited to authorized stakeholders under NDA.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap" role="contentinfo">
+    <p>© <span id="year"></span> PublicLogic™. All rights reserved. Built for partners who put residents and staff first.</p>
+    <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0" />
+    <p><strong>Distribution:</strong> Confidential — For Polimorphic Technical Review • <strong>Version:</strong> 1.0 (September 2025) • <strong>Contact:</strong> <a href="mailto:nathan@publiclogic.io">nathan@publiclogic.io</a></p>
+    <p>This proposal contains proprietary PublicLogic™ frameworks (VAULT™, ARCHIVE™) and implementation details. Do not distribute outside Polimorphic without written approval from PublicLogic. Sutton, MA pilot details subject to municipal approval and NDA.</p>
+  </footer>
+
+  <script>
+  // Year stamp
+  document.getElementById('year').textContent = new Date().getFullYear();
+  // Defensive mojibake normalizer (render-only; does not alter source)
+  (function fixMojibake(){
+    const map = {
+      "â„¢":"™","â€”":"–","â€“":"–","â€\"":"–","â€’":"–",
+      "â€˜":"'","â€™":"'","â€œ":"\"","â€":"\"",
+      "â€'":"-","Â§":"§","Ã—":"×"
+    };
+    function walk(n){
+      if(n.nodeType===3){
+        let t=n.nodeValue, r=t; for(const [bad,good] of Object.entries(map)){ r=r.split(bad).join(good); }
+        if(r!==t) n.nodeValue=r;
+      } else { for(const c of n.childNodes) walk(c); }
+    }
+    walk(document.body);
+  })();
+</script>
+</body>
+</html>

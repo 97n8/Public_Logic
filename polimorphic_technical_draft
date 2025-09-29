@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PublicLogic™ — Technical Partnership Proposal (Platform Partner Edition)</title>
-  <meta name="description" content="PublicLogic × Polimorphic technical partnership proposal: compliance-first municipal modernization with VAULT™ outcomes, ARCHIVE™ evidence, and staff-friendly workflows." />
+  <title>PublicLogic™ — Technical Partnership Proposal</title>
+  <meta name="description" content="Public Logic × Polimorphic technical partnership proposal: compliance-first municipal modernization with VAULT™ outcomes, ARCHIVE™ evidence, and staff-friendly workflows." />
   <meta name="theme-color" content="#2c3e50" />
   <style>
     :root{
@@ -69,7 +69,7 @@
       <div class="brand" aria-label="PublicLogic Vault brand">
         <div class="mark" aria-hidden="true"><span></span></div>
         <div>
-          <h1>PublicLogic™ — Technical Partnership Proposal (with Platform Partner)</h1>
+          <h1>PublicLogic™ — Technical Partnership Proposal </h1>
           <p>Compliance‑first municipal modernization with VAULT™ outcomes, ARCHIVE™ evidence, and staff‑friendly workflows.</p>
         </div>
       </div>

@@ -25,18 +25,18 @@
 
 <style>
 :root{
-  --ink:#0d1628;--ink2:#2a3a4a;--muted:#48576a;
-  --bg:#fafafa;--bg2:#ffffff;--border:#d8dee6;
-  --accent:#0ea5a4;--accent2:#0f766e;--ink3:#1e293b;
-  --cream:#f6f8fa;--shadow:0 4px 14px rgba(2,8,23,.08);
-  --focus:#0ea5a4;--chip-bg:#eef4f6;--chip-bd:#c9d5de;--chip-tx:#0d1628;
+  --ink:#1a2332;--ink2:#374151;--muted:#6b7280;
+  --bg:#ffffff;--bg2:#f9fafb;--border:#d1d5db;
+  --accent:#0f766e;--accent2:#115e59;--ink3:#374151;
+  --cream:#f3f4f6;--shadow:0 1px 3px rgba(0,0,0,.08);
+  --focus:#0f766e;--chip-bg:#f3f4f6;--chip-bd:#d1d5db;--chip-tx:#374151;
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --ink:#e2e8f0;--ink2:#cbd5e1;--muted:#94a3b8;
-    --bg:#0f172a;--bg2:#1e293b;--border:#334155;
-    --ink3:#cbd5e1;--cream:#1e293b;
-    --chip-bg:#1e293b;--chip-bd:#475569;--chip-tx:#e2e8f0;
+    --ink:#e5e7eb;--ink2:#d1d5db;--muted:#9ca3af;
+    --bg:#111827;--bg2:#1f2937;--border:#374151;
+    --ink3:#d1d5db;--cream:#1f2937;
+    --chip-bg:#1f2937;--chip-bd:#4b5563;--chip-tx:#e5e7eb;
   }
 }
 *{box-sizing:border-box}
@@ -46,7 +46,7 @@ html{scroll-behavior:smooth}
   *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important}
   :target{scroll-margin-top:0}
 }
-body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
 
 /* Skip link */
 a.skip-link{
@@ -55,102 +55,102 @@ a.skip-link{
 a.skip-link:focus{
   position:fixed;left:12px;top:12px;width:auto;height:auto;z-index:1000;
   background:#ffffff;color:#000;border:2px solid var(--focus);
-  padding:10px 14px;border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,.15);
+  padding:10px 14px;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,.15);
 }
 
 /* Hero */
-header.hero{background:linear-gradient(160deg,#0b2530,#12323a 60%,#174a4f);color:#e6f3f5;padding:68px 18px 46px;border-bottom:3px solid #0e7a72}
-.wrap{max-width:1100px;margin:0 auto;padding:0 18px}
-header.hero h1{margin:0 0 8px;font-size:clamp(26px,4vw,42px);letter-spacing:-.2px}
-header.hero p.kicker{margin:6px 0 0;color:#d6edf0;font-size:clamp(14px,2vw,18px)}
-.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+header.hero{background:#1a2332;color:#f3f4f6;padding:64px 20px 48px;border-bottom:2px solid var(--accent)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header.hero h1{margin:0 0 12px;font-size:clamp(28px,3.5vw,36px);letter-spacing:-.015em;font-weight:600;line-height:1.2}
+header.hero p.kicker{margin:8px 0 0;color:#d1d5db;font-size:clamp(15px,2vw,17px);line-height:1.6;font-weight:400}
+.meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
 .meta .chip{
   background:var(--chip-bg);border:1px solid var(--chip-bd);color:var(--chip-tx);
-  padding:6px 10px;border-radius:8px;font-size:13px
+  padding:6px 12px;border-radius:4px;font-size:13px;font-weight:500
 }
 
 /* Slim nav */
-nav.toc{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:saturate(140%) blur(8px);
-  border-bottom:1px solid var(--border)}
+nav.toc{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);box-shadow:0 1px 2px rgba(0,0,0,.04)}
 @media (prefers-color-scheme: dark){
-  nav.toc{background:rgba(30,41,59,.95)}
+  nav.toc{background:rgba(31,41,55,.97)}
 }
-nav.toc .wrap{display:flex;gap:8px;overflow:auto;padding:8px 10px}
+nav.toc .wrap{display:flex;gap:8px;overflow:auto;padding:10px 12px}
 nav.toc a{
-  white-space:nowrap;font-size:13px;color:var(--ink);padding:6px 10px;border:1px solid var(--border);
-  border-radius:999px;background:var(--bg2);opacity:.98;transition:.15s;text-decoration:none;outline:none
+  white-space:nowrap;font-size:13px;color:var(--ink2);padding:7px 12px;border:1px solid var(--border);
+  border-radius:4px;background:var(--bg);transition:.12s;text-decoration:none;outline:none;font-weight:500
 }
-nav.toc a:hover,nav.toc a:focus-visible{opacity:1;border-color:#b8c4cf;box-shadow:0 0 0 3px rgba(14,165,164,.18)}
-nav.toc a.active{background:#e8f5f4;border-color:#cfe3df;color:#0f172a;font-weight:600}
+nav.toc a:hover,nav.toc a:focus-visible{border-color:#9ca3af;box-shadow:0 0 0 2px rgba(15,118,110,.12)}
+nav.toc a.active{background:#f0fdfa;border-color:#0f766e;color:#115e59;font-weight:600}
 @media (prefers-color-scheme: dark){
-  nav.toc a.active{background:#1e3a39;border-color:#2d5654;color:#e2e8f0}
+  nav.toc a.active{background:#1e3a39;border-color:#0f766e;color:#d1fae5}
 }
 
 /* Sections */
-section{padding:48px 0;border-bottom:1px solid var(--border)}
+section{padding:56px 0;border-bottom:1px solid var(--border)}
 section:nth-of-type(even){background:var(--cream)}
-h2{margin:0 0 12px;font-size:clamp(20px,3vw,30px);color:#0f2930}
-@media (prefers-color-scheme: dark){h2{color:#e2e8f0}}
-h3{margin:16px 0 8px;font-size:clamp(16px,2.5vw,22px);color:#0f2930}
-@media (prefers-color-scheme: dark){h3{color:#cbd5e1}}
-p.lead{font-weight:600;color:#0f2930}
-@media (prefers-color-scheme: dark){p.lead{color:#e2e8f0}}
-p{color:var(--ink3)}
+h2{margin:0 0 16px;font-size:clamp(22px,2.8vw,28px);color:#111827;font-weight:600;letter-spacing:-.01em;line-height:1.3}
+@media (prefers-color-scheme: dark){h2{color:#f3f4f6}}
+h3{margin:20px 0 10px;font-size:clamp(17px,2.2vw,20px);color:#1f2937;font-weight:600;letter-spacing:-.005em;line-height:1.35}
+@media (prefers-color-scheme: dark){h3{color:#e5e7eb}}
+p.lead{font-weight:500;color:#1f2937;font-size:17px;line-height:1.6}
+@media (prefers-color-scheme: dark){p.lead{color:#e5e7eb}}
+p{color:var(--ink3);line-height:1.65}
 
-.grid{display:grid;gap:18px;margin-top:18px}
+.grid{display:grid;gap:20px;margin-top:24px}
 @media(min-width:768px){.grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:repeat(3,1fr)}}
-.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:var(--shadow)}
-.card ul{padding-left:18px;margin:8px 0}
-.card li{margin:6px 0}
-.badge{display:inline-block;border:1px solid var(--border);background:var(--bg2);border-radius:999px;padding:4px 10px;font-size:12px;color:var(--ink)}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:24px;box-shadow:var(--shadow)}
+.card ul{padding-left:20px;margin:10px 0}
+.card li{margin:8px 0;line-height:1.6}
+.badge{display:inline-block;border:1px solid var(--border);background:var(--bg);border-radius:4px;padding:4px 10px;font-size:12px;color:var(--ink2);font-weight:600;text-transform:uppercase;letter-spacing:.03em}
 
-.kpis{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.kpi{background:#0b2230;color:#e6f3ff;padding:16px;border-radius:12px;box-shadow:var(--shadow)}
-.kpi strong{display:block;font-size:20px;margin-top:6px}
-.note{font-size:13px;color:var(--muted);margin-top:10px;font-style:italic}
-.pull{border-left:4px solid var(--accent);padding:14px 16px;background:#f0fbfb;border-radius:8px;
-  color:#0b3a3a;font-style:italic;margin-top:16px}
+.kpis{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.kpi{background:#1a2332;color:#f3f4f6;padding:20px;border-radius:6px;box-shadow:var(--shadow);border:1px solid #374151}
+.kpi strong{display:block;font-size:19px;margin-top:8px;font-weight:600}
+.note{font-size:14px;color:var(--muted);margin-top:12px;font-style:italic;line-height:1.5}
+.pull{border-left:3px solid var(--accent);padding:16px 20px;background:#f0fdfa;border-radius:4px;
+  color:#115e59;font-style:italic;margin-top:20px;line-height:1.6}
 @media (prefers-color-scheme: dark){
-  .pull{background:#1a2e2d;color:#d1e7e5;border-left-color:#0ea5a4}
+  .pull{background:#1e3a39;color:#d1fae5;border-left-color:#0f766e}
 }
 
-.price-box{background:#f0f9ff;border:2px solid #0ea5a4;border-radius:12px;padding:24px;margin:20px 0}
+.price-box{background:#f9fafb;border:2px solid #0f766e;border-radius:6px;padding:28px;margin:24px 0}
 @media (prefers-color-scheme: dark){
-  .price-box{background:#1a2730;border-color:#0ea5a4}
+  .price-box{background:#1f2937;border-color:#0f766e}
 }
-.price-box h3{margin-top:0;color:#0b2530}
-@media (prefers-color-scheme: dark){.price-box h3{color:#e2e8f0}}
-.price-highlight{font-size:32px;font-weight:700;color:#0e7a72;margin:12px 0}
+.price-box h3{margin-top:0;color:#111827;font-weight:600}
+@media (prefers-color-scheme: dark){.price-box h3{color:#f3f4f6}}
+.price-highlight{font-size:40px;font-weight:700;color:#0f766e;margin:12px 0;letter-spacing:-.02em}
 
 /* Tables */
-.table-region{overflow:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--border); border-radius:10px; background:var(--bg2)}
-.table-region:focus-visible{outline:3px solid rgba(14,165,164,.35);outline-offset:2px}
+.table-region{overflow:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--border); border-radius:6px; background:var(--bg2)}
+.table-region:focus-visible{outline:2px solid rgba(15,118,110,.3);outline-offset:2px}
 table{border-collapse:separate;border-spacing:0;width:100%;background:var(--bg2)}
-th,td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;font-size:15px;color:var(--ink)}
+th,td{padding:12px 14px;border-bottom:1px solid var(--border);text-align:left;font-size:15px;color:var(--ink2);line-height:1.5}
 th{background:var(--cream);font-weight:600}
 tbody tr:last-child td{border-bottom:none}
-caption{caption-side:top;text-align:left;padding:10px 12px;font-weight:600;color:var(--ink)}
+caption{caption-side:top;text-align:left;padding:12px 14px;font-weight:600;color:var(--ink)}
 
-.scenario{background:#f8fffe;border:1px solid #c9e3e2;border-radius:10px;padding:18px;margin:16px 0}
+.scenario{background:#f9fafb;border:1px solid var(--border);border-radius:6px;padding:20px;margin:20px 0}
 @media (prefers-color-scheme: dark){
-  .scenario{background:#1a2e2d;border-color:#2d5654}
+  .scenario{background:#1f2937;border-color:#374151}
 }
-.scenario h4{margin:0 0 10px;color:#0b3a3a;font-size:17px}
-@media (prefers-color-scheme: dark){.scenario h4{color:#d1e7e5}}
-.scenario p{margin:6px 0;font-size:15px}
-.scenario code{background:#e0f2f1;padding:2px 6px;border-radius:4px;font-size:14px;color:#0d1628}
+.scenario h4{margin:0 0 12px;color:#111827;font-size:17px;font-weight:600}
+@media (prefers-color-scheme: dark){.scenario h4{color:#e5e7eb}}
+.scenario p{margin:8px 0;font-size:15px;line-height:1.6}
+.scenario code{background:#f3f4f6;padding:2px 6px;border-radius:3px;font-size:14px;color:#374151;font-family:'SF Mono',Monaco,Consolas,monospace}
 @media (prefers-color-scheme: dark){
-  .scenario code{background:#1e3433;color:#cbd5e1}
+  .scenario code{background:#374151;color:#d1d5db}
 }
 
-.testimonial{background:#f8f9fa;border-left:4px solid #0ea5a4;padding:20px;margin:20px 0;border-radius:8px;font-style:italic}
+.testimonial{background:#f9fafb;border-left:3px solid #0f766e;padding:24px;margin:24px 0;border-radius:4px;font-style:italic;line-height:1.65}
 @media (prefers-color-scheme: dark){
-  .testimonial{background:#1e293b;border-left-color:#0ea5a4}
+  .testimonial{background:#1f2937;border-left-color:#0f766e}
 }
-.testimonial cite{display:block;margin-top:10px;font-style:normal;font-size:14px;color:var(--muted);font-weight:600}
+.testimonial cite{display:block;margin-top:12px;font-style:normal;font-size:14px;color:var(--muted);font-weight:500}
 
 /* footer */
-footer{padding:36px 0;background:#0b2530;color:#e5e7eb;text-align:center;font-size:14px}
+footer{padding:40px 0;background:#1a2332;color:#d1d5db;text-align:center;font-size:14px;line-height:1.6}
 
 /* print */
 @media print{
@@ -160,24 +160,24 @@ footer{padding:36px 0;background:#0b2530;color:#e5e7eb;text-align:center;font-si
   table{break-inside:avoid}
   a{color:#000;text-decoration:underline}
   .price-box{border:2px solid #000}
-  .pull{border-left:4px solid #000}
+  .pull{border-left:3px solid #000}
 }
 
 /* Small mobile polish */
 @media (max-width:480px){
-  header.hero{padding:56px 16px 36px}
-  section{padding:36px 0}
+  header.hero{padding:52px 16px 40px}
+  section{padding:44px 0}
   nav.toc .wrap{gap:6px;padding:8px}
-  .price-highlight{font-size:26px}
+  .price-highlight{font-size:34px}
 }
 
-/* Focus outlines for all links */
-a:focus-visible{outline:3px solid rgba(14,165,164,.45);outline-offset:2px}
-*:focus-visible{outline:3px solid rgba(14,165,164,.45);outline-offset:2px}
+/* Focus outlines */
+a:focus-visible{outline:2px solid rgba(15,118,110,.4);outline-offset:2px}
+*:focus-visible{outline:2px solid rgba(15,118,110,.4);outline-offset:2px}
 
-/* Anchor offset robustness */
-:target{scroll-margin-top:84px}
-@media (max-width:600px){ :target{scroll-margin-top:96px} }
+/* Anchor offset */
+:target{scroll-margin-top:80px}
+@media (max-width:600px){ :target{scroll-margin-top:92px} }
 </style>
 
 </head>
@@ -252,24 +252,27 @@ a:focus-visible{outline:3px solid rgba(14,165,164,.45);outline-offset:2px}
           <li>New staff spend months learning by osmosis instead of by system</li>
           <li>Cross-training is aspirational because there's no central reference</li>
           <li>SOPs live in desk drawers, email folders, and people's heads—scattered and inaccessible</li>
+          <li>Dogs to licenses to PRR each handled differently with no consistency</li>
         </ul>
       </div>
       <div class="card">
-        <h3>What happens with SuttonCONNECT + VAULT</h3>
+        <h3>What happens with VAULT + CLERK + FIX</h3>
         <ul>
           <li>Workflows, SOPs, and decision trees organized centrally using the VAULT framework</li>
+          <li>CLERK handles all administrative processes under one roof—consistent, repeatable</li>
+          <li>FIX standardizes infrastructure and maintenance workflows across all departments</li>
           <li>Due-date warnings and checklists don't depend on who remembers what</li>
           <li>Onboarding uses the same system experienced staff use—built-in training as a byproduct</li>
-          <li>The system doesn't fall apart when things get busy or when people move on</li>
-          <li>Every process is documented, accessible, and version-controlled in one place</li>
+          <li>Everything is owned by the town, not locked in vendor systems</li>
+          <li>Staff focus flows to serving residents, not hunting for procedures</li>
         </ul>
       </div>
     </div>
 
 ```
-<div class="card" style="margin-top:20px;background:#f0f9ff;border:2px solid #0ea5a4">
+<div class="card" style="margin-top:20px;background:#f9fafb;border:2px solid #0f766e">
   <h3 style="margin-top:0">What is the VAULT Framework?</h3>
-  <p><strong>VAULT</strong> stands for <strong>V</strong>erified <strong>A</strong>ccessible <strong>U</strong>nified <strong>L</strong>iving <strong>T</strong>emplates—a methodology for organizing municipal knowledge so it survives staff transitions.</p>
+  <p><strong>VAULT</strong> is a <strong>patent-pending framework developed by Nathan Boudreau</strong> that stands for <strong>V</strong>erified <strong>A</strong>ccessible <strong>U</strong>nified <strong>L</strong>iving <strong>T</strong>emplates—a methodology for organizing municipal knowledge so it survives staff transitions.</p>
   <ul>
     <li><strong>Verified:</strong> Every process is reviewed and approved by department heads—not just documented, but validated</li>
     <li><strong>Accessible:</strong> Plain language, searchable, and organized by role—no technical jargon barriers</li>
@@ -277,10 +280,27 @@ a:focus-visible{outline:3px solid rgba(14,165,164,.45);outline-offset:2px}
     <li><strong>Living:</strong> Documents update as processes evolve—not static PDFs gathering dust</li>
     <li><strong>Templates:</strong> Reusable checklists and workflows that scale across similar situations</li>
   </ul>
-  <div class="pull" style="margin-top:12px">"VAULT isn't software—it's how we organize everything <em>inside</em> SuttonCONNECT so your institutional knowledge compounds instead of evaporates."</div>
+  <div class="pull" style="margin-top:12px">"VAULT isn't software—it's how we organize everything <em>inside</em> SuttonCONNECT so your institutional knowledge is owned by the town, not locked in vendor systems or people's heads."</div>
+  
+  <h3 style="margin-top:24px">CLERK & FIX: Universal Administrative Frameworks</h3>
+  <p style="margin-top:12px">Built on the VAULT methodology, we're rolling out two comprehensive municipal frameworks:</p>
+  
+  <div style="display:grid;gap:16px;margin-top:16px">
+    <div style="padding:16px;background:#fff;border-left:3px solid #0f766e;border-radius:4px">
+      <strong style="display:block;margin-bottom:8px;color:#111827">CLERK</strong>
+      <p style="margin:0;font-size:15px;line-height:1.6">Centralized municipal administrative framework covering everything from dog licenses to business permits to public records requests—all under one roof with consistent SOPs.</p>
+    </div>
+    
+    <div style="padding:16px;background:#fff;border-left:3px solid #0f766e;border-radius:4px">
+      <strong style="display:block;margin-bottom:8px;color:#111827">FIX</strong>
+      <p style="margin:0;font-size:15px;line-height:1.6">Universal infrastructure and maintenance framework for DPW, facilities, and public works—from pothole reports to capital project tracking with built-in compliance documentation.</p>
+    </div>
+  </div>
+  
+  <p style="margin-top:16px;padding:16px;background:#f0fdfa;border-radius:4px;border:1px solid #0f766e"><strong>The breakthrough:</strong> These frameworks are created for the way <em>you</em> work. Dogs to licenses to PRR—all under one roof, all owned by the town. When administrative overhead is handled systematically, staff focus can flow to things that actually matter: serving residents and improving the community.</p>
 </div>
 
-<div class="pull" style="margin-top:20px">"This isn't about replacing institutional memory—it's about preserving it using the VAULT Framework so Sutton's expertise compounds instead of evaporates."</div>
+<div class="pull" style="margin-top:20px">"This isn't about replacing institutional memory—it's about preserving it using the VAULT Framework so Sutton's expertise is owned by the town and available when you need it. When administrative overhead runs on autopilot, staff focus flows to what matters: serving residents and building community."</div>
 
 <div class="testimonial">
   "In our first quarter with HubbCONNECT, we reduced repeat status-check calls by 60% because residents could see progress themselves. That freed up staff time for proactive work instead of reactive phone tag."
@@ -299,7 +319,7 @@ a:focus-visible{outline:3px solid rgba(14,165,164,.45);outline-offset:2px}
         <li><strong>Meet people where they are.</strong> If residents still call, we adapt the tech to meet them there. Hubbardston's HubbCONNECT proved iPads with paper-like feel work for legacy comfort. If Sutton needs phone-to-digital bridges, text-to-ticket, or kiosks, we build them in the sprint.</li>
         <li><strong>"Do more with less" is local.</strong> More time for proactive work? Fewer public records surprises? Better grant applications? Sutton defines success — we engineer to that definition.</li>
         <li><strong>Day-90 safety valve.</strong> If it doesn't work by Day 90, we part as friends. You keep all data, configs, and documentation. No hard feelings. But we're betting it will work — because you're helping us build it right.</li>
-        <li><strong>Framework-first and centrally housed.</strong> All SOPs, checklists, training materials, and process documentation are organized using the <strong>VAULT framework</strong> and live centrally—not scattered across emails, file cabinets, and institutional memory. VAULT ensures nothing gets lost during staff transitions or system changes. That's the point of CONNECT: make everything work together so you can do more.</li>
+        <li><strong>Framework-first and centrally housed.</strong> All SOPs, checklists, training materials, and process documentation are organized using the <strong>VAULT framework (patent-pending)</strong> and live centrally—not scattered across emails, file cabinets, and institutional memory. CLERK and FIX provide universal administrative and infrastructure frameworks that cover everything from dog licenses to capital projects. VAULT ensures nothing gets lost during staff transitions or system changes. Everything is owned by the town—not locked in vendor systems. That's the point of CONNECT: make everything work together so staff focus flows to things that actually matter.</li>
       </ul>
       <div class="pull">"This isn't about forcing digital-only. It's about proving that modern tools can be flexible enough to meet residents and staff where they are."</div>
     </div>
@@ -354,10 +374,12 @@ a:focus-visible{outline:3px solid rgba(14,165,164,.45);outline-offset:2px}
       <div class="card">
         <h3>Public_Logic</h3>
         <ul>
-          <li>Plain-language SOPs, checklists, and training</li>
+          <li>VAULT Framework development (patent-pending) and implementation</li>
+          <li>CLERK and FIX universal administrative frameworks</li>
+          <li>Plain-language SOPs, checklists, and training materials</li>
           <li>Quality gates (accessibility and export checks)</li>
           <li>Change management and grant alignment</li>
-          <li><em>Why a new company:</em> Established vendors can't afford to be this flexible — they have shareholders and technical debt. We can, because Sutton's success <strong>is</strong> our product. Your partnership proves the model works, and we're betting our company on getting it right with you.</li>
+          <li><em>Why a new company:</em> Established vendors can't afford to be this flexible—they have shareholders and technical debt. We can, because Sutton's success <strong>is</strong> our product. Your partnership proves the model works, and we're betting our company on getting it right with you. VAULT, CLERK, and FIX are owned by Public_Logic but configured for Sutton—your workflows, your town's property.</li>
         </ul>
       </div>
       <div class="card">
@@ -687,18 +709,14 @@ a:focus-visible{outline:3px solid rgba(14,165,164,.45);outline-offset:2px}
     <h3>Years 2+: Per-Resident Pricing Model</h3>
     <p style="font-size:18px;font-weight:600;color:#0b2530;margin:8px 0">$___ to $___ per resident/year</p>
     <p><strong>Final pricing determined after CLERK and FIX modules are implemented, based on what Sutton actually needs and decides to use.</strong></p>
-    <p style="margin-top:12px">The per-resident model ensures:</p>
+    <p style="margin-top:12px">Pricing reflects:</p>
     <ul>
-      <li>Pricing scales fairly with town size—small towns pay less</li>
-      <li>You only pay for modules you actually implement and use</li>
-      <li>No major upfront infrastructure investments required</li>
-      <li>Additional modules expand capability without exponential cost increases</li>
-      <li>Transparent, predictable budgeting for future fiscal years</li>
+      <li><strong>Modules implemented:</strong> Only pay for what you deploy (PRR, DPW, CLERK, FIX, etc.)</li>
+      <li><strong>AI level chosen:</strong> Base tier included; Plus/Pro upgrades optional if they fit your workflow</li>
+      <li><strong>Town size:</strong> Per-resident model scales fairly—small towns pay less</li>
+      <li><strong>How you work:</strong> Built around Sutton's pace and processes, not vendor assumptions</li>
     </ul>
-    <div class="pull" style="font-size:14px;margin-top:12px">We'll work with Sutton during Year 1 to determine fair per-resident pricing once CLERK and FIX prove the full platform value. Your final cost reflects what you choose to implement—not a one-size-fits-all package.</div>
-    <div class="note" style="margin-top:12px">
-      <strong>Optional AI upgrades:</strong> Pricing TBD based on Year 1 usage patterns and value delivered
-    </div>
+    <div class="pull" style="font-size:14px;margin-top:12px">This isn't about pushing the most expensive package. It's about what works for the way Sutton wants to work now and in the future. Your final cost reflects your choices during Year 1—not our sales targets.</div>
   </div>
   
   <div class="card">
@@ -712,6 +730,7 @@ a:focus-visible{outline:3px solid rgba(14,165,164,.45);outline-offset:2px}
       <li><strong>Succession window is open:</strong> Preserve institutional knowledge before key staff transitions happen</li>
     </ul>
     <div class="pull" style="font-size:14px;margin-top:12px">Towns that waited to modernize often regret the delay—not because technology changed, but because the institutional knowledge walked out the door first. The best time to preserve what you know is before you need it.</div>
+    <div class="note" style="margin-top:12px"><strong>No major infrastructure investments required.</strong> SuttonCONNECT is cloud-based and integrates with what you already have (Google Workspace, email, GIS). The investment is in process improvement, not servers and licenses.</div>
   </div>
 </div>
 
@@ -725,7 +744,7 @@ a:focus-visible{outline:3px solid rgba(14,165,164,.45);outline-offset:2px}
       <strong>During Year 1:</strong> Add CLERK and FIX modules to demonstrate full platform capabilities. Sutton decides what to keep, what to expand, what to defer.
     </div>
     <div style="padding:12px;background:#fff;border-radius:8px;border-left:4px solid #0f766e">
-      <strong>Year 2+ Pricing Decision:</strong> Per-resident pricing based on (1) demonstrated value, (2) modules Sutton implements, (3) actual usage patterns. Only pay for what you use.
+      <strong>Year 2+ Pricing Decision:</strong> Per-resident pricing based on (1) modules Sutton implements, (2) AI level that fits your workflow (Base/Plus/Pro), (3) demonstrated value. Built around how Sutton wants to work—not our roadmap.
     </div>
   </div>
   <p class="note" style="margin-top:16px"><strong>Plus:</strong> If one grant application succeeds during Year 1 (typical MassWorks or Community Compact awards: $50K–$150K), future years could be entirely grant-funded. You've essentially been paid to modernize.</p>

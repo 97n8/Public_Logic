@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SuttonCONNECT — Public_Logic × Polimorphic Partnership Proposal</title>
+<meta name="description" content="SuttonCONNECT: A municipal modernization partnership where Sutton co-creates the model. Year 1 FREE, 90-day proof sprint, grant development included. Better connections for residents, staff, and opportunity." />
+<meta name="author" content="Nathan Boudreau, MPA, MCPPO" />
+
+<!-- Open Graph / Twitter -->
+
+<meta property="og:title" content="SuttonCONNECT — Public_Logic × Polimorphic Partnership Proposal" />
+<meta property="og:description" content="A partnership to build municipal modernization that adapts to people. Sutton co-creates the model. Year 1 FREE, 90-day sprint, succession resilience built in." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SuttonCONNECT — Public_Logic × Polimorphic Partnership Proposal" />
+<meta name="twitter:description" content="Municipal modernization partnership. Sutton co-creates the model. Year 1 FREE, 90-day proof, grant development included." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --ink:#0d1628;--ink2:#2a3a4a;--muted:#48576a;
+  --bg:#fafafa;--bg2:#ffffff;--border:#d8dee6;
+  --accent:#0ea5a4;--accent2:#0f766e;--ink3:#1e293b;
+  --cream:#f6f8fa;--shadow:0 4px 14px rgba(2,8,23,.08);
+  --focus:#0ea5a4;--chip-bg:#eef4f6;--chip-bd:#c9d5de;--chip-tx:#0d1628;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ink:#e2e8f0;--ink2:#cbd5e1;--muted:#94a3b8;
+    --bg:#0f172a;--bg2:#1e293b;--border:#334155;
+    --ink3:#cbd5e1;--cream:#1e293b;
+    --chip-bg:#1e293b;--chip-bd:#475569;--chip-tx:#e2e8f0;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important}
+  :target{scroll-margin-top:0}
+}
+body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+
+/* Skip link */
+a.skip-link{
+  position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;
+}
+a.skip-link:focus{
+  position:fixed;left:12px;top:12px;width:auto;height:auto;z-index:1000;
+  background:#ffffff;color:#000;border:2px solid var(--focus);
+  padding:10px 14px;border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,.15);
+}
+
+/* Hero */
+header.hero{background:linear-gradient(160deg,#0b2530,#12323a 60%,#174a4f);color:#e6f3f5;padding:68px 18px 46px;border-bottom:3px solid #0e7a72}
+.wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+header.hero h1{margin:0 0 8px;font-size:clamp(26px,4vw,42px);letter-spacing:-.2px}
+header.hero p.kicker{margin:6px 0 0;color:#d6edf0;font-size:clamp(14px,2vw,18px)}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.meta .chip{
+  background:var(--chip-bg);border:1px solid var(--chip-bd);color:var(--chip-tx);
+  padding:6px 10px;border-radius:8px;font-size:13px
+}
+
+/* Slim nav */
+nav.toc{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:saturate(140%) blur(8px);
+  border-bottom:1px solid var(--border)}
+@media (prefers-color-scheme: dark){
+  nav.toc{background:rgba(30,41,59,.95)}
+}
+nav.toc .wrap{display:flex;gap:8px;overflow:auto;padding:8px 10px}
+nav.toc a{
+  white-space:nowrap;font-size:13px;color:var(--ink);padding:6px 10px;border:1px solid var(--border);
+  border-radius:999px;background:var(--bg2);opacity:.98;transition:.15s;text-decoration:none;outline:none
+}
+nav.toc a:hover,nav.toc a:focus-visible{opacity:1;border-color:#b8c4cf;box-shadow:0 0 0 3px rgba(14,165,164,.18)}
+nav.toc a.active{background:#e8f5f4;border-color:#cfe3df;color:#0f172a;font-weight:600}
+@media (prefers-color-scheme: dark){
+  nav.toc a.active{background:#1e3a39;border-color:#2d5654;color:#e2e8f0}
+}
+
+/* Sections */
+section{padding:48px 0;border-bottom:1px solid var(--border)}
+section:nth-of-type(even){background:var(--cream)}
+h2{margin:0 0 12px;font-size:clamp(20px,3vw,30px);color:#0f2930}
+@media (prefers-color-scheme: dark){h2{color:#e2e8f0}}
+h3{margin:16px 0 8px;font-size:clamp(16px,2.5vw,22px);color:#0f2930}
+@media (prefers-color-scheme: dark){h3{color:#cbd5e1}}
+p.lead{font-weight:600;color:#0f2930}
+@media (prefers-color-scheme: dark){p.lead{color:#e2e8f0}}
+p{color:var(--ink3)}
+
+.grid{display:grid;gap:18px;margin-top:18px}
+@media(min-width:768px){.grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:var(--shadow)}
+.card ul{padding-left:18px;margin:8px 0}
+.card li{margin:6px 0}
+.badge{display:inline-block;border:1px solid var(--border);background:var(--bg2);border-radius:999px;padding:4px 10px;font-size:12px;color:var(--ink)}
+
+.kpis{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.kpi{background:#0b2230;color:#e6f3ff;padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+.kpi strong{display:block;font-size:20px;margin-top:6px}
+.note{font-size:13px;color:var(--muted);margin-top:10px;font-style:italic}
+.pull{border-left:4px solid var(--accent);padding:14px 16px;background:#f0fbfb;border-radius:8px;
+  color:#0b3a3a;font-style:italic;margin-top:16px}
+@media (prefers-color-scheme: dark){
+  .pull{background:#1a2e2d;color:#d1e7e5;border-left-color:#0ea5a4}
+}
+
+.price-box{background:#f0f9ff;border:2px solid #0ea5a4;border-radius:12px;padding:24px;margin:20px 0}
+@media (prefers-color-scheme: dark){
+  .price-box{background:#1a2730;border-color:#0ea5a4}
+}
+.price-box h3{margin-top:0;color:#0b2530}
+@media (prefers-color-scheme: dark){.price-box h3{color:#e2e8f0}}
+.price-highlight{font-size:32px;font-weight:700;color:#0e7a72;margin:12px 0}
+
+/* Tables */
+.table-region{overflow:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--border); border-radius:10px; background:var(--bg2)}
+.table-region:focus-visible{outline:3px solid rgba(14,165,164,.35);outline-offset:2px}
+table{border-collapse:separate;border-spacing:0;width:100%;background:var(--bg2)}
+th,td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;font-size:15px;color:var(--ink)}
+th{background:var(--cream);font-weight:600}
+tbody tr:last-child td{border-bottom:none}
+caption{caption-side:top;text-align:left;padding:10px 12px;font-weight:600;color:var(--ink)}
+
+.scenario{background:#f8fffe;border:1px solid #c9e3e2;border-radius:10px;padding:18px;margin:16px 0}
+@media (prefers-color-scheme: dark){
+  .scenario{background:#1a2e2d;border-color:#2d5654}
+}
+.scenario h4{margin:0 0 10px;color:#0b3a3a;font-size:17px}
+@media (prefers-color-scheme: dark){.scenario h4{color:#d1e7e5}}
+.scenario p{margin:6px 0;font-size:15px}
+.scenario code{background:#e0f2f1;padding:2px 6px;border-radius:4px;font-size:14px;color:#0d1628}
+@media (prefers-color-scheme: dark){
+  .scenario code{background:#1e3433;color:#cbd5e1}
+}
+
+.testimonial{background:#f8f9fa;border-left:4px solid #0ea5a4;padding:20px;margin:20px 0;border-radius:8px;font-style:italic}
+@media (prefers-color-scheme: dark){
+  .testimonial{background:#1e293b;border-left-color:#0ea5a4}
+}
+.testimonial cite{display:block;margin-top:10px;font-style:normal;font-size:14px;color:var(--muted);font-weight:600}
+
+/* footer */
+footer{padding:36px 0;background:#0b2530;color:#e5e7eb;text-align:center;font-size:14px}
+
+/* print */
+@media print{
+  nav.toc,.meta,.skip-link{display:none !important}
+  body{color:#000;background:#fff}
+  section, .card, .table-region{page-break-inside:avoid}
+  table{break-inside:avoid}
+  a{color:#000;text-decoration:underline}
+  .price-box{border:2px solid #000}
+  .pull{border-left:4px solid #000}
+}
+
+/* Small mobile polish */
+@media (max-width:480px){
+  header.hero{padding:56px 16px 36px}
+  section{padding:36px 0}
+  nav.toc .wrap{gap:6px;padding:8px}
+  .price-highlight{font-size:26px}
+}
+
+/* Focus outlines for all links */
+a:focus-visible{outline:3px solid rgba(14,165,164,.45);outline-offset:2px}
+*:focus-visible{outline:3px solid rgba(14,165,164,.45);outline-offset:2px}
+
+/* Anchor offset robustness */
+:target{scroll-margin-top:84px}
+@media (max-width:600px){ :target{scroll-margin-top:96px} }
+</style>
+
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="hero" role="banner">
+  <div class="wrap">
+    <h1 id="page-title">SuttonCONNECT — Let's prove this together.</h1>
+    <p class="kicker">A partnership to build municipal modernization that adapts to people, not the other way around. Sutton co-creates the model with us. We provide the tools, commitment, and grant development support to prove there's a better way.</p>
+    <div class="meta" role="contentinfo" aria-label="Document metadata">
+      <span class="chip">Town of Sutton, MA</span>
+      <span class="chip">Author: Nathan Boudreau, MPA, MCPPO</span>
+      <span class="chip">Updated September 30, 2025</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" role="navigation" aria-label="Section navigation">
+  <div class="wrap">
+    <a href="#plain">Plain Talk</a>
+    <a href="#sutton-now">Why Sutton</a>
+    <a href="#why-partnership">Why Partnership</a>
+    <a href="#what">What Changes</a>
+    <a href="#team">The Team</a>
+    <a href="#week1">Next Week</a>
+    <a href="#ai">AI Tools</a>
+    <a href="#plan">90-Day Sprint</a>
+    <a href="#proof">What We Prove</a>
+    <a href="#grants">Grants</a>
+    <a href="#risks">What Could Go Wrong</a>
+    <a href="#access">Compliance</a>
+    <a href="#price">Price</a>
+    <a href="#next">Next Steps</a>
+  </div>
+</nav>
+
+<main id="main" class="wrap" role="main" aria-labelledby="page-title">
+  <section id="plain" aria-labelledby="plain-h">
+    <h2 id="plain-h">Plain Talk (No buzzwords.)</h2>
+    <p class="lead">If a resident can't submit a request without calling, if staff can't see what's due when, and if we can't export our history on demand—then it isn't better connections. <strong>SuttonCONNECT fixes those three things first, then connects everything else: resident intake → staff workflows → compliance exports → grant reporting → next year's funding.</strong> When things connect, towns can do more.</p>
+    <div class="kpis" role="region" aria-label="Outcome highlights">
+      <div class="kpi">
+        <span class="badge" aria-label="Resident outcome">Resident</span>
+        <strong>Clear intake • Clear status</strong>
+        Simple forms, no accounts required, email receipts, and a public status page.
+      </div>
+      <div class="kpi">
+        <span class="badge" aria-label="Staff outcome">Staff</span>
+        <strong>Queues • Timers • Checklists</strong>
+        Work shows up where it belongs. Due-date warnings before they become problems.
+      </div>
+      <div class="kpi">
+        <span class="badge" aria-label="Town outcome">Town</span>
+        <strong>Exports on clockwork</strong>
+        Routine CSV/JSON/PDF with checksums. Your data in your Drive. No surprises.
+      </div>
+    </div>
+  </section>
+
+  <section id="sutton-now" aria-labelledby="sutton-h">
+    <h2 id="sutton-h">Why This Matters for Sutton Right Now</h2>
+    <p>Small towns don't have the luxury of throwing bodies at problems. When someone retires, goes on leave, or just has a busy week, institutional knowledge walks out the door—and the rest of the team scrambles to remember how things were done.</p>
+    <p><strong>Sutton isn't unique in facing this, but Sutton can be first to solve it differently.</strong></p>
+    <p>SuttonCONNECT is designed around succession resilience using the <strong>VAULT Framework</strong>—a structured way to preserve and transfer institutional knowledge. When a DPW supervisor retires, the next person doesn't inherit a filing cabinet and a prayer. They inherit queues, checklists, and case histories organized in VAULT that show <em>exactly</em> how Sutton handles recurring situations. When the Town Clerk is out and someone needs to know the public records request protocol, it's in the Framework—not locked in someone's head.</p>
+    <div class="grid grid-2" role="region" aria-label="Succession planning comparison">
+      <div class="card">
+        <h3>What happens without this</h3>
+        <ul>
+          <li>Retirements trigger knowledge loss and "how did we do this last time?" scrambles</li>
+          <li>Busy seasons mean things slip through cracks because reminders live in people's memories</li>
+          <li>New staff spend months learning by osmosis instead of by system</li>
+          <li>Cross-training is aspirational because there's no central reference</li>
+          <li>SOPs live in desk drawers, email folders, and people's heads—scattered and inaccessible</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>What happens with SuttonCONNECT + VAULT</h3>
+        <ul>
+          <li>Workflows, SOPs, and decision trees organized centrally using the VAULT framework</li>
+          <li>Due-date warnings and checklists don't depend on who remembers what</li>
+          <li>Onboarding uses the same system experienced staff use—built-in training as a byproduct</li>
+          <li>The system doesn't fall apart when things get busy or when people move on</li>
+          <li>Every process is documented, accessible, and version-controlled in one place</li>
+        </ul>
+      </div>
+    </div>
+
+```
+<div class="card" style="margin-top:20px;background:#f0f9ff;border:2px solid #0ea5a4">
+  <h3 style="margin-top:0">What is the VAULT Framework?</h3>
+  <p><strong>VAULT</strong> stands for <strong>V</strong>erified <strong>A</strong>ccessible <strong>U</strong>nified <strong>L</strong>iving <strong>T</strong>emplates—a methodology for organizing municipal knowledge so it survives staff transitions.</p>
+  <ul>
+    <li><strong>Verified:</strong> Every process is reviewed and approved by department heads—not just documented, but validated</li>
+    <li><strong>Accessible:</strong> Plain language, searchable, and organized by role—no technical jargon barriers</li>
+    <li><strong>Unified:</strong> One central system instead of scattered files, emails, and desk drawers</li>
+    <li><strong>Living:</strong> Documents update as processes evolve—not static PDFs gathering dust</li>
+    <li><strong>Templates:</strong> Reusable checklists and workflows that scale across similar situations</li>
+  </ul>
+  <div class="pull" style="margin-top:12px">"VAULT isn't software—it's how we organize everything <em>inside</em> SuttonCONNECT so your institutional knowledge compounds instead of evaporates."</div>
+</div>
+
+<div class="pull" style="margin-top:20px">"This isn't about replacing institutional memory—it's about preserving it using the VAULT Framework so Sutton's expertise compounds instead of evaporates."</div>
+
+<div class="testimonial">
+  "In our first quarter with HubbCONNECT, we reduced repeat status-check calls by 60% because residents could see progress themselves. That freed up staff time for proactive work instead of reactive phone tag."
+  <cite>— Municipal official, Town of Hubbardston (population 4,382)</cite>
+</div>
+```
+
+  </section>
+
+  <section id="why-partnership" aria-labelledby="why-h">
+    <h2 id="why-h">Why This Is a Partnership, Not a Purchase</h2>
+    <p class="lead">We're a new company. Sutton isn't buying software—Sutton is co-creating the model with us.</p>
+    <div class="card">
+      <ul>
+        <li><strong>Sutton approves everything.</strong> We don't move forward without your sign-off. This runs at Sutton's pace, not ours.</li>
+        <li><strong>Meet people where they are.</strong> If residents still call, we adapt the tech to meet them there. Hubbardston's HubbCONNECT proved iPads with paper-like feel work for legacy comfort. If Sutton needs phone-to-digital bridges, text-to-ticket, or kiosks, we build them in the sprint.</li>
+        <li><strong>"Do more with less" is local.</strong> More time for proactive work? Fewer public records surprises? Better grant applications? Sutton defines success — we engineer to that definition.</li>
+        <li><strong>Day-90 safety valve.</strong> If it doesn't work by Day 90, we part as friends. You keep all data, configs, and documentation. No hard feelings. But we're betting it will work — because you're helping us build it right.</li>
+        <li><strong>Framework-first and centrally housed.</strong> All SOPs, checklists, training materials, and process documentation are organized using the <strong>VAULT framework</strong> and live centrally—not scattered across emails, file cabinets, and institutional memory. VAULT ensures nothing gets lost during staff transitions or system changes. That's the point of CONNECT: make everything work together so you can do more.</li>
+      </ul>
+      <div class="pull">"This isn't about forcing digital-only. It's about proving that modern tools can be flexible enough to meet residents and staff where they are."</div>
+    </div>
+
+```
+<div class="card" style="margin-top:20px">
+  <h3>Why a New Company Can Do This (And Established Vendors Can't)</h3>
+  <p>Established municipal vendors are locked into technical debt and shareholder expectations. They can't afford to be this flexible—every customization becomes an unmaintainable snowflake that slows down their roadmap.</p>
+  <p><strong>We can be flexible because Sutton's success IS our product.</strong> Your partnership proves the model works, and we're betting our company on getting it right with you. When you tell us something isn't working, we don't have to run it up through three layers of product committees—we fix it that week.</p>
+  <p>This is the advantage of being new: we have nothing to protect except the relationship with you.</p>
+</div>
+```
+
+  </section>
+
+  <section id="what" aria-labelledby="what-h">
+    <h2 id="what-h">What actually changes for Sutton</h2>
+    <p class="lead">These changes aren't set in stone — they're our starting hypothesis. Sutton will tell us what actually matters, and we'll adapt in real-time.</p>
+    <div class="grid grid-2" role="region" aria-label="Operational changes">
+      <div class="card">
+        <h3>Week-to-week work</h3>
+        <ul>
+          <li>PRR clock starts and is visible to staff who need to see it</li>
+          <li>DPW requests come in with the map pin already set</li>
+          <li>Before/after photos are required on closure (no photo, no close)</li>
+          <li>Supervisors see risk early and can reassign with a note</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Records & exports</h3>
+        <ul>
+          <li>Quarterly exports land in Shared Drive with a manifest checksum</li>
+          <li>Any case can be exported on demand with its history</li>
+          <li>Agendas/postings log has time-stamped receipts</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" aria-labelledby="team-h">
+    <h2 id="team-h">The Team & Lanes</h2>
+    <div class="grid grid-3" role="region" aria-label="Team roles and responsibilities">
+      <div class="card">
+        <h3>Town of Sutton</h3>
+        <ul>
+          <li><strong>Approves everything;</strong> sets the pace; defines what "success" means</li>
+          <li>Owns data, configurations, and workflows</li>
+          <li>Records custodian and policy authority</li>
+          <li>Partners in building a replicable model for communities 2–50K population</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Public_Logic</h3>
+        <ul>
+          <li>Plain-language SOPs, checklists, and training</li>
+          <li>Quality gates (accessibility and export checks)</li>
+          <li>Change management and grant alignment</li>
+          <li><em>Why a new company:</em> Established vendors can't afford to be this flexible — they have shareholders and technical debt. We can, because Sutton's success <strong>is</strong> our product. Your partnership proves the model works, and we're betting our company on getting it right with you.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Polimorphic (Platform Partner)</h3>
+        <ul>
+          <li>Resident/staff UX; forms and workflow engine</li>
+          <li>Dashboards, notifications, public transparency pages</li>
+          <li>Integrations (GIS, SSO/identity, email/SMS, payments)</li>
+          <li><strong>Why Polimorphic:</strong> Municipal vendors have "customized" their way into technical debt for decades—every town becomes an unmaintainable snowflake. Polimorphic's architecture treats Sutton's workflows as <em>configuration, not custom code</em>. What we prove here can scale to 100 towns without starting over. Your feedback improves the core platform for everyone, and updates flow to Sutton automatically without breaking your setup.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="week1" aria-labelledby="week1-h">
+    <h2 id="week1-h">What gets better next week — specific scenarios</h2>
+    <p class="lead">Instead of vague promises, here's exactly what changes for real people doing real work.</p>
+
+```
+<div class="scenario">
+  <h4>Resident submits pothole report</h4>
+  <p><strong>Monday 9:00 AM:</strong> Resident visits <code>sutton.gov/report</code> and submits pothole location with photo from phone.</p>
+  <p><strong>Monday 9:02 AM:</strong> Resident receives email confirmation with:</p>
+  <ul style="margin:8px 0;padding-left:20px">
+    <li>Case number: <code>#2025-DPW-0847</code></li>
+    <li>Expected response: 48 hours for non-emergency road issues</li>
+    <li>Status link: <code>sutton.gov/status/0847</code> (no account needed)</li>
+  </ul>
+</div>
+
+<div class="scenario">
+  <h4>DPW staff sees new work request</h4>
+  <p><strong>Monday 9:02 AM:</strong> Request appears in DPW supervisor queue with:</p>
+  <ul style="margin:8px 0;padding-left:20px">
+    <li>Map pin showing exact location (auto-geocoded from resident's address)</li>
+    <li>Photo attachment inline — no need to open separate system</li>
+    <li>Countdown timer: <strong>47 hours, 58 minutes</strong> until SLA breach</li>
+    <li>One-click reassign to field crew with note field for context</li>
+    <li>Cannot close case without uploading "after" photo — system enforces documentation</li>
+  </ul>
+</div>
+
+<div class="scenario">
+  <h4>Town Clerk exports Q3 public records</h4>
+  <p><strong>October 1, 10:15 AM:</strong> Clerk clicks "Export Q3 Records" button in dashboard.</p>
+  <p><strong>October 1, 10:16 AM:</strong> System deposits in Town Shared Drive:</p>
+  <ul style="margin:8px 0;padding-left:20px">
+    <li><code>PRR_Q3_2025.json</code> — structured data for analysis</li>
+    <li><code>PRR_Q3_2025.pdf</code> — human-readable case log</li>
+    <li><code>Attachments/</code> folder — all submitted documents</li>
+    <li><code>manifest_checksums.txt</code> — SHA-256 verification for compliance</li>
+  </ul>
+  <p>Total time: 90 seconds. Zero manual copy-paste. Audit-ready.</p>
+</div>
+
+<div class="pull" style="margin-top:20px">"These aren't hypotheticals. This is what we built for Hubbardston. Sutton gets the same foundation, adapted to your specific workflows during the 90-day sprint."</div>
+```
+
+  </section>
+
+  <section id="ai" aria-labelledby="ai-h">
+    <h2 id="ai-h">AI That Augments, Not Replaces</h2>
+    <p class="lead">AI in SuttonCONNECT isn't about replacing staff judgment—it's about handling the tedious pattern-matching so humans can focus on relationships and decisions that matter.</p>
+    <div class="grid grid-3" role="region" aria-label="AI tiers">
+      <div class="card">
+        <span class="badge">Base AI (Year 1, included)</span>
+        <ul>
+          <li>Auto-categorizes incoming requests and routes to correct department queue</li>
+          <li>Flags urgent language ("water main," "safety hazard," "injured") for immediate attention</li>
+          <li>Generates plain-language email receipts with case summaries</li>
+          <li>Suggests relevant past cases when staff open similar requests</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="badge">Plus AI (Years 2–3 upgrade)</span>
+        <ul>
+          <li>Drafts response templates based on case history and town policies</li>
+          <li>Predicts workload spikes based on seasonal patterns and weather</li>
+          <li>Auto-suggests checklist items based on request type</li>
+          <li>Surfaces training opportunities when staff repeatedly ask similar questions</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="badge">Pro AI (Years 2–3 upgrade)</span>
+        <ul>
+          <li>Learns Sutton-specific patterns and recommends process improvements</li>
+          <li>Generates grant-ready reports with outcome narratives</li>
+          <li>Builds custom analytics dashboards for department heads</li>
+          <li>Creates "what-if" scenarios for budget planning and resource allocation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="plan" aria-labelledby="plan-h">
+    <h2 id="plan-h">Partnership Sprint: 30 • 60 • 90</h2>
+    <p class="note">These are checkpoints, not deadlines. If something isn't working, we adjust the approach — not the relationship.</p>
+    <div class="table-region" role="region" aria-label="30-60-90 table" tabindex="0">
+      <table>
+        <caption>Checkpoints and evidence collected across the 90-day sprint</caption>
+        <thead>
+          <tr>
+            <th scope="col">Day</th>
+            <th scope="col">What's true</th>
+            <th scope="col">Proof</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">30</th>
+            <td>PRR and DPW pilot flows live in test environment; workflow owners named; compliance calendar loaded; SSO and GIS connections tested</td>
+            <td>Signed checklist; test environment screenshots; first automated export to Shared Drive with checksum verification</td>
+          </tr>
+          <tr>
+            <th scope="row">60</th>
+            <td>Dashboards and notification timing tuned based on staff feedback; accessibility checks pass on pilot flows (WCAG 2.1 AA); training materials drafted</td>
+            <td>axe DevTools report + manual keyboard/screen-reader test notes; staff feedback survey results; draft SOP documentation</td>
+          </tr>
+          <tr>
+            <th scope="row">90</th>
+            <td>Production go-live with two-week hypercare window; staff trained; export automation running on schedule; public status pages accessible</td>
+            <td>Export job logs with timestamps; adoption metrics dashboard; lessons-learned document co-authored by Sutton and Public_Logic</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="proof" aria-labelledby="proof-h">
+    <h2 id="proof-h">What We're Proving Together</h2>
+    <p class="lead">By Day 90, we'll have evidence that this model works — not just for Sutton, but as a blueprint for other towns.</p>
+    <div class="grid grid-3" role="region" aria-label="Proof categories">
+      <div class="card">
+        <h3>Evidence & exports</h3>
+        <ul>
+          <li>Quarterly export job log with success line items</li>
+          <li>Per-file SHA-256 with a checksum-of-checksums manifest</li>
+          <li>On-demand case export: PDF + JSON + attachments</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Operational movement</h3>
+        <ul>
+          <li>Tier-1 safety requests acknowledged within 4 business hours</li>
+          <li>Fewer status-check calls as public status pages normalize</li>
+          <li>Training completion and adoption tracked by role</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>The Bigger Proof</h3>
+        <ul>
+          <li>Modern private-sector tools can adapt to municipal pace and culture</li>
+          <li>Resident choice (web, phone, iPad, paper-feel) beats forced digital-only</li>
+          <li>Better connections = resident↔staff, staff↔data, town↔opportunity</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="grants" aria-labelledby="grants-h">
+    <h2 id="grants-h">Grant Development During the Sprint</h2>
+    <p class="lead">Better data doesn't just make daily work easier—it unlocks funding. During the 90-day sprint, Public_Logic will work directly with town staff to develop grant applications that leverage the new system.</p>
+
+```
+<div class="grid grid-2" role="region" aria-label="Grant development focus">
+  <div class="card">
+    <h3>Grant-Ready Evidence</h3>
+    <ul>
+      <li>Automated exports create the data trail grant reviewers want</li>
+      <li>Before/after metrics built into closure workflows</li>
+      <li>Compliance documentation generated as a byproduct of good process</li>
+      <li>Case histories with timestamps provide proof of systematic approach</li>
+    </ul>
+    <div class="pull" style="font-size:14px;margin-top:12px">"We're not creating extra work for grants—we're making grants a natural output of work you're already doing."</div>
+  </div>
+  
+  <div class="card">
+    <h3>Target Opportunities (FY26)</h3>
+    <ul>
+      <li><strong>MassWorks Infrastructure:</strong> DPW workflow data demonstrates systematic maintenance tracking</li>
+      <li><strong>Community Compact IT Grant:</strong> Direct fit for municipal modernization ($50K–$150K typical awards)</li>
+      <li><strong>Digital Equity Partnership:</strong> Multi-channel access model (web, phone, iPad, kiosk)</li>
+      <li><strong>Rural & Small Town Development Fund:</strong> Perfect size match for Sutton's population</li>
+      <li><strong>Municipal ADA Improvement Grants:</strong> WCAG 2.1 AA compliance built into design</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card" style="margin-top:20px">
+  <h3>Active Partnership Commitment</h3>
+  <ul>
+    <li><strong>Public_Logic will co-author applications during the sprint</strong> — not just advise, but write</li>
+    <li>We'll map system capabilities to grant requirements in real-time as RFPs are released</li>
+    <li>Provide outcome metrics from your first 90 days as proof points for subsequent applications</li>
+    <li>No success fees or separate charges — this is included in the partnership</li>
+  </ul>
+  <p class="note" style="margin-top:12px"><strong>Goal:</strong> Turn Year 1 investment into Year 2–3 grant funding. One successful $50K grant covers multiple years of steady-state costs and proves ROI to taxpayers.</p>
+</div>
+```
+
+  </section>
+
+  <section id="risks" aria-labelledby="risks-h">
+    <h2 id="risks-h">What Could Go Wrong (And How We Handle It)</h2>
+    <p class="lead">Being honest about risk is part of partnership. Here's what we're watching for and how we respond.</p>
+
+```
+<div class="grid grid-2" role="region" aria-label="Risk mitigation strategies">
+  <div class="card">
+    <h3>If adoption is slower than expected</h3>
+    <ul>
+      <li>We extend the hypercare window at no additional cost</li>
+      <li>Add more training formats (video walkthroughs, one-on-one sessions, desk-side support)</li>
+      <li>Build workflow bridges for legacy comfort (phone-to-digital, paper forms that feed the system)</li>
+      <li>Adjust notification timing and dashboard layouts based on actual usage patterns</li>
+    </ul>
+    <div class="note">We don't consider this "failure" — we consider it feedback. The pace adjusts to match Sutton's reality.</div>
+  </div>
+
+  <div class="card">
+    <h3>If technical issues arise</h3>
+    <ul>
+      <li>Polimorphic maintains 99.9% uptime SLA with redundant infrastructure across multiple availability zones</li>
+      <li>Your data exports to your Google Shared Drive weekly regardless of platform status — you always have local copies</li>
+      <li>We provide complete documentation for self-hosting options if needed (though we don't expect this)</li>
+      <li>All integrations (GIS, email, SSO) have fallback modes that maintain core functionality</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>If the partnership doesn't work</h3>
+    <ul>
+      <li><strong>Day-90 safety valve:</strong> You keep everything built during the sprint — all data, configurations, documentation, training materials</li>
+      <li>You owe nothing beyond the initial 50% deposit ($14,250)</li>
+      <li>We provide transition support to any system you choose at no charge</li>
+      <li>All documentation is yours to keep — VAULT framework and SOPs included</li>
+    </ul>
+    <div class="note">No hard feelings, no hostage-taking, no vendor lock-in games. We're betting this works because we're building it together.</div>
+  </div>
+
+  <div class="card">
+    <h3>If Polimorphic (platform partner) exits</h3>
+    <ul>
+      <li>Your data and exports are in <em>your</em> Google Drive, not locked in proprietary storage</li>
+      <li>We maintain relationships with alternative platform providers as contingency</li>
+      <li>All workflows are documented as configuration, not custom code — portable to other systems</li>
+      <li>Public_Logic commits to 12-month transition support regardless of platform changes</li>
+    </ul>
+    <div class="note">We've architected this to avoid vendor lock-in from day one. Your investment in process improvement is protected.</div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <section id="access" aria-labelledby="access-h">
+    <h2 id="access-h">Accessibility & Compliance Built In</h2>
+    <p class="lead">These aren't add-ons or afterthoughts — they're requirements from Day 1.</p>
+
+```
+<div class="grid grid-3" role="region" aria-label="Compliance categories">
+  <div class="card">
+    <h3>Digital Accessibility</h3>
+    <ul>
+      <li><strong>WCAG 2.1 Level AA compliance</strong> verified at Day 60 checkpoint</li>
+      <li>Keyboard navigation tested for all workflows</li>
+      <li>Screen reader compatibility (NVDA, JAWS, VoiceOver)</li>
+      <li>Color contrast ratios meet 4.5:1 minimum</li>
+      <li>Plain-language content (8th grade reading level target)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Records Retention</h3>
+    <ul>
+      <li>Automated quarterly exports with SHA-256 checksums</li>
+      <li>Audit trails for all case status changes with timestamps</li>
+      <li>Configurable retention schedules by record type</li>
+      <li>Export formats: JSON (machine-readable), PDF (human-readable), CSV (analysis)</li>
+      <li>All exports include manifest for verification</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Public Records Law</h3>
+    <ul>
+      <li>PRR clock starts automatically on submission</li>
+      <li>Staff dashboards show countdown timers for compliance deadlines</li>
+      <li>Exemption tracking for redacted materials</li>
+      <li>Response templates reviewed by town counsel during sprint</li>
+      <li>Complete request history exportable on demand</li>
+    </ul>
+  </div>
+</div>
+```
+
+  </section>
+
+  <section id="price" aria-labelledby="price-h">
+    <h2 id="price-h">Investment & Terms</h2>
+
+```
+<div class="price-box" style="background:#e8f5f4;border-color:#0e7a72">
+  <h3>Year 1: Partnership Sprint + Foundation</h3>
+  <div class="price-highlight" style="font-size:42px">$0</div>
+  <p style="font-size:18px;font-weight:600;color:#0b2530;margin:8px 0"><strong>First year is free. Zero cost to Sutton.</strong></p>
+  <p><strong>What you get at no charge:</strong></p>
+  <ul>
+    <li>90-day implementation sprint with weekly check-ins</li>
+    <li>PRR + DPW + 2 additional workflow modules (Sutton chooses during sprint)</li>
+    <li>GIS integration, SSO/identity, email/SMS notifications</li>
+    <li>Staff training and plain-language documentation (VAULT framework)</li>
+    <li>Quarterly export automation with compliance checksums</li>
+    <li>Grant development support (co-authoring applications, no success fees)</li>
+    <li>Base AI tier (auto-categorization, routing, receipt generation)</li>
+    <li>Two-week hypercare support post-launch with extended hours</li>
+    <li>Full year of hosting, maintenance, and support</li>
+  </ul>
+  <div class="pull" style="margin-top:16px;background:#fff;border-left-color:#0e7a72">
+    <strong>Why free?</strong> We're a new company proving a model. Sutton's partnership, feedback, and willingness to be a reference case study is the value exchange. If this works for Sutton, we both win. If it doesn't, you've lost nothing but time—and we've learned what needs fixing.
+  </div>
+  <p style="background:#fff3cd;padding:12px;border-radius:6px;margin-top:16px"><strong>What happens after Year 1:</strong> If SuttonCONNECT delivers value, we discuss Year 2+ pricing based on a per-resident model. Pricing will be determined once CLERK and FIX modules are implemented, creating a clear path forward that scales with demonstrated value. If it doesn't work, you owe nothing and keep everything we built. No strings, no surprises.</p>
+</div>
+
+<div class="grid grid-2" style="margin-top:24px" role="region" aria-label="Future pricing model and value comparison">
+  <div class="card">
+    <h3>Years 2+: Per-Resident Pricing Model</h3>
+    <p style="font-size:18px;font-weight:600;color:#0b2530;margin:8px 0">$___ to $___ per resident/year</p>
+    <p><strong>Final pricing determined after CLERK and FIX modules are implemented, based on what Sutton actually needs and decides to use.</strong></p>
+    <p style="margin-top:12px">The per-resident model ensures:</p>
+    <ul>
+      <li>Pricing scales fairly with town size—small towns pay less</li>
+      <li>You only pay for modules you actually implement and use</li>
+      <li>No major upfront infrastructure investments required</li>
+      <li>Additional modules expand capability without exponential cost increases</li>
+      <li>Transparent, predictable budgeting for future fiscal years</li>
+    </ul>
+    <div class="pull" style="font-size:14px;margin-top:12px">We'll work with Sutton during Year 1 to determine fair per-resident pricing once CLERK and FIX prove the full platform value. Your final cost reflects what you choose to implement—not a one-size-fits-all package.</div>
+    <div class="note" style="margin-top:12px">
+      <strong>Optional AI upgrades:</strong> Pricing TBD based on Year 1 usage patterns and value delivered
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>Why the Time to Modernize is Now</h3>
+    <p><strong>Sutton hasn't made major technology investments recently—and that's actually an advantage.</strong></p>
+    <ul>
+      <li><strong>No technical debt:</strong> You're not locked into expensive legacy systems that don't talk to each other</li>
+      <li><strong>Clean slate approach:</strong> Build what Sutton needs today, not what vendors sold you five years ago</li>
+      <li><strong>Federal/state funding cycles align:</strong> Digital equity and infrastructure grants are available now</li>
+      <li><strong>Staff expectations are changing:</strong> Modern tools attract and retain talent in competitive hiring markets</li>
+      <li><strong>Succession window is open:</strong> Preserve institutional knowledge before key staff transitions happen</li>
+    </ul>
+    <div class="pull" style="font-size:14px;margin-top:12px">Towns that waited to modernize often regret the delay—not because technology changed, but because the institutional knowledge walked out the door first. The best time to preserve what you know is before you need it.</div>
+  </div>
+</div>
+
+<div class="card" style="margin-top:20px;background:#f0f9ff;border:2px solid #0ea5a4">
+  <h3 style="margin-top:0">The Path Forward</h3>
+  <div style="display:grid;gap:12px;margin-top:12px">
+    <div style="padding:12px;background:#fff;border-radius:8px;border-left:4px solid #0e7a72">
+      <strong>Year 1 (Free):</strong> Implement PRR, DPW, and 2 additional modules Sutton chooses. Prove the foundation works with zero financial risk.
+    </div>
+    <div style="padding:12px;background:#fff;border-radius:8px;border-left:4px solid #0ea5a4">
+      <strong>During Year 1:</strong> Add CLERK and FIX modules to demonstrate full platform capabilities. Sutton decides what to keep, what to expand, what to defer.
+    </div>
+    <div style="padding:12px;background:#fff;border-radius:8px;border-left:4px solid #0f766e">
+      <strong>Year 2+ Pricing Decision:</strong> Per-resident pricing based on (1) demonstrated value, (2) modules Sutton implements, (3) actual usage patterns. Only pay for what you use.
+    </div>
+  </div>
+  <p class="note" style="margin-top:16px"><strong>Plus:</strong> If one grant application succeeds during Year 1 (typical MassWorks or Community Compact awards: $50K–$150K), future years could be entirely grant-funded. You've essentially been paid to modernize.</p>
+  <p class="note" style="margin-top:12px;padding:12px;background:#fff3cd;border-radius:6px;border:1px solid #e5c100"><strong>Bottom line:</strong> Year 1 costs you nothing. No major infrastructure investments needed. Per-resident pricing in Years 2+ will be determined based on what you actually implement and use—not what we think you need. If it doesn't work, you've lost nothing but some time, and you keep everything we built. This is the lowest-risk decision you'll make this year.</p>
+</div>
+```
+
+  </section>
+
+  <section id="next" aria-labelledby="next-h">
+    <h2 id="next-h">Next Steps</h2>
+    <p class="lead">This is a conversation, not a contract. Here's how we move forward together.</p>
+
+```
+<div class="card">
+  <h3>Decision Timeline (Proposed)</h3>
+  <div class="table-region" tabindex="0">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Milestone</th>
+          <th scope="col">Who's Involved</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Week of Oct 7</th>
+          <td>Initial review and questions session</td>
+          <td>Town Administrator, Department Heads, IT (if applicable)</td>
+        </tr>
+        <tr>
+          <th scope="row">Week of Oct 14</th>
+          <td>Detailed walkthrough with Hubbardston case study</td>
+          <td>Key stakeholders + optional Select Board briefing</td>
+        </tr>
+        <tr>
+          <th scope="row">Week of Oct 21</th>
+          <td>Partnership agreement review and approval</td>
+          <td>Town Administrator with Town Counsel review</td>
+        </tr>
+        <tr>
+          <th scope="row">Week of Oct 28</th>
+          <td>Kickoff (if approved) — Day 1 of 90-day sprint</td>
+          <td>Full project team</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note" style="margin-top:12px">This timeline is flexible and adjusts to Sutton's internal processes. We're not pushing for speed — we're optimizing for confidence.</p>
+</div>
+
+<div class="grid grid-2" style="margin-top:24px">
+  <div class="card">
+    <h3>Questions to Ask Us</h3>
+    <ul>
+      <li>Can we see a live demo of HubbCONNECT?</li>
+      <li>What happens if our needs change mid-sprint?</li>
+      <li>How do we measure success beyond "system is live"?</li>
+      <li>What if only some departments want to participate?</li>
+      <li>Can we start with one workflow and expand?</li>
+      <li>What references can you provide beyond Hubbardston?</li>
+    </ul>
+    <div class="note" style="margin-top:12px">We welcome hard questions. They help us build the right solution together.</div>
+  </div>
+
+  <div class="card">
+    <h3>Contact</h3>
+    <p><strong>Nathan Boudreau, MPA, MCPPO</strong><br>
+    Founder, Public_Logic<br>
+    <a href="mailto:nathan@publiclogic.co">nathan@publiclogic.co</a><br>
+    [Phone number]</p>
+    
+    <p style="margin-top:16px"><strong>Preferred next step:</strong><br>
+    30-minute informal call to answer initial questions and determine if this is worth exploring further. No pressure, no sales pitch — just honest conversation about whether partnership makes sense for Sutton.</p>
+
+    <div class="pull" style="font-size:14px;margin-top:16px">"The best municipal partnerships start with mutual respect and honest questions. Let's start there."</div>
+  </div>
+</div>
+```
+
+  </section>
+
+</main>
+
+<footer role="contentinfo">
+  <div class="wrap">
+    <p style="margin:0 0 10px">Partnership proposal prepared for the Town of Sutton, Massachusetts</p>
+    <p style="margin:0;font-size:13px">Public_Logic × Polimorphic • September 30, 2025</p>
+    <p style="margin:10px 0 0;font-size:13px;color:#9ca3af">Draft for discussion purposes • All terms subject to final partnership agreement</p>
+  </div>
+</footer>
+
+<script>
+// Intersection Observer for sticky nav active state
+(function() {
+  const navLinks = document.querySelectorAll('nav.toc a');
+  const sections = Array.from(navLinks).map(link => {
+    const href = link.getAttribute('href');
+    return document.querySelector(href);
+  }).filter(Boolean);
+
+  if (!navLinks.length || !sections.length) return;
+
+  const observerOptions = {
+    rootMargin: '-100px 0px -66%',
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${id}`) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => observer.observe(section));
+})();
+</script>
+
+</body>
+</html>

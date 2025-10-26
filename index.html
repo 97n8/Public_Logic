@@ -1,180 +1,242 @@
-<!DOCTYPE html>
-
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PublicLogic™ — Municipal Compliance & Standards</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-```
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        line-height: 1.6;
-        color: #2c3e50;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-    }
-    
-    .container {
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        max-width: 700px;
-        width: 100%;
-        padding: 60px 40px;
-        text-align: center;
-    }
-    
-    .logo {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #667eea;
-        margin-bottom: 10px;
-        letter-spacing: -1px;
-    }
-    
-    .tagline {
-        font-size: 1.1rem;
-        color: #7f8c8d;
-        margin-bottom: 40px;
-        font-weight: 400;
-    }
-    
-    .status-badge {
-        display: inline-block;
-        background: #ffeaa7;
-        color: #2d3436;
-        padding: 8px 20px;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        margin-bottom: 30px;
-        border: 2px solid #fdcb6e;
-    }
-    
-    .description {
-        font-size: 1.05rem;
-        color: #555;
-        margin-bottom: 35px;
-        line-height: 1.8;
-    }
-    
-    .features {
-        text-align: left;
-        margin: 30px 0;
-        padding: 0 20px;
-    }
-    
-    .features ul {
-        list-style: none;
-    }
-    
-    .features li {
-        padding: 10px 0;
-        color: #555;
-        font-size: 0.95rem;
-    }
-    
-    .features li:before {
-        content: "✓";
-        color: #667eea;
-        font-weight: bold;
-        margin-right: 10px;
-    }
-    
-    .contact-section {
-        margin-top: 40px;
-        padding-top: 30px;
-        border-top: 2px solid #ecf0f1;
-    }
-    
-    .contact-label {
-        font-size: 0.9rem;
-        color: #7f8c8d;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 600;
-    }
-    
-    .contact-email {
-        font-size: 1.2rem;
-        color: #667eea;
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.3s ease;
-    }
-    
-    .contact-email:hover {
-        color: #764ba2;
-        text-decoration: underline;
-    }
-    
-    .founder {
-        margin-top: 15px;
-        font-size: 0.9rem;
-        color: #7f8c8d;
-    }
-    
-    @media (max-width: 600px) {
-        .container {
-            padding: 40px 25px;
-        }
-        
-        .logo {
-            font-size: 2rem;
-        }
-        
-        .tagline {
-            font-size: 1rem;
-        }
-        
-        .description {
-            font-size: 1rem;
-        }
-    }
-</style>
-```
+  <title>PublicLogic™ — Smarter Systems. Stronger Communities.</title>
+  <meta name="description" content="PublicLogic™ modernizes municipal services with compliance-first, staff-friendly frameworks that preserve town ownership and control." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#1D4D30" />
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="PublicLogic™ — Smarter Systems. Stronger Communities.">
+  <meta property="og:description" content="Practitioner-built modernization for MA towns. Compliance-first, vendor-agnostic, staff-friendly.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:url" content="https://publiclogic.org/">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PublicLogic™ — Smarter Systems. Stronger Communities.">
+  <meta name="twitter:description" content="Compliance-first frameworks that keep town ownership & control.">
+  <meta name="twitter:image" content="logo.png">
+
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="preload" href="styles.css" as="style" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>document.documentElement.classList.remove('no-js');</script>
+
+  <style>
+    /* Small progressive enhancements that won’t clash with styles.css */
+    :root {
+      color-scheme: light dark;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background:#0f1512; color:#e8f1ec; }
+      .site-header, .section, .section--highlight, .site-footer { background:transparent; }
+    }
+    .visually-hidden { position:absolute !important; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; padding:0; margin:-1px; }
+    .skip-link { position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip-link:focus { left:16px; top:16px; width:auto; height:auto; padding:.6rem .8rem; background:#fff; color:#111; border-radius:.4rem; z-index:10000; }
+    img[loading="lazy"] { view-transition-name:none; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+    }
+    .badge { display:inline-block; font:600 0.75rem/1.2 system-ui, sans-serif; padding:.25rem .5rem; border-radius:999px; background:#e8f5e9; color:#14532d; border:1px solid #c7e8cf; }
+    .muted-legal { font-size:.9rem; opacity:.85; }
+  </style>
 </head>
+
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- HEADER -->
+<header class="site-header" role="banner">
+  <div class="container site-header__inner">
+    <a class="brand brand--corner" href="/" aria-label="PublicLogic home">
+      <img src="logob.png" alt="PublicLogic icon" class="brand__logo" width="44" height="44" />
+      <span class="brand__text">Public_Logic</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <ul class="site-nav__list">
+        <li><a href="#values">About</a></li>
+        <li><a href="#framework">Framework</a></li>
+        <li><a href="#modules">Modules</a></li>
+        <li><a href="notes.html">Field Notes</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a class="btn btn--primary" href="#survey">Take the Survey</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero hero--centered" id="top">
+  <div class="container hero__inner text-center">
+    <img src="logo.png" alt="PublicLogic logo" class="hero__logo" width="220" height="220" loading="eager" />
+    <h1 class="h1">Smarter Systems. Stronger Communities.</h1>
+    <p class="lead">
+      Practitioner-built modernization for Massachusetts towns with auditable workflows that keep
+      <em>municipal ownership &amp; control</em>.
+    </p>
+
+    <div class="hero__ctas" role="group" aria-label="Primary actions">
+      <a class="btn btn--primary" href="#survey">Take the PublicLogic Survey</a>
+      <a class="btn btn--secondary" href="notes.html">Field Notes &amp; Public Insights</a>
+      <a class="btn btn--ghost" href="#framework">See Compliance Map</a>
+    </div>
+
+    <p class="muted mt-lg" aria-live="polite">Pilots: HubbCONNECT · SuttonCLERK · SuttonFIX</p>
+  </div>
+</section>
+
+<main id="main">
+  <!-- VALUE PILLARS -->
+  <section id="values" class="section">
     <div class="container">
-        <div class="logo">PublicLogic™</div>
-        <div class="tagline">Municipal Compliance & Standards</div>
+      <h2>PublicLogic at a glance</h2>
+      <div class="grid grid--3 mt-lg">
+        <article class="card card--solution">
+          <div class="card__eyebrow">Protect staff &amp; residents</div>
+          <h3 class="card__title">Compliance-first</h3>
+          <p>Built around Massachusetts law — <strong>M.G.L. c.30A</strong> (OML), <strong>c.66 §10</strong> (PRR), <strong>c.140/c.138</strong> (licensing), <strong>c.143</strong> (building), and ADA. Every action is traceable and archivable.</p>
+        </article>
 
-```
-    <div class="status-badge">⚙️ Under Construction</div>
-    
-    <div class="description">
-        System-agnostic compliance standards and SOPs for municipalities. We provide outcome references for records retention (VAULT™) and evidence packaging (ARCHIVE™) while you maintain full ownership of your data and configurations.
+        <article class="card">
+          <div class="card__eyebrow">Fewer clicks &amp; clearer roles</div>
+          <h3 class="card__title">Staff-friendly</h3>
+          <p>Plain-language forms, realistic SLAs, and routing that reflects how departments actually work — not how software wishes they worked.</p>
+        </article>
+
+        <article class="card">
+          <div class="card__eyebrow">Ready for state programs</div>
+          <h3 class="card__title">Grant-aligned</h3>
+          <p>Designed for Community Compact, One Stop for Growth, MassWorks, LRPIP, and Shared Services — with metrics that demonstrate ROI.</p>
+        </article>
+      </div>
     </div>
-    
-    <div class="features">
-        <ul>
-            <li>Compliance-first approach anchored in M.G.L. and accessibility standards</li>
-            <li>Platform-neutral: works with your existing systems and vendors</li>
-            <li>Standards, training, and QA — not software replacement</li>
-            <li>Led by municipal practitioners for municipal practitioners</li>
+  </section>
+
+  <!-- PROOF -->
+  <section class="section" aria-labelledby="proof-title">
+    <div class="container">
+      <h2 id="proof-title">Pilots proving it works</h2>
+      <div class="grid grid--3 mt-lg case__cols">
+        <article class="card">
+          <h3>HubbCONNECT — Hubbardston</h3>
+          <p>~30% live modules; resident status transparency; town-owned Microsoft 365 records.</p>
+          <p class="note">Built on CivicOptimize + Power Automate; logic by PublicLogic.</p>
+        </article>
+        <article class="card">
+          <h3>SuttonCLERK</h3>
+          <p>Public Records queue with deadlines, exemptions checklist, and exportable logs for <strong>c.66 §10</strong>.</p>
+        </article>
+        <article class="card">
+          <h3>SuttonFIX</h3>
+          <p>Service requests with SLA tiers and public status — fewer calls, clearer expectations.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAMEWORK -->
+  <section id="framework" class="section">
+    <div class="container">
+      <h2>The PublicLogic Framework</h2>
+      <div class="grid grid--2 mt-lg">
+        <div class="about__copy">
+          <p class="lead">
+            <strong>VAULT™</strong> governs routing, retention, transparency, and auditability across modules.
+            <strong>ARCHIEVE™</strong> enforces rules and holds based on state retention schedules.
+            <span class="badge" aria-label="High-level only">High-level only</span> Mechanics are proprietary.
+          </p>
+
+          <details class="accordion">
+            <summary>How vendors plug in without lock-in</summary>
+            <div class="accordion__content">
+              PublicLogic defines the process &amp; compliance layer; vendors (e.g., Polimorphic, CivicOptimize) provide the UI.
+              Towns keep IDs, records, and audit logs.
+            </div>
+          </details>
+        </div>
+
+        <figure class="photo" aria-hidden="true">
+          <img src="pattern.svg" alt="" loading="lazy" />
+          <figcaption class="muted">Town-owned logic &amp; records; vendor UIs at the edge.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULES -->
+  <section id="modules" class="section">
+    <div class="container">
+      <h2>Modules you can adopt à la carte</h2>
+      <div class="grid grid--3 mt-lg modules">
+        <div class="module">
+          <h3 class="module__title">CLERK</h3>
+          <p>PRR, licensing, vital records. <span class="muted">Aligns: c.66 §10; c.140/c.138</span></p>
+        </div>
+        <div class="module">
+          <h3 class="module__title">FIX</h3>
+          <p>Resident service requests with SLAs and status transparency. <span class="muted">Aligns: c.40 §§6C–6D</span></p>
+        </div>
+        <div class="module">
+          <h3 class="module__title">AGENDA</h3>
+          <p>OML agenda/packet builder with timestamped posting log. <span class="muted">Aligns: c.30A</span></p>
+        </div>
+        <div class="module">
+          <h3 class="module__title">INSPECT / PERMIT</h3>
+          <p>Scheduling, findings, notices. <span class="muted">Aligns: c.143</span></p>
+        </div>
+        <div class="module">
+          <h3 class="module__title">FISCAL</h3>
+          <p>AP/AR intake, budget artifacts, capital requests.</p>
+        </div>
+        <div class="module">
+          <h3 class="module__title">HR / TIME</h3>
+          <p>Onboarding, required trainings, time &amp; attendance approvals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SURVEY -->
+  <section id="survey" class="section section--highlight" aria-labelledby="survey-title">
+    <div class="container text-center">
+      <h2 id="survey-title">PublicLogic Survey</h2>
+      <p class="lead">Help us understand how towns across Massachusetts are approaching modernization, automation, and compliance.</p>
+      <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Launch the Survey</a>
+      <p class="muted mt-lg">We’ll add the live survey link here soon.</p>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container site-footer__inner">
+    <div class="site-footer__cols">
+      <div>
+        <ul class="footer-links" aria-label="Footer links">
+          <li><a href="legal/privacy.html">Privacy</a></li>
+          <li><a href="legal/accessibility.html">Accessibility</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="notes.html">Field Notes</a></li>
         </ul>
+        <p class="ip-notice muted-legal">
+          VAULT™ and ARCHIEVE™ are described at a high level; implementation mechanics are proprietary to PublicLogic™.
+        </p>
+      </div>
+      <div class="muted">© <span id="year"></span> PublicLogic™ · WCAG 2.1 AA · 201 CMR 17.00 aligned</div>
     </div>
-    
-    <div class="contact-section">
-        <div class="contact-label">Get in Touch</div>
-        <a href="mailto:nathan@publiclogic.org" class="contact-email">nathan@publiclogic.org</a>
-        <div class="founder">Nathan Boudreau, MPA, MCPPO<br>Town Administrator, Hubbardston, MA</div>
-    </div>
-</div>
-```
+  </div>
+</footer>
 
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<script src="app.js" defer></script>
 </body>
 </html>

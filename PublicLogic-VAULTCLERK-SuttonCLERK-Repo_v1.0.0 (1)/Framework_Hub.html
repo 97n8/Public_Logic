@@ -6,161 +6,72 @@
 <title>SuttonCLERK™ — Living SOP Hub (v1.0.1)</title>
 <meta name="description" content="SuttonCLERK™ Living SOP Hub for the Town of Sutton Clerk’s Office — lifecycle, roles, compliance, training, and partnership with a visual VAULTCLERK™ process map." />
 
-<!-- ===== THEME & BASE ===== -->
 <style>
   :root{
-    /* Colors */
-    --bg: #f4fbf6;
-    --paper: #ffffff;
-    --ink: #0a1012;
-    --muted: #3f5250;         /* accessible contrast */
-    --edge: #dfe7e3;
-    --brand: #115c40;
-    --brand-ink: #0b3a28;
-    --chip: #eaf6f1;
-    --focus: #0f7b5c;
-    /* Shadow & radius */
-    --shadow: 0 1px 2px rgba(0,0,0,.06), 0 6px 18px rgba(0,0,0,.06);
-    --radius: 14px;
-    --radius-sm: 10px;
-    /* Spacing & type */
-    --space: 16px;
-    --lh: 1.6;
-    --fs-100: 1rem;           /* 16px baseline */
-    --fs-200: 1.125rem;       /* section lead */
-    --fs-300: 1.25rem;        /* k-headers */
-    --fs-400: 1.45rem;        /* h2 */
-    --fs-500: 1.7rem;         /* h1 */
+    --bg:#f4fbf6;
+    --paper:#ffffff;
+    --ink:#0a1012;
+    --muted:#3f5250;
+    --edge:#dfe7e3;
+    --brand:#115c40;
+    --brand-ink:#0b3a28;
+    --chip:#eaf6f1;
+    --focus:#0f7b5c;
+    --shadow:0 1px 2px rgba(0,0,0,.06),0 6px 18px rgba(0,0,0,.06);
+    --radius:14px; --radius-sm:10px;
+    --lh:1.6;
+    --fs-100:1rem; --fs-200:1.125rem; --fs-300:1.25rem; --fs-400:1.45rem; --fs-500:1.7rem;
   }
-
   *{box-sizing:border-box}
   html:focus-within{scroll-behavior:smooth}
-  html,body{height:100%}
-  body{
-    margin:0;
-    font:400 16px/var(--lh) ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
-    color:var(--ink);
-    background:var(--bg);
-    text-rendering:optimizeLegibility;
-  }
-  a{color:var(--brand); text-underline-offset: 3px}
+  body{margin:0;font:400 16px/var(--lh) ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;color:var(--ink);background:var(--bg)}
+  a{color:var(--brand);text-underline-offset:3px}
   a:hover{color:#0c4f36}
-  a:focus-visible{outline:3px solid var(--focus); outline-offset:3px; border-radius:6px}
+  a:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
 
-  /* Skip link */
-  .skip-link{
-    position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
-  }
-  .skip-link:focus{
-    position:fixed; left:var(--space); top:var(--space);
-    width:auto; height:auto; padding:8px 12px; z-index:9999;
-    background:#fff; color:#000; border:2px solid var(--focus); border-radius:8px;
-    box-shadow: var(--shadow);
-  }
+  .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  .skip-link:focus{position:fixed;left:16px;top:16px;padding:8px 12px;background:#fff;border:2px solid var(--focus);border-radius:8px;box-shadow:var(--shadow);z-index:9999}
 
-  /* Containers */
-  .wrap{max-width:1180px; margin-inline:auto; padding: clamp(12px, 3vw, 22px)}
-  header, section, footer, nav[aria-label="Contents"]{
-    background:var(--paper);
-    border:1px solid var(--edge);
-    border-radius:var(--radius);
-    padding: clamp(14px, 2.5vw, 20px);
-    margin-block: 12px;
-    box-shadow: var(--shadow);
-  }
-
-  header h1{
-    margin:0 0 6px;
-    font-size: clamp(var(--fs-400), 3.2vw, var(--fs-500));
-    color: var(--brand-ink);
-  }
-  .sub{color:var(--muted); font-size: var(--fs-100)}
-  .contacts{margin-top:10px; font-size: var(--fs-100); color:var(--muted)}
+  .wrap{max-width:1180px;margin-inline:auto;padding:clamp(12px,3vw,22px)}
+  header,section,footer,nav[aria-label="Contents"]{background:var(--paper);border:1px solid var(--edge);border-radius:var(--radius);padding:clamp(14px,2.5vw,20px);margin-block:12px;box-shadow:var(--shadow)}
+  header h1{margin:0 0 6px;font-size:clamp(var(--fs-400),3.2vw,var(--fs-500));color:var(--brand-ink)}
+  .sub{color:var(--muted);font-size:var(--fs-100)}
+  .contacts{margin-top:10px;font-size:var(--fs-100);color:var(--muted)}
   .contacts a{white-space:nowrap}
+  .k{color:var(--brand-ink);font-weight:700;font-size:var(--fs-300);margin:0 0 6px}
+  .lead{font-size:var(--fs-200);color:var(--muted);margin-top:4px}
 
-  .k{color:var(--brand-ink); font-weight:700; font-size: var(--fs-300); margin:0 0 6px}
-  .lead{font-size:var(--fs-200); color:var(--muted); margin-top:4px}
+  .grid{display:grid;gap:clamp(12px,2vw,16px);grid-template-columns:1fr 1fr}
+  .grid-two{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+  .card{border:1px solid var(--edge);border-radius:var(--radius-sm);padding:12px;background:linear-gradient(180deg,#fff,#fbfffd)}
+  .card:hover{box-shadow:0 1px 1px rgba(0,0,0,.04),0 8px 22px rgba(0,0,0,.06)}
+  .card:focus-within{outline:3px solid var(--focus);outline-offset:2px}
 
-  .grid{
-    display:grid; gap: clamp(12px, 2vw, 16px);
-    grid-template-columns: 1fr 1fr;
-  }
-  .grid-two{display:grid; gap:12px; grid-template-columns:1fr 1fr}
-  .card{
-    border:1px solid var(--edge); border-radius:var(--radius-sm);
-    padding:12px; background:linear-gradient(180deg,#fff,#fbfffd);
-  }
-  .card:focus-within{outline:3px solid var(--focus); outline-offset:2px}
-  .card:hover{box-shadow: 0 1px 1px rgba(0,0,0,.04), 0 8px 22px rgba(0,0,0,.06)}
-
-  /* Lists & pills */
-  ol{margin:8px 0 0 22px; padding:0}
+  ol{margin:8px 0 0 22px;padding:0}
   li{margin-block:6px}
-  .pill{
-    display:inline-block; margin:6px 6px 0 0; padding:7px 12px;
-    border-radius:999px; border:1px solid var(--edge); background:var(--chip);
-    font-size: .98rem; color:#163d31;
-  }
-  .pill:hover{filter:brightness(.98)}
-  .lane{padding:10px 0; border-bottom:1px dashed var(--edge)}
-  .lane:last-child{border-bottom:none}
+  .pill{display:inline-block;margin:6px 6px 0 0;padding:7px 12px;border-radius:999px;border:1px solid var(--edge);background:var(--chip);font-size:.98rem;color:#163d31}
 
-  /* TOC */
-  nav[aria-label="Contents"] ol{margin: 6px 0 0 18px}
-  nav[aria-label="Contents"] a{color:var(--brand)}
-  nav[aria-label="Contents"] a:focus-visible{outline:3px solid var(--focus); outline-offset:2px; border-radius:6px}
-
-  /* Details disclosure (interactive folder map — no JS required) */
-  details{
-    border:1px solid var(--edge); border-radius:10px; background:#ffffff;
-    padding:10px 12px; margin:10px 0;
-  }
+  details{border:1px solid var(--edge);border-radius:10px;background:#fff;padding:10px 12px;margin:10px 0}
   details[open]{background:#fcfffd}
-  summary{
-    cursor:pointer; list-style:none;
-    font-weight:600; color:var(--brand-ink);
-  }
+  summary{cursor:pointer;list-style:none;font-weight:600;color:var(--brand-ink)}
   summary::-webkit-details-marker{display:none}
-  summary:focus-visible{outline:3px solid var(--focus); outline-offset:4px; border-radius:6px}
+  summary:focus-visible{outline:3px solid var(--focus);outline-offset:4px;border-radius:6px}
 
-  /* SVG map container */
-  .map-wrap{display:flex; justify-content:center; align-items:center; padding:10px}
-  .map-caption{font-size:.95rem; color:var(--muted); text-align:center; margin-top:6px}
+  /* Process map container */
+  .map-wrap{display:flex;justify-content:center;align-items:center;padding:6px}
+  .map-caption{font-size:.95rem;color:var(--muted);text-align:center;margin-top:8px}
 
-  footer{font-size:.95rem; color:#596861}
+  nav[aria-label="Contents"] ol{margin:6px 0 0 18px}
 
-  /* Buttons-as-links for future JS */
-  .linklike{
-    display:inline-block; padding:8px 12px; border-radius:10px; border:1px solid var(--edge);
-    background:#fff; color:var(--brand-ink); text-decoration:none;
+  footer{font-size:.95rem;color:#596861}
+
+  @media (max-width:960px){.grid{grid-template-columns:1fr}.grid-two{grid-template-columns:1fr}}
+  @media (max-width:640px){
+    :root{--fs-100:1.02rem;--fs-200:1.12rem;--fs-300:1.25rem;--fs-400:1.42rem;--fs-500:1.6rem}
+    header,section,nav[aria-label="Contents"],footer{padding:14px}
   }
-  .linklike:hover{background:#f7fffb}
-  .linklike:focus-visible{outline:3px solid var(--focus); outline-offset:2px}
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 960px){
-    .grid{grid-template-columns:1fr}
-    .grid-two{grid-template-columns:1fr}
-  }
-  @media (max-width: 640px){
-    :root{
-      --fs-100: 1.02rem; --fs-200: 1.12rem; --fs-300:1.25rem; --fs-400:1.42rem; --fs-500:1.6rem;
-    }
-    header, section, nav[aria-label="Contents"], footer{ padding:14px }
-    .lane{padding:8px 0}
-  }
-
-  /* ===== REDUCED MOTION ===== */
-  @media (prefers-reduced-motion: reduce){
-    *{scroll-behavior:auto; animation:none; transition:none}
-  }
-
-  /* ===== PRINT ===== */
-  @media print{
-    nav[aria-label="Contents"], .skip-link {display:none !important}
-    header, section, footer{box-shadow:none}
-    body{background:#fff}
-  }
+  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto;animation:none;transition:none}}
+  @media print{nav[aria-label="Contents"],.skip-link{display:none!important}header,section,footer{box-shadow:none}body{background:#fff}}
 </style>
 </head>
 
@@ -168,12 +79,9 @@
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <div class="wrap">
-  <!-- ===== HEADER ===== -->
   <header role="banner">
     <h1>SuttonCLERK™ — Living SOP Hub</h1>
-    <p class="sub" aria-label="metadata">
-      Version v1.0.1 • Last updated November 11, 2025 • Partners: PublicLogic™, PublicInsight™, Polimorphic™
-    </p>
+    <p class="sub">Version v1.0.1 • Last updated November 11, 2025 • Partners: PublicLogic™, PublicInsight™, Polimorphic™</p>
     <p class="contacts">
       <strong>Contacts:</strong><br />
       Nathan Boudreau, MPA, MCPPO — PublicLogic™ — <a href="mailto:nate@publiclogic.org">nate@publiclogic.org</a><br />
@@ -181,7 +89,6 @@
     </p>
   </header>
 
-  <!-- ===== NAV / TOC ===== -->
   <nav aria-label="Contents">
     <strong style="color:var(--brand-ink)">Contents</strong>
     <ol>
@@ -193,9 +100,7 @@
     </ol>
   </nav>
 
-  <!-- ===== MAIN ===== -->
   <main id="main" tabindex="-1">
-    <!-- PURPOSE -->
     <section id="purpose" aria-labelledby="purpose-h">
       <h2 id="purpose-h" class="k">Purpose</h2>
       <p class="lead">
@@ -204,91 +109,94 @@
       </p>
     </section>
 
-    <!-- LIFECYCLE + PROCESS MAP -->
-    <section aria-labelledby="lifecycle-h">
-      <h2 id="lifecycle-h" class="k">Lifecycle (0–9) & Process Map</h2>
+    <section id="lifecycle" aria-labelledby="lifecycle-h">
+      <h2 id="lifecycle-h" class="k">Lifecycle (0–9) &amp; Process Map</h2>
 
-      <!-- Visual Process Map (Accessible SVG) -->
+      <!-- CLEAN, EVEN, ACCESSIBLE PROCESS MAP -->
       <figure class="card" aria-describedby="map-desc">
-        <div class="map-wrap" role="img" aria-label="Circular VAULTCLERK lifecycle map showing folders 0–9 with directional flow">
-          <!-- Scalable, crisp, accessible diagram -->
-          <svg width="480" height="360" viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <div class="map-wrap">
+          <!-- Responsive SVG (scales without blurring) -->
+          <svg viewBox="0 0 700 480" width="100%" role="img" aria-labelledby="map-title map-desc">
+            <title id="map-title">VAULTCLERK™ Lifecycle Process Map</title>
+            <desc id="map-desc">
+              Circular lifecycle from 0_EXEC through 9_CONTINUITY around a SuttonCLERK™ center. Arrows indicate clockwise flow.
+            </desc>
             <defs>
               <style>
-                .node { fill:#f6fff9; stroke:#cfeee3; stroke-width:2 }
-                .label{ font: 600 12px ui-sans-serif, Arial; fill:#1b5e47 }
-                .center{ font: 700 15px ui-sans-serif, Arial; fill:#0e3d2e }
-                .ring { fill:#eaf6f1; stroke:#cfeee3; stroke-width:2 }
-                .arrow{ stroke:#79bfa4; stroke-width:2; marker-end: url(#a) }
+                .ring{fill:#eaf6f1;stroke:#cfeee3;stroke-width:2}
+                .node{fill:#f6fff9;stroke:#bfe5d5;stroke-width:2}
+                .node text{font:600 12px ui-sans-serif,Arial;fill:#1b5e47}
+                .center{font:700 16px ui-sans-serif,Arial;fill:#0e3d2e}
+                .sublabel{font:600 12px ui-sans-serif,Arial;fill:#1b5e47}
+                .track{fill:none;stroke:#79bfa4;stroke-width:2;stroke-dasharray:2 6;opacity:.7}
+                .arrow{stroke:#6eb99f;stroke-width:2.5;fill:none;marker-end:url(#arr)}
               </style>
-              <marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-                <polygon points="0,0 8,4 0,8" fill="#79bfa4"/>
+              <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <polygon points="0,0 10,5 0,10" fill="#6eb99f"/>
               </marker>
             </defs>
 
-            <!-- Center -->
-            <circle cx="240" cy="180" r="70" class="ring"/>
-            <text x="240" y="178" text-anchor="middle" class="center">SuttonCLERK™</text>
-            <text x="240" y="196" text-anchor="middle" class="label">Living SOP Hub</text>
+            <!-- center -->
+            <circle cx="350" cy="240" r="82" class="ring"/>
+            <text x="350" y="238" text-anchor="middle" class="center">SuttonCLERK™</text>
+            <text x="350" y="258" text-anchor="middle" class="sublabel">Living SOP Hub</text>
 
-            <!-- Orbit nodes (0–9 clockwise) -->
-            <!-- Top (0_EXEC) -->
-            <circle cx="240" cy="40" r="26" class="node" />
-            <text x="240" y="44" text-anchor="middle" class="label">0_EXEC</text>
+            <!-- guide track -->
+            <circle cx="350" cy="240" r="160" class="track"/>
 
-            <!-- Top-right (1_DOCS) -->
-            <circle cx="340" cy="70" r="24" class="node" />
-            <text x="340" y="74" text-anchor="middle" class="label">1_DOCS</text>
+            <!-- evenly spaced nodes (clockwise, top first) -->
+            <!-- coords computed for a 160px radius -->
+            <!-- 0_EXEC (top) -->
+            <circle cx="350" cy="80" r="26" class="node"/>
+            <text x="350" y="84" text-anchor="middle">0_EXEC</text>
+            <!-- 1_DOCS -->
+            <circle cx="445" cy="106" r="26" class="node"/>
+            <text x="445" y="110" text-anchor="middle">1_DOCS</text>
+            <!-- 2_PACKAGE -->
+            <circle cx="520" cy="175" r="26" class="node"/>
+            <text x="520" y="179" text-anchor="middle">2_PACKAGE</text>
+            <!-- 3_CONFIG -->
+            <circle cx="550" cy="270" r="26" class="node"/>
+            <text x="550" y="274" text-anchor="middle">3_CONFIG</text>
+            <!-- 4_SAMPLES -->
+            <circle cx="520" cy="365" r="26" class="node"/>
+            <text x="520" y="369" text-anchor="middle">4_SAMPLES</text>
+            <!-- 5_INTEGRITY -->
+            <circle cx="445" cy="434" r="26" class="node"/>
+            <text x="445" y="438" text-anchor="middle">5_INTEGRITY</text>
+            <!-- 6_AUTOMATION (bottom) -->
+            <circle cx="350" cy="460" r="26" class="node"/>
+            <text x="350" y="464" text-anchor="middle">6_AUTOMATION</text>
+            <!-- 7_METADATA -->
+            <circle cx="255" cy="434" r="26" class="node"/>
+            <text x="255" y="438" text-anchor="middle">7_METADATA</text>
+            <!-- 8_TRAINING -->
+            <circle cx="180" cy="365" r="26" class="node"/>
+            <text x="180" y="369" text-anchor="middle">8_TRAINING</text>
+            <!-- 9_CONTINUITY -->
+            <circle cx="150" cy="270" r="26" class="node"/>
+            <text x="150" y="274" text-anchor="middle">9_CONTINUITY</text>
 
-            <!-- Right (2_PACKAGE, 3_CONFIG) -->
-            <circle cx="410" cy="140" r="24" class="node" />
-            <text x="410" y="144" text-anchor="middle" class="label">2_PACKAGE</text>
-
-            <circle cx="440" cy="210" r="22" class="node" />
-            <text x="440" y="214" text-anchor="middle" class="label">3_CONFIG</text>
-
-            <!-- Bottom-right (4_SAMPLES, 5_INTEGRITY) -->
-            <circle cx="390" cy="290" r="24" class="node" />
-            <text x="390" y="294" text-anchor="middle" class="label">4_SAMPLES</text>
-
-            <circle cx="310" cy="320" r="24" class="node" />
-            <text x="310" y="324" text-anchor="middle" class="label">5_INTEGRITY</text>
-
-            <!-- Bottom (6_AUTOMATION) -->
-            <circle cx="240" cy="340" r="26" class="node" />
-            <text x="240" y="344" text-anchor="middle" class="label">6_AUTOMATION</text>
-
-            <!-- Bottom-left (7_METADATA) -->
-            <circle cx="170" cy="320" r="24" class="node" />
-            <text x="170" y="324" text-anchor="middle" class="label">7_METADATA</text>
-
-            <!-- Left (8_TRAINING, 9_CONTINUITY) -->
-            <circle cx="90"  cy="290" r="24" class="node" />
-            <text x="90"  y="294" text-anchor="middle" class="label">8_TRAINING</text>
-
-            <circle cx="40"  cy="210" r="22" class="node" />
-            <text x="40"  y="214" text-anchor="middle" class="label">9_CONTINUITY</text>
-
-            <!-- Arrows (approximate clockwise flow) -->
-            <line x1="240" y1="66"  x2="330" y2="93"  class="arrow"/>
-            <line x1="360" y1="88"  x2="395" y2="125" class="arrow"/>
-            <line x1="428" y1="164" x2="438" y2="196" class="arrow"/>
-            <line x1="430" y1="232" x2="400" y2="274" class="arrow"/>
-            <line x1="370" y1="305" x2="330" y2="318" class="arrow"/>
-            <line x1="288" y1="330" x2="263" y2="336" class="arrow"/>
-            <line x1="216" y1="336" x2="189" y2="328" class="arrow"/>
-            <line x1="150" y1="310" x2="108" y2="296" class="arrow"/>
-            <line x1="77"  y1="270" x2="50"  y2="232" class="arrow"/>
-            <line x1="50"  y1="188" x2="78"  y2="90"  class="arrow"/>
-            <line x1="105" y1="77"  x2="210" y2="54"  class="arrow"/>
+            <!-- flow arrows (short arcs along the circle) -->
+            <path class="arrow" d="M350,106 C380,110 410,118 435,128"/>
+            <path class="arrow" d="M459,122 C485,145 505,160 514,168"/>
+            <path class="arrow" d="M529,195 C540,220 546,245 548,260"/>
+            <path class="arrow" d="M548,290 C544,320 534,345 522,356"/>
+            <path class="arrow" d="M504,381 C480,406 460,420 450,425"/>
+            <path class="arrow" d="M425,439 C396,452 372,458 362,459"/>
+            <path class="arrow" d="M338,459 C308,455 278,446 263,439"/>
+            <path class="arrow" d="M238,425 C214,406 197,388 189,377"/>
+            <path class="arrow" d="M175,355 C162,330 156,300 155,288"/>
+            <path class="arrow" d="M152,250 C156,220 166,195 178,182"/>
+            <path class="arrow" d="M195,165 C220,140 250,125 290,112"/>
+            <path class="arrow" d="M310,106 C330,103 340,101 350,100"/>
           </svg>
         </div>
-        <figcaption id="map-desc" class="map-caption">
-          Visual process map of the VAULTCLERK™ lifecycle: begin with 0_EXEC and proceed clockwise through 1_DOCS, 2_PACKAGE, 3_CONFIG, 4_SAMPLES, 5_INTEGRITY, 6_AUTOMATION, 7_METADATA, 8_TRAINING, and 9_CONTINUITY. The center represents the SuttonCLERK™ Living SOP Hub.
+        <figcaption class="map-caption">
+          Clean circular map with evenly spaced folders and arrows. Start at <strong>0_EXEC</strong> and proceed clockwise through <strong>9_CONTINUITY</strong>.
         </figcaption>
       </figure>
 
-      <!-- Lifecycle Descriptions -->
       <div class="grid" role="region" aria-label="Lifecycle detail and interactive folder map">
         <div class="card" aria-labelledby="life-list-h" tabindex="0">
           <h3 id="life-list-h" class="k">Lifecycle Descriptions</h3>
@@ -306,66 +214,55 @@
           </ol>
         </div>
 
-        <!-- Interactive Folder Map (no JS) -->
         <div class="card" aria-labelledby="folders-h" tabindex="0">
           <h3 id="folders-h" class="k">Interactive Folder Map</h3>
 
-          <details>
-            <summary>0_EXEC — Executive Launch</summary>
+          <details><summary>0_EXEC — Executive Launch</summary>
             <p class="lead">Owners: Town Administrator, Town Clerk</p>
             <p>Launch brief, governance approvals, decision log.</p>
           </details>
 
-          <details>
-            <summary>1_DOCS — Documentation</summary>
+          <details><summary>1_DOCS — Documentation</summary>
             <p class="lead">Owners: Clerk’s Office</p>
             <p>Quick-start guides, smoke tests, runbooks.</p>
           </details>
 
-          <details>
-            <summary>2_PACKAGE — Seed Package</summary>
+          <details><summary>2_PACKAGE — Seed Package</summary>
             <p class="lead">Owners: Information Technology</p>
             <p>Seeds the 21-folder VAULT structure for reuse and continuity.</p>
           </details>
 
-          <details>
-            <summary>3_CONFIG — Configuration</summary>
+          <details><summary>3_CONFIG — Configuration</summary>
             <p class="lead">Owners: IT</p>
             <p>Naming conventions, environment variables, deployment notes.</p>
           </details>
 
-          <details>
-            <summary>4_SAMPLES — Samples & Binders</summary>
+          <details><summary>4_SAMPLES — Samples &amp; Binders</summary>
             <p class="lead">Owners: Clerk’s Office</p>
             <p>Binder demos, example datasets, forms.</p>
           </details>
 
-          <details>
-            <summary>5_INTEGRITY — Integrity & Audit</summary>
+          <details><summary>5_INTEGRITY — Integrity &amp; Audit</summary>
             <p class="lead">Owners: Town Administrator, IT</p>
             <p>Security controls, licensing, audit artifacts, immutable change logs.</p>
           </details>
 
-          <details>
-            <summary>6_AUTOMATION — Workflows</summary>
+          <details><summary>6_AUTOMATION — Workflows</summary>
             <p class="lead">Owners: IT, PublicLogic™</p>
             <p>Power Automate flows, child-logic modules, routing and notifications.</p>
           </details>
 
-          <details>
-            <summary>7_METADATA — Information Model</summary>
+          <details><summary>7_METADATA — Information Model</summary>
             <p class="lead">Owners: IT</p>
             <p>SharePoint site columns, content types, JSON schemas.</p>
           </details>
 
-          <details>
-            <summary>8_TRAINING — Adoption & Materials</summary>
+          <details><summary>8_TRAINING — Adoption &amp; Materials</summary>
             <p class="lead">Owners: PublicInsight™, Clerk’s Office</p>
             <p>Playbooks, slide decks, recordings, micro-trainings and refresh cycles.</p>
           </details>
 
-          <details>
-            <summary>9_CONTINUITY — DR & Backups</summary>
+          <details><summary>9_CONTINUITY — DR &amp; Backups</summary>
             <p class="lead">Owners: Town Administrator, IT</p>
             <p>Backups, disaster recovery, quarterly archive under retention schedule.</p>
           </details>
@@ -373,37 +270,29 @@
       </div>
     </section>
 
-    <!-- ROLE LANES -->
     <section id="roles" aria-labelledby="roles-h">
       <h2 id="roles-h" class="k">Role Lanes</h2>
       <div class="grid-two">
         <div class="card">
-          <div class="lane">
-            <p><strong>Administrator</strong> — Governance, integrity, continuity.</p>
-            <p class="lead"><em>Folders:</em> 0_EXEC, 1_DOCS, 5_INTEGRITY, 9_CONTINUITY.</p>
-          </div>
-          <div class="lane">
-            <p><strong>Clerk</strong> — Licensing, meetings, records, training.</p>
-            <p class="lead"><em>Folders:</em> 1_DOCS, 4_SAMPLES, 8_TRAINING.</p>
-          </div>
+          <p><strong>Administrator</strong> — Governance, integrity, continuity.</p>
+          <p class="lead"><em>Folders:</em> 0_EXEC, 1_DOCS, 5_INTEGRITY, 9_CONTINUITY.</p>
+          <hr style="border:none;border-top:1px dashed var(--edge);margin:10px 0" />
+          <p><strong>Clerk</strong> — Licensing, meetings, records, training.</p>
+          <p class="lead"><em>Folders:</em> 1_DOCS, 4_SAMPLES, 8_TRAINING.</p>
         </div>
         <div class="card">
-          <div class="lane">
-            <p><strong>IT</strong> — Configuration, automation, metadata.</p>
-            <p class="lead"><em>Folders:</em> 2_PACKAGE, 3_CONFIG, 6_AUTOMATION, 7_METADATA.</p>
-          </div>
-          <div class="lane">
-            <p><strong>Vendor / PL</strong> — Integration and update cycles.</p>
-            <p class="lead"><em>Folders:</em> 3_CONFIG, 5_INTEGRITY, 8_TRAINING, 9_CONTINUITY.</p>
-          </div>
+          <p><strong>IT</strong> — Configuration, automation, metadata.</p>
+          <p class="lead"><em>Folders:</em> 2_PACKAGE, 3_CONFIG, 6_AUTOMATION, 7_METADATA.</p>
+          <hr style="border:none;border-top:1px dashed var(--edge);margin:10px 0" />
+          <p><strong>Vendor / PL</strong> — Integration and update cycles.</p>
+          <p class="lead"><em>Folders:</em> 3_CONFIG, 5_INTEGRITY, 8_TRAINING, 9_CONTINUITY.</p>
         </div>
       </div>
     </section>
 
-    <!-- COMPLIANCE -->
     <section id="compliance" aria-labelledby="comp-h">
       <h2 id="comp-h" class="k">Compliance</h2>
-      <ul aria-label="Compliance references">
+      <ul aria-label="Compliance references" style="padding-left:0;list-style:none">
         <li class="pill">M.G.L. c.4 §7</li>
         <li class="pill">M.G.L. c.66 (Public Records)</li>
         <li class="pill">M.G.L. c.30A §§18–25 (Open Meeting Law)</li>
@@ -414,23 +303,19 @@
         <li class="pill">WCAG 2.1 AA</li>
         <li class="pill">NIST SP 800-53 Moderate</li>
       </ul>
-      <p class="lead" style="margin-top:8px">
-        The Town of Sutton retains ownership and custody of all municipal records under M.G.L. c.66 and 201 CMR 17.00.
-      </p>
+      <p class="lead">The Town of Sutton retains ownership and custody of all municipal records under M.G.L. c.66 and 201 CMR 17.00.</p>
     </section>
 
-    <!-- PARTNERSHIP -->
     <section id="partnership" aria-labelledby="part-h">
       <h2 id="part-h" class="k">Implementation Partnership</h2>
       <p class="lead">
-        <strong>PublicLogic™</strong> — Lawful framework and compliance structure (VAULTCLERK™).<br />
-        <strong>Polimorphic™</strong> — Runtime, integrations, and operational delivery.<br />
-        <strong>PublicInsight™</strong> — Readiness, training, and behavioral analytics.
+        <strong>PublicLogic™</strong> — Lawful framework &amp; compliance (VAULTCLERK™).<br />
+        <strong>Polimorphic™</strong> — Runtime, integrations, operational delivery.<br />
+        <strong>PublicInsight™</strong> — Readiness, training, behavioral analytics.
       </p>
     </section>
   </main>
 
-  <!-- ===== FOOTER ===== -->
   <footer role="contentinfo">
     © 2025 Town of Sutton | Built with <strong>PublicLogic™</strong>, <strong>Polimorphic™</strong>, and <strong>PublicInsight™</strong>.  
     Framework-as-a-Standard™ — VAULTCLERK™ v1.0.1

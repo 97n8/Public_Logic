@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>PublicLogic — VAULTCLERK Sutton: Pilot Specification (Final)</title>
+<meta name="description" content="PublicLogic: VAULTCLERK Sutton pilot specification. Process, universal form, technical architecture, VAULT doctrine, implementation plan, KPIs, compliance, and packaging."/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<style>
+  :root{--ink:#0f1f2a;--muted:#4e606d;--bg:#f7fafb;--card:#ffffff;--edge:#e3eaef;--accent:#256c4e;--accent2:#3f9a71}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial}
+  header{background:#fff;border-bottom:1px solid var(--edge);padding:16px 18px;display:flex;justify-content:space-between;align-items:baseline}
+  .wordmark{font-weight:900;letter-spacing:.02em}
+  .badge{font-size:.78rem;color:#fff;background:linear-gradient(90deg,var(--accent),var(--accent2));padding:.35rem .6rem;border-radius:999px;font-weight:800;letter-spacing:.02em}
+  .wrap{max-width:1100px;margin:0 auto;padding:18px}
+  h1{font-size:1.35rem;margin:0 0 .6rem}
+  h2{font-size:1.1rem;margin:1rem 0 .35rem}
+  h3{font-size:1rem;margin:.8rem 0 .25rem}
+  p,li{line-height:1.55}
+  .card{background:#fff;border:1px solid var(--edge);border-radius:14px;padding:16px;margin:10px 0}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  .mermaid{background:#fff;border:1px solid var(--edge);border-radius:12px;padding:10px;overflow:auto}
+  table{width:100%;border-collapse:separate;border-spacing:0;margin:.6rem 0}
+  th,td{padding:.55rem .6rem;border-top:1px solid var(--edge);border-left:1px solid var(--edge);text-align:left;vertical-align:top}
+  th:last-child,td:last-child{border-right:1px solid var(--edge)}
+  tr:last-child td{border-bottom:1px solid var(--edge)}
+  thead th{background:#f3f8f5}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+  .small{font-size:.9rem;color:var(--muted)}
+  .btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+  .btn{display:inline-block;border:1px solid var(--accent);color:var(--accent);text-decoration:none;
+       padding:8px 12px;border-radius:10px;font-weight:800;background:linear-gradient(180deg,#fff,#f6fbf8)}
+</style>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "neutral" });
+</script>
+</head>
+<body>
+<header>
+  <div class="wordmark">PublicLogic</div>
+  <div class="badge">VAULTCLERK — Sutton</div>
+</header>
+
+<div class="wrap">
+
+  <section class="card">
+    <h1>Pilot Specification — Sutton (Polimorphic + Google Workspace)</h1>
+    <p><strong>Purpose.</strong> Establish a single, defensible municipal intake and records logic for all channels, with one queue, one schema, and defense‑ready exports. Town retains ownership of operational records and exports.</p>
+    <div class="small">Stack: Polimorphic (data + automation), Google Workspace (Gmail, Drive, Sheets, Calendar), GIS, Email, Payments, Permitting.</div>
+  </section>
+
+  <section class="card">
+    <h2>1) Scope & Deliverables</h2>
+    <ul>
+      <li>Universal municipal intake form (all channels) mapped to a single schema.</li>
+      <li>VAULTCLERK logic: ID minting, timers, holds, retention tags, evidence links, export.</li>
+      <li>Ingress wiring for Gmail (RAO/Clerk), Drive watch‑folder scans, Sheets phone/311 log, POLI forms.</li>
+      <li>Clerk dashboard, binder builder (PDF/A), public copy workflow, and KPI reporting.</li>
+      <li>VAULT universal 21‑folder packaging with manifest and seed assets.</li>
+      <li>Staff SOP + micro‑labs; PublicInsight readiness and adoption support.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>2) Municipal Process Map</h2>
+    <div class="mermaid">
+    flowchart LR
+      subgraph Ingress["All Ways In"]
+        A1["POLI Web Form"] --> BUS["Intake Bus (Polimorphic)"]
+        A2["Counter / Mail → Scan to Drive"] --> BUS
+        A3["Gmail RAO / Clerk Shared Inbox"] --> BUS
+        A4["Phone / 311 → Sheets"] --> BUS
+        A5["Inter‑Department Referral"] --> BUS
+        A6["State / Regional Feeds"] --> BUS
+        A7["Backfile Import (Legacy PDFs / CSV)"] --> BUS
+        A8["API / External Apps"] --> BUS
+      end
+      BUS -->|"OCR • Classify • Dedupe • Metadata"| N["Intake Normalizer"]
+      N --> V["VAULTCLERK Logic Layer"]
+      subgraph Outputs["Outputs — Town Owns Data"]
+        V --> D["Clerk Dashboard"]
+        V --> R["Annual Binder (PDF/A)"]
+        V --> P["Public Copy (as approved)"]
+        V --> I["Integrations (GIS • Email • Payments)"]
+        V --> S["Storage / Retention (Drive, ZIP)"]
+      end
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3) Universal Form & Schema</h2>
+    <div class="grid">
+      <div>
+        <h3>Universal Form (all channels)</h3>
+        <ul>
+          <li>One schema for web, counter, mail, email, phone/311, kiosk, referrals, state feeds, backfile, and API.</li>
+          <li>Channel‑specific details captured as metadata extensions, not forked forms.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Core Schema (excerpt)</h3>
+        <ul>
+          <li><span class="mono">record_id</span> — CLERK‑YYYY‑#####</li>
+          <li><span class="mono">source_channel</span> — web|counter|mail|email|phone|kiosk|referral|state|backfile|api</li>
+          <li><span class="mono">received_at</span> — ISO 8601</li>
+          <li><span class="mono">retention_code</span> — schedule key</li>
+          <li><span class="mono">deadline_at</span> — policy‑derived</li>
+          <li><span class="mono">status</span> — open|in_review|hold|closed|published</li>
+          <li><span class="mono">evidence_links[]</span> — URIs to proofs (.pdfa, .eml, imgs)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>4) Technical Architecture</h2>
+    <div class="grid">
+      <div>
+        <h3>Layers</h3>
+        <ul>
+          <li><strong>Ingress</strong> — POLI, Gmail (RAO/Clerk), Drive scans, Sheets logs, referrals, state feeds, backfile, API.</li>
+          <li><strong>Normalizer</strong> — OCR→classify→dedupe→metadata map to schema.</li>
+          <li><strong>VAULTCLERK</strong> — ID minting, timers, holds, retention tags, hash, evidence links.</li>
+          <li><strong>Outputs</strong> — Queue, Binder, Public copy, Integrations, Storage/Retention.</li>
+        </ul>
+        <h3>Interfaces (examples)</h3>
+        <table>
+          <thead><tr><th>Endpoint</th><th>Method</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">/intake</td><td>POST</td><td>Create intake from any channel</td></tr>
+            <tr><td class="mono">/records/{id}</td><td>GET</td><td>Record with history</td></tr>
+            <tr><td class="mono">/records/{id}/status</td><td>PATCH</td><td>State update (audited)</td></tr>
+            <tr><td class="mono">/export/binder?year=YYYY</td><td>GET</td><td>Generate annual binder</td></tr>
+            <tr><td class="mono">/public/{id}</td><td>GET</td><td>Publishable copy</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3>Google Workspace Wiring</h3>
+        <ul>
+          <li><strong>Gmail</strong> shared inboxes (e.g., <span class="mono">rao@…</span>, <span class="mono">clerk-intake@…</span>) with labels <span class="mono">vault/intake</span>, <span class="mono">vault/hold</span>, <span class="mono">vault/published</span>.</li>
+          <li><strong>Drive</strong> Shared Drive: <span class="mono">Sutton_VAULTCLERK</span> with watch‑folder <span class="mono">/intake_scans</span>.</li>
+          <li><strong>Sheets</strong> phone/311 log (<span class="mono">datetime,caller,subject,location,notes</span>) synced to queue.</li>
+          <li>Scopes: Gmail/Drive/Sheets read‑only for ingestion; least privilege.</li>
+        </ul>
+        <h3>Security</h3>
+        <ul>
+          <li>Role‑based access; dual‑control for deletion.</li>
+          <li>Append‑only audit for state and export.</li>
+          <li>PDF/A normalization; redaction prior to public copy.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>5) VAULT Universal 21‑Folder Packaging</h2>
+    <p>Every module ships with the full 21‑folder tree to remain universal and future‑proof.</p>
+    <table>
+      <thead><tr><th>#</th><th>Folder</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td class="mono">0_README</td><td>Orientation, first hour, contacts</td></tr>
+        <tr><td>1</td><td class="mono">1_BRANDING</td><td>Tokens and marks</td></tr>
+        <tr><td>2</td><td class="mono">2_HTML</td><td>Explainers and snippets</td></tr>
+        <tr><td>3</td><td class="mono">3_QR</td><td>Signage assets</td></tr>
+        <tr><td>4</td><td class="mono">4_FORMS</td><td>Universal form JSON/PDFs</td></tr>
+        <tr><td>5</td><td class="mono">5_MATRIX</td><td>RACI and approvals</td></tr>
+        <tr><td>6</td><td class="mono">6_SCHEMA</td><td>Data model and contracts</td></tr>
+        <tr><td>7</td><td class="mono">7_FLOWS</td><td>Normalizer and automation configs</td></tr>
+        <tr><td>8</td><td class="mono">8_LISTS</td><td>Reference CSVs (lowercase)</td></tr>
+        <tr><td>9</td><td class="mono">9_SOPS</td><td>Step‑by‑step staff guides</td></tr>
+        <tr><td>10</td><td class="mono">10_TRAINING</td><td>Decks and micro‑labs</td></tr>
+        <tr><td>11</td><td class="mono">11_SECURITY</td><td>Roles and controls</td></tr>
+        <tr><td>12</td><td class="mono">12_COMPLIANCE</td><td>Statutes and retention</td></tr>
+        <tr><td>13</td><td class="mono">13_REPORTS</td><td>Binder templates</td></tr>
+        <tr><td>14</td><td class="mono">14_RUNTIME</td><td>Health checks</td></tr>
+        <tr><td>15</td><td class="mono">15_TESTS</td><td>Fixtures and UAT</td></tr>
+        <tr><td>16</td><td class="mono">16_EXPORTS</td><td>PDF/A, CSV, ZIP</td></tr>
+        <tr><td>17</td><td class="mono">17_INTEGRATIONS</td><td>GIS, email, payments, permits</td></tr>
+        <tr><td>18</td><td class="mono">18_MIGRATIONS</td><td>Backfile plan</td></tr>
+        <tr><td>19</td><td class="mono">19_LICENSE</td><td>IP and usage terms</td></tr>
+        <tr><td>20</td><td class="mono">20_ARCHIVE</td><td>Retired materials</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>6) Implementation Plan</h2>
+    <ol>
+      <li><strong>Discovery & Wiring.</strong> Confirm Gmail/Drive/Sheets access, create shared inbox labels, set Drive watch‑folder, connect POLI forms.</li>
+      <li><strong>Schema & Normalizer.</strong> Lock universal schema; apply OCR/classify/dedupe rules.</li>
+      <li><strong>VAULTCLERK Logic.</strong> ID minting, timers, holds, retention tags, evidence links, audit.</li>
+      <li><strong>Outputs.</strong> Clerk dashboard, binder export, public copy workflow, integrations.</li>
+      <li><strong>Training.</strong> Staff micro‑labs and SOP walkthrough; PublicInsight readiness.</li>
+      <li><strong>Validation.</strong> Parallel run with sample intakes; acceptance against KPIs.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>7) KPIs & Acceptance</h2>
+    <ul>
+      <li><strong>K01</strong> Outfall screenings recorded</li>
+      <li><strong>K02</strong> Illicit connections resolved</li>
+      <li><strong>K03</strong> Catch basin cleaning rate</li>
+      <li><strong>K04</strong> BMP maintenance on time</li>
+      <li><strong>K05</strong> Public education touchpoints</li>
+    </ul>
+    <p class="small">Acceptance: universal form live across channels; queue functional; binder export verified; public copy approved; KPIs populated.</p>
+  </section>
+
+  <section class="card">
+    <h2>8) Security & Compliance (abbrev.)</h2>
+    <ul>
+      <li>M.G.L. c.66 / 950 CMR 32.00</li>
+      <li>M.G.L. c.30A</li>
+      <li>201 CMR 17.00</li>
+      <li>Municipal Records Retention Schedule</li>
+      <li>NPDES MS4</li>
+      <li>WCAG 2.1 AA</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>9) Intellectual Property & Rights</h2>
+    <ul>
+      <li>PublicLogic retains all framework IP, packaging conventions, and artifacts labelled VAULTCLERK, VAULT, and related marks.</li>
+      <li>The Town owns its operational records, evidence, and exported binders generated through operations.</li>
+      <li>Use is limited to the pilot’s scope. No reproduction or sublicensing of the framework, packaging, or derivative structures without written permission.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>10) Packaging & Shipping</h2>
+    <p><strong>Recommended method:</strong> Ship as a GitHub repository with a tagged release that includes a signed ZIP.</p>
+    <div class="grid">
+      <div>
+        <h3>Repository root</h3>
+        <ul>
+          <li><span class="mono">module_manifest.yaml</span> — version, stack, contacts</li>
+          <li><span class="mono">LICENSE</span> — IP and usage terms</li>
+          <li><span class="mono">/VAULTCLERK/</span> — full 21‑folder tree</li>
+          <li><span class="mono">/docs/</span> — this spec and quick guides</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Release ZIP</h3>
+        <ul>
+          <li>Signed artifact of the repository state</li>
+          <li>Checksum file (<span class="mono">SHA256SUMS</span>)</li>
+          <li>Versioned tag (<span class="mono">v1.1.0</span> or later)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="btnrow">
+      <a class="btn" href="PL_VAULTCLERK_Full_Package_Circular.html">Full Circular (reference)</a>
+      <a class="btn" href="VAULTCLERK_SUTTON_Package_v2.zip">Download Seed Package (v2 ZIP)</a>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

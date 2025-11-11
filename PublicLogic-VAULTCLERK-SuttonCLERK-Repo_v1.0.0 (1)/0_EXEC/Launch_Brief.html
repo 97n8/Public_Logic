@@ -3,158 +3,167 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VAULTCLERK Sutton Pilot — Launch Package & Operational Kickoff</title>
+<title>SuttonCLERK™ — Pilot Launch Package (Confidential Draft)</title>
 <style>
-  /* ---------------------------------------------
-     PublicLogic™ Brand Email Framework
-     --------------------------------------------- */
-  body{
-    margin:0;padding:0;background:#f4f7f5;color:#0a1813;
-    font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-    -webkit-font-smoothing:antialiased;
+  /* --------------------------------------------------------
+     PublicLogic™ Executive Email + Web Framework (A11y-tuned)
+     -------------------------------------------------------- */
+  :root {
+    --bg:#f5f8f6; --paper:#ffffff; --ink:#0b1812; --muted:#546b5e;
+    --line:#dde7e0; --accent:#1f6b4a; --accent-dark:#195c3f; --accent-light:#ebf5ef;
   }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:0; background:var(--bg); color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.65;
+  }
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
   .container{
-    max-width:720px;margin:0 auto;background:#ffffff;
-    box-shadow:0 2px 6px rgba(0,0,0,0.04);
-    border-radius:12px;overflow:hidden;
+    max-width:740px; margin:36px auto; background:var(--paper); border-radius:16px;
+    box-shadow:0 8px 28px rgba(0,0,0,.06); overflow:hidden; border:1px solid var(--line);
   }
   .header{
-    padding:22px 26px;
-    background:linear-gradient(135deg,#f8fcf9,#ecf8f1);
-    border-bottom:1px solid #dbe7df;
+    padding:32px 36px; background:linear-gradient(135deg,#f9fdfb,#e9f5ee);
+    border-bottom:1px solid var(--line);
   }
-  .heading{
-    margin:0;font-size:22px;line-height:1.3;
-    font-weight:700;color:#0a1813;
-  }
-  .brand{color:#1f6b4a;font-weight:800}
-  .subhead{color:#54725d;font-size:14px;margin-top:4px}
-  .content{
-    padding:26px 28px 12px 28px;
-  }
-  p{margin:0 0 14px 0;line-height:1.58}
-  strong{color:#0c1a15}
-  .muted{color:#5b6a60}
-  .hr{height:1px;background:#e3ebe5;margin:20px 0}
-  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 10px 0}
+  .heading{margin:0; font-size:26px; font-weight:800; color:var(--ink); line-height:1.3}
+  .brand{color:var(--accent); font-weight:900}
+  .pill{display:inline-block; margin-left:.5rem; padding:.25rem .5rem; border-radius:999px; font-size:.75rem; background:var(--accent); color:#fff}
+  .subhead{font-size:15px; color:var(--muted); margin-top:6px; letter-spacing:.3px}
+  .content{padding:32px 36px 16px}
+  p{margin:0 0 16px}
+  strong{color:var(--ink)}
+  .muted{color:var(--muted)}
+  .hr{border:none; height:1px; background:var(--line); margin:28px 0}
+  .btnrow{display:flex; flex-wrap:wrap; gap:12px; margin:20px 0}
   .btn{
-    display:inline-block;text-decoration:none;font-weight:700;
-    border-radius:10px;padding:12px 18px;
+    display:inline-block; font-weight:700; padding:12px 20px; border-radius:10px;
+    border:1px solid var(--accent); background:var(--accent-light); color:var(--ink);
     transition:all .2s ease;
-    border:1px solid #1f6b4a;background:#edf7f0;color:#0a1813;
   }
-  .btn:hover{background:#e3f3e8}
-  .btn.primary{
-    background:#1f6b4a;color:#ffffff;border-color:#1f6b4a;
-  }
-  .btn.primary:hover{background:#195c3f}
-  .section{
-    background:#fbfcfb;border:1px solid #e2eae3;
-    border-radius:12px;padding:16px 18px;margin:10px 0;
-  }
-  .section strong{display:block;margin-bottom:6px;font-size:15px}
-  .grid2{display:block}
-  @media (min-width:620px){
-    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  }
-  ul{padding-left:18px;margin:6px 0 10px 0}
+  .btn:hover{background:#ddefe3}
+  .btn.primary{background:var(--accent); color:#fff; border-color:var(--accent)}
+  .btn.primary:hover{background:var(--accent-dark)}
+  .section{background:#fbfcfb; border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:16px 0}
+  .section strong{display:block; font-size:15px; margin-bottom:8px; color:var(--accent-dark)}
+  ul{margin:8px 0 12px; padding-left:22px}
   li{margin:6px 0}
-  .sig{margin-top:16px}
-  .footer{
-    padding:16px 26px 28px 26px;
-    color:#5b6a60;font-size:13px;
-    background:#fafcfb;border-top:1px solid #e3ebe5;
-  }
-  .small{font-size:13px}
+  .grid2{display:block}
+  @media (min-width:620px){.grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px}}
   .kbd{
     font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Courier New",monospace;
-    background:#eef3ee;padding:2px 6px;border-radius:6px;
-    font-size:13px
+    background:#eef3ef; border-radius:6px; padding:2px 6px; font-size:13px
+  }
+  .small{font-size:13px}
+  .sig{margin-top:24px}
+  .footer{
+    padding:24px 36px 36px; background:#f9fbfa; border-top:1px solid var(--line);
+    font-size:13px; color:var(--muted)
   }
 </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1 class="heading"><span class="brand">PublicLogic</span> — VAULTCLERK™ Sutton Pilot</h1>
-      <div class="subhead">Launch Package & Operational Kickoff</div>
-    </div>
+  <div class="container" role="region" aria-label="SuttonCLERK Pilot Launch">
+    <header class="header">
+      <h1 class="heading">
+        <span class="brand">PublicLogic</span> — SuttonCLERK™ Pilot
+        <span class="pill" aria-label="Confidential Draft">Confidential</span>
+      </h1>
+      <div class="subhead">Launch Package &amp; Operational Kickoff • November 2025</div>
+    </header>
 
-    <div class="content">
+    <main class="content">
       <p><strong>To:</strong> Austin Cyganiewicz</p>
-      <p class="muted small"><strong>Cc:</strong> Parth Shah · Dr. Allison Weiss Rothschild (PublicInsight™) · Capital Strategic Solutions</p>
+      <p class="small muted">
+        <strong>Cc:</strong> Parth Shah · Dr. Allison Weiss Rothschild (PublicInsight™) · Capital Strategic Solutions
+      </p>
 
-      <p>Welcome to the <strong>VAULTCLERK™ Sutton Pilot</strong> — our first living deployment. The system is pre-wired for <strong>Google Workspace</strong>, <strong>Polimorphic</strong>, and <strong>PublicLogic™</strong> compliance logic, with <strong>PublicInsight™</strong> and <strong>CSS</strong> aligned for staff training and onboarding.</p>
+      <p>
+        Welcome to the <strong>SuttonCLERK™ Pilot</strong> — our first living deployment under the <strong>Frameworks-as-a-Standard™</strong> model.
+        This pilot aligns <strong>Google Workspace</strong>, <strong>Polimorphic</strong>, and <strong>PublicLogic™</strong> compliance logic, with
+        <strong>PublicInsight™</strong> and <strong>CSS</strong> integrated for readiness, training, and onboarding.
+      </p>
 
-      <div class="btnrow">
-        <a class="btn primary" href="sandbox:/mnt/data/VAULTCLERK_SUTTON_PILOT/PL_VAULTCLERK_Sutton_TM_Brief_SIGNATURE.html">Open Executive Dashboard</a>
-        <a class="btn" href="sandbox:/mnt/data/VAULTCLERK_SUTTON_PILOT_v1.zip">Download Full Pilot Package</a>
+      <!-- LIVE REPO LINKS -->
+      <div class="btnrow" role="group" aria-label="Primary actions">
+        <!-- Framework Hub (Executive Dashboard) -->
+        <a class="btn primary"
+           href="https://www.publiclogic.org/publiclogic-vaultclerk-suttonclerk-repo_v1.0.0%20(1)/framework_hub/index.html"
+           aria-label="Open SuttonCLERK Framework Hub (Executive Dashboard)">
+           Open Framework Hub
+        </a>
+
+        <!-- Package folder (seed + zip lives here) -->
+        <a class="btn"
+           href="https://www.publiclogic.org/publiclogic-vaultclerk-suttonclerk-repo_v1.0.0%20(1)/2_PACKAGE/"
+           aria-label="Open Package Folder">
+           Open Package Folder
+        </a>
       </div>
 
-      <div class="section">
+      <section class="section">
         <strong>Start Here</strong>
         <div class="grid2">
-          <div>
-            <ul>
-              <li>Open the Executive Dashboard — one-screen control center outlining the Promise, 90-Day Plan, Value, Risk, Stack, KPIs, Compliance, Training, and Checklist.</li>
-              <li>Unzip the package into a Shared Drive or local folder; the framework runs offline from the same directory.</li>
-            </ul>
-          </div>
-          <div>
-            <ul>
-              <li>Run <span class="kbd">Quick Setup (GWS)</span> to apply Gmail labels, create a Drive watch-folder, and connect the 311 Sheet.</li>
-              <li>Use <span class="kbd">Smoke Test</span> to confirm readiness, then open <span class="kbd">Binder Demo</span> for an export preview.</li>
-            </ul>
-          </div>
+          <ul>
+            <li>Use the <em>Framework Hub</em> as the one-screen control center for Promise, 90-Day Plan, Value, Risk, Stack, KPIs, Compliance, Training, and Checklist.</li>
+            <li>Download the seed from <a href="https://www.publiclogic.org/publiclogic-vaultclerk-suttonclerk-repo_v1.0.0%20(1)/2_PACKAGE/">2_PACKAGE</a>, then unzip into a shared drive; the framework runs from that directory.</li>
+          </ul>
+          <ul>
+            <li>Run <span class="kbd">Quick Setup (GWS)</span> to apply labels, create the Drive watch-folder, and connect the intake sheet.</li>
+            <li>Use <span class="kbd">Smoke Test</span> to confirm readiness, then open <span class="kbd">Binder Demo</span> for an export preview.</li>
+          </ul>
         </div>
-      </div>
+      </section>
 
-      <div class="section">
+      <section class="section">
         <strong>What’s Inside</strong>
         <ul>
-          <li><strong>Framework Core:</strong> 21-folder VAULT doctrine (schema, manifests, SOPs, runtime healthchecks)</li>
-          <li><strong>Governance & Spec:</strong> Pilot Spec and Circular for Town and Polimorphic reference</li>
+          <li><strong>Framework Core:</strong> 21-folder VAULT doctrine (schema, manifests, SOPs, runtime health checks)</li>
+          <li><strong>Governance &amp; Spec:</strong> Pilot spec and circular for Town and Polimorphic reference</li>
           <li><strong>Quick Setup (GWS):</strong> Human-readable guide and JSON labels</li>
-          <li><strong>Training Layer:</strong> PublicInsight™ (Allie) — readiness assessment and clerk micro-labs</li>
-          <li><strong>Sample Data & Binder Demo:</strong> Three intakes with compiled binder preview</li>
+          <li><strong>Training Layer:</strong> PublicInsight™ — readiness assessment and clerk micro-labs</li>
+          <li><strong>Sample Data &amp; Binder Demo:</strong> Three intakes with compiled binder preview</li>
           <li><strong>Smoke Test:</strong> One-click compliance readiness check</li>
-          <li><strong>Integrity & Licensing:</strong> LICENSE, README, SHA256SUMS</li>
+          <li><strong>Integrity &amp; Licensing:</strong> LICENSE · README · SHA256SUMS</li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section">
+      <section class="section">
         <strong>Kickoff Goals</strong>
         <div class="grid2">
-          <div>
-            <ul>
-              <li><em>Week 1:</em> Complete Quick Setup, Smoke Test, and Binder Demo; schedule PublicInsight™ micro-labs.</li>
-              <li><em>Week 2:</em> Begin live intakes via <span class="kbd">/intake</span> to validate schema and retention chain.</li>
-            </ul>
-          </div>
-          <div>
-            <ul>
-              <li><em>By Day 30:</em> Unified queue, verified schema, binder export, and audit-ready compliance log.</li>
-              <li>CSS finalizes support cadence and grant alignment strategy.</li>
-            </ul>
-          </div>
+          <ul>
+            <li><em>Week 1:</em> Complete Quick Setup, Smoke Test, and Binder Demo; schedule PublicInsight™ micro-labs.</li>
+            <li><em>Week 2:</em> Begin live intakes via <span class="kbd">/intake</span> to validate schema and retention chain.</li>
+          </ul>
+          <ul>
+            <li><em>By Day 30:</em> Unified queue, verified schema, binder export, and audit-ready compliance log.</li>
+            <li>CSS finalizes support cadence and grant-alignment strategy.</li>
+          </ul>
         </div>
-      </div>
+      </section>
 
-      <p class="sig">Let’s launch. This becomes our baseline reference build once Sutton is live.</p>
+      <p class="sig"><strong>Let’s launch.</strong> This becomes our baseline reference build once Sutton is live.</p>
 
-      <p class="sig"><strong>Nate</strong><br>
-      Nathan R. Boudreau, MPA, MCPPO — Town Administrator · Founder, PublicLogic™<br>
-      <a href="mailto:admin@hubbardstonma.gov">admin@hubbardstonma.gov</a> · 978-928-1400 x200</p>
+      <p class="sig">
+        <strong>Nate</strong><br>
+        Nathan R. Boudreau, MPA, MCPPO — Founder, PublicLogic™<br>
+        <a href="mailto:nate@publiclogic.org">nate@publiclogic.org</a> · 978-928-1400 x200
+      </p>
 
-      <div class="hr"></div>
-      <p class="small muted"><strong>Plain-text links (if buttons are blocked):</strong><br>
-      Dashboard: sandbox:/mnt/data/VAULTCLERK_SUTTON_PILOT/PL_VAULTCLERK_Sutton_TM_Brief_SIGNATURE.html<br>
-      Package: sandbox:/mnt/data/VAULTCLERK_SUTTON_PILOT_v1.zip</p>
-    </div>
+      <hr class="hr" aria-hidden="true">
 
-    <div class="footer small">
-      © 2025 PublicLogic LLC. PublicLogic®, VAULTCLERK®, Frameworks-as-a-Standard™, and PublicInsight™ are marks of PublicLogic LLC.  
-    </div>
+      <p class="small muted">
+        <strong>Plain-text links (if buttons are blocked):</strong><br>
+        Framework Hub: https://www.publiclogic.org/publiclogic-vaultclerk-suttonclerk-repo_v1.0.0%20(1)/framework_hub/index.html<br>
+        Package Folder: https://www.publiclogic.org/publiclogic-vaultclerk-suttonclerk-repo_v1.0.0%20(1)/2_PACKAGE/
+      </p>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      © 2025 PublicLogic LLC. PublicLogic®, VAULTCLERK®, Frameworks-as-a-Standard™, and PublicInsight™ are marks of PublicLogic LLC.
+    </footer>
   </div>
 </body>
 </html>

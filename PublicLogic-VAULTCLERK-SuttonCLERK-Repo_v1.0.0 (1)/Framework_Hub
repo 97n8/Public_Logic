@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Town of Sutton | SuttonCLERK™ — Living SOP Hub (FINAL)</title>
+<base href="https://www.publiclogic.org/publiclogic-vaultclerk-suttonclerk-repo_v1.0.0%20(1)/">
+<style>
+  :root{--ink:#0a1012;--muted:#4d5b55;--edge:#e6ecee;--bg:#f6fbf2;--paper:#fff;--brand:#115c40;--chip:#eaf6f1;--r:16px}
+  *{box-sizing:border-box} html,body{margin:0;padding:0} body{font-family:ui-sans-serif,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--ink)}
+  header{border-bottom:1px solid var(--edge);background:#fbfdfa}
+  .wrap{max-width:1280px;margin:0 auto;padding:14px 16px}
+  h1{margin:0;font-size:22px} .sub{color:var(--muted);font-size:13px;margin-top:6px}
+  .contact{display:flex;gap:18px;flex-wrap:wrap;margin-top:8px}
+  .card{background:var(--paper);border:1px solid var(--edge);border-radius:var(--r);padding:14px}
+  .tiny{color:var(--muted);font-size:12px}
+  .lanes{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);margin-top:16px}
+  .row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;border:1px solid var(--edge);border-radius:12px;padding:8px;background:#fff}
+  .go{display:inline-flex;align-items:center;font-size:12.5px;padding:7px 10px;border-radius:10px;border:1px solid #cfe4d8;background:#f1f8f4;font-weight:800;text-decoration:none}
+  footer{border-top:1px solid var(--edge);margin-top:20px}
+
+  /* SVG styles */
+  .chart{width:100%;height:auto;display:block}
+  .ring{fill:none;stroke:#dfeee7;stroke-width:16}
+  .ring2{fill:none;stroke:#edf5f1;stroke-width:12}
+  .flow{fill:none;stroke:#cfe4d8;stroke-width:3}
+  .bubble{fill:#ffffff;stroke:#cfe4d8;stroke-width:2;filter:drop-shadow(0 1px 0 rgba(0,0,0,.04))}
+  .btxt{font-size:12px;text-anchor:middle;dominant-baseline:middle;fill:#0b271f;font-weight:700}
+  .center{font-size:16px;text-anchor:middle;fill:#115c40;font-weight:800}
+  .centerSub{font-size:12px;text-anchor:middle;fill:#4d5b55}
+  .centerSub2{font-size:11px;text-anchor:middle;fill:#728279}
+  .callbox{fill:#ffffff;stroke:#e6ecee;stroke-width:1}
+  .callhdr{font-size:12px;fill:#115c40;font-weight:800}
+  .calldesc{font-size:11px;fill:#2e3e39}
+  .callwho{font-size:10.5px;fill:#5b686f}
+  .lead{fill:none;stroke:#cfe4d8;stroke-width:2}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Town of Sutton | Clerk’s Office — SuttonCLERK™</h1>
+    <div class="sub">Living SOP Hub built with PublicLogic™ and PublicInsight™ — shared, secure, and sustainable under Massachusetts law.</div>
+    <div class="contact tiny">
+      <div><strong>Nathan Boudreau, MPA, MCPPO</strong> — PublicLogic<br>
+      <a href="mailto:admin@hubbardstonma.gov">admin@hubbardstonma.gov</a> · (978) 928-1400 x200</div>
+      <div><strong>Dr. Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA</strong> — PublicInsight™<br>
+      <a href="mailto:arothschild@publiclogic.org">arothschild@publiclogic.org</a></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="card">
+    <h2 style="margin:0 0 8px 0;font-size:16px">System map + folder notes (click anything)</h2>
+    <svg viewBox="0 0 1180 640" class="chart" aria-label="SuttonCLERK municipal system map">
+<circle cx="330" cy="320" r="178" class="ring"/><circle cx="330" cy="320" r="116" class="ring2"/>
+<a xlink:href="./2_PACKAGE/VAULTCLERK_SUTTON_Package_v2.zip" target="_blank" rel="noopener"><g class="node" transform="translate(330.0,142.0)"><circle r="26" class="bubble"/><text y="5" class="btxt">Seed</text></g></a>
+<path d="M330.0,142.0 Q400.6,102.6 434.6,176.0" class="flow"/>
+<a xlink:href="./3_CONFIG/" target="_blank" rel="noopener"><g class="node" transform="translate(434.6,176.0)"><circle r="26" class="bubble"/><text y="5" class="btxt">Config</text></g></a>
+<path d="M434.6,176.0 Q514.9,185.7 499.3,265.0" class="flow"/>
+<a xlink:href="./4_SAMPLES/binder_demo/index.html" target="_blank" rel="noopener"><g class="node" transform="translate(499.3,265.0)"><circle r="26" class="bubble"/><text y="5" class="btxt">Samples</text></g></a>
+<path d="M499.3,265.0 Q558.5,320.0 499.3,375.0" class="flow"/>
+<a xlink:href="./5_INTEGRITY/" target="_blank" rel="noopener"><g class="node" transform="translate(499.3,375.0)"><circle r="26" class="bubble"/><text y="5" class="btxt">Integrity</text></g></a>
+<path d="M499.3,375.0 Q514.9,454.3 434.6,464.0" class="flow"/>
+<a xlink:href="./6_AUTOMATION/" target="_blank" rel="noopener"><g class="node" transform="translate(434.6,464.0)"><circle r="26" class="bubble"/><text y="5" class="btxt">Automation</text></g></a>
+<path d="M434.6,464.0 Q400.6,537.4 330.0,498.0" class="flow"/>
+<a xlink:href="./7_METADATA/" target="_blank" rel="noopener"><g class="node" transform="translate(330.0,498.0)"><circle r="26" class="bubble"/><text y="5" class="btxt">Metadata</text></g></a>
+<path d="M330.0,498.0 Q259.4,537.4 225.4,464.0" class="flow"/>
+<a xlink:href="./8_TRAINING/" target="_blank" rel="noopener"><g class="node" transform="translate(225.4,464.0)"><circle r="26" class="bubble"/><text y="5" class="btxt">Training</text></g></a>
+<path d="M225.4,464.0 Q145.1,454.3 160.7,375.0" class="flow"/>
+<a xlink:href="./9_CONTINUITY/" target="_blank" rel="noopener"><g class="node" transform="translate(160.7,375.0)"><circle r="26" class="bubble"/><text y="5" class="btxt">Continuity</text></g></a>
+<path d="M160.7,375.0 Q101.5,320.0 160.7,265.0" class="flow"/>
+<a xlink:href="./0_EXEC/Launch_Brief.html" target="_blank" rel="noopener"><g class="node" transform="translate(160.7,265.0)"><circle r="26" class="bubble"/><text y="5" class="btxt">Start</text></g></a>
+<path d="M160.7,265.0 Q145.1,185.7 225.4,176.0" class="flow"/>
+<a xlink:href="./1_DOCS/QUICK_SETUP_GWS.html" target="_blank" rel="noopener"><g class="node" transform="translate(225.4,176.0)"><circle r="26" class="bubble"/><text y="5" class="btxt">Docs</text></g></a>
+<path d="M225.4,176.0 Q259.4,102.6 330.0,142.0" class="flow"/>
+<text x="330" y="314" class="center">SuttonCLERK™</text>
+<text x="330" y="336" class="centerSub">Living SOP Hub</text>
+<text x="330" y="356" class="centerSub2">Shared, secure, and sustainable Clerk operations</text>
+<a xlink:href="./0_EXEC/Launch_Brief.html" target="_blank" rel="noopener"><g class="call" transform="translate(640,86)"><rect rx="10" ry="10" width="500" height="42" class="callbox"/><text x="12" y="16" class="callhdr">0_EXEC</text><text x="12" y="32" class="calldesc">Start here — Launch Brief and approvals. Confirms scope, owners, and timeline.</text><text x="488" y="16" class="callwho" text-anchor="end">Town Administrator & Town Clerk</text></g></a>
+<path d="M330.0,160.0 L626,107" class="lead"/>
+<a xlink:href="./1_DOCS/QUICK_SETUP_GWS.html" target="_blank" rel="noopener"><g class="call" transform="translate(640,136)"><rect rx="10" ry="10" width="500" height="42" class="callbox"/><text x="12" y="16" class="callhdr">1_DOCS</text><text x="12" y="32" class="calldesc">Quick setup, reference guides, and a smoke test to confirm connections.</text><text x="488" y="16" class="callwho" text-anchor="end">Clerk’s Office</text></g></a>
+<path d="M424.0,190.6 L626,157" class="lead"/>
+<a xlink:href="./2_PACKAGE/VAULTCLERK_SUTTON_Package_v2.zip" target="_blank" rel="noopener"><g class="call" transform="translate(640,186)"><rect rx="10" ry="10" width="500" height="42" class="callbox"/><text x="12" y="16" class="callhdr">2_PACKAGE</text><text x="12" y="32" class="calldesc">Seeds the full 21‑folder VAULT structure for reuse across departments.</text><text x="488" y="16" class="callwho" text-anchor="end">Information Technology</text></g></a>
+<path d="M482.2,270.6 L626,207" class="lead"/>
+<a xlink:href="./3_CONFIG/" target="_blank" rel="noopener"><g class="call" transform="translate(640,236)"><rect rx="10" ry="10" width="500" height="42" class="callbox"/><text x="12" y="16" class="callhdr">3_CONFIG</text><text x="12" y="32" class="calldesc">Environment, naming conventions, and base pages for consistency.</text><text x="488" y="16" class="callwho" text-anchor="end">Information Technology</text></g></a>
+<path d="M482.2,369.4 L626,257" class="lead"/>
+<a xlink:href="./4_SAMPLES/binder_demo/index.html" target="_blank" rel="noopener"><g class="call" transform="translate(640,286)"><rect rx="10" ry="10" width="500" height="42" class="callbox"/><text x="12" y="16" class="callhdr">4_SAMPLES</text><text x="12" y="32" class="calldesc">Binder demo, sample forms, and example datasets for orientation.</text><text x="488" y="16" class="callwho" text-anchor="end">Clerk’s Office</text></g></a>
+<path d="M424.0,449.4 L626,307" class="lead"/>
+<a xlink:href="./5_INTEGRITY/" target="_blank" rel="noopener"><g class="call" transform="translate(640,336)"><rect rx="10" ry="10" width="500" height="42" class="callbox"/><text x="12" y="16" class="callhdr">5_INTEGRITY</text><text x="12" y="32" class="calldesc">Security, license, contributor rules, and audit sheets.</text><text x="488" y="16" class="callwho" text-anchor="end">Town Administrator & IT</text></g></a>
+<path d="M330.0,480.0 L626,357" class="lead"/>
+<a xlink:href="./6_AUTOMATION/" target="_blank" rel="noopener"><g class="call" transform="translate(640,386)"><rect rx="10" ry="10" width="500" height="42" class="callbox"/><text x="12" y="16" class="callhdr">6_AUTOMATION</text><text x="12" y="32" class="calldesc">Power Automate flows and reusable child logic (if published).</text><text x="488" y="16" class="callwho" text-anchor="end">IT & PublicLogic</text></g></a>
+<path d="M236.0,449.4 L626,407" class="lead"/>
+<a xlink:href="./7_METADATA/" target="_blank" rel="noopener"><g class="call" transform="translate(640,436)"><rect rx="10" ry="10" width="500" height="42" class="callbox"/><text x="12" y="16" class="callhdr">7_METADATA</text><text x="12" y="32" class="calldesc">SharePoint site columns, content types, and JSON schemas.</text><text x="488" y="16" class="callwho" text-anchor="end">Information Technology</text></g></a>
+<path d="M177.8,369.4 L626,457" class="lead"/>
+<a xlink:href="./8_TRAINING/" target="_blank" rel="noopener"><g class="call" transform="translate(640,486)"><rect rx="10" ry="10" width="500" height="42" class="callbox"/><text x="12" y="16" class="callhdr">8_TRAINING</text><text x="12" y="32" class="calldesc">Quick guides, role playbooks, slide decks, and recordings.</text><text x="488" y="16" class="callwho" text-anchor="end">PublicInsight & Clerk’s Office</text></g></a>
+<path d="M177.8,270.6 L626,507" class="lead"/>
+<a xlink:href="./9_CONTINUITY/" target="_blank" rel="noopener"><g class="call" transform="translate(640,536)"><rect rx="10" ry="10" width="500" height="42" class="callbox"/><text x="12" y="16" class="callhdr">9_CONTINUITY</text><text x="12" y="32" class="calldesc">Backups, disaster recovery steps, and quarterly archive actions.</text><text x="488" y="16" class="callwho" text-anchor="end">Town Administrator & IT</text></g></a>
+<path d="M236.0,190.6 L626,557" class="lead"/>
+</svg>
+    <div class="tiny" style="margin-top:8px">Install left‑to‑right on first pass. Use 5–9 for operations, training, and continuity.</div>
+  </section>
+
+  <section class="card">
+    <h2 style="margin:0 0 8px 0;font-size:16px">Role lanes</h2>
+    <div class="lanes">
+      <div class="lane"><h3>Administrator</h3><div class="tree"><div class="row"><div>Start (Exec Brief)</div><a class="go" href="./0_EXEC/Launch_Brief.html" target="_blank" rel="noopener">Open</a></div><div class="row"><div>Docs (Setup)</div><a class="go" href="./1_DOCS/QUICK_SETUP_GWS.html" target="_blank" rel="noopener">Open</a></div><div class="row"><div>Integrity</div><a class="go" href="./5_INTEGRITY/" target="_blank" rel="noopener">Open</a></div><div class="row"><div>Continuity</div><a class="go" href="./9_CONTINUITY/" target="_blank" rel="noopener">Open</a></div></div></div><div class="lane"><h3>Clerk</h3><div class="tree"><div class="row"><div>Docs (Guides)</div><a class="go" href="./1_DOCS/" target="_blank" rel="noopener">Open</a></div><div class="row"><div>Samples (Binder)</div><a class="go" href="./4_SAMPLES/binder_demo/index.html" target="_blank" rel="noopener">Open</a></div><div class="row"><div>Training</div><a class="go" href="./8_TRAINING/" target="_blank" rel="noopener">Open</a></div></div></div><div class="lane"><h3>IT</h3><div class="tree"><div class="row"><div>Seed Package</div><a class="go" href="./2_PACKAGE/VAULTCLERK_SUTTON_Package_v2.zip" target="_blank" rel="noopener">Open</a></div><div class="row"><div>Config</div><a class="go" href="./3_CONFIG/" target="_blank" rel="noopener">Open</a></div><div class="row"><div>Automation</div><a class="go" href="./6_AUTOMATION/" target="_blank" rel="noopener">Open</a></div><div class="row"><div>Metadata</div><a class="go" href="./7_METADATA/" target="_blank" rel="noopener">Open</a></div></div></div><div class="lane"><h3>Vendor / PL</h3><div class="tree"><div class="row"><div>Exec Pages</div><a class="go" href="./3_CONFIG/" target="_blank" rel="noopener">Open</a></div><div class="row"><div>Integrity (SECURITY.md)</div><a class="go" href="./5_INTEGRITY/" target="_blank" rel="noopener">Open</a></div><div class="row"><div>Training</div><a class="go" href="./8_TRAINING/" target="_blank" rel="noopener">Open</a></div><div class="row"><div>Continuity</div><a class="go" href="./9_CONTINUITY/" target="_blank" rel="noopener">Open</a></div></div></div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap tiny">© 2025 PublicLogic™ | PublicInsight™ — Frameworks‑as‑a‑Standard™ implementation for the Town of Sutton, MA.</div>
+</footer>
+
+<script>
+// keep links inside base href
+(function(){
+  const base = new URL(document.baseURI);
+  document.querySelectorAll('a[href]').forEach(a=>{
+    try {
+      const u = new URL(a.getAttribute('href'), base);
+      if (u.origin !== base.origin || !u.href.startsWith(base.href)) {
+        const raw = a.getAttribute('href')||"";
+        if (!raw.startsWith('./')) a.setAttribute('href','./'+raw.replace(/^\//,''));
+      }
+      a.setAttribute('rel','noopener');
+    }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>

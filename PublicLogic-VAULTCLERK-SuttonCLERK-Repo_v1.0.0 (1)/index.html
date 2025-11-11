@@ -1,84 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SuttonCLERK™ Pilot — Launch Dashboard (PublicLogic × Polimorphic)</title>
-<style>
-  :root{--ink:#0c1a15;--muted:#5b6a60;--ever:#1f6b4a;--sage:#3a8b68;--edge:#dee6de;--wash:#f6f8f6;}
-  *{box-sizing:border-box} body{margin:0;background:#fff;color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
-  header{padding:18px 22px;border-bottom:1px solid var(--edge);background:#fbfdf8}
-  h1{margin:0;font-size:22px} .sub{color:var(--muted)}
-  .wrap{max-width:1100px;margin:0 auto;padding:18px 22px}
-  .grid{display:grid;gap:14px;grid-template-columns:2fr 1fr}@media(max-width:980px){.grid{grid-template-columns:1fr}}
-  .card{border:1px solid var(--edge);border-radius:16px;padding:16px;background:#fff}
-  .btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:10px;padding:12px 16px;border:1px solid var(--ever);background:#1f6b4a;color:#fff;margin:6px 6px 6px 0}
-  .btn.alt{background:#e9f6ef;color:#0c1a15}
-  ul{margin:8px 0 8px 20px} li{margin:6px 0}
-  code{background:#eef3ee;padding:2px 6px;border-radius:6px}
-  .small{font-size:13px;color:var(--muted)}
-  footer{padding:14px 22px;color:#5b6a60;font-size:13px;border-top:1px solid var(--edge)}
-</style>
-</head>
-<body>
-<header>
-  <h1>PublicLogic — SuttonCLERK™ Pilot (8–12 Weeks)</h1>
-  <div class="sub">Polimorphic platform · Google Workspace · PublicInsight™ training · CSS grants</div>
-</header>
+{
+  "dashboard": {
+    "title": "SuttonCLERK™ — Living SOP Hub",
+    "version": "1.0.1",
+    "last_updated": "2025-11-11",
+    "town": "Town of Sutton, Massachusetts",
+    "framework_family": "VAULTCLERK™",
+    "description": "Unified municipal operations dashboard connecting all Clerk workflows, automations, and retention logic under the VAULTCLERK™ standard.",
+    "base_url": "https://www.publiclogic.org/publiclogic-vaultclerk-suttonclerk-repo_v1.0.0%20(1)/",
+    "contacts": [
+      {
+        "name": "Nathan Boudreau, MPA, MCPPO",
+        "role": "Founder & Lead Consultant, PublicLogic™",
+        "email": "admin@hubbardstonma.gov",
+        "phone": "(978) 928-1400 x200"
+      },
+      {
+        "name": "Dr. Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA",
+        "role": "Behavioral Systems & Research Lead, PublicInsight™",
+        "email": "arothschild@publiclogic.org"
+      }
+    ],
 
-<div class="wrap">
-  <div class="grid">
-    <div class="card">
-      <h2>Start Here</h2>
-      <p>Use these buttons in order. This dashboard guides the entire packet.</p>
-      <p>
-        <a class="btn" href="0_EXEC/Launch_Brief.html">Open Launch Brief</a>
-        <a class="btn alt" href="1_DOCS/PL_VAULTCLERK_Sutton_Pilot_Spec_FINAL.html">Pilot Spec</a>
-        <a class="btn alt" href="1_DOCS/PL_VAULTCLERK_Full_Package_Circular.html">Packaging Circular</a>
-      </p>
-      <p>
-        <a class="btn alt" href="1_DOCS/QUICK_SETUP_GWS.html">Quick Setup (Google Workspace)</a>
-        <a class="btn alt" href="1_DOCS/SMOKE_TEST.html">Run Smoke Test</a>
-      </p>
-      <p>
-        <a class="btn" href="2_PACKAGE/VAULTCLERK_SUTTON_Package_v2.zip">Seed Doctrine (21 Folders)</a>
-        <a class="btn alt" href="5_INTEGRITY/SHA256SUMS">Integrity (SHA256)</a>
-      </p>
-      <p>
-        <a class="btn alt" href="3_CONFIG/gws_labels.json">Gmail Labels (JSON)</a>
-        <a class="btn alt" href="3_CONFIG/phone311_template.csv">Phone/311 Template (CSV)</a>
-      </p>
-      <p>
-        <a class="btn alt" href="4_SAMPLES/samples.json">Sample Intakes</a>
-        <a class="btn alt" href="4_SAMPLES/binder_demo/index.html">Binder Demo</a>
-      </p>
-    </div>
+    "partners": {
+      "framework_owner": {
+        "name": "PublicLogic™",
+        "role": "Lawful Automation & Framework Governance",
+        "url": "https://www.publiclogic.org"
+      },
+      "behavioral_partner": {
+        "name": "PublicInsight™",
+        "role": "Readiness, Training & Behavioral Systems",
+        "url": "https://www.publiclogic.org/publicinsight"
+      },
+      "implementation_partner": {
+        "name": "Polimorphic, Inc.",
+        "role": "Platform Runtime, Integration, and AI Delivery",
+        "url": "https://www.polimorphic.com"
+      }
+    },
 
-    <div class="card">
-      <h2>Operational Notes</h2>
-      <ul>
-        <li>This packet runs locally or in a Shared Drive. Keep all files in the same folder.</li>
-        <li>Polimorphic endpoints: <code>/intake</code>, <code>/audit</code>, <code>/report</code>.</li>
-        <li>Paper intake is supported. Print from <code>2_PACKAGE/20_Paper_Intake/_TEMPLATE_FORMS/</code>.</li>
-        <li>Scans drop into <code>_SCAN_IMPORT/incoming</code> and will auto-route via VAULTSCAN™.</li>
-      </ul>
-      <p class="small">Built 2025-11-11 15:01 · © 2025 PublicLogic LLC</p>
-    </div>
-  </div>
+    "runtime": {
+      "platform": "Polimorphic AI Runtime",
+      "integration_layer": "VAULT AOS API v2",
+      "deployment_context": "Town of Sutton Digital Government OS"
+    },
 
-  <div class="card">
-    <h2>Pre‑Launch Checklist</h2>
-    <ol>
-      <li>Open <strong>Quick Setup (GWS)</strong> and complete Gmail, Drive, Sheet configuration.</li>
-      <li>Run the <strong>Smoke Test</strong> — confirm all expected files are present.</li>
-      <li>Unzip the <strong>Seed Doctrine</strong> in <code>2_PACKAGE/</code> and verify all 21 folders exist.</li>
-      <li>Test one digital intake through Polimorphic <code>/intake</code>.</li>
-      <li>Scan a paper form to <code>20_Paper_Intake/_SCAN_IMPORT/incoming</code> and verify routing.</li>
-      <li>Open the <strong>Binder Demo</strong> to confirm end‑to‑end readability.</li>
-    </ol>
-  </div>
-</div>
+    "licensing": {
+      "framework_license": "VAULTCLERK™ Municipal Framework License (PublicLogic)",
+      "runtime_license": "Polimorphic Municipal Deployment Agreement",
+      "data_custody": "Town retains all records; Polimorphic hosts runtime under PublicLogic compliance."
+    },
 
-<footer>PublicLogic®, VAULTCLERK®, Frameworks‑as‑a‑Standard™, PublicInsight™ · Joint launch with Polimorphic</footer>
-</body>
-</html>
+    "purpose": "Provide a secure, repeatable, and transparent municipal operations framework where all SOPs, automations, and retention schedules remain synchronized and municipally owned.",
+
+    "lifecycle": [
+      { "id": "0_EXEC", "label": "Start", "description": "Launch brief and governance approvals", "owners": ["Town Administrator","Town Clerk"] },
+      { "id": "1_DOCS", "label": "Docs", "description": "Quick setup guides and smoke tests", "owners": ["Clerk’s Office"] },
+      { "id": "2_PACKAGE", "label": "Seed", "description": "Seeds 21-folder VAULT structure for reuse", "owners": ["Information Technology"] },
+      { "id": "3_CONFIG", "label": "Config", "description": "Naming conventions and environment variables", "owners": ["Information Technology"] },
+      { "id": "4_SAMPLES", "label": "Samples", "description": "Binder demo and datasets", "owners": ["Clerk’s Office"] },
+      { "id": "5_INTEGRITY", "label": "Integrity", "description": "Security, license, and audit materials", "owners": ["Town Administrator","IT"] },
+      { "id": "6_AUTOMATION", "label": "Automation", "description": "Power Automate flows and child logic", "owners": ["IT","PublicLogic™"] },
+      { "id": "7_METADATA", "label": "Metadata", "description": "SharePoint columns and JSON schemas", "owners": ["IT"] },
+      { "id": "8_TRAINING", "label": "Training", "description": "PublicInsight training decks and playbooks", "owners": ["PublicInsight™","Clerk’s Office"] },
+      { "id": "9_CONTINUITY", "label": "Continuity", "description": "Disaster recovery, backups, and retention", "owners": ["Town Administrator","IT"] }
+    ],
+
+    "roles": [
+      { "lane": "Administrator", "description": "Governance, integrity, and continuity", "folders": ["0_EXEC","1_DOCS","5_INTEGRITY","9_CONTINUITY"] },
+      { "lane": "Clerk", "description": "Licensing, meetings, records, and training", "folders": ["1_DOCS","4_SAMPLES","8_TRAINING"] },
+      { "lane": "IT", "description": "Configuration, automation, and metadata", "folders": ["2_PACKAGE","3_CONFIG","6_AUTOMATION","7_METADATA"] },
+      { "lane": "Vendor / PL", "description": "Integration and update cycles", "folders": ["3_CONFIG","5_INTEGRITY","8_TRAINING","9_CONTINUITY"] }
+    ],
+
+    "living_lists": [
+      { "name": "Master Module Register", "purpose": "Track deployed VAULT modules", "href": "./1_DOCS/Master_Module_Register.sample.csv" },
+      { "name": "Active Workflows", "purpose": "Map automation paths and triggers", "href": "./6_AUTOMATION/" },
+      { "name": "Compliance Timeline", "purpose": "Monitor PRR and retention deadlines", "href": "./5_INTEGRITY/compliance_timeline.sample.csv" },
+      { "name": "Staff Training Registry", "purpose": "Track training and refresh cycles", "href": "./8_TRAINING/" },
+      { "name": "Vendor Connector Index", "purpose": "Store integration endpoints and validations", "href": "./7_METADATA/" },
+      { "name": "Change Log / Version History", "purpose": "Immutable audit ledger", "href": "./5_INTEGRITY/change_log.sample.csv" }
+    ],
+
+    "compliance": {
+      "laws": [
+        "M.G.L. c.4 §7",
+        "M.G.L. c.66 (Public Records)",
+        "M.G.L. c.30A §§18–25 (Open Meeting Law)",
+        "M.G.L. c.46, c.207, c.110 §5, c.140 §137",
+        "950 CMR 32.00",
+        "201 CMR 17.00",
+        "ADA Title II",
+        "WCAG 2.1 AA",
+        "NIST SP 800-53 Moderate"
+      ]
+    },
+
+    "ai_boundary_matrix": {
+      "levels": "L1–L4 maturity",
+      "prohibited": ["Approve expenditures","Deny permits or licenses","Interpret legal exemptions"],
+      "escalation": "Ambiguous or high-risk items escalate to Clerk or Town Counsel."
+    },
+
+    "governance": {
+      "records_custody": "Town retains all data and records; PublicLogic governs logic and audit schema.",
+      "integrity_controls": [
+        "Digital signature metadata on all integrity documents",
+        "Checksum verification for automation assets",
+        "Weekly mirror to Town Drive; quarterly archive under retention schedule"
+      ],
+      "audit_schedule": "Quarterly technical and behavioral audits by PublicLogic™ and PublicInsight™"
+    },
+
+    "ui": {
+      "theme": {
+        "bg": "#f6fbf2",
+        "paper": "#ffffff",
+        "ink": "#0a1012",
+        "muted": "#4d5b55",
+        "edge": "#e6ecee",
+        "brand": "#115c40",
+        "chip": "#eaf6f1"
+      },
+      "sections": [
+        "HeaderWithContacts",
+        "MunicipalSystemChart",
+        "RoleLanes",
+        "PartnershipNotice",
+        "Footer"
+      ]
+    },
+
+    "partnership_notice": "This Living SOP Hub is deployed through the Polimorphic × PublicLogic Integration Stack. PublicLogic™ defines the lawful framework and compliance structure under VAULTCLERK™, Polimorphic provides runtime, automation, and integrations, and PublicInsight™ oversees readiness, training, and behavioral analytics. The Town of Sutton retains all data ownership under M.G.L. c.66 and 201 CMR 17.00.",
+
+    "footer": "© 2025 Town of Sutton | Built with PublicLogic™ (Framework), Polimorphic (Runtime), and PublicInsight™ (Training). Framework-as-a-Standard™ Implementation — VAULTCLERK™ v1.0.1."
+  }
+}

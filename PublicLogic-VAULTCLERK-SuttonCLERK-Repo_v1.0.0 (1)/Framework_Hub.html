@@ -3,323 +3,288 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SuttonCLERK™ — Living SOP Hub (v1.0.1)</title>
-<meta name="description" content="SuttonCLERK™ Living SOP Hub for the Town of Sutton Clerk’s Office — lifecycle, roles, compliance, training, and partnership with a visual VAULTCLERK™ process map." />
-
+<title>SuttonCLERK™ Framework Hub — Confidential Draft (v1.0.1)</title>
+<meta name="description" content="Town of Sutton — SuttonCLERK™ Framework Hub. Living SOP with lifecycle folders (0–9), process map, role lanes, compliance, and partner alignment.">
 <style>
   :root{
-    --bg:#f4fbf6;
+    --bg:#f6fbf9;
     --paper:#ffffff;
     --ink:#0a1012;
-    --muted:#3f5250;
-    --edge:#dfe7e3;
-    --brand:#115c40;
-    --brand-ink:#0b3a28;
+    --muted:#5b6870;
+    --line:#e6ecee;
+    --brand:#0b6a5c;
+    --brand-2:#0d3d28;
     --chip:#eaf6f1;
-    --focus:#0f7b5c;
-    --shadow:0 1px 2px rgba(0,0,0,.06),0 6px 18px rgba(0,0,0,.06);
-    --radius:14px; --radius-sm:10px;
-    --lh:1.6;
-    --fs-100:1rem; --fs-200:1.125rem; --fs-300:1.25rem; --fs-400:1.45rem; --fs-500:1.7rem;
+    --accent:#14532d;
+    --focus:#0ea5e9;
   }
   *{box-sizing:border-box}
   html:focus-within{scroll-behavior:smooth}
-  body{margin:0;font:400 16px/var(--lh) ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;color:var(--ink);background:var(--bg)}
-  a{color:var(--brand);text-underline-offset:3px}
-  a:hover{color:#0c4f36}
-  a:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
-
-  .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-  .skip-link:focus{position:fixed;left:16px;top:16px;padding:8px 12px;background:#fff;border:2px solid var(--focus);border-radius:8px;box-shadow:var(--shadow);z-index:9999}
-
-  .wrap{max-width:1180px;margin-inline:auto;padding:clamp(12px,3vw,22px)}
-  header,section,footer,nav[aria-label="Contents"]{background:var(--paper);border:1px solid var(--edge);border-radius:var(--radius);padding:clamp(14px,2.5vw,20px);margin-block:12px;box-shadow:var(--shadow)}
-  header h1{margin:0 0 6px;font-size:clamp(var(--fs-400),3.2vw,var(--fs-500));color:var(--brand-ink)}
-  .sub{color:var(--muted);font-size:var(--fs-100)}
-  .contacts{margin-top:10px;font-size:var(--fs-100);color:var(--muted)}
-  .contacts a{white-space:nowrap}
-  .k{color:var(--brand-ink);font-weight:700;font-size:var(--fs-300);margin:0 0 6px}
-  .lead{font-size:var(--fs-200);color:var(--muted);margin-top:4px}
-
-  .grid{display:grid;gap:clamp(12px,2vw,16px);grid-template-columns:1fr 1fr}
-  .grid-two{display:grid;gap:12px;grid-template-columns:1fr 1fr}
-  .card{border:1px solid var(--edge);border-radius:var(--radius-sm);padding:12px;background:linear-gradient(180deg,#fff,#fbfffd)}
-  .card:hover{box-shadow:0 1px 1px rgba(0,0,0,.04),0 8px 22px rgba(0,0,0,.06)}
-  .card:focus-within{outline:3px solid var(--focus);outline-offset:2px}
-
-  ol{margin:8px 0 0 22px;padding:0}
-  li{margin-block:6px}
-  .pill{display:inline-block;margin:6px 6px 0 0;padding:7px 12px;border-radius:999px;border:1px solid var(--edge);background:var(--chip);font-size:.98rem;color:#163d31}
-
-  details{border:1px solid var(--edge);border-radius:10px;background:#fff;padding:10px 12px;margin:10px 0}
-  details[open]{background:#fcfffd}
-  summary{cursor:pointer;list-style:none;font-weight:600;color:var(--brand-ink)}
-  summary::-webkit-details-marker{display:none}
-  summary:focus-visible{outline:3px solid var(--focus);outline-offset:4px;border-radius:6px}
-
-  /* Process map container */
-  .map-wrap{display:flex;justify-content:center;align-items:center;padding:6px}
-  .map-caption{font-size:.95rem;color:var(--muted);text-align:center;margin-top:8px}
-
-  nav[aria-label="Contents"] ol{margin:6px 0 0 18px}
-
-  footer{font-size:.95rem;color:#596861}
-
-  @media (max-width:960px){.grid{grid-template-columns:1fr}.grid-two{grid-template-columns:1fr}}
-  @media (max-width:640px){
-    :root{--fs-100:1.02rem;--fs-200:1.12rem;--fs-300:1.25rem;--fs-400:1.42rem;--fs-500:1.6rem}
-    header,section,nav[aria-label="Contents"],footer{padding:14px}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+  a{color:var(--brand)}
+  a:focus-visible, button:focus-visible, [tabindex="0"]:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:10px}
+  .wrap{max-width:1200px;margin:0 auto;padding:20px}
+  header{background:var(--paper);border-bottom:1px solid var(--line)}
+  .head{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 20px}
+  .title{font-weight:800;letter-spacing:.2px}
+  .badge{background:var(--brand);color:#fff;border-radius:999px;padding:.4rem .7rem;font-size:.8rem;font-weight:700}
+  .sub{color:var(--muted);font-size:.95rem}
+  nav[aria-label="Table of contents"]{padding:10px 20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fbfefd}
+  .toc{display:flex;flex-wrap:wrap;gap:10px}
+  .toc a{display:inline-block;background:var(--chip);border:1px solid var(--line);padding:.45rem .6rem;border-radius:999px;text-decoration:none}
+  main{display:grid;gap:16px;padding:20px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:0 1px 8px rgba(0,0,0,.04);padding:18px}
+  h1{font-size:1.6rem;margin:.2rem 0 .8rem}
+  h2{font-size:1.2rem;margin:1rem 0 .4rem}
+  h3{font-size:1rem;margin:.7rem 0 .3rem}
+  .grid{display:grid;gap:14px}
+  @media (min-width:960px){ .grid-2{grid-template-columns:1fr 1fr} }
+  .pill{display:inline-flex;gap:6px;align-items:center;background:var(--chip);color:var(--brand-2);border:1px solid var(--line);padding:.25rem .55rem;border-radius:999px;font-size:.8rem}
+  .kgroup{display:flex;flex-wrap:wrap;gap:8px}
+  .list-clean{margin:.25rem 0 0 0;padding:0;list-style:none}
+  .folder-grid{display:grid;gap:12px}
+  @media (min-width:960px){.folder-grid{grid-template-columns:repeat(3,1fr)}}
+  .folder{display:block;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+  .folder:hover{box-shadow:0 3px 14px rgba(0,0,0,.08)}
+  .folder h3{margin:0 0 .25rem}
+  .meta{color:var(--muted);font-size:.9rem}
+  .process-map{border:1px dashed var(--line);border-radius:14px;background:#fff;padding:12px}
+  .process-img{display:block;width:100%;max-width:960px;margin:8px auto;border-radius:12px}
+  .sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  .skip{position:absolute;left:-9999px;top:auto}
+  .skip:focus{left:12px;top:12px;z-index:10;background:#fff;border:2px solid var(--focus);padding:.4rem .6rem;border-radius:8px}
+  .callout{border-left:4px solid var(--brand);background:#f0fbf6;padding:.7rem .9rem;border-radius:10px}
+  .partners{display:flex;flex-wrap:wrap;gap:8px}
+  footer{padding:24px 20px;color:var(--muted)}
+  /* print */
+  @media print{
+    nav, .skip{display:none}
+    .card{box-shadow:none;border-color:#ddd}
+    a{color:#000;text-decoration:underline}
   }
-  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto;animation:none;transition:none}}
-  @media print{nav[aria-label="Contents"],.skip-link{display:none!important}header,section,footer{box-shadow:none}body{background:#fff}}
 </style>
+<!-- Optional: Mermaid for the swimlane diagram -->
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "neutral" });
+</script>
 </head>
+<body data-base-url="https://www.publiclogic.org/publiclogic-vaultclerk-suttonclerk-repo_v1.0.0%20(1)/framework_hub/">
+<a class="skip" href="#main">Skip to main content</a>
 
-<body>
-<a class="skip-link" href="#main">Skip to main content</a>
+<header>
+  <div class="head" role="banner">
+    <div>
+      <div class="title">SuttonCLERK™ Framework Hub <span class="pill">Confidential Draft</span></div>
+      <div class="sub">Living SOP Hub • VAULTCLERK™ v1.0.1 • Last updated Nov 11, 2025</div>
+    </div>
+    <div class="badge" aria-label="Framework-as-a-Standard">Framework-as-a-Standard™</div>
+  </div>
 
-<div class="wrap">
-  <header role="banner">
-    <h1>SuttonCLERK™ — Living SOP Hub</h1>
-    <p class="sub">Version v1.0.1 • Last updated November 11, 2025 • Partners: PublicLogic™, PublicInsight™, Polimorphic™</p>
-    <p class="contacts">
-      <strong>Contacts:</strong><br />
-      Nathan Boudreau, MPA, MCPPO — PublicLogic™ — <a href="mailto:nate@publiclogic.org">nate@publiclogic.org</a><br />
-      Dr. Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA — PublicInsight™ — <a href="mailto:allie@publiclogic.org">allie@publiclogic.org</a>
-    </p>
-  </header>
-
-  <nav aria-label="Contents">
-    <strong style="color:var(--brand-ink)">Contents</strong>
-    <ol>
-      <li><a href="#purpose">Purpose</a></li>
-      <li><a href="#lifecycle">Lifecycle (0–9)</a></li>
-      <li><a href="#roles">Role Lanes</a></li>
-      <li><a href="#compliance">Compliance</a></li>
-      <li><a href="#partnership">Implementation Partnership</a></li>
-    </ol>
+  <nav class="wrap" aria-label="Table of contents">
+    <div class="toc" role="list">
+      <a role="listitem" href="#purpose">Purpose</a>
+      <a role="listitem" href="#lifecycle">Lifecycle (0–9)</a>
+      <a role="listitem" href="#folders">Interactive Folder Map</a>
+      <a role="listitem" href="#lanes">Role Lanes</a>
+      <a role="listitem" href="#compliance">Compliance</a>
+      <a role="listitem" href="#partnership">Implementation Partnership</a>
+      <a role="listitem" href="#contacts">Contacts</a>
+    </div>
   </nav>
+</header>
 
-  <main id="main" tabindex="-1">
-    <section id="purpose" aria-labelledby="purpose-h">
-      <h2 id="purpose-h" class="k">Purpose</h2>
-      <p class="lead">
-        Provide a secure, repeatable, and transparent municipal operations framework where all
-        <abbr title="Standard Operating Procedures">SOPs</abbr>, automations, and retention schedules remain synchronized and municipally owned.
-      </p>
-    </section>
+<main id="main" class="wrap" role="main">
+  <!-- Purpose -->
+  <section id="purpose" class="card" aria-labelledby="purpose-h">
+    <h1 id="purpose-h">Purpose</h1>
+    <p>
+      The SuttonCLERK™ Framework Hub is a living SOP for the Town Clerk function. It connects intake, lawful automation,
+      retention, publishing, and training so staff can work a single queue while the system preserves compliance.
+      The Town of Sutton retains all records under M.G.L. c.66 and 201 CMR 17.00.
+    </p>
+    <div class="kgroup" role="group" aria-label="Key principles">
+      <span class="pill">Vendor-agnostic</span>
+      <span class="pill">Town owns data</span>
+      <span class="pill">Defense-ready exports</span>
+      <span class="pill">Single dashboard</span>
+    </div>
+  </section>
 
-    <section id="lifecycle" aria-labelledby="lifecycle-h">
-      <h2 id="lifecycle-h" class="k">Lifecycle (0–9) &amp; Process Map</h2>
+  <!-- Lifecycle & Process Map -->
+  <section id="lifecycle" class="card" aria-labelledby="life-h">
+    <h1 id="life-h">Lifecycle (0–9) &amp; Process Map</h1>
+    <div class="process-map" role="img" aria-label="Process map showing circular flow from 0_EXEC through 9_CONTINUITY with SuttonCLERK hub in the center.">
+      <!-- If you have a static SVG, replace the img src below; keep alt text -->
+      <img class="process-img" src="../assets/suttonclerk_cycle.svg" alt="Circular map: 0_EXEC → 1_DOCS → 2_PACKAGE → 3_CONFIG → 4_SAMPLES → 5_INTEGRITY → 6_AUTOMATION → 7_METADATA → 8_TRAINING → 9_CONTINUITY. Center node: SuttonCLERK Living SOP Hub.">
+      <p class="meta">Visual process map of the VAULTCLERK™ lifecycle. Begin at <strong>0_EXEC</strong> then proceed clockwise through the ten folders. The center ring is the working hub.</p>
+    </div>
 
-      <!-- CLEAN, EVEN, ACCESSIBLE PROCESS MAP -->
-      <figure class="card" aria-describedby="map-desc">
-        <div class="map-wrap">
-          <!-- Responsive SVG (scales without blurring) -->
-          <svg viewBox="0 0 700 480" width="100%" role="img" aria-labelledby="map-title map-desc">
-            <title id="map-title">VAULTCLERK™ Lifecycle Process Map</title>
-            <desc id="map-desc">
-              Circular lifecycle from 0_EXEC through 9_CONTINUITY around a SuttonCLERK™ center. Arrows indicate clockwise flow.
-            </desc>
-            <defs>
-              <style>
-                .ring{fill:#eaf6f1;stroke:#cfeee3;stroke-width:2}
-                .node{fill:#f6fff9;stroke:#bfe5d5;stroke-width:2}
-                .node text{font:600 12px ui-sans-serif,Arial;fill:#1b5e47}
-                .center{font:700 16px ui-sans-serif,Arial;fill:#0e3d2e}
-                .sublabel{font:600 12px ui-sans-serif,Arial;fill:#1b5e47}
-                .track{fill:none;stroke:#79bfa4;stroke-width:2;stroke-dasharray:2 6;opacity:.7}
-                .arrow{stroke:#6eb99f;stroke-width:2.5;fill:none;marker-end:url(#arr)}
-              </style>
-              <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-                <polygon points="0,0 10,5 0,10" fill="#6eb99f"/>
-              </marker>
-            </defs>
-
-            <!-- center -->
-            <circle cx="350" cy="240" r="82" class="ring"/>
-            <text x="350" y="238" text-anchor="middle" class="center">SuttonCLERK™</text>
-            <text x="350" y="258" text-anchor="middle" class="sublabel">Living SOP Hub</text>
-
-            <!-- guide track -->
-            <circle cx="350" cy="240" r="160" class="track"/>
-
-            <!-- evenly spaced nodes (clockwise, top first) -->
-            <!-- coords computed for a 160px radius -->
-            <!-- 0_EXEC (top) -->
-            <circle cx="350" cy="80" r="26" class="node"/>
-            <text x="350" y="84" text-anchor="middle">0_EXEC</text>
-            <!-- 1_DOCS -->
-            <circle cx="445" cy="106" r="26" class="node"/>
-            <text x="445" y="110" text-anchor="middle">1_DOCS</text>
-            <!-- 2_PACKAGE -->
-            <circle cx="520" cy="175" r="26" class="node"/>
-            <text x="520" y="179" text-anchor="middle">2_PACKAGE</text>
-            <!-- 3_CONFIG -->
-            <circle cx="550" cy="270" r="26" class="node"/>
-            <text x="550" y="274" text-anchor="middle">3_CONFIG</text>
-            <!-- 4_SAMPLES -->
-            <circle cx="520" cy="365" r="26" class="node"/>
-            <text x="520" y="369" text-anchor="middle">4_SAMPLES</text>
-            <!-- 5_INTEGRITY -->
-            <circle cx="445" cy="434" r="26" class="node"/>
-            <text x="445" y="438" text-anchor="middle">5_INTEGRITY</text>
-            <!-- 6_AUTOMATION (bottom) -->
-            <circle cx="350" cy="460" r="26" class="node"/>
-            <text x="350" y="464" text-anchor="middle">6_AUTOMATION</text>
-            <!-- 7_METADATA -->
-            <circle cx="255" cy="434" r="26" class="node"/>
-            <text x="255" y="438" text-anchor="middle">7_METADATA</text>
-            <!-- 8_TRAINING -->
-            <circle cx="180" cy="365" r="26" class="node"/>
-            <text x="180" y="369" text-anchor="middle">8_TRAINING</text>
-            <!-- 9_CONTINUITY -->
-            <circle cx="150" cy="270" r="26" class="node"/>
-            <text x="150" y="274" text-anchor="middle">9_CONTINUITY</text>
-
-            <!-- flow arrows (short arcs along the circle) -->
-            <path class="arrow" d="M350,106 C380,110 410,118 435,128"/>
-            <path class="arrow" d="M459,122 C485,145 505,160 514,168"/>
-            <path class="arrow" d="M529,195 C540,220 546,245 548,260"/>
-            <path class="arrow" d="M548,290 C544,320 534,345 522,356"/>
-            <path class="arrow" d="M504,381 C480,406 460,420 450,425"/>
-            <path class="arrow" d="M425,439 C396,452 372,458 362,459"/>
-            <path class="arrow" d="M338,459 C308,455 278,446 263,439"/>
-            <path class="arrow" d="M238,425 C214,406 197,388 189,377"/>
-            <path class="arrow" d="M175,355 C162,330 156,300 155,288"/>
-            <path class="arrow" d="M152,250 C156,220 166,195 178,182"/>
-            <path class="arrow" d="M195,165 C220,140 250,125 290,112"/>
-            <path class="arrow" d="M310,106 C330,103 340,101 350,100"/>
-          </svg>
-        </div>
-        <figcaption class="map-caption">
-          Clean circular map with evenly spaced folders and arrows. Start at <strong>0_EXEC</strong> and proceed clockwise through <strong>9_CONTINUITY</strong>.
-        </figcaption>
-      </figure>
-
-      <div class="grid" role="region" aria-label="Lifecycle detail and interactive folder map">
-        <div class="card" aria-labelledby="life-list-h" tabindex="0">
-          <h3 id="life-list-h" class="k">Lifecycle Descriptions</h3>
-          <ol>
-            <li><strong>0_EXEC</strong> — Start: Launch brief and approvals.</li>
-            <li><strong>1_DOCS</strong> — Setup guides, smoke test.</li>
-            <li><strong>2_PACKAGE</strong> — Seed 21-folder VAULT.</li>
-            <li><strong>3_CONFIG</strong> — Naming, environment.</li>
-            <li><strong>4_SAMPLES</strong> — Binder demo, datasets.</li>
-            <li><strong>5_INTEGRITY</strong> — Security, audit, licensing.</li>
-            <li><strong>6_AUTOMATION</strong> — Power Automate flows.</li>
-            <li><strong>7_METADATA</strong> — SharePoint columns, JSON schemas.</li>
-            <li><strong>8_TRAINING</strong> — Playbooks, slide decks, recordings (PublicInsight™).</li>
-            <li><strong>9_CONTINUITY</strong> — Backups, disaster recovery.</li>
-          </ol>
-        </div>
-
-        <div class="card" aria-labelledby="folders-h" tabindex="0">
-          <h3 id="folders-h" class="k">Interactive Folder Map</h3>
-
-          <details><summary>0_EXEC — Executive Launch</summary>
-            <p class="lead">Owners: Town Administrator, Town Clerk</p>
-            <p>Launch brief, governance approvals, decision log.</p>
-          </details>
-
-          <details><summary>1_DOCS — Documentation</summary>
-            <p class="lead">Owners: Clerk’s Office</p>
-            <p>Quick-start guides, smoke tests, runbooks.</p>
-          </details>
-
-          <details><summary>2_PACKAGE — Seed Package</summary>
-            <p class="lead">Owners: Information Technology</p>
-            <p>Seeds the 21-folder VAULT structure for reuse and continuity.</p>
-          </details>
-
-          <details><summary>3_CONFIG — Configuration</summary>
-            <p class="lead">Owners: IT</p>
-            <p>Naming conventions, environment variables, deployment notes.</p>
-          </details>
-
-          <details><summary>4_SAMPLES — Samples &amp; Binders</summary>
-            <p class="lead">Owners: Clerk’s Office</p>
-            <p>Binder demos, example datasets, forms.</p>
-          </details>
-
-          <details><summary>5_INTEGRITY — Integrity &amp; Audit</summary>
-            <p class="lead">Owners: Town Administrator, IT</p>
-            <p>Security controls, licensing, audit artifacts, immutable change logs.</p>
-          </details>
-
-          <details><summary>6_AUTOMATION — Workflows</summary>
-            <p class="lead">Owners: IT, PublicLogic™</p>
-            <p>Power Automate flows, child-logic modules, routing and notifications.</p>
-          </details>
-
-          <details><summary>7_METADATA — Information Model</summary>
-            <p class="lead">Owners: IT</p>
-            <p>SharePoint site columns, content types, JSON schemas.</p>
-          </details>
-
-          <details><summary>8_TRAINING — Adoption &amp; Materials</summary>
-            <p class="lead">Owners: PublicInsight™, Clerk’s Office</p>
-            <p>Playbooks, slide decks, recordings, micro-trainings and refresh cycles.</p>
-          </details>
-
-          <details><summary>9_CONTINUITY — DR &amp; Backups</summary>
-            <p class="lead">Owners: Town Administrator, IT</p>
-            <p>Backups, disaster recovery, quarterly archive under retention schedule.</p>
-          </details>
+    <div class="grid grid-2" style="margin-top:12px">
+      <div>
+        <h2>Lifecycle Descriptions</h2>
+        <ol>
+          <li><strong>0_EXEC</strong> — Launch brief, approvals, quick start.</li>
+          <li><strong>1_DOCS</strong> — Setup guides and smoke test.</li>
+          <li><strong>2_PACKAGE</strong> — Seed 21-folder VAULT structure.</li>
+          <li><strong>3_CONFIG</strong> — Environment, naming, pages.</li>
+          <li><strong>4_SAMPLES</strong> — Binder demo &amp; datasets.</li>
+          <li><strong>5_INTEGRITY</strong> — Security, audit, licensing.</li>
+          <li><strong>6_AUTOMATION</strong> — Power Automate flows and triggers.</li>
+          <li><strong>7_METADATA</strong> — SharePoint columns &amp; JSON schemas.</li>
+          <li><strong>8_TRAINING</strong> — Playbooks, decks, videos (PublicInsight™).</li>
+          <li><strong>9_CONTINUITY</strong> — Backups, disaster recovery, handoff.</li>
+        </ol>
+      </div>
+      <div>
+        <h2>Swimlane (Responsibilities)</h2>
+        <div class="mermaid" aria-label="Sequence diagram of responsibilities">
+          sequenceDiagram
+            participant Resident as Resident/Dept
+            participant Bus as Intake Bus
+            participant Norm as Intake Normalizer
+            participant Vault as VAULTCLERK
+            participant Clerk as Clerk Dashboard
+            Resident->>Bus: Submit (web/counter/mail/email/phone/kiosk/API)
+            Bus->>Norm: Package intake
+            Norm->>Norm: OCR • classify • dedupe • metadata
+            Norm->>Vault: Create/append record
+            Vault->>Vault: ID • timers • holds • evidence
+            Vault->>Clerk: Queue with due dates
+            Clerk-->>Vault: Status updates / notes
+            Vault->>Resident: Receipt / public copy link (if applicable)
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="roles" aria-labelledby="roles-h">
-      <h2 id="roles-h" class="k">Role Lanes</h2>
-      <div class="grid-two">
-        <div class="card">
-          <p><strong>Administrator</strong> — Governance, integrity, continuity.</p>
-          <p class="lead"><em>Folders:</em> 0_EXEC, 1_DOCS, 5_INTEGRITY, 9_CONTINUITY.</p>
-          <hr style="border:none;border-top:1px dashed var(--edge);margin:10px 0" />
-          <p><strong>Clerk</strong> — Licensing, meetings, records, training.</p>
-          <p class="lead"><em>Folders:</em> 1_DOCS, 4_SAMPLES, 8_TRAINING.</p>
-        </div>
-        <div class="card">
-          <p><strong>IT</strong> — Configuration, automation, metadata.</p>
-          <p class="lead"><em>Folders:</em> 2_PACKAGE, 3_CONFIG, 6_AUTOMATION, 7_METADATA.</p>
-          <hr style="border:none;border-top:1px dashed var(--edge);margin:10px 0" />
-          <p><strong>Vendor / PL</strong> — Integration and update cycles.</p>
-          <p class="lead"><em>Folders:</em> 3_CONFIG, 5_INTEGRITY, 8_TRAINING, 9_CONTINUITY.</p>
-        </div>
+  <!-- Interactive Folder Map (linked to repo) -->
+  <section id="folders" class="card" aria-labelledby="folders-h">
+    <h1 id="folders-h">Interactive Folder Map</h1>
+    <p class="meta">These links open the working folders in the repository. Adjust the base path if you move the hub.</p>
+    <div class="folder-grid" role="list">
+      <!-- Each anchor resolves from body[data-base-url] + href -->
+      <a class="folder" role="listitem" data-href="0_EXEC/" tabindex="0">
+        <h3>0_EXEC</h3><div class="meta">Start • Launch brief • Approvals</div>
+      </a>
+      <a class="folder" role="listitem" data-href="1_DOCS/" tabindex="0">
+        <h3>1_DOCS</h3><div class="meta">Guides • Quick setup • Smoke test</div>
+      </a>
+      <a class="folder" role="listitem" data-href="2_PACKAGE/" tabindex="0">
+        <h3>2_PACKAGE</h3><div class="meta">Seed the 21-folder package (zip)</div>
+      </a>
+      <a class="folder" role="listitem" data-href="3_CONFIG/" tabindex="0">
+        <h3>3_CONFIG</h3><div class="meta">Environment • Naming • Pages</div>
+      </a>
+      <a class="folder" role="listitem" data-href="4_SAMPLES/" tabindex="0">
+        <h3>4_SAMPLES</h3><div class="meta">Binder demo and datasets</div>
+      </a>
+      <a class="folder" role="listitem" data-href="5_INTEGRITY/" tabindex="0">
+        <h3>5_INTEGRITY</h3><div class="meta">Security • License • Contributing</div>
+      </a>
+      <a class="folder" role="listitem" data-href="6_AUTOMATION/" tabindex="0">
+        <h3>6_AUTOMATION</h3><div class="meta">Power Automate flows and hooks</div>
+      </a>
+      <a class="folder" role="listitem" data-href="7_METADATA/" tabindex="0">
+        <h3>7_METADATA</h3><div class="meta">Columns • Content types • JSON</div>
+      </a>
+      <a class="folder" role="listitem" data-href="8_TRAINING/" tabindex="0">
+        <h3>8_TRAINING</h3><div class="meta">Quick guides • Decks • Videos</div>
+      </a>
+      <a class="folder" role="listitem" data-href="9_CONTINUITY/" tabindex="0">
+        <h3>9_CONTINUITY</h3><div class="meta">Disaster recovery • Continuity</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Roles / Lanes -->
+  <section id="lanes" class="card" aria-labelledby="lanes-h">
+    <h1 id="lanes-h">Role Lanes</h1>
+    <div class="grid grid-2">
+      <div>
+        <h2>Administrator lane</h2>
+        <ul class="list-clean">
+          <li>Governance, integrity, and continuity.</li>
+          <li>Use folders <strong>0_EXEC</strong>, <strong>1_DOCS</strong>, <strong>5_INTEGRITY</strong>, <strong>9_CONTINUITY</strong>.</li>
+        </ul>
       </div>
-    </section>
+      <div>
+        <h2>Configuration lane</h2>
+        <ul class="list-clean">
+          <li>Environment &amp; data definitions.</li>
+          <li>Use folders <strong>2_PACKAGE</strong>, <strong>3_CONFIG</strong>, <strong>7_METADATA</strong>.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Automation lane</h2>
+        <ul class="list-clean">
+          <li>Flows, routing, exports, binder.</li>
+          <li>Use <strong>4_SAMPLES</strong>, <strong>6_AUTOMATION</strong>.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Training lane</h2>
+        <ul class="list-clean">
+          <li>Playbooks, decks, recordings (PublicInsight™).</li>
+          <li>Use <strong>8_TRAINING</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <section id="compliance" aria-labelledby="comp-h">
-      <h2 id="comp-h" class="k">Compliance</h2>
-      <ul aria-label="Compliance references" style="padding-left:0;list-style:none">
-        <li class="pill">M.G.L. c.4 §7</li>
-        <li class="pill">M.G.L. c.66 (Public Records)</li>
-        <li class="pill">M.G.L. c.30A §§18–25 (Open Meeting Law)</li>
-        <li class="pill">M.G.L. c.46, c.207, c.110 §5, c.140 §137</li>
-        <li class="pill">950 CMR 32.00</li>
-        <li class="pill">201 CMR 17.00</li>
-        <li class="pill">ADA Title II</li>
-        <li class="pill">WCAG 2.1 AA</li>
-        <li class="pill">NIST SP 800-53 Moderate</li>
-      </ul>
-      <p class="lead">The Town of Sutton retains ownership and custody of all municipal records under M.G.L. c.66 and 201 CMR 17.00.</p>
-    </section>
+  <!-- Compliance -->
+  <section id="compliance" class="card" aria-labelledby="comp-h">
+    <h1 id="comp-h">Compliance &amp; Governance</h1>
+    <div class="kgroup" role="group" aria-label="Citations">
+      <span class="pill" title="Massachusetts General Laws, definitions">M.G.L. c.4 §7</span>
+      <span class="pill">M.G.L. c.66 / 950 CMR 32.00</span>
+      <span class="pill">M.G.L. c.30A §§18–25</span>
+      <span class="pill">M.G.L. c.46, c.207</span>
+      <span class="pill">201 CMR 17.00</span>
+      <span class="pill">ADA Title II / WCAG 2.1 AA</span>
+      <span class="pill">NIST SP 800-53 (Mod.)</span>
+    </div>
+    <div class="callout" style="margin-top:10px">
+      <strong>Data custody:</strong> Town of Sutton owns all records and exports. Runtime vendors host under PublicLogic™ compliance. Public copies are normalized to accessible formats.
+    </div>
+  </section>
 
-    <section id="partnership" aria-labelledby="part-h">
-      <h2 id="part-h" class="k">Implementation Partnership</h2>
-      <p class="lead">
-        <strong>PublicLogic™</strong> — Lawful framework &amp; compliance (VAULTCLERK™).<br />
-        <strong>Polimorphic™</strong> — Runtime, integrations, operational delivery.<br />
-        <strong>PublicInsight™</strong> — Readiness, training, behavioral analytics.
-      </p>
-    </section>
-  </main>
+  <!-- Partnership -->
+  <section id="partnership" class="card" aria-labelledby="partner-h">
+    <h1 id="partner-h">Implementation Partnership</h1>
+    <div class="partners" role="group" aria-label="Partners">
+      <span class="pill">PublicLogic™ — Framework &amp; Compliance</span>
+      <span class="pill">Polimorphic — Runtime &amp; Integrations</span>
+      <span class="pill">PublicInsight™ — Readiness &amp; Training</span>
+    </div>
+    <p class="meta" style="margin-top:8px">
+      This Hub is implemented and hosted by Polimorphic under the VAULTCLERK™ framework license from PublicLogic™.
+      PublicInsight™ provides adoption, playbooks, and staff readiness.
+    </p>
+  </section>
 
-  <footer role="contentinfo">
-    © 2025 Town of Sutton | Built with <strong>PublicLogic™</strong>, <strong>Polimorphic™</strong>, and <strong>PublicInsight™</strong>.  
-    Framework-as-a-Standard™ — VAULTCLERK™ v1.0.1
-  </footer>
-</div>
+  <!-- Contacts -->
+  <section id="contacts" class="card" aria-labelledby="contact-h">
+    <h1 id="contact-h">Contacts</h1>
+    <ul>
+      <li><strong>Nathan Boudreau, MPA, MCPPO</strong> — Founder &amp; Lead Consultant, PublicLogic™ — <a href="mailto:nate@publiclogic.org">nate@publiclogic.org</a></li>
+      <li><strong>Dr. Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA</strong> — Behavioral Systems &amp; Research, PublicInsight™ — <a href="mailto:allie@publiclogic.org">allie@publiclogic.org</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap">
+  © 2025 Town of Sutton. Built with PublicLogic™ (Framework), Polimorphic (Runtime), and PublicInsight™ (Training). Framework-as-a-Standard™ — VAULTCLERK™ v1.0.1.
+</footer>
+
+<script>
+  // Resolve repo links from data-base-url + data-href
+  (function(){
+    const base = document.body.getAttribute('data-base-url') || './';
+    document.querySelectorAll('[data-href]').forEach(a=>{
+      a.href = new URL(a.getAttribute('data-href'), base).toString();
+    });
+  })();
+</script>
 </body>
 </html>

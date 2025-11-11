@@ -1,0 +1,29 @@
+[
+  {
+    "id": "SUT-2025-0001",
+    "intake_channel": "Email",
+    "received_datetime": "2025-11-11T14:33:51",
+    "subject": "Public Records Request - Annual MS4 Report",
+    "requestor_name": "Alice Carter",
+    "location": "Town Hall",
+    "notes": "Wants PDF/A copy; deliver in 10 days"
+  },
+  {
+    "id": "SUT-2025-0002",
+    "intake_channel": "Counter",
+    "received_datetime": "2025-11-11T14:33:51",
+    "subject": "Dog License Renewal Form",
+    "requestor_name": "Mike Davis",
+    "location": "Clerk's Office",
+    "notes": "Paid by check"
+  },
+  {
+    "id": "SUT-2025-0003",
+    "intake_channel": "Phone/311",
+    "received_datetime": "2025-11-11T14:33:51",
+    "subject": "Pothole at River Rd",
+    "requestor_name": "N/A",
+    "location": "River Rd by bridge",
+    "notes": "Forward to DPW"
+  }
+]

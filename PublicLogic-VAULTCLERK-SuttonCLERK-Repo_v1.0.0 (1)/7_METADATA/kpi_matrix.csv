@@ -1,0 +1,2 @@
+kpi_id,title,expression,target
+KPI01,Intake to Archive Lag,avg(days_to_archive),<=5

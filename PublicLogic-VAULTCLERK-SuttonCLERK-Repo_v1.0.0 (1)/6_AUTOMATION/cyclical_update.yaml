@@ -1,0 +1,7 @@
+# Quarterly cycle: verify → aggregate → report → release
+steps:
+  - verify_sha256: 5_INTEGRITY/SHA256SUMS
+  - aggregate_data: 4_SAMPLES/samples.json
+  - update_budget: 7_METADATA/budget_tags.csv
+  - rebuild_dashboards: true
+  - tag_release: v1.0.0

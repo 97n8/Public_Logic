@@ -1,0 +1,13 @@
+{
+  "target": "SharePoint",
+  "site": "SuttonCLERK Pilot",
+  "library": "Documents",
+  "paths": [
+    "1_DOCS",
+    "2_PACKAGE",
+    "3_CONFIG",
+    "4_SAMPLES",
+    "5_INTEGRITY",
+    "index.html"
+  ]
+}

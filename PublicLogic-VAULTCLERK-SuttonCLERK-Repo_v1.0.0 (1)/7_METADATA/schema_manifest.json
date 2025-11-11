@@ -1,0 +1,9 @@
+{
+  "fields": [
+    "id",
+    "date",
+    "type",
+    "fee",
+    "retention_code"
+  ]
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SuttonCLERK™ Pilot — Launch Dashboard (PublicLogic × Polimorphic)</title>
+<style>
+  :root{--ink:#0c1a15;--muted:#5b6a60;--ever:#1f6b4a;--sage:#3a8b68;--edge:#dee6de;--wash:#f6f8f6;}
+  *{box-sizing:border-box} body{margin:0;background:#fff;color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+  header{padding:18px 22px;border-bottom:1px solid var(--edge);background:#fbfdf8}
+  h1{margin:0;font-size:22px} .sub{color:var(--muted)}
+  .wrap{max-width:1100px;margin:0 auto;padding:18px 22px}
+  .grid{display:grid;gap:14px;grid-template-columns:2fr 1fr}@media(max-width:980px){.grid{grid-template-columns:1fr}}
+  .card{border:1px solid var(--edge);border-radius:16px;padding:16px;background:#fff}
+  .btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:10px;padding:12px 16px;border:1px solid var(--ever);background:#1f6b4a;color:#fff;margin:6px 6px 6px 0}
+  .btn.alt{background:#e9f6ef;color:#0c1a15}
+  ul{margin:8px 0 8px 20px} li{margin:6px 0}
+  code{background:#eef3ee;padding:2px 6px;border-radius:6px}
+  .small{font-size:13px;color:var(--muted)}
+  footer{padding:14px 22px;color:#5b6a60;font-size:13px;border-top:1px solid var(--edge)}
+</style>
+</head>
+<body>
+<header>
+  <h1>PublicLogic — SuttonCLERK™ Pilot (8–12 Weeks)</h1>
+  <div class="sub">Polimorphic platform · Google Workspace · PublicInsight™ training · CSS grants</div>
+</header>
+
+<div class="wrap">
+  <div class="grid">
+    <div class="card">
+      <h2>Start Here</h2>
+      <p>Use these buttons in order. This dashboard guides the entire packet.</p>
+      <p>
+        <a class="btn" href="0_EXEC/Launch_Brief.html">Open Launch Brief</a>
+        <a class="btn alt" href="1_DOCS/PL_VAULTCLERK_Sutton_Pilot_Spec_FINAL.html">Pilot Spec</a>
+        <a class="btn alt" href="1_DOCS/PL_VAULTCLERK_Full_Package_Circular.html">Packaging Circular</a>
+      </p>
+      <p>
+        <a class="btn alt" href="1_DOCS/QUICK_SETUP_GWS.html">Quick Setup (Google Workspace)</a>
+        <a class="btn alt" href="1_DOCS/SMOKE_TEST.html">Run Smoke Test</a>
+      </p>
+      <p>
+        <a class="btn" href="2_PACKAGE/VAULTCLERK_SUTTON_Package_v2.zip">Seed Doctrine (21 Folders)</a>
+        <a class="btn alt" href="5_INTEGRITY/SHA256SUMS">Integrity (SHA256)</a>
+      </p>
+      <p>
+        <a class="btn alt" href="3_CONFIG/gws_labels.json">Gmail Labels (JSON)</a>
+        <a class="btn alt" href="3_CONFIG/phone311_template.csv">Phone/311 Template (CSV)</a>
+      </p>
+      <p>
+        <a class="btn alt" href="4_SAMPLES/samples.json">Sample Intakes</a>
+        <a class="btn alt" href="4_SAMPLES/binder_demo/index.html">Binder Demo</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Operational Notes</h2>
+      <ul>
+        <li>This packet runs locally or in a Shared Drive. Keep all files in the same folder.</li>
+        <li>Polimorphic endpoints: <code>/intake</code>, <code>/audit</code>, <code>/report</code>.</li>
+        <li>Paper intake is supported. Print from <code>2_PACKAGE/20_Paper_Intake/_TEMPLATE_FORMS/</code>.</li>
+        <li>Scans drop into <code>_SCAN_IMPORT/incoming</code> and will auto-route via VAULTSCAN™.</li>
+      </ul>
+      <p class="small">Built 2025-11-11 15:01 · © 2025 PublicLogic LLC</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Pre‑Launch Checklist</h2>
+    <ol>
+      <li>Open <strong>Quick Setup (GWS)</strong> and complete Gmail, Drive, Sheet configuration.</li>
+      <li>Run the <strong>Smoke Test</strong> — confirm all expected files are present.</li>
+      <li>Unzip the <strong>Seed Doctrine</strong> in <code>2_PACKAGE/</code> and verify all 21 folders exist.</li>
+      <li>Test one digital intake through Polimorphic <code>/intake</code>.</li>
+      <li>Scan a paper form to <code>20_Paper_Intake/_SCAN_IMPORT/incoming</code> and verify routing.</li>
+      <li>Open the <strong>Binder Demo</strong> to confirm end‑to‑end readability.</li>
+    </ol>
+  </div>
+</div>
+
+<footer>PublicLogic®, VAULTCLERK®, Frameworks‑as‑a‑Standard™, PublicInsight™ · Joint launch with Polimorphic</footer>
+</body>
+</html>

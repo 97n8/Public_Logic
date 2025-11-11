@@ -1,0 +1,11 @@
+{
+  "target": "GoogleDrive",
+  "paths": [
+    "1_DOCS",
+    "2_PACKAGE",
+    "3_CONFIG",
+    "4_SAMPLES",
+    "5_INTEGRITY",
+    "index.html"
+  ]
+}

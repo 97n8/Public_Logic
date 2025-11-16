@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Implementation services | PublicLogic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="pl-header">
+    <div class="pl-container header-inner">
+      <div class="brand">
+        <span class="logo-dot"></span>
+        <div class="brand-text">
+          <span class="brand-name">PublicLogic</span>
+          <span class="brand-tagline">Implementation and support</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a><a href="vault/index.html" class="nav-link">VAULT</a><a href="modules/index.html" class="nav-link">Modules</a><a href="pilots/index.html" class="nav-link">Pilots</a><a href="services/index.html" class="nav-link active">Services</a><a href="about/index.html" class="nav-link">About</a><a href="contact/index.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="pl-main">
+    <section class="pl-section">
+  <div class="pl-container">
+    <h1>Implementation services</h1>
+    <p class="lead">
+      A clear, step based engagement from first conversation through live VAULT views on PL.org.
+      Built for real towns, not lab towns.
+    </p>
+
+    <div class="card">
+      <h2>Phase 1 – Discovery and scoping</h2>
+      <ul class="steps-list">
+        <li>Capture the opportunity in the workspace intake and confirm modules in scope.</li>
+        <li>Short conversations with the people who actually do the work.</li>
+        <li>Align with existing policies, MGL citations, and records retention schedules.</li>
+        <li>Deliver a short Implementation Brief with modules, systems, and owners.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <h2>Phase 2 – Structure and intake design</h2>
+      <ul class="steps-list">
+        <li>Design SharePoint lists and fields for each module in scope.</li>
+        <li>Build universal intake forms on your chosen platform.</li>
+        <li>Define how each form write maps into JSON under the <code>/data</code> folder.</li>
+        <li>Document everything in simple language so staff can see the whole picture.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <h2>Phase 3 – Automation and publishing</h2>
+      <ul class="steps-list">
+        <li>Configure Power Automate flows for intake, publishing, and notifications.</li>
+        <li>Publish JSON files to GitHub or your host and link them to VAULT views.</li>
+        <li>Send clear notifications to staff when new files are created and ready.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <h2>Phase 4 – Training and readiness</h2>
+      <ul class="steps-list">
+        <li>Give staff a gentle walkthrough of the new structure and intake.</li>
+        <li>Offer boards a plain language explanation and a single page to watch.</li>
+        <li>Provide one page SOPs and checklists for new hires.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <h2>Phase 5 – Support and iteration</h2>
+      <ul class="steps-list">
+        <li>Watch how intakes and flows behave in the real world.</li>
+        <li>Adjust metrics and categories without breaking structure.</li>
+        <li>Add new modules as the town is ready.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="pl-footer">
+    <div class="pl-container footer-inner">
+      <span>© <span id="year"></span> PublicLogic LLC</span>
+      <span class="muted">Smart Systems. Stronger Communities.</span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>VAULT Modules | PublicLogic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="pl-header">
+    <div class="pl-container header-inner">
+      <div class="brand">
+        <span class="logo-dot"></span>
+        <div class="brand-text">
+          <span class="brand-name">PublicLogic</span>
+          <span class="brand-tagline">VAULT module catalog</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a><a href="../vault/index.html" class="nav-link active">VAULT</a><a href="modules/index.html" class="nav-link">Modules</a><a href="pilots/index.html" class="nav-link">Pilots</a><a href="services/index.html" class="nav-link">Services</a><a href="about/index.html" class="nav-link">About</a><a href="contact/index.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="pl-main">
+    <section class="pl-section">
+  <div class="pl-container">
+    <h1>VAULT module shell</h1>
+    <p class="lead">
+      This page lists example modules and towns for the VAULT family. Each module view
+      is driven by a JSON file in the <code>/data</code> folder and can be wired to
+      SharePoint and Power Automate.
+    </p>
+
+    <div class="card-grid">
+      <article class="card">
+        <h2>VAULTCLERK | Sutton, MA</h2>
+        <p>
+          Example shell for a Clerk module. The public view pulls from
+          <code>data/vaultclerk-sutton.json</code> and renders a simple table of
+          metrics and notes.
+        </p>
+        <ul class="meta-list">
+          <li><strong>Module code:</strong> VAULTCLERK</li>
+          <li><strong>Town:</strong> Sutton, Massachusetts</li>
+          <li><strong>Status:</strong> Sample only</li>
+        </ul>
+        <a href="../vault/module.html?module=clerk&amp;town=sutton&amp;town_name=Sutton%2C%20MA" class="btn secondary small">
+          Open module shell
+        </a>
+      </article>
+
+      <article class="card muted-card">
+        <h2>How to add a new module</h2>
+        <p>
+          To add a new module and town, create a JSON file in
+          <code>/data</code> following the standard schema and then link to the
+          generic <code>module.html</code> view with the right query parameters.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="pl-footer">
+    <div class="pl-container footer-inner">
+      <span>© <span id="year"></span> PublicLogic LLC</span>
+      <span class="muted">Smart Systems. Stronger Communities.</span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

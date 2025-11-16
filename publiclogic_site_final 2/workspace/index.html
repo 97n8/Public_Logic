@@ -367,15 +367,18 @@
         <section class="card">
           <h1>PublicLogic workspace</h1>
           <p class="muted">
-            This is where we start and track projects. Everything begins in Universal Intake, files
-            are created in SharePoint under the right folders, and routing is handled by the flows.
+            This is the working home screen. Start new projects here, then track them as they move
+            from intake, to active work, to archive. SharePoint and the automations handle the
+            folders and files in the background.
           </p>
 
+          <!-- This links directly to the Universal Intake form you just built -->
           <a href="workspace/intake/index.html" class="btn-primary">
-            Start new project
+            Start new project (Universal Intake)
           </a>
           <span class="btn-note">
-            Opens Universal Intake. The form creates the SharePoint folders and files for you.
+            Opens the Universal Intake form. Submitting creates a new item in the intake SharePoint
+            list and starts the project flow.
           </span>
 
           <div class="flow-strip">
@@ -394,9 +397,9 @@
           </div>
 
           <p class="small muted">
-            Use the button to start. Once the intake is submitted, the system builds the folders,
-            drops the right files into SharePoint, and sends the project to the Processing board.
-            When work is done, it moves to Archive with links back to the town and module.
+            Step 1: You fill out Universal Intake.  
+            Step 2: The flow writes the data to the intake SharePoint list and builds the folders and files.  
+            Step 3: The project shows on the Processing board. When work is done, it moves to Archive and stays linked to the town and module.
           </p>
 
           <hr class="soft-divider">
@@ -404,27 +407,27 @@
           <h2>Boards</h2>
           <ul class="steps-list">
             <li>
-              <a href="workspace/intake/index.html">Intake board</a><br>
-              <span class="small muted">New towns, ideas, and requests.</span>
+              <a href="workspace/intake/index.html">Universal Intake</a><br>
+              <span class="small muted">Form and intake list entry point for all work.</span>
             </li>
             <li>
               <a href="workspace/processing/index.html">Processing board</a><br>
-              <span class="small muted">Items we are actively building or wiring.</span>
+              <span class="small muted">Projects we are actively building, wiring, or delivering.</span>
             </li>
             <li>
               <a href="workspace/archive/index.html">Archive board</a><br>
-              <span class="small muted">Completed work recorded by the system.</span>
+              <span class="small muted">Completed projects with links back to their files.</span>
             </li>
           </ul>
 
           <hr class="soft-divider">
 
-          <h3 class="small-heading">How this is meant to work</h3>
+          <h3 class="small-heading">How to use this page</h3>
           <ul class="steps-list small">
-            <li>Start projects from this page using Universal Intake.</li>
-            <li>Let the automations create and name folders and files in SharePoint.</li>
-            <li>Work from the Processing board instead of going into file trees.</li>
-            <li>When a project is done, move it to Archive and keep the links updated.</li>
+            <li>Always start a new town, module, or pilot with the Universal Intake button.</li>
+            <li>Work from the Processing board instead of digging through file trees.</li>
+            <li>Keep Archive up to date so we can see what has been delivered.</li>
+            <li>If something looks off in the structure, flag it. Do not rename folders by hand.</li>
           </ul>
         </section>
 
@@ -437,17 +440,17 @@
             <li><strong>Pilots live:</strong> <span>0</span></li>
           </ul>
           <p class="small muted">
-            These numbers can later be wired to Drops files, SharePoint lists, or JSON. For now they
-            are placeholders while we test the flow.
+            These numbers can later be wired to the intake SharePoint list or a Drops file. For now
+            they are placeholders while the flow is being built.
           </p>
 
           <hr class="soft-divider">
 
           <h3 class="small-heading">Notes</h3>
           <ul class="steps-list small">
-            <li>All core documents live in SharePoint under the PL site.</li>
-            <li>Files created from intake are stored in secure libraries with M365 controls.</li>
-            <li>This page is only a front end. The record of work stays in Microsoft 365.</li>
+            <li>All files live in the PL SharePoint site, not on this page.</li>
+            <li>Universal Intake writes to the intake list and then to the right libraries.</li>
+            <li>This workspace is just the front end to make that easier to use.</li>
           </ul>
         </aside>
 
@@ -459,8 +462,8 @@
       <section class="card">
         <h2>Connections</h2>
         <p class="small muted">
-          Links to spaces we will use often. These folders and libraries are created and maintained
-          by the same flows that run from Universal Intake, so paths stay consistent.
+          Quick links to important spaces. These libraries and folders are created and maintained by
+          the same automations that run from intake, so paths stay consistent.
         </p>
 
         <div class="connections-grid">
@@ -510,7 +513,7 @@
           <div class="sub-card">
             <h3>Boards</h3>
             <ul class="steps-list small">
-              <li><a href="workspace/intake/index.html">Intake</a></li>
+              <li><a href="workspace/intake/index.html">Universal Intake</a></li>
               <li><a href="workspace/processing/index.html">Processing</a></li>
               <li><a href="workspace/archive/index.html">Archive</a></li>
             </ul>

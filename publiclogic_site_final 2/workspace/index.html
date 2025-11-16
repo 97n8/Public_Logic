@@ -2,139 +2,536 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>PublicLogic – Shared Workspace</title>
+  <title>PublicLogic Workspace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../assets/css/styles.css">
+
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #475569;
+      --navy: #1e3a5f;
+      --green: #1f6a3e;
+      --border: #d7ded7;
+      --surface: #ffffff;
+      --bg: #f4f6f5;
+
+      --radius-pill: 999px;
+      --radius-lg: 0.85rem;
+      --radius-md: 0.65rem;
+
+      --shadow-subtle: 0 3px 10px rgba(15, 23, 42, 0.04);
+
+      --transition: 130ms ease;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(31, 106, 62, 0.06), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(30, 64, 175, 0.06), transparent 55%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .pl-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.6rem;
+    }
+
+    /* HEADER */
+
+    .pl-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .brand-name {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--muted);
+      padding: 0.36rem 0.9rem;
+      font-size: 0.88rem;
+      border-radius: var(--radius-pill);
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .nav-link:hover {
+      background: rgba(31, 106, 62, 0.10);
+      color: var(--green);
+    }
+
+    .nav-link.active {
+      background: var(--green);
+      color: #ffffff;
+    }
+
+    /* MAIN */
+
+    .pl-main {
+      padding: 2.2rem 0 3rem;
+    }
+
+    .section {
+      padding-top: 0.5rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.35rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .card h1,
+    .card h2,
+    .card h3 {
+      margin-top: 0;
+      color: var(--navy);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .small {
+      font-size: 0.8rem;
+    }
+
+    .soft-divider {
+      border: none;
+      border-bottom: 1px solid var(--border);
+      margin: 0.9rem 0 0.8rem;
+    }
+
+    .steps-list,
+    .meta-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .steps-list li {
+      padding: 0.25rem 0;
+      font-size: 0.9rem;
+    }
+
+    .meta-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      padding: 0.2rem 0;
+    }
+
+    .meta-list strong {
+      font-weight: 600;
+    }
+
+    .small-heading {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 0 0 0.2rem;
+    }
+
+    .connections-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .sub-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 0.9rem 1rem;
+    }
+
+    a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Primary action button */
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.2rem;
+      margin: 0.75rem 0 0.5rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      background: #1f6a3e;
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition:
+        background var(--transition),
+        box-shadow var(--transition),
+        transform var(--transition);
+    }
+
+    .btn-primary:hover {
+      background: #175133;
+      box-shadow: 0 4px 12px rgba(23, 81, 51, 0.35);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .btn-note {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    /* Flow strip */
+
+    .flow-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 0.85rem 0 0.4rem;
+      font-size: 0.8rem;
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: var(--radius-pill);
+      background: #f1f5f4;
+      border: 1px solid #d7ded7;
+    }
+
+    .flow-step span.step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.1rem;
+      height: 1.1rem;
+      border-radius: 999px;
+      background: #1f6a3e;
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .flow-step span.step-label {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* FOOTER */
+
+    .pl-footer {
+      border-top: 1px solid var(--border);
+      background: #f9fafb;
+      padding: 0.75rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .connections-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+      }
+    }
+  </style>
 </head>
 
-<body class="pl-workspace">
+<body>
 
-  <div class="pl-topbar">
-    <div class="pl-container topbar-inner">
-      <div class="topbar-left">
-        <a href="https://publiclogic.org" class="topbar-title">
-          PublicLogic
-        </a>
-      </div>
-      <div class="topbar-right">
-        <a href="../index.html" class="inline-link">Back to PL HQ</a>
+  <!-- HEADER -->
+  <header class="pl-header">
+    <div class="pl-container header-inner">
+
+      <!-- PublicLogic logo / home -->
+      <a href="https://publiclogic.org" class="brand">
+        <span class="brand-name">PublicLogic</span>
+        <span class="brand-tagline">Smart Systems. Stronger Communities.</span>
+      </a>
+
+      <!-- Nav links -->
+      <nav class="nav">
+        <a href="https://publiclogic978.sharepoint.com" class="nav-link">HQ</a>
+        <a href="https://outlook.office.com/mail" class="nav-link">Email</a>
+        <a href="https://www.office.com/launch/word" class="nav-link">Word</a>
+        <a href="https://www.office.com/launch/excel" class="nav-link">Excel</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="pl-main">
+    <div class="pl-container section">
+      <div class="card-grid">
+
+        <!-- Workspace overview -->
+        <section class="card">
+          <h1>PublicLogic workspace</h1>
+          <p class="muted">
+            This is where we start and track projects. Everything begins in Universal Intake, files
+            are created in SharePoint under the right folders, and routing is handled by the flows.
+          </p>
+
+          <a href="workspace/intake/index.html" class="btn-primary">
+            Start new project
+          </a>
+          <span class="btn-note">
+            Opens Universal Intake. The form creates the SharePoint folders and files for you.
+          </span>
+
+          <div class="flow-strip">
+            <div class="flow-step">
+              <span class="step-number">1</span>
+              <span class="step-label">Intake</span>
+            </div>
+            <div class="flow-step">
+              <span class="step-number">2</span>
+              <span class="step-label">Processing</span>
+            </div>
+            <div class="flow-step">
+              <span class="step-number">3</span>
+              <span class="step-label">Archive</span>
+            </div>
+          </div>
+
+          <p class="small muted">
+            Use the button to start. Once the intake is submitted, the system builds the folders,
+            drops the right files into SharePoint, and sends the project to the Processing board.
+            When work is done, it moves to Archive with links back to the town and module.
+          </p>
+
+          <hr class="soft-divider">
+
+          <h2>Boards</h2>
+          <ul class="steps-list">
+            <li>
+              <a href="workspace/intake/index.html">Intake board</a><br>
+              <span class="small muted">New towns, ideas, and requests.</span>
+            </li>
+            <li>
+              <a href="workspace/processing/index.html">Processing board</a><br>
+              <span class="small muted">Items we are actively building or wiring.</span>
+            </li>
+            <li>
+              <a href="workspace/archive/index.html">Archive board</a><br>
+              <span class="small muted">Completed work recorded by the system.</span>
+            </li>
+          </ul>
+
+          <hr class="soft-divider">
+
+          <h3 class="small-heading">How this is meant to work</h3>
+          <ul class="steps-list small">
+            <li>Start projects from this page using Universal Intake.</li>
+            <li>Let the automations create and name folders and files in SharePoint.</li>
+            <li>Work from the Processing board instead of going into file trees.</li>
+            <li>When a project is done, move it to Archive and keep the links updated.</li>
+          </ul>
+        </section>
+
+        <!-- Simple status / explanation -->
+        <aside class="card">
+          <h2>Today</h2>
+          <ul class="meta-list">
+            <li><strong>Intakes:</strong> <span>0</span></li>
+            <li><strong>In progress:</strong> <span>0</span></li>
+            <li><strong>Pilots live:</strong> <span>0</span></li>
+          </ul>
+          <p class="small muted">
+            These numbers can later be wired to Drops files, SharePoint lists, or JSON. For now they
+            are placeholders while we test the flow.
+          </p>
+
+          <hr class="soft-divider">
+
+          <h3 class="small-heading">Notes</h3>
+          <ul class="steps-list small">
+            <li>All core documents live in SharePoint under the PL site.</li>
+            <li>Files created from intake are stored in secure libraries with M365 controls.</li>
+            <li>This page is only a front end. The record of work stays in Microsoft 365.</li>
+          </ul>
+        </aside>
+
       </div>
     </div>
-  </div>
 
-  <main class="pl-main">
+    <!-- Connections -->
+    <div class="pl-container section">
+      <section class="card">
+        <h2>Connections</h2>
+        <p class="small muted">
+          Links to spaces we will use often. These folders and libraries are created and maintained
+          by the same flows that run from Universal Intake, so paths stay consistent.
+        </p>
 
-    <section class="pl-section">
-      <div class="pl-container">
-        <div class="card-grid">
+        <div class="connections-grid">
 
-          <article class="card">
-            <h1>Shared workspace</h1>
-            <p class="muted">
-              Simple internal home base. Boards live on the left, and the system handles the
-              folder structure automatically through Drops and 365.
-            </p>
-
-            <hr class="soft-divider">
-
-            <h3 class="small-heading">Boards</h3>
-            <ul class="steps-list">
-              <li><a href="intake/index.html" class="inline-link">Intake board</a></li>
-              <li><a href="processing/index.html" class="inline-link">Processing board</a></li>
-              <li><a href="archive/index.html" class="inline-link">Archive board</a></li>
+          <div class="sub-card">
+            <h3>Shared files</h3>
+            <ul class="steps-list small">
+              <li>
+                <a href="https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/Forms/AllItems.aspx" target="_blank">
+                  PL Shared Documents
+                </a>
+              </li>
+              <li>
+                <a href="https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/Engagements" target="_blank">
+                  Engagements
+                </a>
+              </li>
+              <li>
+                <a href="https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/VAULT" target="_blank">
+                  VAULT frameworks
+                </a>
+              </li>
             </ul>
-
-          </article>
-
-          <article class="card muted-card">
-            <h2>Today</h2>
-            <ul class="meta-list">
-              <li><strong>Intakes:</strong> <span>0</span></li>
-              <li><strong>In progress:</strong> <span>0</span></li>
-              <li><strong>Pilots live:</strong> <span>0</span></li>
-            </ul>
-
-            <p class="small muted">
-              These values will eventually read from SharePoint lists or JSON when the automations
-              are wired up. For now, placeholders.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="pl-section">
-      <div class="pl-container">
-        <div class="card">
-          <h2>Connections</h2>
-          <p class="small muted">Direct links to the locations we will use most often.</p>
-
-          <div class="card-grid compact-grid">
-
-            <article class="sub-card">
-              <h3>Shared files</h3>
-              <ul class="steps-list small">
-                <li>
-                  <a href="https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/Forms/AllItems.aspx" target="_blank">
-                    PL Shared Documents
-                  </a>
-                </li>
-                <li>
-                  <a href="https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/Engagements" target="_blank">
-                    Engagements
-                  </a>
-                </li>
-                <li>
-                  <a href="https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/VAULT" target="_blank">
-                    VAULT frameworks
-                  </a>
-                </li>
-              </ul>
-            </article>
-
-            <article class="sub-card">
-              <h3>Templates & SOPs</h3>
-              <ul class="steps-list small">
-                <li>
-                  <a href="https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/Templates" target="_blank">
-                    Templates folder
-                  </a>
-                </li>
-                <li>
-                  <a href="https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/SOPs" target="_blank">
-                    SOP library
-                  </a>
-                </li>
-                <li>
-                  <a href="../internal/templates/" target="_blank">
-                    Local template index
-                  </a>
-                </li>
-              </ul>
-            </article>
-
-            <article class="sub-card">
-              <h3>Boards</h3>
-              <ul class="steps-list small">
-                <li><a href="intake/index.html">Intake</a></li>
-                <li><a href="processing/index.html">Processing</a></li>
-                <li><a href="archive/index.html">Archive</a></li>
-              </ul>
-            </article>
-
           </div>
+
+          <div class="sub-card">
+            <h3>Templates and SOPs</h3>
+            <ul class="steps-list small">
+              <li>
+                <a href="https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/Templates" target="_blank">
+                  Templates folder
+                </a>
+              </li>
+              <li>
+                <a href="https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/SOPs" target="_blank">
+                  SOP library
+                </a>
+              </li>
+              <li>
+                <a href="internal/templates/index.html" target="_blank">
+                  Local template index
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="sub-card">
+            <h3>Boards</h3>
+            <ul class="steps-list small">
+              <li><a href="workspace/intake/index.html">Intake</a></li>
+              <li><a href="workspace/processing/index.html">Processing</a></li>
+              <li><a href="workspace/archive/index.html">Archive</a></li>
+            </ul>
+          </div>
+
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
   </main>
 
+  <!-- FOOTER -->
   <footer class="pl-footer">
     <div class="pl-container footer-inner">
-      <span class="muted small">PublicLogic workspace · v0.1</span>
+      <span>© <span id="year"></span> PublicLogic LLC</span>
+      <span class="muted">Internal workspace connected to Microsoft 365 and SharePoint.</span>
     </div>
   </footer>
 
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

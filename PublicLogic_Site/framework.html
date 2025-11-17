@@ -1,32 +1,261 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PublicLogic Framework • Powered by VAULT</title>
+  <title>PublicLogic™ Framework — Powered by VAULT</title>
   <meta name="description" content="The PublicLogic Framework connects technology, law, and behavior into one working model of modernization." />
-  <link rel="icon" href="/favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css" />
-  <meta property="og:title" content="PublicLogic Framework • Powered by VAULT" />
+  <meta name="keywords" content="PublicLogic framework, VAULT, ARCHIEVE, municipal workflows, compliance, public records" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#1f6b4a" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="PublicLogic Framework — Powered by VAULT" />
   <meta property="og:description" content="The PublicLogic Framework connects technology, law, and behavior into one working model of modernization." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/assets/img/logo.svg" />
-  <meta property="og:url" content="/framework.html" />
+  <meta property="og:url" content="https://publiclogic.org/framework.html" />
+  <meta property="og:image" content="https://publiclogic.org/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PublicLogic Framework — Powered by VAULT" />
+  <meta name="twitter:description" content="The PublicLogic Framework connects technology, law, and behavior into one working model of modernization." />
+  <meta name="twitter:image" content="https://publiclogic.org/og-image.jpg" />
+
+  <link rel="canonical" href="https://publiclogic.org/framework.html" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #ffffff;
+      --paper: #ffffff;
+      --ink: #0b1713;
+      --brand: #1f6b4a;
+      --muted: #5e6864;
+      --line: #e5ebe7;
+      --accent: #145c3a;
+      --chip: #eef7f1;
+      --hover: #134d32;
+      --shadow: rgba(11, 23, 19, 0.08);
+      --focus: #0a7e51;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    p { max-width: 62ch; }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute; left: 0; top: -40px; background: var(--brand); color: #fff;
+      padding: .5rem .75rem; border-radius: 6px; z-index: 1000; text-decoration: none;
+    }
+    .skip-link:focus { top: 8px; outline: 3px solid #fff; }
+
+    /* Navigation */
+    .nav-wrap {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 1px 3px rgba(11, 23, 19, 0.05);
+    }
+    .nav {
+      max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; color: var(--brand); font-weight: 800; font-size: 1.2rem; }
+    .nav ul { display: flex; list-style: none; gap: 1.5rem; flex-wrap: wrap; }
+    .nav a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: .95rem; transition: color .2s; }
+    .nav a:hover { color: var(--brand); }
+
+    /* Hero */
+    .hero { background: linear-gradient(135deg, #eef7f1 0%, #ffffff 100%); padding: 5rem 1.5rem; text-align: center; }
+    .hero-inner { max-width: 800px; margin: 0 auto; padding-top: 1rem; }
+    .hero h1 { font-size: clamp(1.9rem, 3.5vw, 2.75rem); font-weight: 800; color: var(--brand); margin: 0 0 1.5rem 0; letter-spacing: -0.03em; line-height: 1.2; }
+    .hero p { font-size: 1.15rem; color: var(--ink); line-height: 1.7; margin-bottom: 1rem; max-width: 62ch; margin-left: auto; margin-right: auto; }
+    .mb-3 { margin-bottom: 2rem !important; }
+
+    /* Buttons */
+    .btn { display: inline-block; background: var(--brand); color: #fff; padding: .85rem 1.6rem; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background .2s, transform .06s; margin: .5rem; box-shadow: 0 2px 4px var(--shadow); }
+    .btn:hover { background: var(--hover); }
+    .btn:active { transform: translateY(1px); }
+    .btn.secondary { background: transparent; color: var(--brand); border: 2px solid var(--brand); }
+    .btn.secondary:hover { background: var(--chip); }
+
+    /* Main Content */
+    .main { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .wrap { padding: 4.5rem 0; }
+    .section-title { font-size: 1.9rem; font-weight: 800; color: var(--accent); margin-bottom: 2.5rem; text-align: center; letter-spacing: -0.02em; position: relative; }
+    .section-title::after { content: ""; position: absolute; width: 60px; height: 4px; background: var(--brand); bottom: -12px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
+
+    /* Grids */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+
+    /* Cards */
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 2rem; box-shadow: 0 2px 6px var(--shadow); }
+    .kicker { color: var(--brand); font-weight: 800; font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .75rem; }
+    .card h3 { font-size: 1.3rem; font-weight: 800; color: var(--brand); margin: 0 0 1rem 0; }
+    .mt-0 { margin-top: 0 !important; }
+    .mb-0 { margin-bottom: .5rem !important; }
+    .card p { color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+    .card p:last-child { margin-bottom: 0; }
+
+    /* Badges */
+    .badges { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; margin-bottom: 1.25rem; }
+    .badge { background: var(--chip); color: var(--accent); padding: .5rem 1rem; border-radius: 999px; font-size: .85rem; font-weight: 700; border: 1px solid var(--line); }
+
+    /* Footer */
+    .footer { background: var(--paper); border-top: 1px solid var(--line); padding: 3rem 1.5rem; margin-top: 5rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; text-align: center; color: var(--muted); font-size: .95rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav { flex-direction: column; align-items: flex-start; }
+      .nav ul { width: 100%; flex-direction: column; gap: .75rem; }
+      .hero { padding: 3.5rem 1.5rem; }
+      .hero p { font-size: 1.05rem; }
+      .wrap { padding: 3.5rem 0; }
+      .section-title { font-size: 1.6rem; }
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .btn { display: block; width: 100%; max-width: 320px; margin: .5rem auto; }
+    }
+
+    *:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+    /* --- Extra styles just for the Framework artifact (re-use card look) --- */
+    .framework-inner-card {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--brand);
+      margin-bottom: .5rem;
+      font-size: .85rem;
+      letter-spacing: .08em;
+    }
+    .subtitle {
+      color: var(--muted);
+      margin-top: .5rem;
+    }
+    .tagline {
+      margin-top: .25rem;
+      font-weight: 700;
+      color: var(--brand);
+    }
+    .pill {
+      background: var(--chip);
+      padding: .4rem .9rem;
+      border-radius: 999px;
+      font-weight: 700;
+      color: var(--accent);
+      border: 1px solid var(--line);
+      display: inline-block;
+      margin-bottom: .75rem;
+      font-size: .8rem;
+    }
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: .75rem 0 1.25rem;
+    }
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1.75rem;
+      box-shadow: 0 2px 6px var(--shadow);
+    }
+    .panel h2 {
+      font-size: 1.25rem;
+      margin: 0 0 .75rem 0;
+      color: var(--brand);
+    }
+    .panel .kicker {
+      font-size: .9rem;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-bottom: .5rem;
+    }
+    .marks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .mark {
+      background: var(--chip);
+      color: var(--accent);
+      padding: .5rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-weight: 700;
+      font-size: .85rem;
+    }
+    .cta {
+      display: inline-block;
+      margin-top: 1.5rem;
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--brand);
+    }
+  </style>
+
+  <!-- Schema.org Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PublicLogic",
+    "url": "https://publiclogic.org",
+    "logo": "https://publiclogic.org/icon.svg",
+    "sameAs": [
+      "https://www.linkedin.com/company/publiclogic"
+    ],
+    "slogan": "Smart Systems. Stronger Communities.",
+    "founder": {
+      "@type": "Person",
+      "name": "Nathan Boudreau, MPA, MCPPO"
+    }
+  }
+  </script>
 </head>
+
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 <div class="nav-wrap" role="navigation" aria-label="Main">
   <nav class="nav">
-    <a class="logo" href="/"><img src="/assets/img/logo.svg" alt="PublicLogic logo"/><span>PublicLogic</span></a>
-    <ul>
-      <li><a href="/framework.html">Framework</a></li>
+    <a class="logo" href="/" aria-label="PublicLogic home"><span>PublicLogic™</span></a>
+    <ul role="list">
+      <li><a href="/framework.html" aria-current="page">Framework</a></li>
       <li><a href="/solutions.html">Solutions</a></li>
       <li><a href="/partners.html">Partners</a></li>
       <li><a href="/research.html">Research</a></li>
-      <li><a href="/case-studies.html">Case Studies</a></li>
       <li><a href="/about.html">About</a></li>
       <li><a href="/contact.html">Contact</a></li>
     </ul>
@@ -37,31 +266,32 @@
   <div class="hero-inner">
     <h1>PublicLogic™ Framework</h1>
     <p>Powered by the VAULT™ logic core. Lawful, measurable, human.</p>
+    <p class="mb-3">The Framework connects technology, law, and behavior into one working model of modernization — without replacing the systems your town already owns.</p>
   </div>
 </header>
-<main class="main">
+
+<main id="main" class="main" tabindex="-1">
   <section class="wrap">
-    <article class="card">
+    <article class="card framework-inner-card">
       <div class="kicker">Canonical</div>
       <h2 class="mt-0">Framework Overview</h2>
-      <p class="mb-3">This page includes the full Framework artifact provided by the founder, with accessible styling and print support.</p>
-      <div class="divider" style="height:1px;background:linear-gradient(90deg, transparent, var(--pl-line), transparent);margin:8px 0 12px"></div>
-      <!-- Begin embedded framework content -->
-      <div class="wrap">
-    <article class="card" role="document" aria-label="PublicLogic Framework">
-      <header>
+      <p class="mb-3">This is the canonical Framework artifact provided by the founder, wrapped in accessible styling and built to print cleanly for boards and staff.</p>
+      <div class="divider"></div>
+
+      <!-- Embedded Framework artifact -->
+      <header style="margin-bottom: 2rem;">
         <div class="eyebrow">PublicLogic™ Framework</div>
-        <h1>Powered by the VAULT™ Logic Core</h1>
+        <h1 style="font-size:1.6rem; margin:0 0 .5rem 0; color:var(--brand);">Powered by the VAULT™ Logic Core</h1>
         <p class="subtitle">Lawful, measurable, human</p>
-        <p class="tagline">Smart Systems, Stronger Communities</p>
+        <p class="tagline">Smart Systems. Stronger Communities</p>
       </header>
 
-      <section class="lede">
+      <section class="lede" style="margin-bottom: 2rem;">
         <p>Modern governance is not only digital. It is systemic and human. The PublicLogic Framework connects technology, law, and behavior into one working model of modernization.</p>
         <p>At the foundation is the VAULT Logic Core. It organizes every municipal or organizational process around four living layers: awareness, structure, empathy, and feedback. When these layers align, compliance becomes culture, and modernization becomes sustainable.</p>
       </section>
 
-      <section class="grid" aria-label="Framework Layers">
+      <section class="framework-grid" aria-label="Framework Layers">
         <!-- PublicInstinct -->
         <div class="panel">
           <span class="pill" aria-label="Layer">PublicInstinct™</span>
@@ -103,12 +333,12 @@
         </div>
       </section>
 
-      <section class="align" aria-label="Alignment">
-        <h3>Alignment creates the PublicLogic Framework</h3>
+      <section style="margin-top: 2.5rem;">
+        <h3 style="font-size:1.2rem; margin-bottom:.75rem; color:var(--accent);">Alignment creates the PublicLogic Framework</h3>
         <p>When Instinct, Logic, Insight, and Pulse operate as one, an organization reaches alignment. Compliance, behavior, and feedback form a continuous loop. That alignment is the PublicLogic Framework, a living system of governance that is lawful, measurable, and human.</p>
       </section>
 
-      <footer>
+      <footer style="margin-top: 2.5rem;">
         <div class="marks">
           <span class="mark">VAULT™</span>
           <span class="mark">FormKey™</span>
@@ -117,28 +347,30 @@
           <span class="mark">PublicInsight™</span>
           <span class="mark">PublicPulse™</span>
         </div>
-        <a class="cta" href="#" onclick="window.print();return false;" aria-label="Print or save as PDF">Print or save as PDF</a>
+        <a class="cta" href="#" onclick="window.print();return false;" aria-label="Print or save this framework as PDF">Print or save as PDF</a>
       </footer>
-    </article>
-  </div>
-      <!-- End embedded framework content -->
     </article>
   </section>
 </main>
 
 <footer class="footer" role="contentinfo">
   <div class="footer-inner">
-    <div class="badges">
-      <span class="badge">VAULT™</span>
-      <span class="badge">FormKey™</span>
-      <span class="badge">SEAL™</span>
-      <span class="badge">ARCHIEVE™</span>
-      <span class="badge">PublicInsight™</span>
-      <span class="badge">PublicPulse™</span>
+    <div class="badges" aria-label="Framework badges">
+      <span class="badge" aria-label="VAULT trademark">VAULT™</span>
+      <span class="badge" aria-label="ARCHIEVE trademark">ARCHIEVE™</span>
+      <span class="badge" aria-label="PublicInsight trademark">PublicInsight™</span>
+      <span class="badge" aria-label="Public Instinct trademark">Public Instinct™</span>
     </div>
-    <div>© PublicLogic LLC. Smart Systems, Stronger Communities.</div>
+    <div>© 2025 PublicLogic™ LLC</div>
+    <div style="margin-top: .5rem; color: var(--brand); font-weight: 700;">Built by practitioners who understand government and where it needs to go.</div>
+    <div style="margin-top: .25rem; color: var(--brand); font-weight: 700;">Smart Systems. Stronger Communities.</div>
+    <div style="margin-top: 1rem;">
+      <a href="/privacy.html" style="color: var(--muted); text-decoration: none; font-weight: 600;">Privacy</a>
+      <span aria-hidden="true" style="margin: 0 .5rem; color: var(--line);">•</span>
+      <a href="/accessibility.html" style="color: var(--muted); text-decoration: none; font-weight: 600;">Accessibility</a>
+    </div>
   </div>
 </footer>
-<script src="/assets/js/main.js"></script>
+
 </body>
 </html>

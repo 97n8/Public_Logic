@@ -3,24 +3,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PublicLogic™ Framework — Powered by VAULT</title>
-  <meta name="description" content="The PublicLogic Framework connects technology, law, and behavior into one working model of modernization." />
-  <meta name="keywords" content="PublicLogic framework, VAULT, ARCHIEVE, municipal workflows, compliance, public records" />
+  <title>VAULT™ Framework — PublicLogic™</title>
+  <meta name="description" content="The VAULT™ Framework from PublicLogic connects technology, law, and behavior into one working model of modernization." />
+  <meta name="keywords" content="VAULT framework, PublicLogic frameworks, ARCHIEVE, municipal workflows, compliance, public records" />
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#1f6b4a" />
 
   <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="PublicLogic Framework — Powered by VAULT" />
-  <meta property="og:description" content="The PublicLogic Framework connects technology, law, and behavior into one working model of modernization." />
+  <meta property="og:title" content="VAULT™ Framework — PublicLogic" />
+  <meta property="og:description" content="The VAULT™ Framework connects technology, law, and behavior into one working model of modernization." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://publiclogic.org/framework.html" />
   <meta property="og:image" content="https://publiclogic.org/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="PublicLogic Framework — Powered by VAULT" />
-  <meta name="twitter:description" content="The PublicLogic Framework connects technology, law, and behavior into one working model of modernization." />
+  <meta name="twitter:title" content="VAULT™ Framework — PublicLogic" />
+  <meta name="twitter:description" content="The VAULT™ Framework connects technology, law, and behavior into one working model of modernization." />
   <meta name="twitter:image" content="https://publiclogic.org/og-image.jpg" />
 
-  <link rel="canonical" href="https://publiclogic.org/framework.html" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -60,86 +59,221 @@
 
     /* Skip link */
     .skip-link {
-      position: absolute; left: 0; top: -40px; background: var(--brand); color: #fff;
-      padding: .5rem .75rem; border-radius: 6px; z-index: 1000; text-decoration: none;
+      position: absolute;
+      left: 0;
+      top: -40px;
+      background: var(--brand);
+      color: #fff;
+      padding: .5rem .75rem;
+      border-radius: 6px;
+      z-index: 1000;
+      text-decoration: none;
     }
-    .skip-link:focus { top: 8px; outline: 3px solid #fff; }
+    .skip-link:focus {
+      top: 8px;
+      outline: 3px solid #fff;
+    }
 
     /* Navigation */
     .nav-wrap {
       background: var(--paper);
       border-bottom: 1px solid var(--line);
-      position: sticky; top: 0; z-index: 100;
+      position: sticky;
+      top: 0;
+      z-index: 100;
       box-shadow: 0 1px 3px rgba(11, 23, 19, 0.05);
     }
     .nav {
-      max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
-    .logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; color: var(--brand); font-weight: 800; font-size: 1.2rem; }
-    .nav ul { display: flex; list-style: none; gap: 1.5rem; flex-wrap: wrap; }
-    .nav a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: .95rem; transition: color .2s; }
-    .nav a:hover { color: var(--brand); }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+      color: var(--brand);
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .95rem;
+      transition: color .2s;
+    }
+    .nav-links a:hover {
+      color: var(--brand);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      padding: .4rem .5rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+    }
+    .nav-toggle-label {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .nav-toggle-bars {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3px;
+    }
+    .nav-toggle-bar {
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--ink);
+    }
 
     /* Hero */
-    .hero { background: linear-gradient(135deg, #eef7f1 0%, #ffffff 100%); padding: 5rem 1.5rem; text-align: center; }
-    .hero-inner { max-width: 800px; margin: 0 auto; padding-top: 1rem; }
-    .hero h1 { font-size: clamp(1.9rem, 3.5vw, 2.75rem); font-weight: 800; color: var(--brand); margin: 0 0 1.5rem 0; letter-spacing: -0.03em; line-height: 1.2; }
-    .hero p { font-size: 1.15rem; color: var(--ink); line-height: 1.7; margin-bottom: 1rem; max-width: 62ch; margin-left: auto; margin-right: auto; }
+    .hero {
+      background: linear-gradient(135deg, #eef7f1 0%, #ffffff 100%);
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding-top: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      color: var(--brand);
+      margin: 0 0 1.5rem 0;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      max-width: 62ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .mb-3 { margin-bottom: 2rem !important; }
 
     /* Buttons */
-    .btn { display: inline-block; background: var(--brand); color: #fff; padding: .85rem 1.6rem; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background .2s, transform .06s; margin: .5rem; box-shadow: 0 2px 4px var(--shadow); }
-    .btn:hover { background: var(--hover); }
-    .btn:active { transform: translateY(1px); }
-    .btn.secondary { background: transparent; color: var(--brand); border: 2px solid var(--brand); }
-    .btn.secondary:hover { background: var(--chip); }
+    .btn {
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
+      padding: .85rem 1.6rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background .2s, transform .06s;
+      margin: .5rem;
+      box-shadow: 0 2px 4px var(--shadow);
+      border: 2px solid transparent;
+    }
+    .btn:hover {
+      background: var(--hover);
+    }
+    .btn:active {
+      transform: translateY(1px);
+    }
+    .btn.secondary {
+      background: transparent;
+      color: var(--brand);
+      border-color: var(--brand);
+    }
+    .btn.secondary:hover {
+      background: var(--chip);
+    }
 
     /* Main Content */
-    .main { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-    .wrap { padding: 4.5rem 0; }
-    .section-title { font-size: 1.9rem; font-weight: 800; color: var(--accent); margin-bottom: 2.5rem; text-align: center; letter-spacing: -0.02em; position: relative; }
-    .section-title::after { content: ""; position: absolute; width: 60px; height: 4px; background: var(--brand); bottom: -12px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
-
-    /* Grids */
-    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .wrap {
+      padding: 4.5rem 0;
+    }
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+      text-align: center;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      background: var(--brand);
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
 
     /* Cards */
-    .card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 2rem; box-shadow: 0 2px 6px var(--shadow); }
-    .kicker { color: var(--brand); font-weight: 800; font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .75rem; }
-    .card h3 { font-size: 1.3rem; font-weight: 800; color: var(--brand); margin: 0 0 1rem 0; }
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: 0 2px 6px var(--shadow);
+    }
+    .kicker {
+      color: var(--brand);
+      font-weight: 800;
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .75rem;
+    }
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--brand);
+      margin: 0 0 1rem 0;
+    }
     .mt-0 { margin-top: 0 !important; }
     .mb-0 { margin-bottom: .5rem !important; }
-    .card p { color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
-    .card p:last-child { margin-bottom: 0; }
-
-    /* Badges */
-    .badges { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; margin-bottom: 1.25rem; }
-    .badge { background: var(--chip); color: var(--accent); padding: .5rem 1rem; border-radius: 999px; font-size: .85rem; font-weight: 700; border: 1px solid var(--line); }
-
-    /* Footer */
-    .footer { background: var(--paper); border-top: 1px solid var(--line); padding: 3rem 1.5rem; margin-top: 5rem; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; text-align: center; color: var(--muted); font-size: .95rem; }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav { flex-direction: column; align-items: flex-start; }
-      .nav ul { width: 100%; flex-direction: column; gap: .75rem; }
-      .hero { padding: 3.5rem 1.5rem; }
-      .hero p { font-size: 1.05rem; }
-      .wrap { padding: 3.5rem 0; }
-      .section-title { font-size: 1.6rem; }
-      .grid-3 { grid-template-columns: 1fr; }
+    .card p {
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .card p:last-child {
+      margin-bottom: 0;
     }
 
-    @media (max-width: 480px) {
-      .btn { display: block; width: 100%; max-width: 320px; margin: .5rem auto; }
-    }
-
-    *:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-
-    /* --- Extra styles just for the Framework artifact (re-use card look) --- */
+    /* Framework-specific styles */
     .framework-inner-card {
       max-width: 900px;
       margin: 0 auto;
@@ -224,6 +358,108 @@
       font-weight: 700;
       color: var(--brand);
     }
+
+    /* Badges */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .badge {
+      background: var(--chip);
+      color: var(--accent);
+      padding: .5rem 1rem;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 700;
+      border: 1px solid var(--line);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      padding: 3rem 1.5rem;
+      margin-top: 5rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav {
+        flex-wrap: nowrap;
+        align-items: center;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: .75rem;
+        width: 100%;
+        margin-top: .75rem;
+      }
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .hero {
+        padding: 3.5rem 1.5rem;
+      }
+      .hero p {
+        font-size: 1.05rem;
+      }
+      .wrap {
+        padding: 3.5rem 0;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+      .framework-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        display: block;
+        width: 100%;
+        max-width: 320px;
+        margin: .5rem auto;
+      }
+    }
+
+    *:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    @media print {
+      .nav-wrap,
+      .hero,
+      .footer,
+      .cta {
+        display: none !important;
+      }
+      body {
+        background: #ffffff;
+      }
+      .card {
+        box-shadow: none;
+        border-color: #cccccc;
+      }
+    }
   </style>
 
   <!-- Schema.org Organization -->
@@ -248,11 +484,22 @@
 
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<div class="nav-wrap" role="navigation" aria-label="Main">
-  <nav class="nav">
+
+<div class="nav-wrap">
+  <nav class="nav" aria-label="Main">
     <a class="logo" href="/" aria-label="PublicLogic home"><span>PublicLogic™</span></a>
-    <ul role="list">
-      <li><a href="/framework.html" aria-current="page">Framework</a></li>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle main navigation" aria-controls="primary-menu">
+      <span class="nav-toggle-bars" aria-hidden="true">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+
+    <ul id="primary-menu" class="nav-links" role="list">
+      <li><a href="/framework.html" aria-current="page">Frameworks</a></li>
       <li><a href="/solutions.html">Solutions</a></li>
       <li><a href="/partners.html">Partners</a></li>
       <li><a href="/research.html">Research</a></li>
@@ -264,78 +511,106 @@
 
 <header class="hero">
   <div class="hero-inner">
-    <h1>PublicLogic™ Framework</h1>
-    <p>Powered by the VAULT™ logic core. Lawful, measurable, human.</p>
-    <p class="mb-3">The Framework connects technology, law, and behavior into one working model of modernization — without replacing the systems your town already owns.</p>
+    <h1>The VAULT™ Framework</h1>
+    <p>A PublicLogic™ Framework that is lawful, measurable, and human.</p>
+    <p class="mb-3">
+      The VAULT Framework connects technology, law, and behavior into one working model of modernization — without replacing the systems
+      your town already owns.
+    </p>
   </div>
 </header>
 
 <main id="main" class="main" tabindex="-1">
   <section class="wrap">
     <article class="card framework-inner-card">
-      <div class="kicker">Canonical</div>
-      <h2 class="mt-0">Framework Overview</h2>
-      <p class="mb-3">This is the canonical Framework artifact provided by the founder, wrapped in accessible styling and built to print cleanly for boards and staff.</p>
+      <h2 class="mt-0">VAULT™ Framework Overview</h2>
+      <p class="mb-3">
+        VAULT is the primary Framework PublicLogic uses to organize modernization work. It provides a structure for aligning law,
+        technology, and human behavior so that compliance and culture reinforce each other instead of competing.
+      </p>
       <div class="divider"></div>
 
-      <!-- Embedded Framework artifact -->
       <header style="margin-bottom: 2rem;">
-        <div class="eyebrow">PublicLogic™ Framework</div>
-        <h1 style="font-size:1.6rem; margin:0 0 .5rem 0; color:var(--brand);">Powered by the VAULT™ Logic Core</h1>
+        <div class="eyebrow">VAULT™ Framework</div>
+        <h1 style="font-size:1.6rem; margin:0 0 .5rem 0; color:var(--brand);">The VAULT™ Logic Core</h1>
         <p class="subtitle">Lawful, measurable, human</p>
-        <p class="tagline">Smart Systems. Stronger Communities</p>
+        <p class="tagline">Smart Systems. Stronger Communities.</p>
       </header>
 
       <section class="lede" style="margin-bottom: 2rem;">
-        <p>Modern governance is not only digital. It is systemic and human. The PublicLogic Framework connects technology, law, and behavior into one working model of modernization.</p>
-        <p>At the foundation is the VAULT Logic Core. It organizes every municipal or organizational process around four living layers: awareness, structure, empathy, and feedback. When these layers align, compliance becomes culture, and modernization becomes sustainable.</p>
+        <p>
+          Modern governance is not only digital. It is systemic and human. The VAULT Framework connects technology, law, and
+          behavior into one working model of modernization.
+        </p>
+        <p>
+          At the foundation is the VAULT Logic Core. It organizes every municipal or organizational process around four living layers:
+          awareness, structure, empathy, and feedback. When these layers align, compliance becomes culture, and modernization becomes
+          sustainable.
+        </p>
       </section>
 
-      <section class="framework-grid" aria-label="Framework Layers">
+      <section class="framework-grid" aria-label="VAULT Framework layers">
         <!-- PublicInstinct -->
         <div class="panel">
-          <span class="pill" aria-label="Layer">PublicInstinct™</span>
+          <span class="pill" aria-label="Framework layer">PublicInstinct™</span>
           <h2>Awareness before evidence</h2>
           <p class="kicker">The sensing force inside every organization.</p>
           <div class="divider"></div>
-          <p>Experienced staff recognize friction, burnout, or opportunity before data confirms it. Within VAULT, this becomes metadata, field feedback, and intuitive pattern recognition.</p>
+          <p>
+            Experienced staff recognize friction, burnout, or opportunity before data confirms it. Within VAULT, this becomes
+            metadata, field feedback, and intuitive pattern recognition.
+          </p>
           <p><strong>Outcome:</strong> Instinct keeps systems aware.</p>
         </div>
 
         <!-- PublicLogic -->
         <div class="panel">
-          <span class="pill" aria-label="Layer">PublicLogic™</span>
+          <span class="pill" aria-label="Framework layer">PublicLogic™</span>
           <h2>Structure that protects</h2>
           <p class="kicker">Policy, law, and workflow translated into clear, testable systems.</p>
           <div class="divider"></div>
-          <p>This is the code inside VAULT, including validation rules, retention schedules, access controls, and audit trails that give automation legal strength.</p>
+          <p>
+            This is the code inside VAULT, including validation rules, retention schedules, access controls, and audit trails that give
+            automation legal strength.
+          </p>
           <p><strong>Outcome:</strong> Logic keeps systems lawful.</p>
         </div>
 
         <!-- PublicInsight -->
         <div class="panel">
-          <span class="pill" aria-label="Layer">PublicInsight™</span>
+          <span class="pill" aria-label="Framework layer">PublicInsight™</span>
           <h2>Empathy that sustains</h2>
           <p class="kicker">Culture and communication shape whether systems endure.</p>
           <div class="divider"></div>
-          <p>Inside VAULT, this is reflected in adoption metrics, readiness surveys, and behavioral data that reveal how teams truly experience change.</p>
+          <p>
+            Inside VAULT, this is reflected in adoption metrics, readiness surveys, and behavioral data that reveal how teams truly
+            experience change.
+          </p>
           <p><strong>Outcome:</strong> Insight keeps systems human.</p>
         </div>
 
         <!-- PublicPulse -->
         <div class="panel">
-          <span class="pill" aria-label="Layer">PublicPulse™</span>
+          <span class="pill" aria-label="Framework layer">PublicPulse™</span>
           <h2>Feedback that proves life</h2>
           <p class="kicker">The live health monitor for systems and teams.</p>
           <div class="divider"></div>
-          <p>In VAULT, feedback takes shape through dashboards, confidence indexes, and health indicators that show progress in motion.</p>
+          <p>
+            In VAULT, feedback takes shape through dashboards, confidence indexes, and health indicators that show progress in motion.
+          </p>
           <p><strong>Outcome:</strong> Pulse keeps systems alive.</p>
         </div>
       </section>
 
       <section style="margin-top: 2.5rem;">
-        <h3 style="font-size:1.2rem; margin-bottom:.75rem; color:var(--accent);">Alignment creates the PublicLogic Framework</h3>
-        <p>When Instinct, Logic, Insight, and Pulse operate as one, an organization reaches alignment. Compliance, behavior, and feedback form a continuous loop. That alignment is the PublicLogic Framework, a living system of governance that is lawful, measurable, and human.</p>
+        <h3 style="font-size:1.2rem; margin-bottom:.75rem; color:var(--accent);">
+          Alignment creates the VAULT™ Framework
+        </h3>
+        <p>
+          When Instinct, Logic, Insight, and Pulse operate as one, an organization reaches alignment. Compliance, behavior, and feedback
+          form a continuous loop. That alignment is the VAULT Framework — a living system of governance that is lawful, measurable,
+          and human.
+        </p>
       </section>
 
       <footer style="margin-top: 2.5rem;">
@@ -347,7 +622,9 @@
           <span class="mark">PublicInsight™</span>
           <span class="mark">PublicPulse™</span>
         </div>
-        <a class="cta" href="#" onclick="window.print();return false;" aria-label="Print or save this framework as PDF">Print or save as PDF</a>
+        <a class="cta" href="#" onclick="window.print();return false;" aria-label="Print or save the VAULT Framework as a PDF">
+          Print or save as PDF
+        </a>
       </footer>
     </article>
   </section>
@@ -371,6 +648,20 @@
     </div>
   </div>
 </footer>
+
+<script>
+  (function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.getElementById('primary-menu');
+
+    if (!navToggle || !navLinks) return;
+
+    navToggle.addEventListener('click', function () {
+      const isOpen = navLinks.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  })();
+</script>
 
 </body>
 </html>

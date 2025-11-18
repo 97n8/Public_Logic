@@ -60,84 +60,328 @@
 
     /* Skip link */
     .skip-link {
-      position: absolute; left: 0; top: -40px; background: var(--brand); color: #fff;
-      padding: .5rem .75rem; border-radius: 6px; z-index: 1000; text-decoration: none;
+      position: absolute;
+      left: 0;
+      top: -40px;
+      background: var(--brand);
+      color: #fff;
+      padding: .5rem .75rem;
+      border-radius: 6px;
+      z-index: 1000;
+      text-decoration: none;
     }
-    .skip-link:focus { top: 8px; outline: 3px solid #fff; }
+    .skip-link:focus {
+      top: 8px;
+      outline: 3px solid #fff;
+    }
 
     /* Navigation */
     .nav-wrap {
       background: var(--paper);
       border-bottom: 1px solid var(--line);
-      position: sticky; top: 0; z-index: 100;
+      position: sticky;
+      top: 0;
+      z-index: 100;
       box-shadow: 0 1px 3px rgba(11, 23, 19, 0.05);
     }
     .nav {
-      max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
-    .logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; color: var(--brand); font-weight: 800; font-size: 1.2rem; }
-    .nav ul { display: flex; list-style: none; gap: 1.5rem; flex-wrap: wrap; }
-    .nav a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: .95rem; transition: color .2s; }
-    .nav a:hover { color: var(--brand); }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+      color: var(--brand);
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .95rem;
+      transition: color .2s;
+    }
+    .nav-links a:hover {
+      color: var(--brand);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      padding: .4rem .5rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+    }
+    .nav-toggle-label {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .nav-toggle-bars {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3px;
+    }
+    .nav-toggle-bar {
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--ink);
+    }
 
     /* Hero */
-    .hero { background: linear-gradient(135deg, #eef7f1 0%, #ffffff 100%); padding: 5rem 1.5rem; text-align: center; }
-    .hero-inner { max-width: 800px; margin: 0 auto; padding-top: 1rem; }
-    .hero h1 { font-size: clamp(1.9rem, 3.5vw, 2.75rem); font-weight: 800; color: var(--brand); margin: 0 0 1.5rem 0; letter-spacing: -0.03em; line-height: 1.2; }
-    .hero p { font-size: 1.15rem; color: var(--ink); line-height: 1.7; margin-bottom: 1rem; max-width: 62ch; margin-left: auto; margin-right: auto; }
+    .hero {
+      background: linear-gradient(135deg, #eef7f1 0%, #ffffff 100%);
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding-top: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      color: var(--brand);
+      margin: 0 0 1.5rem 0;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      max-width: 62ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .mb-3 { margin-bottom: 2rem !important; }
 
     /* Buttons */
-    .btn { display: inline-block; background: var(--brand); color: #fff; padding: .85rem 1.6rem; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background .2s, transform .06s; margin: .5rem; box-shadow: 0 2px 4px var(--shadow); }
-    .btn:hover { background: var(--hover); }
-    .btn:active { transform: translateY(1px); }
-    .btn.secondary { background: transparent; color: var(--brand); border: 2px solid var(--brand); }
-    .btn.secondary:hover { background: var(--chip); }
+    .btn {
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
+      padding: .85rem 1.6rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background .2s, transform .06s;
+      margin: .5rem;
+      box-shadow: 0 2px 4px var(--shadow);
+      border: 2px solid transparent;
+    }
+    .btn:hover {
+      background: var(--hover);
+    }
+    .btn:active {
+      transform: translateY(1px);
+    }
+    .btn.secondary {
+      background: transparent;
+      color: var(--brand);
+      border-color: var(--brand);
+    }
+    .btn.secondary:hover {
+      background: var(--chip);
+    }
 
     /* Main Content */
-    .main { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-    .wrap { padding: 4.5rem 0; }
-    .section-title { font-size: 1.9rem; font-weight: 800; color: var(--accent); margin-bottom: 2.5rem; text-align: center; letter-spacing: -0.02em; position: relative; }
-    .section-title::after { content: ""; position: absolute; width: 60px; height: 4px; background: var(--brand); bottom: -12px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .wrap {
+      padding: 4.5rem 0;
+    }
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+      text-align: center;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      background: var(--brand);
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
 
     /* Grids */
-    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
 
     /* Cards */
-    .card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 2rem; box-shadow: 0 2px 6px var(--shadow); }
-    .kicker { color: var(--brand); font-weight: 800; font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .75rem; }
-    .card h3 { font-size: 1.3rem; font-weight: 800; color: var(--brand); margin: 0 0 1rem 0; }
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: 0 2px 6px var(--shadow);
+    }
+    .kicker {
+      color: var(--brand);
+      font-weight: 800;
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .75rem;
+    }
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--brand);
+      margin: 0 0 1rem 0;
+    }
     .mt-0 { margin-top: 0 !important; }
     .mb-0 { margin-bottom: .5rem !important; }
-    .card p { color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
-    .card p:last-child { margin-bottom: 0; }
+    .card p {
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Lists inside cards */
+    .card ul {
+      padding-left: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .card li {
+      margin-bottom: .35rem;
+    }
 
     /* Badges */
-    .badges { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; margin-bottom: 1.25rem; }
-    .badge { background: var(--chip); color: var(--accent); padding: .5rem 1rem; border-radius: 999px; font-size: .85rem; font-weight: 700; border: 1px solid var(--line); }
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .badge {
+      background: var(--chip);
+      color: var(--accent);
+      padding: .5rem 1rem;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 700;
+      border: 1px solid var(--line);
+    }
 
     /* Footer */
-    .footer { background: var(--paper); border-top: 1px solid var(--line); padding: 3rem 1.5rem; margin-top: 5rem; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; text-align: center; color: var(--muted); font-size: .95rem; }
+    .footer {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      padding: 3rem 1.5rem;
+      margin-top: 5rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      color: var(--muted);
+      font-size: .95rem;
+    }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .nav { flex-direction: column; align-items: flex-start; }
-      .nav ul { width: 100%; flex-direction: column; gap: .75rem; }
-      .hero { padding: 3.5rem 1.5rem; }
-      .hero p { font-size: 1.05rem; }
-      .wrap { padding: 3.5rem 0; }
-      .section-title { font-size: 1.6rem; }
-      .grid-3 { grid-template-columns: 1fr; }
+      .nav {
+        flex-wrap: nowrap;
+        align-items: center;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: .75rem;
+        width: 100%;
+        margin-top: .75rem;
+      }
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .hero {
+        padding: 3.5rem 1.5rem;
+      }
+      .hero p {
+        font-size: 1.05rem;
+      }
+      .wrap {
+        padding: 3.5rem 0;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 480px) {
-      .btn { display: block; width: 100%; max-width: 320px; margin: .5rem auto; }
+      .btn {
+        display: block;
+        width: 100%;
+        max-width: 320px;
+        margin: .5rem auto;
+      }
     }
 
-    *:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    *:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
   </style>
 
   <!-- Schema.org Organization -->
@@ -162,10 +406,21 @@
 
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<div class="nav-wrap" role="navigation" aria-label="Main">
-  <nav class="nav">
+
+<div class="nav-wrap">
+  <nav class="nav" aria-label="Main">
     <a class="logo" href="/" aria-label="PublicLogic home"><span>PublicLogic™</span></a>
-    <ul role="list">
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle main navigation" aria-controls="primary-menu">
+      <span class="nav-toggle-bars" aria-hidden="true">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+
+    <ul id="primary-menu" class="nav-links" role="list">
       <li><a href="/framework.html">Framework</a></li>
       <li><a href="/solutions.html">Solutions</a></li>
       <li><a href="/partners.html">Partners</a></li>
@@ -193,11 +448,11 @@
     <article class="card" style="max-width:900px;margin:0 auto;">
       <p>
         PublicLogic was founded by <strong>Nathan Boudreau, MPA, MCPPO</strong>, a Massachusetts Town Administrator who has designed
-        modernization systems inside real town halls. The framework reflects the actual conditions that shape municipal life including
+        modernization systems inside real town halls. The framework reflects the actual conditions that shape municipal life — including
         public records law, licensing statutes, procurement requirements, seasonal pressure, and the constant load carried by small teams.
       </p>
       <p>
-        PublicLogic is co led with <strong>Dr. Allison (Allie) Rothschild, PsyD, MSW, LICSW, BCBA</strong>, a behavioral systems scientist
+        PublicLogic is co-led with <strong>Dr. Allison (Allie) Rothschild, PsyD, MSW, LICSW, BCBA</strong>, a behavioral systems scientist
         who focuses on how organizations learn, how teams interact with structure, and what is required to sustain change over time.
       </p>
       <p>
@@ -230,19 +485,19 @@
         <div class="kicker">Logic Core</div>
         <h3 class="mt-0 mb-0">VAULT™</h3>
         <p>
-          Verified Automation & Unified Logic for Towns. The structure that automates routing, retention, and audit trails in
+          Verified Automation & Unified Logic for Towns — the structure that automates routing, retention, and audit trails in
           accordance with Massachusetts law and local policy.
         </p>
       </article>
       <article class="card">
-        <div class="kicker">Retention & Enforcement</div>
+        <div class="kicker">Retention &amp; Enforcement</div>
         <h3 class="mt-0 mb-0">ARCHIEVE™</h3>
         <p>
           The retention and enforcement engine that ensures transparency and compliance across records, requests, and decisions.
         </p>
       </article>
       <article class="card">
-        <div class="kicker">Behavior & Learning</div>
+        <div class="kicker">Behavior &amp; Learning</div>
         <h3 class="mt-0 mb-0">PublicInsight™</h3>
         <p>
           The behavioral and organizational research layer that measures readiness, learning, and sustained adoption without
@@ -252,7 +507,7 @@
     </div>
     <article class="card" style="max-width:900px;margin:2rem auto 0 auto;">
       <p>
-        These layers integrate directly with platforms communities already own such as Microsoft 365 and with partner solutions in
+        These layers integrate directly with platforms communities already own, such as Microsoft 365, and with partner solutions in
         the GovTech ecosystem. PublicLogic operates under a patent-pending municipal automation framework filed with the United States
         Patent and Trademark Office in 2025.
       </p>
@@ -291,81 +546,4 @@
       </article>
       <article class="card">
         <h3 class="mt-0 mb-0">Partner-aligned</h3>
-        <p>Improves clarity, requirements, and delivery speed for implementation partners and vendors.</p>
-      </article>
-      <article class="card">
-        <h3 class="mt-0 mb-0">Grant-proven</h3>
-        <p>Designed to meet funding accountability and reporting requirements across multiple programs.</p>
-      </article>
-      <article class="card">
-        <h3 class="mt-0 mb-0">Sustainable</h3>
-        <p>Reusable frameworks that survive turnover and remain maintainable over time.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="wrap">
-    <h2 class="section-title">The People Behind It</h2>
-    <article class="card" style="max-width:900px;margin:0 auto;">
-      <p>
-        <strong>Nathan Boudreau, MPA, MCPPO</strong><br />
-        Founder and Municipal Systems Architect. Town Administrator, practitioner, and modernization strategist leading the design
-        of compliant municipal frameworks and partner delivery models.
-      </p>
-      <p>
-        <strong>Dr. Allison (Allie) Rothschild, PsyD, MSW, LICSW, BCBA</strong><br />
-        Behavioral Systems and Research Lead. Behavioral scientist and clinician specializing in organizational learning, readiness,
-        and human systems within civic environments.
-      </p>
-      <p>
-        Together they created PublicLogic to make modernization lawful, measurable, and human because structure is a form of care.
-      </p>
-    </article>
-  </section>
-
-  <section class="wrap">
-    <h2 class="section-title">Our Commitment</h2>
-    <article class="card" style="max-width:900px;margin:0 auto;">
-      <ul>
-        <li>Protect municipal and organizational ownership of data and process.</li>
-        <li>Lead with compliance, clarity, and care for staff and residents.</li>
-        <li>Deliver modernization that is auditable, lawful, and human.</li>
-      </ul>
-      <p>
-        PublicLogic frameworks are practical today and reliable for decades, designed to support the people who make small communities
-        work every day.
-      </p>
-    </article>
-  </section>
-
-  <section class="wrap">
-    <h2 class="section-title">Contact</h2>
-    <article class="card" style="max-width:900px;margin:0 auto; text-align:center;">
-      <p><strong>📩 nate@publiclogic.org</strong><br />Pilot, partnership, or operational questions</p>
-      <p><strong>📩 allie@publiclogic.org</strong><br />Research, behavioral systems, and adoption studies</p>
-      <p><a href="https://publiclogic.org" class="btn secondary" target="_blank">publiclogic.org</a></p>
-    </article>
-  </section>
-</main>
-
-<footer class="footer" role="contentinfo">
-  <div class="footer-inner">
-    <div class="badges" aria-label="Framework badges">
-      <span class="badge" aria-label="VAULT trademark">VAULT™</span>
-      <span class="badge" aria-label="ARCHIEVE trademark">ARCHIEVE™</span>
-      <span class="badge" aria-label="PublicInsight trademark">PublicInsight™</span>
-      <span class="badge" aria-label="PublicInstinct trademark">Public Instinct™</span>
-    </div>
-    <div>© 2025 PublicLogic™ LLC</div>
-    <div style="margin-top: .5rem; color: var(--brand); font-weight: 700;">Built by practitioners who understand government and where it needs to go.</div>
-    <div style="margin-top: .25rem; color: var(--brand); font-weight: 700;">Smart Systems. Stronger Communities.</div>
-    <div style="margin-top: 1rem;">
-      <a href="/privacy.html" style="color: var(--muted); text-decoration: none; font-weight: 600;">Privacy</a>
-      <span aria-hidden="true" style="margin: 0 .5rem; color: var(--line);">•</span>
-      <a href="/accessibility.html" style="color: var(--muted); text-decoration: none; font-weight: 600;">Accessibility</a>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>
+        <p>Improves clarity, requirements, and delivery speed

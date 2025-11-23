@@ -15,6 +15,7 @@
       color: #1f2b26;
       background-color: #e7ecea;
     }
+
     .page {
       max-width: 800px;
       margin: 0 auto 32px auto;
@@ -22,7 +23,40 @@
       padding: 40px 52px 48px;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
       border-radius: 4px;
+      position: relative;
     }
+
+    /* LETTERHEAD PAGE ONE */
+    .letterhead {
+      border-bottom: 3px solid #39574a;
+      padding-bottom: 14px;
+      margin-bottom: 28px;
+    }
+    .lh-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1f2b26;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .lh-sub {
+      font-size: 13px;
+      color: #4c5b54;
+      margin-top: 2px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    /* FOOTER PAGE ONE ONLY */
+    .footer {
+      position: absolute;
+      bottom: 24px;
+      left: 52px;
+      font-size: 12px;
+      color: #4c5b54;
+      letter-spacing: 0.02em;
+    }
+
     h1, h2, h3 {
       margin: 0;
       font-weight: 600;
@@ -43,28 +77,25 @@
       margin-top: 20px;
       margin-bottom: 6px;
     }
+
     p { margin: 6px 0; }
     ul { margin: 6px 0 6px 20px; padding: 0; }
     ul li { margin: 2px 0; }
     ol { margin: 6px 0 6px 20px; padding: 0; }
     ol li { margin: 2px 0; }
-    .smallcaps {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 600;
-      color: #4c5b54;
-    }
+
     .subtitle {
       font-size: 16px;
       font-weight: 500;
       color: #4c5b54;
       margin-top: 4px;
     }
+
     .rule {
       margin: 20px 0 28px;
       border-bottom: 2px solid #c3cec9;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -84,6 +115,7 @@
       color: #4c5b54;
       background-color: #ecf2ef;
     }
+
     .highlight-box {
       margin: 16px 0;
       padding: 14px 16px;
@@ -96,11 +128,9 @@
       margin-bottom: 4px;
       color: #1f2b26;
     }
+
     @media print {
-      body {
-        background-color: #ffffff;
-        padding: 0;
-      }
+      body { background-color: #ffffff; padding: 0; }
       .page {
         box-shadow: none;
         border-radius: 0;
@@ -115,9 +145,14 @@
 </head>
 
 <body>
-  <!-- PAGE 1 -->
+
+  <!-- PAGE ONE -->
   <div class="page">
-    <div class="smallcaps">PUBLICLOGIC™</div>
+    <div class="letterhead">
+      <div class="lh-title">PUBLICLOGIC</div>
+      <div class="lh-sub">Municipal Modernization and Behavioral Systems</div>
+    </div>
+
     <h1>VAULT for Sutton – Executive Modernization Brief</h1>
     <div class="subtitle">A practical, modern, and sustainable framework for municipal operations</div>
     <div class="rule"></div>
@@ -140,12 +175,13 @@
       <li>Longer service times and resident frustration</li>
       <li>Scrambles to reconstruct documentation for audits, grants, and public records requests</li>
     </ul>
-    <p>Many critical workflows still rely on <strong>manual routines and institutional memory</strong> rather than durable systems. You do not need another vendor to tell you that your team is busy. The real question is whether some of this work can be made simpler, more predictable, and easier to support with the tools you already have in place.</p>
+
+    <p>Many critical workflows still rely on <strong>manual routines and institutional memory</strong> rather than durable systems.</p>
 
     <div class="rule"></div>
 
     <h2>2. What VAULT is, in plain terms</h2>
-    <p><strong>VAULT, Verified Automation and Unified Logic for Towns,</strong> is a municipal first framework that standardizes routines, documentation, and compliance across departments.</p>
+    <p><strong>VAULT, Verified Automation and Unified Logic for Towns,</strong> standardizes routines, documentation, and compliance across departments.</p>
 
     <p>VAULT is <strong>not a new software system</strong>. It runs inside the tools Sutton already uses:</p>
     <ul>
@@ -155,17 +191,21 @@
       <li>Existing departmental tools</li>
     </ul>
 
-    <p>PublicLogic designs the workflows and compliance logic. <strong>Polimorphic</strong> provides a lightweight automation layer for intake, routing, approvals, and task management that integrates with your existing systems instead of replacing them. The goal is straightforward. Use clear and repeatable workflows to reduce manual steps and make compliance easier to prove.</p>
+    <p>PublicLogic designs the workflows and compliance logic. <strong>Polimorphic</strong> provides the lightweight automation layer that integrates with your existing systems.</p>
 
     <div class="highlight-box">
       <strong>Concrete example</strong>
-      <p>In a comparable Massachusetts community the same framework reduced routine posting work and helped build repeatable workflows that continued to function during staff transitions. The model is designed to keep working even as personnel change.</p>
+      <p>In a comparable Massachusetts community the same framework reduced routine posting work and created predictable workflows that continued functioning during staff transitions.</p>
+    </div>
+
+    <!-- FOOTER FOR PAGE ONE ONLY -->
+    <div class="footer">
+      Prepared by Nathan Boudreau, MPA, MCPPO and Dr. Allison Weiss Rothschild, PublicLogic LLC
     </div>
   </div>
 
-  <!-- PAGE 2 -->
+  <!-- PAGE TWO -->
   <div class="page">
-    <div class="smallcaps">PUBLICLOGIC™</div>
     <h2>3. Why this matters now for Sutton</h2>
     <p>Sutton is in a constructive window:</p>
     <ul>
@@ -174,7 +214,8 @@
       <li>Your technology stack is solid but not unified</li>
       <li>Several state grants can help offset modernization costs</li>
     </ul>
-    <p>The best time to build durable workflows is <strong>before</strong> key retirements or turnover. Rebuilding after people leave is significantly harder and more expensive. This brief is a starting point before any discovery work, so you can see what a structured approach might look like without any commitments.</p>
+
+    <p>The best time to build durable workflows is before key retirements or turnover.</p>
 
     <div class="rule"></div>
 
@@ -185,26 +226,10 @@
         <th>Current state</th>
         <th>Risk</th>
       </tr>
-      <tr>
-        <td>Capacity</td>
-        <td>Staff at or near maximum</td>
-        <td>Burnout and service delays</td>
-      </tr>
-      <tr>
-        <td>Compliance</td>
-        <td>Manual tracking and paper trails</td>
-        <td>Audit findings or missed deadlines</td>
-      </tr>
-      <tr>
-        <td>Knowledge transfer</td>
-        <td>Critical knowledge is informal</td>
-        <td>Loss of institutional memory when staff leave</td>
-      </tr>
-      <tr>
-        <td>Service expectations</td>
-        <td>Residents expect tracking and updates</td>
-        <td>Frustration and reputational risk</td>
-      </tr>
+      <tr><td>Capacity</td><td>Staff at or near maximum</td><td>Burnout and service delays</td></tr>
+      <tr><td>Compliance</td><td>Manual tracking and paper trails</td><td>Audit findings or missed deadlines</td></tr>
+      <tr><td>Knowledge transfer</td><td>Critical knowledge is informal</td><td>Loss of institutional memory</td></tr>
+      <tr><td>Service expectations</td><td>Residents expect tracking</td><td>Reputational risk</td></tr>
     </table>
 
     <div class="rule"></div>
@@ -213,23 +238,20 @@
 
     <h3>Public Works – VAULT FIX and ServiceTrack</h3>
     <ul>
-      <li>Residents submit requests online or staff enter them during calls or walk ins</li>
-      <li>Requests route automatically by type, location, and priority</li>
-      <li>The superintendent views all new and open items in one place</li>
-      <li>Crew update status in the field from a mobile friendly view</li>
-      <li>Labor can be captured through VAULT TIMETRACK</li>
-      <li>Capital conditions can feed into VAULT CIP for planning</li>
-      <li>Residents receive automatic status updates without extra staff steps</li>
-      <li>Documentation builds as work is completed rather than after the fact</li>
+      <li>Requests route automatically by type and priority</li>
+      <li>Superintendent sees all items in one place</li>
+      <li>Crew update status in the field</li>
+      <li>Labor captured through VAULT TIMETRACK</li>
+      <li>Conditions feed into VAULT CIP</li>
+      <li>Residents updated automatically</li>
     </ul>
 
-    <h3>Clerk’s Office – VAULT CLERK</h3>
+    <h3>Clerk's Office – VAULT CLERK</h3>
     <ul>
-      <li>Open Meeting Law postings follow one predictable workflow</li>
-      <li>Agendas and minutes move through a standard intake path</li>
-      <li>Retention rules are built into workflow decisions</li>
-      <li>Staff receive reminders and checklists automatically</li>
-      <li>Records store in a consistent, audit ready structure</li>
+      <li>Open Meeting Law postings become predictable</li>
+      <li>Agendas and minutes follow a standard intake path</li>
+      <li>Retention rules enforce automatically</li>
+      <li>Staff receive reminders</li>
     </ul>
 
     <div class="rule"></div>
@@ -238,24 +260,24 @@
 
     <h3>Governance and Clerk operations</h3>
     <ul>
-      <li><strong>VAULT CORE</strong> – Unified logic, retention, and compliance rules</li>
-      <li><strong>VAULT CLERK</strong> – Open Meeting Law postings, agendas, minutes, meeting support</li>
-      <li><strong>VAULT AP</strong> – Approvals, routing, and signatures</li>
+      <li><strong>VAULT CORE</strong></li>
+      <li><strong>VAULT CLERK</strong></li>
+      <li><strong>VAULT AP</strong></li>
     </ul>
 
     <h3>Public Works and service delivery</h3>
     <ul>
-      <li><strong>VAULT FIX</strong> – Infrastructure requests and work orders</li>
-      <li><strong>VAULT SERVICETRACK</strong> – Assignment and field updates</li>
-      <li><strong>VAULT TIMETRACK</strong> – Labor and payroll support, grant aligned documentation</li>
-      <li><strong>VAULT CONNECT</strong> – Resident intake, tracking, and notifications</li>
+      <li><strong>VAULT FIX</strong></li>
+      <li><strong>VAULT SERVICETRACK</strong></li>
+      <li><strong>VAULT TIMETRACK</strong></li>
+      <li><strong>VAULT CONNECT</strong></li>
     </ul>
 
     <h3>Finance and capital</h3>
     <ul>
-      <li><strong>VAULT FISCAL</strong> – Budget operations and transparency support</li>
-      <li><strong>VAULT CIP</strong> – Asset tracking, scoring, and multi year planning</li>
-      <li><strong>VAULT APFLOW</strong> – Accounts payable workflow and documentation support</li>
+      <li><strong>VAULT FISCAL</strong></li>
+      <li><strong>VAULT CIP</strong></li>
+      <li><strong>VAULT APFLOW</strong></li>
     </ul>
 
     <h3>Extensible modules</h3>
@@ -263,76 +285,66 @@
       <li><strong>VAULT HR</strong></li>
       <li><strong>VAULT MS4</strong></li>
       <li><strong>VAULT RECORDS</strong></li>
-      <li>Department specific routines built on VAULT CORE</li>
     </ul>
   </div>
 
-  <!-- PAGE 3 -->
+  <!-- PAGE THREE -->
   <div class="page">
-    <div class="smallcaps">PUBLICLOGIC™</div>
-    <h2>7. Behavioral systems – why adoption succeeds</h2>
-    <p>Technology alone does not fix municipal problems. Adoption depends on behavior, capacity, and trust.</p>
 
+    <h2>7. Behavioral systems – why adoption succeeds</h2>
     <p><strong>PublicInsight</strong>, led by <strong>Dr. Allison Weiss Rothschild</strong>, focuses on:</p>
     <ul>
-      <li>Cognitive load and staff bandwidth for change</li>
-      <li>How people respond under deadline pressure</li>
-      <li>Training methods that match adult learning</li>
-      <li>Resistance patterns and realistic pacing</li>
+      <li>Cognitive load</li>
+      <li>Staff bandwidth under pressure</li>
+      <li>Adult learning alignment</li>
+      <li>Resistance patterns</li>
+      <li>Realistic pacing</li>
     </ul>
 
-    <p>Workflows are designed for how municipal staff actually work, not an idealized model of how they should work. The intent is to build systems that staff will use on a busy Tuesday afternoon, not only on a perfect day.</p>
+    <p>Workflows are built for what staff can realistically sustain.</p>
 
     <div class="rule"></div>
 
     <h2>8. Implementation and Year One at no cost</h2>
-    <p><strong>Year One includes, at no cost to Sutton:</strong></p>
+    <p><strong>Included at no cost:</strong></p>
     <ul>
-      <li>Discovery and readiness assessment, including behavioral readiness</li>
-      <li>Implementation of one VAULT module, often VAULT FIX or VAULT CLERK to start</li>
-      <li>Training and plain language documentation</li>
-      <li>Support for implemented workflows for the full year</li>
-      <li>Quarterly reviews and adjustments</li>
-      <li>Grant support discussions for Years Two and Three</li>
-      <li>Full ownership of the workflows in Sutton’s environment</li>
+      <li>Discovery and readiness assessment</li>
+      <li>One implemented module</li>
+      <li>Training and documentation</li>
+      <li>Quarterly reviews</li>
+      <li>Grant strategy</li>
+      <li>Full ownership of workflows</li>
     </ul>
 
     <h3>Phased approach</h3>
     <ol>
-      <li><strong>Discovery and readiness, four to six weeks:</strong> Map workflows, assess capacity, and select a starting module.</li>
-      <li><strong>Foundation build, eight to twelve weeks:</strong> Implement the first module with PublicLogic and Polimorphic and establish early wins.</li>
-      <li><strong>Expansion, ongoing:</strong> Add modules based on priorities, capacity, and funding.</li>
+      <li>Discovery and readiness – 4 to 6 weeks</li>
+      <li>Foundation build – 8 to 12 weeks</li>
+      <li>Expansion – ongoing</li>
     </ol>
 
-    <p>The intent is to keep the first year low risk and high learning. Sutton can see real workflows in production, pressure test them during a normal year, and then decide what scale and pace make sense going forward.</p>
   </div>
 
-  <!-- PAGE 4 -->
+  <!-- PAGE FOUR -->
   <div class="page">
-    <div class="smallcaps">PUBLICLOGIC™</div>
+
     <h2>9. Investment structure and expected cost range</h2>
     <p><strong>Discovery phase:</strong> No cost.</p>
-    <p><strong>Year One implementation and support:</strong> No cost. The full first year is covered as part of a pilot so Sutton can evaluate the impact in real conditions without financial risk.</p>
+    <p><strong>Year One:</strong> Full implementation at no cost.</p>
 
-    <h3>Expected cost in Years Two and Three</h3>
-    <p>If Sutton continues after the pilot year, similar towns typically fall within these ranges depending on the modules adopted:</p>
-
+    <h3>Years Two and Three</h3>
     <ul>
-      <li><strong>Single module, for example CLERK or FIX:</strong> $12,000 to $18,000 annually</li>
-      <li><strong>Two to three modules, for example CLERK, FIX, TIMETRACK:</strong> $18,000 to $32,000 annually</li>
-      <li><strong>Broader operational suite:</strong> $32,000 to $48,000 annually</li>
+      <li><strong>Single module:</strong> $12,000 to $18,000</li>
+      <li><strong>Two to three modules:</strong> $18,000 to $32,000</li>
+      <li><strong>Broader suite:</strong> $32,000 to $48,000</li>
     </ul>
 
-    <p>These ranges include workflow updates, staff training, quarterly optimization, documentation support, and integration work for the modules in scope.</p>
-
-    <p>Final pricing would be developed collaboratively with Sutton based on the modules selected, the level of support preferred, and any grant funding that can be applied.</p>
-
-    <p>If Sutton does not continue after Year One there are no obligations or penalties. All workflows remain functional in Sutton’s environment and can be maintained internally or with regional IT support.</p>
+    <p>If Sutton discontinues after Year One, all workflows remain yours without penalty.</p>
 
     <div class="rule"></div>
 
     <h2>10. Next step</h2>
-    <p>If this direction aligns with Sutton’s priorities, the next step is a 60 to 90 minute discovery meeting to walk through current workflows, capacity, and readiness. That conversation will shape a specific and realistic implementation path that fits Sutton’s needs.</p>
+    <p>The next step is a 60 to 90 minute discovery meeting to review workflows, capacity, and readiness for a pilot build.</p>
 
     <p><strong>Contact:</strong></p>
     <ul>
@@ -340,7 +352,9 @@
       <li>Phone: 978-807-0829</li>
     </ul>
 
-    <p>If at any point it does not feel like the right fit, we will say so directly. The goal is a framework that makes work feel more manageable and more compliant, not more complicated.</p>
+    <p>We will be direct throughout this process. If something is not the right fit, we will say so immediately.</p>
+
   </div>
+
 </body>
 </html>

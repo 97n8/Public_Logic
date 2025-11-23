@@ -17,7 +17,7 @@
     }
     .page {
       max-width: 800px;
-      margin: 0 auto;
+      margin: 0 auto 32px auto;
       background-color: #ffffff;
       padding: 40px 52px 48px;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
@@ -97,18 +97,32 @@
       color: #1f2b26;
     }
     @media print {
-      body { background-color: #ffffff; padding: 0; }
-      .page { box-shadow: none; border-radius: 0; }
+      body {
+        background-color: #ffffff;
+        padding: 0;
+      }
+      .page {
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+        page-break-after: always;
+      }
+      .page:last-of-type {
+        page-break-after: auto;
+      }
     }
   </style>
 </head>
 
 <body>
+  <!-- PAGE 1 -->
   <div class="page">
     <div class="smallcaps">PUBLICLOGIC™</div>
     <h1>VAULT for Sutton – Executive Modernization Brief</h1>
     <div class="subtitle">A practical, modern, and sustainable framework for municipal operations</div>
     <div class="rule"></div>
+
+    <p>This is a working brief, not a sales pitch. It is meant to give you a clear picture of how VAULT could support Sutton using the tools you already own, before any formal discovery work or commitments.</p>
 
     <h2>1. The challenge Sutton is facing</h2>
     <p>Sutton operates at the level of a modern city while staffed like a small Massachusetts town. You maintain a strong bond rating and a multi million dollar budget while navigating:</p>
@@ -126,7 +140,7 @@
       <li>Longer service times and resident frustration</li>
       <li>Scrambles to reconstruct documentation for audits, grants, and public records requests</li>
     </ul>
-    <p>Many critical workflows rely on <strong>manual routines and institutional memory</strong> rather than durable systems. You do not need another vendor to tell you that your team is busy. The real question is whether some of this work can be made simpler, more predictable, and easier to support with the tools you already own.</p>
+    <p>Many critical workflows still rely on <strong>manual routines and institutional memory</strong> rather than durable systems. You do not need another vendor to tell you that your team is busy. The real question is whether some of this work can be made simpler, more predictable, and easier to support with the tools you already have in place.</p>
 
     <div class="rule"></div>
 
@@ -141,15 +155,17 @@
       <li>Existing departmental tools</li>
     </ul>
 
-    <p>PublicLogic designs the workflows and compliance logic. <strong>Polimorphic</strong> provides a lightweight automation layer for intake, routing, approvals, and task management that integrates with your existing systems instead of replacing them. The goal is straightforward. Use clear, repeatable workflows to reduce manual steps and make compliance easier to prove.</p>
+    <p>PublicLogic designs the workflows and compliance logic. <strong>Polimorphic</strong> provides a lightweight automation layer for intake, routing, approvals, and task management that integrates with your existing systems instead of replacing them. The goal is straightforward. Use clear and repeatable workflows to reduce manual steps and make compliance easier to prove.</p>
 
     <div class="highlight-box">
       <strong>Concrete example</strong>
       <p>In a comparable Massachusetts community the same framework reduced routine posting work and helped build repeatable workflows that continued to function during staff transitions. The model is designed to keep working even as personnel change.</p>
     </div>
+  </div>
 
-    <div class="rule"></div>
-
+  <!-- PAGE 2 -->
+  <div class="page">
+    <div class="smallcaps">PUBLICLOGIC™</div>
     <h2>3. Why this matters now for Sutton</h2>
     <p>Sutton is in a constructive window:</p>
     <ul>
@@ -158,7 +174,7 @@
       <li>Your technology stack is solid but not unified</li>
       <li>Several state grants can help offset modernization costs</li>
     </ul>
-    <p>The best time to build durable workflows is <strong>before</strong> key retirements or turnover. Rebuilding after people leave is significantly harder and more expensive. This brief is intended as a starting point before any discovery work, so you can see what a structured approach might look like without any commitments.</p>
+    <p>The best time to build durable workflows is <strong>before</strong> key retirements or turnover. Rebuilding after people leave is significantly harder and more expensive. This brief is a starting point before any discovery work, so you can see what a structured approach might look like without any commitments.</p>
 
     <div class="rule"></div>
 
@@ -249,9 +265,11 @@
       <li><strong>VAULT RECORDS</strong></li>
       <li>Department specific routines built on VAULT CORE</li>
     </ul>
+  </div>
 
-    <div class="rule"></div>
-
+  <!-- PAGE 3 -->
+  <div class="page">
+    <div class="smallcaps">PUBLICLOGIC™</div>
     <h2>7. Behavioral systems – why adoption succeeds</h2>
     <p>Technology alone does not fix municipal problems. Adoption depends on behavior, capacity, and trust.</p>
 
@@ -286,8 +304,12 @@
       <li><strong>Expansion, ongoing:</strong> Add modules based on priorities, capacity, and funding.</li>
     </ol>
 
-    <div class="rule"></div>
+    <p>The intent is to keep the first year low risk and high learning. Sutton can see real workflows in production, pressure test them during a normal year, and then decide what scale and pace make sense going forward.</p>
+  </div>
 
+  <!-- PAGE 4 -->
+  <div class="page">
+    <div class="smallcaps">PUBLICLOGIC™</div>
     <h2>9. Investment structure and expected cost range</h2>
     <p><strong>Discovery phase:</strong> No cost.</p>
     <p><strong>Year One implementation and support:</strong> No cost. The full first year is covered as part of a pilot so Sutton can evaluate the impact in real conditions without financial risk.</p>
@@ -310,13 +332,15 @@
     <div class="rule"></div>
 
     <h2>10. Next step</h2>
-    <p>If this direction aligns with Sutton’s priorities, the next step is a 60-90 minute discovery meeting to walk through current workflows, capacity, and readiness. That conversation will shape a specific, realistic implementation path that fits Sutton’s needs.</p>
+    <p>If this direction aligns with Sutton’s priorities, the next step is a 60 to 90 minute discovery meeting to walk through current workflows, capacity, and readiness. That conversation will shape a specific and realistic implementation path that fits Sutton’s needs.</p>
 
     <p><strong>Contact:</strong></p>
     <ul>
       <li>Email: info@publiclogic.org</li>
-      <li>Phone: (978) 807 0829</li>
+      <li>Phone: 978-807-0829</li>
     </ul>
+
+    <p>If at any point it does not feel like the right fit, we will say so directly. The goal is a framework that makes work feel more manageable and more compliant, not more complicated.</p>
   </div>
 </body>
 </html>

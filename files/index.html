@@ -6,7 +6,7 @@
   <title>PublicLogic Workstation</title>
 
   <meta name="description" content="File clean. Keep the work transferable." />
-  <meta name="theme-color" content="#0a0f1a" />
+  <meta name="theme-color" content="#ffffff" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="PL" />
@@ -104,7 +104,7 @@
             <div class="links-grid" id="standardLinks"></div>
 
             <div class="footer-note">
-              <span>Town work → Towns. Internal → Admin. Restricted → Legal.</span>
+              <span>Towns → 01_Towns. Research → 02_Research. Admin → 03_Admin. Restricted → 05_Restricted.</span>
               <span>© <span id="year"></span> PublicLogic</span>
             </div>
           </div>
@@ -119,9 +119,9 @@
           <div class="card-body">
             <!-- Presets -->
             <div class="presets">
-              <button type="button" class="preset-btn tap" data-preset="discovery">Discovery Interview</button>
-              <button type="button" class="preset-btn tap" data-preset="governance">Governance Decision</button>
-              <button type="button" class="preset-btn tap" data-preset="delivery">Delivery Final</button>
+              <button type="button" class="preset-btn tap" data-preset="discovery">Town Discovery</button>
+              <button type="button" class="preset-btn tap" data-preset="governance">Governance Record</button>
+              <button type="button" class="preset-btn tap" data-preset="delivery">Town Closeout</button>
             </div>
 
             <!-- Mode + Operator -->
@@ -129,8 +129,9 @@
               <div class="form-group">
                 <label class="form-label" for="mode">Mode</label>
                 <select id="mode" class="form-select">
-                  <option value="Town Client" selected>Town Client</option>
-                  <option value="Internal PL">Internal PL</option>
+                  <option value="Town" selected>Town Client</option>
+                  <option value="Research">Research & Writing</option>
+                  <option value="Admin">Admin</option>
                 </select>
               </div>
               <div class="form-group">
@@ -161,46 +162,30 @@
               <div class="form-group">
                 <label class="form-label" for="category">Category</label>
                 <select id="category" class="form-select">
-                  <option value="Intake">Intake</option>
-                  <option value="Discovery" selected>Discovery</option>
-                  <option value="Delivery">Delivery</option>
-                  <option value="Governance Record">Governance Record</option>
-                  <option value="Communications">Communications</option>
-                  <option value="Artifacts">Artifacts</option>
-                  <option value="Closeout">Closeout</option>
-                  <option value="Internal Ops">Internal Ops</option>
+                  <!-- Populated by JS based on mode -->
                 </select>
               </div>
               <div class="form-group">
                 <label class="form-label" for="sensitivity">Sensitivity</label>
                 <select id="sensitivity" class="form-select">
                   <option value="Normal" selected>Normal</option>
-                  <option value="Confidential">Confidential</option>
                   <option value="Restricted">Restricted</option>
                 </select>
               </div>
             </div>
 
-            <!-- Work Type + Initials -->
+            <!-- Short Title + Initials -->
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="workType">Work Type</label>
-                <select id="workType" class="form-select">
-                  <option value="Baseline">Baseline</option>
-                  <option value="Interview" selected>Interview</option>
-                  <option value="Inventory">Inventory</option>
-                  <option value="Finding">Finding</option>
-                  <option value="Recommendation">Recommendation</option>
-                  <option value="Plan">Plan</option>
-                  <option value="Draft">Draft</option>
-                  <option value="Review">Review</option>
-                  <option value="Board">Board</option>
-                  <option value="Training">Training</option>
-                  <option value="Final">Final</option>
-                  <option value="Decision">Decision</option>
-                  <option value="Approval">Approval</option>
-                  <option value="Submission">Submission</option>
-                </select>
+                <label class="form-label" for="shortTitle">Short Title</label>
+                <input 
+                  type="text" 
+                  id="shortTitle" 
+                  class="form-input" 
+                  placeholder="Two words max"
+                  autocomplete="off"
+                />
+                <span class="form-hint">Two words max, enforced</span>
               </div>
               <div class="form-group">
                 <label class="form-label" for="initials">Initials</label>
@@ -215,23 +200,10 @@
               </div>
             </div>
 
-            <!-- Short Title + Version -->
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="shortTitle">Short Title</label>
-                <input 
-                  type="text" 
-                  id="shortTitle" 
-                  class="form-input" 
-                  placeholder="Two words max"
-                  autocomplete="off"
-                />
-                <span class="form-hint">Two words max, enforced</span>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="version">Version</label>
-                <select id="version" class="form-select"></select>
-              </div>
+            <!-- Version -->
+            <div class="form-group">
+              <label class="form-label" for="version">Version</label>
+              <select id="version" class="form-select"></select>
             </div>
 
             <!-- Version buttons -->

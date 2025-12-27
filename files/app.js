@@ -637,7 +637,6 @@ const applyPreset = (preset) => {
   applySuggestedVersion();
   toast(`<strong>${preset.charAt(0).toUpperCase() + preset.slice(1)}</strong> preset loaded`);
 };
-};
 
 /* =========================================
    VALIDATION

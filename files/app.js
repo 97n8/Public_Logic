@@ -230,7 +230,9 @@ const filterLinks = (term) => {
    ========================================= */
 
 const getEffectiveTown = () => {
-  return $('mode').value === 'Internal PL' ? 'Internal' : sanitize($('town').value);
+  const mode = $('mode').value;
+  if (mode !== 'Town') return '';
+  return sanitize($('town').value);
 };
 
 // Fixed: includes operator, uses clampTwoWords for shortTitle
@@ -239,7 +241,6 @@ const getMeta = () => ({
   operator: sanitize($('operator').value),
   town: getEffectiveTown(),
   category: sanitize($('category').value),
-  workType: sanitize($('workType').value),
   sensitivity: sanitize($('sensitivity').value),
   shortTitle: clampTwoWords($('shortTitle').value),
   version: sanitize($('version').value),
@@ -249,56 +250,102 @@ const getMeta = () => ({
 });
 
 /* =========================================
-   PATH COMPUTATION
+   PATH COMPUTATION - PUBLICLOGIC DOCTRINE
    ========================================= */
+
+// Category options by mode
+const CATEGORIES = {
+  Town: [
+    { value: 'Intake', label: 'Intake' },
+    { value: 'Discovery', label: 'Discovery' },
+    { value: 'Delivery', label: 'Delivery' },
+    { value: 'Governance_Record', label: 'Governance Record' },
+    { value: 'Communications', label: 'Communications' },
+    { value: 'Artifacts', label: 'Artifacts' },
+    { value: 'Closeout', label: 'Closeout' }
+  ],
+  Research: [
+    { value: 'Research', label: 'Research' },
+    { value: 'Drafts', label: 'Drafts' },
+    { value: 'White_Papers', label: 'White Papers' },
+    { value: 'Essays_&_Notes', label: 'Essays & Notes' },
+    { value: 'Published', label: 'Published' }
+  ],
+  Admin: [
+    { value: 'Operations', label: 'Operations' },
+    { value: 'Finance', label: 'Finance' },
+    { value: 'Contracts', label: 'Contracts' },
+    { value: 'HR', label: 'HR' }
+  ]
+};
 
 const computePath = () => {
   const mode = $('mode').value;
   const town = getEffectiveTown();
   const category = sanitize($('category').value);
-  const workType = sanitize($('workType').value);
   const sensitivity = sanitize($('sensitivity').value);
 
-  // Internal mode - simplified routing
-  if (mode === 'Internal PL') {
-    if (sensitivity === 'Restricted') return 'PL / 06 Legal / Internal';
-    if (sensitivity === 'Confidential') return `PL / 00 Admin / 02 Internal Confidential / ${workType}`;
-    // Normal internal work
-    return `PL / 00 Admin / 01 Internal Ops / ${workType}`;
+  // Restricted always goes to 05_Restricted
+  if (sensitivity === 'Restricted') {
+    if (mode === 'Town' && town) {
+      return `05_Restricted / Legal / ${town}`;
+    }
+    return '05_Restricted / Legal';
   }
 
-  // Town mode - no town selected
-  if (!town) return 'PL / 00 Admin / INBOX / Needs Sorting';
+  // Town mode
+  if (mode === 'Town') {
+    if (!town) return '03_Admin / INBOX';
+    
+    // Map category to folder number
+    const townFolders = {
+      'Intake': '01_Intake',
+      'Discovery': '02_Discovery',
+      'Delivery': '03_Delivery',
+      'Governance_Record': '04_Governance_Record',
+      'Communications': '05_Communications',
+      'Artifacts': '06_Artifacts',
+      'Closeout': '07_Closeout'
+    };
+    
+    const folder = townFolders[category] || '02_Discovery';
+    return `01_Towns / ${town} / ${folder}`;
+  }
 
-  // Sensitivity overrides for town work
-  if (sensitivity === 'Restricted') return `PL / 06 Legal / ${town}`;
-  if (sensitivity === 'Confidential') return `PL / 01 Towns / MA / ${town} / 06 Communications / Confidential`;
+  // Research mode
+  if (mode === 'Research') {
+    const researchFolders = {
+      'Research': '01_Research',
+      'Drafts': '02_Drafts',
+      'White_Papers': '03_White_Papers',
+      'Essays_&_Notes': '04_Essays_&_Notes',
+      'Published': '05_Published'
+    };
+    
+    const folder = researchFolders[category] || '02_Drafts';
+    return `02_Research_&_Writing / ${folder}`;
+  }
 
-  // Category routing for town work
-  const routes = {
-    'Discovery': `PL / 01 Towns / MA / ${town} / 03 Discovery / ${workType}`,
-    'Delivery': `PL / 01 Towns / MA / ${town} / 04 Delivery / ${workType}`,
-    'Governance Record': `PL / 01 Towns / MA / ${town} / 05 Governance Record / ${workType}`,
-    'Intake': `PL / 01 Towns / MA / ${town} / 01 Intake`,
-    'Communications': `PL / 01 Towns / MA / ${town} / 06 Communications`,
-    'Artifacts': `PL / 01 Towns / MA / ${town} / 07 Artifacts`,
-    'Closeout': `PL / 01 Towns / MA / ${town} / 08 Closeout`,
-    'Internal Ops': `PL / 00 Admin / 01 Internal Ops / ${workType}`
-  };
+  // Admin mode
+  if (mode === 'Admin') {
+    return `03_Admin / ${category}`;
+  }
 
-  return routes[category] || 'PL / 00 Admin / INBOX / Needs Sorting';
+  return '03_Admin / INBOX';
 };
 
 const computeFilename = () => {
   const date = formatDate(new Date());
-  const town = getEffectiveTown() || 'Admin';
-  const category = sanitize($('category').value) || 'Discovery';
-  const workType = sanitize($('workType').value) || 'Draft';
+  const mode = $('mode').value;
+  const town = getEffectiveTown();
+  const category = sanitize($('category').value);
   const shortTitle = clampTwoWords($('shortTitle').value) || 'Work';
   const version = sanitize($('version').value) || 'v01';
   const initials = sanitize($('initials').value) || 'NB';
   
-  return `${date} ${town} ${category} ${workType} ${shortTitle} ${version} ${initials}`;
+  // Format: YYYYMMDD [Town/PL] Category ShortTitle vXX Initials
+  const prefix = mode === 'Town' && town ? town : 'PL';
+  return `${date} ${prefix} ${category} ${shortTitle} ${version} ${initials}`;
 };
 
 const updatePreview = () => {
@@ -326,8 +373,8 @@ const saveVersionMap = (map) => {
 
 const getVersionSignature = (meta) => {
   const mode = sanitize($('mode').value);
-  const town = mode === 'Internal PL' ? 'Internal' : sanitize(meta.town);
-  return [mode, town, meta.category, meta.workType, meta.shortTitle, meta.initials].join('|');
+  const town = mode === 'Town' ? sanitize(meta.town) : 'PL';
+  return [mode, town, meta.category, meta.shortTitle, meta.initials].join('|');
 };
 
 const suggestVersion = () => {
@@ -470,7 +517,7 @@ const renderHistory = () => {
    DEFAULTS
    ========================================= */
 
-const DEFAULTS_KEY = 'pl_workstation_defaults_v5';
+const DEFAULTS_KEY = 'pl_workstation_defaults_v6';
 
 const saveDefaults = () => {
   const data = {
@@ -478,7 +525,6 @@ const saveDefaults = () => {
     operator: $('operator').value,
     town: $('town').value,
     category: $('category').value,
-    workType: $('workType').value,
     sensitivity: $('sensitivity').value,
     initials: $('initials').value
   };
@@ -494,8 +540,7 @@ const loadDefaults = () => {
     if (data.mode) $('mode').value = data.mode;
     if (data.operator) $('operator').value = data.operator;
     if (data.town) $('town').value = data.town;
-    if (data.category) $('category').value = data.category;
-    if (data.workType) $('workType').value = data.workType;
+    // Category is set after applyMode, so we store but don't restore here
     if (data.sensitivity) $('sensitivity').value = data.sensitivity;
     if (data.initials) $('initials').value = data.initials;
   } catch {}
@@ -505,25 +550,44 @@ const loadDefaults = () => {
    MODE HANDLING
    ========================================= */
 
+const updateCategoryOptions = (mode) => {
+  const categorySelect = $('category');
+  const categories = CATEGORIES[mode] || CATEGORIES.Town;
+  
+  categorySelect.innerHTML = '';
+  categories.forEach(cat => {
+    const opt = document.createElement('option');
+    opt.value = cat.value;
+    opt.textContent = cat.label;
+    categorySelect.appendChild(opt);
+  });
+};
+
 const applyMode = () => {
   const mode = $('mode').value;
   const townRow = $('townRow');
-  const categoryRow = $('categoryRow');
   
-  if (mode === 'Internal PL') {
-    // Hide town, lock category to Internal Ops
-    townRow.classList.add('hidden');
-    $('town').value = '';
-    $('category').value = 'Internal Ops';
-    
+  // Update category options for this mode
+  updateCategoryOptions(mode);
+  
+  if (mode === 'Town') {
+    // Show town selector
+    townRow.classList.remove('hidden');
     if (!$('shortTitle').value) {
-      $('shortTitle').value = 'Internal Notes';
+      $('shortTitle').value = '';
     }
   } else {
-    // Show town, allow category selection
-    townRow.classList.remove('hidden');
-    if ($('category').value === 'Internal Ops') {
-      $('category').value = 'Discovery';
+    // Hide town selector for Research and Admin
+    townRow.classList.add('hidden');
+    $('town').value = '';
+    
+    // Set default short titles
+    if (!$('shortTitle').value) {
+      if (mode === 'Research') {
+        $('shortTitle').value = 'Draft';
+      } else if (mode === 'Admin') {
+        $('shortTitle').value = 'Internal';
+      }
     }
   }
   
@@ -542,23 +606,20 @@ const applyOperator = () => {
 const applyPreset = (preset) => {
   const presets = {
     discovery: {
-      mode: 'Town Client',
+      mode: 'Town',
       category: 'Discovery',
-      workType: 'Interview',
       sensitivity: 'Normal',
       shortTitle: 'Interview Notes'
     },
     governance: {
-      mode: 'Town Client',
-      category: 'Governance Record',
-      workType: 'Decision',
-      sensitivity: 'Confidential',
+      mode: 'Town',
+      category: 'Governance_Record',
+      sensitivity: 'Normal',
       shortTitle: 'Decision Record'
     },
     delivery: {
-      mode: 'Town Client',
-      category: 'Delivery',
-      workType: 'Final',
+      mode: 'Town',
+      category: 'Closeout',
       sensitivity: 'Normal',
       shortTitle: 'Final Deliverable'
     }
@@ -568,13 +629,14 @@ const applyPreset = (preset) => {
   if (!p) return;
 
   $('mode').value = p.mode;
+  applyMode(); // This updates category options
   $('category').value = p.category;
-  $('workType').value = p.workType;
   $('sensitivity').value = p.sensitivity;
-  if (!$('shortTitle').value) $('shortTitle').value = p.shortTitle;
+  $('shortTitle').value = p.shortTitle;
   
-  applyMode();
+  applySuggestedVersion();
   toast(`<strong>${preset.charAt(0).toUpperCase() + preset.slice(1)}</strong> preset loaded`);
+};
 };
 
 /* =========================================
@@ -584,7 +646,7 @@ const applyPreset = (preset) => {
 const validate = () => {
   const meta = getMeta();
   
-  if (meta.mode === 'Town Client' && !meta.town) {
+  if (meta.mode === 'Town' && !meta.town) {
     setStatus('Town required', 'warn');
     toast('<strong>Town required</strong> — Select a town');
     return false;
@@ -839,7 +901,7 @@ const init = () => {
   $('operator').addEventListener('change', applyOperator);
   
   // Form field changes
-  ['town', 'category', 'workType', 'sensitivity', 'shortTitle', 'version', 'initials'].forEach(id => {
+  ['town', 'category', 'sensitivity', 'shortTitle', 'version', 'initials'].forEach(id => {
     $(id).addEventListener('input', applySuggestedVersion);
     $(id).addEventListener('change', applySuggestedVersion);
   });

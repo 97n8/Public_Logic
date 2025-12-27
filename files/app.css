@@ -1,58 +1,53 @@
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   
-  /* Light municipal palette */
-  --bg-base: #f8faf9;
-  --bg-surface: #ffffff;
-  --bg-elevated: #f1f5f3;
-  --bg-hover: #e8eeeb;
+  /* Dark base with slight warmth */
+  --bg-base: #0c0f14;
+  --bg-surface: #12161e;
+  --bg-elevated: #1a1f2a;
+  --bg-hover: #242a38;
   
   /* Borders */
-  --border-subtle: rgba(0,0,0,0.06);
-  --border-default: rgba(0,0,0,0.12);
-  --border-strong: rgba(0,0,0,0.20);
+  --border-subtle: rgba(255,255,255,0.06);
+  --border-default: rgba(255,255,255,0.10);
+  --border-strong: rgba(255,255,255,0.18);
   
   /* Text */
-  --text-primary: #1a2e23;
-  --text-secondary: #4a5d52;
-  --text-tertiary: #7a8d82;
-  --text-inverse: #ffffff;
+  --text-primary: #f0f2f4;
+  --text-secondary: #9ca3af;
+  --text-tertiary: #6b7280;
+  --text-inverse: #0c0f14;
   
-  /* PL Green */
-  --pl-green: #059669;
-  --pl-green-dark: #047857;
-  --pl-green-light: #d1fae5;
-  --pl-green-bg: rgba(5,150,105,0.08);
-  --pl-green-border: rgba(5,150,105,0.24);
+  /* PL Green - the accent */
+  --pl: #10b981;
+  --pl-bright: #34d399;
+  --pl-dim: #059669;
+  --pl-bg: rgba(16,185,129,0.12);
+  --pl-border: rgba(16,185,129,0.30);
   
   /* Status */
-  --status-ready: #059669;
-  --status-ready-bg: rgba(5,150,105,0.10);
-  --status-ready-border: rgba(5,150,105,0.28);
+  --status-ready: var(--pl);
+  --status-ready-bg: var(--pl-bg);
+  --status-ready-border: var(--pl-border);
   
-  --status-success: #059669;
-  --status-success-bg: rgba(5,150,105,0.14);
-  --status-success-border: rgba(5,150,105,0.32);
+  --status-success: var(--pl);
+  --status-success-bg: rgba(16,185,129,0.16);
+  --status-success-border: rgba(16,185,129,0.36);
   
-  --status-busy: #2563eb;
-  --status-busy-bg: rgba(37,99,235,0.10);
-  --status-busy-border: rgba(37,99,235,0.28);
+  --status-busy: #3b82f6;
+  --status-busy-bg: rgba(59,130,246,0.12);
+  --status-busy-border: rgba(59,130,246,0.30);
   
-  --status-warn: #d97706;
-  --status-warn-bg: rgba(217,119,6,0.10);
-  --status-warn-border: rgba(217,119,6,0.28);
+  --status-warn: #f59e0b;
+  --status-warn-bg: rgba(245,158,11,0.12);
+  --status-warn-border: rgba(245,158,11,0.30);
   
-  --status-error: #dc2626;
-  --status-error-bg: rgba(220,38,38,0.10);
-  --status-error-border: rgba(220,38,38,0.28);
-  
-  /* Accent = PL green */
-  --accent: var(--pl-green);
-  --accent-hover: var(--pl-green-dark);
-  --focus-ring: rgba(5,150,105,0.32);
+  --status-error: #ef4444;
+  --status-error-bg: rgba(239,68,68,0.12);
+  --status-error-border: rgba(239,68,68,0.30);
   
   /* Typography */
-  --font-mono: ui-monospace, 'SF Mono', Consolas, monospace;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   
   /* Spacing */
@@ -67,13 +62,13 @@
   /* Radii */
   --radius-sm: 4px;
   --radius-md: 6px;
-  --radius-lg: 8px;
-  --radius-xl: 12px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
   
   /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow-md: 0 2px 8px rgba(0,0,0,0.08);
-  --shadow-lg: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.6);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -92,12 +87,25 @@ body {
   color: var(--text-primary);
 }
 
+/* Subtle grid texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    linear-gradient(90deg, rgba(16,185,129,0.015) 1px, transparent 1px),
+    linear-gradient(rgba(16,185,129,0.015) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: -1;
+}
+
 a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font: inherit; color: inherit; }
 
 :focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bg-surface), 0 0 0 4px var(--focus-ring);
+  box-shadow: 0 0 0 2px var(--bg-base), 0 0 0 4px var(--pl-border);
 }
 
 /* ============================================
@@ -114,13 +122,15 @@ button, input, select, textarea { font: inherit; color: inherit; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--bg-surface);
-  border-bottom: 1px solid var(--border-default);
+  background: rgba(12,15,20,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
   padding: var(--space-4) var(--space-5);
 }
 
 .header-inner {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -135,23 +145,24 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 
 .brand-mark {
-  width: 36px;
-  height: 36px;
-  background: var(--pl-green);
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--pl) 0%, var(--pl-dim) 100%);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-inverse);
+  box-shadow: 0 2px 8px rgba(16,185,129,0.3);
 }
 
 .brand-text h1 {
   margin: 0;
   font-size: 16px;
   font-weight: 600;
-  color: var(--text-primary);
+  letter-spacing: -0.01em;
 }
 
 .brand-text p {
@@ -172,6 +183,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   color: var(--text-secondary);
   padding: var(--space-2) var(--space-3);
   background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
 }
 
@@ -191,6 +203,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   height: 6px;
   border-radius: 50%;
   background: currentColor;
+  box-shadow: 0 0 6px currentColor;
 }
 
 .status-ready {
@@ -225,7 +238,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 .main {
   flex: 1;
-  max-width: 1200px;
+  max-width: 1280px;
   width: 100%;
   margin: 0 auto;
   padding: var(--space-5);
@@ -241,21 +254,22 @@ button, input, select, textarea { font: inherit; color: inherit; }
   border: 1px solid var(--border-default);
   border-radius: var(--radius-lg);
   font-size: 14px;
+  transition: all 0.15s ease;
 }
 
 .search-input::placeholder { color: var(--text-tertiary); }
 .search-input:hover { border-color: var(--border-strong); }
-.search-input:focus { border-color: var(--accent); }
+.search-input:focus { border-color: var(--pl); background: var(--bg-elevated); }
 
 /* Grid */
 .grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1.25fr 1fr;
   gap: var(--space-5);
   align-items: start;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .grid { grid-template-columns: 1fr; }
 }
 
@@ -308,8 +322,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  color: var(--pl);
 }
 
 .section-meta {
@@ -335,12 +349,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
   background: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  transition: all 0.1s ease;
+  transition: all 0.12s ease;
+  cursor: pointer;
 }
 
 .link-card:hover {
   background: var(--bg-hover);
-  border-color: var(--border-default);
+  border-color: var(--pl-border);
+  transform: translateY(-1px);
 }
 
 .link-name {
@@ -383,7 +399,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   font-size: 11px;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
   color: var(--text-secondary);
 }
 
@@ -391,20 +407,21 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .form-select {
   width: 100%;
   padding: var(--space-3);
-  background: var(--bg-surface);
+  background: var(--bg-elevated);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   font-size: 13px;
+  transition: all 0.12s ease;
 }
 
 .form-input::placeholder { color: var(--text-tertiary); }
 .form-input:hover, .form-select:hover { border-color: var(--border-strong); }
-.form-input:focus, .form-select:focus { border-color: var(--accent); }
+.form-input:focus, .form-select:focus { border-color: var(--pl); background: var(--bg-hover); }
 
 .form-select {
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234a5d52' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
   padding-right: 36px;
@@ -433,30 +450,31 @@ button, input, select, textarea { font: inherit; color: inherit; }
   justify-content: center;
   gap: var(--space-2);
   padding: var(--space-3) var(--space-4);
-  background: var(--bg-surface);
+  background: var(--bg-elevated);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.1s ease;
+  transition: all 0.12s ease;
   flex: 1;
 }
 
 .btn:hover {
-  background: var(--bg-elevated);
+  background: var(--bg-hover);
   border-color: var(--border-strong);
 }
 
 .btn-primary {
-  background: var(--pl-green);
-  border-color: var(--pl-green);
+  background: var(--pl);
+  border-color: var(--pl);
   color: var(--text-inverse);
+  font-weight: 600;
 }
 
 .btn-primary:hover {
-  background: var(--pl-green-dark);
-  border-color: var(--pl-green-dark);
+  background: var(--pl-bright);
+  border-color: var(--pl-bright);
 }
 
 .btn-ghost {
@@ -487,18 +505,19 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 .preset-btn {
   padding: var(--space-2) var(--space-3);
-  background: var(--pl-green-light);
-  border: 1px solid var(--pl-green-border);
+  background: var(--pl-bg);
+  border: 1px solid var(--pl-border);
   border-radius: var(--radius-md);
   font-size: 11px;
-  color: var(--pl-green-dark);
+  font-weight: 500;
+  color: var(--pl-bright);
   cursor: pointer;
-  transition: all 0.1s ease;
+  transition: all 0.12s ease;
 }
 
 .preset-btn:hover {
-  background: var(--pl-green-bg);
-  border-color: var(--pl-green);
+  background: rgba(16,185,129,0.18);
+  border-color: var(--pl);
 }
 
 /* ============================================
@@ -513,6 +532,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   text-align: center;
   margin-top: var(--space-4);
   cursor: pointer;
+  transition: all 0.15s ease;
 }
 
 .drop-zone:hover {
@@ -521,8 +541,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 
 .drop-zone.dragging {
-  border-color: var(--pl-green);
-  background: var(--pl-green-light);
+  border-color: var(--pl);
+  border-style: solid;
+  background: var(--pl-bg);
 }
 
 .drop-zone-title {
@@ -595,6 +616,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   border-radius: var(--radius-sm);
   color: var(--text-tertiary);
   cursor: pointer;
+  transition: all 0.1s ease;
 }
 
 .queue-item-remove:hover {
@@ -630,14 +652,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
   font-size: 10px;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   color: var(--text-tertiary);
 }
 
 .preview-value {
   font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--text-secondary);
+  color: var(--pl-bright);
   word-break: break-all;
 }
 
@@ -692,8 +714,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
   left: 50%;
   transform: translateX(-50%) translateY(100px);
   padding: var(--space-3) var(--space-4);
-  background: var(--text-primary);
-  color: var(--text-inverse);
+  background: var(--bg-elevated);
+  border: 1px solid var(--pl-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   font-size: 13px;
@@ -708,7 +730,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   opacity: 1;
 }
 
-.toast strong { font-weight: 600; }
+.toast strong { font-weight: 600; color: var(--pl-bright); }
 
 .install-hint {
   display: none;

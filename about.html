@@ -1,549 +1,255 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About — PublicLogic™</title>
-  <meta name="description" content="PublicLogic is a practitioner-founded modernization company that builds lawful, human-centered frameworks for municipalities and small organizations." />
-  <meta name="keywords" content="PublicLogic, Nathan Boudreau, Allison Rothschild, municipal modernization, VAULT, ARCHIEVE, PublicInsight" />
-  <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#1f6b4a" />
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="About — PublicLogic" />
-  <meta property="og:description" content="PublicLogic builds compliance-first, staff-friendly, grant-aligned frameworks for modern municipal operations." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://publiclogic.org/about.html" />
-  <meta property="og:image" content="https://publiclogic.org/og-image.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About — PublicLogic" />
-  <meta name="twitter:description" content="PublicLogic builds compliance-first, staff-friendly, grant-aligned frameworks for modern municipal operations." />
-  <meta name="twitter:image" content="https://publiclogic.org/og-image.jpg" />
-
-  <link rel="canonical" href="https://publiclogic.org/about.html" />
-  <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+  <meta name="description" content="PublicLogic helps Massachusetts towns build governance that survives real life — structural, durable, and focused on placing risk where it belongs." />
+  <meta name="author" content="PublicLogic LLC">
+  <title>About PublicLogic — Governance Built to Survive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      color-scheme: light;
-      --bg: #ffffff;
-      --paper: #ffffff;
-      --ink: #0b1713;
-      --brand: #1f6b4a;
-      --muted: #5e6864;
-      --line: #e5ebe7;
-      --accent: #145c3a;
-      --chip: #eef7f1;
-      --hover: #134d32;
-      --shadow: rgba(11, 23, 19, 0.08);
-      --focus: #0a7e51;
+      --primary: #2e7d32;
+      --accent: #a5d6a7;
+      --dark: #1a3c34;
+      --light: #f5f9f5;
+      --gray: #555;
+      --white: #ffffff;
+      --border: #a5d6a7;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.6;
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.7;
+      color: var(--dark);
+      margin: 0;
+      background: var(--light);
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
-    p { max-width: 62ch; }
-
-    /* Skip link */
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 2rem 0 1.5rem;
+      text-align: center;
+    }
+    .wordmark {
+      font-size: clamp(2.2rem, 7vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .wordmark .public { color: var(--white); }
+    .wordmark .logic { color: var(--accent); }
+    .strapline {
+      font-size: clamp(1rem, 3.5vw, 1.2rem);
+      font-weight: 500;
+      margin: 0.5rem 0 1rem;
+      opacity: 0.95;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.6rem;
+    }
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    nav a:hover { opacity: 0.85; }
+    main { padding: 3rem 0 4rem; }
+    h1, h2 {
+      color: var(--primary);
+      line-height: 1.3;
+    }
+    h1 { font-size: 2.2rem; text-align: center; margin-bottom: 2rem; }
+    h2 { font-size: 1.8rem; margin: 3rem 0 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    p { margin: 1.2rem 0; max-width: 75ch; }
+    .highlight {
+      background: var(--white);
+      padding: 1.5rem;
+      border-left: 4px solid var(--primary);
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .highlight ul { margin: 0; padding-left: 1.2rem; }
+    .highlight li { margin: 0.75rem 0; }
+    .people {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .person {
+      background: var(--white);
+      padding: 1.8rem;
+      border-radius: 8px;
+      border: 1px solid var(--accent);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--accent);
+      background: var(--white);
+    }
     .skip-link {
       position: absolute;
-      left: 0;
-      top: -40px;
-      background: var(--brand);
-      color: #fff;
-      padding: .5rem .75rem;
-      border-radius: 6px;
-      z-index: 1000;
-      text-decoration: none;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
     }
     .skip-link:focus {
-      top: 8px;
-      outline: 3px solid #fff;
-    }
-
-    /* Navigation */
-    .nav-wrap {
-      background: var(--paper);
-      border-bottom: 1px solid var(--line);
-      position: sticky;
-      top: 0;
+      left: 1rem;
+      top: 1rem;
+      width: auto;
+      height: auto;
+      background: var(--white);
+      color: var(--primary);
+      padding: 0.5rem 1rem;
       z-index: 100;
-      box-shadow: 0 1px 3px rgba(11, 23, 19, 0.05);
+      border-radius: 4px;
     }
-    .nav {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      text-decoration: none;
-      color: var(--brand);
-      font-weight: 800;
-      font-size: 1.2rem;
-      letter-spacing: -0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .nav-links a {
-      color: var(--ink);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: .95rem;
-      transition: color .2s;
-    }
-    .nav-links a:hover {
-      color: var(--brand);
-    }
-
-    .nav-toggle {
-      display: none;
-      background: transparent;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      padding: .4rem .5rem;
-      cursor: pointer;
-      align-items: center;
-      justify-content: center;
-      gap: .35rem;
-    }
-    .nav-toggle-label {
-      font-size: .8rem;
-      font-weight: 600;
-      color: var(--muted);
-    }
-    .nav-toggle-bars {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 3px;
-    }
-    .nav-toggle-bar {
-      width: 18px;
-      height: 2px;
-      border-radius: 999px;
-      background: var(--ink);
-    }
-
-    /* Hero */
-    .hero {
-      background: linear-gradient(135deg, #eef7f1 0%, #ffffff 100%);
-      padding: 5rem 1.5rem;
-      text-align: center;
-    }
-    .hero-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      padding-top: 1rem;
-    }
-    .hero h1 {
-      font-size: clamp(1.9rem, 3.5vw, 2.75rem);
-      font-weight: 800;
-      color: var(--brand);
-      margin: 0 0 1.5rem 0;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-    }
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--ink);
-      line-height: 1.7;
-      margin-bottom: 1rem;
-      max-width: 62ch;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .mb-3 { margin-bottom: 2rem !important; }
-
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      background: var(--brand);
-      color: #fff;
-      padding: .85rem 1.6rem;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-      transition: background .2s, transform .06s;
-      margin: .5rem;
-      box-shadow: 0 2px 4px var(--shadow);
-      border: 2px solid transparent;
-    }
-    .btn:hover {
-      background: var(--hover);
-    }
-    .btn:active {
-      transform: translateY(1px);
-    }
-    .btn.secondary {
-      background: transparent;
-      color: var(--brand);
-      border-color: var(--brand);
-    }
-    .btn.secondary:hover {
-      background: var(--chip);
-    }
-
-    /* Main Content */
-    .main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-    .wrap {
-      padding: 4.5rem 0;
-    }
-    .section-title {
-      font-size: 1.9rem;
-      font-weight: 800;
-      color: var(--accent);
-      margin-bottom: 2.5rem;
-      text-align: center;
-      letter-spacing: -0.02em;
-      position: relative;
-    }
-    .section-title::after {
-      content: "";
-      position: absolute;
-      width: 60px;
-      height: 4px;
-      background: var(--brand);
-      bottom: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-radius: 2px;
-    }
-
-    /* Grids */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-    }
-
-    /* Cards */
-    .card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 2rem;
-      box-shadow: 0 2px 6px var(--shadow);
-    }
-    .kicker {
-      color: var(--brand);
-      font-weight: 800;
-      font-size: .85rem;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      margin-bottom: .75rem;
-    }
-    .card h3 {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--brand);
-      margin: 0 0 1rem 0;
-    }
-    .mt-0 { margin-top: 0 !important; }
-    .mb-0 { margin-bottom: .5rem !important; }
-    .card p {
-      color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 1rem;
-    }
-    .card p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Lists inside cards */
-    .card ul {
-      padding-left: 1.2rem;
-      margin-bottom: 1rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    .card li {
-      margin-bottom: .35rem;
-    }
-
-    /* Badges */
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .75rem;
-      justify-content: center;
-      margin-bottom: 1.25rem;
-    }
-    .badge {
-      background: var(--chip);
-      color: var(--accent);
-      padding: .5rem 1rem;
-      border-radius: 999px;
-      font-size: .85rem;
-      font-weight: 700;
-      border: 1px solid var(--line);
-    }
-
-    /* Footer */
-    .footer {
-      background: var(--paper);
-      border-top: 1px solid var(--line);
-      padding: 3rem 1.5rem;
-      margin-top: 5rem;
-    }
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav {
-        flex-wrap: nowrap;
-        align-items: center;
-      }
-
-      .nav-toggle {
-        display: inline-flex;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        gap: .75rem;
-        width: 100%;
-        margin-top: .75rem;
-      }
-      .nav-links.is-open {
-        display: flex;
-      }
-
-      .hero {
-        padding: 3.5rem 1.5rem;
-      }
-      .hero p {
-        font-size: 1.05rem;
-      }
-      .wrap {
-        padding: 3.5rem 0;
-      }
-      .section-title {
-        font-size: 1.6rem;
-      }
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .btn {
-        display: block;
-        width: 100%;
-        max-width: 320px;
-        margin: .5rem auto;
-      }
-    }
-
-    *:focus-visible {
-      outline: 3px solid var(--focus);
-      outline-offset: 2px;
+    @media (max-width: 640px) {
+      header { padding: 1.5rem 0; }
+      .wordmark { font-size: clamp(2rem, 8vw, 2.6rem); }
+      main { padding: 2rem 0 3rem; }
+      .people { grid-template-columns: 1fr; }
+      nav ul { gap: 1rem; }
     }
   </style>
-
-  <!-- Schema.org Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "PublicLogic",
-    "url": "https://publiclogic.org",
-    "logo": "https://publiclogic.org/icon.svg",
-    "sameAs": [
-      "https://www.linkedin.com/company/publiclogic"
-    ],
-    "slogan": "Smart Systems. Stronger Communities.",
-    "founder": {
-      "@type": "Person",
-      "name": "Nathan Boudreau, MPA, MCPPO"
-    }
-  }
-  </script>
 </head>
-
 <body>
-<a class="skip-link" href="#main">Skip to main content</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-<div class="nav-wrap">
-  <nav class="nav" aria-label="Main">
-    <a class="logo" href="/" aria-label="PublicLogic home"><span>PublicLogic™</span></a>
+  <header>
+    <div class="container">
+      <h1 class="wordmark"><span class="public">Public</span><span class="logic">Logic</span></h1>
+      <p class="strapline">Governance That Survives Real Life</p>
+      <nav aria-label="Main sections">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/frameworks.html">Frameworks</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/writing.html">Writing</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle main navigation" aria-controls="primary-menu">
-      <span class="nav-toggle-bars" aria-hidden="true">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </span>
-      <span class="nav-toggle-label">Menu</span>
-    </button>
+  <main id="main" class="container">
+    <h1>About PublicLogic</h1>
 
-    <ul id="primary-menu" class="nav-links" role="list">
-      <li><a href="/framework.html">Framework</a></li>
-      <li><a href="/solutions.html">Solutions</a></li>
-      <li><a href="/partners.html">Partners</a></li>
-      <li><a href="/research.html">Research</a></li>
-      <li><a href="/about.html" aria-current="page">About</a></li>
-      <li><a href="/contact.html">Contact</a></li>
+    <h2>Governance built to survive pressure, turnover, and time</h2>
+    <p>PublicLogic exists to help Massachusetts towns build governance that survives real life.</p>
+    <p>Local government depends on people doing difficult work under constant constraint. Turnover happens. Laws change. Records accumulate. Pressure compounds quietly over time. When governance is informal or fragmented, that pressure lands on individuals rather than the institution itself.</p>
+    <p>Our work is about moving that pressure back where it belongs. Into structure.</p>
+
+    <h2>Why PublicLogic exists</h2>
+    <p>Most governance failures are not caused by bad intent, poor effort, or lack of care. They happen because responsibility outpaces structure. Authority becomes unclear. Records scatter. Knowledge lives in inboxes or memory. When people leave, the town absorbs the risk.</p>
+    <p>PublicLogic was formed to address that gap.</p>
+    <p>We help towns make their institutional logic explicit and durable so work continues cleanly through turnover, audits, and scrutiny. Not by adding layers, and not by selling platforms, but by strengthening the underlying governance architecture towns already rely on.</p>
+
+    <h2>What we believe</h2>
+    <div class="highlight">
+      <ul>
+        <li><strong>Risk belongs in systems, not in people.</strong> When individuals carry unowned risk, burnout and liability follow. Governance should absorb pressure structurally.</li>
+        <li><strong>Continuity is a governance obligation.</strong> If work cannot survive a departure, it is not complete. Completion means transferability.</li>
+        <li><strong>Records are institutional memory.</strong> They are not paperwork. If a decision matters, it must be recordable, retrievable, and defensible.</li>
+        <li><strong>Structure is a form of care.</strong> Clear authority, scoped responsibility, and durable records protect the people doing the work.</li>
+      </ul>
+    </div>
+
+    <h2>Our role</h2>
+    <p>PublicLogic is a governance practice.</p>
+    <p>We support towns through advisory work, structural implementation, training, and applied research, all grounded in real municipal operations. Our role is not to manage towns, replace staff, or introduce dependency. It is to help institutions carry responsibility in ways that hold over time.</p>
+    <p>Our work focuses on authority, records, time, fiscal obligation, correction, and transfer so institutional responsibility stays owned and defensible.</p>
+    <p>Details about services and frameworks are outlined elsewhere. The purpose here is posture. We work structurally, deliberately, and with respect for municipal independence.</p>
+
+    <h2>Training and capacity building</h2>
+    <p>PublicLogic does provide training.</p>
+    <p>Our trainings are not generic professional development or culture programs. They are governance-aligned, role-aware, and grounded in real work.</p>
+    <p>Training engagements are designed to:</p>
+    <ul>
+      <li>Reduce cognitive and compliance load on staff</li>
+      <li>Make authority, process, and documentation expectations explicit</li>
+      <li>Prepare teams to operate governed systems with confidence</li>
+      <li>Support transitions without relying on institutional memory alone</li>
     </ul>
-  </nav>
-</div>
+    <p>Training is always scoped, contextual, and tied directly to the structures in place. We do not train in the abstract.</p>
 
-<header class="hero">
-  <div class="hero-inner">
-    <h1>About PublicLogic™</h1>
-    <p>Smart systems that create stronger communities.</p>
-    <p class="mb-3">
-      PublicLogic is a practitioner-founded modernization company that designs, delivers, and studies lawful, human-centered frameworks
-      for municipalities and small organizations.
-    </p>
-  </div>
-</header>
+    <h2>Research and applied study</h2>
+    <p>PublicLogic maintains a research arm focused on applied governance.</p>
+    <p>This work examines how pressure, ambiguity, turnover, and regulatory complexity affect municipal systems and the people operating them. Research is practice-informed and used to refine frameworks, training approaches, and governance design.</p>
+    <p>The goal is not publication for its own sake. It is to improve how governance is built, taught, and sustained in real towns.</p>
+    <p>Research outputs may include:</p>
+    <ul>
+      <li>Governance frameworks and standards</li>
+      <li>Field-informed guidance and white papers</li>
+      <li>Training models rooted in behavioral and institutional reality</li>
+      <li>Cross-town insights drawn from lived municipal conditions</li>
+    </ul>
 
-<main id="main" class="main" tabindex="-1">
-  <section class="wrap">
-    <h2 class="section-title">Who We Are</h2>
-    <article class="card" style="max-width:900px;margin:0 auto;">
-      <p>
-        PublicLogic was founded by <strong>Nathan Boudreau, MPA, MCPPO</strong>, a Massachusetts Town Administrator who has designed
-        modernization systems inside real town halls. The framework reflects the actual conditions that shape municipal life — including
-        public records law, licensing statutes, procurement requirements, seasonal pressure, and the constant load carried by small teams.
-      </p>
-      <p>
-        PublicLogic is co-led with <strong>Dr. Allison (Allie) Rothschild, PsyD, MSW, LICSW, BCBA</strong>, a behavioral systems scientist
-        who focuses on how organizations learn, how teams interact with structure, and what is required to sustain change over time.
-      </p>
-      <p>
-        Together they created PublicLogic to make modernization lawful, measurable, and human.
-      </p>
-    </article>
-  </section>
+    <h2>The VAULT™ framework</h2>
+    <p>VAULT™ is PublicLogic’s governance framework for making institutional work survivable.</p>
+    <p>It focuses on six dimensions that determine whether work holds over time:</p>
+    <ul>
+      <li>Authority</li>
+      <li>Record</li>
+      <li>Time</li>
+      <li>Fiscal</li>
+      <li>Correction</li>
+      <li>Transfer</li>
+    </ul>
+    <p>VAULT is not a product and not a platform. It is a structural model used to design governance environments where responsibility is owned, decisions are traceable, and continuity is built in by default.</p>
 
-  <section class="wrap">
-    <h2 class="section-title">Our Purpose</h2>
-    <article class="card" style="max-width:900px;margin:0 auto;">
-      <p>
-        Local governments and small organizations carry the same compliance burden as large institutions but rarely have the same
-        resources or staff capacity.
-      </p>
-      <p>
-        PublicLogic exists to close that gap. We turn Open Meeting Law, Public Records, retention schedules, accessibility standards,
-        and data security requirements into repeatable systems that reduce risk, improve transparency, and build public trust.
-      </p>
-      <p>
-        Our mission is simple: to build smart systems that create stronger communities.
-      </p>
-    </article>
-  </section>
+    <h2>The people behind the work</h2>
+    <p>PublicLogic is led by practitioners with direct experience inside municipal systems.</p>
 
-  <section class="wrap">
-    <h2 class="section-title">How It Works</h2>
-    <div class="grid-3">
-      <article class="card">
-        <div class="kicker">Logic Core</div>
-        <h3 class="mt-0 mb-0">VAULT™</h3>
-        <p>
-          Verified Automation & Unified Logic for Towns — the structure that automates routing, retention, and audit trails in
-          accordance with Massachusetts law and local policy.
-        </p>
-      </article>
-      <article class="card">
-        <div class="kicker">Retention &amp; Enforcement</div>
-        <h3 class="mt-0 mb-0">ARCHIEVE™</h3>
-        <p>
-          The retention and enforcement engine that ensures transparency and compliance across records, requests, and decisions.
-        </p>
-      </article>
-      <article class="card">
-        <div class="kicker">Behavior &amp; Learning</div>
-        <h3 class="mt-0 mb-0">PublicInsight™</h3>
-        <p>
-          The behavioral and organizational research layer that measures readiness, learning, and sustained adoption without
-          individual performance scoring.
-        </p>
-      </article>
+    <div class="people">
+      <div class="person">
+        <h3>Nathan Boudreau</h3>
+        <p>Nathan Boudreau brings years of hands-on municipal leadership, governance design, and operational responsibility within Massachusetts towns. His work focuses on translating statutory and fiduciary obligations into durable structures that reduce risk, protect staff, and preserve institutional continuity.</p>
+      </div>
+
+      <div class="person">
+        <h3>Dr. Allison Weiss Rothschild</h3>
+        <p>Dr. Allison Weiss Rothschild leads PublicLogic’s research and behavioral systems work. Her focus is on how cognitive load, ambiguity, and pressure affect institutional performance, and how governance and training can be designed to support people without relying on individual endurance.</p>
+      </div>
     </div>
-    <article class="card" style="max-width:900px;margin:2rem auto 0 auto;">
-      <p>
-        These layers integrate directly with platforms communities already own, such as Microsoft 365, and with partner solutions in
-        the GovTech ecosystem. PublicLogic operates under a patent-pending municipal automation framework filed with the United States
-        Patent and Trademark Office in 2025.
-      </p>
-      <p>
-        We do not sell software. We build structure that makes software work.
-      </p>
-    </article>
-  </section>
 
-  <section class="wrap">
-    <h2 class="section-title">Who We Serve</h2>
-    <div class="grid-3">
-      <article class="card"><p>Municipalities under 25,000 residents</p></article>
-      <article class="card"><p>Regional public agencies and collaboratives</p></article>
-      <article class="card"><p>Small nonprofits with compliance or reporting mandates</p></article>
-      <article class="card"><p>Partners and vendors delivering modernization ethically</p></article>
-    </div>
-    <article class="card" style="max-width:900px;margin:2rem auto 0 auto;">
-      <p>
-        All PublicLogic frameworks are vendor-agnostic and grant-aligned, supporting programs such as Community Compact, One Stop
-        for Growth, MassWorks, and Shared Services.
-      </p>
-    </article>
-  </section>
+    <p>Together, they ground PublicLogic’s frameworks, training, and research in real municipal conditions, balancing legal, operational, and human realities.</p>
 
-  <section class="wrap">
-    <h2 class="section-title">Why It Works</h2>
-    <div class="grid-3">
-      <article class="card">
-        <h3 class="mt-0 mb-0">Compliance-first</h3>
-        <p>Grounded in Massachusetts General Laws, state retention schedules, and accessibility standards.</p>
-      </article>
-      <article class="card">
-        <h3 class="mt-0 mb-0">Staff-ready</h3>
-        <p>Plain-language SOPs and behavioral design make adoption realistic for small teams.</p>
-      </article>
-      <article class="card">
-        <h3 class="mt-0 mb-0">Partner-aligned</h3>
-        <p>Improves clarity, requirements, and delivery speed
+    <h2>A Massachusetts practice</h2>
+    <p>PublicLogic is based in Massachusetts and focused on the realities of Massachusetts municipal government. Our work reflects an understanding of local governance law, public records obligations, fiduciary duty, and the practical limits towns operate within.</p>
+    <p>We build structures meant to survive scrutiny, turnover, and time.</p>
+
+    <h2>When to reach out</h2>
+    <p>Towns typically contact us when:</p>
+    <ul>
+      <li>A transition has exposed hidden risk</li>
+      <li>Institutional knowledge is at risk of loss</li>
+      <li>Compliance pressure is increasing</li>
+      <li>Informal systems are no longer defensible</li>
+      <li>Leaders want governance to feel steadier, not heavier</li>
+    </ul>
+    <p>If that sounds familiar, we are happy to talk.</p>
+  </main>
+
+  <footer>
+    <p>Governance That Survives Real Life<br>
+    Helping towns build governance that holds when people cannot.<br>
+    © 2026 PublicLogic LLC — Based in Gardner, Massachusetts</p>
+  </footer>
+</body>
+</html>

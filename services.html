@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+  <meta name="description" content="PublicLogic provides scoped governance support for Massachusetts towns — advisory, pilots, transfer — producing durable artifacts and interfaces that survive without us." />
+  <meta name="author" content="PublicLogic LLC">
+  <title>Services — PublicLogic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --accent: #a5d6a7;
+      --dark: #1a3c34;
+      --light: #f5f9f5;
+      --gray: #555;
+      --white: #ffffff;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.7;
+      color: var(--dark);
+      margin: 0;
+      background: var(--light);
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 1.8rem 0;
+      text-align: center;
+    }
+    .wordmark {
+      font-size: clamp(2.4rem, 8vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .wordmark .public { color: var(--white); }
+    .wordmark .logic { color: var(--accent); }
+    .strapline {
+      font-size: clamp(1.1rem, 4vw, 1.3rem);
+      font-weight: 500;
+      margin: 0.6rem 0 0;
+      opacity: 0.95;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.6rem;
+    }
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    nav a:hover { opacity: 0.85; }
+    .hero {
+      text-align: center;
+      padding: clamp(3rem, 10vw, 5rem) 1rem 2rem;
+      background: linear-gradient(to bottom, #e8f5e9, var(--light));
+    }
+    h1, h2, h3 { color: var(--primary); line-height: 1.2; }
+    .lead { font-size: clamp(1.2rem, 4.5vw, 1.35rem); max-width: 800px; margin: 1.5rem auto; }
+    .section { padding: clamp(2.5rem, 8vw, 4rem) 0; }
+    .promo {
+      background: white;
+      padding: 1.8rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      margin: 1.5rem 0;
+    }
+    .features {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .feature-card {
+      background: white;
+      padding: 1.8rem;
+      border-radius: 10px;
+      border: 1px solid var(--accent);
+      transition: transform 0.2s ease;
+    }
+    .feature-card:hover { transform: translateY(-6px); }
+    .cta {
+      text-align: center;
+      padding: clamp(3rem, 10vw, 5rem) 1rem;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 12px;
+      margin: 2rem 0;
+    }
+    .button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: var(--white);
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      transition: all 0.22s ease;
+      min-width: 220px;
+      touch-action: manipulation;
+    }
+    .button:hover, .button:focus { background: var(--accent); transform: translateY(-2px); }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--accent);
+    }
+    @media (max-width: 640px) {
+      header { padding: 1.5rem 0; }
+      .wordmark { font-size: clamp(2.2rem, 9vw, 2.8rem); }
+      .strapline { font-size: 1.05rem; }
+      .hero { padding: 3rem 1rem 1.5rem; }
+      .section { padding: 2.5rem 0; }
+      .promo { padding: 1.5rem; }
+      .button { padding: 0.95rem 1.8rem; font-size: 1rem; min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="wordmark"><span class="public">Public</span><span class="logic">Logic</span></h1>
+      <p class="strapline">Governance That Survives Real Life</p>
+      <nav aria-label="Main sections">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/frameworks.html">Frameworks</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/writing.html">Writing</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Services</h1>
+      <p class="lead">Scoped, practitioner-led governance support that produces durable artifacts and interfaces towns can own, defend, and operate independently.</p>
+    </section>
+
+    <section class="section promo">
+      <h2>What towns actually receive</h2>
+      <p>PublicLogic’s work produces artifacts, interfaces, and operating clarity that towns can use without us present.</p>
+      <p>These outputs are not theoretical. They are the working surfaces where authority, responsibility, and records are actually carried day to day.</p>
+
+      <h3>Governance artifacts</h3>
+      <p>These are the documents and records that make authority and responsibility explicit.</p>
+      <p>They commonly include:</p>
+      <ul>
+        <li>Authority and decision maps that show who can decide what, under which conditions</li>
+        <li>Statutory workflow documentation tied to actual roles, not idealized charts</li>
+        <li>Record ownership and retention structures aligned with law and practice</li>
+        <li>Transfer-ready procedures that allow work to survive staff turnover</li>
+        <li>Governance notes and rationale that explain why structures exist, not just how, so decisions remain defensible after turnover</li>
+      </ul>
+      <p>These artifacts are written to be read by successors, auditors, counsel, and boards. Not just by the people who helped create them.</p>
+
+      <h3>Working interfaces and systems</h3>
+      <p>Where governance must live inside systems, we help structure and configure usable interfaces that staff actually work in.</p>
+      <p>This may include:</p>
+      <ul>
+        <li>Intake forms and case structures that reflect statutory requirements</li>
+        <li>Internal views that make responsibility, status, and next steps visible</li>
+        <li>Record structures that reduce reliance on memory and inboxes</li>
+        <li>Simple automation that supports, rather than replaces, human judgment</li>
+      </ul>
+      <p>We work inside existing municipal environments whenever possible. The goal is not novelty. The goal is clarity and survivability.</p>
+      <p>The UI is not the product. It is the surface that carries the structure.</p>
+
+      <h3>Training and operational grounding</h3>
+      <p>Artifacts and interfaces only hold if people understand how to use them under pressure.</p>
+      <p>Training focuses on:</p>
+      <ul>
+        <li>How authority actually operates in the system</li>
+        <li>What staff are responsible for, and what they are not</li>
+        <li>How records, decisions, and timelines are meant to move</li>
+        <li>How to operate without improvising governance on the fly</li>
+      </ul>
+      <p>Training is role-specific and grounded in real workflows. It is designed to reduce cognitive load so governance does not depend on memory or improvisation.</p>
+    </section>
+
+    <section class="section promo">
+      <h2>How the work is carried</h2>
+      <p>PublicLogic’s work is led directly by the principals and accountable to them.</p>
+      <p>Nathan and Allison remain actively involved in governance design, risk interpretation, and structural decisions. Staff support implementation, documentation, configuration, and training under direct supervision.</p>
+      <p>This model ensures:</p>
+      <ul>
+        <li>Governance decisions are not delegated away from accountability</li>
+        <li>Behavioral constraints are integrated into structural design</li>
+        <li>Artifacts remain consistent with doctrine and statute</li>
+        <li>Towns are not handed work created by people without authority to make it</li>
+      </ul>
+      <p>Staff extend capacity. They do not replace judgment.</p>
+    </section>
+
+    <section class="section promo">
+      <h2>What makes the artifacts different</h2>
+      <p>PublicLogic artifacts are designed to do one thing: hold responsibility without requiring personal sacrifice.</p>
+      <p>They are:</p>
+      <ul>
+        <li>Explicit rather than implied</li>
+        <li>Bounded rather than expansive</li>
+        <li>Transferable rather than personalized</li>
+        <li>Written to survive scrutiny, turnover, and time</li>
+      </ul>
+      <p>If an artifact requires a specific person to interpret or defend it, it is incomplete.</p>
+    </section>
+
+    <section class="section promo">
+      <h2>A quiet but important boundary</h2>
+      <p>We do not ship “framework documents” and walk away.</p>
+      <p>We also do not leave towns dependent on us to explain what we built.</p>
+      <p>The work is complete when staff can operate the structures confidently, leadership can defend them publicly, and successors can inherit them without re-learning the past.</p>
+    </section>
+
+    <section class="section features">
+      <h2>Ways We Support Your Town</h2>
+      <div class="feature-card">
+        <h3>Advisory</h3>
+        <p>Focused governance guidance during transitions, new requirements, or moments when authority, responsibility, or risk need to be made explicit.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Transfer & Documentation</h3>
+        <p>Transfer-ready documentation of authority, decisions, and ways of working so institutional knowledge stays with the town through turnover and time.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Pilots</h3>
+        <p>Narrow, low-risk pilots to test governance structures in live conditions before broader commitment.</p>
+      </div>
+    </section>
+
+    <section class="section promo">
+      <h2>What We Keep Focused</h2>
+      <ul style="list-style: none; padding-left: 0;">
+        <li>No software platforms or product sales</li>
+        <li>No large-scale culture or training programs</li>
+        <li>No day-to-day operations or staffing takeovers</li>
+        <li>No assumption of formal authority or decision-making roles</li>
+      </ul>
+      <p>We stay grounded in practical governance support that respects institutional limits and real human capacity.</p>
+    </section>
+
+    <section class="cta">
+      <h2>Ready to talk about your town's needs?</h2>
+      <p>Reach out when it feels right. We listen carefully, then work structurally — no pressure, clear partnership.</p>
+      <a href="/contact.html" class="button">Start a Conversation →</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Governance That Survives Real Life<br>
+    Helping towns build governance that holds when people cannot.<br>
+    © 2026 PublicLogic LLC — Based in Gardner, Massachusetts</p>
+  </footer>
+</body>
+</html>

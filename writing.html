@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
-  <meta name="description" content="PublicLogic supports Massachusetts towns by building governance structures that survive turnover, audits, and pressure — placing risk in systems, not people." />
+  <meta name="description" content="PublicLogic writings: canonical governance frameworks, institutional analysis, field notes, and research focused on survivability, continuity, and risk containment." />
   <meta name="author" content="PublicLogic LLC">
-  <title>PublicLogic — Governance That Survives Real Life</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap" rel="stylesheet">
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: 'neutral',
-      flowchart: { useMaxWidth: true, curve: 'basis' },
-      securityLevel: 'loose'
-    });
-  </script>
+  <title>Writings — PublicLogic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="canonical" href="https://publiclogic.dev/writing.html">
+  <meta property="og:title" content="Writings — PublicLogic" />
+  <meta property="og:description" content="Canonical governance frameworks, applied analysis, field notes, and research focused on institutional survivability and risk containment." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://publiclogic.dev/writing.html" />
+  <meta name="twitter:card" content="summary_large_image" />
   <style>
     :root {
       --primary: #2e7d32;
@@ -24,7 +24,9 @@
       --light: #f5f9f5;
       --gray: #555;
       --white: #ffffff;
+      --focus: #14532d;
     }
+    * { box-sizing: border-box; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
       line-height: 1.7;
@@ -33,99 +35,104 @@
       background: var(--light);
       -webkit-font-smoothing: antialiased;
     }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; text-align: center; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; text-align: center; }
     header {
       background: var(--primary);
       color: var(--white);
-      padding: clamp(2rem, 6vw, 3rem) 0 2rem;
+      padding: 2.5rem 0 2rem;
     }
-    .wordmark {
-      font-size: clamp(2.8rem, 9vw, 4.2rem);
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: .4rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      margin: 0 0 0.8rem 0;
-      line-height: 1.1;
+      margin: 0 0 .8rem 0;
+      font-size: clamp(2.6rem, 8vw, 4.2rem);
     }
-    .wordmark .public { color: var(--white); }
-    .wordmark .logic { color: var(--accent); }
+    .brand .public { color: var(--white); }
+    .brand .logic { color: var(--accent); }
     .strapline {
-      font-size: clamp(1.2rem, 4vw, 1.4rem);
-      font-weight: 500;
+      font-size: clamp(1.15rem, 4vw, 1.35rem);
+      font-weight: 600;
       margin: 0 0 1.8rem 0;
-      opacity: 0.95;
+      opacity: .95;
     }
-    nav ul {
+    nav[aria-label="Main"] ul {
       list-style: none;
       padding: 0;
       margin: 0 auto;
       display: inline-flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: clamp(1.2rem, 4vw, 2.2rem);
+      gap: 1.8rem 2.5rem;
     }
     nav a {
       color: var(--white);
       text-decoration: none;
       font-weight: 600;
-      font-size: clamp(0.95rem, 3vw, 1.05rem);
+      font-size: 1.1rem;
       padding: 0.5rem 1rem;
       border-radius: 0.4rem;
       transition: background 0.2s ease;
     }
-    nav a:hover { background: rgba(255,255,255,.15); }
-    .hero {
-      padding: clamp(4rem, 12vw, 6rem) 1rem 3rem;
-      background: linear-gradient(to bottom, #e8f5e9, var(--light));
-    }
-    h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); margin: 0 0 1.5rem; color: var(--primary); }
-    .lead { font-size: clamp(1.2rem, 4vw, 1.4rem); max-width: 800px; margin: 0 auto 2rem; }
-    .vault-section {
-      margin: 2rem auto 4rem;
-      max-width: 900px;
-    }
-    .mermaid-container {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    nav a:hover, nav a:focus-visible { background: rgba(255,255,255,.15); outline: none; }
+    main { padding: 3rem 0 5rem; }
+    h1.page-title { font-size: clamp(1.8rem, 4.5vw, 2.4rem); margin-bottom: 1rem; color: var(--primary); }
+    .lead { font-size: 1.15rem; max-width: 800px; margin: 0 auto 3rem; opacity: .9; }
+    .tier { margin: 4rem 0; }
+    .tier h2 { font-size: 1.5rem; margin-bottom: 1.25rem; color: var(--primary); }
+    .entry {
+      background: var(--white);
+      padding: 1.25rem;
+      border-radius: 8px;
       margin: 1rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border-left: 4px solid var(--accent);
+      text-align: left;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .vault-caption { margin-top: 1rem; font-size: 0.95rem; color: var(--gray); }
-    .section { padding: clamp(2.5rem, 8vw, 4rem) 0; }
-    .promo { background: white; padding: 1.8rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin: 1.5rem 0; max-width: 900px; margin-left: auto; margin-right: auto; }
-    .features { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin: 2rem 0; }
-    .feature-card { background: white; padding: 1.8rem; border-radius: 10px; border: 1px solid var(--accent); transition: transform 0.2s ease; }
-    .feature-card:hover { transform: translateY(-6px); }
-    .cta { padding: clamp(3rem, 10vw, 5rem) 1rem; background: var(--primary); color: var(--white); border-radius: 12px; margin: 3rem 0; }
-    .button {
-      display: inline-block; padding: 1rem 2rem; background: var(--white); color: var(--primary);
-      font-weight: 700; text-decoration: none; border-radius: 50px; font-size: 1.05rem; min-width: 220px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12); transition: all 0.22s ease;
+    .entry h3 { margin: 0 0 .5rem; font-size: 1.2rem; color: var(--primary); }
+    .entry p { margin: .4rem 0; font-size: 1rem; }
+    .entry a { color: var(--primary); font-weight: 600; text-decoration: none; }
+    .entry a:hover { text-decoration: underline; }
+    .forthcoming {
+      text-align: center;
+      font-style: italic;
+      color: var(--gray);
+      margin: 3rem 0;
+      padding: 1rem;
+      border: 1px dashed var(--accent);
+      border-radius: 8px;
     }
-    .button:hover { background: var(--accent); transform: translateY(-2px); }
-    footer { text-align: center; padding: 2rem 1rem; color: var(--gray); font-size: 0.9rem; border-top: 1px solid var(--accent); }
+    footer {
+      text-align: center; padding: 3rem 1rem 2rem; color: var(--gray); font-size: .95rem; border-top: 1px solid var(--accent);
+    }
     @media (max-width: 640px) {
       header { padding: 2rem 0 1.5rem; }
-      .wordmark { font-size: clamp(2.2rem, 9vw, 3rem); margin-bottom: .6rem; }
+      .brand { font-size: clamp(2.2rem, 9vw, 3rem); margin-bottom: .6rem; }
       .strapline { font-size: 1.05rem; margin-bottom: 1.2rem; }
-      nav ul { gap: 1rem 1.6rem; flex-direction: column; }
-      nav a { padding: 0.5rem 0; }
-      .hero { padding: 3rem 1rem 2rem; }
+      nav ul { gap: 1rem 1.6rem; }
       main { padding: 2rem 0 4rem; }
     }
   </style>
 </head>
 <body>
-  <header>
+  <header role="banner">
     <div class="container">
-      <h1 class="wordmark"><span class="public">Public</span><span class="logic">Logic</span></h1>
+      <p class="brand" aria-label="PublicLogic wordmark">
+        <span class="public">Public</span><span class="logic">Logic</span>
+      </p>
       <p class="strapline">Governance That Survives Real Life</p>
-      <nav aria-label="Main sections">
+      <nav aria-label="Main">
         <ul>
+          <li><a href="/">Home</a></li>
           <li><a href="/about.html">About</a></li>
           <li><a href="/frameworks.html">Frameworks</a></li>
           <li><a href="/services.html">Services</a></li>
-          <li><a href="/writing.html">Writing</a></li>
+          <li><a href="/writing.html">Writings</a></li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -133,81 +140,47 @@
   </header>
 
   <main class="container">
-    <section class="hero">
-      <h1>Structures That Hold When People Cannot</h1>
-      <p class="lead">
-        Massachusetts towns rely on dedicated people who give so much every day. Change, turnover, and demands can quietly expose individuals to unowned risk and liability.
-      </p>
-      <p>
-        PublicLogic builds durable systems so responsibility lives in structure — not people. We focus on authority, records, and continuity so work endures independently.
-      </p>
-    </section>
+    <h1 class="page-title">Writings</h1>
+    <p class="lead">
+      Canonical governance frameworks, institutional analysis, applied essays, field notes, and research focused on survivability, continuity, and risk containment.
+    </p>
 
-    <section class="vault-section">
-      <div class="mermaid-container">
-        <pre class="mermaid">
-graph TD
-    A[VAULT™ Governance Framework] --> B[Authority]
-    A --> C[Record]
-    A --> D[Time]
-    A --> E[Fiscal]
-    A --> F[Correction]
-    A --> G[Transfer]
-    style A fill:#e8f5e9,stroke:#2e7d32,stroke-width:4px
-    style B fill:#f5f9f5,stroke:#2e7d32
-    style C fill:#f5f9f5,stroke:#2e7d32
-    style D fill:#f5f9f5,stroke:#2e7d32
-    style E fill:#f5f9f5,stroke:#2e7d32
-    style F fill:#f5f9f5,stroke:#2e7d32
-    style G fill:#f5f9f5,stroke:#2e7d32
-        </pre>
+    <section class="tier">
+      <h2>Canonical Frameworks</h2>
+      <div class="entry">
+        <h3>VAULT™ Governance Framework (v1.0)</h3>
+        <p>Ensures statutory work enters institutions in a form that can survive pressure, turnover, and audit. Focus: Authority, record, time, fiscal containment, correction, transfer.</p>
+        <p><a href="/vault/v1.0">Read the framework</a></p>
       </div>
-      <p class="vault-caption">VAULT™ ensures risk, memory, and responsibility live in structure, not in people.</p>
-    </section>
 
-    <section class="section promo">
-      <h2>A structured framework, built for real towns</h2>
-      <p>We use VAULT™ to create environments where institutional work endures naturally. It protects people by letting structure carry the weight during transitions and pressure.</p>
-      <p>Engagements begin with listening: your town's real constraints, statutory pressures, and continuity gaps. From there, we build solutions that hold over time.</p>
-    </section>
-
-    <section class="section features">
-      <h2>Ways We Support Your Town</h2>
-      <div class="feature-card">
-        <h3>Advisory</h3>
-        <p>Focused guidance during transitions, compliance challenges, or continuity risks where informal approaches are no longer defensible.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Transfer & Documentation</h3>
-        <p>Systematic capture of decisions, workflows, and institutional memory — so they remain with the town during turnover or audits.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Pilots</h3>
-        <p>Low-risk trials of new governance mechanisms in live workflows — to test durability before full commitment.</p>
+      <div class="forthcoming">
+        Institutional Stewardship — forthcoming / limited release soon
       </div>
     </section>
 
-    <section class="section promo">
-      <h2>What We Keep Focused</h2>
-      <ul style="list-style: none; padding-left: 0; max-width: 600px; margin: 0 auto;">
-        <li>No software platforms or product sales</li>
-        <li>No large-scale culture or training programs</li>
-        <li>No day-to-day operations or staffing takeovers</li>
-      </ul>
-      <p>We deliver scoped governance support that respects institutional boundaries and long-term independence.</p>
+    <section class="tier">
+      <h2>Essays & Applied Thinking</h2>
+      <p style="text-align:center; opacity:.7; margin: 3rem 0;">(None published at this time.)</p>
     </section>
 
-    <section class="cta">
-      <h2>Ready to strengthen your town's governance?</h2>
-      <p>Contact us when it feels right. We listen to your constraints, then build structurally — no pressure, clear partnership.</p>
-      <a href="/contact.html" class="button">Start a Conversation →</a>
+    <section class="tier">
+      <h2>Field Notes & Research</h2>
+      <p style="text-align:center; opacity:.7; margin: 3rem 0;">(None published at this time.)</p>
+    </section>
+
+    <section class="section promo" style="margin-top:4rem; text-align:center;">
+      <h2>Use and Citation</h2>
+      <p>Governance concepts are public and may be referenced or adopted.</p>
+      <p>Implementation logic and deployment specifications are proprietary.</p>
+      <p>Cite by document and version.</p>
     </section>
   </main>
 
-  <footer>
-    <p>Governance That Survives Real Life<br>
-    Helping towns build structures that hold when people cannot.<br>
-    © 2026 PublicLogic LLC — Gardner, Massachusetts</p>
+  <footer role="contentinfo">
+    <p>
+      Governance That Survives Real Life<br>
+      © 2026 PublicLogic LLC — Based in Gardner, Massachusetts
+    </p>
   </footer>
 </body>
 </html>

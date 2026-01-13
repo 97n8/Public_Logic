@@ -6,10 +6,10 @@ Nathan Boudreau
 Dr. Allison Weiss Rothschild
   Role: Research & Behavioral Systems Lead
 
-/* THANKS */
+/ THANKS */
 Built with care for towns that serve the public.
 
-/* TECHNOLOGY */
+/ TECHNOLOGY */
 HTML, CSS, JavaScript
 Mermaid for diagrams
 Hosted on Netlify

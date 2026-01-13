@@ -1,13 +1,10 @@
-# robots.txt for publiclogic.dev
 User-agent: *
 Allow: /
-# Block drafts, backups, private files
 Disallow: /drafts/
 Disallow: /archive/
 Disallow: /*.old.html$
 Disallow: /*_backup.html$
 Disallow: /private/
-Disallow: /temp/
 Disallow: /.env
 Disallow: /.git/
 

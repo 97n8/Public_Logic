@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="PublicLogic builds durable governance systems for Massachusetts municipalities — moving institutional risk from people into structure so work survives turnover, pressure, and change — without new software." />
+  <meta name="author" content="PublicLogic LLC">
+  <title>PublicLogic™ — Governance That Survives Real Life</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+  <style>
+    :root {
+      --accent: #15803d;
+      --accent-light: #16a34a;
+      --accent-dark: #14532d;
+      --bg: #ffffff;
+      --bg-tint: #f0fdf4;
+      --text: #111827;
+      --muted: #475569;
+      --border: #d1fae5;
+      --shadow: rgba(21,128,61,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 1.2rem; }
+    header {
+      background: linear-gradient(to bottom right, var(--accent), var(--accent-dark));
+      color: white;
+      text-align: center;
+      padding: clamp(3rem, 8vw, 4rem) 1rem clamp(2.5rem, 7vw, 3.5rem);
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .brand-main {
+      font-size: clamp(2.4rem, 9vw, 4.2rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.3rem;
+    }
+    .brand-tag {
+      font-size: clamp(1.1rem, 4vw, 1.4rem);
+      font-weight: 500;
+      opacity: 0.92;
+      margin-bottom: clamp(1.5rem, 5vw, 2rem);
+    }
+    nav {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      padding: 0.6rem 1.4rem;
+      margin: 0 auto;
+      max-width: max-content;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: clamp(1rem, 4vw, 1.6rem) clamp(1.5rem, 5vw, 2.5rem);
+      list-style: none;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: clamp(0.95rem, 3vw, 1.05rem);
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    nav a:hover { opacity: 0.85; }
+    main { padding: clamp(3rem, 8vw, 4rem) 0 clamp(4rem, 10vw, 6rem); }
+    .hero {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto clamp(3rem, 8vw, 4rem);
+    }
+    .hero h2 {
+      font-size: clamp(2.2rem, 7vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: clamp(1.1rem, 4vw, 1.25rem);
+      color: var(--muted);
+      max-width: 60ch;
+      margin: 0 auto 2rem;
+    }
+    .vault-promo {
+      background: var(--bg-tint);
+      border-radius: 16px;
+      padding: clamp(1.8rem, 6vw, 2.5rem) clamp(1.5rem, 5vw, 2.2rem);
+      margin: 0 auto 4rem;
+      max-width: 900px;
+      border-left: 6px solid var(--accent);
+      box-shadow: 0 4px 16px var(--shadow);
+    }
+    .vault-promo h3 {
+      color: var(--accent);
+      font-size: clamp(1.6rem, 5vw, 1.9rem);
+      margin-bottom: 1rem;
+    }
+    .vault-promo p {
+      font-size: clamp(1rem, 3.5vw, 1.15rem);
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .feature {
+      background: white;
+      padding: clamp(1.5rem, 5vw, 1.8rem);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 3px 10px var(--shadow);
+    }
+    .feature h3 {
+      color: var(--accent);
+      font-size: clamp(1.3rem, 4vw, 1.4rem);
+      margin-bottom: 0.8rem;
+    }
+    .cta {
+      text-align: center;
+      margin: clamp(3rem, 8vw, 4rem) 0 clamp(2rem, 6vw, 3rem);
+    }
+    .cta a {
+      display: inline-block;
+      font-size: clamp(1.15rem, 4vw, 1.3rem);
+      font-weight: 700;
+      color: white;
+      background: var(--accent);
+      padding: clamp(0.8rem, 3vw, 1rem) clamp(2rem, 6vw, 2.5rem);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .cta a:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+    }
+    footer {
+      background: var(--accent);
+      color: #d1fae5;
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #a7f3d0;
+      text-decoration: none;
+      margin: 0 0.8rem;
+    }
+    footer a:hover { text-decoration: underline; }
+    @media (min-width: 640px) {
+      .features { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+      nav ul { gap: 1.8rem 2.5rem; }
+      .vault-promo { padding: 2.8rem 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="brand-main">PublicLogic™</div>
+      <div class="brand-tag">Governance That Survives Real Life</div>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/frameworks">Frameworks</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/writing">Writing</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Structure carries the load so people don’t have to</h2>
+      <p>PublicLogic builds durable governance systems for Massachusetts municipalities — moving institutional risk from individuals into structure so work survives turnover and pressure — without new software.</p>
+    </section>
+
+    <section class="vault-promo">
+      <h3>Governance Frameworks</h3>
+      <p>PublicLogic develops governance frameworks that make statutory work easier to carry, easier to transfer, and easier to defend. These frameworks focus on authority, records, time, and responsibility as structural concerns, not personal ones.</p>
+      <p>The VAULT™ framework is the most developed example, but it sits alongside broader work on institutional stewardship and behavioral systems.</p>
+      <p>These are governance frameworks, not software, diagnostics, or change programs.</p>
+      <p><a href="/frameworks/">Explore frameworks →</a></p>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <h3>Advisory</h3>
+        <p>Targeted support for municipal leaders navigating governance, compliance, or continuity under real constraints.</p>
+      </div>
+      <div class="feature">
+        <h3>Pilots</h3>
+        <p>Short engagements to test governance structure in live workflows without full commitment.</p>
+      </div>
+      <div class="feature">
+        <h3>Transfer & Documentation</h3>
+        <p>Systems that survive staff change — decisions, rationale, and structure stay with the town.</p>
+      </div>
+    </section>
+
+    <section class="cta">
+      <a href="/contact/">Start a conversation →</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 PublicLogic LLC • Gardner, Massachusetts</p>
+      <p>
+        <a href="/legal-terms">Terms</a> •
+        <a href="/legal-privacy">Privacy</a> •
+        <a href="/legal-ip">Intellectual Property</a> •
+        <a href="/contact">Contact</a>
+      </p>
+      <p>VAULT™ and CASE™ are trademarks of PublicLogic LLC.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

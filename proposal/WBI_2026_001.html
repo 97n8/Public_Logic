@@ -29,7 +29,7 @@ body {
 
 /* Page frame */
 .page {
-    border: 1pt solid #111827;
+    border: 1.25pt solid #065f46;
     padding: 0.75in;
     box-sizing: border-box;
     max-width: 8.5in;
@@ -39,12 +39,15 @@ body {
 /* Header */
 .header {
     margin-bottom: 0.45in;
+    border-bottom: 1pt solid #065f46;
+    padding-bottom: 0.3in;
 }
 
 .header .name {
     font-size: 22pt;
     font-weight: 800;
     letter-spacing: -0.3px;
+    color: #065f46;
 }
 
 .header .tagline {
@@ -57,6 +60,7 @@ body {
     font-size: 9.5pt;
     line-height: 1.4;
     margin-top: 0.2in;
+    color: #374151;
 }
 
 /* Letter meta */
@@ -72,6 +76,7 @@ body {
 .subject {
     margin: 0.35in 0 0.25in;
     font-weight: 600;
+    color: #065f46;
 }
 
 /* Body text */
@@ -84,6 +89,7 @@ p {
 .section-title {
     font-weight: 700;
     margin-top: 0.35in;
+    color: #065f46;
 }
 
 ul {
@@ -95,14 +101,16 @@ li {
     margin: 0.08in 0;
 }
 
-/* Monospace block */
+/* Structure block */
 pre {
     font-family: "Courier New", monospace;
     font-size: 9.5pt;
-    border: 1pt solid #111827;
+    border: 1pt solid #065f46;
+    background: #ecfdf5;
     padding: 0.2in;
     margin: 0.25in 0;
     page-break-inside: avoid;
+    color: #064e3b;
 }
 
 /* Signature */
@@ -112,7 +120,7 @@ pre {
 }
 
 .sig-line {
-    border-bottom: 1pt solid #111827;
+    border-bottom: 1pt solid #065f46;
     width: 65%;
     height: 18pt;
     margin: 0.15in 0;
@@ -123,8 +131,9 @@ pre {
     margin-top: 0.6in;
     font-size: 9pt;
     text-align: center;
-    border-top: 1pt solid #111827;
+    border-top: 1pt solid #065f46;
     padding-top: 0.15in;
+    color: #374151;
 }
 </style>
 </head>
@@ -158,21 +167,22 @@ pre {
 <p>Dear Mr. Carlberg:</p>
 
 <p>
-The Wachusett Business Incubator is receiving devices through the Massachusetts Broadband Institute
-Connected & Online Device Lending Program, administered by the Massachusetts Broadband Institute
-under the Massachusetts Technology Collaborative.
+The Wachusett Business Incubator is receiving devices through the Massachusetts Broadband
+Institute Connected & Online Device Lending Program, administered under the Massachusetts
+Technology Collaborative.
 </p>
 
 <p>
-Devices distributed through this program carry defined requirements for inventory tracking, quarterly
-reporting, incident documentation, and ownership continuity through at least December 31, 2031,
-regardless of staff changes, leadership transitions, or program evolution.
+Devices distributed through this program carry defined requirements for inventory tracking,
+quarterly reporting, incident documentation, and ownership continuity through at least
+December 31, 2031, regardless of staff changes, leadership transitions, or program evolution.
 </p>
 
 <p>
-This proposal establishes a structured, live CASE workspace that embeds governance designed to
-survive real life. The workspace ensures that the Device Lending Program remains compliant, visible,
-and manageable over time without reliance on informal knowledge or individual memory.
+This proposal establishes a structured, live CASE workspace operated through a
+staff-facing program interface that embeds governance designed to survive real life.
+The system ensures that the Device Lending Program remains compliant, visible, and
+manageable over time without reliance on informal knowledge or individual memory.
 </p>
 
 <p class="section-title">Program Objectives</p>
@@ -186,17 +196,17 @@ and manageable over time without reliance on informal knowledge or individual me
 </ul>
 
 <p>
-The system is intentionally lightweight and proportionate to a regional organization. It reduces
-administrative burden rather than adding to it.
+The system is intentionally lightweight and proportionate to a regional organization.
+It reduces administrative burden while strengthening institutional protection.
 </p>
 
 <p class="section-title">What This Is and What It Is Not</p>
 
 <p><strong>This is:</strong></p>
 <ul>
-    <li>A one-time build of a durable Device Lending Program workspace</li>
+    <li>A one-time build of a durable Device Lending Program system</li>
+    <li>A staff-facing interface governing how work enters and moves through the program</li>
     <li>A single authoritative source for all device records and documentation</li>
-    <li>A structure with embedded tracking, reminders, and reporting logic</li>
     <li>Fully owned and operated by WBI following handoff</li>
 </ul>
 
@@ -206,6 +216,30 @@ administrative burden rather than adding to it.
     <li>An IT system requiring ongoing vendor support</li>
     <li>Retained consulting or external oversight</li>
 </ul>
+
+<p class="section-title">Program Interface and System Operation</p>
+
+<p>
+The Device Lending Program is operated through a single, staff-facing program interface
+that serves as the front door to the CASE workspace.
+</p>
+
+<p>
+All applications, approvals, issuance actions, returns, and incident reports enter the
+system through this interface rather than through email, spreadsheets, or informal tracking.
+Structured steps guide staff through each action and create records as work occurs.
+</p>
+
+<p>
+Because activity enters through the interface, device status, reporting counts, deadlines,
+and historical records update automatically. Compliance evidence is created upstream
+and preserved by default.
+</p>
+
+<p>
+This design allows the program to be operated day-to-day by staff while remaining
+audit-ready years later.
+</p>
 
 <p class="section-title">Information Structure</p>
 
@@ -226,7 +260,7 @@ One source of truth. No parallel systems. Governance that survives real life.
 <p class="section-title">Timeline</p>
 
 <ul>
-    <li><strong>Week 1:</strong> Build registers, forms, agreements, and workspace structure</li>
+    <li><strong>Week 1:</strong> Build interface, registers, forms, agreements, and structure</li>
     <li><strong>Week 2:</strong> Test workflows, validate reporting outputs, and complete handoff</li>
 </ul>
 
@@ -242,9 +276,8 @@ There are no subscriptions, no future obligations, and no exclusivity.
 <p class="section-title">Ownership and Responsibility</p>
 
 <p>
-Upon handoff, the Wachusett Business Incubator assumes full ownership of all files, links, and records.
-PublicLogic retains no access, control, or ongoing role. All compliance decisions and program
-responsibility rest solely with WBI.
+Upon handoff, the Wachusett Business Incubator assumes full ownership of all files,
+links, and records. PublicLogic retains no access, control, or ongoing role.
 </p>
 
 <div class="signature">

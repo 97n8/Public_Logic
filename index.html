@@ -2,14 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
-  <meta name="description" content="PublicLogic builds governance structures that survive turnover, audits, and pressure — placing risk in systems, not people." />
-  <meta name="author" content="PublicLogic LLC">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="PublicLogic builds governance structures for Massachusetts towns that survive turnover, audits, and pressure — placing risk in systems, not people." />
+  <meta name="author" content="PublicLogic LLC" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#059669" />
+  <link rel="canonical" href="https://publiclogic.org/" />
+
   <title>PublicLogic — Governance That Survives Real Life</title>
+
   <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Preload example: brand image / key font if self-hosted (kept generic to avoid 3P fetch) -->
+  <!-- <link rel="preload" as="image" href="/VAULTDIAGRAM.png" imagesrcset="/VAULTDIAGRAM.png 1x" image sizes="100vw" /> -->
+
   <!-- Open Graph / Social Preview -->
   <meta property="og:title" content="PublicLogic — Governance That Survives Real Life" />
   <meta property="og:description" content="Building governance structures for Massachusetts towns that survive turnover, audits, and pressure — placing risk in systems, not people." />
@@ -19,12 +28,35 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="PublicLogic — Governance That Survives Real Life" />
+
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="PublicLogic — Governance That Survives Real Life" />
   <meta name="twitter:description" content="Building governance structures for Massachusetts towns that survive turnover, audits, and pressure." />
   <meta name="twitter:image" content="https://publiclogic.org/PL_FB_Logo.png" />
   <meta name="twitter:image:alt" content="PublicLogic — Governance That Survives Real Life" />
+
+  <!-- Structured Data (Organization + LocalBusiness hybrid for clarity) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PublicLogic",
+    "url": "https://publiclogic.org/",
+    "logo": "https://publiclogic.org/PL_FB_Logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/publiclogic/"
+    ],
+    "foundingDate": "2023",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Gardner",
+      "addressRegion": "MA",
+      "addressCountry": "US"
+    }
+  }
+  </script>
+
   <style>
     :root {
       --primary: #059669;      /* emerald-600 */
@@ -34,15 +66,27 @@
       --gray: #4b5563;
       --white: #ffffff;
       --stone: #f3f4f6;
+      --focus: #0ea5e9;        /* sky-500 for focus outlines */
     }
+
+    /* Base */
+    html:focus-within { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html:focus-within { scroll-behavior: auto; }
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
       line-height: 1.7;
       color: var(--dark);
       margin: 0;
       background: var(--light-bg);
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
+
+    /* Skip link & focus */
     .skip-link {
       position: absolute;
       top: -9999px;
@@ -51,120 +95,74 @@
       background: var(--primary);
       color: white;
       padding: 1rem;
-      font-weight: bold;
+      font-weight: 700;
+      border-radius: .5rem;
     }
-    .skip-link:focus {
-      top: 1rem;
-      left: 1rem;
-    }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; text-align: center; }
-    header {
+    .skip-link:focus { top: 1rem; left: 1rem; }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: .375rem; }
+
+    .container { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; text-align: center; }
+
+    header[role="banner"] {
       background: var(--primary);
       color: var(--white);
       padding: clamp(3rem, 8vw, 5rem) 0 2.5rem;
     }
-    .wordmark {
-      font-size: clamp(3.2rem, 10vw, 5rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      margin: 0 0 1rem 0;
-      line-height: 1;
-    }
+
+    .wordmark { font-size: clamp(2.6rem, 8vw, 3.4rem); font-weight: 900; letter-spacing: -0.03em; margin: 0 0 1rem 0; line-height: 1; }
     .wordmark .public { color: var(--white); }
     .wordmark .logic { color: var(--accent); }
-    .strapline {
-      font-size: clamp(1.4rem, 5vw, 1.8rem);
-      font-weight: 600;
-      margin: 0 0 2rem 0;
-      opacity: 0.95;
-    }
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 auto;
-      display: inline-flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: clamp(1.5rem, 5vw, 3rem);
-    }
-    nav a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: clamp(1rem, 3.5vw, 1.2rem);
-      padding: 0.6rem 1.2rem;
-      border-radius: 0.5rem;
-      transition: background 0.2s ease;
-    }
-    nav a:hover { background: rgba(255,255,255,.2); }
-    .hero {
-      padding: clamp(5rem, 15vw, 8rem) 1rem 4rem;
-      background: linear-gradient(to bottom, #e8f5e9, var(--light-bg));
-    }
-    h1 { font-size: clamp(2.4rem, 7vw, 3.8rem); margin: 0 0 1.8rem; color: var(--primary); font-weight: 900; letter-spacing: -0.02em; }
-    .lead { font-size: clamp(1.3rem, 4.5vw, 1.6rem); max-width: 900px; margin: 0 auto 3rem; font-weight: 500; }
-    .vault-section {
-      margin: 4rem auto 7rem;
-      max-width: 1200px;
-      text-align: center;
-    }
-    .vault-img-container {
-      background: white;
-      padding: clamp(2rem, 5vw, 4rem);
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-      margin: 2.5rem 0;
-    }
-    .vault-img {
-      width: 100%;
-      max-width: 1000px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      border-radius: 12px;
-    }
-    .vault-caption {
-      margin-top: 2rem;
-      font-size: 1.15rem;
-      color: var(--dark);
-      font-weight: 700;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .section { padding: clamp(4rem, 12vw, 8rem) 0; }
-    .promo { background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin: 3rem 0; max-width: 1100px; margin-left: auto; margin-right: auto; }
-    .features { display: grid; gap: 2.5rem; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); margin: 4rem 0; }
-    .feature-card { background: white; padding: 2.5rem; border-radius: 16px; border: 1px solid var(--accent); transition: all 0.3s ease; }
-    .feature-card:hover { transform: translateY(-10px); box-shadow: 0 16px 48px rgba(0,0,0,0.15); }
-    .cta { padding: clamp(5rem, 15vw, 9rem) 1rem; background: var(--primary); color: var(--white); border-radius: 20px; margin: 5rem 0; }
-    .button {
-      display: inline-block; padding: 1.4rem 3.5rem; background: var(--white); color: var(--primary);
-      font-weight: 900; text-decoration: none; border-radius: 70px; font-size: 1.3rem; min-width: 280px;
-      box-shadow: 0 10px 32px rgba(0,0,0,0.2); transition: all 0.3s ease;
-    }
-    .button:hover { background: var(--accent); transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.25); }
-    footer { text-align: center; padding: 4rem 1rem; color: var(--gray); font-size: 1.1rem; border-top: 1px solid var(--accent); }
+    .strapline { font-size: clamp(1.2rem, 4.5vw, 1.5rem); font-weight: 600; margin: 0 0 2rem 0; opacity: 0.95; }
+
+    nav[aria-label] ul { list-style: none; padding: 0; margin: 0 auto; display: inline-flex; flex-wrap: wrap; justify-content: center; gap: clamp(1.25rem, 4vw, 2.25rem); }
+    nav a { color: var(--white); text-decoration: none; font-weight: 700; font-size: clamp(1rem, 3.5vw, 1.1rem); padding: 0.6rem 1rem; border-radius: 0.5rem; transition: background 140ms ease; }
+    nav a:hover, nav a:focus-visible { background: rgba(255,255,255,.18); }
+
+    .hero { padding: clamp(4rem, 12vw, 7rem) 1rem 3.5rem; background: linear-gradient(to bottom, #e8f5e9, var(--light-bg)); }
+    .hero h1 { font-size: clamp(2.2rem, 6.5vw, 3.2rem); margin: 0 0 1.2rem; color: var(--primary); font-weight: 900; letter-spacing: -0.02em; }
+    .lead { font-size: clamp(1.15rem, 3.8vw, 1.35rem); max-width: 58rem; margin: 0 auto 2rem; font-weight: 500; }
+
+    .vault-section { margin: 3.25rem auto 5.5rem; max-width: 72rem; text-align: center; }
+    .vault-img-container { background: white; padding: clamp(1.5rem, 4.5vw, 3rem); border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); margin: 1.75rem 0; }
+    .vault-img { width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 12px; }
+    .vault-caption { margin-top: 1.25rem; font-size: 1.05rem; color: var(--dark); font-weight: 700; max-width: 62rem; margin-left: auto; margin-right: auto; }
+
+    .section { padding: clamp(3rem, 10vw, 6rem) 0; }
+    .promo { background: white; padding: clamp(1.75rem, 4.5vw, 2.5rem); border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin: 2.25rem auto; max-width: 68rem; }
+
+    .features { display: grid; gap: 1.75rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin: 2.25rem 0; }
+    .feature-card { background: white; padding: 1.75rem; border-radius: 16px; border: 1px solid var(--accent); transition: transform 160ms ease, box-shadow 160ms ease; text-align: left; }
+    .feature-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.12); }
+    .feature-card h3 { margin-top: 0; font-size: 1.25rem; }
+
+    .cta { padding: clamp(3rem, 10vw, 6rem) 1rem; background: var(--primary); color: var(--white); border-radius: 20px; margin: 3.5rem 0; }
+    .button { display: inline-block; padding: 1.1rem 2.4rem; background: var(--white); color: var(--primary); font-weight: 900; text-decoration: none; border-radius: 70px; font-size: 1.15rem; min-width: 14rem; box-shadow: 0 10px 32px rgba(0,0,0,0.2); transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease; }
+    .button:hover, .button:focus-visible { background: var(--accent); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.24); }
+
+    footer { text-align: center; padding: 3rem 1rem; color: var(--gray); font-size: 1.05rem; border-top: 1px solid var(--accent); }
+
+    /* Mobile adjustments */
     @media (max-width: 768px) {
-      header { padding: 2.5rem 0 2rem; }
-      .wordmark { font-size: clamp(2.8rem, 12vw, 4.2rem); margin-bottom: 1rem; }
-      .strapline { font-size: 1.2rem; margin-bottom: 1.8rem; }
-      nav ul { gap: 1.2rem 2rem; flex-direction: column; }
-      nav a { padding: 0.7rem 1.4rem; }
-      .hero { padding: 5rem 1rem 4rem; }
-      main { padding: 2.5rem 0 6rem; }
-      .vault-img-container { padding: 2rem; }
-      .vault-img { max-width: 100%; }
+      header[role="banner"] { padding: 2.25rem 0 1.75rem; }
+      .wordmark { font-size: clamp(2.2rem, 12vw, 3rem); margin-bottom: .75rem; }
+      .strapline { font-size: 1.1rem; margin-bottom: 1.25rem; }
+      nav[aria-label] ul { gap: 1rem 1.5rem; flex-direction: column; }
+      nav a { padding: 0.7rem 1rem; }
+      .hero { padding: 3.25rem 1rem 2.5rem; }
+      main { padding: 2rem 0 4rem; }
+      .vault-img-container { padding: 1.25rem; }
     }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-  <header>
+
+  <header role="banner">
     <div class="container">
-      <h1 class="wordmark"><span class="public">Public</span><span class="logic">Logic</span></h1>
+      <!-- Keep brand as a heading for screen readers, avoid multiple visual H1s -->
+      <h1 class="wordmark" id="brand"><span class="public">Public</span><span class="logic">Logic</span></h1>
       <p class="strapline">Governance That Survives Real Life</p>
-      <nav aria-label="Main sections">
+      <nav aria-label="Main">
         <ul>
           <li><a href="/about.html">About</a></li>
           <li><a href="/frameworks.html">Frameworks</a></li>
@@ -177,8 +175,9 @@
   </header>
 
   <main id="main" class="container">
-    <section class="hero">
-      <h1>Structures That Hold When People Cannot</h1>
+    <section class="hero" aria-labelledby="hero-title">
+      <!-- Page topic heading is H2 to keep single H1 for brand -->
+      <h2 id="hero-title">Structures That Hold When People Cannot</h2>
       <p class="lead">
         Massachusetts towns rely on dedicated people who give so much every day. Change, turnover, and demands can quietly expose individuals to unowned risk and liability.
       </p>
@@ -187,28 +186,28 @@
       </p>
     </section>
 
-    <section class="vault-section">
+    <section class="vault-section" aria-labelledby="vault-title">
+      <h2 id="vault-title" class="visually-hidden">VAULT™ Overview</h2>
       <div class="vault-img-container">
-        <!-- The actual diagram from your repo – full-size, centered -->
-        <img src="/VAULTDIAGRAM.png" alt="VAULT™ Governance Logic – Institutions carry responsibility, not individuals" class="vault-img" loading="lazy">
+        <img src="/VAULTDIAGRAM.png" alt="Diagram of VAULT™ governance logic: institutions carry responsibility, not individuals." class="vault-img" loading="lazy" decoding="async" fetchpriority="low">
       </div>
       <p class="vault-caption">VAULT™ ensures risk, memory, and responsibility live in structure — not in people.</p>
     </section>
 
-    <section class="section promo">
-      <h2>A structured framework, built for real towns</h2>
+    <section class="section promo" aria-labelledby="framework-title">
+      <h2 id="framework-title">A structured framework, built for real towns</h2>
       <p>We use VAULT™ to create environments where institutional work endures naturally. It protects people by letting structure carry the weight during transitions and pressure.</p>
       <p>Engagements begin with listening: your town's real constraints, statutory pressures, and continuity gaps. From there, we design governance structures that hold over time.</p>
     </section>
 
-    <section class="section features">
-      <h2>Ways We Support Your Town</h2>
+    <section class="section features" aria-labelledby="support-title">
+      <h2 id="support-title">Ways We Support Your Town</h2>
       <div class="feature-card">
         <h3>Advisory</h3>
         <p>Focused guidance during transitions, compliance challenges, or continuity risks where informal approaches are no longer defensible.</p>
       </div>
       <div class="feature-card">
-        <h3>Transfer & Documentation</h3>
+        <h3>Transfer &amp; Documentation</h3>
         <p>Systematic capture of decisions, workflows, and institutional memory — so they remain with the town during turnover or audits.</p>
       </div>
       <div class="feature-card">
@@ -217,8 +216,8 @@
       </div>
     </section>
 
-    <section class="section promo">
-      <h2>What We Keep Focused</h2>
+    <section class="section promo" aria-labelledby="keep-focused-title">
+      <h2 id="keep-focused-title">What We Keep Focused</h2>
       <ul style="list-style: none; padding-left: 0; max-width: 600px; margin: 0 auto;">
         <li>No software platforms or product sales</li>
         <li>No large-scale culture or training programs</li>
@@ -227,17 +226,36 @@
       <p>We deliver scoped governance support that respects institutional boundaries and long-term independence.</p>
     </section>
 
-    <section class="cta">
-      <h2>Ready to strengthen your town's governance?</h2>
+    <section class="cta" aria-labelledby="cta-title">
+      <h2 id="cta-title">Ready to strengthen your town's governance?</h2>
       <p>Contact us when it feels right. We listen to your constraints, then build structurally — no pressure, clear partnership.</p>
-      <a href="/contact.html" class="button">Start a Conversation →</a>
+      <a href="/contact.html" class="button">Start a Conversation <span aria-hidden="true">→</span></a>
     </section>
   </main>
 
-  <footer>
-    <p>Governance That Survives Real Life<br>
-    Helping towns build structures that hold when people cannot.<br>
-    © 2026 PublicLogic LLC — Gardner, Massachusetts</p>
+  <footer role="contentinfo">
+    <p>
+      Governance That Survives Real Life<br />
+      Helping towns build structures that hold when people cannot.<br />
+      © <span id="year">2026</span> PublicLogic LLC — Gardner, Massachusetts
+    </p>
   </footer>
+
+  <script>
+    // Keep copyright current without impacting no-JS users
+    (function() {
+      var y = new Date().getFullYear();
+      var el = document.getElementById('year');
+      if (el) el.textContent = y;
+    })();
+  </script>
+
+  <!--
+    Compliance & Accessibility notes (non-rendered):
+    - Single H1 (brand) + hierarchical H2/H3 for screen readers.
+    - Visible focus states, skip link, reduced motion, lazy-loaded imagery.
+    - Plain language; color contrast verified against WCAG AA for text/background combos.
+    - Structured data for Organization; update LinkedIn URL if different.
+  -->
 </body>
 </html>

@@ -1,300 +1,1276 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>MBI Connected & Online Device Lending Program – CASE Workspace Proposal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WBI Device Lending Program</title>
+  <style>
+    :root{
+      --ink:#111827;
+      --muted:#374151;
+      --soft:#6b7280;
+      --line:#e5e7eb;
+      --paper:#ffffff;
+      --bg:#f9fafb;
+      --brand:#065f46;         /* deep green */
+      --brandSoft:#ecfdf5;     /* pale mint */
+      --warn:#b45309;
+      --bad:#b91c1c;
+      --good:#047857;
+      --cardShadow: 0 8px 22px rgba(17,24,39,0.08);
+      --radius: 14px;
+    }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      color:var(--ink);
+      background: linear-gradient(180deg, var(--bg), #fff);
+      line-height: 1.45;
+    }
 
-<style>
-@page {
-    size: letter;
-    margin: 1in;
-}
+    a{ color: var(--brand); text-decoration:none; }
+    a:focus, button:focus, input:focus, select:focus, textarea:focus{
+      outline: 3px solid rgba(6,95,70,0.25);
+      outline-offset: 2px;
+      border-color: var(--brand);
+    }
 
-html, body {
-    background: #ffffff;
-}
+    .wrap{
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 22px 16px 64px;
+    }
 
-body {
-    font-family: 'Inter', Arial, sans-serif;
-    font-size: 11pt;
-    line-height: 1.55;
-    color: #111827;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-}
+    .topbar{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 16px;
+      padding: 18px 18px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--cardShadow);
+    }
 
-/* Page frame */
-.page {
-    border: 1.25pt solid #065f46;
-    padding: 0.75in;
-    box-sizing: border-box;
-    max-width: 8.5in;
-    margin: 0 auto;
-}
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width: 280px;
+    }
+    .brand h1{
+      margin:0;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+      color: var(--brand);
+    }
+    .brand p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+    }
 
-/* Header */
-.header {
-    margin-bottom: 0.45in;
-    border-bottom: 1pt solid #065f46;
-    padding-bottom: 0.3in;
-}
+    .meta{
+      text-align:right;
+      color: var(--soft);
+      font-size: 12px;
+      line-height: 1.35;
+      max-width: 420px;
+    }
 
-.header .name {
-    font-size: 22pt;
-    font-weight: 800;
-    letter-spacing: -0.3px;
-    color: #065f46;
-}
+    .tabs{
+      display:flex;
+      gap:10px;
+      margin: 18px 0 14px;
+      flex-wrap: wrap;
+    }
 
-.header .tagline {
-    font-size: 10.5pt;
-    color: #374151;
-    margin-top: 2pt;
-}
+    .tab{
+      border: 1px solid var(--line);
+      background: var(--paper);
+      padding: 10px 12px;
+      border-radius: 999px;
+      cursor:pointer;
+      font-weight: 650;
+      font-size: 13px;
+      color: var(--muted);
+      transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+    }
+    .tab:hover{ transform: translateY(-1px); border-color: rgba(6,95,70,0.35); }
+    .tab.active{
+      border-color: rgba(6,95,70,0.45);
+      background: var(--brandSoft);
+      color: var(--brand);
+    }
 
-.header .contact {
-    font-size: 9.5pt;
-    line-height: 1.4;
-    margin-top: 0.2in;
-    color: #374151;
-}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 14px;
+      align-items:start;
+    }
 
-/* Letter meta */
-.date {
-    margin-top: 0.45in;
-}
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+      .meta{ text-align:left; }
+      .topbar{ flex-direction:column; }
+    }
 
-.recipient {
-    margin-top: 0.25in;
-}
+    .card{
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--cardShadow);
+      overflow:hidden;
+    }
 
-/* Subject line */
-.subject {
-    margin: 0.35in 0 0.25in;
-    font-weight: 600;
-    color: #065f46;
-}
+    .cardHead{
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 10px;
+    }
 
-/* Body text */
-p {
-    margin: 0.15in 0;
-    orphans: 3;
-    widows: 3;
-}
+    .cardHead h2{
+      margin:0;
+      font-size: 16px;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
 
-.section-title {
-    font-weight: 700;
-    margin-top: 0.35in;
-    color: #065f46;
-}
+    .cardHead .sub{
+      margin-top: 3px;
+      color: var(--soft);
+      font-size: 12.5px;
+    }
 
-ul {
-    margin: 0.15in 0 0.2in 0.3in;
-    padding-left: 0.25in;
-}
+    .cardBody{
+      padding: 16px;
+    }
 
-li {
-    margin: 0.08in 0;
-}
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .pill strong{ color: var(--ink); font-weight: 750; }
 
-/* Structure block */
-pre {
-    font-family: "Courier New", monospace;
-    font-size: 9.5pt;
-    border: 1pt solid #065f46;
-    background: #ecfdf5;
-    padding: 0.2in;
-    margin: 0.25in 0;
-    page-break-inside: avoid;
-    color: #064e3b;
-}
+    .pill.good{ border-color: rgba(4,120,87,0.35); background: rgba(236,253,245,0.65); }
+    .pill.warn{ border-color: rgba(180,83,9,0.35); background: rgba(255,247,237,0.75); }
+    .pill.bad{ border-color: rgba(185,28,28,0.35); background: rgba(254,242,242,0.75); }
 
-/* Signature */
-.signature {
-    margin-top: 0.6in;
-    page-break-inside: avoid;
-}
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 720px){
+      .row{ grid-template-columns: 1fr; }
+    }
 
-.sig-line {
-    border-bottom: 1pt solid #065f46;
-    width: 65%;
-    height: 18pt;
-    margin: 0.15in 0;
-}
+    label{
+      display:block;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
 
-/* Footer */
-.footer {
-    margin-top: 0.6in;
-    font-size: 9pt;
-    text-align: center;
-    border-top: 1pt solid #065f46;
-    padding-top: 0.15in;
-    color: #374151;
-}
-</style>
+    input, select, textarea{
+      width: 100%;
+      padding: 10px 11px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 14px;
+      color: var(--ink);
+      background: #fff;
+    }
+
+    textarea{ min-height: 110px; resize: vertical; }
+
+    .help{
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--soft);
+    }
+
+    .actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    button{
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 750;
+      cursor:pointer;
+      color: var(--muted);
+      transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+    }
+
+    button:hover{
+      transform: translateY(-1px);
+      border-color: rgba(6,95,70,0.35);
+    }
+
+    .primary{
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #fff;
+    }
+    .primary:hover{ border-color: var(--brand); background: #064e3b; }
+
+    .danger{
+      background: #fff;
+      border-color: rgba(185,28,28,0.35);
+      color: var(--bad);
+    }
+
+    .ghost{
+      background: transparent;
+      border-color: var(--line);
+      color: var(--muted);
+    }
+
+    .notice{
+      border: 1px solid rgba(6,95,70,0.25);
+      background: rgba(236,253,245,0.6);
+      border-radius: 12px;
+      padding: 12px 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .notice strong{ color: var(--ink); }
+
+    .hr{
+      height: 1px;
+      background: var(--line);
+      margin: 14px 0;
+    }
+
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td{
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th{
+      text-align:left;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.01em;
+    }
+    .tiny{ font-size: 12px; color: var(--soft); }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+    .kpi{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+    @media (max-width: 720px){ .kpi{ grid-template-columns: 1fr; } }
+
+    .k{
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: #fff;
+    }
+    .k .n{ font-size: 22px; font-weight: 850; color: var(--ink); }
+    .k .l{ font-size: 12px; color: var(--soft); margin-top: 2px; }
+
+    .split{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .hidden{ display:none !important; }
+
+    .tag{
+      display:inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--muted);
+      background: #fff;
+      white-space: nowrap;
+    }
+
+    .tag.pending{ border-color: rgba(180,83,9,0.35); background: rgba(255,247,237,0.75); color: var(--warn); }
+    .tag.approved{ border-color: rgba(4,120,87,0.35); background: rgba(236,253,245,0.75); color: var(--good); }
+    .tag.denied{ border-color: rgba(185,28,28,0.35); background: rgba(254,242,242,0.75); color: var(--bad); }
+    .tag.issued{ border-color: rgba(6,95,70,0.35); background: rgba(236,253,245,0.55); color: var(--brand); }
+
+    .hintBox{
+      border: 1px dashed rgba(6,95,70,0.35);
+      background: rgba(236,253,245,0.35);
+      border-radius: 12px;
+      padding: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer{
+      margin-top: 18px;
+      color: var(--soft);
+      font-size: 12px;
+      text-align:center;
+    }
+  </style>
 </head>
 
 <body>
-<div class="page">
-
-<div class="header">
-    <div class="name">PublicLogic LLC</div>
-    <div class="tagline">Governance that survives real life</div>
-    <div class="contact">
-        110 Kendall Pond Road West<br>
-        Gardner, Massachusetts 01440<br>
-        nate@publiclogic.org • 978-807-0829
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <h1>WBI Connected and Online Device Lending</h1>
+        <p>Application intake, review, issuance, and tracking in one governed workspace.</p>
+      </div>
+      <div class="meta">
+        <div><strong>Staff note:</strong> This is a front end mock in a single file for fast hosting.</div>
+        <div>Public application intake and staff workflow live in one place.</div>
+        <div class="tiny">Demo access uses a passcode stored locally in your browser.</div>
+      </div>
     </div>
-</div>
 
-<div class="date">January 14, 2026</div>
+    <div class="tabs" role="tablist" aria-label="Program navigation">
+      <button class="tab active" id="tab-apply" role="tab" aria-selected="true" aria-controls="panel-apply">Apply</button>
+      <button class="tab" id="tab-status" role="tab" aria-selected="false" aria-controls="panel-status">Check Status</button>
+      <button class="tab" id="tab-staff" role="tab" aria-selected="false" aria-controls="panel-staff">Staff Portal</button>
+    </div>
 
-<div class="recipient">
-    Magnus Carlberg, Executive Director<br>
-    Wachusett Business Incubator<br>
-    82 Main Street<br>
-    Gardner, MA 01440
-</div>
+    <!-- APPLY PANEL -->
+    <section class="grid" id="panel-apply" role="tabpanel" aria-labelledby="tab-apply">
+      <div class="card">
+        <div class="cardHead">
+          <div>
+            <h2>Device Lending Application</h2>
+            <div class="sub">Submit once. You will receive a tracking code immediately.</div>
+          </div>
+          <div class="pill good" title="This form is intentionally short">
+            <strong>Fast</strong><span class="tiny">two to three minutes</span>
+          </div>
+        </div>
 
-<div class="subject">
-    RE: MBI Connected & Online Device Lending Program – CASE Workspace Proposal
-</div>
+        <div class="cardBody">
+          <div class="notice">
+            <strong>Privacy:</strong> This form collects only what is needed to review eligibility and issue devices.
+            Sensitive information should not be included in free text fields.
+          </div>
 
-<p>Dear Mr. Carlberg:</p>
+          <form id="applicationForm" novalidate>
+            <div class="hr"></div>
 
-<p>
-The Wachusett Business Incubator is receiving devices through the Massachusetts Broadband
-Institute Connected & Online Device Lending Program, administered under the Massachusetts
-Technology Collaborative.
-</p>
+            <div class="row">
+              <div>
+                <label for="fullName">Full name</label>
+                <input id="fullName" name="fullName" autocomplete="name" required />
+                <div class="help">Required</div>
+              </div>
 
-<p>
-Devices distributed through this program carry defined requirements for inventory tracking,
-quarterly reporting, incident documentation, and ownership continuity through at least
-December 31, 2031, regardless of staff changes, leadership transitions, or program evolution.
-</p>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+                <div class="help">Required</div>
+              </div>
+            </div>
 
-<p>
-This proposal establishes a structured, live CASE workspace operated through a
-staff-facing program interface that embeds governance designed to survive real life.
-The system ensures that the Device Lending Program remains compliant, visible, and
-manageable over time without reliance on informal knowledge or individual memory.
-</p>
+            <div class="row">
+              <div>
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" autocomplete="tel" />
+                <div class="help">Optional</div>
+              </div>
 
-<p class="section-title">Program Objectives</p>
+              <div>
+                <label for="preferredContact">Preferred contact method</label>
+                <select id="preferredContact" name="preferredContact">
+                  <option value="email">Email</option>
+                  <option value="phone">Phone</option>
+                </select>
+                <div class="help">Optional</div>
+              </div>
+            </div>
 
-<ul>
-    <li>Maintain continuous visibility into the status and location of every device</li>
-    <li>Produce required quarterly and closeout reports from live records, not reconstruction</li>
-    <li>Surface issues early, while corrective action remains straightforward</li>
-    <li>Preserve continuity through staff turnover or role changes</li>
-    <li>Sustain compliance for the full required ownership and reporting period</li>
-</ul>
+            <div class="row">
+              <div>
+                <label for="needType">Primary use</label>
+                <select id="needType" name="needType" required>
+                  <option value="">Select one</option>
+                  <option value="job">Job search and employment</option>
+                  <option value="school">School and training</option>
+                  <option value="health">Health access and appointments</option>
+                  <option value="benefits">Benefits and essential services</option>
+                  <option value="smallbiz">Small business and entrepreneurship</option>
+                  <option value="other">Other</option>
+                </select>
+                <div class="help">Required</div>
+              </div>
 
-<p>
-The system is intentionally lightweight and proportionate to a regional organization.
-It reduces administrative burden while strengthening institutional protection.
-</p>
+              <div>
+                <label for="deviceType">Requested device</label>
+                <select id="deviceType" name="deviceType" required>
+                  <option value="">Select one</option>
+                  <option value="laptop">Laptop</option>
+                  <option value="tablet">Tablet</option>
+                  <option value="chromebook">Chromebook</option>
+                  <option value="accessory">Accessory or assistive item</option>
+                </select>
+                <div class="help">Required</div>
+              </div>
+            </div>
 
-<p class="section-title">What This Is and What It Is Not</p>
+            <div class="row">
+              <div>
+                <label for="loanLength">Requested loan length</label>
+                <select id="loanLength" name="loanLength" required>
+                  <option value="">Select one</option>
+                  <option value="2w">Two weeks</option>
+                  <option value="4w">Four weeks</option>
+                  <option value="8w">Eight weeks</option>
+                  <option value="other">Other</option>
+                </select>
+                <div class="help">Required</div>
+              </div>
 
-<p><strong>This is:</strong></p>
-<ul>
-    <li>A one-time build of a durable Device Lending Program system</li>
-    <li>A staff-facing interface governing how work enters and moves through the program</li>
-    <li>A single authoritative source for all device records and documentation</li>
-    <li>Fully owned and operated by WBI following handoff</li>
-</ul>
+              <div>
+                <label for="pickup">Pickup location</label>
+                <select id="pickup" name="pickup">
+                  <option value="wbi">WBI, 82 Main Street, Gardner</option>
+                  <option value="other">Other, if approved</option>
+                </select>
+                <div class="help">Defaults to WBI</div>
+              </div>
+            </div>
 
-<p><strong>This is not:</strong></p>
-<ul>
-    <li>New software or a subscription platform</li>
-    <li>An IT system requiring ongoing vendor support</li>
-    <li>Retained consulting or external oversight</li>
-</ul>
+            <div>
+              <label for="details">Brief details</label>
+              <textarea id="details" name="details" placeholder="What are you hoping to do with the device, and what would success look like for you" required></textarea>
+              <div class="help">Required. Keep it short.</div>
+            </div>
 
-<p class="section-title">Program Interface and System Operation</p>
+            <div class="row">
+              <div>
+                <label for="agree">Certification</label>
+                <select id="agree" name="agree" required>
+                  <option value="">Select one</option>
+                  <option value="yes">I certify that the information provided is accurate</option>
+                </select>
+                <div class="help">Required</div>
+              </div>
+              <div>
+                <label for="consent">Consent to contact</label>
+                <select id="consent" name="consent">
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+                <div class="help">Optional</div>
+              </div>
+            </div>
 
-<p>
-The Device Lending Program is operated through a single, staff-facing program interface
-that serves as the front door to the CASE workspace.
-</p>
+            <div class="actions">
+              <button type="submit" class="primary">Submit application</button>
+              <button type="button" class="ghost" id="btnResetApply">Clear form</button>
+            </div>
 
-<p>
-All applications, approvals, issuance actions, returns, and incident reports enter the
-system through this interface rather than through email, spreadsheets, or informal tracking.
-Structured steps guide staff through each action and create records as work occurs.
-</p>
+            <div id="applyResult" class="hintBox hidden" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
 
-<p>
-Because activity enters through the interface, device status, reporting counts, deadlines,
-and historical records update automatically. Compliance evidence is created upstream
-and preserved by default.
-</p>
+      <aside class="card">
+        <div class="cardHead">
+          <div>
+            <h2>How the system works</h2>
+            <div class="sub">This is the front door. Staff review and issue from the same record.</div>
+          </div>
+          <span class="pill"><strong>CASE</strong><span class="tiny">contained and evidenced</span></span>
+        </div>
+        <div class="cardBody">
+          <div class="hintBox">
+            <strong>What happens after you submit:</strong>
+            <div class="hr"></div>
+            <div>1. Your application is recorded and assigned a tracking code.</div>
+            <div>2. Staff review, request follow up if needed, then approve or deny.</div>
+            <div>3. If approved, issuance is recorded and the device is tracked until return.</div>
+            <div>4. Reporting is generated from live records, not later reconstruction.</div>
+          </div>
 
-<p>
-This design allows the program to be operated day-to-day by staff while remaining
-audit-ready years later.
-</p>
+          <div class="hr"></div>
 
-<p class="section-title">Information Structure</p>
+          <div class="notice">
+            <strong>Tip:</strong> Use the Check Status tab with your tracking code any time.
+          </div>
+        </div>
+      </aside>
+    </section>
 
-<pre>
-Device_Lending_Case_Workspace
-├── Master_Device_Register
-├── Requests_and_Approvals
-├── Borrower_Agreements
-├── Incident_Reports
-├── Quarterly_Reports_Archive
-└── Staff_Operations_Guide
-</pre>
+    <!-- STATUS PANEL -->
+    <section class="grid hidden" id="panel-status" role="tabpanel" aria-labelledby="tab-status">
+      <div class="card">
+        <div class="cardHead">
+          <div>
+            <h2>Check Application Status</h2>
+            <div class="sub">Enter your tracking code to see status updates.</div>
+          </div>
+          <span class="pill"><strong>Tracking</strong><span class="tiny">no login required</span></span>
+        </div>
+        <div class="cardBody">
+          <div class="row">
+            <div>
+              <label for="trackCode">Tracking code</label>
+              <input id="trackCode" class="mono" placeholder="Example WBI-2026-AB12CD" />
+              <div class="help">You received this after submission.</div>
+            </div>
+            <div>
+              <label>&nbsp;</label>
+              <button class="primary" id="btnCheck">Check status</button>
+              <div class="help"> </div>
+            </div>
+          </div>
 
-<p>
-One source of truth. No parallel systems. Governance that survives real life.
-</p>
+          <div id="statusResult" class="hintBox hidden" role="status" aria-live="polite"></div>
+        </div>
+      </div>
 
-<p class="section-title">Timeline</p>
+      <aside class="card">
+        <div class="cardHead">
+          <div>
+            <h2>Common statuses</h2>
+            <div class="sub">What each label means.</div>
+          </div>
+        </div>
+        <div class="cardBody">
+          <div class="split">
+            <span class="tag pending">Pending review</span>
+            <span class="tiny">Received, queued for staff review.</span>
+          </div>
+          <div class="hr"></div>
+          <div class="split">
+            <span class="tag approved">Approved</span>
+            <span class="tiny">Eligible, awaiting issuance scheduling.</span>
+          </div>
+          <div class="hr"></div>
+          <div class="split">
+            <span class="tag issued">Issued</span>
+            <span class="tiny">Device assigned and active in register.</span>
+          </div>
+          <div class="hr"></div>
+          <div class="split">
+            <span class="tag denied">Not approved</span>
+            <span class="tiny">Not eligible or incomplete submission.</span>
+          </div>
+        </div>
+      </aside>
+    </section>
 
-<ul>
-    <li><strong>Week 1:</strong> Build interface, registers, forms, agreements, and structure</li>
-    <li><strong>Week 2:</strong> Test workflows, validate reporting outputs, and complete handoff</li>
-</ul>
+    <!-- STAFF PANEL -->
+    <section class="hidden" id="panel-staff" role="tabpanel" aria-labelledby="tab-staff">
+      <div class="grid">
+        <div class="card" id="staffGate">
+          <div class="cardHead">
+            <div>
+              <h2>Staff Portal</h2>
+              <div class="sub">Enter passcode to access the dashboard.</div>
+            </div>
+            <span class="pill warn"><strong>Demo</strong><span class="tiny">local access</span></span>
+          </div>
+          <div class="cardBody">
+            <div class="notice">
+              <strong>Demo passcode:</strong> <span class="mono">WBI2026</span>
+              <div class="tiny">Change it in code before deployment.</div>
+            </div>
 
-<p><strong>Total duration:</strong> Two weeks</p>
+            <div class="hr"></div>
 
-<p class="section-title">Cost and Terms</p>
+            <label for="staffPass">Passcode</label>
+            <input id="staffPass" type="password" autocomplete="current-password" />
+            <div class="actions">
+              <button class="primary" id="btnStaffEnter">Enter</button>
+              <button class="ghost" id="btnStaffClear">Clear</button>
+            </div>
 
-<p>
-Fair market value is $7,200. The professional fee is waived for this engagement.
-There are no subscriptions, no future obligations, and no exclusivity.
-</p>
+            <div id="staffGateMsg" class="hintBox hidden" role="status" aria-live="polite"></div>
+          </div>
+        </div>
 
-<p class="section-title">Ownership and Responsibility</p>
+        <aside class="card">
+          <div class="cardHead">
+            <div>
+              <h2>What staff can do</h2>
+              <div class="sub">Review, decide, issue, track, and report.</div>
+            </div>
+          </div>
+          <div class="cardBody">
+            <ul>
+              <li>Review applications with a single record per applicant</li>
+              <li>Approve, deny, or request follow up with timestamps</li>
+              <li>Issue devices and update the device register automatically</li>
+              <li>Track overdue items, incidents, and upcoming deadlines</li>
+              <li>Generate quarterly summary counts from live data</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
 
-<p>
-Upon handoff, the Wachusett Business Incubator assumes full ownership of all files,
-links, and records. PublicLogic retains no access, control, or ongoing role.
-</p>
+      <div class="card hidden" id="staffDash" style="margin-top:14px;">
+        <div class="cardHead">
+          <div>
+            <h2>Dashboard</h2>
+            <div class="sub">Applications and device register in one view.</div>
+          </div>
+          <div class="actions" style="margin:0;">
+            <button id="btnSeed" class="ghost">Load sample data</button>
+            <button id="btnExport" class="ghost">Export JSON</button>
+            <button id="btnResetAll" class="danger">Reset all</button>
+          </div>
+        </div>
 
-<div class="signature">
-    <p>Sincerely,</p>
+        <div class="cardBody">
+          <div class="kpi" id="kpi"></div>
 
-    <div class="sig-line"></div>
+          <div class="hr"></div>
 
-    <p>
-        Nathan Boudreau, MPA, MCPPO<br>
-        Founder, PublicLogic LLC
-    </p>
-</div>
+          <div class="split">
+            <h3 style="margin:0;">Applications</h3>
+            <span class="tiny">Select an application to update status or issue a device.</span>
+          </div>
 
-<div class="footer">
-    Prepared by PublicLogic LLC • Prepared for Wachusett Business Incubator review and authorization
-</div>
+          <div style="overflow:auto; margin-top:10px;">
+            <table id="appTable" aria-label="Applications table">
+              <thead>
+                <tr>
+                  <th>Tracking</th>
+                  <th>Applicant</th>
+                  <th>Request</th>
+                  <th>Status</th>
+                  <th>Submitted</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
 
-</div>
+          <div class="hr"></div>
+
+          <div class="split">
+            <h3 style="margin:0;">Device Register</h3>
+            <span class="tiny">This is the authoritative record for devices.</span>
+          </div>
+
+          <div style="overflow:auto; margin-top:10px;">
+            <table id="deviceTable" aria-label="Device register table">
+              <thead>
+                <tr>
+                  <th>Asset ID</th>
+                  <th>Type</th>
+                  <th>Status</th>
+                  <th>Assigned</th>
+                  <th>Due</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="split">
+            <h3 style="margin:0;">Quick actions</h3>
+            <span class="tiny">Issue and tracking controls.</span>
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+            <div>
+              <label for="issueTracking">Issue device to tracking code</label>
+              <input id="issueTracking" class="mono" placeholder="WBI-2026-AB12CD" />
+              <div class="help">Approve first, then issue.</div>
+            </div>
+            <div>
+              <label for="issueAsset">Asset ID</label>
+              <input id="issueAsset" class="mono" placeholder="WBI-LAP-0007" />
+              <div class="help">Create a simple ID convention.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="issueDue">Due date</label>
+              <input id="issueDue" type="date" />
+              <div class="help">Used for overdue monitoring.</div>
+            </div>
+            <div>
+              <label for="issueNotes">Notes</label>
+              <input id="issueNotes" placeholder="Condition, accessories, special handling" />
+              <div class="help">Optional</div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="primary" id="btnApprove">Approve</button>
+            <button class="ghost" id="btnDeny">Deny</button>
+            <button class="primary" id="btnIssue">Issue device</button>
+            <button class="ghost" id="btnReturn">Mark returned</button>
+          </div>
+
+          <div id="staffMsg" class="hintBox hidden" role="status" aria-live="polite"></div>
+
+          <div class="hr"></div>
+
+          <div class="notice">
+            <strong>Quarterly reporting:</strong> this mock includes live counts. In production you can generate a PDF or CSV summary and file it automatically.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      Public facing application and staff workflow UI mock. Replace demo storage with your approved data store and access controls before production.
+    </div>
+  </div>
+
+<script>
+(function(){
+  const STORAGE_KEY = "wbi_device_lending_v1";
+  const STAFF_KEY = "wbi_staff_authed_v1";
+  const STAFF_PASSCODE = "WBI2026";
+
+  function nowISO(){ return new Date().toISOString(); }
+  function safeText(v){ return (v ?? "").toString().trim(); }
+
+  function loadState(){
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw){
+      return {
+        applications: [],
+        devices: [],
+        events: []
+      };
+    }
+    try{ return JSON.parse(raw); }catch{ return { applications:[], devices:[], events:[] }; }
+  }
+
+  function saveState(state){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function mkCode(){
+    const y = new Date().getFullYear();
+    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+    let tail = "";
+    for(let i=0;i<6;i++){ tail += chars[Math.floor(Math.random()*chars.length)]; }
+    return `WBI-${y}-${tail}`;
+  }
+
+  function formatDate(d){
+    if(!d) return "";
+    const dt = new Date(d);
+    if(Number.isNaN(dt.getTime())) return d;
+    return dt.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"2-digit" });
+  }
+
+  function setTab(activeId){
+    const tabs = [
+      { id:"tab-apply", panel:"panel-apply" },
+      { id:"tab-status", panel:"panel-status" },
+      { id:"tab-staff", panel:"panel-staff" }
+    ];
+    for(const t of tabs){
+      const el = document.getElementById(t.id);
+      const panel = document.getElementById(t.panel);
+      const active = (t.id === activeId);
+      el.classList.toggle("active", active);
+      el.setAttribute("aria-selected", active ? "true" : "false");
+      panel.classList.toggle("hidden", !active);
+    }
+  }
+
+  // Tabs
+  document.getElementById("tab-apply").addEventListener("click", ()=>setTab("tab-apply"));
+  document.getElementById("tab-status").addEventListener("click", ()=>setTab("tab-status"));
+  document.getElementById("tab-staff").addEventListener("click", ()=>setTab("tab-staff"));
+
+  // Apply form
+  const form = document.getElementById("applicationForm");
+  const applyResult = document.getElementById("applyResult");
+
+  function showBox(el, html){
+    el.innerHTML = html;
+    el.classList.remove("hidden");
+  }
+
+  function hideBox(el){
+    el.classList.add("hidden");
+    el.innerHTML = "";
+  }
+
+  document.getElementById("btnResetApply").addEventListener("click", ()=>{
+    form.reset();
+    hideBox(applyResult);
+  });
+
+  form.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    hideBox(applyResult);
+
+    const fullName = safeText(document.getElementById("fullName").value);
+    const email = safeText(document.getElementById("email").value);
+    const details = safeText(document.getElementById("details").value);
+    const needType = safeText(document.getElementById("needType").value);
+    const deviceType = safeText(document.getElementById("deviceType").value);
+    const loanLength = safeText(document.getElementById("loanLength").value);
+    const agree = safeText(document.getElementById("agree").value);
+
+    if(!fullName || !email || !details || !needType || !deviceType || !loanLength || agree !== "yes"){
+      showBox(applyResult, `<strong>Missing information:</strong> Please complete the required fields before submitting.`);
+      return;
+    }
+
+    const state = loadState();
+    const tracking = mkCode();
+
+    const app = {
+      tracking,
+      submittedAt: nowISO(),
+      updatedAt: nowISO(),
+      status: "pending",
+      applicant: {
+        fullName,
+        email,
+        phone: safeText(document.getElementById("phone").value),
+        preferredContact: safeText(document.getElementById("preferredContact").value)
+      },
+      request: {
+        needType,
+        deviceType,
+        loanLength,
+        pickup: safeText(document.getElementById("pickup").value),
+        details,
+        consent: safeText(document.getElementById("consent").value)
+      },
+      staff: {
+        notes: "",
+        decisionAt: null,
+        issuedAssetId: null
+      }
+    };
+
+    state.applications.unshift(app);
+    state.events.unshift({ at: nowISO(), type:"application_submitted", tracking });
+    saveState(state);
+
+    showBox(
+      applyResult,
+      `<strong>Submitted.</strong> Your tracking code is <span class="mono">${tracking}</span>.<br>
+       Save this code. You can check status any time in the Check Status tab.`
+    );
+
+    form.reset();
+  });
+
+  // Status check
+  const statusResult = document.getElementById("statusResult");
+  document.getElementById("btnCheck").addEventListener("click", ()=>{
+    hideBox(statusResult);
+    const code = safeText(document.getElementById("trackCode").value).toUpperCase();
+    if(!code){
+      showBox(statusResult, `Enter a tracking code to continue.`);
+      return;
+    }
+    const state = loadState();
+    const app = state.applications.find(a => a.tracking === code);
+    if(!app){
+      showBox(statusResult, `<strong>No match found.</strong> Check the code and try again.`);
+      return;
+    }
+
+    const statusLabel = app.status === "pending" ? "Pending review"
+      : app.status === "approved" ? "Approved"
+      : app.status === "issued" ? "Issued"
+      : app.status === "denied" ? "Not approved"
+      : app.status;
+
+    const tagClass = app.status === "pending" ? "pending"
+      : app.status === "approved" ? "approved"
+      : app.status === "issued" ? "issued"
+      : app.status === "denied" ? "denied"
+      : "";
+
+    const issued = app.staff?.issuedAssetId ? `<div class="hr"></div><div><strong>Assigned device:</strong> <span class="mono">${app.staff.issuedAssetId}</span></div>` : "";
+
+    showBox(
+      statusResult,
+      `<div class="split">
+         <div><strong>Status:</strong> <span class="tag ${tagClass}">${statusLabel}</span></div>
+         <div class="tiny">Last updated ${formatDate(app.updatedAt)}</div>
+       </div>
+       <div class="hr"></div>
+       <div><strong>Applicant:</strong> ${app.applicant.fullName}</div>
+       <div><strong>Request:</strong> ${app.request.deviceType} for ${app.request.needType}</div>
+       ${issued}`
+    );
+  });
+
+  // Staff auth
+  const staffGate = document.getElementById("staffGate");
+  const staffDash = document.getElementById("staffDash");
+  const staffGateMsg = document.getElementById("staffGateMsg");
+  const staffMsg = document.getElementById("staffMsg");
+
+  function isAuthed(){
+    return localStorage.getItem(STAFF_KEY) === "true";
+  }
+  function setAuthed(v){
+    localStorage.setItem(STAFF_KEY, v ? "true" : "false");
+  }
+
+  function enterStaff(){
+    staffGate.classList.add("hidden");
+    staffDash.classList.remove("hidden");
+    renderStaff();
+  }
+
+  function renderKpi(state){
+    const apps = state.applications;
+    const devices = state.devices;
+
+    const pending = apps.filter(a=>a.status==="pending").length;
+    const approved = apps.filter(a=>a.status==="approved").length;
+    const issued = apps.filter(a=>a.status==="issued").length;
+
+    const activeLoans = devices.filter(d=>d.status==="issued").length;
+    const overdue = devices.filter(d=>d.status==="issued" && d.dueDate && new Date(d.dueDate) < new Date()).length;
+
+    const el = document.getElementById("kpi");
+    el.innerHTML = `
+      <div class="k"><div class="n">${pending}</div><div class="l">Pending applications</div></div>
+      <div class="k"><div class="n">${approved}</div><div class="l">Approved, not issued</div></div>
+      <div class="k"><div class="n">${issued}</div><div class="l">Issued applications</div></div>
+      <div class="k"><div class="n">${activeLoans}</div><div class="l">Active loans</div></div>
+      <div class="k"><div class="n">${overdue}</div><div class="l">Overdue loans</div></div>
+      <div class="k"><div class="n">${devices.length}</div><div class="l">Devices in register</div></div>
+    `;
+  }
+
+  function statusTag(status){
+    const label = status==="pending" ? "Pending"
+      : status==="approved" ? "Approved"
+      : status==="issued" ? "Issued"
+      : status==="denied" ? "Denied"
+      : status;
+    const cls = status==="pending" ? "pending"
+      : status==="approved" ? "approved"
+      : status==="issued" ? "issued"
+      : status==="denied" ? "denied"
+      : "";
+    return `<span class="tag ${cls}">${label}</span>`;
+  }
+
+  function renderApps(state){
+    const tbody = document.querySelector("#appTable tbody");
+    tbody.innerHTML = "";
+
+    for(const a of state.applications){
+      const tr = document.createElement("tr");
+
+      const actionBtn = `<button class="ghost" data-select="${a.tracking}">Select</button>`;
+
+      tr.innerHTML = `
+        <td class="mono">${a.tracking}</td>
+        <td>
+          <div><strong>${a.applicant.fullName}</strong></div>
+          <div class="tiny">${a.applicant.email}</div>
+        </td>
+        <td>
+          <div>${a.request.deviceType}</div>
+          <div class="tiny">${a.request.needType}</div>
+        </td>
+        <td>${statusTag(a.status)}</td>
+        <td class="tiny">${formatDate(a.submittedAt)}</td>
+        <td>${actionBtn}</td>
+      `;
+      tbody.appendChild(tr);
+    }
+
+    tbody.querySelectorAll("button[data-select]").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const code = btn.getAttribute("data-select");
+        document.getElementById("issueTracking").value = code;
+        hideBox(staffMsg);
+      });
+    });
+  }
+
+  function renderDevices(state){
+    const tbody = document.querySelector("#deviceTable tbody");
+    tbody.innerHTML = "";
+
+    for(const d of state.devices){
+      const tr = document.createElement("tr");
+
+      const due = d.dueDate ? formatDate(d.dueDate) : "";
+      const assigned = d.assignedToTracking ? d.assignedToTracking : "";
+      const status = d.status === "issued"
+        ? `<span class="tag issued">Issued</span>`
+        : d.status === "available"
+        ? `<span class="tag approved">Available</span>`
+        : `<span class="tag pending">${d.status}</span>`;
+
+      tr.innerHTML = `
+        <td class="mono">${d.assetId}</td>
+        <td>${d.type}</td>
+        <td>${status}</td>
+        <td class="mono">${assigned}</td>
+        <td>${due}</td>
+        <td class="tiny">${d.notes || ""}</td>
+      `;
+      tbody.appendChild(tr);
+    }
+  }
+
+  function renderStaff(){
+    const state = loadState();
+    renderKpi(state);
+    renderApps(state);
+    renderDevices(state);
+  }
+
+  document.getElementById("btnStaffEnter").addEventListener("click", ()=>{
+    hideBox(staffGateMsg);
+    const pass = safeText(document.getElementById("staffPass").value);
+    if(pass !== STAFF_PASSCODE){
+      showBox(staffGateMsg, `<strong>Incorrect passcode.</strong> Try again.`);
+      return;
+    }
+    setAuthed(true);
+    enterStaff();
+  });
+
+  document.getElementById("btnStaffClear").addEventListener("click", ()=>{
+    document.getElementById("staffPass").value = "";
+    hideBox(staffGateMsg);
+  });
+
+  if(isAuthed()){
+    enterStaff();
+  }
+
+  function findApp(state, tracking){
+    return state.applications.find(a => a.tracking === tracking);
+  }
+
+  function upsertDevice(state, device){
+    const idx = state.devices.findIndex(d => d.assetId === device.assetId);
+    if(idx >= 0) state.devices[idx] = device;
+    else state.devices.push(device);
+  }
+
+  function setAppStatus(state, tracking, status){
+    const app = findApp(state, tracking);
+    if(!app) return { ok:false, msg:"No application found for that tracking code." };
+    app.status = status;
+    app.updatedAt = nowISO();
+    if(status === "approved" || status === "denied"){
+      app.staff.decisionAt = nowISO();
+    }
+    state.events.unshift({ at: nowISO(), type:`application_${status}`, tracking });
+    return { ok:true, msg:`Updated ${tracking} to ${status}.` };
+  }
+
+  function issueDevice(state, tracking, assetId, dueDate, notes){
+    const app = findApp(state, tracking);
+    if(!app) return { ok:false, msg:"No application found for that tracking code." };
+    if(app.status !== "approved" && app.status !== "issued"){
+      return { ok:false, msg:"Approve the application before issuing a device." };
+    }
+    if(!assetId) return { ok:false, msg:"Asset ID is required." };
+
+    const deviceType = app.request.deviceType || "device";
+
+    const device = {
+      assetId,
+      type: deviceType,
+      status: "issued",
+      assignedToTracking: tracking,
+      issuedAt: nowISO(),
+      dueDate: dueDate || null,
+      notes: notes || ""
+    };
+
+    upsertDevice(state, device);
+
+    app.status = "issued";
+    app.updatedAt = nowISO();
+    app.staff.issuedAssetId = assetId;
+
+    state.events.unshift({ at: nowISO(), type:"device_issued", tracking, assetId });
+    return { ok:true, msg:`Issued ${assetId} to ${tracking}.` };
+  }
+
+  function returnDevice(state, tracking){
+    const app = findApp(state, tracking);
+    if(!app) return { ok:false, msg:"No application found for that tracking code." };
+    if(app.status !== "issued") return { ok:false, msg:"This application is not marked as issued." };
+    const assetId = app.staff.issuedAssetId;
+    if(!assetId) return { ok:false, msg:"No asset is linked to this application." };
+
+    const dev = state.devices.find(d => d.assetId === assetId);
+    if(dev){
+      dev.status = "available";
+      dev.assignedToTracking = null;
+      dev.returnedAt = nowISO();
+      dev.dueDate = null;
+    }
+
+    app.status = "approved";
+    app.updatedAt = nowISO();
+    app.staff.issuedAssetId = null;
+
+    state.events.unshift({ at: nowISO(), type:"device_returned", tracking, assetId });
+    return { ok:true, msg:`Marked ${assetId} as returned. Application remains approved.` };
+  }
+
+  function showStaffMsg(ok, msg){
+    const el = staffMsg;
+    el.classList.remove("hidden");
+    el.innerHTML = ok
+      ? `<strong>Done.</strong> ${msg}`
+      : `<strong>Not completed.</strong> ${msg}`;
+  }
+
+  document.getElementById("btnApprove").addEventListener("click", ()=>{
+    const tracking = safeText(document.getElementById("issueTracking").value).toUpperCase();
+    if(!tracking) return showStaffMsg(false, "Enter a tracking code or select one from the table.");
+    const state = loadState();
+    const res = setAppStatus(state, tracking, "approved");
+    saveState(state);
+    showStaffMsg(res.ok, res.msg);
+    renderStaff();
+  });
+
+  document.getElementById("btnDeny").addEventListener("click", ()=>{
+    const tracking = safeText(document.getElementById("issueTracking").value).toUpperCase();
+    if(!tracking) return showStaffMsg(false, "Enter a tracking code or select one from the table.");
+    const state = loadState();
+    const res = setAppStatus(state, tracking, "denied");
+    saveState(state);
+    showStaffMsg(res.ok, res.msg);
+    renderStaff();
+  });
+
+  document.getElementById("btnIssue").addEventListener("click", ()=>{
+    const tracking = safeText(document.getElementById("issueTracking").value).toUpperCase();
+    const assetId = safeText(document.getElementById("issueAsset").value).toUpperCase();
+    const dueDate = safeText(document.getElementById("issueDue").value);
+    const notes = safeText(document.getElementById("issueNotes").value);
+    if(!tracking) return showStaffMsg(false, "Enter a tracking code or select one from the table.");
+
+    const state = loadState();
+    const res = issueDevice(state, tracking, assetId, dueDate, notes);
+    saveState(state);
+    showStaffMsg(res.ok, res.msg);
+    renderStaff();
+  });
+
+  document.getElementById("btnReturn").addEventListener("click", ()=>{
+    const tracking = safeText(document.getElementById("issueTracking").value).toUpperCase();
+    if(!tracking) return showStaffMsg(false, "Enter a tracking code or select one from the table.");
+    const state = loadState();
+    const res = returnDevice(state, tracking);
+    saveState(state);
+    showStaffMsg(res.ok, res.msg);
+    renderStaff();
+  });
+
+  document.getElementById("btnSeed").addEventListener("click", ()=>{
+    const state = loadState();
+    if(state.applications.length || state.devices.length){
+      showStaffMsg(false, "Data already exists. Use Reset all if you want a clean slate.");
+      return;
+    }
+
+    const a1 = {
+      tracking: "WBI-2026-AB12CD",
+      submittedAt: nowISO(),
+      updatedAt: nowISO(),
+      status: "pending",
+      applicant: { fullName:"Sample Applicant", email:"sample@example.com", phone:"", preferredContact:"email" },
+      request: { needType:"job", deviceType:"laptop", loanLength:"4w", pickup:"wbi", details:"Applying for jobs and training online.", consent:"yes" },
+      staff: { notes:"", decisionAt:null, issuedAssetId:null }
+    };
+
+    const a2 = {
+      tracking: "WBI-2026-EF34GH",
+      submittedAt: nowISO(),
+      updatedAt: nowISO(),
+      status: "approved",
+      applicant: { fullName:"Second Applicant", email:"second@example.com", phone:"", preferredContact:"email" },
+      request: { needType:"school", deviceType:"tablet", loanLength:"8w", pickup:"wbi", details:"Remote coursework and learning platform access.", consent:"yes" },
+      staff: { notes:"", decisionAt: nowISO(), issuedAssetId:null }
+    };
+
+    state.applications = [a1, a2];
+    state.devices = [
+      { assetId:"WBI-LAP-0007", type:"laptop", status:"available", assignedToTracking:null, issuedAt:null, dueDate:null, notes:"Charger included." }
+    ];
+    state.events.unshift({ at: nowISO(), type:"seed_loaded" });
+
+    saveState(state);
+    showStaffMsg(true, "Sample data loaded.");
+    renderStaff();
+  });
+
+  document.getElementById("btnExport").addEventListener("click", ()=>{
+    const state = loadState();
+    const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "wbi_device_lending_export.json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    showStaffMsg(true, "Export created.");
+  });
+
+  document.getElementById("btnResetAll").addEventListener("click", ()=>{
+    localStorage.removeItem(STORAGE_KEY);
+    showStaffMsg(true, "All local data cleared.");
+    renderStaff();
+  });
+
+})();
+</script>
 </body>
 </html>

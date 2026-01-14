@@ -3,162 +3,199 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
-  <meta name="description" content="PublicLogic builds governance structures that survive turnover, audits, and pressure — placing risk in systems, not people." />
+  <meta name="description" content="PublicLogic helps Massachusetts towns build governance that survives turnover, audits, elections, and emergencies. VAULT™ puts risk in systems — not people. Gardner, MA." />
   <meta name="author" content="PublicLogic LLC">
   <title>PublicLogic — Governance That Survives Real Life</title>
-  <!-- Favicon -->
   <link rel="icon" href="/favicon.ico">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <!-- Open Graph / Social Preview -->
-  <meta property="og:title" content="PublicLogic — Governance That Survives Real Life" />
-  <meta property="og:description" content="Building governance structures for Massachusetts towns that survive turnover, audits, and pressure — placing risk in systems, not people." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://publiclogic.org/" />
-  <meta property="og:image" content="https://publiclogic.org/PL_FB_Logo.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="PublicLogic — Governance That Survives Real Life" />
-  <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="PublicLogic — Governance That Survives Real Life" />
-  <meta name="twitter:description" content="Building governance structures for Massachusetts towns that survive turnover, audits, and pressure." />
-  <meta name="twitter:image" content="https://publiclogic.org/PL_FB_Logo.png" />
-  <meta name="twitter:image:alt" content="PublicLogic — Governance That Survives Real Life" />
-  <!-- Skip to content -->
-  <a class="skip-link" href="#main">Skip to main content</a>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/7PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
-      --primary: #1e6b2d;      /* Richer, deeper green */
-      --accent: #8bc34a;       /* Bright, clear accent */
+      --primary: #1e6b2d;
+      --accent: #8bc34a;
       --dark: #0f2c1b;
       --light: #f1f8e9;
       --gray: #4a6352;
       --white: #ffffff;
-      --stone: #e8ecef;
     }
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      line-height: 1.7;
-      color: var(--dark);
-      margin: 0;
-      background: var(--light);
-      -webkit-font-smoothing: antialiased;
+    * { box-sizing: border-box; }
+    body { font-family: Inter, system-ui, sans-serif; line-height: 1.7; color: var(--dark); margin: 0; background: var(--light); }
+    .skip-link { position: absolute; top: -9999px; left: -9999px; z-index: 999; background: var(--primary); color: white; padding: 1rem; font-weight: bold; }
+    .skip-link:focus { top: 1rem; left: 1rem; }
+    header { 
+      position: sticky; 
+      top: 0; 
+      z-index: 100; 
+      background: var(--primary); 
+      color: var(--white); 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
     }
-    .skip-link {
-      position: absolute;
-      top: -9999px;
-      left: -9999px;
-      z-index: 999;
-      background: var(--primary);
-      color: white;
-      padding: 1rem;
-      font-weight: bold;
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: clamp(0.8rem, 1.5vw, 1rem) 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
-    .skip-link:focus {
-      top: 1rem;
-      left: 1rem;
-    }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; text-align: center; }
-    header {
-      background: var(--primary);
-      color: var(--white);
-      padding: clamp(3rem, 8vw, 5rem) 0 2.5rem;
+    .branding {
+      display: flex;
+      flex-direction: column;
     }
     .wordmark {
-      font-size: clamp(3.2rem, 10vw, 5rem);
+      font-size: clamp(1.6rem, 4.2vw, 2.2rem);
       font-weight: 900;
-      letter-spacing: -0.03em;
-      margin: 0 0 1rem 0;
+      letter-spacing: -0.02em;
+      margin: 0;
       line-height: 1;
     }
     .wordmark .public { color: var(--white); }
     .wordmark .logic { color: var(--accent); }
     .strapline {
-      font-size: clamp(1.4rem, 5vw, 1.8rem);
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
       font-weight: 600;
-      margin: 0 0 2rem 0;
       opacity: 0.95;
+      margin: 0.25rem 0 0 0;
+      letter-spacing: 0.03em;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
     nav ul {
       list-style: none;
       padding: 0;
-      margin: 0 auto;
-      display: inline-flex;
+      margin: 0;
+      display: flex;
+      gap: clamp(0.6rem, 1.5vw, 1rem);
       flex-wrap: wrap;
       justify-content: center;
-      gap: clamp(1.5rem, 5vw, 3rem);
     }
     nav a {
       color: var(--white);
       text-decoration: none;
-      font-weight: 700;
-      font-size: clamp(1rem, 3.5vw, 1.2rem);
-      padding: 0.6rem 1.2rem;
-      border-radius: 0.5rem;
-      transition: background 0.2s ease;
+      font-weight: 600;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.4rem;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
-    nav a:hover { background: rgba(255,255,255,.2); }
-    .hero {
-      padding: clamp(5rem, 15vw, 8rem) 1rem 4rem;
-      background: linear-gradient(to bottom, #e8f5e9, var(--light));
+    nav a:hover { 
+      background: rgba(255,255,255,0.15); 
+      transform: translateY(-1px); 
     }
-    h1 { font-size: clamp(2.4rem, 7vw, 3.8rem); margin: 0 0 1.8rem; color: var(--primary); font-weight: 900; letter-spacing: -0.02em; }
-    .lead { font-size: clamp(1.3rem, 4.5vw, 1.6rem); max-width: 900px; margin: 0 auto 3rem; font-weight: 500; }
-    .vault-section {
-      margin: 3rem auto 6rem;
-      max-width: 1200px;
-      text-align: center;
+    .utils {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
+    .search-bar {
+      position: relative;
+      width: 180px;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 0.5rem 1rem 0.5rem 2.2rem;
+      border: none;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    .search-bar input:focus {
+      outline: none;
+      background: rgba(255,255,255,0.3);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .search-bar i {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.85rem;
+    }
+    .social-links a {
+      color: white;
+      font-size: 1.3rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .social-links a:hover { 
+      color: var(--accent); 
+      transform: scale(1.15); 
+    }
+    .hero { 
+      position: relative; 
+      min-height: 70svh; 
+      display: grid; 
+      place-items: center; 
+      padding: clamp(4rem, 8vw, 5rem) 1.5rem; 
+      text-align: center; 
+      background: linear-gradient(to bottom, #e8f5e9, var(--light)); 
+    }
+    .hero h1 { 
+      font-size: clamp(2.4rem, 6vw, 3.6rem); 
+      margin: 0 0 1rem; 
+      color: var(--primary); 
+      font-weight: 900; 
+      letter-spacing: -0.02em; 
+      line-height: 1.1; 
+      white-space: nowrap; 
+      overflow: hidden; 
+      text-overflow: ellipsis; 
+    }
+    .hero .lead { font-size: clamp(1.15rem, 3.2vw, 1.4rem); max-width: 960px; margin: 0 auto 1.5rem; font-weight: 500; color: #163b25; }
+    .vault-section { margin: 4rem auto; max-width: 1200px; text-align: center; }
     .vault-svg-container {
       background: white;
-      padding: clamp(2rem, 5vw, 3.5rem);
+      padding: clamp(1.5rem, 4vw, 2.5rem);
       border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-      margin: 2rem 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
       overflow-x: auto;
     }
-    .vault-caption {
-      margin-top: 2rem;
-      font-size: 1.1rem;
-      color: var(--dark);
-      font-weight: 600;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+    .vault-caption { margin-top: 1.5rem; font-size: 1.1rem; font-weight: 600; color: var(--dark); max-width: 900px; margin-left: auto; margin-right: auto; }
+    main { max-width: 1200px; margin: 0 auto; padding: clamp(2.5rem, 6vw, 4rem) 1.5rem; }
+    .promo, .feature-card { background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,.06); }
+    .promo { padding: 2rem; margin: 2rem 0; }
+    .features { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin: 3rem 0; }
+    .feature-card { padding: 1.8rem; transition: transform .25s ease, box-shadow .25s ease; }
+    .feature-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(0,0,0,0.12); }
+    .button { display: inline-block; padding: 1rem 2rem; background: var(--primary); color: var(--white); font-weight: 800; text-decoration: none; border-radius: 999px; font-size: 1.05rem; min-width: 240px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); transition: transform .2s ease, background .2s ease; }
+    .button:hover { background: var(--accent); transform: translateY(-2px); }
+    .cta { padding: clamp(3rem, 7vw, 5rem) 1rem; background: var(--primary); color: white; border-radius: 16px; margin: 4rem 0; text-align: center; }
+    footer { text-align: center; padding: 3rem 1rem; color: var(--gray); font-size: 1rem; border-top: 1px solid var(--accent); background: #f8fbf6; }
+    .floating-contact {
+      position: fixed; bottom: 2rem; right: 2rem; background: var(--primary); color: white;
+      padding: 1rem 1.6rem; border-radius: 999px; font-weight: 700; text-decoration: none; z-index: 100;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2); transition: all .2s ease;
     }
-    .section { padding: clamp(3rem, 10vw, 6rem) 0; }
-    .promo { background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); margin: 2rem 0; max-width: 1000px; margin-left: auto; margin-right: auto; }
-    .features { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin: 3rem 0; }
-    .feature-card { background: white; padding: 2rem; border-radius: 12px; border: 1px solid var(--accent); transition: all 0.3s ease; }
-    .feature-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
-    .cta { padding: clamp(4rem, 12vw, 7rem) 1rem; background: var(--primary); color: var(--white); border-radius: 16px; margin: 4rem 0; }
-    .button {
-      display: inline-block; padding: 1.2rem 3rem; background: var(--white); color: var(--primary);
-      font-weight: 800; text-decoration: none; border-radius: 60px; font-size: 1.2rem; min-width: 260px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15); transition: all 0.3s ease;
-    }
-    .button:hover { background: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
-    footer { text-align: center; padding: 3rem 1rem; color: var(--gray); font-size: 1rem; border-top: 1px solid var(--accent); }
-    @media (max-width: 640px) {
-      header { padding: 2rem 0 1.5rem; }
-      .wordmark { font-size: clamp(2.4rem, 10vw, 3.5rem); margin-bottom: .8rem; }
-      .strapline { font-size: 1.1rem; margin-bottom: 1.5rem; }
-      nav ul { gap: 1rem 1.8rem; flex-direction: column; }
-      nav a { padding: 0.6rem 1.2rem; }
-      .hero { padding: 4rem 1rem 3rem; }
-      main { padding: 2rem 0 5rem; }
-      .vault-svg-container { padding: 1.5rem; }
+    .floating-contact:hover { background: var(--accent); transform: scale(1.05); }
+    @media (max-width: 768px) {
+      .header-inner { flex-direction: column; gap: 0.8rem; padding: 0.8rem 1rem; }
+      nav ul { justify-content: center; flex-wrap: wrap; gap: 0.6rem; margin: 0.5rem 0; }
+      .utils { width: 100%; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+      .search-bar { max-width: 220px; }
+      .vault-svg-container { padding: 1.2rem; }
     }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
+
   <header>
-    <div class="container">
-      <h1 class="wordmark"><span class="public">Public</span><span class="logic">Logic</span></h1>
-      <p class="strapline">Governance That Survives Real Life</p>
-      <nav aria-label="Main sections">
+    <div class="header-inner">
+      <div class="branding">
+        <h1 class="wordmark" aria-label="PublicLogic"><span class="public">Public</span><span class="logic">Logic</span></h1>
+        <p class="strapline">Governance That Survives Real Life</p>
+      </div>
+      <nav aria-label="Main">
         <ul>
           <li><a href="/about.html">About</a></li>
           <li><a href="/frameworks.html">Frameworks</a></li>
@@ -166,151 +203,114 @@
           <li><a href="/writing.html">Writing</a></li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
+        <div class="utils">
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="search" placeholder="Search..." id="site-search">
+          </div>
+          <div class="social-links">
+            <a href="https://www.facebook.com/publiclogic.org" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/publiclogic-llc" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
 
-  <main id="main" class="container">
-    <section class="hero">
-      <h1>Structures That Hold When People Cannot</h1>
-      <p class="lead">
-        Massachusetts towns rely on dedicated people who give so much every day. Change, turnover, and demands can quietly expose individuals to unowned risk and liability.
-      </p>
-      <p>
-        PublicLogic builds durable systems so responsibility lives in structure — not people. We focus on authority, records, and continuity so work endures independently.
-      </p>
-    </section>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <h1 id="hero-title">Structures That Hold When People Cannot</h1>
+      <p class="lead">Massachusetts towns rely on dedicated people. PublicLogic builds durable systems so responsibility lives in structure — not people.</p>
+      <a href="#learn-more" class="button" aria-describedby="hero-title">See how VAULT™ works</a>
+    </div>
+  </section>
 
+  <main id="main">
     <section class="vault-section">
+      <h2>VAULT™ — Governance That Survives Real Life</h2>
+      <p style="max-width:800px; margin:1rem auto; font-size:1.1rem;">
+        VAULT™ shifts institutional risk from people to durable structural elements — so towns stay resilient through change, audits, and transitions.
+      </p>
       <div class="vault-svg-container">
-        <!-- Upgraded VAULT diagram: larger main area, better spacing, municipal feel -->
-        <svg width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
-          <style>
-            :root {
-              --ink:#020617;
-              --slate:#334155;
-              --muted:#475569;
-              --fail-bg:#fff1f2;
-              --fail-stroke:#b91c1c;
-              --hold-bg:#ecfdf5;
-              --hold-stroke:#065f46;
-              --accent:#065f46;
-            }
-            .title { font: 900 48px Inter, system-ui, sans-serif; fill:var(--ink); letter-spacing:.6px; }
-            .subtitle { font: 500 20px Inter, system-ui, sans-serif; fill:var(--slate); }
-            .label { font: 800 18px Inter, system-ui, sans-serif; fill:var(--ink); letter-spacing:.6px; }
-            .body { font: 500 16px Inter, system-ui, sans-serif; fill:var(--muted); }
-            .impact { font: 700 15px Inter, system-ui, sans-serif; fill:var(--fail-stroke); }
-            .vault { font: 800 17px Inter, system-ui, sans-serif; fill:var(--accent); letter-spacing:.4px; }
-            .fail {
-              fill:var(--fail-bg);
-              stroke:var(--fail-stroke);
-              stroke-width:2.5;
-              rx:10;
-            }
-            .hold {
-              fill:var(--hold-bg);
-              stroke:var(--hold-stroke);
-              stroke-width:3.5;
-              rx:14;
-            }
-            .divider {
-              stroke:var(--ink);
-              stroke-width:5;
-              stroke-dasharray:14 8;
-              opacity:.9;
-            }
-            .shadow {
-              filter: drop-shadow(0px 10px 20px rgba(2,6,23,.15));
-            }
-            .soft {
-              filter: drop-shadow(0px 6px 12px rgba(2,6,23,.12));
-            }
-          </style>
-          <!-- Header -->
-          <text x="700" y="80" text-anchor="middle" class="title">
-            GOVERNANCE BREAKS HERE
-          </text>
-          <text x="700" y="120" text-anchor="middle" class="subtitle">
-            People cannot safely carry institutional risk
-          </text>
-          <!-- Pressure -->
-          <rect x="100" y="140" width="1200" height="100" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="2.5" class="soft"/>
-          <text x="700" y="185" text-anchor="middle" class="label">OPERATIONAL PRESSURE</text>
-          <text x="700" y="215" text-anchor="middle" class="body">
-            Turnover · Audits · Statutes · Deadlines · Emergencies
-          </text>
-          <!-- Failure Modes -->
-          <rect x="160" y="260" width="320" height="190" class="fail shadow"/>
-          <rect x="530" y="260" width="320" height="190" class="fail shadow"/>
-          <rect x="900" y="260" width="320" height="190" class="fail shadow"/>
-          <text x="320" y="300" text-anchor="middle" class="label">PEOPLE AS SYSTEM</text>
-          <text x="320" y="340" text-anchor="middle" class="body">Unwritten rules</text>
-          <text x="320" y="365" text-anchor="middle" class="body">Assumed authority</text>
-          <text x="320" y="400" text-anchor="middle" class="impact">Collapses under load</text>
-          <text x="700" y="300" text-anchor="middle" class="label">PEOPLE AS MEMORY</text>
-          <text x="700" y="340" text-anchor="middle" class="body">Tribal knowledge</text>
-          <text x="700" y="365" text-anchor="middle" class="body">Oral continuity</text>
-          <text x="700" y="400" text-anchor="middle" class="impact">Disappears at turnover</text>
-          <text x="1080" y="300" text-anchor="middle" class="label">PEOPLE AS HEROES</text>
-          <text x="1080" y="340" text-anchor="middle" class="body">Workarounds</text>
-          <text x="1080" y="365" text-anchor="middle" class="body">Personal sacrifice</text>
-          <text x="1080" y="400" text-anchor="middle" class="impact">Failure becomes certain</text>
-          <!-- Structural Limit -->
-          <line x1="100" y1="480" x2="1300" y2="480" class="divider"/>
-          <rect x="550" y="445" width="300" height="50" rx="8" fill="#020617"/>
-          <text x="700" y="480" text-anchor="middle" style="font:900 16px Inter; fill:white; letter-spacing:.8px;">
-            STRUCTURAL LIMIT
-          </text>
-          <!-- VAULT -->
-          <rect x="150" y="510" width="1100" height="320" class="hold shadow"/>
-          <text x="700" y="560" text-anchor="middle" class="label">
-            BELOW THIS POINT, RISK IS STRUCTURAL
-          </text>
-          <!-- VAULT Pillars (larger, better spaced) -->
-          <text x="280" y="610" text-anchor="middle" class="vault">1. AUTHORITY</text>
-          <text x="280" y="640" text-anchor="middle" class="body">Explicit · Bounded · Revocable</text>
-          <text x="480" y="610" text-anchor="middle" class="vault">2. RECORD</text>
-          <text x="480" y="640" text-anchor="middle" class="body">Decisions survive turnover</text>
-          <text x="680" y="610" text-anchor="middle" class="vault">3. TIME</text>
-          <text x="680" y="640" text-anchor="middle" class="body">Continuity enforced</text>
-          <text x="880" y="610" text-anchor="middle" class="vault">4. FISCAL</text>
-          <text x="880" y="640" text-anchor="middle" class="body">Funds are traceable</text>
-          <text x="380" y="690" text-anchor="middle" class="vault">5. CORRECTION</text>
-          <text x="380" y="720" text-anchor="middle" class="body">Errors surface early</text>
-          <text x="780" y="690" text-anchor="middle" class="vault">6. TRANSFER</text>
-          <text x="780" y="720" text-anchor="middle" class="body">Roles outlast people</text>
-          <text x="700" y="780" text-anchor="middle" class="subtitle">
-            Structure absorbs risk so people do not have to
-          </text>
+        <svg viewBox="0 0 1400 900" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="VAULT™ Framework Diagram: Shifting institutional risk from people to structural elements">
+          <defs>
+            <linearGradient id="g1" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#f0fdf4"/>
+              <stop offset="100%" stop-color="#dcfce7"/>
+            </linearGradient>
+            <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="1.4" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <style>
+              .title { font: 900 42px Inter, system-ui, sans-serif; fill:#020617; letter-spacing:.6px; }
+              .subtitle { font: 500 18px Inter, system-ui, sans-serif; fill:#334155; }
+              .label { font: 800 17px Inter, system-ui, sans-serif; fill:#020617; letter-spacing:.6px; }
+              .body { font: 500 15px Inter, system-ui, sans-serif; fill:#475569; }
+              .impact { font: 700 14px Inter, system-ui, sans-serif; fill:#b91c1c; }
+              .vault { font: 800 16px Inter, system-ui, sans-serif; fill:#065f46; letter-spacing:.4px; }
+              .fail { fill:#fff1f2; stroke:#b91c1c; stroke-width:2.5; rx:10; }
+              .hold { fill:#ecfdf5; stroke:#065f46; stroke-width:3.5; rx:14; }
+              .divider { stroke:#020617; stroke-width:5; stroke-dasharray:14 8; opacity:.9; }
+              .shadow { filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.1)); }
+            </style>
+          </defs>
+          <text x="700" y="70" text-anchor="middle" class="title">GOVERNANCE BREAKS HERE</text>
+          <text x="700" y="105" text-anchor="middle" class="subtitle">People cannot safely carry institutional risk</text>
+          <rect x="100" y="130" width="1200" height="90" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="2.5" filter="url(#soft)"/>
+          <text x="700" y="170" text-anchor="middle" class="label">OPERATIONAL PRESSURE</text>
+          <text x="700" y="195" text-anchor="middle" class="body">Turnover · Audits · Statutes · Deadlines · Emergencies</text>
+          <rect x="160" y="240" width="320" height="180" class="fail shadow"/>
+          <rect x="530" y="240" width="320" height="180" class="fail shadow"/>
+          <rect x="900" y="240" width="320" height="180" class="fail shadow"/>
+          <text x="320" y="280" text-anchor="middle" class="label">PEOPLE AS SYSTEM</text>
+          <text x="320" y="315" text-anchor="middle" class="body">Unwritten rules</text>
+          <text x="320" y="335" text-anchor="middle" class="body">Assumed authority</text>
+          <text x="320" y="365" text-anchor="middle" class="impact">Collapses under load</text>
+          <text x="700" y="280" text-anchor="middle" class="label">PEOPLE AS MEMORY</text>
+          <text x="700" y="315" text-anchor="middle" class="body">Tribal knowledge</text>
+          <text x="700" y="335" text-anchor="middle" class="body">Oral continuity</text>
+          <text x="700" y="365" text-anchor="middle" class="impact">Disappears at turnover</text>
+          <text x="1080" y="280" text-anchor="middle" class="label">PEOPLE AS HEROES</text>
+          <text x="1080" y="315" text-anchor="middle" class="body">Workarounds</text>
+          <text x="1080" y="335" text-anchor="middle" class="body">Personal sacrifice</text>
+          <text x="1080" y="365" text-anchor="middle" class="impact">Failure becomes certain</text>
+          <line x1="100" y1="440" x2="1300" y2="440" class="divider"/>
+          <rect x="550" y="415" width="300" height="45" rx="8" fill="#020617"/>
+          <text x="700" y="440" text-anchor="middle" style="font:900 15px Inter; fill:white; letter-spacing:.8px;">STRUCTURAL LIMIT</text>
+          <rect x="150" y="460" width="1100" height="280" class="hold shadow"/>
+          <text x="700" y="495" text-anchor="middle" class="label">BELOW THIS POINT, RISK IS STRUCTURAL</text>
+          <text x="280" y="540" text-anchor="middle" class="vault">1. AUTHORITY</text>
+          <text x="280" y="565" text-anchor="middle" class="body">Explicit · Bounded · Revocable</text>
+          <text x="480" y="540" text-anchor="middle" class="vault">2. RECORD</text>
+          <text x="480" y="565" text-anchor="middle" class="body">Decisions survive turnover</text>
+          <text x="680" y="540" text-anchor="middle" class="vault">3. TIME</text>
+          <text x="680" y="565" text-anchor="middle" class="body">Continuity enforced</text>
+          <text x="880" y="540" text-anchor="middle" class="vault">4. FISCAL</text>
+          <text x="880" y="565" text-anchor="middle" class="body">Funds are traceable</text>
+          <text x="380" y="610" text-anchor="middle" class="vault">5. CORRECTION</text>
+          <text x="380" y="635" text-anchor="middle" class="body">Errors surface early</text>
+          <text x="780" y="610" text-anchor="middle" class="vault">6. TRANSFER</text>
+          <text x="780" y="635" text-anchor="middle" class="body">Roles outlast people</text>
+          <text x="700" y="690" text-anchor="middle" class="subtitle" style="font-size: 22px; font-weight: 900;">Structure absorbs risk so people do not have to</text>
         </svg>
       </div>
-      <p class="vault-caption">VAULT™ ensures risk, memory, and responsibility live in structure, not in people.</p>
+      <p class="vault-caption">VAULT™ ensures risk, memory, and responsibility live in structure, not in people—so towns stay resilient.</p>
     </section>
 
-    <section class="section promo">
+    <!-- Rest of your sections unchanged -->
+    <section id="learn-more" class="promo">
       <h2>A structured framework, built for real towns</h2>
       <p>We use VAULT™ to create environments where institutional work endures naturally. It protects people by letting structure carry the weight during transitions and pressure.</p>
-      <p>Engagements begin with listening: your town's real constraints, statutory pressures, and continuity gaps. From there, we design governance structures that hold over time.</p>
     </section>
 
-    <section class="section features">
-      <h2>Ways We Support Your Town</h2>
-      <div class="feature-card">
-        <h3>Advisory</h3>
-        <p>Focused guidance during transitions, compliance challenges, or continuity risks where informal approaches are no longer defensible.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Transfer & Documentation</h3>
-        <p>Systematic capture of decisions, workflows, and institutional memory — so they remain with the town during turnover or audits.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Pilots</h3>
-        <p>Low-risk trials of governance mechanisms embedded in existing workflows — to test durability before broader commitment.</p>
-      </div>
+    <section class="features">
+      <article class="feature-card"><h3>Advisory</h3><p>Focused guidance during transitions, compliance challenges, or continuity risks where informal approaches are no longer defensible.</p></article>
+      <article class="feature-card"><h3>Transfer & Documentation</h3><p>Systematic capture of decisions, workflows, and institutional memory — so they remain with the town during turnover or audits.</p></article>
+      <article class="feature-card"><h3>Pilots</h3><p>Low-risk trials of governance mechanisms embedded in existing workflows — to test durability before broader commitment.</p></article>
     </section>
 
-    <section class="section promo">
+    <section class="promo">
       <h2>What We Keep Focused</h2>
       <ul style="list-style: none; padding-left: 0; max-width: 600px; margin: 0 auto;">
         <li>No software platforms or product sales</li>
@@ -328,9 +328,9 @@
   </main>
 
   <footer>
-    <p>Governance That Survives Real Life<br>
-    Helping towns build structures that hold when people cannot.<br>
-    © 2026 PublicLogic LLC — Gardner, Massachusetts</p>
+    <p>Governance That Survives Real Life<br>Helping towns build structures that hold when people cannot.<br>© 2026 PublicLogic LLC — Gardner, Massachusetts</p>
   </footer>
+
+  <a href="/contact.html" class="floating-contact">Talk to us</a>
 </body>
 </html>

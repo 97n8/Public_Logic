@@ -34,7 +34,7 @@
     .header-inner {
       max-width: 1400px;
       margin: 0 auto;
-      padding: clamp(0.8rem, 1.5vw, 1rem) 1.5rem;
+      padding: clamp(0.8rem, 1.2vw, 1rem) 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -61,75 +61,101 @@
       margin: 0.25rem 0 0 0;
       letter-spacing: 0.03em;
     }
-    nav {
+    .nav-desktop {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
+      gap: 2rem;
     }
-    nav ul {
+    .nav-desktop ul {
       list-style: none;
       padding: 0;
       margin: 0;
       display: flex;
-      gap: clamp(0.6rem, 1.5vw, 1rem);
-      flex-wrap: wrap;
-      justify-content: center;
+      gap: clamp(0.8rem, 1.8vw, 1.2rem);
     }
-    nav a {
+    .nav-desktop a {
       color: var(--white);
       text-decoration: none;
       font-weight: 600;
-      font-size: clamp(0.9rem, 2vw, 1rem);
-      padding: 0.4rem 0.8rem;
-      border-radius: 0.4rem;
-      transition: background 0.3s ease, transform 0.2s ease;
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: background 0.3s ease;
     }
-    nav a:hover { 
-      background: rgba(255,255,255,0.15); 
-      transform: translateY(-1px); 
+    .nav-desktop a:hover { background: rgba(255,255,255,0.15); }
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: white;
     }
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--primary);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-100%);
+      transition: transform 0.4s ease;
+      z-index: 99;
+    }
+    .mobile-menu.open { transform: translateY(0); }
+    .mobile-menu ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+    }
+    .mobile-menu li { margin: 1.5rem 0; }
+    .mobile-menu a {
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 1rem;
+      display: block;
+    }
+    .mobile-menu a:hover { background: rgba(255,255,255,0.15); border-radius: 0.5rem; }
     .utils {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+      gap: 1.2rem;
     }
     .search-bar {
       position: relative;
-      width: 180px;
+      width: 200px;
     }
     .search-bar input {
       width: 100%;
-      padding: 0.5rem 1rem 0.5rem 2.2rem;
+      padding: 0.6rem 1rem 0.6rem 2.4rem;
       border: none;
       border-radius: 999px;
       background: rgba(255,255,255,0.2);
       color: white;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-    }
-    .search-bar input:focus {
-      outline: none;
-      background: rgba(255,255,255,0.3);
-      box-shadow: 0 0 0 2px var(--accent);
+      font-size: 0.95rem;
     }
     .search-bar i {
       position: absolute;
-      left: 0.8rem;
+      left: 0.9rem;
       top: 50%;
       transform: translateY(-50%);
       color: rgba(255,255,255,0.8);
-      font-size: 0.85rem;
     }
     .social-links a {
       color: white;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       transition: color 0.3s ease, transform 0.3s ease;
     }
-    .social-links a:hover { 
-      color: var(--accent); 
-      transform: scale(1.15); 
+    .social-links a:hover { color: var(--accent); transform: scale(1.15); }
+    @media (max-width: 768px) {
+      .nav-desktop { display: none; }
+      .hamburger { display: block; }
+      .utils { gap: 1rem; }
+      .search-bar { width: 160px; }
     }
     .hero { 
       position: relative; 
@@ -177,13 +203,6 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.2); transition: all .2s ease;
     }
     .floating-contact:hover { background: var(--accent); transform: scale(1.05); }
-    @media (max-width: 768px) {
-      .header-inner { flex-direction: column; gap: 0.8rem; padding: 0.8rem 1rem; }
-      nav ul { justify-content: center; flex-wrap: wrap; gap: 0.6rem; margin: 0.5rem 0; }
-      .utils { width: 100%; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-      .search-bar { max-width: 220px; }
-      .vault-svg-container { padding: 1.2rem; }
-    }
   </style>
 </head>
 <body>
@@ -195,7 +214,7 @@
         <h1 class="wordmark" aria-label="PublicLogic"><span class="public">Public</span><span class="logic">Logic</span></h1>
         <p class="strapline">Governance That Survives Real Life</p>
       </div>
-      <nav aria-label="Main">
+      <div class="nav-desktop">
         <ul>
           <li><a href="/about.html">About</a></li>
           <li><a href="/frameworks.html">Frameworks</a></li>
@@ -213,9 +232,63 @@
             <a href="https://www.linkedin.com/company/publiclogic-llc" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
-      </nav>
+      </div>
+      <div class="hamburger" aria-label="Open menu" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/frameworks.html">Frameworks</a></li>
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/writing.html">Writing</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+      <div class="utils" style="margin-top: 2rem;">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="search" placeholder="Search..." id="site-search-mobile">
+        </div>
+        <div class="social-links">
+          <a href="https://www.facebook.com/publiclogic.org" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/company/publiclogic-llc" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
     </div>
   </header>
+
+  <!-- Hamburger toggle -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+  </script>
+
+  <!-- Search script -->
+  <script>
+    [document.getElementById('site-search'), document.getElementById('site-search-mobile')].forEach(input => {
+      if (input) {
+        input.addEventListener('input', function(e) {
+          const term = e.target.value.toLowerCase().trim();
+          if (term.length < 2) return;
+          document.querySelectorAll('p, h1, h2, h3, li, text').forEach(el => {
+            if (el.textContent.toLowerCase().includes(term)) {
+              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              const oldBg = el.style.backgroundColor;
+              el.style.backgroundColor = 'rgba(139,195,74,0.15)';
+              setTimeout(() => el.style.backgroundColor = oldBg, 1200);
+            }
+          });
+        });
+      }
+    });
+  </script>
 
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-inner">
@@ -232,7 +305,7 @@
         VAULT™ shifts institutional risk from people to durable structural elements — so towns stay resilient through change, audits, and transitions.
       </p>
       <div class="vault-svg-container">
-        <svg viewBox="0 0 1400 900" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="VAULT™ Framework Diagram: Shifting institutional risk from people to structural elements">
+        <svg viewBox="0 0 1400 900" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="VAULT™ Framework Diagram">
           <defs>
             <linearGradient id="g1" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stop-color="#f0fdf4"/>
@@ -279,26 +352,25 @@
           <rect x="550" y="415" width="300" height="45" rx="8" fill="#020617"/>
           <text x="700" y="440" text-anchor="middle" style="font:900 15px Inter; fill:white; letter-spacing:.8px;">STRUCTURAL LIMIT</text>
           <rect x="150" y="460" width="1100" height="280" class="hold shadow"/>
-          <text x="700" y="495" text-anchor="middle" class="label">BELOW THIS POINT, RISK IS STRUCTURAL</text>
-          <text x="280" y="540" text-anchor="middle" class="vault">1. AUTHORITY</text>
-          <text x="280" y="565" text-anchor="middle" class="body">Explicit · Bounded · Revocable</text>
-          <text x="480" y="540" text-anchor="middle" class="vault">2. RECORD</text>
-          <text x="480" y="565" text-anchor="middle" class="body">Decisions survive turnover</text>
-          <text x="680" y="540" text-anchor="middle" class="vault">3. TIME</text>
-          <text x="680" y="565" text-anchor="middle" class="body">Continuity enforced</text>
-          <text x="880" y="540" text-anchor="middle" class="vault">4. FISCAL</text>
-          <text x="880" y="565" text-anchor="middle" class="body">Funds are traceable</text>
-          <text x="380" y="610" text-anchor="middle" class="vault">5. CORRECTION</text>
-          <text x="380" y="635" text-anchor="middle" class="body">Errors surface early</text>
-          <text x="780" y="610" text-anchor="middle" class="vault">6. TRANSFER</text>
-          <text x="780" y="635" text-anchor="middle" class="body">Roles outlast people</text>
-          <text x="700" y="690" text-anchor="middle" class="subtitle" style="font-size: 22px; font-weight: 900;">Structure absorbs risk so people do not have to</text>
+          <text x="700" y="485" text-anchor="middle" class="label" style="font-size:17px; font-weight:700;">BELOW THIS POINT, RISK IS STRUCTURAL</text>
+          <text x="280" y="530" text-anchor="middle" class="vault">1. AUTHORITY</text>
+          <text x="280" y="555" text-anchor="middle" class="body">Explicit · Bounded · Revocable</text>
+          <text x="480" y="530" text-anchor="middle" class="vault">2. RECORD</text>
+          <text x="480" y="555" text-anchor="middle" class="body">Decisions survive turnover</text>
+          <text x="680" y="530" text-anchor="middle" class="vault">3. TIME</text>
+          <text x="680" y="555" text-anchor="middle" class="body">Continuity enforced</text>
+          <text x="880" y="530" text-anchor="middle" class="vault">4. FISCAL</text>
+          <text x="880" y="555" text-anchor="middle" class="body">Funds are traceable</text>
+          <text x="380" y="600" text-anchor="middle" class="vault">5. CORRECTION</text>
+          <text x="380" y="625" text-anchor="middle" class="body">Errors surface early</text>
+          <text x="780" y="600" text-anchor="middle" class="vault">6. TRANSFER</text>
+          <text x="780" y="625" text-anchor="middle" class="body">Roles outlast people</text>
+          <text x="700" y="680" text-anchor="middle" class="subtitle" style="font-size: 22px; font-weight: 900;">Structure absorbs risk so people do not have to</text>
         </svg>
       </div>
       <p class="vault-caption">VAULT™ ensures risk, memory, and responsibility live in structure, not in people—so towns stay resilient.</p>
     </section>
 
-    <!-- Rest of your sections unchanged -->
     <section id="learn-more" class="promo">
       <h2>A structured framework, built for real towns</h2>
       <p>We use VAULT™ to create environments where institutional work endures naturally. It protects people by letting structure carry the weight during transitions and pressure.</p>

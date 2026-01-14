@@ -6,125 +6,163 @@
   <meta name="description" content="PublicLogic writings: canonical governance frameworks, institutional analysis, field notes, and research focused on survivability, continuity, and risk containment." />
   <meta name="author" content="PublicLogic LLC">
   <title>Writings — PublicLogic</title>
+
+  <!-- Performance & Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
   <link rel="icon" href="/favicon.ico">
-  <link rel="canonical" href="https://publiclogic.dev/writing.html">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Canonical (update to .org when ready) -->
+  <link rel="canonical" href="https://publiclogic.org/writing.html">
+
+  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Writings — PublicLogic" />
   <meta property="og:description" content="Canonical governance frameworks, applied analysis, field notes, and research focused on institutional survivability and risk containment." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://publiclogic.dev/writing.html" />
+  <meta property="og:url" content="https://publiclogic.org/writing.html" />
+  <meta property="og:image" content="https://publiclogic.org/PL_FB_Logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="PublicLogic — Writings on governance that survives real life" />
+
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Writings — PublicLogic" />
+  <meta name="twitter:description" content="Canonical governance frameworks, applied analysis, field notes, and research focused on institutional survivability and risk containment." />
+  <meta name="twitter:image" content="https://publiclogic.org/PL_FB_Logo.png" />
+
   <style>
     :root {
-      --primary: #2e7d32;
-      --accent: #a5d6a7;
-      --dark: #1a3c34;
-      --light: #f5f9f5;
-      --gray: #555;
+      --primary: #059669;
+      --accent: #a7f3d0;
+      --light-bg: #d1fae5;
+      --dark: #111827;
+      --gray: #4b5563;
       --white: #ffffff;
-      --focus: #14532d;
+      --focus: #0ea5e9;
     }
-    * { box-sizing: border-box; }
+
+    html:focus-within { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html:focus-within { scroll-behavior: auto; }
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      line-height: 1.7;
+      line-height: 1.65;
       color: var(--dark);
       margin: 0;
-      background: var(--light);
+      background: var(--light-bg);
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
-    .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; text-align: center; }
-    header {
+
+    .skip-link {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+      z-index: 999;
+      background: var(--primary);
+      color: white;
+      padding: 1rem;
+      font-weight: 700;
+      border-radius: .5rem;
+    }
+    .skip-link:focus { top: 1rem; left: 1rem; }
+
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: .375rem; }
+
+    .container { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; text-align: center; }
+
+    header[role="banner"] {
       background: var(--primary);
       color: var(--white);
-      padding: 2.5rem 0 2rem;
+      padding: clamp(1.5rem, 4vw, 2.5rem) 0 1rem;
     }
-    .brand {
-      display: inline-flex;
-      align-items: baseline;
-      gap: .4rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin: 0 0 .8rem 0;
-      font-size: clamp(2.6rem, 8vw, 4.2rem);
-    }
-    .brand .public { color: var(--white); }
-    .brand .logic { color: var(--accent); }
-    .strapline {
-      font-size: clamp(1.15rem, 4vw, 1.35rem);
-      font-weight: 600;
-      margin: 0 0 1.8rem 0;
-      opacity: .95;
-    }
-    nav[aria-label="Main"] ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 auto;
-      display: inline-flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.8rem 2.5rem;
-    }
-    nav a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 0.4rem;
-      transition: background 0.2s ease;
-    }
-    nav a:hover, nav a:focus-visible { background: rgba(255,255,255,.15); outline: none; }
-    main { padding: 3rem 0 5rem; }
-    h1.page-title { font-size: clamp(1.8rem, 4.5vw, 2.4rem); margin-bottom: 1rem; color: var(--primary); }
-    .lead { font-size: 1.15rem; max-width: 800px; margin: 0 auto 3rem; opacity: .9; }
-    .tier { margin: 4rem 0; }
-    .tier h2 { font-size: 1.5rem; margin-bottom: 1.25rem; color: var(--primary); }
+
+    .wordmark { font-size: clamp(2.6rem, 8vw, 3.4rem); font-weight: 900; letter-spacing: -0.03em; margin: 0 0 0.5rem 0; line-height: 1; }
+    .wordmark .public { color: var(--white); }
+    .wordmark .logic { color: var(--accent); }
+
+    .strapline { font-size: clamp(1.1rem, 4vw, 1.4rem); font-weight: 600; margin: 0 0 1rem 0; opacity: 0.95; }
+
+    nav[aria-label] ul { list-style: none; padding: 0; margin: 0.5rem 0 0; display: inline-flex; flex-wrap: wrap; justify-content: center; gap: clamp(0.9rem, 3vw, 1.5rem); }
+    nav a { color: var(--white); text-decoration: none; font-weight: 700; font-size: clamp(0.95rem, 3vw, 1.1rem); padding: 0.5rem 0.9rem; border-radius: 0.375rem; transition: background 140ms ease; }
+    nav a:hover, nav a:focus-visible { background: rgba(255,255,255,.18); }
+    nav a[aria-current="page"] { background: rgba(255,255,255,.24); }
+
+    .hero { padding: clamp(2rem, 6vw, 3.5rem) 1rem 2rem; background: linear-gradient(to bottom, #e8f5e9, var(--light-bg)); }
+    .hero h1 { font-size: clamp(2.2rem, 6.5vw, 3.2rem); margin: 0 0 1rem; color: var(--primary); font-weight: 900; letter-spacing: -0.02em; }
+    .lead { font-size: clamp(1.15rem, 3.8vw, 1.35rem); max-width: 58rem; margin: 0 auto 1.5rem; font-weight: 500; }
+
+    .section { padding: clamp(2rem, 8vw, 4rem) 0; }
+    .tier { margin: 2rem 0; }
+    .tier h2 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary); }
     .entry {
       background: var(--white);
-      padding: 1.25rem;
-      border-radius: 8px;
-      margin: 1rem 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 1.5rem;
+      border-radius: 12px;
       border-left: 4px solid var(--accent);
+      margin: 1rem auto;
+      max-width: 900px;
       text-align: left;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
-    .entry h3 { margin: 0 0 .5rem; font-size: 1.2rem; color: var(--primary); }
-    .entry p { margin: .4rem 0; font-size: 1rem; }
-    .entry a { color: var(--primary); font-weight: 600; text-decoration: none; }
+    .entry h3 { margin: 0 0 0.5rem; font-size: 1.3rem; color: var(--primary); }
+    .entry p { margin: 0.5rem 0; font-size: 1rem; }
+    .entry a { color: var(--primary); font-weight: 700; text-decoration: none; }
     .entry a:hover { text-decoration: underline; }
     .forthcoming {
       text-align: center;
       font-style: italic;
       color: var(--gray);
-      margin: 3rem 0;
-      padding: 1rem;
+      margin: 2rem 0;
+      padding: 1.5rem;
       border: 1px dashed var(--accent);
-      border-radius: 8px;
+      border-radius: 12px;
     }
-    footer {
-      text-align: center; padding: 3rem 1rem 2rem; color: var(--gray); font-size: .95rem; border-top: 1px solid var(--accent);
-    }
-    @media (max-width: 640px) {
-      header { padding: 2rem 0 1.5rem; }
-      .brand { font-size: clamp(2.2rem, 9vw, 3rem); margin-bottom: .6rem; }
-      .strapline { font-size: 1.05rem; margin-bottom: 1.2rem; }
-      nav ul { gap: 1rem 1.6rem; }
-      main { padding: 2rem 0 4rem; }
+
+    .cta { padding: clamp(3rem, 10vw, 5rem) 1rem; background: var(--primary); color: var(--white); border-radius: 16px; margin: 2.5rem 0; }
+    .button { display: inline-block; padding: 1rem 2rem; background: var(--white); color: var(--primary); font-weight: 900; text-decoration: none; border-radius: 60px; font-size: 1.05rem; min-width: 13rem; box-shadow: 0 8px 24px rgba(0,0,0,0.15); transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease; }
+    .button:hover, .button:focus-visible { background: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+
+    footer { text-align: center; padding: 2.5rem 1rem; color: var(--gray); font-size: 1rem; border-top: 1px solid var(--accent); }
+
+    @media (max-width: 768px) {
+      header[role="banner"] { padding: 1.75rem 0 1.25rem; }
+      .wordmark { font-size: clamp(2.2rem, 12vw, 3rem); margin-bottom: .5rem; }
+      .strapline { font-size: 1.1rem; margin-bottom: 1rem; }
+      nav[aria-label] ul { gap: 0.75rem 1.25rem; flex-direction: column; }
+      nav a { padding: 0.5rem 0.9rem; }
+      .hero { padding: 2rem 1rem 1.5rem; }
+      main { padding: 1.5rem 0 3rem; }
+      .entry { padding: 1.25rem; }
     }
   </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PublicLogic",
+    "url": "https://publiclogic.org/",
+    "logo": "https://publiclogic.org/PL_FB_Logo.png",
+    "foundingDate": "2023",
+    "address": {"@type": "PostalAddress", "addressLocality": "Gardner", "addressRegion": "MA", "addressCountry": "US"}
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <header role="banner">
     <div class="container">
-      <p class="brand" aria-label="PublicLogic wordmark">
-        <span class="public">Public</span><span class="logic">Logic</span>
-      </p>
+      <h1 class="wordmark"><span class="public">Public</span><span class="logic">Logic</span></h1>
       <p class="strapline">Governance That Survives Real Life</p>
       <nav aria-label="Main">
         <ul>
@@ -132,18 +170,19 @@
           <li><a href="/about.html">About</a></li>
           <li><a href="/frameworks.html">Frameworks</a></li>
           <li><a href="/services.html">Services</a></li>
-          <li><a href="/writing.html">Writings</a></li>
+          <li><a href="/writing.html" aria-current="page">Writing</a></li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
-  <main class="container">
-    <h1 class="page-title">Writings</h1>
-    <p class="lead">
-      Canonical governance frameworks, institutional analysis, applied essays, field notes, and research focused on survivability, continuity, and risk containment.
-    </p>
+  <main id="main" class="container">
+    <section class="hero" aria-labelledby="page-title">
+      <h1 id="page-title" class="page-title">Writings</h1>
+      <p class="lead">
+        Canonical governance frameworks, institutional analysis, applied essays, field notes, and research focused on survivability, continuity, and risk containment.
+      </p>
+    </section>
 
     <section class="tier">
       <h2>Canonical Frameworks</h2>
@@ -152,7 +191,6 @@
         <p>Ensures statutory work enters institutions in a form that can survive pressure, turnover, and audit. Focus: Authority, record, time, fiscal containment, correction, transfer.</p>
         <p><a href="/vault/v1.0">Read the framework</a></p>
       </div>
-
       <div class="forthcoming">
         Institutional Stewardship — forthcoming / limited release soon
       </div>
@@ -160,26 +198,33 @@
 
     <section class="tier">
       <h2>Essays & Applied Thinking</h2>
-      <p style="text-align:center; opacity:.7; margin: 3rem 0;">(None published at this time.)</p>
+      <p style="text-align:center; opacity:.7; margin: 2rem 0;">(None published at this time.)</p>
     </section>
 
     <section class="tier">
       <h2>Field Notes & Research</h2>
-      <p style="text-align:center; opacity:.7; margin: 3rem 0;">(None published at this time.)</p>
+      <p style="text-align:center; opacity:.7; margin: 2rem 0;">(None published at this time.)</p>
     </section>
 
-    <section class="section promo" style="margin-top:4rem; text-align:center;">
+    <section class="section promo" style="margin-top:3rem; text-align:center;">
       <h2>Use and Citation</h2>
       <p>Governance concepts are public and may be referenced or adopted.</p>
       <p>Implementation logic and deployment specifications are proprietary.</p>
       <p>Cite by document and version.</p>
+    </section>
+
+    <section class="cta" aria-labelledby="cta">
+      <h2 id="cta">Interested in applying these concepts?</h2>
+      <p>Frameworks are most useful when grounded in real conditions. If you're unsure how governance risk is currently being carried, that uncertainty is often the right place to start.</p>
+      <a href="/contact.html" class="button" aria-label="Start a conversation about applying frameworks to your town">Start a Conversation →</a>
     </section>
   </main>
 
   <footer role="contentinfo">
     <p>
       Governance That Survives Real Life<br>
-      © 2026 PublicLogic LLC — Based in Gardner, Massachusetts
+      © 2026 PublicLogic LLC — Gardner, Massachusetts<br>
+      <span style="opacity:.8">VAULT™ is a proprietary governance framework of PublicLogic LLC. Concepts described here are high-level; implementation logic remains IP-protected.</span>
     </p>
   </footer>
 </body>

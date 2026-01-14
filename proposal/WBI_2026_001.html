@@ -1,164 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MBI Connected & Online Device Lending Program – CASE Workspace Proposal</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-    @page {
-        size: letter;
-        margin: 1in;
-    }
+@page {
+    size: letter;
+    margin: 1in;
+}
 
-    html, body {
-        background: #ffffff;
-    }
+html, body {
+    background: #ffffff;
+}
 
-    body {
-        font-family: 'Inter', Arial, sans-serif;
-        color: #111827;
-        font-size: 11pt;
-        line-height: 1.55;
-        max-width: 6.5in;
-        margin: 0 auto;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-    }
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: #111827;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
 
-    /* Letterhead */
-    .letterhead {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        border-bottom: 1.5pt solid #065f46;
-        padding-bottom: 0.4in;
-        margin-bottom: 0.45in;
-    }
+/* Page frame */
+.page {
+    border: 1pt solid #111827;
+    padding: 0.75in;
+    box-sizing: border-box;
+    max-width: 8.5in;
+    margin: 0 auto;
+}
 
-    .logo {
-        font-size: 28pt;
-        font-weight: 900;
-        color: #065f46;
-        letter-spacing: -0.5px;
-    }
+/* Header */
+.header {
+    margin-bottom: 0.45in;
+}
 
-    .logo span {
-        font-weight: 600;
-        color: #374151;
-    }
+.header .name {
+    font-size: 22pt;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+}
 
-    .tagline {
-        font-size: 10.5pt;
-        font-weight: 500;
-        color: #374151;
-        margin-top: 2pt;
-    }
+.header .tagline {
+    font-size: 10.5pt;
+    color: #374151;
+    margin-top: 2pt;
+}
 
-    .address {
-        font-size: 9.5pt;
-        color: #374151;
-        text-align: right;
-        line-height: 1.4;
-    }
+.header .contact {
+    font-size: 9.5pt;
+    line-height: 1.4;
+    margin-top: 0.2in;
+}
 
-    /* Headings */
-    h1 {
-        font-size: 17pt;
-        font-weight: 800;
-        color: #065f46;
-        margin: 0.6in 0 0.25in;
-        padding-bottom: 0.15in;
-        border-bottom: 1pt solid #065f46;
-        page-break-after: avoid;
-    }
+/* Letter meta */
+.date {
+    margin-top: 0.45in;
+}
 
-    h2 {
-        font-size: 13.5pt;
-        font-weight: 700;
-        color: #065f46;
-        margin: 0.45in 0 0.15in;
-        page-break-after: avoid;
-    }
+.recipient {
+    margin-top: 0.25in;
+}
 
-    h3 {
-        font-size: 11.5pt;
-        font-weight: 700;
-        color: #374151;
-        margin: 0.3in 0 0.1in;
-        page-break-after: avoid;
-    }
+/* Subject line */
+.subject {
+    margin: 0.35in 0 0.25in;
+    font-weight: 600;
+}
 
-    /* Text */
-    p {
-        margin: 0.15in 0;
-        orphans: 3;
-        widows: 3;
-    }
+/* Body text */
+p {
+    margin: 0.15in 0;
+    orphans: 3;
+    widows: 3;
+}
 
-    ul, ol {
-        margin: 0.15in 0 0.2in 0.25in;
-        padding-left: 0.25in;
-    }
+.section-title {
+    font-weight: 700;
+    margin-top: 0.35in;
+}
 
-    li {
-        margin: 0.08in 0;
-    }
+ul {
+    margin: 0.15in 0 0.2in 0.3in;
+    padding-left: 0.25in;
+}
 
-    ul li::marker {
-        color: #065f46;
-        font-weight: 600;
-    }
+li {
+    margin: 0.08in 0;
+}
 
-    /* Highlight block – toned down for print */
-    .highlight {
-        border-left: 3pt solid #065f46;
-        padding: 0.15in 0.25in;
-        margin: 0.25in 0;
-        background: #ffffff;
-    }
+/* Monospace block */
+pre {
+    font-family: "Courier New", monospace;
+    font-size: 9.5pt;
+    border: 1pt solid #111827;
+    padding: 0.2in;
+    margin: 0.25in 0;
+    page-break-inside: avoid;
+}
 
-    /* Code / structure block */
-    pre {
-        font-family: "Courier New", monospace;
-        font-size: 9.5pt;
-        background: #ffffff;
-        border: 1pt solid #9ca3af;
-        padding: 0.2in;
-        margin: 0.25in 0;
-        color: #111827;
-        page-break-inside: avoid;
-    }
+/* Signature */
+.signature {
+    margin-top: 0.6in;
+    page-break-inside: avoid;
+}
 
-    /* Signature */
-    .signature {
-        margin-top: 0.8in;
-        page-break-inside: avoid;
-    }
+.sig-line {
+    border-bottom: 1pt solid #111827;
+    width: 65%;
+    height: 18pt;
+    margin: 0.15in 0;
+}
 
-    .sig-line {
-        border-bottom: 1pt solid #111827;
-        width: 65%;
-        height: 18pt;
-        margin: 0.15in 0;
-    }
-
-    /* Footer */
-    .footer {
-        font-size: 9pt;
-        color: #374151;
-        text-align: center;
-        border-top: 1pt solid #9ca3af;
-        padding-top: 0.15in;
-        margin-top: 0.5in;
-    }
-
-    /* Print discipline */
-    @media print {
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        h1, h2, h3 {
-            page-break-after: avoid;
-        }
-
-        section, div {
-            page-break-inside: avoid;
-        }
-    }
+/* Footer */
+.footer {
+    margin-top: 0.6in;
+    font-size: 9pt;
+    text-align: center;
+    border-top: 1pt solid #111827;
+    padding-top: 0.15in;
+}
 </style>
+</head>
+
+<body>
+<div class="page">
+
+<div class="header">
+    <div class="name">PublicLogic LLC</div>
+    <div class="tagline">Governance that survives real life</div>
+    <div class="contact">
+        110 Kendall Pond Road West<br>
+        Gardner, Massachusetts 01440<br>
+        nate@publiclogic.org • 978-807-0829
+    </div>
+</div>
+
+<div class="date">January 14, 2026</div>
+
+<div class="recipient">
+    Magnus Carlberg, Executive Director<br>
+    Wachusett Business Incubator<br>
+    82 Main Street<br>
+    Gardner, MA 01440
+</div>
+
+<div class="subject">
+    RE: MBI Connected & Online Device Lending Program – CASE Workspace Proposal
+</div>
+
+<p>Dear Mr. Carlberg:</p>
+
+<p>
+The Wachusett Business Incubator is receiving devices through the Massachusetts Broadband Institute
+Connected & Online Device Lending Program, administered by the Massachusetts Broadband Institute
+under the Massachusetts Technology Collaborative.
+</p>
+
+<p>
+Devices distributed through this program carry defined requirements for inventory tracking, quarterly
+reporting, incident documentation, and ownership continuity through at least December 31, 2031,
+regardless of staff changes, leadership transitions, or program evolution.
+</p>
+
+<p>
+This proposal establishes a structured, live CASE workspace that embeds governance designed to
+survive real life. The workspace ensures that the Device Lending Program remains compliant, visible,
+and manageable over time without reliance on informal knowledge or individual memory.
+</p>
+
+<p class="section-title">Program Objectives</p>
+
+<ul>
+    <li>Maintain continuous visibility into the status and location of every device</li>
+    <li>Produce required quarterly and closeout reports from live records, not reconstruction</li>
+    <li>Surface issues early, while corrective action remains straightforward</li>
+    <li>Preserve continuity through staff turnover or role changes</li>
+    <li>Sustain compliance for the full required ownership and reporting period</li>
+</ul>
+
+<p>
+The system is intentionally lightweight and proportionate to a regional organization. It reduces
+administrative burden rather than adding to it.
+</p>
+
+<p class="section-title">What This Is and What It Is Not</p>
+
+<p><strong>This is:</strong></p>
+<ul>
+    <li>A one-time build of a durable Device Lending Program workspace</li>
+    <li>A single authoritative source for all device records and documentation</li>
+    <li>A structure with embedded tracking, reminders, and reporting logic</li>
+    <li>Fully owned and operated by WBI following handoff</li>
+</ul>
+
+<p><strong>This is not:</strong></p>
+<ul>
+    <li>New software or a subscription platform</li>
+    <li>An IT system requiring ongoing vendor support</li>
+    <li>Retained consulting or external oversight</li>
+</ul>
+
+<p class="section-title">Information Structure</p>
+
+<pre>
+Device_Lending_Case_Workspace
+├── Master_Device_Register
+├── Requests_and_Approvals
+├── Borrower_Agreements
+├── Incident_Reports
+├── Quarterly_Reports_Archive
+└── Staff_Operations_Guide
+</pre>
+
+<p>
+One source of truth. No parallel systems. Governance that survives real life.
+</p>
+
+<p class="section-title">Timeline</p>
+
+<ul>
+    <li><strong>Week 1:</strong> Build registers, forms, agreements, and workspace structure</li>
+    <li><strong>Week 2:</strong> Test workflows, validate reporting outputs, and complete handoff</li>
+</ul>
+
+<p><strong>Total duration:</strong> Two weeks</p>
+
+<p class="section-title">Cost and Terms</p>
+
+<p>
+Fair market value is $7,200. The professional fee is waived for this engagement.
+There are no subscriptions, no future obligations, and no exclusivity.
+</p>
+
+<p class="section-title">Ownership and Responsibility</p>
+
+<p>
+Upon handoff, the Wachusett Business Incubator assumes full ownership of all files, links, and records.
+PublicLogic retains no access, control, or ongoing role. All compliance decisions and program
+responsibility rest solely with WBI.
+</p>
+
+<div class="signature">
+    <p>Sincerely,</p>
+
+    <div class="sig-line"></div>
+
+    <p>
+        Nathan Boudreau, MPA, MCPPO<br>
+        Founder, PublicLogic LLC
+    </p>
+</div>
+
+<div class="footer">
+    Prepared by PublicLogic LLC • Prepared for Wachusett Business Incubator review and authorization
+</div>
+
+</div>
+</body>
+</html>

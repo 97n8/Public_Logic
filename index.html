@@ -19,8 +19,8 @@
       --gray: #4a6352;
       --white: #ffffff;
     }
-    * { box-sizing: border-box; }
-    body { font-family: Inter, system-ui, sans-serif; line-height: 1.7; color: var(--dark); margin: 0; background: var(--light); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, system-ui, sans-serif; line-height: 1.7; color: var(--dark); background: var(--light); }
     .skip-link { position: absolute; top: -9999px; left: -9999px; z-index: 999; background: var(--primary); color: white; padding: 1rem; font-weight: bold; }
     .skip-link:focus { top: 1rem; left: 1rem; }
     header { 
@@ -38,7 +38,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       gap: 1rem;
     }
     .branding {
@@ -96,6 +95,7 @@
       width: 100%;
       height: 100%;
       background: var(--primary);
+      color: white;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -120,6 +120,16 @@
       display: block;
     }
     .mobile-menu a:hover { background: rgba(255,255,255,0.15); border-radius: 0.5rem; }
+    .close-menu {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
     .utils {
       display: flex;
       align-items: center;
@@ -154,8 +164,11 @@
     @media (max-width: 768px) {
       .nav-desktop { display: none; }
       .hamburger { display: block; }
-      .utils { gap: 1rem; }
-      .search-bar { width: 160px; }
+      .utils .search-bar { display: none; }
+      .branding { text-align: left; flex: unset; }
+      .header-inner { justify-content: space-between; padding: 0.8rem 1rem; }
+      .hero h1 { white-space: normal; }
+      .vault-svg-container { overscroll-behavior-x: contain; }
     }
     .hero { 
       position: relative; 
@@ -173,9 +186,6 @@
       font-weight: 900; 
       letter-spacing: -0.02em; 
       line-height: 1.1; 
-      white-space: nowrap; 
-      overflow: hidden; 
-      text-overflow: ellipsis; 
     }
     .hero .lead { font-size: clamp(1.15rem, 3.2vw, 1.4rem); max-width: 960px; margin: 0 auto 1.5rem; font-weight: 500; color: #163b25; }
     .vault-section { margin: 4rem auto; max-width: 1200px; text-align: center; }
@@ -219,7 +229,7 @@
           <li><a href="/about.html">About</a></li>
           <li><a href="/frameworks.html">Frameworks</a></li>
           <li><a href="/services.html">Services</a></li>
-          <li><a href="/writing.html">Writing</a></li>
+          <li><a href="/writing.html">Writings</a></li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
         <div class="utils">
@@ -233,27 +243,22 @@
           </div>
         </div>
       </div>
-      <div class="hamburger" aria-label="Open menu" id="hamburger">
+      <div class="hamburger" id="hamburger" aria-label="Open menu">
         <i class="fas fa-bars"></i>
       </div>
     </div>
     <div class="mobile-menu" id="mobile-menu">
+      <button class="close-menu" id="close-menu"><i class="fas fa-times"></i></button>
       <ul>
         <li><a href="/about.html">About</a></li>
         <li><a href="/frameworks.html">Frameworks</a></li>
         <li><a href="/services.html">Services</a></li>
-        <li><a href="/writing.html">Writing</a></li>
+        <li><a href="/writing.html">Writings</a></li>
         <li><a href="/contact.html">Contact</a></li>
       </ul>
-      <div class="utils" style="margin-top: 2rem;">
-        <div class="search-bar">
-          <i class="fas fa-search"></i>
-          <input type="search" placeholder="Search..." id="site-search-mobile">
-        </div>
-        <div class="social-links">
-          <a href="https://www.facebook.com/publiclogic.org" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.linkedin.com/company/publiclogic-llc" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        </div>
+      <div class="social-links" style="margin-top: 3rem; font-size: 2rem;">
+        <a href="https://www.facebook.com/publiclogic.org" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.linkedin.com/company/publiclogic-llc" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
   </header>
@@ -262,32 +267,33 @@
   <script>
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
+    const closeMenu = document.getElementById('close-menu');
+
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => mobileMenu.classList.remove('open'));
     });
   </script>
 
-  <!-- Search script -->
+  <!-- Search script (desktop only) -->
   <script>
-    [document.getElementById('site-search'), document.getElementById('site-search-mobile')].forEach(input => {
-      if (input) {
-        input.addEventListener('input', function(e) {
-          const term = e.target.value.toLowerCase().trim();
-          if (term.length < 2) return;
-          document.querySelectorAll('p, h1, h2, h3, li, text').forEach(el => {
-            if (el.textContent.toLowerCase().includes(term)) {
-              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              const oldBg = el.style.backgroundColor;
-              el.style.backgroundColor = 'rgba(139,195,74,0.15)';
-              setTimeout(() => el.style.backgroundColor = oldBg, 1200);
-            }
-          });
+    const searchInput = document.getElementById('site-search');
+    if (searchInput) {
+      searchInput.addEventListener('input', function(e) {
+        const term = e.target.value.toLowerCase().trim();
+        if (term.length < 2) return;
+        document.querySelectorAll('p, h1, h2, h3, li, text').forEach(el => {
+          if (el.textContent.toLowerCase().includes(term)) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            const oldBg = el.style.backgroundColor;
+            el.style.backgroundColor = 'rgba(139,195,74,0.15)';
+            setTimeout(() => el.style.backgroundColor = oldBg, 1200);
+          }
         });
-      }
-    });
+      });
+    }
   </script>
 
   <section class="hero" aria-labelledby="hero-title">

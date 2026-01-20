@@ -3,7 +3,7 @@
      viewBox="0 0 2550 1650"
      preserveAspectRatio="xMidYMid meet"
      role="img"
-     aria-label="PublicLogic Flyer Back, 8.5x5.5, Commercial Matte">
+     aria-label="PublicLogic Flyer Back, 8.5x5.5, Commercial Matte (No Perfect For)">
 
   <defs>
     <linearGradient id="plGreenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -11,7 +11,6 @@
       <stop offset="100%" stop-color="#7FAE95"/>
     </linearGradient>
 
-    <!-- Matte gradients: lower contrast, no glossy highlight -->
     <linearGradient id="ctaGreenGradMatte" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#2E5746"/>
       <stop offset="100%" stop-color="#497463"/>
@@ -22,7 +21,6 @@
       <stop offset="100%" stop-color="#EAF5EF"/>
     </linearGradient>
 
-    <!-- Hard clip to prevent Canva / renderers from expanding bounds due to effects -->
     <clipPath id="clipCanvas">
       <rect x="0" y="0" width="2550" height="1650"/>
     </clipPath>
@@ -33,7 +31,6 @@
       .muted2 { fill:#64748B; }
       .white { fill:#FFFFFF; }
 
-      /* Canva-safe stack first, with consistent weight mapping */
       .caps{
         font-family: Arial, Helvetica, sans-serif;
         font-weight: 800;
@@ -80,12 +77,12 @@
     <g transform="translate(110,90)">
       <!-- content area = 2330 × 1470 -->
 
-      <!-- HEADER (raised, no baseline near edges, cleaner hierarchy) -->
+      <!-- HEADER -->
       <g>
         <text class="caps muted2" font-size="28" x="0" y="30">PublicLogic</text>
         <text class="h1 ink" font-size="80" x="0" y="128">VAULT™ Governance Frameworks</text>
 
-        <!-- Pill with matte “shadow” (no filters) -->
+        <!-- Pill -->
         <g transform="translate(0,158)">
           <rect x="0" y="8" width="1050" height="58" rx="29" fill="#0B1B3A" opacity="0.06"/>
           <rect x="0" y="0" width="1050" height="58" rx="29"
@@ -105,7 +102,7 @@
       <!-- MAIN TOP ROW -->
       <g transform="translate(0,240)">
 
-        <!-- LEFT CARD (manual shadow, no filters) -->
+        <!-- LEFT CARD -->
         <g>
           <rect x="0" y="10" width="1030" height="600" rx="26" fill="#0B1B3A" opacity="0.06"/>
           <rect x="0" y="0" width="1030" height="600" rx="26"
@@ -115,15 +112,14 @@
             <text class="caps muted2" font-size="22">The problem</text>
             <text class="h1 ink" font-size="48" y="56">Pressure migrates to people.</text>
 
-            <!-- “Justified-feel” lines using textLength -->
-            <g transform="translate(0,104)">
-              <text class="reg muted" font-size="30" y="0"  textLength="950" lengthAdjust="spacing">When rules live in memory, the institution runs</text>
-              <text class="reg muted" font-size="30" y="40" textLength="950" lengthAdjust="spacing">on vigilance and heroics to keep things moving.</text>
+            <!-- Smoothed paragraph: fewer hard breaks, cleaner rhythm -->
+            <g transform="translate(0,110)">
+              <text class="reg muted" font-size="30" y="0"  textLength="950" lengthAdjust="spacing">When rules live in memory, the institution runs on vigilance and heroics.</text>
+              <text class="reg muted" font-size="30" y="44" textLength="950" lengthAdjust="spacing">That keeps things moving, but it quietly concentrates risk in individuals.</text>
 
-              <text class="bold ink"  font-size="30" y="92">VAULT relocates risk into structure.</text>
+              <text class="bold ink"  font-size="30" y="104">VAULT relocates risk into structure.</text>
 
-              <text class="reg muted" font-size="30" y="132" textLength="950" lengthAdjust="spacing">So work becomes defensible, transferable, and</text>
-              <text class="reg muted" font-size="30" y="172" textLength="950" lengthAdjust="spacing">survivable under turnover and scrutiny.</text>
+              <text class="reg muted" font-size="30" y="148" textLength="950" lengthAdjust="spacing">So work becomes defensible, transferable, and survivable under pressure.</text>
             </g>
 
             <g transform="translate(0,300)">
@@ -151,7 +147,7 @@
           </g>
         </g>
 
-        <!-- RIGHT CARD (manual shadow, tighter bottom safety) -->
+        <!-- RIGHT CARD -->
         <g transform="translate(1090,0)">
           <rect x="0" y="10" width="1240" height="600" rx="26" fill="#0B1B3A" opacity="0.06"/>
           <rect x="0" y="0" width="1240" height="600" rx="26"
@@ -215,7 +211,6 @@
               </g>
             </g>
 
-            <!-- Bottom line moved up and softened so it never crowds -->
             <g transform="translate(0,520)">
               <rect x="0" y="0" width="1160" height="2" fill="#E2E8F0"/>
               <text class="semibold ink" font-size="24" y="44">Built to survive turnover, scrutiny, and pressure.</text>
@@ -224,7 +219,7 @@
         </g>
       </g>
 
-      <!-- CTA BAND (manual shadow, extra right padding, zero crowding) -->
+      <!-- CTA BAND -->
       <g transform="translate(0,880)">
         <rect x="0" y="10" width="2330" height="590" rx="34" fill="#0B1B3A" opacity="0.08"/>
         <rect x="0" y="0" width="2330" height="590" rx="34"
@@ -240,7 +235,6 @@
             <text class="reg" font-size="32" y="46" fill="#FFFFFF">You keep your tools. We build the structure that makes them survivable.</text>
           </g>
 
-          <!-- Button with matte depth (no filters) -->
           <g transform="translate(0,248)">
             <rect x="0" y="8" width="980" height="76" rx="38" fill="#0B1B3A" opacity="0.20"/>
             <rect x="0" y="0" width="980" height="76" rx="38"
@@ -250,23 +244,11 @@
           </g>
         </g>
 
-        <!-- RIGHT CONTACT (pulled left, more breathing room) -->
-        <g transform="translate(2210,140)" text-anchor="end">
+        <!-- RIGHT CONTACT (clean, no crowding) -->
+        <g transform="translate(2250,140)" text-anchor="end">
           <text class="smallcaps" font-size="24" fill="#E8F5EE">Contact</text>
           <text class="semibold" font-size="40" y="62" fill="#FFFFFF">publiclogic.org</text>
           <text class="reg" font-size="34" y="112" fill="#FFFFFF">info@publiclogic.org</text>
-
-          <!-- Perfect for box moved further left and slightly narrower -->
-          <g transform="translate(-1060,160)">
-            <rect x="0" y="8" width="700" height="170" rx="26" fill="#0B1B3A" opacity="0.18"/>
-            <rect x="0" y="0" width="700" height="170" rx="26"
-                  fill="#FFFFFF" opacity="0.14" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.24"/>
-            <g transform="translate(28,50)">
-              <text class="caps" font-size="20" fill="#E8F5EE">Perfect for</text>
-              <text class="semibold" font-size="30" y="44" fill="#FFFFFF">Towns under pressure</text>
-              <text class="reg" font-size="28" y="92" fill="#FFFFFF">Turnover · scrutiny · budget cycle</text>
-            </g>
-          </g>
         </g>
       </g>
 

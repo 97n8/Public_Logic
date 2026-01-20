@@ -3,283 +3,241 @@
      viewBox="0 0 2550 1650"
      preserveAspectRatio="xMidYMid meet"
      role="img"
-     aria-label="PublicLogic Flyer Front, 8.5x5.5, Commercial Matte">
+     aria-label="PublicLogic Flyer Front - 8.5x5.5 - Commercial Matte v4 (Centered)">
 
   <defs>
-    <!-- Brand gradients -->
     <linearGradient id="plGreenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#3F6D5A"/>
       <stop offset="100%" stop-color="#7FAE95"/>
     </linearGradient>
 
-    <linearGradient id="ctaGreenGradMatte" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#2E5746"/>
-      <stop offset="100%" stop-color="#497463"/>
-    </linearGradient>
-
     <linearGradient id="softGreenWash" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F7FCF9"/>
-      <stop offset="100%" stop-color="#EAF5EF"/>
+      <stop offset="0%" stop-color="#F6FBF8"/>
+      <stop offset="100%" stop-color="#EAF6EF"/>
     </linearGradient>
 
-    <linearGradient id="navyWash" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0B1B3A" stop-opacity="0.06"/>
-      <stop offset="100%" stop-color="#0B1B3A" stop-opacity="0.00"/>
-    </linearGradient>
+    <filter id="matteShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0B1B3A" flood-opacity="0.10"/>
+    </filter>
 
-    <!-- Hard clip to prevent Canva expanding bounds -->
-    <clipPath id="clipCanvas">
-      <rect x="0" y="0" width="2550" height="1650"/>
-    </clipPath>
+    <filter id="microShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0B1B3A" flood-opacity="0.08"/>
+    </filter>
 
     <style>
       .ink { fill:#0B1B3A; }
       .muted { fill:#475569; }
       .muted2 { fill:#64748B; }
-      .white { fill:#FFFFFF; }
 
       .caps{
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 800;
+        font-family: Arial, sans-serif;
+        font-weight: 850;
         letter-spacing: 0.14em;
         text-transform: uppercase;
       }
       .h1{
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 900;
+        font-family: Arial, sans-serif;
+        font-weight: 950;
         letter-spacing: -0.02em;
       }
       .reg{
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: Arial, sans-serif;
         font-weight: 600;
       }
       .semibold{
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 800;
+        font-family: Arial, sans-serif;
+        font-weight: 750;
       }
       .bold{
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: Arial, sans-serif;
         font-weight: 900;
       }
       .smallcaps{
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: Arial, sans-serif;
         font-weight: 900;
         letter-spacing: 0.12em;
         text-transform: uppercase;
       }
-      .mono{
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-      }
     </style>
   </defs>
 
-  <g clip-path="url(#clipCanvas)">
-    <!-- FULL CANVAS BACKGROUND -->
-    <rect x="0" y="0" width="2550" height="1650" fill="url(#softGreenWash)"/>
-    <rect x="0" y="0" width="2550" height="18" fill="url(#plGreenGrad)"/>
-    <rect x="0" y="18" width="2550" height="1632" fill="url(#navyWash)"/>
+  <!-- BACKGROUND -->
+  <rect x="0" y="0" width="2550" height="1650" fill="url(#softGreenWash)"/>
+  <rect x="0" y="0" width="2550" height="18" fill="url(#plGreenGrad)"/>
 
-    <!-- INNER CONTENT -->
-    <g transform="translate(110,90)">
-      <!-- content area = 2330 × 1470 -->
+  <!-- INNER CONTENT -->
+  <g transform="translate(110,90)">
+    <!-- content area = 2330 × 1470 -->
 
-      <!-- HEADER -->
+    <!-- GRID WRAPPER: center composition slightly (prevents "lean left") -->
+    <g transform="translate(40,0)">
+      <!-- usable width = 2250 -->
+
+      <!-- HEADER (baseline aligned, clean) -->
       <g>
-        <text class="caps muted2" font-size="28" x="0" y="30">PublicLogic</text>
-        <text class="h1 ink" font-size="92" x="0" y="140">Governance that holds under pressure.</text>
+        <text class="h1 ink" font-size="86" x="0" y="92">PublicLogic</text>
+        <rect x="0" y="116" width="340" height="8" rx="4" fill="url(#plGreenGrad)" opacity="0.95"/>
 
-        <!-- Pill -->
-        <g transform="translate(0,168)">
-          <rect x="0" y="8" width="1160" height="58" rx="29" fill="#0B1B3A" opacity="0.06"/>
-          <rect x="0" y="0" width="1160" height="58" rx="29"
-                fill="#FFFFFF" stroke="url(#plGreenGrad)" stroke-width="3"/>
-          <text x="580" y="39" text-anchor="middle"
-                class="smallcaps" font-size="24" fill="#3F6D5A">Structure first · Automation second</text>
-        </g>
-
-        <g transform="translate(2330,0)" text-anchor="end">
-          <text class="h1 ink" font-size="60" x="0" y="54">PublicLogic</text>
-          <rect x="-360" y="78" width="360" height="8" rx="4"
-                fill="url(#plGreenGrad)" opacity="0.92"/>
-          <text class="smallcaps" font-size="20" x="0" y="122" fill="#3F6D5A">SMART SYSTEMS. STRONGER COMMUNITIES.</text>
+        <g transform="translate(2250,0)" text-anchor="end">
+          <text class="caps muted2" font-size="22" x="0" y="26">VAULT™ Governance Framework</text>
+          <text class="semibold ink" font-size="28" x="0" y="66">Governance that holds under pressure.</text>
         </g>
       </g>
 
-      <!-- MAIN CONTENT ROW -->
-      <g transform="translate(0,300)">
+      <!-- HERO CARD (centered + calmer) -->
+      <g transform="translate(0,170)">
+        <rect x="0" y="0" width="2250" height="330" rx="26"
+              fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"
+              filter="url(#matteShadow)"/>
 
-        <!-- LEFT CARD -->
+        <g transform="translate(56,64)">
+          <text class="caps muted2" font-size="22" x="0" y="0">What we do</text>
+
+          <text class="h1 ink" font-size="56" x="0" y="66">
+            We build municipal structure that survives real life.
+          </text>
+
+          <g transform="translate(0,108)">
+            <text class="reg muted" font-size="30" y="0">
+              Municipal operations should survive turnover, audits, and pressure without requiring personal sacrifice.
+            </text>
+            <text class="reg muted" font-size="30" y="42">
+              We build governance structure that keeps institutions lawful, functional, and defensible.
+            </text>
+          </g>
+
+          <g transform="translate(0,208)">
+            <rect x="0" y="0" width="1120" height="62" rx="18"
+                  fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"
+                  filter="url(#microShadow)"/>
+            <g transform="translate(22,40)">
+              <circle cx="10" cy="-10" r="7" fill="#3F6D5A"/>
+              <text class="semibold ink" font-size="26" x="30" y="0">
+                We relocate risk out of people and into governed systems.
+              </text>
+            </g>
+          </g>
+        </g>
+      </g>
+
+      <!-- VAULT STRIP (symmetry fixed) -->
+      <g transform="translate(0,530)">
+        <rect x="0" y="0" width="2250" height="120" rx="24"
+              fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"
+              filter="url(#microShadow)"/>
+
+        <g transform="translate(56,44)">
+          <text class="smallcaps" font-size="20" fill="#3F6D5A" x="0" y="0">VAULT™ Governance Framework</text>
+          <text class="reg muted" font-size="28" x="0" y="46">
+            Institutional systems designed to hold under pressure, turnover, and scrutiny.
+          </text>
+        </g>
+
+        <g transform="translate(2230,38)" text-anchor="end">
+          <rect x="-560" y="0" width="560" height="60" rx="30"
+                fill="#F8FAFC" stroke="url(#plGreenGrad)" stroke-width="3"/>
+          <text class="smallcaps" font-size="20" x="-280" y="38" fill="#3F6D5A">
+            Structure first · Automation second
+          </text>
+        </g>
+      </g>
+
+      <!-- TEAM CARDS (perfect gutters, no drift) -->
+      <g transform="translate(0,700)">
+        <!-- Card sizing: 1105 + 40 gutter + 1105 = 2250 -->
+        <!-- LEFT -->
         <g>
-          <rect x="0" y="10" width="1240" height="720" rx="30" fill="#0B1B3A" opacity="0.06"/>
-          <rect x="0" y="0" width="1240" height="720" rx="30"
-                fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+          <rect x="0" y="0" width="1105" height="560" rx="26"
+                fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"
+                filter="url(#matteShadow)"/>
 
-          <g transform="translate(54,70)">
-            <text class="caps muted2" font-size="22">What we do</text>
-            <text class="h1 ink" font-size="64" y="66">We relocate risk into structure.</text>
+          <g transform="translate(54,66)">
+            <text class="h1 ink" font-size="42" x="0" y="0">Nathan Boudreau, MPA, MCPPO</text>
+            <text class="caps muted2" font-size="18" x="0" y="44">Founder · Systems Architect</text>
 
-            <g transform="translate(0,118)">
-              <text class="reg muted" font-size="32" y="0"  textLength="1120" lengthAdjust="spacing">PublicLogic builds governed operating frameworks that make municipal work defensible,</text>
-              <text class="reg muted" font-size="32" y="46" textLength="1120" lengthAdjust="spacing">transferable, and survivable without changing your tools or adding new software.</text>
+            <g transform="translate(0,92)">
+              <text class="reg muted" font-size="28" y="0">
+                15+ years of hands-on municipal leadership in Massachusetts.
+              </text>
+              <text class="reg muted" font-size="28" y="40">
+                Translates statutory and fiduciary obligations into durable structure
+              </text>
+              <text class="reg muted" font-size="28" y="80">
+                that reduces risk, protects staff, and preserves continuity under scrutiny.
+              </text>
             </g>
 
-            <!-- Bullet box -->
-            <g transform="translate(0,220)">
-              <rect x="0" y="0" width="1130" height="390" rx="26"
-                    fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+            <g transform="translate(0,240)">
+              <text class="smallcaps" font-size="18" fill="#64748B">Specialties</text>
 
-              <g transform="translate(36,56)">
-                <text class="smallcaps" font-size="20" fill="#64748B">What you get</text>
+              <g transform="translate(0,34)">
+                <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
+                <text class="semibold ink" font-size="26" x="30" y="20">Authority mapping</text>
+              </g>
 
-                <g transform="translate(0,44)">
-                  <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
-                  <text x="32" y="22" class="semibold ink" font-size="30">Authority maps and decision gates</text>
-                </g>
+              <g transform="translate(0,82)">
+                <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
+                <text class="semibold ink" font-size="26" x="30" y="20">Finance and administrative workflows</text>
+              </g>
 
-                <g transform="translate(0,104)">
-                  <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
-                  <text x="32" y="22" class="semibold ink" font-size="30">Board ready policies, SOPs, and templates</text>
-                </g>
-
-                <g transform="translate(0,164)">
-                  <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
-                  <text x="32" y="22" class="semibold ink" font-size="30">Workflow stabilization in one domain</text>
-                </g>
-
-                <g transform="translate(0,224)">
-                  <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
-                  <text x="32" y="22" class="semibold ink" font-size="30">Continuity that survives turnover</text>
-                </g>
-
-                <g transform="translate(0,284)">
-                  <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
-                  <text x="32" y="22" class="semibold ink" font-size="30">Automation readiness without fragility</text>
-                </g>
+              <g transform="translate(0,130)">
+                <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
+                <text class="semibold ink" font-size="26" x="30" y="20">Board-ready artifacts</text>
               </g>
             </g>
           </g>
         </g>
 
-        <!-- RIGHT CARD -->
-        <g transform="translate(1290,0)">
-          <rect x="0" y="10" width="1040" height="720" rx="30" fill="#0B1B3A" opacity="0.06"/>
-          <rect x="0" y="0" width="1040" height="720" rx="30"
-                fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+        <!-- RIGHT -->
+        <g transform="translate(1145,0)">
+          <rect x="0" y="0" width="1105" height="560" rx="26"
+                fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"
+                filter="url(#matteShadow)"/>
 
-          <g transform="translate(54,70)">
-            <text class="caps muted2" font-size="22">The framework</text>
-            <text class="h1 ink" font-size="60" y="66">VAULT™</text>
+          <g transform="translate(54,66)">
+            <text class="h1 ink" font-size="40" x="0" y="0">Dr. Allison Weiss Rothschild, PsyD, LICSW, BCBA</text>
+            <text class="caps muted2" font-size="18" x="0" y="44">Institutional · Behavioral Systems Partner</text>
 
-            <g transform="translate(0,120)">
-              <rect x="0" y="0" width="930" height="520" rx="28"
-                    fill="url(#softGreenWash)" stroke="#E2E8F0" stroke-width="2"/>
+            <g transform="translate(0,92)">
+              <text class="reg muted" font-size="28" y="0">
+                Organizational psychologist specializing in leadership systems for
+              </text>
+              <text class="reg muted" font-size="28" y="40">
+                public-serving organizations and high-accountability work.
+              </text>
+              <text class="reg muted" font-size="28" y="80">
+                Builds structures aligned with human capacity limits and compliance.
+              </text>
+            </g>
 
-              <!-- Mini cycle diagram -->
-              <g transform="translate(70,70)">
-                <!-- left stack -->
-                <g>
-                  <rect x="0" y="0" width="360" height="92" rx="22" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
-                  <rect x="0" y="8" width="360" height="92" rx="22" fill="#0B1B3A" opacity="0.05"/>
-                  <text class="bold ink" font-size="30" x="26" y="56">Intake</text>
-                  <text class="reg muted" font-size="24" x="26" y="82">Request logged, clock starts</text>
-                </g>
+            <g transform="translate(0,240)">
+              <text class="smallcaps" font-size="18" fill="#64748B">Specialties</text>
 
-                <g transform="translate(0,126)">
-                  <rect x="0" y="0" width="360" height="92" rx="22" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
-                  <rect x="0" y="8" width="360" height="92" rx="22" fill="#0B1B3A" opacity="0.05"/>
-                  <text class="bold ink" font-size="30" x="26" y="56">Review</text>
-                  <text class="reg muted" font-size="24" x="26" y="82">Authority gate, record decision</text>
-                </g>
+              <g transform="translate(0,34)">
+                <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
+                <text class="semibold ink" font-size="26" x="30" y="20">Capacity-safe governance</text>
+              </g>
 
-                <g transform="translate(0,252)">
-                  <rect x="0" y="0" width="360" height="92" rx="22" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
-                  <rect x="0" y="8" width="360" height="92" rx="22" fill="#0B1B3A" opacity="0.05"/>
-                  <text class="bold ink" font-size="30" x="26" y="56">File</text>
-                  <text class="reg muted" font-size="24" x="26" y="82">Town owned artifacts and trail</text>
-                </g>
+              <g transform="translate(0,82)">
+                <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
+                <text class="semibold ink" font-size="26" x="30" y="20">Burnout prevention structures</text>
+              </g>
 
-                <g transform="translate(0,378)">
-                  <rect x="0" y="0" width="360" height="92" rx="22" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
-                  <rect x="0" y="8" width="360" height="92" rx="22" fill="#0B1B3A" opacity="0.05"/>
-                  <text class="bold ink" font-size="30" x="26" y="56">Close</text>
-                  <text class="reg muted" font-size="24" x="26" y="82">Transfer ready completion</text>
-                </g>
-
-                <!-- right rail -->
-                <g transform="translate(430,20)">
-                  <rect x="0" y="0" width="360" height="440" rx="28"
-                        fill="#FFFFFF" opacity="0.78" stroke="#E2E8F0" stroke-width="2"/>
-                  <text class="smallcaps" font-size="18" fill="#64748B" x="34" y="52">VAULT principles</text>
-
-                  <g transform="translate(34,84)">
-                    <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
-                    <text class="semibold ink" font-size="24" x="28" y="18">Record first</text>
-                  </g>
-
-                  <g transform="translate(34,138)">
-                    <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
-                    <text class="semibold ink" font-size="24" x="28" y="18">Authority clarity</text>
-                  </g>
-
-                  <g transform="translate(34,192)">
-                    <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
-                    <text class="semibold ink" font-size="24" x="28" y="18">Continuity by design</text>
-                  </g>
-
-                  <g transform="translate(34,246)">
-                    <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
-                    <text class="semibold ink" font-size="24" x="28" y="18">Defensible outputs</text>
-                  </g>
-
-                  <g transform="translate(34,300)">
-                    <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
-                    <text class="semibold ink" font-size="24" x="28" y="18">No workflow theater</text>
-                  </g>
-
-                  <g transform="translate(34,354)">
-                    <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
-                    <text class="semibold ink" font-size="24" x="28" y="18">Automation second</text>
-                  </g>
-                </g>
+              <g transform="translate(0,130)">
+                <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
+                <text class="semibold ink" font-size="26" x="30" y="20">Accountability without overload</text>
               </g>
             </g>
           </g>
         </g>
       </g>
 
-      <!-- CTA BAND (MATCHES BACK) -->
-      <g transform="translate(0,1100)">
-        <rect x="0" y="10" width="2330" height="370" rx="34" fill="#0B1B3A" opacity="0.08"/>
-        <rect x="0" y="0" width="2330" height="370" rx="34"
-              fill="url(#ctaGreenGradMatte)"/>
-
-        <!-- LEFT CTA -->
-        <g transform="translate(80,92)">
-          <text class="caps" font-size="22" fill="#E8F5EE">Start here</text>
-          <text class="h1" font-size="64" y="74" fill="#FFFFFF">Book a short discovery call.</text>
-
-          <g transform="translate(0,122)">
-            <text class="reg" font-size="30" y="0"  fill="#FFFFFF">We will identify one high pressure workflow and stabilize it with VAULT.</text>
-            <text class="reg" font-size="30" y="44" fill="#FFFFFF">Then, if you want, we can automate safely on top of that structure.</text>
-          </g>
-
-          <g transform="translate(0,212)">
-            <rect x="0" y="8" width="980" height="76" rx="38" fill="#0B1B3A" opacity="0.20"/>
-            <rect x="0" y="0" width="980" height="76" rx="38"
-                  fill="#FFFFFF" opacity="0.96"/>
-            <text x="490" y="50" text-anchor="middle"
-                  class="smallcaps" font-size="26" fill="#2F5846">publiclogic.org</text>
-          </g>
-        </g>
-
-        <!-- RIGHT CONTACT -->
-        <g transform="translate(2250,110)" text-anchor="end">
-          <text class="smallcaps" font-size="24" fill="#E8F5EE">Contact</text>
-          <text class="semibold" font-size="40" y="62" fill="#FFFFFF">publiclogic.org</text>
-          <text class="reg" font-size="34" y="112" fill="#FFFFFF">info@publiclogic.org</text>
-        </g>
+      <!-- FOOT -->
+      <g transform="translate(0,1415)">
+        <text class="reg muted2" font-size="20" x="0" y="0">© 2026 PublicLogic LLC</text>
+        <text class="smallcaps" font-size="20" x="2250" y="0" text-anchor="end" fill="#3F6D5A">
+          SMART SYSTEMS. STRONGER COMMUNITIES.
+        </text>
       </g>
 
     </g>

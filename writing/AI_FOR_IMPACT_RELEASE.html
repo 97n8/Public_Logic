@@ -231,38 +231,100 @@
     /* Print */
     @media print{
       :root{ --bg:#ffffff; }
-      html, body{ background:#ffffff; }
+      html, body{ background:#ffffff; font-size:11pt; }
       .wrap{ margin:0; max-width:none; padding:0; }
       .release{
         border:none;
         border-radius:0;
         box-shadow:none;
-        padding: 0.5in 0.75in;
+        padding: 0.5in 0.6in;
       }
-      a{ color: var(--ink); text-decoration:none; }
+      .logo{
+        font-size:11pt;
+        margin-bottom:12px;
+      }
+      .topbar{
+        padding-bottom:10px;
+        margin-bottom:14px;
+      }
+      h1{
+        font-size:18pt;
+      }
+      p{
+        font-size:10.5pt;
+        margin-bottom:10px;
+      }
+      .dateline{
+        margin-bottom:12px;
+      }
+      .pull{
+        margin:12px 0;
+        padding-left:10px;
+      }
+      .quote{
+        padding:10px 12px;
+        margin:10px 0;
+        page-break-inside: avoid;
+      }
+      .quote p{
+        font-size:10pt;
+      }
+      .quote .who{
+        margin-top:6px;
+        font-size:9pt;
+      }
+      .highlight-box{
+        padding:10px 12px;
+        margin:14px 0;
+        page-break-inside: avoid;
+      }
+      .highlight-box p{
+        font-size:10pt;
+      }
+      .cta{
+        padding:12px;
+        margin-top:14px;
+        page-break-inside: avoid;
+      }
+      .cta h2{
+        font-size:11pt;
+        margin-bottom:4px;
+      }
+      .cta p{
+        font-size:9pt;
+        margin-bottom:6px;
+      }
       .cta a.btn{
+        font-size:9pt;
+        padding:6px 10px;
         border:1px solid var(--line);
         background:#ffffff;
         color:var(--ink);
       }
-      .quote{
-        page-break-inside: avoid;
+      hr{
+        margin:16px 0;
+        page-break-after: avoid;
       }
       .about{
         page-break-inside: avoid;
       }
-      .cta{
-        page-break-inside: avoid;
-      }
-      .highlight-box{
-        page-break-inside: avoid;
-      }
-      hr{
-        page-break-after: avoid;
+      .about p{
+        font-size:9pt;
+        margin-bottom:8px;
       }
       h3{
+        font-size:10pt;
+        margin-bottom:4px;
         page-break-after: avoid;
       }
+      .contact{
+        font-size:9pt;
+      }
+      .footerline{
+        margin-top:12px;
+        font-size:9pt;
+      }
+      a{ color: var(--ink); text-decoration:none; }
     }
   </style>
 </head>

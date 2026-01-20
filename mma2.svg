@@ -3,7 +3,7 @@
      viewBox="0 0 2550 1650"
      preserveAspectRatio="xMidYMid meet"
      role="img"
-     aria-label="PublicLogic Flyer Front - 8.5x5.5 - Commercial Matte v4 (Centered)">
+     aria-label="PublicLogic Flyer Front - 8.5x5.5 - Commercial Matte Final">
 
   <defs>
     <linearGradient id="plGreenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -28,6 +28,7 @@
       .ink { fill:#0B1B3A; }
       .muted { fill:#475569; }
       .muted2 { fill:#64748B; }
+      .white { fill:#FFFFFF; }
 
       .caps{
         font-family: Arial, sans-serif;
@@ -61,7 +62,7 @@
     </style>
   </defs>
 
-  <!-- BACKGROUND -->
+  <!-- FULL CANVAS BACKGROUND -->
   <rect x="0" y="0" width="2550" height="1650" fill="url(#softGreenWash)"/>
   <rect x="0" y="0" width="2550" height="18" fill="url(#plGreenGrad)"/>
 
@@ -69,177 +70,253 @@
   <g transform="translate(110,90)">
     <!-- content area = 2330 × 1470 -->
 
-    <!-- GRID WRAPPER: center composition slightly (prevents "lean left") -->
-    <g transform="translate(40,0)">
-      <!-- usable width = 2250 -->
+    <!-- TOP HEADER (tight + clean) -->
+    <g>
+      <!-- Left: PublicLogic wordmark -->
+      <text class="h1 ink" font-size="78" x="0" y="78">PublicLogic</text>
 
-      <!-- HEADER (baseline aligned, clean) -->
-      <g>
-        <text class="h1 ink" font-size="86" x="0" y="92">PublicLogic</text>
-        <rect x="0" y="116" width="340" height="8" rx="4" fill="url(#plGreenGrad)" opacity="0.95"/>
-
-        <g transform="translate(2250,0)" text-anchor="end">
-          <text class="caps muted2" font-size="22" x="0" y="26">VAULT™ Governance Framework</text>
-          <text class="semibold ink" font-size="28" x="0" y="66">Governance that holds under pressure.</text>
-        </g>
-      </g>
-
-      <!-- HERO CARD (centered + calmer) -->
-      <g transform="translate(0,170)">
-        <rect x="0" y="0" width="2250" height="330" rx="26"
-              fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"
-              filter="url(#matteShadow)"/>
-
-        <g transform="translate(56,64)">
-          <text class="caps muted2" font-size="22" x="0" y="0">What we do</text>
-
-          <text class="h1 ink" font-size="56" x="0" y="66">
-            We build municipal structure that survives real life.
-          </text>
-
-          <g transform="translate(0,108)">
-            <text class="reg muted" font-size="30" y="0">
-              Municipal operations should survive turnover, audits, and pressure without requiring personal sacrifice.
-            </text>
-            <text class="reg muted" font-size="30" y="42">
-              We build governance structure that keeps institutions lawful, functional, and defensible.
-            </text>
-          </g>
-
-          <g transform="translate(0,208)">
-            <rect x="0" y="0" width="1120" height="62" rx="18"
-                  fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"
-                  filter="url(#microShadow)"/>
-            <g transform="translate(22,40)">
-              <circle cx="10" cy="-10" r="7" fill="#3F6D5A"/>
-              <text class="semibold ink" font-size="26" x="30" y="0">
-                We relocate risk out of people and into governed systems.
-              </text>
-            </g>
-          </g>
-        </g>
-      </g>
-
-      <!-- VAULT STRIP (symmetry fixed) -->
-      <g transform="translate(0,530)">
-        <rect x="0" y="0" width="2250" height="120" rx="24"
-              fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"
+      <!-- Tagline pill under logo -->
+      <g transform="translate(0,104)">
+        <rect x="0" y="0" width="880" height="52" rx="26"
+              fill="#FFFFFF" stroke="url(#plGreenGrad)" stroke-width="3"
               filter="url(#microShadow)"/>
+        <text x="440" y="35" text-anchor="middle"
+              class="smallcaps" font-size="20" fill="#3F6D5A">SMART SYSTEMS. STRONGER COMMUNITIES.</text>
+      </g>
 
-        <g transform="translate(56,44)">
-          <text class="smallcaps" font-size="20" fill="#3F6D5A" x="0" y="0">VAULT™ Governance Framework</text>
-          <text class="reg muted" font-size="28" x="0" y="46">
-            Institutional systems designed to hold under pressure, turnover, and scrutiny.
+      <!-- Right: VAULT label -->
+      <g transform="translate(2330,14)" text-anchor="end">
+        <text class="caps muted2" font-size="18" x="0" y="0">VAULT™ GOVERNANCE FRAMEWORK</text>
+        <text class="semibold ink" font-size="22" x="0" y="34">Governance that holds under pressure.</text>
+      </g>
+    </g>
+
+    <!-- HERO CARD -->
+    <g transform="translate(0,210)">
+      <rect x="0" y="0" width="2330" height="340" rx="26"
+            fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"
+            filter="url(#matteShadow)"/>
+
+      <g transform="translate(46,62)">
+        <text class="caps muted2" font-size="20">What we do</text>
+
+        <text class="h1 ink" font-size="56" y="60">
+          We build municipal structure that survives real life.
+        </text>
+
+        <!-- Smooth paragraph -->
+        <g transform="translate(0,106)">
+          <text class="reg muted" font-size="28" y="0">
+            Municipal operations should survive turnover, audits, and pressure without requiring personal sacrifice.
+          </text>
+          <text class="reg muted" font-size="28" y="40">
+            We build governance structure that keeps institutions lawful, functional, and defensible.
           </text>
         </g>
 
-        <g transform="translate(2230,38)" text-anchor="end">
-          <rect x="-560" y="0" width="560" height="60" rx="30"
-                fill="#F8FAFC" stroke="url(#plGreenGrad)" stroke-width="3"/>
-          <text class="smallcaps" font-size="20" x="-280" y="38" fill="#3F6D5A">
-            Structure first · Automation second
-          </text>
-        </g>
-      </g>
-
-      <!-- TEAM CARDS (perfect gutters, no drift) -->
-      <g transform="translate(0,700)">
-        <!-- Card sizing: 1105 + 40 gutter + 1105 = 2250 -->
-        <!-- LEFT -->
-        <g>
-          <rect x="0" y="0" width="1105" height="560" rx="26"
-                fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"
-                filter="url(#matteShadow)"/>
-
-          <g transform="translate(54,66)">
-            <text class="h1 ink" font-size="42" x="0" y="0">Nathan Boudreau, MPA, MCPPO</text>
-            <text class="caps muted2" font-size="18" x="0" y="44">Founder · Systems Architect</text>
-
-            <g transform="translate(0,92)">
-              <text class="reg muted" font-size="28" y="0">
-                15+ years of hands-on municipal leadership in Massachusetts.
-              </text>
-              <text class="reg muted" font-size="28" y="40">
-                Translates statutory and fiduciary obligations into durable structure
-              </text>
-              <text class="reg muted" font-size="28" y="80">
-                that reduces risk, protects staff, and preserves continuity under scrutiny.
-              </text>
-            </g>
-
-            <g transform="translate(0,240)">
-              <text class="smallcaps" font-size="18" fill="#64748B">Specialties</text>
-
-              <g transform="translate(0,34)">
-                <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
-                <text class="semibold ink" font-size="26" x="30" y="20">Authority mapping</text>
-              </g>
-
-              <g transform="translate(0,82)">
-                <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
-                <text class="semibold ink" font-size="26" x="30" y="20">Finance and administrative workflows</text>
-              </g>
-
-              <g transform="translate(0,130)">
-                <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
-                <text class="semibold ink" font-size="26" x="30" y="20">Board-ready artifacts</text>
-              </g>
-            </g>
+        <!-- Single bullet statement -->
+        <g transform="translate(0,206)">
+          <rect x="0" y="0" width="1120" height="58" rx="16"
+                fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+          <g transform="translate(18,18)">
+            <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
+            <text x="34" y="20" class="semibold ink" font-size="24">
+              We relocate risk out of people and into governed systems.
+            </text>
           </g>
         </g>
 
-        <!-- RIGHT -->
-        <g transform="translate(1145,0)">
-          <rect x="0" y="0" width="1105" height="560" rx="26"
-                fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"
-                filter="url(#matteShadow)"/>
-
-          <g transform="translate(54,66)">
-            <text class="h1 ink" font-size="40" x="0" y="0">Dr. Allison Weiss Rothschild, PsyD, LICSW, BCBA</text>
-            <text class="caps muted2" font-size="18" x="0" y="44">Institutional · Behavioral Systems Partner</text>
-
-            <g transform="translate(0,92)">
-              <text class="reg muted" font-size="28" y="0">
-                Organizational psychologist specializing in leadership systems for
-              </text>
-              <text class="reg muted" font-size="28" y="40">
-                public-serving organizations and high-accountability work.
-              </text>
-              <text class="reg muted" font-size="28" y="80">
-                Builds structures aligned with human capacity limits and compliance.
-              </text>
-            </g>
-
-            <g transform="translate(0,240)">
-              <text class="smallcaps" font-size="18" fill="#64748B">Specialties</text>
-
-              <g transform="translate(0,34)">
-                <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
-                <text class="semibold ink" font-size="26" x="30" y="20">Capacity-safe governance</text>
-              </g>
-
-              <g transform="translate(0,82)">
-                <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
-                <text class="semibold ink" font-size="26" x="30" y="20">Burnout prevention structures</text>
-              </g>
-
-              <g transform="translate(0,130)">
-                <circle cx="10" cy="10" r="6" fill="#3F6D5A"/>
-                <text class="semibold ink" font-size="26" x="30" y="20">Accountability without overload</text>
-              </g>
-            </g>
+        <!-- NEW: training + look us up + focus (tight, premium, not cluttered) -->
+        <g transform="translate(1180,206)">
+          <rect x="0" y="0" width="1080" height="58" rx="16"
+                fill="#FFFFFF" stroke="url(#plGreenGrad)" stroke-width="3" opacity="0.98"/>
+          <g transform="translate(18,18)">
+            <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
+            <text x="34" y="20" class="semibold ink" font-size="24">
+              Training included · Start small · Look us up at publiclogic.org
+            </text>
           </g>
         </g>
       </g>
+    </g>
 
-      <!-- FOOT -->
-      <g transform="translate(0,1415)">
-        <text class="reg muted2" font-size="20" x="0" y="0">© 2026 PublicLogic LLC</text>
-        <text class="smallcaps" font-size="20" x="2250" y="0" text-anchor="end" fill="#3F6D5A">
-          SMART SYSTEMS. STRONGER COMMUNITIES.
+    <!-- VAULT STRIP + OVALS -->
+    <g transform="translate(0,570)">
+      <rect x="0" y="0" width="2330" height="92" rx="22"
+            fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"
+            filter="url(#microShadow)"/>
+
+      <!-- Left description -->
+      <g transform="translate(30,28)">
+        <text class="caps muted2" font-size="16">VAULT™ Governance Framework</text>
+        <text class="reg muted" font-size="20" y="28">
+          Institutional systems designed to hold under pressure, turnover, and scrutiny.
         </text>
       </g>
 
+      <!-- Right: Structure First / Automation Second ovals -->
+      <g transform="translate(1630,20)">
+        <!-- Structure First -->
+        <g>
+          <rect x="0" y="0" width="260" height="52" rx="26"
+                fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+          <text x="130" y="34" text-anchor="middle"
+                class="smallcaps" font-size="16" fill="#0B1B3A">Structure first</text>
+        </g>
+
+        <!-- Automation Second -->
+        <g transform="translate(280,0)">
+          <rect x="0" y="0" width="300" height="52" rx="26"
+                fill="#FFFFFF" stroke="url(#plGreenGrad)" stroke-width="3"/>
+          <text x="150" y="34" text-anchor="middle"
+                class="smallcaps" font-size="16" fill="#3F6D5A">Automation second</text>
+        </g>
+      </g>
     </g>
+
+    <!-- SERVICES ROW (restored) -->
+    <g transform="translate(0,680)">
+      <rect x="0" y="0" width="2330" height="64" rx="18"
+            fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+
+      <g transform="translate(30,42)">
+        <text class="caps muted2" font-size="16">Services</text>
+      </g>
+
+      <g transform="translate(250,18)">
+        <g>
+          <rect x="0" y="0" width="520" height="40" rx="20"
+                fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+          <circle cx="22" cy="20" r="6" fill="#3F6D5A"/>
+          <text x="42" y="26" class="semibold ink" font-size="18">Authority mapping</text>
+        </g>
+
+        <g transform="translate(540,0)">
+          <rect x="0" y="0" width="560" height="40" rx="20"
+                fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+          <circle cx="22" cy="20" r="6" fill="#3F6D5A"/>
+          <text x="42" y="26" class="semibold ink" font-size="18">Workflow stabilization</text>
+        </g>
+
+        <g transform="translate(1120,0)">
+          <rect x="0" y="0" width="560" height="40" rx="20"
+                fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+          <circle cx="22" cy="20" r="6" fill="#3F6D5A"/>
+          <text x="42" y="26" class="semibold ink" font-size="18">Board-ready artifacts</text>
+        </g>
+
+        <!-- NEW: Training chip -->
+        <g transform="translate(1700,0)">
+          <rect x="0" y="0" width="420" height="40" rx="20"
+                fill="#FFFFFF" stroke="url(#plGreenGrad)" stroke-width="3"/>
+          <circle cx="22" cy="20" r="6" fill="#3F6D5A"/>
+          <text x="42" y="26" class="semibold ink" font-size="18">Training + enablement</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- TEAM CARDS (kept as-is, clean, no drift) -->
+    <g transform="translate(0,770)">
+      <!-- Left card -->
+      <g>
+        <rect x="0" y="0" width="1140" height="520" rx="26"
+              fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"
+              filter="url(#matteShadow)"/>
+
+        <g transform="translate(44,64)">
+          <text class="bold ink" font-size="34">Nathan Boudreau, MPA, MCPPO</text>
+          <text class="caps muted2" font-size="16" y="32">Founder · Systems Architect</text>
+
+          <g transform="translate(0,88)">
+            <text class="reg muted" font-size="24" y="0">
+              15+ years of hands-on municipal leadership in Massachusetts.
+            </text>
+            <text class="reg muted" font-size="24" y="36">
+              Translates statutory and fiduciary obligations into durable structure
+            </text>
+            <text class="reg muted" font-size="24" y="72">
+              that reduces risk, protects staff, and preserves continuity under scrutiny.
+            </text>
+          </g>
+
+          <g transform="translate(0,212)">
+            <rect x="0" y="0" width="1052" height="220" rx="22"
+                  fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+            <g transform="translate(28,50)">
+              <text class="smallcaps" font-size="18" fill="#64748B">Focus</text>
+
+              <g transform="translate(0,32)">
+                <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
+                <text x="32" y="22" class="semibold ink" font-size="22">Authority mapping</text>
+              </g>
+
+              <g transform="translate(0,84)">
+                <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
+                <text x="32" y="22" class="semibold ink" font-size="22">Finance and administrative workflows</text>
+              </g>
+
+              <g transform="translate(0,136)">
+                <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
+                <text x="32" y="22" class="semibold ink" font-size="22">Board-ready artifacts</text>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+
+      <!-- Right card -->
+      <g transform="translate(1190,0)">
+        <rect x="0" y="0" width="1140" height="520" rx="26"
+              fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"
+              filter="url(#matteShadow)"/>
+
+        <g transform="translate(44,64)">
+          <text class="bold ink" font-size="34">Dr. Allison Weiss Rothschild, PsyD, LICSW, BCBA</text>
+          <text class="caps muted2" font-size="16" y="32">Institutional · Behavioral Systems Partner</text>
+
+          <g transform="translate(0,88)">
+            <text class="reg muted" font-size="24" y="0">
+              Organizational psychologist specializing in leadership systems for
+            </text>
+            <text class="reg muted" font-size="24" y="36">
+              public-serving organizations and high-accountability work.
+            </text>
+            <text class="reg muted" font-size="24" y="72">
+              Builds structures aligned with human capacity limits and compliance.
+            </text>
+          </g>
+
+          <g transform="translate(0,212)">
+            <rect x="0" y="0" width="1052" height="220" rx="22"
+                  fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+            <g transform="translate(28,50)">
+              <text class="smallcaps" font-size="18" fill="#64748B">Focus</text>
+
+              <g transform="translate(0,32)">
+                <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
+                <text x="32" y="22" class="semibold ink" font-size="22">Capacity-safe governance</text>
+              </g>
+
+              <g transform="translate(0,84)">
+                <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
+                <text x="32" y="22" class="semibold ink" font-size="22">Burnout prevention structures</text>
+              </g>
+
+              <g transform="translate(0,136)">
+                <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
+                <text x="32" y="22" class="semibold ink" font-size="22">Accountability without overload</text>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+
+    <!-- FOOTER (subtle, balanced) -->
+    <g transform="translate(0,1420)">
+      <text class="reg muted2" font-size="18" x="0" y="0">© 2026 PublicLogic LLC</text>
+      <text class="smallcaps" font-size="18" x="2330" y="0" text-anchor="end" fill="#3F6D5A">SMART SYSTEMS. STRONGER COMMUNITIES.</text>
+    </g>
+
   </g>
 </svg>

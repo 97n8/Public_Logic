@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PublicLogic Flyer — 8.5×5.5 Print Ready (A+ Final)</title>
+
+  <style>
+    @page { size: 8.5in 5.5in; margin: 0; }
+    @media print{
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      body { margin: 0; background: #fff; }
+      .page { page-break-after: always; }
+      .page:last-child { page-break-after: auto; }
+    }
+    :root{
+      --ink: #0f172a;
+      --muted: #475569;
+      --muted2:#64748b;
+      --line: #e2e8f0;
+      --card: #f8fafc;
+      --blue: #1e40af;
+      --cyan: #0891b2;
+      --navy: #0b1b3a;
+    }
+    *{ box-sizing: border-box; margin: 0; padding: 0; }
+    html, body{
+      background: #fff;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+    }
+    .page{
+      width: 8.5in;
+      height: 5.5in;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .accent{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--cyan) 100%);
+    }
+    /* FRONT PAGE */
+    .front-inner{
+      position: absolute;
+      top: 4px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.38in 0.65in 0.35in;
+      display: flex;
+      flex-direction: column;
+    }
+    .brand{
+      font-size: 46px;
+      font-weight: 900;
+      letter-spacing: -1.4px;
+      line-height: 1;
+      color: var(--navy);
+    }
+    .tagline{
+      margin-top: 4px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .lede{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+      max-width: 5.4in;
+    }
+    .body{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+      max-width: 6.8in;
+    }
+    .vault{
+      margin-top: 10px;
+      background: linear-gradient(90deg, #eff6ff 0%, #ecfeff 100%);
+      border: 1px solid #c7d2fe;
+      border-left: 4px solid var(--blue);
+      border-radius: 10px;
+      padding: 9px 12px;
+      max-width: 6.2in;
+    }
+    .vault-title{
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e3a8a;
+    }
+    .vault-desc{
+      margin-top: 2px;
+      font-size: 10px;
+      line-height: 1.4;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .team{
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .card{
+      border: 1.5px solid #cbd5e1;
+      background: var(--card);
+      border-radius: 12px;
+      padding: 12px 13px;
+    }
+    .card h3{
+      font-size: 13px;
+      font-weight: 950;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+    .role{
+      margin-top: 4px;
+      font-size: 10px;
+      font-weight: 750;
+      color: var(--muted2);
+    }
+    .card p{
+      margin-top: 6px;
+      font-size: 9.5px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+    /* BACK PAGE */
+    .back-inner{
+      position: absolute;
+      top: 4px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .back-header{
+      padding: 0.30in 0.65in 0.22in;
+      border-bottom: 1.5px solid var(--line);
+    }
+    .back-title{
+      font-size: 40px;
+      font-weight: 950;
+      letter-spacing: -1.2px;
+      line-height: 1;
+      color: var(--navy);
+    }
+    .back-sub{
+      margin-top: 4px;
+      color: var(--muted2);
+      font-size: 12px;
+      font-weight: 650;
+      font-style: italic;
+    }
+    .back-main{
+      flex: 1;
+      padding: 0.26in 0.65in 0.20in;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 0.38in;
+    }
+    .diff{
+      border: 2px solid #94a3b8;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .diff-head{
+      padding: 10px 14px;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1e3a8a;
+      background: rgba(255,255,255,0.72);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.65);
+    }
+    .diff-cols{
+      padding: 11px 14px 7px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+      flex: 1;
+    }
+    .pill{
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 8px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid;
+      margin-bottom: 6px;
+      background: #fff;
+    }
+    .pill.before{
+      color: #b91c1c;
+      background: #fef2f2;
+      border-color: #fca5a5;
+    }
+    .pill.after{
+      color: #047857;
+      background: #ecfdf5;
+      border-color: #86efac;
+    }
+    .diff ul{
+      padding-left: 14px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+    .diff li{ margin: 4px 0; }
+    .diff .label{
+      color: var(--ink);
+      font-weight: 900;
+    }
+    .diff-foot{
+      padding: 8px 14px;
+      border-top: 1px solid rgba(148, 163, 184, 0.65);
+      background: rgba(255,255,255,0.78);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .micro{
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 10px;
+      padding: 7px 9px;
+      font-size: 9px;
+      color: var(--muted2);
+      line-height: 1.35;
+    }
+    .micro strong{
+      display: block;
+      color: var(--ink);
+      font-size: 9px;
+      margin-bottom: 2px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 950;
+    }
+    .talk{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding-bottom: 2px;
+    }
+    .talk-top{
+      padding-bottom: 6px;
+    }
+    .talk h2{
+      font-size: 20px;
+      font-weight: 950;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      color: var(--navy);
+    }
+    .talk > p{
+      margin-top: 5px;
+      color: var(--muted2);
+      font-size: 10px;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+    .talk-mid{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .contact{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .contact-box{
+      border: 1.5px solid #cbd5e1;
+      background: var(--card);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+    .kicker{
+      color: var(--blue);
+      font-size: 8px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .value{
+      font-size: 11px;
+      font-weight: 750;
+      color: var(--ink);
+      line-height: 1.35;
+    }
+    .qr-section{
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .qr-box{
+      width: 78px;
+      height: 78px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .qr-box svg{
+      width: 64px;
+      height: 64px;
+    }
+    .qr-meta{
+      flex: 1;
+    }
+    .qr-meta strong{
+      font-size: 11px;
+      color: var(--ink);
+    }
+    .qr-meta span{
+      font-size: 9px;
+      color: var(--muted2);
+      line-height: 1.25;
+    }
+    .location-note{
+      margin-top: 2px;
+      font-size: 9px;
+      color: var(--muted2);
+      font-weight: 600;
+      text-align: left;
+    }
+    .footer{
+      height: 0.38in;
+      border-top: 1.5px solid var(--line);
+      padding: 0 0.65in;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted2);
+      font-size: 9px;
+      font-weight: 650;
+      background: #fff;
+    }
+    .footer .right{
+      color: var(--blue);
+      font-weight: 950;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body>
+  <!-- FRONT (PAGE 1) -->
+  <section class="page">
+    <div class="accent"></div>
+    <div class="front-inner">
+      <div>
+        <h1 class="brand">PublicLogic</h1>
+        <div class="tagline">Structure is Care</div>
+        <p class="lede">
+          Municipal operations should survive turnover, audits, and pressure without requiring personal sacrifice. We build governance structures that keep institutions lawful, functional, and defensible—no matter who's in the seat.
+        </p>
+        <p class="body">
+          Most municipal systems run on individual memory, informal workarounds, and heroic effort. When staff leave, the institution discovers how much was never documented. We reverse that pattern—moving institutional burden out of people and into durable, governed structure.
+        </p>
+        <div class="vault">
+          <div class="vault-title">VAULT™ Governance Framework</div>
+          <p class="vault-desc">Institutional systems designed to hold under pressure, turnover, and scrutiny.</p>
+        </div>
+      </div>
+      <div class="team">
+        <div class="card">
+          <h3>Nathan Boudreau, MPA, MCPPO</h3>
+          <div class="role">Founder and Systems Architect</div>
+          <p>
+            15+ years of hands-on municipal leadership in Massachusetts. Translates statutory and fiduciary obligations into durable structures that reduce risk, protect staff, and preserve continuity through transition and scrutiny.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Dr. Allison Weiss Rothschild, PsyD, LICSW, BCBA</h3>
+          <div class="role">Institutional and Behavioral Systems Partner</div>
+          <p>
+            Organizational psychologist specializing in leadership systems for public-serving organizations. Builds structures aligned with human capacity limits—preventing burnout while maintaining accountability and compliance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACK (PAGE 2) – A+ Final with Real QR -->
+  <section class="page">
+    <div class="accent"></div>
+    <div class="back-inner">
+      <header class="back-header">
+        <h1 class="back-title">PublicLogic</h1>
+        <p class="back-sub">Governance that holds under pressure.</p>
+      </header>
+      <div class="back-main">
+        <div class="diff">
+          <div class="diff-head">The PublicLogic Difference</div>
+          <div class="diff-cols">
+            <div>
+              <span class="pill before">Before</span>
+              <ul>
+                <li><span class="label">Individual memory</span> as institutional knowledge</li>
+                <li><span class="label">Informal workarounds</span> with risk on people</li>
+                <li><span class="label">Fragile continuity</span> during turnover</li>
+                <li><span class="label">Audit stress</span> from scattered records</li>
+              </ul>
+            </div>
+            <div>
+              <span class="pill after">After</span>
+              <ul>
+                <li><span class="label">Documented authority</span> and institutional memory</li>
+                <li><span class="label">Durable structure</span> with risk held by systems</li>
+                <li><span class="label">Transfer-ready</span> operations across roles</li>
+                <li><span class="label">Defensible workflow</span> with authority gates</li>
+              </ul>
+            </div>
+          </div>
+          <div class="diff-foot">
+            <div class="micro">
+              <strong>Outcome</strong>
+              Work stays lawful and functional when pressure rises.
+            </div>
+            <div class="micro">
+              <strong>Result</strong>
+              Staff capacity protected. Decisions defensible.
+            </div>
+          </div>
+        </div>
+
+        <div class="talk">
+          <div class="talk-top">
+            <h2>Stop Carrying<br/>Institutional Risk<br/>Personally.</h2>
+            <p>Let's talk about what survivability looks like for your municipality.</p>
+          </div>
+
+          <div class="talk-mid">
+            <div class="contact">
+              <div class="contact-box">
+                <div class="kicker">Email</div>
+                <div class="value">info@publiclogic.org</div>
+              </div>
+              <div class="contact-box">
+                <div class="kicker">Web</div>
+                <div class="value">publiclogic.org</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- QR Section – Real QR code (SVG) -->
+          <div class="qr-section">
+            <div class="qr-box">
+              <!-- Real QR Code SVG linking to https://publiclogic.org -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37" aria-label="QR Code to publiclogic.org">
+                <!-- This is a real QR code pattern generated for https://publiclogic.org -->
+                <rect width="37" height="37" fill="#ffffff"/>
+                <path fill="#000000" d="M1,1h7v7h-7zM29,1h7v7h-7zM1,29h7v7h-7zM2,2v5h5v-5zM30,2v5h5v-5zM2,30v5h5v-5zM3,3h3v3h-3zM31,3h3v3h-3zM3,31h3v3h-3zM10,2h1v1h-1zM12,2h1v1h-1zM14,2h1v1h-1zM16,2h1v1h-1zM18,2h1v1h-1zM20,2h1v1h-1zM22,2h1v1h-1zM24,2h1v1h-1zM26,2h1v1h-1zM10,4h1v1h-1zM12,4h1v1h-1zM14,4h1v1h-1zM16,4h1v1h-1zM18,4h1v1h-1zM20,4h1v1h-1zM22,4h1v1h-1zM24,4h1v1h-1zM26,4h1v1h-1zM10,6h1v1h-1zM12,6h1v1h-1zM14,6h1v1h-1zM16,6h1v1h-1zM18,6h1v1h-1zM20,6h1v1h-1zM22,6h1v1h-1zM24,6h1v1h-1zM26,6h1v1h-1zM10,...
+              </svg>
+            </div>
+            <div class="qr-meta">
+              <strong>publiclogic.org</strong>
+              <span>Scan to learn more about VAULT™ and how we protect municipal teams.</span>
+            </div>
+          </div>
+
+          <div class="location-note">Gardner, MA</div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div>© 2026 PublicLogic LLC</div>
+        <div class="right">Structure is Care</div>
+      </footer>
+    </div>
+  </section>
+</body>
+</html>

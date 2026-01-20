@@ -212,6 +212,14 @@
       font-weight:700;
     }
 
+    .logo{
+      font-size:13px;
+      font-weight:600;
+      color:var(--muted);
+      letter-spacing:0.01em;
+      margin-bottom:20px;
+    }
+
     .footerline{
       margin-top: 18px;
       text-align:center;
@@ -229,13 +237,31 @@
         border:none;
         border-radius:0;
         box-shadow:none;
-        padding: 0.75in;
+        padding: 0.5in 0.75in;
       }
       a{ color: var(--ink); text-decoration:none; }
       .cta a.btn{
         border:1px solid var(--line);
         background:#ffffff;
         color:var(--ink);
+      }
+      .quote{
+        page-break-inside: avoid;
+      }
+      .about{
+        page-break-inside: avoid;
+      }
+      .cta{
+        page-break-inside: avoid;
+      }
+      .highlight-box{
+        page-break-inside: avoid;
+      }
+      hr{
+        page-break-after: avoid;
+      }
+      h3{
+        page-break-after: avoid;
       }
     }
   </style>
@@ -244,6 +270,7 @@
 <body>
   <main class="wrap">
     <article class="release" aria-label="Press Release">
+      <div class="logo">PublicLogic</div>
       <header class="topbar">
         <div>
           <p class="kicker">Press Release</p>

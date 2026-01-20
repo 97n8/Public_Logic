@@ -1,629 +1,274 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PublicLogic Flyer — 8.5×5.5 Print Ready (Commercial Grade Final)</title>
-  <style>
-    @page { size: 8.5in 5.5in; margin: 0; }
-    @media print {
-      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-      body { margin: 0; background: #fff; }
-      .page { page-break-after: always; }
-      .page:last-child { page-break-after: auto; }
-    }
-    :root {
-      --ink: #0f172a;
-      --muted: #475569;
-      --muted2: #64748b;
-      --line: #e2e8f0;
-      --card: #f8fafc;
-      --blue: #1e40af;
-      --cyan: #0891b2;
-      --navy: #0b1b3a;
-      --red: #b91c1c;
-      --green: #047857;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-      background: #fff;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--ink);
-    }
-    .page {
-      width: 8.5in;
-      height: 5.5in;
-      background: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-    .accent {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 5px;
-      background: linear-gradient(90deg, var(--blue) 0%, var(--cyan) 100%);
-    }
-    /* Professional SVG Logo – Your exact branding */
-    .logo-svg {
-      width: 100%;
-      max-width: 4.2in;
-      height: auto;
-      display: block;
-      margin: 0 auto 0.35in;
-    }
-    /* FRONT PAGE – Your original content with commercial-grade spacing */
-    .front-inner {
-      position: absolute;
-      top: 5px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 0.48in 0.78in 0.38in;
-      display: flex;
-      flex-direction: column;
-    }
-    .lede {
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 13.5px;
-      line-height: 1.55;
-      max-width: 5.6in;
-    }
-    .body {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.65;
-      max-width: 7in;
-    }
-    .vault {
-      margin-top: 16px;
-      background: linear-gradient(90deg, #eff6ff 0%, #ecfeff 100%);
-      border: 1px solid #c7d2fe;
-      border-left: 5px solid var(--blue);
-      border-radius: 12px;
-      padding: 12px 16px;
-      max-width: 6.4in;
-    }
-    .vault-title {
-      font-size: 11.5px;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #1e3a8a;
-    }
-    .vault-desc {
-      margin-top: 4px;
-      font-size: 11px;
-      line-height: 1.5;
-      color: var(--muted);
-      font-weight: 600;
-    }
-    .team {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-    }
-    .card {
-      border: 1.5px solid #cbd5e1;
-      background: var(--card);
-      border-radius: 14px;
-      padding: 16px;
-    }
-    .card h3 {
-      font-size: 14.5px;
-      font-weight: 950;
-      line-height: 1.2;
-      color: var(--ink);
-    }
-    .role {
-      margin-top: 6px;
-      font-size: 11px;
-      font-weight: 750;
-      color: var(--muted2);
-    }
-    .card p {
-      margin-top: 10px;
-      font-size: 10.5px;
-      line-height: 1.55;
-      color: var(--muted);
-    }
-    /* BACK PAGE – Your original structure with commercial-grade polish */
-    .back-inner {
-      position: absolute;
-      top: 5px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: flex;
-      flex-direction: column;
-    }
-    .back-header {
-      padding: 0.34in 0.72in 0.24in;
-      border-bottom: 1.5px solid var(--line);
-      text-align: center;
-    }
-    .back-sub {
-      margin-top: 8px;
-      color: var(--muted2);
-      font-size: 13px;
-      font-weight: 650;
-      font-style: italic;
-    }
-    .back-main {
-      flex: 1;
-      padding: 0.28in 0.72in 0.20in;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 0.40in;
-    }
-    .diff {
-      border: 2px solid #94a3b8;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .diff-head {
-      padding: 12px 16px;
-      text-align: center;
-      font-size: 11.5px;
-      font-weight: 950;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #1e3a8a;
-      background: rgba(255,255,255,0.72);
-      border-bottom: 1px solid rgba(148,163,184,0.65);
-    }
-    .diff-cols {
-      padding: 16px 18px 12px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      flex: 1;
-    }
-    .pill {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 9.5px;
-      font-weight: 950;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: 1px solid;
-      margin-bottom: 12px;
-      background: #fff;
-    }
-    .pill.before { color: var(--red); background: #fef2f2; border-color: #fca5a5; }
-    .pill.after { color: var(--green); background: #ecfdf5; border-color: #86efac; }
-    .diff ul {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.6;
-    }
-    .diff li { margin: 6px 0; }
-    .diff .label {
-      color: var(--ink);
-      font-weight: 900;
-    }
-    .diff-foot {
-      padding: 12px 16px;
-      border-top: 1px solid rgba(148,163,184,0.65);
-      background: rgba(255,255,255,0.78);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .micro {
-      border: 1px solid var(--line);
-      background: #fff;
-      border-radius: 12px;
-      padding: 10px 12px;
-      font-size: 10px;
-      color: var(--muted2);
-      line-height: 1.45;
-    }
-    .micro strong {
-      display: block;
-      color: var(--ink);
-      font-size: 10px;
-      margin-bottom: 4px;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      font-weight: 950;
-    }
-    .talk {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-    .talk h2 {
-      font-size: 24px;
-      font-weight: 950;
-      letter-spacing: -0.6px;
-      line-height: 1.15;
-      color: var(--navy);
-    }
-    .talk > p {
-      margin: 8px 0 14px;
-      color: var(--muted2);
-      font-size: 12px;
-      line-height: 1.5;
-      font-weight: 600;
-    }
-    .contact-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 14px;
-      border: 1.5px solid #cbd5e1;
-      background: var(--card);
-      border-radius: 14px;
-    }
-    .contact-chip {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-    }
-    .contact-chip .icon {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-    }
-    .contact-chip .icon svg {
-      width: 20px;
-      height: 20px;
-      display: block;
-    }
-    .contact-chip .text {
-      font-size: 12px;
-      font-weight: 900;
-      color: var(--navy);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .qr-wrap {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-top: 12px;
-      padding: 12px 14px;
-      border: 1.5px solid #cbd5e1;
-      background: #fff;
-      border-radius: 14px;
-    }
-    .qr-box {
-      width: 78px;
-      height: 78px;
-      border: 1.5px solid #cbd5e1;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      background: #fff;
-    }
-    .qr-box svg {
-      width: 64px;
-      height: 64px;
-      display: block;
-    }
-    .qr-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .qr-meta strong {
-      font-size: 11.5px;
-      color: var(--ink);
-    }
-    .qr-meta span {
-      font-size: 10px;
-      color: var(--muted2);
-      line-height: 1.35;
-    }
-    .location-note {
-      margin-top: 10px;
-      font-size: 10.5px;
-      color: var(--muted2);
-      text-align: center;
-      font-weight: 600;
-    }
-    .footer {
-      height: 0.40in;
-      border-top: 1.5px solid var(--line);
-      padding: 0 0.72in;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: var(--muted2);
-      font-size: 10px;
-      font-weight: 650;
-      background: #fff;
-    }
-    .footer .right {
-      color: var(--blue);
-      font-weight: 950;
-      letter-spacing: 0.02em;
-    }
-  </style>
-</head>
-<body>
-  <!-- FRONT PAGE -->
-  <section class="page">
-    <div class="accent"></div>
-    <div class="front-inner">
-      <div>
-        <!-- Your branding logo -->
-        <svg class="logo-svg" viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" aria-label="PublicLogic Logo">
-          <defs>
-            <linearGradient id="plGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#1e40af"/>
-              <stop offset="100%" stop-color="#0891b2"/>
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="500" height="8" rx="4" fill="url(#plGradient)"/>
-          <text x="250" y="110" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
-                font-size="92" font-weight="900" fill="#0b1b3a" text-anchor="middle" letter-spacing="-1.8">
-            PublicLogic
-          </text>
-          <text x="250" y="145" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
-                font-size="22" font-weight="900" fill="#1e40af" text-anchor="middle" letter-spacing="3.2" text-transform="uppercase">
-            Structure is Care
-          </text>
-          <rect x="140" y="152" width="220" height="4" rx="2" fill="url(#plGradient)" opacity="0.9"/>
-        </svg>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="2550" height="1650"
+     viewBox="0 0 2550 1650"
+     preserveAspectRatio="xMidYMid meet"
+     role="img"
+     aria-label="PublicLogic Flyer Back - Matte Commercial - 8.5x5.5">
 
-        <p class="lede">
-          Municipal operations should survive turnover, audits, and pressure without requiring personal sacrifice. We build governance structures that keep institutions lawful, functional, and defensible—no matter who's in the seat.
-        </p>
-        <p class="body">
-          Most municipal systems run on individual memory, informal workarounds, and heroic effort. When staff leave, the institution discovers how much was never documented. We reverse that pattern—moving institutional burden out of people and into durable, governed structure.
-        </p>
-        <div class="vault">
-          <div class="vault-title">VAULT™ Governance Framework</div>
-          <p class="vault-desc">Institutional systems designed to hold under pressure, turnover, and scrutiny.</p>
-        </div>
-      </div>
-      <div class="team">
-        <div class="card">
-          <h3>Nathan Boudreau, MPA, MCPPO</h3>
-          <div class="role">Founder and Systems Architect</div>
-          <p>
-            15+ years of hands-on municipal leadership in Massachusetts. Translates statutory and fiduciary obligations into durable structures that reduce risk, protect staff, and preserve continuity through transition and scrutiny.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Dr. Allison Weiss Rothschild, PsyD, LICSW, BCBA</h3>
-          <div class="role">Institutional and Behavioral Systems Partner</div>
-          <p>
-            Organizational psychologist specializing in leadership systems for public-serving organizations. Builds structures aligned with human capacity limits—preventing burnout while maintaining accountability and compliance.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <defs>
+    <linearGradient id="plGreenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3F6D5A"/>
+      <stop offset="100%" stop-color="#7FAE95"/>
+    </linearGradient>
 
-  <!-- BACK PAGE -->
-  <section class="page">
-    <div class="accent"></div>
-    <div class="back-inner">
-      <header class="back-header">
-        <svg class="logo-svg" viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" aria-label="PublicLogic Logo">
-          <defs>
-            <linearGradient id="plGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#1e40af"/>
-              <stop offset="100%" stop-color="#0891b2"/>
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="500" height="8" rx="4" fill="url(#plGradient)"/>
-          <text x="250" y="110" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
-                font-size="92" font-weight="900" fill="#0b1b3a" text-anchor="middle" letter-spacing="-1.8">
-            PublicLogic
-          </text>
-          <text x="250" y="145" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
-                font-size="22" font-weight="900" fill="#1e40af" text-anchor="middle" letter-spacing="3.2" text-transform="uppercase">
-            Structure is Care
-          </text>
-          <rect x="140" y="152" width="220" height="4" rx="2" fill="url(#plGradient)" opacity="0.9"/>
-        </svg>
-        <p class="back-sub">Governance that holds under pressure.</p>
-      </header>
-      <div class="back-main">
-        <div class="diff">
-          <div class="diff-head">The PublicLogic Difference</div>
-          <div class="diff-cols">
-            <div>
-              <span class="pill before">Before</span>
-              <ul>
-                <li><span class="label">Individual memory</span> as institutional knowledge</li>
-                <li><span class="label">Informal workarounds</span> with risk on people</li>
-                <li><span class="label">Fragile continuity</span> during turnover</li>
-                <li><span class="label">Audit stress</span> from scattered records</li>
-              </ul>
-            </div>
-            <div>
-              <span class="pill after">After</span>
-              <ul>
-                <li><span class="label">Documented authority</span> and institutional memory</li>
-                <li><span class="label">Durable structure</span> with risk held by systems</li>
-                <li><span class="label">Transfer-ready</span> operations across roles</li>
-                <li><span class="label">Defensible workflow</span> with authority gates</li>
-              </ul>
-            </div>
-          </div>
-          <div class="diff-foot">
-            <div class="micro">
-              <strong>Outcome</strong>
-              Work stays lawful and functional when pressure rises.
-            </div>
-            <div class="micro">
-              <strong>Result</strong>
-              Staff capacity protected. Decisions defensible.
-            </div>
-          </div>
-        </div>
-        <div class="talk">
-          <h2>Stop Carrying<br/>Institutional Risk<br/>Personally.</h2>
-          <p>Let's talk about what survivability looks like for your municipality.</p>
-          <div class="contact-row">
-            <div class="contact-chip">
-              <span class="icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4 6h16v12H4V6z" fill="none" stroke="#0b1b3a" stroke-width="2" stroke-linejoin="round"/>
-                  <path d="M4 7l8 6 8-6" fill="none" stroke="#0891b2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <span class="text">info@publiclogic.org</span>
-            </div>
-            <div class="contact-chip">
-              <span class="icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="9" fill="none" stroke="#0b1b3a" stroke-width="2"/>
-                  <path d="M3 12h18" fill="none" stroke="#0891b2" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M12 3c3 3 3 15 0 18" fill="none" stroke="#0891b2" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M12 3c-3 3-3 15 0 18" fill="none" stroke="#0891b2" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </span>
-              <span class="text">publiclogic.org</span>
-            </div>
-          </div>
-          <div class="qr-wrap">
-            <div class="qr-box">
-              <!-- Real QR code for https://publiclogic.org (high reliability for print) -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29">
-                <rect width="29" height="29" fill="#fff"/>
-                <rect x="0" y="0" width="7" height="7" fill="#000"/>
-                <rect x="22" y="0" width="7" height="7" fill="#000"/>
-                <rect x="0" y="22" width="7" height="7" fill="#000"/>
-                <rect x="2" y="2" width="3" height="3" fill="#fff"/>
-                <rect x="24" y="2" width="3" height="3" fill="#fff"/>
-                <rect x="2" y="24" width="3" height="3" fill="#fff"/>
-                <rect x="4" y="4" width="1" height="1" fill="#000"/>
-                <rect x="24" y="4" width="1" height="1" fill="#000"/>
-                <rect x="4" y="24" width="1" height="1" fill="#000"/>
-                <rect x="8" y="1" width="1" height="1" fill="#000"/>
-                <rect x="10" y="1" width="1" height="1" fill="#000"/>
-                <rect x="12" y="1" width="1" height="1" fill="#000"/>
-                <rect x="14" y="1" width="1" height="1" fill="#000"/>
-                <rect x="16" y="1" width="1" height="1" fill="#000"/>
-                <rect x="18" y="1" width="1" height="1" fill="#000"/>
-                <rect x="20" y="1" width="1" height="1" fill="#000"/>
-                <rect x="8" y="3" width="1" height="1" fill="#000"/>
-                <rect x="12" y="3" width="1" height="1" fill="#000"/>
-                <rect x="16" y="3" width="1" height="1" fill="#000"/>
-                <rect x="20" y="3" width="1" height="1" fill="#000"/>
-                <rect x="8" y="5" width="1" height="1" fill="#000"/>
-                <rect x="10" y="5" width="1" height="1" fill="#000"/>
-                <rect x="12" y="5" width="1" height="1" fill="#000"/>
-                <rect x="14" y="5" width="1" height="1" fill="#000"/>
-                <rect x="16" y="5" width="1" height="1" fill="#000"/>
-                <rect x="18" y="5" width="1" height="1" fill="#000"/>
-                <rect x="20" y="5" width="1" height="1" fill="#000"/>
-                <rect x="1" y="8" width="1" height="1" fill="#000"/>
-                <rect x="3" y="8" width="1" height="1" fill="#000"/>
-                <rect x="5" y="8" width="1" height="1" fill="#000"/>
-                <rect x="8" y="8" width="1" height="1" fill="#000"/>
-                <rect x="10" y="8" width="1" height="1" fill="#000"/>
-                <rect x="12" y="8" width="1" height="1" fill="#000"/>
-                <rect x="14" y="8" width="1" height="1" fill="#000"/>
-                <rect x="16" y="8" width="1" height="1" fill="#000"/>
-                <rect x="18" y="8" width="1" height="1" fill="#000"/>
-                <rect x="20" y="8" width="1" height="1" fill="#000"/>
-                <rect x="1" y="10" width="1" height="1" fill="#000"/>
-                <rect x="5" y="10" width="1" height="1" fill="#000"/>
-                <rect x="8" y="10" width="1" height="1" fill="#000"/>
-                <rect x="12" y="10" width="1" height="1" fill="#000"/>
-                <rect x="16" y="10" width="1" height="1" fill="#000"/>
-                <rect x="20" y="10" width="1" height="1" fill="#000"/>
-                <rect x="1" y="12" width="1" height="1" fill="#000"/>
-                <rect x="3" y="12" width="1" height="1" fill="#000"/>
-                <rect x="5" y="12" width="1" height="1" fill="#000"/>
-                <rect x="8" y="12" width="1" height="1" fill="#000"/>
-                <rect x="10" y="12" width="1" height="1" fill="#000"/>
-                <rect x="12" y="12" width="1" height="1" fill="#000"/>
-                <rect x="14" y="12" width="1" height="1" fill="#000"/>
-                <rect x="16" y="12" width="1" height="1" fill="#000"/>
-                <rect x="18" y="12" width="1" height="1" fill="#000"/>
-                <rect x="20" y="12" width="1" height="1" fill="#000"/>
-                <rect x="1" y="14" width="1" height="1" fill="#000"/>
-                <rect x="5" y="14" width="1" height="1" fill="#000"/>
-                <rect x="8" y="14" width="1" height="1" fill="#000"/>
-                <rect x="12" y="14" width="1" height="1" fill="#000"/>
-                <rect x="16" y="14" width="1" height="1" fill="#000"/>
-                <rect x="20" y="14" width="1" height="1" fill="#000"/>
-                <rect x="1" y="16" width="1" height="1" fill="#000"/>
-                <rect x="3" y="16" width="1" height="1" fill="#000"/>
-                <rect x="5" y="16" width="1" height="1" fill="#000"/>
-                <rect x="8" y="16" width="1" height="1" fill="#000"/>
-                <rect x="10" y="16" width="1" height="1" fill="#000"/>
-                <rect x="12" y="16" width="1" height="1" fill="#000"/>
-                <rect x="14" y="16" width="1" height="1" fill="#000"/>
-                <rect x="16" y="16" width="1" height="1" fill="#000"/>
-                <rect x="18" y="16" width="1" height="1" fill="#000"/>
-                <rect x="20" y="16" width="1" height="1" fill="#000"/>
-                <rect x="1" y="18" width="1" height="1" fill="#000"/>
-                <rect x="5" y="18" width="1" height="1" fill="#000"/>
-                <rect x="8" y="18" width="1" height="1" fill="#000"/>
-                <rect x="12" y="18" width="1" height="1" fill="#000"/>
-                <rect x="16" y="18" width="1" height="1" fill="#000"/>
-                <rect x="20" y="18" width="1" height="1" fill="#000"/>
-                <rect x="1" y="20" width="1" height="1" fill="#000"/>
-                <rect x="3" y="20" width="1" height="1" fill="#000"/>
-                <rect x="5" y="20" width="1" height="1" fill="#000"/>
-                <rect x="8" y="20" width="1" height="1" fill="#000"/>
-                <rect x="10" y="20" width="1" height="1" fill="#000"/>
-                <rect x="12" y="20" width="1" height="1" fill="#000"/>
-                <rect x="14" y="20" width="1" height="1" fill="#000"/>
-                <rect x="16" y="20" width="1" height="1" fill="#000"/>
-                <rect x="18" y="20" width="1" height="1" fill="#000"/>
-                <rect x="20" y="20" width="1" height="1" fill="#000"/>
-                <rect x="1" y="22" width="1" height="1" fill="#000"/>
-                <rect x="5" y="22" width="1" height="1" fill="#000"/>
-                <rect x="8" y="22" width="1" height="1" fill="#000"/>
-                <rect x="12" y="22" width="1" height="1" fill="#000"/>
-                <rect x="16" y="22" width="1" height="1" fill="#000"/>
-                <rect x="20" y="22" width="1" height="1" fill="#000"/>
-                <rect x="1" y="24" width="1" height="1" fill="#000"/>
-                <rect x="3" y="24" width="1" height="1" fill="#000"/>
-                <rect x="5" y="24" width="1" height="1" fill="#000"/>
-                <rect x="8" y="24" width="1" height="1" fill="#000"/>
-                <rect x="10" y="24" width="1" height="1" fill="#000"/>
-                <rect x="12" y="24" width="1" height="1" fill="#000"/>
-                <rect x="14" y="24" width="1" height="1" fill="#000"/>
-                <rect x="16" y="24" width="1" height="1" fill="#000"/>
-                <rect x="18" y="24" width="1" height="1" fill="#000"/>
-                <rect x="20" y="24" width="1" height="1" fill="#000"/>
-                <rect x="1" y="26" width="1" height="1" fill="#000"/>
-                <rect x="5" y="26" width="1" height="1" fill="#000"/>
-                <rect x="8" y="26" width="1" height="1" fill="#000"/>
-                <rect x="12" y="26" width="1" height="1" fill="#000"/>
-                <rect x="16" y="26" width="1" height="1" fill="#000"/>
-                <rect x="20" y="26" width="1" height="1" fill="#000"/>
-              </svg>
-            </div>
-            <div class="qr-meta">
-              <strong>publiclogic.org</strong>
-              <span>Scan to learn more about VAULT™ and survivable municipal systems.</span>
-            </div>
-          </div>
-          <div class="location-note">Gardner, MA</div>
-        </div>
-      </div>
-      <footer class="footer">
-        <div>© 2026 PublicLogic LLC</div>
-        <div class="right">Structure is Care</div>
-      </footer>
-    </div>
-  </section>
-</body>
-</html>
+    <!-- Matte CTA gradient (less glossy) -->
+    <linearGradient id="ctaGreenGradMatte" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2F5846"/>
+      <stop offset="100%" stop-color="#4F7C68"/>
+    </linearGradient>
+
+    <linearGradient id="softGreenWash" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F6FBF8"/>
+      <stop offset="100%" stop-color="#EAF6EF"/>
+    </linearGradient>
+
+    <!-- Matte shadow (print-safe, no glow) -->
+    <filter id="matteShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0B1B3A" flood-opacity="0.10"/>
+    </filter>
+
+    <filter id="microShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0B1B3A" flood-opacity="0.08"/>
+    </filter>
+
+    <style>
+      .ink { fill:#0B1B3A; }
+      .muted { fill:#475569; }
+      .muted2 { fill:#64748B; }
+      .white { fill:#FFFFFF; }
+
+      .caps{
+        font-family: Arial, sans-serif;
+        font-weight: 850;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .h1{
+        font-family: Arial, sans-serif;
+        font-weight: 950;
+        letter-spacing: -0.02em;
+      }
+      .reg{
+        font-family: Arial, sans-serif;
+        font-weight: 600;
+      }
+      .semibold{
+        font-family: Arial, sans-serif;
+        font-weight: 700;
+      }
+      .bold{
+        font-family: Arial, sans-serif;
+        font-weight: 900;
+      }
+      .smallcaps{
+        font-family: Arial, sans-serif;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .mono{
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+    </style>
+  </defs>
+
+  <!-- FULL CANVAS BACKGROUND -->
+  <rect x="0" y="0" width="2550" height="1650" fill="url(#softGreenWash)"/>
+  <rect x="0" y="0" width="2550" height="18" fill="url(#plGreenGrad)"/>
+
+  <!-- Inner padding -->
+  <g transform="translate(110,90)">
+    <!-- Content area: 2330 × 1470 -->
+
+    <!-- HEADER -->
+    <g>
+      <text class="caps muted2" font-size="28" x="0" y="0">PublicLogic</text>
+
+      <text class="h1 ink" font-size="78" x="0" y="86">VAULT™ Governance Frameworks</text>
+
+      <g transform="translate(0,112)">
+        <rect x="0" y="0" width="1050" height="58" rx="29"
+              fill="#FFFFFF" stroke="url(#plGreenGrad)" stroke-width="3"
+              filter="url(#microShadow)"/>
+        <text x="525" y="39" text-anchor="middle"
+              class="smallcaps" font-size="24" fill="#3F6D5A">Structure first · Automation second</text>
+      </g>
+
+      <g transform="translate(2330,0)" text-anchor="end">
+        <text class="h1 ink" font-size="58" x="0" y="0">PublicLogic</text>
+        <rect x="-340" y="70" width="340" height="8" rx="4"
+              fill="url(#plGreenGrad)" opacity="0.9"/>
+        <text class="smallcaps" font-size="20" x="0" y="108" fill="#3F6D5A">SMART SYSTEMS. STRONGER COMMUNITIES.</text>
+      </g>
+    </g>
+
+    <!-- MAIN TOP ROW -->
+    <g transform="translate(0,220)">
+      <!-- Left card -->
+      <g>
+        <rect x="0" y="0" width="1030" height="560" rx="26"
+              fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"
+              filter="url(#matteShadow)"/>
+
+        <g transform="translate(40,58)">
+          <text class="caps muted2" font-size="22">The problem</text>
+          <text class="h1 ink" font-size="48" y="56">Pressure migrates to people.</text>
+
+          <g transform="translate(0,100)">
+            <text class="reg muted" font-size="31" y="0">When rules live in memory, the institution</text>
+            <text class="reg muted" font-size="31" y="42">runs on vigilance and heroics.</text>
+            <text class="bold ink" font-size="31" y="96">VAULT relocates risk into structure.</text>
+            <text class="reg muted" font-size="31" y="138">So work becomes defensible, transferable,</text>
+            <text class="reg muted" font-size="31" y="180">and survivable under turnover.</text>
+          </g>
+
+          <g transform="translate(0,292)">
+            <rect x="0" y="0" width="950" height="210" rx="22"
+                  fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+            <g transform="translate(28,46)">
+              <text class="smallcaps" font-size="20" fill="#64748B">What VAULT produces</text>
+
+              <g transform="translate(0,32)">
+                <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
+                <text x="32" y="22" class="semibold ink" font-size="27">Authority clarity</text>
+              </g>
+
+              <g transform="translate(0,82)">
+                <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
+                <text x="32" y="22" class="semibold ink" font-size="27">Record-first defensibility</text>
+              </g>
+
+              <g transform="translate(0,132)">
+                <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
+                <text x="32" y="22" class="semibold ink" font-size="27">Turnover-proof continuity</text>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+
+      <!-- Right card -->
+      <g transform="translate(1090,0)">
+        <rect x="0" y="0" width="1240" height="560" rx="26"
+              fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"
+              filter="url(#matteShadow)"/>
+
+        <g transform="translate(40,58)">
+          <text class="caps muted2" font-size="22">How it works</text>
+          <text class="h1 ink" font-size="48" y="56">A governed cycle that holds.</text>
+
+          <g transform="translate(0,110)">
+            <!-- Step 1 -->
+            <g>
+              <rect x="0" y="0" width="590" height="175" rx="22"
+                    fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+              <g transform="translate(22,34)">
+                <rect x="0" y="0" width="56" height="56" rx="16" fill="url(#plGreenGrad)"/>
+                <text x="28" y="39" text-anchor="middle" class="mono" font-size="24" fill="#FFFFFF">01</text>
+                <text class="bold ink" font-size="32" x="82" y="38">Map authority</text>
+                <text class="reg muted" font-size="26" x="82" y="80">Make informal rules visible.</text>
+                <text class="reg muted" font-size="26" x="82" y="116">Document thresholds and gates.</text>
+              </g>
+            </g>
+
+            <!-- Step 2 -->
+            <g transform="translate(610,0)">
+              <rect x="0" y="0" width="590" height="175" rx="22"
+                    fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+              <g transform="translate(22,34)">
+                <rect x="0" y="0" width="56" height="56" rx="16" fill="url(#plGreenGrad)"/>
+                <text x="28" y="39" text-anchor="middle" class="mono" font-size="24" fill="#FFFFFF">02</text>
+                <text class="bold ink" font-size="32" x="82" y="38">Build artifacts</text>
+                <text class="reg muted" font-size="26" x="82" y="80">Policies, SOPs, templates.</text>
+                <text class="reg muted" font-size="26" x="82" y="116">Board-ready and town-owned.</text>
+              </g>
+            </g>
+
+            <!-- Step 3 -->
+            <g transform="translate(0,205)">
+              <rect x="0" y="0" width="590" height="175" rx="22"
+                    fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+              <g transform="translate(22,34)">
+                <rect x="0" y="0" width="56" height="56" rx="16" fill="url(#plGreenGrad)"/>
+                <text x="28" y="39" text-anchor="middle" class="mono" font-size="24" fill="#FFFFFF">03</text>
+                <text class="bold ink" font-size="32" x="82" y="38">Stabilize workflows</text>
+                <text class="reg muted" font-size="26" x="82" y="80">Finance and admin processes.</text>
+                <text class="reg muted" font-size="26" x="82" y="116">Transfer-ready by design.</text>
+              </g>
+            </g>
+
+            <!-- Step 4 -->
+            <g transform="translate(610,205)">
+              <rect x="0" y="0" width="590" height="175" rx="22"
+                    fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+              <g transform="translate(22,34)">
+                <rect x="0" y="0" width="56" height="56" rx="16" fill="url(#plGreenGrad)"/>
+                <text x="28" y="39" text-anchor="middle" class="mono" font-size="24" fill="#FFFFFF">04</text>
+                <text class="bold ink" font-size="32" x="82" y="38">Automate safely</text>
+                <text class="reg muted" font-size="26" x="82" y="80">Only after structure is real.</text>
+                <text class="reg muted" font-size="26" x="82" y="116">No fragile workflow theater.</text>
+              </g>
+            </g>
+          </g>
+
+          <g transform="translate(0,460)">
+            <rect x="0" y="0" width="1200" height="64" rx="18"
+                  fill="#FFFFFF" stroke="url(#plGreenGrad)" stroke-width="3"/>
+            <text x="600" y="44" text-anchor="middle"
+                  class="semibold ink" font-size="28">
+              The goal is not faster work. The goal is work that survives.
+            </text>
+          </g>
+        </g>
+      </g>
+    </g>
+
+    <!-- CTA BAND -->
+    <!-- Raised up + shorter height so it never touches bottom -->
+    <g transform="translate(0,820)">
+      <rect x="0" y="0" width="2330" height="560" rx="32"
+            fill="url(#ctaGreenGradMatte)" filter="url(#matteShadow)"/>
+      <rect x="0" y="0" width="2330" height="560" rx="32"
+            fill="none" stroke="#3F6D5A" stroke-width="3" opacity="0.22"/>
+
+      <!-- Left CTA -->
+      <g transform="translate(70,105)">
+        <text class="caps" font-size="22" fill="#E8F5EE">Next step</text>
+        <text class="h1 white" font-size="76" x="0" y="86">Let’s stabilize one high-pressure domain.</text>
+
+        <g transform="translate(0,132)">
+          <text class="reg white" font-size="34" x="0" y="0">Start with finance, clerk, DPW requests, or admin governance.</text>
+          <text class="reg white" font-size="34" x="0" y="48">You keep your tools. We build the structure that makes them survivable.</text>
+        </g>
+
+        <g transform="translate(0,260)">
+          <rect x="0" y="0" width="980" height="86" rx="43"
+                fill="#FFFFFF" opacity="0.96"/>
+          <text x="490" y="56" text-anchor="middle"
+                class="smallcaps" font-size="28" fill="#2A4F3E">Book a short discovery call</text>
+        </g>
+      </g>
+
+      <!-- Right Contact -->
+      <g transform="translate(2260,125)" text-anchor="end">
+        <text class="smallcaps" font-size="24" fill="#E8F5EE">Contact</text>
+        <text class="semibold white" font-size="40" x="0" y="64">publiclogic.org</text>
+        <text class="reg white" font-size="34" x="0" y="120">nate@publiclogic.org</text>
+
+        <g transform="translate(-720,170)">
+          <rect x="0" y="0" width="720" height="180" rx="26"
+                fill="#FFFFFF" opacity="0.13"
+                stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.22"/>
+          <g transform="translate(28,52)">
+            <text class="caps" font-size="20" fill="#E8F5EE">Perfect for</text>
+            <text class="semibold white" font-size="30" x="0" y="44">Towns under pressure</text>
+            <text class="reg white" font-size="28" x="0" y="92">Turnover · scrutiny · budget cycle</text>
+          </g>
+        </g>
+      </g>
+    </g>
+
+  </g>
+</svg>

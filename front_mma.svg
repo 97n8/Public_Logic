@@ -1,19 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2550" height="1650" viewBox="0 0 2550 1650" role="img" aria-label="PublicLogic Flyer Front - Green & High-Readability (A++)">
+<svg xmlns="http://www.w3.org/2000/svg" width="2550" height="1650" viewBox="0 0 2550 1650" role="img" aria-label="PublicLogic Flyer Back - Green & High-Readability (GitHub Safe)">
   <defs>
     <linearGradient id="plGreenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#3F6D5A"/>
       <stop offset="100%" stop-color="#7FAE95"/>
     </linearGradient>
+    <linearGradient id="ctaGreenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2A4F3E"/>
+      <stop offset="100%" stop-color="#5A8A76"/>
+    </linearGradient>
     <linearGradient id="softGreenWash" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#F4FBF7"/>
       <stop offset="100%" stop-color="#E8F5EE"/>
     </linearGradient>
-    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0B1B3A" flood-opacity="0.12"/>
-    </filter>
-    <filter id="microShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0B1B3A" flood-opacity="0.10"/>
-    </filter>
+
     <style>
       .ink { fill:#0B1B3A; }
       .muted { fill:#475569; }
@@ -33,7 +32,7 @@
       }
       .reg{
         font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        font-weight: 560;
+        font-weight: 580;
       }
       .semibold{
         font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -45,168 +44,181 @@
       }
       .smallcaps{
         font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        font-weight: 950;
-        letter-spacing: 0.09em;
+        font-weight: 900;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
+      }
+      .mono{
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-weight: 700;
+        letter-spacing: 0.02em;
       }
     </style>
   </defs>
 
   <!-- Background -->
-  <rect x="0" y="0" width="2550" height="1650" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="2550" height="1650" fill="url(#softGreenWash)"/>
   <rect x="0" y="0" width="2550" height="18" fill="url(#plGreenGrad)"/>
 
   <!-- Safe margin group -->
   <g transform="translate(150,105)">
 
-    <!-- Top right -->
+    <!-- Header -->
+    <g>
+      <text class="caps muted2" font-size="28">PublicLogic</text>
+      <text class="h1 ink" font-size="78" y="80">Governed Administrative Framework&#8482;</text>
+      <g transform="translate(0,102)">
+        <rect x="0" y="0" width="1050" height="58" rx="29" fill="#FFFFFF" stroke="url(#plGreenGrad)" stroke-width="4"/>
+        <text x="525" y="39" text-anchor="middle" class="smallcaps" font-size="24" fill="#3F6D5A">Structure first. Automation second.</text>
+      </g>
+    </g>
+
+    <!-- Right: Mini wordmark -->
     <g transform="translate(2250,0)" text-anchor="end">
-      <text class="caps muted2" font-size="26">Governance for Municipalities</text>
-      <text class="semibold ink" font-size="28" y="40">Town-owned · Practitioner-led</text>
+      <text class="h1 ink" font-size="58">PublicLogic</text>
+      <rect x="-340" y="70" width="340" height="9" rx="4.5" fill="url(#plGreenGrad)" opacity="0.9"/>
+      <text class="smallcaps" font-size="20" y="108" fill="#3F6D5A">SMART SYSTEMS. STRONGER COMMUNITIES.</text>
     </g>
 
-    <!-- Centered Logo -->
-    <g transform="translate(660,18)">
-      <rect x="0" y="0" width="930" height="14" rx="7" fill="url(#plGreenGrad)"/>
-      <text x="465" y="150" class="h1 ink" font-size="150" text-anchor="middle" letter-spacing="-2.4">PublicLogic</text>
-      <text x="465" y="215" class="smallcaps" font-size="34" text-anchor="middle" fill="#3F6D5A">STRUCTURE IS CARE</text>
-      <rect x="260" y="245" width="410" height="10" rx="5" fill="url(#plGreenGrad)" opacity="0.85"/>
-    </g>
+    <!-- Main layout -->
+    <g transform="translate(0,240)">
 
-    <!-- Headline -->
-    <text x="0" y="360" class="h1 ink" font-size="98">Stop running your town on heroics.</text>
+      <!-- Left column -->
+      <g>
+        <rect x="0" y="0" width="1080" height="540" rx="28" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="4"/>
+        <g transform="translate(40,56)">
+          <text class="caps muted2" font-size="22">The problem</text>
+          <text class="h1 ink" font-size="48" y="52">Pressure migrates to people.</text>
 
-    <!-- Proof punch (A++ pop line) -->
-    <text x="0" y="405" class="smallcaps" font-size="30" fill="#3F6D5A">ARTIFACTS · PLANS · AUTOMATION</text>
-
-    <!-- Lede -->
-    <g transform="translate(0,450)">
-      <text class="reg muted" font-size="36" y="0">Replace informal work with</text>
-      <text class="bold ink" font-size="36" x="470" y="0">governed structure</text>
-      <text class="reg muted" font-size="36" x="870" y="0">that survives pressure and turnover.</text>
-    </g>
-
-    <!-- Body -->
-    <g transform="translate(0,508)">
-      <text class="reg muted" font-size="32" y="0">Most municipalities run on memory, informal rules, and workarounds.</text>
-      <text class="reg muted" font-size="32" y="44">We replace that with a governed administrative framework that produces</text>
-      <text class="bold ink" font-size="32" x="0" y="88">real municipal artifacts</text>
-      <text class="reg muted" font-size="32" x="370" y="88">, stabilizes the</text>
-      <text class="bold ink" font-size="32" x="610" y="88">budget cycle</text>
-      <text class="reg muted" font-size="32" x="820" y="88">, and makes automation safe.</text>
-    </g>
-
-    <!-- Framework box -->
-    <g transform="translate(0,630)">
-      <rect x="0" y="0" width="1950" height="190" rx="26" fill="url(#softGreenWash)" filter="url(#microShadow)"/>
-      <rect x="0" y="0" width="1950" height="190" rx="26" fill="none" stroke="#A7F3D0" stroke-width="4" opacity="0.60"/>
-      <rect x="0" y="0" width="12" height="190" rx="6" fill="url(#plGreenGrad)"/>
-
-      <g transform="translate(36,52)">
-        <text class="smallcaps ink" font-size="30">GOVERNED ADMINISTRATIVE FRAMEWORK™</text>
-
-        <g transform="translate(0,22)">
-          <text class="reg muted" font-size="30" y="44">A municipal operating structure for</text>
-          <text class="bold ink" font-size="30" x="520" y="44">artifacts</text>
-          <text class="reg muted" font-size="30" x="660" y="44">,</text>
-          <text class="bold ink" font-size="30" x="690" y="44">plans</text>
-          <text class="reg muted" font-size="30" x="790" y="44">, and</text>
-          <text class="bold ink" font-size="30" x="890" y="44">budget cycle automation</text>
-          <text class="reg muted" font-size="30" x="1300" y="44">.</text>
-
-          <text class="reg muted" font-size="30" y="86">Built to hold under pressure, scrutiny, and staffing change.</text>
-        </g>
-      </g>
-    </g>
-
-    <!-- Cards -->
-    <g transform="translate(0,850)">
-
-      <!-- Nate card -->
-      <g filter="url(#softShadow)">
-        <rect x="0" y="0" width="1175" height="390" rx="26" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="4"/>
-      </g>
-
-      <g transform="translate(36,54)">
-        <text class="h1 ink" font-size="42">Nathan Boudreau, MPA, MCPPO</text>
-        <text class="caps" font-size="22" y="40" fill="#3F6D5A">Founder · Municipal Systems Architect</text>
-
-        <g transform="translate(0,92)">
-          <text class="reg muted" font-size="29" y="0">Municipal practitioner. Builds governed administrative frameworks and</text>
-          <text class="reg muted" font-size="29" y="38">produces board-ready artifacts, plans, and budget cycle automation</text>
-          <text class="reg muted" font-size="29" y="76">that holds under pressure and survives turnover.</text>
-        </g>
-
-        <g transform="translate(0,184)">
-          <rect x="0" y="0" width="1085" height="70" rx="18" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="3"/>
-          <text x="24" y="45" class="caps" font-size="18" fill="#64748B">Focus</text>
-          <text x="150" y="46" class="semibold ink" font-size="24">Artifacts · Budget cycle structure · Automation planning</text>
-        </g>
-      </g>
-
-      <!-- Allie card -->
-      <g transform="translate(1225,0)">
-        <g filter="url(#softShadow)">
-          <rect x="0" y="0" width="1175" height="390" rx="26" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="4"/>
-        </g>
-
-        <g transform="translate(36,54)">
-          <text class="h1 ink" font-size="42">Dr. Allison Weiss Rothschild, PsyD, LICSW, BCBA</text>
-          <text class="caps" font-size="22" y="40" fill="#3F6D5A">Behavioral Systems &amp; Research Partner</text>
-
-          <g transform="translate(0,92)">
-            <text class="reg muted" font-size="29" y="0">Designs governance aligned with</text>
-            <text class="bold ink" font-size="29" x="430" y="0">human limits</text>
-            <text class="reg muted" font-size="29" x="650" y="0">so it lasts.</text>
-
-            <text class="reg muted" font-size="29" y="38">Prevents burnout while preserving accountability and compliance.</text>
+          <g transform="translate(0,86)">
+            <text class="reg muted" font-size="32" y="0">When rules live in memory, the institution</text>
+            <text class="reg muted" font-size="32" y="44">runs on vigilance and heroics.</text>
+            <text class="bold ink" font-size="32" y="100">We relocate risk into structure.</text>
+            <text class="reg muted" font-size="32" y="144">So work becomes defensible, transferable,</text>
+            <text class="reg muted" font-size="32" y="188">and survivable under turnover.</text>
           </g>
 
-          <g transform="translate(0,184)">
-            <rect x="0" y="0" width="1085" height="70" rx="18" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="3"/>
-            <text x="24" y="45" class="caps" font-size="18" fill="#64748B">Focus</text>
-            <text x="150" y="46" class="semibold ink" font-size="24">Capacity design · Adoption durability · Pressure response</text>
+          <g transform="translate(0,290)">
+            <rect x="0" y="0" width="1000" height="200" rx="24" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="3"/>
+            <g transform="translate(28,44)">
+              <text class="smallcaps" font-size="20" fill="#64748B">What this produces</text>
+
+              <g transform="translate(0,28)">
+                <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
+                <text x="32" y="22" class="semibold ink" font-size="28">Authority clarity</text>
+              </g>
+
+              <g transform="translate(0,74)">
+                <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
+                <text x="32" y="22" class="semibold ink" font-size="28">Record-first defensibility</text>
+              </g>
+
+              <g transform="translate(0,120)">
+                <circle cx="12" cy="12" r="7" fill="#3F6D5A"/>
+                <text x="32" y="22" class="semibold ink" font-size="28">Turnover-proof continuity</text>
+              </g>
+            </g>
           </g>
         </g>
       </g>
 
-      <!-- Services row -->
-      <g transform="translate(0,410)">
-        <rect x="0" y="0" width="2400" height="190" rx="26" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="4" filter="url(#microShadow)"/>
-        <text x="30" y="44" class="caps" font-size="20" fill="#64748B">Services we offer</text>
+      <!-- Right column -->
+      <g transform="translate(1140,0)">
+        <rect x="0" y="0" width="1320" height="540" rx="28" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="4"/>
+        <g transform="translate(40,56)">
+          <text class="caps muted2" font-size="22">How it works</text>
+          <text class="h1 ink" font-size="48" y="52">A governed cycle that holds.</text>
 
-        <g transform="translate(30,62)">
-          <rect x="0" y="0" width="740" height="52" rx="26" fill="#F4FBF7" stroke="#A7F3D0" stroke-width="3"/>
-          <text x="370" y="36" text-anchor="middle" class="smallcaps" font-size="21" fill="#3F6D5A">Governed Admin Frameworks</text>
-        </g>
+          <g transform="translate(0,100)">
+            <g>
+              <rect x="0" y="0" width="630" height="170" rx="24" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="3"/>
+              <g transform="translate(24,32)">
+                <rect x="0" y="0" width="56" height="56" rx="16" fill="url(#plGreenGrad)"/>
+                <text x="28" y="39" text-anchor="middle" class="mono" font-size="24" fill="#FFFFFF">01</text>
+                <text class="bold ink" font-size="32" x="80" y="38">Map authority</text>
+                <text class="reg muted" font-size="28" x="80" y="78">Make informal rules visible.</text>
+                <text class="reg muted" font-size="28" x="80" y="114">Document thresholds and gates.</text>
+              </g>
+            </g>
 
-        <g transform="translate(820,62)">
-          <rect x="0" y="0" width="740" height="52" rx="26" fill="#F4FBF7" stroke="#A7F3D0" stroke-width="3"/>
-          <text x="370" y="36" text-anchor="middle" class="smallcaps" font-size="21" fill="#3F6D5A">Municipal Artifacts and Plans</text>
-        </g>
+            <g transform="translate(670,0)">
+              <rect x="0" y="0" width="630" height="170" rx="24" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="3"/>
+              <g transform="translate(24,32)">
+                <rect x="0" y="0" width="56" height="56" rx="16" fill="url(#plGreenGrad)"/>
+                <text x="28" y="39" text-anchor="middle" class="mono" font-size="24" fill="#FFFFFF">02</text>
+                <text class="bold ink" font-size="32" x="80" y="38">Build artifacts</text>
+                <text class="reg muted" font-size="28" x="80" y="78">Policies, SOPs, templates.</text>
+                <text class="reg muted" font-size="28" x="80" y="114">Board-ready and town-owned.</text>
+              </g>
+            </g>
 
-        <g transform="translate(1610,62)">
-          <rect x="0" y="0" width="760" height="52" rx="26" fill="#F4FBF7" stroke="#A7F3D0" stroke-width="3"/>
-          <text x="380" y="36" text-anchor="middle" class="smallcaps" font-size="21" fill="#3F6D5A">Budget Cycle Automation</text>
-        </g>
+            <g transform="translate(0,200)">
+              <rect x="0" y="0" width="630" height="170" rx="24" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="3"/>
+              <g transform="translate(24,32)">
+                <rect x="0" y="0" width="56" height="56" rx="16" fill="url(#plGreenGrad)"/>
+                <text x="28" y="39" text-anchor="middle" class="mono" font-size="24" fill="#FFFFFF">03</text>
+                <text class="bold ink" font-size="32" x="80" y="38">Stabilize workflows</text>
+                <text class="reg muted" font-size="28" x="80" y="78">Finance and admin processes.</text>
+                <text class="reg muted" font-size="28" x="80" y="114">Transfer-ready by design.</text>
+              </g>
+            </g>
 
-        <g transform="translate(30,124)">
-          <rect x="0" y="0" width="740" height="52" rx="26" fill="#F4FBF7" stroke="#A7F3D0" stroke-width="3"/>
-          <text x="370" y="36" text-anchor="middle" class="smallcaps" font-size="21" fill="#3F6D5A">Finance Workflow Stabilization</text>
-        </g>
+            <g transform="translate(670,200)">
+              <rect x="0" y="0" width="630" height="170" rx="24" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="3"/>
+              <g transform="translate(24,32)">
+                <rect x="0" y="0" width="56" height="56" rx="16" fill="url(#plGreenGrad)"/>
+                <text x="28" y="39" text-anchor="middle" class="mono" font-size="24" fill="#FFFFFF">04</text>
+                <text class="bold ink" font-size="32" x="80" y="38">Automate safely</text>
+                <text class="reg muted" font-size="28" x="80" y="78">Only after structure is real.</text>
+                <text class="reg muted" font-size="28" x="80" y="114">No fragile workflow theater.</text>
+              </g>
+            </g>
+          </g>
 
-        <g transform="translate(820,124)">
-          <rect x="0" y="0" width="740" height="52" rx="26" fill="#F4FBF7" stroke="#A7F3D0" stroke-width="3"/>
-          <text x="370" y="36" text-anchor="middle" class="smallcaps" font-size="21" fill="#3F6D5A">Board and Staff Enablement</text>
-        </g>
-
-        <g transform="translate(1610,124)">
-          <rect x="0" y="0" width="760" height="52" rx="26" fill="#F4FBF7" stroke="#A7F3D0" stroke-width="3"/>
-          <text x="380" y="36" text-anchor="middle" class="smallcaps" font-size="21" fill="#3F6D5A">Turnover Proofing and Continuity</text>
+          <g transform="translate(0,470)">
+            <rect x="0" y="0" width="1260" height="62" rx="20" fill="#FFFFFF" stroke="url(#plGreenGrad)" stroke-width="4"/>
+            <text x="630" y="42" text-anchor="middle" class="semibold ink" font-size="28">
+              The goal is not faster work. The goal is work that survives.
+            </text>
+          </g>
         </g>
       </g>
 
-    </g>
+      <!-- Bottom CTA band -->
+      <g transform="translate(0,580)">
+        <rect x="0" y="0" width="2400" height="330" rx="30" fill="url(#ctaGreenGrad)"/>
+        <rect x="0" y="0" width="2400" height="330" rx="30" fill="none" stroke="#3F6D5A" stroke-width="3" opacity="0.3"/>
 
+        <g transform="translate(50,70)">
+          <text class="caps" font-size="22" fill="#E8F5EE">Next step</text>
+          <text class="h1 white" font-size="70" y="74">Let’s stabilize one high-pressure domain.</text>
+          <g transform="translate(0,110)">
+            <text class="reg white" font-size="32">Start with finance, clerk, DPW requests, or admin governance.</text>
+            <text class="reg white" font-size="32" y="44">You keep your tools. We build the structure that makes them survivable.</text>
+          </g>
+
+          <g transform="translate(0,210)">
+            <rect x="0" y="0" width="920" height="72" rx="36" fill="#FFFFFF" opacity="0.92"/>
+            <text x="460" y="48" text-anchor="middle" class="smallcaps" font-size="26" fill="#2A4F3E">Book a short discovery call</text>
+          </g>
+        </g>
+
+        <g transform="translate(2390,80)" text-anchor="end">
+          <text class="smallcaps" font-size="24" fill="#E8F5EE">Contact</text>
+          <text class="semibold white" font-size="36" y="58">publiclogic.org</text>
+          <text class="reg white" font-size="32" y="106">nate@publiclogic.org</text>
+
+          <g transform="translate(-640,144)">
+            <rect x="0" y="0" width="640" height="150" rx="24" fill="#FFFFFF" opacity="0.16" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.25"/>
+            <g transform="translate(24,42)">
+              <text class="caps" font-size="20" fill="#E8F5EE">Perfect for</text>
+              <text class="semibold white" font-size="28" y="40">Towns under pressure</text>
+              <text class="reg white" font-size="28" y="80">Turnover · scrutiny · budget cycle</text>
+            </g>
+          </g>
+        </g>
+
+      </g>
+    </g>
   </g>
 </svg>

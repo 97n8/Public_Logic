@@ -2,421 +2,233 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Press Release — AI for Impact Pilot</title>
-
+  <title>Press Release: AI for Impact Pilot launches for Massachusetts municipalities</title>
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.publiclogic.org/ai-for-impact-press-release" />
+  <!-- Open Graph: Facebook / LinkedIn -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.publiclogic.org/ai-for-impact-press-release" />
+  <meta property="og:title" content="Press Release: AI for Impact Pilot launches for Massachusetts municipalities" />
+  <meta property="og:description" content="A free, voluntary 12-week pilot for Massachusetts cities and towns. Structure first, then tools." />
+  <meta property="og:image" content="https://www.publiclogic.org/assets/AI%20Pilot_PL_FB.pdf%20(2).png" />
+  <meta property="og:image:secure_url" content="https://www.publiclogic.org/assets/AI%20Pilot_PL_FB.pdf%20(2).png" />
+  <meta property="og:image:width" content="1536" />
+  <meta property="og:image:height" content="1152" />
+  <meta property="og:locale" content="en_US" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI for Impact Pilot launches for Massachusetts municipalities" />
+  <meta name="twitter:description" content="Structure first. Then tools. A free, voluntary pilot for Massachusetts municipalities." />
+  <meta name="twitter:image" content="https://www.publiclogic.org/assets/AI%20Pilot_PL_FB.pdf%20(2).png" />
+  <!-- SEO -->
+  <meta name="description" content="PublicLogic and Polimorphic launch the AI for Impact Pilot, a structure-first governance initiative for Massachusetts municipalities facing turnover and audit pressure." />
   <style>
     :root{
       --ink:#0f172a;
       --muted:#475569;
       --line:#e2e8f0;
-      --card:#ffffff;
       --bg:#f8fafc;
-      --link:#0b5fff;
+      --card:#ffffff;
+      --accent:#0369a1;
     }
-
     *{ box-sizing:border-box; }
-
     html, body{
       margin:0;
       padding:0;
       background:var(--bg);
       color:var(--ink);
-      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
-      line-height:1.55;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      line-height:1.6;
     }
-
-    a{ color:var(--link); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
-
+    .siteHeader{
+      background:var(--card);
+      border-bottom:1px solid var(--line);
+      padding:16px 20px;
+      font-size:14px;
+      color:var(--muted);
+      text-align:center;
+    }
+    .siteHeader a{
+      color:var(--ink);
+      text-decoration:none;
+      font-weight:600;
+    }
+    .siteHeader a:hover{
+      text-decoration:underline;
+    }
+    .siteHeader .separator{
+      margin:0 12px;
+      color:var(--muted);
+    }
     .wrap{
-      max-width: 920px;
-      margin: 40px auto;
-      padding: 0 18px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
-
-    .release{
+    .hero{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(15,23,42,0.06);
+      margin:40px 0;
+    }
+    .hero img{
+      width:100%;
+      display:block;
+    }
+    .heroText{
+      padding:32px;
+      border-top:1px solid var(--line);
+    }
+    .kicker{
+      font-size:13px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin:0 0 8px 0;
+      font-weight:600;
+    }
+    h1{
+      margin:0 0 16px 0;
+      font-size:32px;
+      line-height:1.2;
+      letter-spacing:-0.02em;
+      max-width: 700px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:18px;
+      max-width: 680px;
+    }
+    .body{
       background:var(--card);
       border:1px solid var(--line);
       border-radius:16px;
-      padding: 36px 34px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      padding:40px;
+      box-shadow:0 10px 30px rgba(15,23,42,0.06);
+      font-size:17px;
     }
-
-    .topbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:18px;
-      border-bottom:1px solid var(--line);
-      padding-bottom:18px;
-      margin-bottom:22px;
+    .body p{
+      margin:0 0 20px 0;
     }
-
-    .kicker{
-      font-size:12px;
-      letter-spacing:0.10em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin:0 0 6px 0;
-    }
-
-    h1{
-      font-size:28px;
-      line-height:1.15;
-      margin:0;
-      letter-spacing:-0.02em;
-    }
-
-    .meta{
-      text-align:right;
-      min-width: 220px;
-    }
-
-    .meta .label{
-      font-size:12px;
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:0.08em;
-      margin:0 0 6px 0;
-    }
-
-    .meta .value{
-      margin:0;
-      font-size:14px;
-      color:var(--ink);
-      font-weight:600;
-    }
-
-    .dateline{
-      margin: 0 0 18px 0;
-      color:var(--muted);
-      font-size:16px;
-    }
-
-    p{
-      margin: 0 0 14px 0;
-      font-size:16px;
-    }
-
-    .lead{
-      font-size:16px;
-      font-weight:400;
-    }
-
-    .pull{
-      border-left:4px solid var(--line);
-      padding-left:14px;
-      margin: 18px 0 18px 0;
+    .body strong{
       color:var(--ink);
     }
-
     .quote{
-      margin: 18px 0;
-      padding: 16px 18px;
-      background:#f9fafb;
-      border:1px solid var(--line);
-      border-radius:14px;
+      margin:32px 0;
+      padding-left:28px;
+      border-left:4px solid var(--accent);
+      font-style:italic;
+      color:#1e293b;
     }
-
     .quote p{
-      margin:0;
-      font-size:16px;
-    }
-
-    .quote .who{
-      margin-top:10px;
-      font-size:14px;
-      color:var(--muted);
-      font-weight:600;
-    }
-
-    .highlight-box{
-      margin: 22px 0;
-      padding: 18px 18px;
-      border: 1px solid #c7d2fe;
-      border-radius:14px;
-      background:#eef2ff;
-    }
-
-    .highlight-box p{
-      margin:0;
-      font-size:16px;
-      color:var(--ink);
-    }
-
-    .cta{
-      margin-top: 22px;
-      padding: 18px 18px;
-      border: 1px solid var(--line);
-      border-radius:14px;
-      background:#ffffff;
-    }
-
-    .cta h2{
       margin:0 0 8px 0;
-      font-size:16px;
-      letter-spacing:-0.01em;
     }
-
-    .cta p{
-      margin:0 0 10px 0;
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    .cta a.btn{
-      display:inline-block;
-      font-weight:700;
-      font-size:14px;
-      padding: 10px 16px;
-      border-radius:12px;
-      border:none;
-      background:#0b5fff;
-      color:#ffffff;
-    }
-
-    .cta a.btn:hover{
-      background:#0947cc;
-      text-decoration:none;
-    }
-
-    hr{
-      border:none;
-      border-top:1px solid var(--line);
-      margin: 24px 0;
-    }
-
-    h3{
-      margin:0 0 8px 0;
+    .quote cite{
+      font-style:normal;
       font-size:15px;
-      letter-spacing:-0.01em;
-    }
-
-    .about p{
-      color:var(--muted);
-      font-size:16px;
-      margin:0 0 12px 0;
-    }
-
-    .contact{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 6px;
-      font-size:14px;
       color:var(--muted);
     }
-
-    .contact strong{
-      color:var(--ink);
-      font-weight:700;
-    }
-
-    .logo{
-      font-size:13px;
-      font-weight:600;
-      color:var(--muted);
-      letter-spacing:0.01em;
-      margin-bottom:20px;
-    }
-
-    .footerline{
-      margin-top: 18px;
+    .cta{
+      margin:40px 0 0 0;
       text-align:center;
-      color:var(--muted);
-      font-size:12px;
-      letter-spacing:0.08em;
     }
-
-    /* Print */
-    @media print{
-      :root{ --bg:#ffffff; }
-      html, body{ background:#ffffff; font-size:11pt; }
-      .wrap{ margin:0; max-width:none; padding:0; }
-      .release{
-        border:none;
-        border-radius:0;
-        box-shadow:none;
-        padding: 0.5in 0.6in;
-      }
-      .logo{
-        font-size:11pt;
-        margin-bottom:12px;
-      }
-      .topbar{
-        padding-bottom:10px;
-        margin-bottom:14px;
-      }
-      h1{
-        font-size:18pt;
-      }
-      p{
-        font-size:10.5pt;
-        margin-bottom:10px;
-      }
-      .dateline{
-        margin-bottom:12px;
-      }
-      .pull{
-        margin:12px 0;
-        padding-left:10px;
-      }
-      .quote{
-        padding:10px 12px;
-        margin:10px 0;
-        page-break-inside: avoid;
-      }
-      .quote p{
-        font-size:10pt;
-      }
-      .quote .who{
-        margin-top:6px;
-        font-size:9pt;
-      }
-      .highlight-box{
-        padding:10px 12px;
-        margin:14px 0;
-        page-break-inside: avoid;
-      }
-      .highlight-box p{
-        font-size:10pt;
-      }
-      .cta{
-        padding:12px;
-        margin-top:14px;
-        page-break-inside: avoid;
-      }
-      .cta h2{
-        font-size:11pt;
-        margin-bottom:4px;
-      }
-      .cta p{
-        font-size:9pt;
-        margin-bottom:6px;
-      }
-      .cta a.btn{
-        font-size:9pt;
-        padding:6px 10px;
-        border:1px solid var(--line);
-        background:#ffffff;
-        color:var(--ink);
-      }
-      hr{
-        margin:16px 0;
-        page-break-after: avoid;
-      }
-      .about{
-        page-break-inside: avoid;
-      }
-      .about p{
-        font-size:9pt;
-        margin-bottom:8px;
-      }
-      h3{
-        font-size:10pt;
-        margin-bottom:4px;
-        page-break-after: avoid;
-      }
-      .contact{
-        font-size:9pt;
-      }
-      .footerline{
-        margin-top:12px;
-        font-size:9pt;
-      }
-      a{ color: var(--ink); text-decoration:none; }
+    .cta a{
+      display:inline-block;
+      background:var(--accent);
+      color:white;
+      padding:16px 32px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:18px;
+    }
+    .cta a:hover{
+      background:#035585;
+    }
+    .about{
+      margin-top:48px;
+      padding-top:32px;
+      border-top:1px solid var(--line);
+      font-size:15px;
+      color:var(--muted);
+    }
+    .about h2{
+      font-size:18px;
+      color:var(--ink);
+      margin-bottom:8px;
+    }
+    .contact{
+      margin-top:32px;
+      font-size:15px;
+    }
+    @media (max-width:640px){
+      .wrap{padding:0 16px;}
+      .heroText{padding:24px;}
+      h1{font-size:28px;}
+      .body{padding:32px;}
+      .siteHeader{padding:12px 16px; font-size:13px;}
     }
   </style>
 </head>
-
 <body>
+  <header class="siteHeader">
+    <a href="https://www.publiclogic.org">PublicLogic</a>
+    <span class="separator">×</span>
+    <a href="https://polimorphic.com">Polimorphic</a>
+  </header>
   <main class="wrap">
-    <article class="release" aria-label="Press Release">
-      <div class="logo">PublicLogic</div>
-      <header class="topbar">
-        <div>
-          <p class="kicker">Press Release</p>
-          <h1>PublicLogic and Polimorphic Announce Launch of AI for Impact Pilot for Massachusetts Municipalities</h1>
-        </div>
-
-        <div class="meta" aria-label="Release Details">
-          <p class="label">For Immediate Release</p>
-          <p class="value">MMA Connect 351 Conference</p>
-        </div>
-      </header>
-
-      <p class="dateline"><strong>Massachusetts</strong> — PublicLogic, in partnership with Polimorphic, today announced the launch of the <strong>AI for Impact Pilot</strong>, a no-cost, voluntary pilot for Massachusetts cities and towns experiencing staff turnover, audit pressure, or capacity strain.</p>
-
-      <p class="lead">In every municipality, the same invisible work happens. Experienced staff inherit unwritten rules. They remember past decisions. They bridge gaps created by turnover and incomplete documentation. They hold the institution together.</p>
-
-      <div class="pull">
-        <p>When they leave, municipalities discover how much responsibility was never actually held by systems. It was held by people.</p>
+    <section class="hero">
+      <img
+        src="https://www.publiclogic.org/assets/AI%20Pilot_PL_FB.pdf%20(2).png"
+        alt="AI for Impact Pilot – PublicLogic and Polimorphic"
+      />
+      <div class="heroText">
+        <p class="kicker">Press Release</p>
+        <h1>Polimorphic and PublicLogic Launch “AI for Impact” Pilot</h1>
+        <p class="sub">A people-first pilot that helps Massachusetts municipalities modernize by strengthening structure and capacity</p>
       </div>
-
-      <p>The AI for Impact Pilot is designed to reverse this pattern. It is people-centered and governance-led. The pilot does not begin with technology. It begins by moving institutional burden out of individuals and into durable structure through clear authority, documented decisions, explicit processes, and defensible records.</p>
-
-      <p>Only after those foundations are in place are AI-assisted tools introduced to support routing, documentation, and continuity within clearly defined governance boundaries. AI assists staff. It does not replace judgment or authority.</p>
-
-      <div class="highlight-box">
-        <p><strong>Priority consideration is given to municipalities under 25,000 residents.</strong> The pilot runs for twelve weeks, at no cost, with no obligation to continue.</p>
+    </section>
+    <section class="body">
+      <p><strong>January 20, 2026</strong></p>
+      <p><strong>Massachusetts</strong> — Polimorphic and PublicLogic today announced the launch of the AI for Impact Pilot, a no-cost, voluntary, twelve-week initiative open to Massachusetts cities and towns.</p>
+      <p>Local governments face a familiar challenge. When experienced staff leave, critical knowledge often leaves with them. Past decisions become difficult to trace, precedent fades, and new employees inherit gaps that increase risk, inefficiency, and burnout.</p>
+      <p>The AI for Impact Pilot takes a different approach. Instead of layering artificial intelligence onto unclear processes, the program starts by making everyday work easier to understand and sustain. Roles are clarified. Decision paths are documented. Records are organized so work can be followed from start to finish. Only after that foundation is in place are AI tools introduced to help route work, assemble compliance materials, and capture institutional knowledge in ways that reduce workload and support continuity.</p>
+      <div class="quote">
+        <p>“AI can absolutely help front-line staff and improve service for residents,” said Parth Shah, co-founder and CEO of Polimorphic. “But it only works when expectations are clear and systems are connected. This pilot puts structure first so AI strengthens how municipalities already operate, instead of accelerating existing problems.”</p>
       </div>
-
-      <section aria-label="Quotes">
-        <div class="quote">
-          <p>"People are already doing the hardest work. Technology only helps when the structure around it is clear. This pilot puts governance first so AI reduces burden instead of accelerating existing problems."</p>
-          <p class="who">— Parth Shah, Co-Founder, Polimorphic</p>
-        </div>
-
-        <div class="quote">
-          <p>"For decades, public institutions have relied on talented people quietly holding together work that was never clearly held by systems. When authority and expectations live in the structure, people can finally just do the work. That is what this pilot builds."</p>
-          <p class="who">— Allison Weiss Rothschild, Institutional and Behavioral Systems Partner, PublicLogic</p>
-        </div>
-
-        <div class="quote">
-          <p>"This is about protecting institutional memory before it walks out the door. When decisions, authority, and precedent are structurally documented, continuity does not depend on who stays late or remembers the history. The institution can stand on its own."</p>
-          <p class="who">— Nathan Boudreau, Founder, PublicLogic</p>
-        </div>
-      </section>
-
-      <p>Participation is voluntary, provided at no cost during the pilot period, and carries no obligation to continue.</p>
-
-      <section class="cta" aria-label="Participation Link">
-        <h2>Pilot Participation Request</h2>
-        <p>Municipalities may submit a pilot participation request at:</p>
-        <a class="btn" href="https://app.polimorphic.com/react/organizations/polimorphic.public-logic/blueprints/ai-for-impact-pilot-participat/apply">
-          Submit a Request
-        </a>
-        <p style="margin-top:10px; font-size:12px;">
-          If the button does not work, copy and paste this link into your browser:<br/>
-          <span style="word-break:break-all;">
-            https://app.polimorphic.com/react/organizations/polimorphic.public-logic/blueprints/ai-for-impact-pilot-participat/apply
-          </span>
-        </p>
-      </section>
-
-      <hr />
-
-      <section class="about" aria-label="About PublicLogic">
-        <h3>About PublicLogic</h3>
-        <p>PublicLogic is a Massachusetts-based governance consulting firm that helps municipalities stop relying on people to hold together work that should be held by systems. The firm combines practitioner experience in municipal administration with clinical expertise in institutional and behavioral systems—an approach that addresses both the structural and human dimensions of how local government actually functions under pressure. PublicLogic focuses on Massachusetts communities under 25,000 residents. Learn more at <a href="https://www.publiclogic.org">publiclogic.org</a>.</p>
-      </section>
-
-      <section class="about" aria-label="About Polimorphic">
-        <h3>About Polimorphic</h3>
+      <p>The twelve-week pilot is intentionally paced. Teams begin with close listening to understand where burden is falling on individuals instead of on shared systems. AI support is introduced only after responsibilities, handoffs, and records are clearly mapped.</p>
+      <div class="quote">
+        <p>“For too long, organizations have asked people to carry responsibility the institution never clearly held,” said Nathan Boudreau, founder of PublicLogic and former Massachusetts Town Administrator. “When expectations are unclear and decisions aren’t documented, staff compensate with personal judgment and stress. This process fixes that by moving the weight into the system so people aren’t carrying it alone.”</p>
+      </div>
+      <p>Participating municipalities receive twelve weeks of focused support, including:</p>
+      <ul>
+        <li>Hands-on sessions to clarify roles, responsibilities, and how work moves through the organization</li>
+        <li>Practical methods for capturing precedent and community knowledge so it survives turnover</li>
+        <li>Workflow cleanup to reduce reliance on memory, scattered emails, and ad-hoc workarounds</li>
+        <li>Role clarity training that shifts burden out of individual heads and into shared systems</li>
+      </ul>
+      <div class="quote">
+        <p>“Too many staff are holding broken systems together through sheer effort,” said Allison Weiss Rothschild, PsyD, Institutional and Behavioral Systems Partner at PublicLogic. “When expectations are clear and work is organized in ways people can actually sustain, the workload drops and burnout starts to ease. This pilot helps organizations make that shift.”</p>
+      </div>
+      <div class="cta">
+        <a href="https://app.polimorphic.com/react/organizations/polimorphic.public-logic/blueprints/ai-for-impact-pilot-participat/apply">Submit a pilot participation request</a>
+      </div>
+      <div class="about">
+        <h2>About Polimorphic</h2>
         <p>Polimorphic partners with governments to manage the uniquely complicated demands of service delivery, improving experience for staff and residents. Our hundreds of government customers across the country use Polimorphic's AI platform to provide more accessible government services from request to resolution, while improving internal efficiency. Polimorphic customers save resources, have happier residents, and continuously improve service. Learn more at <a href="https://polimorphic.com">Polimorphic.com</a>.</p>
-      </section>
-
-      <section aria-label="Media Contact">
-        <h3>Media Contact</h3>
-        <div class="contact">
-          <div><strong>Nathan Boudreau</strong></div>
-          <div>PublicLogic</div>
-          <div><a href="mailto:info@publiclogic.org">info@publiclogic.org</a></div>
-        </div>
-      </section>
-
-      <div class="footerline" aria-hidden="true">###</div>
-    </article>
+        <h2>About PublicLogic</h2>
+        <p>PublicLogic partners with public institutions to move institutional risk out of individuals and into durable structure so organizations remain lawful, functional, and survivable through transition.</p>
+      </div>
+      <div class="contact">
+        <p><strong>Media Contact</strong><br>
+        Megan Olson<br>
+        Marketing & Communications, Polimorphic<br>
+        <a href="mailto:molson@polimorphic.com">molson@polimorphic.com</a></p>
+      </div>
+    </section>
   </main>
 </body>
 </html>

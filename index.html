@@ -1,13 +1,217 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Logicville Governance OS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="PublicLogic builds governance structures for Massachusetts towns that survive turnover, audits, and pressure — placing risk in systems, not people." />
+  <meta name="author" content="PublicLogic LLC" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#059669" />
+  <link rel="canonical" href="https://www.publiclogic.org/" />
+  <title>PublicLogic — Governance That Survives Real Life</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Open Graph / Social Preview (using straight logo for sharing) -->
+  <meta property="og:title" content="PublicLogic — Governance That Survives Real Life" />
+  <meta property="og:description" content="Building governance structures for Massachusetts towns that survive turnover, audits, and pressure — placing risk in systems, not people." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.publiclogic.org/" />
+  <meta property="og:image" content="https://www.publiclogic.org/publiclogic_straight.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content="PublicLogic — Governance That Survives Real Life" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PublicLogic — Governance That Survives Real Life" />
+  <meta name="twitter:description" content="Building governance structures for Massachusetts towns that survive turnover, audits, and pressure." />
+  <meta name="twitter:image" content="https://www.publiclogic.org/publiclogic_straight.png" />
+  <meta name="twitter:image:alt" content="PublicLogic — Governance That Survives Real Life" />
+
+  <style>
+    :root {
+      --primary: #059669;
+      --accent: #a7f3d0;
+      --light-bg: #d1fae5;
+      --dark: #111827;
+      --gray: #4b5563;
+      --white: #ffffff;
+      --focus: #0ea5e9;
+    }
+
+    html:focus-within { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html:focus-within { scroll-behavior: auto; }
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      color: var(--dark);
+      margin: 0;
+      background: var(--light-bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+      z-index: 999;
+      background: var(--primary);
+      color: white;
+      padding: 1rem;
+      font-weight: 700;
+      border-radius: .5rem;
+    }
+    .skip-link:focus { top: 1rem; left: 1rem; }
+
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: .375rem; }
+
+    .container { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; text-align: center; }
+
+    header[role="banner"] {
+      background: var(--primary);
+      color: var(--white);
+      padding: clamp(1.5rem, 4vw, 2.5rem) 0 1rem;
+    }
+
+    .wordmark { font-size: clamp(2.6rem, 8vw, 3.4rem); font-weight: 900; letter-spacing: -0.03em; margin: 0 0 0.5rem 0; line-height: 1; }
+    .wordmark .public { color: var(--white); }
+    .wordmark .logic { color: var(--accent); }
+
+    .strapline { font-size: clamp(1.1rem, 4vw, 1.4rem); font-weight: 600; margin: 0 0 1rem 0; opacity: 0.95; }
+
+    nav[aria-label] ul { list-style: none; padding: 0; margin: 0.5rem 0 0; display: inline-flex; flex-wrap: wrap; justify-content: center; gap: clamp(0.9rem, 3vw, 1.5rem); }
+    nav a { color: var(--white); text-decoration: none; font-weight: 700; font-size: clamp(0.95rem, 3vw, 1.1rem); padding: 0.5rem 0.9rem; border-radius: 0.375rem; transition: background 140ms ease; }
+    nav a:hover, nav a:focus-visible { background: rgba(255,255,255,.18); }
+    nav a[aria-current="page"] { background: rgba(255,255,255,.24); }
+
+    .hero { padding: clamp(2rem, 6vw, 3.5rem) 1rem 2rem; background: linear-gradient(to bottom, #e8f5e9, var(--light-bg)); }
+    .hero h1 { font-size: clamp(2.2rem, 6.5vw, 3.2rem); margin: 0 0 1rem; color: var(--primary); font-weight: 900; letter-spacing: -0.02em; }
+    .lead { font-size: clamp(1.15rem, 3.8vw, 1.35rem); max-width: 58rem; margin: 0 auto 1.5rem; font-weight: 500; }
+
+    .vault-section { margin: 1.5rem auto 3.5rem; max-width: 72rem; text-align: center; }
+    .vault-img-container { background: white; padding: 1rem; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); margin: 0.75rem 0; }
+    .vault-img { width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 12px; }
+    .vault-caption { margin-top: 0.75rem; font-size: 1rem; color: var(--dark); font-weight: 700; max-width: 62rem; margin-left: auto; margin-right: auto; }
+
+    .section { padding: clamp(2rem, 8vw, 4rem) 0; }
+    .promo { background: white; padding: clamp(1.25rem, 4vw, 2rem); border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); margin: 1.5rem auto; max-width: 68rem; }
+    .features { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin: 1.5rem 0; }
+    .feature-card { background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--accent); transition: transform 160ms ease, box-shadow 160ms ease; text-align: left; }
+    .feature-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+
+    .cta { padding: clamp(3rem, 10vw, 5rem) 1rem; background: var(--primary); color: var(--white); border-radius: 16px; margin: 2.5rem 0; }
+    .button { display: inline-block; padding: 1rem 2rem; background: var(--white); color: var(--primary); font-weight: 900; text-decoration: none; border-radius: 60px; font-size: 1.05rem; min-width: 13rem; box-shadow: 0 8px 24px rgba(0,0,0,0.15); transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease; }
+    .button:hover, .button:focus-visible { background: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+
+    footer { text-align: center; padding: 2.5rem 1rem; color: var(--gray); font-size: 1rem; border-top: 1px solid var(--accent); }
+
+    @media (max-width: 768px) {
+      header[role="banner"] { padding: 1.75rem 0 1.25rem; }
+      .wordmark { font-size: clamp(2.2rem, 12vw, 3rem); margin-bottom: .5rem; }
+      .strapline { font-size: 1.1rem; margin-bottom: 1rem; }
+      nav[aria-label] ul { gap: 0.75rem 1.25rem; flex-direction: column; }
+      nav a { padding: 0.5rem 0.9rem; }
+      .hero { padding: 2rem 1rem 1.5rem; }
+      main { padding: 1.5rem 0 3rem; }
+      .vault-img-container { padding: 0.75rem; margin: 0.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header role="banner">
+    <div class="container">
+      <h1 class="wordmark"><span class="public">Public</span><span class="logic">Logic</span></h1>
+      <p class="strapline">Governance That Survives Real Life</p>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/frameworks.html">Frameworks</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/writing.html">Writing</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="container">
+    <section class="hero" aria-labelledby="hero-title">
+      <h2 id="hero-title">Structures That Hold When People Cannot</h2>
+      <p class="lead">
+        Massachusetts towns rely on dedicated people who give so much every day. Change, turnover, and demands can quietly expose individuals to unowned risk and liability.
+      </p>
+      <p>
+        PublicLogic builds durable systems so responsibility lives in structure — not people. We focus on authority, records, and continuity so work endures independently.
+      </p>
+    </section>
+
+    <section class="vault-section" aria-labelledby="vault-title">
+      <h2 id="vault-title" class="visually-hidden">VAULT™ Overview</h2>
+      <div class="vault-img-container">
+        <img src="https://github.com/97n8/Public_Logic/raw/main/VaultDiagram%201.png" alt="VAULT™ Governance Logic diagram showing how institutions carry responsibility instead of individuals." class="vault-img" loading="lazy" decoding="async" fetchpriority="high">
+      </div>
+      <p class="vault-caption">VAULT™ ensures risk, memory, and responsibility live in structure — not in people.</p>
+    </section>
+
+    <section class="section promo" aria-labelledby="framework-title">
+      <h2 id="framework-title">A structured framework, built for real towns</h2>
+      <p>We use VAULT™ to create environments where institutional work endures naturally. It protects people by letting structure carry the weight during transitions and pressure.</p>
+      <p>Engagements begin with listening: your town's real constraints, statutory pressures, and continuity gaps. From there, we design governance structures that hold over time.</p>
+    </section>
+
+    <section class="section features" aria-labelledby="support-title">
+      <h2 id="support-title">Ways We Support Your Town</h2>
+      <div class="feature-card">
+        <h3>Advisory</h3>
+        <p>Focused guidance during transitions, compliance challenges, or continuity risks where informal approaches are no longer defensible.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Transfer & Documentation</h3>
+        <p>Systematic capture of decisions, workflows, and institutional memory — so they remain with the town during turnover or audits.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Pilots</h3>
+        <p>Low-risk trials of governance mechanisms embedded in existing workflows — to test durability before broader commitment.</p>
+      </div>
+    </section>
+
+    <section class="section promo" aria-labelledby="keep-focused-title">
+      <h2 id="keep-focused-title">What We Keep Focused</h2>
+      <ul style="list-style: none; padding-left: 0; max-width: 600px; margin: 0 auto;">
+        <li>No software platforms or product sales</li>
+        <li>No large-scale culture or training programs</li>
+        <li>No day-to-day operations or staffing takeovers</li>
+      </ul>
+      <p>We deliver scoped governance support that respects institutional boundaries and long-term independence.</p>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <h2 id="cta-title">Ready to strengthen your town's governance?</h2>
+      <p>Contact us when it feels right. We listen to your constraints, then build structurally — no pressure, clear partnership.</p>
+      <a href="/contact.html" class="button">Start a Conversation <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>
+      Governance That Survives Real Life<br />
+      Helping towns build structures that hold when people cannot.<br />
+      © <span id="year">2026</span> PublicLogic LLC — Gardner, Massachusetts
+    </p>
+  </footer>
+
+  <script>
+    (function(){ var el = document.getElementById('year'); if (el) el.textContent = new Date().getFullYear(); })();
+  </script>
+</body>
 </html>

@@ -2,80 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Logicville Demo – PublicLogic</title>
+  <title>Logicville Governance OS — Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+    html, body {
       margin: 0;
-    }
-    .panel {
+      padding: 0;
+      height: 100%;
       background: #020617;
-      border: 1px solid #1e293b;
-      border-radius: 12px;
-      padding: 32px;
-      max-width: 520px;
+    }
+    .banner {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      font-size: 13px;
+      color: #e5e7eb;
+      background: #020617;
+      padding: 10px 16px;
+      border-bottom: 1px solid #1e293b;
+    }
+    iframe {
+      border: none;
       width: 100%;
-      box-shadow: 0 20px 40px rgba(0,0,0,.4);
-    }
-    h1 {
-      margin-top: 0;
-      font-size: 1.5rem;
-    }
-    p {
-      color: #94a3b8;
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
-    a.button {
-      display: block;
-      margin-top: 16px;
-      padding: 14px 16px;
-      background: #059669;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      text-align: center;
-    }
-    a.secondary {
-      background: #1e293b;
-    }
-    footer {
-      margin-top: 24px;
-      font-size: 0.75rem;
-      color: #64748b;
-      text-align: center;
+      height: calc(100vh - 42px);
     }
   </style>
 </head>
 <body>
-  <div class="panel">
-    <h1>Logicville Governance Demo</h1>
-    <p>
-      This demonstration shows how PublicLogic structures municipal work so
-      authority, records, and accountability survive turnover and pressure.
-    </p>
 
-    <a class="button" href="https://YOUR-VERCEL-URL-HERE" target="_blank">
-      Open Staff Governance OS
-    </a>
-
-    <a class="button secondary" href="https://YOUR-VERCEL-URL-HERE?view=public" target="_blank">
-      Open Public Portal
-    </a>
-
-    <footer>
-      System of record: Polimorphic<br/>
-      Governance framework: PublicLogic VAULT™
-    </footer>
+  <div class="banner">
+    Demo Environment • Governance UI: Logicville • System of Record: Polimorphic
   </div>
+
+  <iframe
+    src="https://grasp-email-16797511.figma.site"
+    title="Logicville Governance OS Demo"
+    allow="clipboard-read; clipboard-write; fullscreen"
+  ></iframe>
+
 </body>
 </html>
-

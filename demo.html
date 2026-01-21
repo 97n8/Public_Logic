@@ -2,42 +2,151 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Logicville Governance OS — Demo</title>
+  <title>Town of Logicville — Welcome</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- Cache control -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
   <style>
+    :root {
+      --navy: #020617;
+      --slate: #1e293b;
+      --muted: #94a3b8;
+      --paper: #f8fafc;
+      --accent: #059669;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      background: #020617;
-    }
-    .banner {
+      background: var(--paper);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      font-size: 13px;
-      color: #e5e7eb;
-      background: #020617;
-      padding: 10px 16px;
-      border-bottom: 1px solid #1e293b;
+      color: #0f172a;
     }
+
+    header {
+      background: var(--navy);
+      color: #e5e7eb;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--slate);
+    }
+
+    header .town {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    header .tagline {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .welcome {
+      padding: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .welcome h1 {
+      font-size: 26px;
+      margin: 0 0 8px 0;
+    }
+
+    .welcome p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #334155;
+      max-width: 820px;
+    }
+
+    .callout {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: #ecfeff;
+      border-left: 4px solid var(--accent);
+      font-size: 14px;
+      color: #065f46;
+      max-width: 820px;
+    }
+
+    .frame {
+      margin-top: 24px;
+      border-top: 1px solid #e2e8f0;
+      background: var(--navy);
+    }
+
     iframe {
-      border: none;
       width: 100%;
-      height: calc(100vh - 42px);
+      height: 75vh;
+      border: none;
+      background: var(--navy);
+    }
+
+    footer {
+      font-size: 12px;
+      color: #64748b;
+      padding: 12px 24px;
+      border-top: 1px solid #e2e8f0;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    footer span {
+      white-space: nowrap;
     }
   </style>
 </head>
 <body>
 
-  <div class="banner">
-    Demo Environment • Governance UI: Logicville • System of Record: Polimorphic
+  <header>
+    <div class="town">Town of Logicville</div>
+    <div class="tagline">A demonstration municipality where governance is clear, orderly, and built to last</div>
+  </header>
+
+  <section class="welcome">
+    <h1>Welcome to Logicville</h1>
+    <p>
+      In Logicville, things just make sense. Requests go where they belong, records are handled
+      with care, and staff can focus on serving the public instead of chasing process.
+    </p>
+    <p>
+      This demonstration shows how a modern municipal government can operate when responsibility
+      is clearly defined, systems are reliable, and workflows are designed to survive turnover,
+      audits, and real-world pressure.
+    </p>
+
+    <div class="callout">
+      Governance interface provided by <strong>PublicLogic</strong>.  
+      Authoritative case execution and records management handled by <strong>Polimorphic</strong>.
+    </div>
+  </section>
+
+  <div class="frame">
+    <iframe
+      src="https://grasp-email-16797511.figma.site/?v=20260121"
+      title="Logicville Governance OS Demo"
+      allow="clipboard-read; clipboard-write; fullscreen"
+      referrerpolicy="no-referrer"
+    ></iframe>
   </div>
 
-  <iframe
-    src="https://grasp-email-16797511.figma.site"
-    title="Logicville Governance OS Demo"
-    allow="clipboard-read; clipboard-write; fullscreen"
-  ></iframe>
+  <footer>
+    <span>Demo environment • Not a real municipality</span>
+    <span>Governance UI: Logicville • System of Record: Polimorphic</span>
+  </footer>
 
 </body>
 </html>

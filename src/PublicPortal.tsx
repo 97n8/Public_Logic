@@ -1,0 +1,1 @@
+export default function PublicPortal(){ return <div>Public Portal</div> }

@@ -9,7 +9,6 @@
     :root{
       --bg: #0b1220;
       --card: rgba(255,255,255,0.06);
-      --card2: rgba(255,255,255,0.10);
       --stroke: rgba(255,255,255,0.12);
       --text: rgba(255,255,255,0.94);
       --muted: rgba(255,255,255,0.70);
@@ -17,9 +16,8 @@
       --teal: #0F766E;
       --mint: #34D399;
       --blue: #2563EB;
-      --amber: #F59E0B;
-      --purple: #7C3AED;
       --orange: #F97316;
+      --purple: #7C3AED;
 
       --shadow: 0 18px 60px rgba(0,0,0,0.45);
       --radius: 18px;
@@ -140,6 +138,41 @@
       max-width: 900px;
     }
 
+    .actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .btn{
+      appearance:none;
+      border:0;
+      cursor:pointer;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 850;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+      transition: transform 0.08s ease, opacity 0.08s ease;
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      user-select:none;
+      text-decoration:none;
+    }
+    .btn:active{ transform: translateY(1px); opacity:0.95; }
+
+    .btnPrimary{
+      background: linear-gradient(135deg, var(--teal), var(--mint));
+      color: rgba(255,255,255,0.95);
+    }
+    .btnGhost{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.92);
+    }
+
     .grid{
       display:grid;
       grid-template-columns: 1.15fr 0.85fr;
@@ -181,7 +214,6 @@
       border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.05);
       padding: 14px;
-      cursor:pointer;
       transition: transform 0.08s ease, background 0.08s ease, border 0.08s ease;
     }
     .tile:hover{
@@ -218,40 +250,28 @@
       line-height: 1.35;
     }
 
-    .actions{
+    .tileBtns{
       display:flex;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
       margin-top: 12px;
     }
 
-    .btn{
-      appearance:none;
-      border:0;
-      cursor:pointer;
-      padding: 10px 12px;
-      border-radius: 14px;
+    .mini{
+      padding: 9px 10px;
+      border-radius: 12px;
       font-weight: 850;
-      font-size: 13px;
-      letter-spacing: 0.2px;
-      transition: transform 0.08s ease, opacity 0.08s ease;
+      font-size: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.92);
+      cursor:pointer;
+      text-decoration:none;
       display:inline-flex;
       align-items:center;
-      gap: 10px;
-      user-select:none;
-      text-decoration:none;
+      gap: 8px;
     }
-    .btn:active{ transform: translateY(1px); opacity:0.95; }
-
-    .btnPrimary{
-      background: linear-gradient(135deg, var(--teal), var(--mint));
-      color: rgba(255,255,255,0.95);
-    }
-    .btnGhost{
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.14);
-      color: rgba(255,255,255,0.92);
-    }
+    .mini:active{ transform: translateY(1px); }
 
     .log{
       display:flex;
@@ -304,95 +324,28 @@
       white-space: nowrap;
     }
 
-    .badgeBlue{ border-color: rgba(37,99,235,0.35); }
-    .badgeGreen{ border-color: rgba(52,211,153,0.35); }
-    .badgeAmber{ border-color: rgba(245,158,11,0.40); }
-    .badgePurple{ border-color: rgba(124,58,237,0.40); }
-    .badgeOrange{ border-color: rgba(249,115,22,0.40); }
-
-    .rightBtns{
-      display:flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content:flex-end;
-    }
-
-    .mini{
-      padding: 9px 10px;
-      border-radius: 12px;
-      font-weight: 850;
-      font-size: 12px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.92);
-      cursor:pointer;
-      text-decoration:none;
-    }
-
-    .mini:active{ transform: translateY(1px); }
-
-    /* MODAL */
-    .modalOverlay{
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding: 18px;
-      z-index: 9999;
-    }
-    .modal{
-      width: min(1100px, 100%);
-      height: min(720px, 92vh);
-      border-radius: 20px;
-      background: rgba(10,14,24,0.92);
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 30px 90px rgba(0,0,0,0.65);
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
-    }
-    .modalTop{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      padding: 12px 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-    }
-    .modalTitle{
-      font-weight: 900;
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.75);
-    }
-    .modalClose{
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.14);
-      color: rgba(255,255,255,0.92);
-      padding: 8px 10px;
-      border-radius: 12px;
-      cursor:pointer;
-      font-weight: 850;
-      font-size: 12px;
-    }
-    .modalBody{
-      flex:1;
-      background: rgba(255,255,255,0.03);
-    }
-    .modalBody iframe{
-      width:100%;
-      height:100%;
-      border:0;
-    }
-
     .footer{
       margin-top: 16px;
       text-align:center;
       font-size: 12px;
       color: rgba(255,255,255,0.55);
+    }
+
+    .toast{
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      background: rgba(10,14,24,0.92);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.92);
+      padding: 12px 14px;
+      border-radius: 16px;
+      box-shadow: 0 20px 70px rgba(0,0,0,0.55);
+      display:none;
+      max-width: 420px;
+      font-size: 13px;
+      line-height: 1.35;
+      z-index: 9999;
     }
   </style>
 </head>
@@ -418,32 +371,34 @@
     <div class="hero">
       <h2>VAULT Clerk Case Hub</h2>
       <p>
-        Start intake, manage cases, and mirror records into SharePoint for retention and compliance.
-        This is the “structure layer” that holds during chaos.
+        Launch intake, manage cases, and mirror records into SharePoint for retention and compliance.
+        This hub is the “structure layer” that holds during chaos.
       </p>
 
       <div class="actions">
-        <button class="btn btnPrimary" onclick="openModule('PRR')">➕ New PRR Intake</button>
-        <button class="btn btnGhost" onclick="openModule('ONBOARD')">➕ New ONBOARD Intake</button>
-        <button class="btn btnGhost" onclick="openModule('CLERK')">➕ New CLERK Intake</button>
-        <button class="btn btnGhost" onclick="openModule('FIX')">➕ New FIX Intake</button>
+        <button class="btn btnPrimary" onclick="launchIntake('PRR')">➕ New PRR Intake</button>
+        <button class="btn btnGhost" onclick="launchIntake('ONBOARD')">➕ New ONBOARD Intake</button>
+        <button class="btn btnGhost" onclick="launchIntake('CLERK')">➕ New CLERK Intake</button>
+        <button class="btn btnGhost" onclick="launchIntake('FIX')">➕ New FIX Intake</button>
       </div>
     </div>
 
     <div class="grid">
       <div class="card">
         <h3>Case Domains</h3>
-
         <div class="modules" id="moduleTiles"></div>
+
+        <div class="footer" style="margin-top:14px;">
+          Intake opens in a new tab to avoid iframe security blocks.
+        </div>
       </div>
 
       <div class="card">
-        <h3>Recent Case Log (Demo)</h3>
-
+        <h3>LogicDOCS Case Log (Demo)</h3>
         <div class="log" id="caseLog"></div>
 
         <div class="footer">
-          When you wire the Power Automate endpoint, “Mirror to SharePoint” becomes real.
+          When you wire Power Automate, “Mirror to SharePoint” becomes real.
         </div>
       </div>
     </div>
@@ -453,22 +408,24 @@
     </div>
   </div>
 
-  <!-- MODAL -->
-  <div class="modalOverlay" id="modalOverlay">
-    <div class="modal">
-      <div class="modalTop">
-        <div class="modalTitle" id="modalTitle">Intake</div>
-        <button class="modalClose" onclick="closeModal()">Close</button>
-      </div>
-      <div class="modalBody">
-        <iframe id="modalFrame" src="about:blank" title="Polimorphic Intake"></iframe>
-      </div>
-    </div>
-  </div>
+  <div class="toast" id="toast"></div>
 
   <script>
-    // 🔥 Replace this with your real Power Automate HTTP trigger URL
+    // =========================
+    // 1) CONFIG — PASTE YOURS
+    // =========================
+
+    // 🔥 Replace with your real Power Automate HTTP trigger URL
+    // Example: https://prod-00.westus.logic.azure.com:443/workflows/....
     const PA_FLOW_URL = "PA_FLOW_URL_HERE";
+
+    // SharePoint destinations (optional, but makes this feel like a real hub)
+    // Put your real URLs here:
+    const SHAREPOINT = {
+      siteHome: "https://publiclogic978.sharepoint.com/sites/LogicvilleMA",
+      docsLibrary: "https://publiclogic978.sharepoint.com/sites/LogicvilleMA/Shared%20Documents/Forms/AllItems.aspx",
+      casesList: "https://publiclogic978.sharepoint.com/sites/LogicvilleMA/Lists/LogicDOCSCases/AllItems.aspx"
+    };
 
     // Polimorphic apply URLs (real)
     const MODULES = {
@@ -476,33 +433,29 @@
         name: "Public Records (PRR)",
         desc: "Submit, track, and respond under M.G.L. c. 66 within statutory timelines.",
         tag: "Records + Deadlines",
-        badgeClass: "badgeBlue",
         intakeUrl: "https://app.polimorphic.com/react/organizations/polimorphic.public-logic/blueprints/public-records-request-prr-vau/apply"
       },
       CLERK: {
         name: "Clerk Services",
         desc: "Universal clerk requests. Governed intake and defensible filing.",
         tag: "Appointments + Certificates",
-        badgeClass: "badgePurple",
         intakeUrl: "https://app.polimorphic.com/react/organizations/polimorphic.public-logic/blueprints/logicville-ma-vaultclerk-dem-1/apply"
       },
       FIX: {
         name: "Facilities / FIX",
         desc: "Non-emergency issues routed to DPW or Facilities with clean closeout.",
         tag: "DPW + Facilities",
-        badgeClass: "badgeOrange",
         intakeUrl: "https://app.polimorphic.com/react/organizations/polimorphic.public-logic/blueprints/logicville-fix/apply"
       },
       ONBOARD: {
         name: "Onboarding (ONBOARD)",
         desc: "Appointments, onboarding, and mandatory training compliance tracking.",
         tag: "Fairness + Compliance",
-        badgeClass: "badgeGreen",
         intakeUrl: "https://app.polimorphic.com/react/organizations/polimorphic.public-logic/blueprints/logicville-onboard/apply"
       }
     };
 
-    // Demo case log (you can replace with real SharePoint list read later)
+    // Demo case log
     const DEMO_CASES = [
       {
         caseId: "ONB-2026-0004",
@@ -533,31 +486,52 @@
       }
     ];
 
+    // =========================
+    // 2) GOVERNANCE RULE
+    // =========================
     function governanceNormalizeStatus(status){
       if(!status) return "Closed";
       const s = String(status).toLowerCase();
       if(s.includes("closed")) return "Closed";
       if(s.includes("complete")) return "Closed";
       if(s.includes("active")) return "Closed"; // fairness lock rule
-      return status;
+      return "Closed";
     }
 
-    function openModule(key){
+    // =========================
+    // 3) UX HELPERS
+    // =========================
+    function toast(msg){
+      const t = document.getElementById("toast");
+      t.innerText = msg;
+      t.style.display = "block";
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        t.style.display = "none";
+      }, 3200);
+    }
+
+    // =========================
+    // 4) ACTIONS
+    // =========================
+    function launchIntake(key){
       const mod = MODULES[key];
       if(!mod) return;
-      document.getElementById("modalTitle").innerText = "Intake • " + mod.name;
-      document.getElementById("modalFrame").src = mod.intakeUrl;
-      document.getElementById("modalOverlay").style.display = "flex";
+      window.open(mod.intakeUrl, "_blank", "noopener,noreferrer");
+      toast("Opening intake in a new tab: " + mod.name);
     }
 
-    function closeModal(){
-      document.getElementById("modalOverlay").style.display = "none";
-      document.getElementById("modalFrame").src = "about:blank";
+    function openSharePointDocs(){
+      window.open(SHAREPOINT.docsLibrary, "_blank", "noopener,noreferrer");
+    }
+
+    function openSharePointCases(){
+      window.open(SHAREPOINT.casesList, "_blank", "noopener,noreferrer");
     }
 
     async function mirrorToSharePoint(caseObj){
       if(PA_FLOW_URL === "PA_FLOW_URL_HERE"){
-        alert("Power Automate URL not set yet. Paste your HTTP trigger URL into PA_FLOW_URL.");
+        toast("Power Automate URL not set yet. Paste it into PA_FLOW_URL in this HTML.");
         return;
       }
 
@@ -569,24 +543,30 @@
         stage: caseObj.stage,
         assignee: caseObj.owner,
         polimorphicId: caseObj.polimorphicId,
-        polimorphicUrl: "(demo)",
         submittedAt: new Date().toISOString()
       };
 
-      const res = await fetch(PA_FLOW_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
+      try{
+        const res = await fetch(PA_FLOW_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
 
-      if(!res.ok){
-        alert("Mirror failed. Check Power Automate flow permissions and URL.");
-        return;
+        if(!res.ok){
+          toast("Mirror failed. Check PA permissions + URL.");
+          return;
+        }
+
+        toast("Mirrored to SharePoint successfully.");
+      }catch(e){
+        toast("Mirror failed. CORS or network blocked. We can fix this in PA.");
       }
-
-      alert("Mirrored to SharePoint successfully.");
     }
 
+    // =========================
+    // 5) RENDER
+    // =========================
     function renderModuleTiles(){
       const el = document.getElementById("moduleTiles");
       el.innerHTML = "";
@@ -594,15 +574,20 @@
       Object.entries(MODULES).forEach(([key, mod]) => {
         const div = document.createElement("div");
         div.className = "tile";
-        div.onclick = () => openModule(key);
 
         div.innerHTML = `
           <div class="tileTop">
             <div class="tag">${mod.tag}</div>
-            <div class="badge ${mod.badgeClass}">${key}</div>
+            <div class="tag">${key}</div>
           </div>
           <div class="tileName">${mod.name}</div>
           <div class="tileDesc">${mod.desc}</div>
+
+          <div class="tileBtns">
+            <button class="mini" onclick="launchIntake('${key}')">Open Intake</button>
+            <button class="mini" onclick="openSharePointDocs()">Open Docs</button>
+            <button class="mini" onclick="openSharePointCases()">Open Cases</button>
+          </div>
         `;
 
         el.appendChild(div);
@@ -630,7 +615,7 @@
             </div>
           </div>
           <div class="rightBtns">
-            <button class="mini" onclick='openModule("${c.module}")'>Open Intake</button>
+            <button class="mini" onclick="launchIntake('${c.module}')">Open Intake</button>
             <button class="mini" onclick='mirrorToSharePoint(${JSON.stringify(c).replace(/'/g,"&#39;")})'>Mirror</button>
           </div>
         `;

@@ -1,90 +1,646 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Logicville VAULT Clerk | Case Hub</title>
-<style>
-  /* CORE COLORS AND BASE */
-  :root {
-    --primary: #0F766E;
-    --accent: #34D399;
-    --slate: #334155;
-    --text: #0F172A;
-    --subtle: #64748B;
-    --bg: #F8FAFC;
-    --card-bg: #ffffff;
-    --card-border: #E2E8F0;
-  }
-  body {
-    margin:0;
-    font-family: Segoe UI, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-  }
-  .container { max-width:1200px; margin:auto; padding:24px; }
-  .header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
-  .header-title { font-size:26px; font-weight:800; letter-spacing:.5px; }
-  .header-sub { font-size:14px; color:var(--subtle); }
-  .btn { text-decoration:none; display:inline-block; padding:10px 16px; border-radius:8px; font-weight:700; font-size:14px; transition:all .12s; }
-  .btn-primary { background:var(--primary); color:white; }
-  .btn-secondary { background:var(--accent); color:white; }
-  .btn:hover { opacity:.92; transform:translateY(1px); }
-  .grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:24px; }
-  .card { background:var(--card-bg); border:1px solid var(--card-border); border-radius:12px; padding:18px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
-  .card h3 { margin:0; font-size:15px; font-weight:700; }
-  .card p { margin-top:6px; font-size:13px; color:var(--subtle); }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LogicDOCS | Logicville Case Hub</title>
+
+  <style>
+    :root{
+      --bg: #0b1220;
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.10);
+      --stroke: rgba(255,255,255,0.12);
+      --text: rgba(255,255,255,0.94);
+      --muted: rgba(255,255,255,0.70);
+
+      --teal: #0F766E;
+      --mint: #34D399;
+      --blue: #2563EB;
+      --amber: #F59E0B;
+      --purple: #7C3AED;
+      --orange: #F97316;
+
+      --shadow: 0 18px 60px rgba(0,0,0,0.45);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(900px 520px at 12% 15%, rgba(52,211,153,0.20), transparent 60%),
+        radial-gradient(900px 520px at 85% 20%, rgba(15,118,110,0.22), transparent 60%),
+        radial-gradient(1100px 680px at 50% 95%, rgba(37,99,235,0.14), transparent 55%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    .wrap{
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 26px 20px 42px;
+    }
+
+    .top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 260px;
+    }
+
+    .mark{
+      width:44px;
+      height:44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--teal), var(--mint));
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      user-select:none;
+    }
+
+    .title h1{
+      margin:0;
+      font-size: 20px;
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+    .title p{
+      margin: 5px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 720px;
+      line-height: 1.35;
+    }
+
+    .pills{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      font-size: 12px;
+      color: rgba(255,255,255,0.86);
+      user-select:none;
+    }
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background: var(--mint);
+      box-shadow: 0 0 0 4px rgba(52,211,153,0.14);
+    }
+
+    .hero{
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: var(--radius);
+      background:
+        radial-gradient(600px 260px at 15% 20%, rgba(52,211,153,0.18), transparent 60%),
+        radial-gradient(600px 260px at 85% 30%, rgba(15,118,110,0.20), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+    }
+    .hero h2{
+      margin:0;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+    .hero p{
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      max-width: 900px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+      .pills{ justify-content:flex-start; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--card), rgba(255,255,255,0.04));
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.70);
+    }
+
+    .modules{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+    }
+    @media (max-width: 560px){
+      .modules{ grid-template-columns: 1fr; }
+    }
+
+    .tile{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      padding: 14px;
+      cursor:pointer;
+      transition: transform 0.08s ease, background 0.08s ease, border 0.08s ease;
+    }
+    .tile:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .tileTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .tag{
+      font-size: 11px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.82);
+    }
+
+    .tileName{
+      margin: 10px 0 0;
+      font-weight: 900;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+    }
+    .tileDesc{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .btn{
+      appearance:none;
+      border:0;
+      cursor:pointer;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 850;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+      transition: transform 0.08s ease, opacity 0.08s ease;
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      user-select:none;
+      text-decoration:none;
+    }
+    .btn:active{ transform: translateY(1px); opacity:0.95; }
+
+    .btnPrimary{
+      background: linear-gradient(135deg, var(--teal), var(--mint));
+      color: rgba(255,255,255,0.95);
+    }
+    .btnGhost{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.92);
+    }
+
+    .log{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+
+    .row{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .rowLeft{
+      display:flex;
+      flex-direction:column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .rowTitle{
+      font-weight: 900;
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 560px;
+    }
+
+    .rowMeta{
+      font-size: 12px;
+      color: var(--muted);
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge{
+      font-size: 11px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.85);
+      white-space: nowrap;
+    }
+
+    .badgeBlue{ border-color: rgba(37,99,235,0.35); }
+    .badgeGreen{ border-color: rgba(52,211,153,0.35); }
+    .badgeAmber{ border-color: rgba(245,158,11,0.40); }
+    .badgePurple{ border-color: rgba(124,58,237,0.40); }
+    .badgeOrange{ border-color: rgba(249,115,22,0.40); }
+
+    .rightBtns{
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content:flex-end;
+    }
+
+    .mini{
+      padding: 9px 10px;
+      border-radius: 12px;
+      font-weight: 850;
+      font-size: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.92);
+      cursor:pointer;
+      text-decoration:none;
+    }
+
+    .mini:active{ transform: translateY(1px); }
+
+    /* MODAL */
+    .modalOverlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index: 9999;
+    }
+    .modal{
+      width: min(1100px, 100%);
+      height: min(720px, 92vh);
+      border-radius: 20px;
+      background: rgba(10,14,24,0.92);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 30px 90px rgba(0,0,0,0.65);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+    .modalTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .modalTitle{
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+    }
+    .modalClose{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.92);
+      padding: 8px 10px;
+      border-radius: 12px;
+      cursor:pointer;
+      font-weight: 850;
+      font-size: 12px;
+    }
+    .modalBody{
+      flex:1;
+      background: rgba(255,255,255,0.03);
+    }
+    .modalBody iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    .footer{
+      margin-top: 16px;
+      text-align:center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+    }
+  </style>
 </head>
+
 <body>
+  <div class="wrap">
 
-<div class="container">
+    <div class="top">
+      <div class="brand">
+        <div class="mark">LV</div>
+        <div class="title">
+          <h1>LogicDOCS</h1>
+          <p>Governed case documentation for the Town of Logicville. Polimorphic runs intake. SharePoint + Power Automate preserve defensibility and fairness.</p>
+        </div>
+      </div>
 
-  <!-- HEADER -->
-  <div class="header">
-    <div>
-      <div class="header-title">Logicville VAULT Clerk</div>
-      <div class="header-sub">Governed case workspace — intake, review, records, closure</div>
+      <div class="pills">
+        <div class="pill"><span class="dot"></span> Governance Automation Online</div>
+        <div class="pill">Active is treated as Closed (fairness lock)</div>
+      </div>
     </div>
-    <div>
-      <a href="#intake" class="btn btn-primary">➕ New Intake</a>
-      <a href="#console" class="btn btn-secondary">📊 Case Console</a>
+
+    <div class="hero">
+      <h2>VAULT Clerk Case Hub</h2>
+      <p>
+        Start intake, manage cases, and mirror records into SharePoint for retention and compliance.
+        This is the “structure layer” that holds during chaos.
+      </p>
+
+      <div class="actions">
+        <button class="btn btnPrimary" onclick="openModule('PRR')">➕ New PRR Intake</button>
+        <button class="btn btnGhost" onclick="openModule('ONBOARD')">➕ New ONBOARD Intake</button>
+        <button class="btn btnGhost" onclick="openModule('CLERK')">➕ New CLERK Intake</button>
+        <button class="btn btnGhost" onclick="openModule('FIX')">➕ New FIX Intake</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Case Domains</h3>
+
+        <div class="modules" id="moduleTiles"></div>
+      </div>
+
+      <div class="card">
+        <h3>Recent Case Log (Demo)</h3>
+
+        <div class="log" id="caseLog"></div>
+
+        <div class="footer">
+          When you wire the Power Automate endpoint, “Mirror to SharePoint” becomes real.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" style="margin-top:18px;">
+      © 2026 Town of Logicville • Powered by PublicLogic
     </div>
   </div>
 
-  <!-- ACTION CARDS -->
-  <div class="grid2">
-    <div class="card">
-      <h3>Active Cases</h3>
-      <p>Work in progress — open matters</p>
-      <a href="#active" class="btn btn-secondary">View Active</a>
-    </div>
-
-    <div class="card">
-      <h3>Closed / Archive</h3>
-      <p>Completed and locked records</p>
-      <a href="#closed" class="btn btn-secondary">View Closed</a>
-    </div>
-
-    <div class="card">
-      <h3>Templates & Notices</h3>
-      <p>Letters, forms, SOPs</p>
-      <a href="#templates" class="btn btn-secondary">Browse Templates</a>
-    </div>
-
-    <div class="card">
-      <h3>Governance Rules</h3>
-      <p>Authority, fairness, retention</p>
-      <a href="#governance" class="btn btn-secondary">View Rules</a>
+  <!-- MODAL -->
+  <div class="modalOverlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modalTop">
+        <div class="modalTitle" id="modalTitle">Intake</div>
+        <button class="modalClose" onclick="closeModal()">Close</button>
+      </div>
+      <div class="modalBody">
+        <iframe id="modalFrame" src="about:blank" title="Polimorphic Intake"></iframe>
+      </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <div style="margin-top:40px; font-size:12px; color:var(--subtle); text-align:center;">
-    Logicville VAULT Clerk • © 2026 Town of Logicville
-  </div>
+  <script>
+    // 🔥 Replace this with your real Power Automate HTTP trigger URL
+    const PA_FLOW_URL = "PA_FLOW_URL_HERE";
 
-</div>
+    // Polimorphic apply URLs (real)
+    const MODULES = {
+      PRR: {
+        name: "Public Records (PRR)",
+        desc: "Submit, track, and respond under M.G.L. c. 66 within statutory timelines.",
+        tag: "Records + Deadlines",
+        badgeClass: "badgeBlue",
+        intakeUrl: "https://app.polimorphic.com/react/organizations/polimorphic.public-logic/blueprints/public-records-request-prr-vau/apply"
+      },
+      CLERK: {
+        name: "Clerk Services",
+        desc: "Universal clerk requests. Governed intake and defensible filing.",
+        tag: "Appointments + Certificates",
+        badgeClass: "badgePurple",
+        intakeUrl: "https://app.polimorphic.com/react/organizations/polimorphic.public-logic/blueprints/logicville-ma-vaultclerk-dem-1/apply"
+      },
+      FIX: {
+        name: "Facilities / FIX",
+        desc: "Non-emergency issues routed to DPW or Facilities with clean closeout.",
+        tag: "DPW + Facilities",
+        badgeClass: "badgeOrange",
+        intakeUrl: "https://app.polimorphic.com/react/organizations/polimorphic.public-logic/blueprints/logicville-fix/apply"
+      },
+      ONBOARD: {
+        name: "Onboarding (ONBOARD)",
+        desc: "Appointments, onboarding, and mandatory training compliance tracking.",
+        tag: "Fairness + Compliance",
+        badgeClass: "badgeGreen",
+        intakeUrl: "https://app.polimorphic.com/react/organizations/polimorphic.public-logic/blueprints/logicville-onboard/apply"
+      }
+    };
 
+    // Demo case log (you can replace with real SharePoint list read later)
+    const DEMO_CASES = [
+      {
+        caseId: "ONB-2026-0004",
+        title: "New Committee Member Onboarding",
+        module: "ONBOARD",
+        stage: "Training Assigned",
+        status: "Active",
+        owner: "Town Clerk",
+        polimorphicId: "DEMO-CASE-001"
+      },
+      {
+        caseId: "PRR-2026-0012",
+        title: "Public Records Request: FY25 Invoices",
+        module: "PRR",
+        stage: "Search & Collect",
+        status: "Closed",
+        owner: "Records Access Officer",
+        polimorphicId: "DEMO-CASE-002"
+      },
+      {
+        caseId: "FIX-2026-0009",
+        title: "Streetlight Out: Main St",
+        module: "FIX",
+        stage: "Work Order Created",
+        status: "Active",
+        owner: "DPW Foreman",
+        polimorphicId: "DEMO-CASE-003"
+      }
+    ];
+
+    function governanceNormalizeStatus(status){
+      if(!status) return "Closed";
+      const s = String(status).toLowerCase();
+      if(s.includes("closed")) return "Closed";
+      if(s.includes("complete")) return "Closed";
+      if(s.includes("active")) return "Closed"; // fairness lock rule
+      return status;
+    }
+
+    function openModule(key){
+      const mod = MODULES[key];
+      if(!mod) return;
+      document.getElementById("modalTitle").innerText = "Intake • " + mod.name;
+      document.getElementById("modalFrame").src = mod.intakeUrl;
+      document.getElementById("modalOverlay").style.display = "flex";
+    }
+
+    function closeModal(){
+      document.getElementById("modalOverlay").style.display = "none";
+      document.getElementById("modalFrame").src = "about:blank";
+    }
+
+    async function mirrorToSharePoint(caseObj){
+      if(PA_FLOW_URL === "PA_FLOW_URL_HERE"){
+        alert("Power Automate URL not set yet. Paste your HTTP trigger URL into PA_FLOW_URL.");
+        return;
+      }
+
+      const payload = {
+        module: caseObj.module,
+        caseId: caseObj.caseId,
+        title: caseObj.title,
+        status: governanceNormalizeStatus(caseObj.status),
+        stage: caseObj.stage,
+        assignee: caseObj.owner,
+        polimorphicId: caseObj.polimorphicId,
+        polimorphicUrl: "(demo)",
+        submittedAt: new Date().toISOString()
+      };
+
+      const res = await fetch(PA_FLOW_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if(!res.ok){
+        alert("Mirror failed. Check Power Automate flow permissions and URL.");
+        return;
+      }
+
+      alert("Mirrored to SharePoint successfully.");
+    }
+
+    function renderModuleTiles(){
+      const el = document.getElementById("moduleTiles");
+      el.innerHTML = "";
+
+      Object.entries(MODULES).forEach(([key, mod]) => {
+        const div = document.createElement("div");
+        div.className = "tile";
+        div.onclick = () => openModule(key);
+
+        div.innerHTML = `
+          <div class="tileTop">
+            <div class="tag">${mod.tag}</div>
+            <div class="badge ${mod.badgeClass}">${key}</div>
+          </div>
+          <div class="tileName">${mod.name}</div>
+          <div class="tileDesc">${mod.desc}</div>
+        `;
+
+        el.appendChild(div);
+      });
+    }
+
+    function renderCaseLog(){
+      const el = document.getElementById("caseLog");
+      el.innerHTML = "";
+
+      DEMO_CASES.forEach((c) => {
+        const row = document.createElement("div");
+        row.className = "row";
+
+        const status = governanceNormalizeStatus(c.status);
+
+        row.innerHTML = `
+          <div class="rowLeft">
+            <div class="rowTitle">${c.caseId} • ${c.title}</div>
+            <div class="rowMeta">
+              <span class="badge">${c.module}</span>
+              <span class="badge">${c.stage}</span>
+              <span class="badge">${status}</span>
+              <span class="badge">Owner: ${c.owner}</span>
+            </div>
+          </div>
+          <div class="rightBtns">
+            <button class="mini" onclick='openModule("${c.module}")'>Open Intake</button>
+            <button class="mini" onclick='mirrorToSharePoint(${JSON.stringify(c).replace(/'/g,"&#39;")})'>Mirror</button>
+          </div>
+        `;
+
+        el.appendChild(row);
+      });
+    }
+
+    renderModuleTiles();
+    renderCaseLog();
+  </script>
 </body>
 </html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Logicville VAULT Clerk | Case Hub</title>
+<style>
+  /* CORE COLORS AND BASE */
+  :root {
+    --primary: #0F766E;
+    --accent: #34D399;
+    --slate: #334155;
+    --text: #0F172A;
+    --subtle: #64748B;
+    --bg: #F8FAFC;
+    --card-bg: #ffffff;
+    --card-border: #E2E8F0;
+  }
+  body {
+    margin:0;
+    font-family: Segoe UI, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  .container { max-width:1200px; margin:auto; padding:24px; }
+  .header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .header-title { font-size:26px; font-weight:800; letter-spacing:.5px; }
+  .header-sub { font-size:14px; color:var(--subtle); }
+  .btn { text-decoration:none; display:inline-block; padding:10px 16px; border-radius:8px; font-weight:700; font-size:14px; transition:all .12s; }
+  .btn-primary { background:var(--primary); color:white; }
+  .btn-secondary { background:var(--accent); color:white; }
+  .btn:hover { opacity:.92; transform:translateY(1px); }
+  .grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:24px; }
+  .card { background:var(--card-bg); border:1px solid var(--card-border); border-radius:12px; padding:18px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+  .card h3 { margin:0; font-size:15px; font-weight:700; }
+  .card p { margin-top:6px; font-size:13px; color:var(--subtle); }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="header-title">Logicville VAULT Clerk</div>
+      <div class="header-sub">Governed case workspace — intake, review, records, closure</div>
+    </div>
+    <div>
+      <a href="#intake" class="btn btn-primary">➕ New Intake</a>
+      <a href="#console" class="btn btn-secondary">📊 Case Console</a>
+    </div>
+  </div>
+
+  <!-- ACTION CARDS -->
+  <div class="grid2">
+    <div class="card">
+      <h3>Active Cases</h3>
+      <p>Work in progress — open matters</p>
+      <a href="#active" class="btn btn-secondary">View Active</a>
+    </div>
+
+    <div class="card">
+      <h3>Closed / Archive</h3>
+      <p>Completed and locked records</p>
+      <a href="#closed" class="btn btn-secondary">View Closed</a>
+    </div>
+
+    <div class="card">
+      <h3>Templates & Notices</h3>
+      <p>Letters, forms, SOPs</p>
+      <a href="#templates" class="btn btn-secondary">Browse Templates</a>
+    </div>
+
+    <div class="card">
+      <h3>Governance Rules</h3>
+      <p>Authority, fairness, retention</p>
+      <a href="#governance" class="btn btn-secondary">View Rules</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="margin-top:40px; font-size:12px; color:var(--subtle); text-align:center;">
+    Logicville VAULT Clerk • © 2026 Town of Logicville
+  </div>
+
+</div>
+
+</body>
+</html>

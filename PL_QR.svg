@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="3.5in" height="2in" viewBox="0 0 1050 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1050" height="600" fill="white"/>
+
+  <!-- Subtle network pattern (low ink, faint) -->
+  <g opacity="0.12" fill="#00B7C3" stroke="#00B7C3" stroke-width="1.5">
+    <circle cx="120" cy="140" r="6"/>
+    <circle cx="280" cy="100" r="6"/>
+    <circle cx="420" cy="180" r="6"/>
+    <circle cx="580" cy="120" r="6"/>
+    <circle cx="720" cy="200" r="6"/>
+    <circle cx="880" cy="140" r="6"/>
+    <circle cx="180" cy="360" r="6"/>
+    <circle cx="360" cy="420" r="6"/>
+    <circle cx="520" cy="320" r="6"/>
+    <circle cx="680" cy="400" r="6"/>
+    <circle cx="840" cy="460" r="6"/>
+    <circle cx="300" cy="500" r="6"/>
+    <circle cx="620" cy="480" r="6"/>
+    <circle cx="900" cy="520" r="6"/>
+
+    <line x1="120" y1="140" x2="280" y2="100"/>
+    <line x1="280" y1="100" x2="420" y2="180"/>
+    <line x1="420" y1="180" x2="580" y2="120"/>
+    <line x1="580" y1="120" x2="720" y2="200"/>
+    <line x1="720" y1="200" x2="880" y2="140"/>
+    <line x1="180" y1="360" x2="360" y2="420"/>
+    <line x1="360" y1="420" x2="520" y2="320"/>
+    <line x1="520" y1="320" x2="680" y2="400"/>
+    <line x1="680" y1="400" x2="840" y2="460"/>
+    <line x1="120" y1="140" x2="180" y2="360"/>
+    <line x1="420" y1="180" x2="520" y2="320"/>
+    <line x1="720" y1="200" x2="680" y2="400"/>
+    <line x1="300" y1="500" x2="620" y2="480"/>
+    <line x1="880" y1="140" x2="840" y2="460"/>
+    <line x1="900" y1="520" x2="620" y2="480"/>
+  </g>
+
+  <!-- Header -->
+  <text x="525" y="85" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#0A1D56" text-anchor="middle">
+    Public Logic
+  </text>
+
+  <text x="525" y="125" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#666666" text-anchor="middle" letter-spacing="1">
+    SMART SYSTEMS. STRONGER COMMUNITIES.
+  </text>
+
+  <!-- QR PLACEHOLDER -->
+  <!-- Centered, sized for strong scan reliability -->
+  <g transform="translate(325,150)">
+    <rect width="400" height="400" fill="none" stroke="#DDDDDD" stroke-width="2" stroke-dasharray="8"/>
+    <text x="200" y="190" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#999999" text-anchor="middle">
+      QR Code
+    </text>
+    <text x="200" y="230" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#999999" text-anchor="middle">
+      Paste modules here
+    </text>
+  </g>
+
+  <!-- Bottom info -->
+  <text x="525" y="575" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#0A1D56" text-anchor="middle">
+    info@publiclogic.org • publiclogic.org
+  </text>
+</svg>

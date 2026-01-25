@@ -1,17 +1,11 @@
-# PublicLogic
 
-Governance structures that survive turnover, audits, and pressure — placing risk in systems, not people.
+  # Branding Strategy Development
 
-**Live site:** https://publiclogic.dev
+  This is a code bundle for Branding Strategy Development. The original project is available at https://www.figma.com/design/Q4tO7Y8QN1nelP5b0rg3AJ/Branding-Strategy-Development.
 
-This repository contains the source for the PublicLogic public website, including:
-- Core pages (Home, About, Frameworks, Services, Writings, Contact)
-- VAULT™ Governance Framework documentation
-- Supporting assets and diagrams
+  ## Running the code
 
-## License
-All rights reserved. Governance concepts are public for reference and citation.  
-Implementation logic, enforcement mechanisms, deployment specifications, and proprietary frameworks are protected.
+  Run `npm i` to install the dependencies.
 
-## Contact
-info@publiclogic.org
+  Run `npm run dev` to start the development server.
+  

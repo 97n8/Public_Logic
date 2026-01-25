@@ -1,31 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Redirecting to PublicLogic...</title>
-  <!-- Redirect immediately via Meta tag -->
-  <meta http-equiv="refresh" content="0; url=https://smart-pleat-57985670.figma.site">
-  
-  <style>
-    body {
-      background: #022c22; /* Emerald Green base */
-      color: #ffffff;
-      font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    a { color: #34d399; text-decoration: none; font-weight: bold; }
-  </style>
-</head>
-<body>
-  <p>Redirecting to PublicLogic... If you are not redirected, <a href="https://smart-pleat-57985670.figma.site">click here</a>.</p>
+  <head>
+    <!-- Core -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#064e3b" />
 
-  <script>
-    // Immediate JavaScript redirect fallback
-    window.location.href = "https://smart-pleat-57985670.figma.site";
-  </script>
-</body>
+    <!-- Title -->
+    <title>PublicLogic | Governance That Holds</title>
+
+    <!-- Description -->
+    <meta
+      name="description"
+      content="PublicLogic builds durable governance structures for municipalities. We move authority, records, and institutional memory out of individuals and into systems that survive turnover, audits, and pressure."
+    />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.publiclogic.org/" />
+
+    <!-- SEO -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PublicLogic" />
+    <meta property="og:title" content="PublicLogic | Governance That Holds" />
+    <meta
+      property="og:description"
+      content="Governance-first municipal systems designed to survive turnover, audits, and institutional pressure."
+    />
+    <meta property="og:url" content="https://www.publiclogic.org/" />
+    <!-- Optional when you have one -->
+    <!-- <meta property="og:image" content="https://www.publiclogic.org/og-image.png" /> -->
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PublicLogic | Governance That Holds" />
+    <meta
+      name="twitter:description"
+      content="Durable governance structures for municipalities. Authority first. Records first. Continuity by design."
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Fonts / Styles handled by app build -->
+  </head>
+
+  <body>
+    <!-- App Root -->
+    <div id="root"></div>
+
+    <!-- App Entry (Vite example) -->
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

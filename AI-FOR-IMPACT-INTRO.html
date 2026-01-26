@@ -4,10 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI for Impact Pilot – Introduction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     @page {
       size: letter;
-      margin: 1in 0.75in;
+      margin: 0.9in 0.75in 1in;
     }
     :root {
       --navy: #0a2540;
@@ -21,367 +24,255 @@
       --green-light: #e6f4ed;
     }
     body {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      line-height: 1.65;
+      font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+      line-height: 1.68;
       color: var(--navy);
-      max-width: 7.5in;
       margin: 0 auto;
-      font-size: 11.5pt;
-      padding: 0 0.5in;
+      font-size: 11.75pt;
+      background: #fff;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      padding: 0.5in 0.5in 1in;
+      max-width: 8in;
     }
     h1, h2, h3 {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       color: var(--navy);
-      margin-top: 1.4em;
-      margin-bottom: 0.5em;
-      font-weight: 600;
+      margin-top: 1.6em;
+      margin-bottom: 0.6em;
+      font-weight: 700;
+      letter-spacing: -0.015em;
     }
     h1 {
-      font-size: 20pt;
+      font-size: 22pt;
       text-align: center;
-      margin-bottom: 0.3em;
-      letter-spacing: -0.02em;
+      margin-bottom: 0.4em;
     }
     h2 {
-      font-size: 13pt;
+      font-size: 13.5pt;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       border-bottom: 2px solid var(--navy);
-      padding-bottom: 0.4em;
-      margin-top: 2em;
+      padding-bottom: 0.5em;
+      margin-top: 2.2em;
     }
     h3 {
-      font-size: 12pt;
-      margin-top: 1.2em;
+      font-size: 12.5pt;
+      margin-top: 1.4em;
       color: var(--blue);
     }
     p {
-      margin: 0.9em 0;
+      margin: 1em 0;
+      font-size: 11.75pt;
     }
     ul, ol {
-      margin: 0.7em 0 0.7em 1.4em;
+      margin: 0.8em 0 0.8em 1.5em;
     }
     li {
       margin-bottom: 0.4em;
     }
     .header-block {
       text-align: center;
-      margin: 0 0 2em;
-      padding-bottom: 1.2em;
+      margin: 0 0 2.8em;
+      padding-bottom: 1.6em;
       border-bottom: 1px solid var(--border);
     }
     .header-logo {
       width: 100%;
-      max-width: 100%;
       height: auto;
-      margin-bottom: 0.8em;
+      margin-bottom: 1em;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(10,37,64,0.12);
     }
     .subtitle {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 11pt;
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5pt;
       color: var(--gray);
       margin-top: 0;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
     }
     .tagline {
       font-style: italic;
-      font-size: 12pt;
+      font-size: 13pt;
       color: var(--slate);
-      margin-top: 1em;
+      margin-top: 1.1em;
     }
     .free-badge {
       display: inline-block;
       background: var(--green);
       color: white;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 9pt;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+      font-family: 'Inter', sans-serif;
+      font-size: 9.5pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 0.3em 0.8em;
-      margin-top: 1em;
-      border-radius: 2px;
+      padding: 0.4em 1em;
+      margin-top: 1.2em;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(13,104,71,0.25);
     }
     .highlight {
       background: var(--bg-highlight);
-      padding: 0.8em 1em;
-      border-left: 3px solid var(--blue);
-      margin: 1.4em 0;
+      padding: 1em 1.2em;
+      border-left: 4px solid var(--blue);
+      margin: 1.6em 0;
+      font-style: italic;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(10,37,64,0.08);
     }
     .highlight strong {
       font-style: normal;
+      color: var(--navy);
     }
     .highlight-green {
       background: var(--green-light);
       border-left: 4px solid var(--green);
-      padding: 1em 1.2em;
-      margin: 1.5em 0;
+      padding: 1.2em 1.4em;
+      margin: 1.6em 0;
       border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(13,104,71,0.12);
     }
     .example-box {
-      background: #fdf8f3;
+      background: #fdfaf5;
       border: 1px solid #e8d5c4;
-      padding: 1em 1.2em;
-      margin: 1.4em 0;
-      font-size: 10.5pt;
+      padding: 1.2em 1.4em;
+      margin: 1.6em 0;
+      font-size: 11pt;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
     .example-box strong {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Inter', sans-serif;
       color: var(--navy);
       display: block;
-      margin-bottom: 0.4em;
-      font-size: 10pt;
+      margin-bottom: 0.5em;
+      font-size: 10.5pt;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
-    /* Flow Diagram */
+    /* Flow Diagram – Mobile-friendly */
     .flow-section {
-      margin: 2em 0;
+      margin: 2.4em 0;
       page-break-inside: avoid;
     }
     .flow-diagram {
       display: flex;
       flex-direction: column;
       gap: 0;
-      max-width: 100%;
-      margin: 1.5em auto;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 1.8em auto;
+      font-family: 'Inter', sans-serif;
     }
     .flow-step {
       display: flex;
+      flex-direction: row;
       align-items: stretch;
+      margin-bottom: -1px;
     }
     .flow-phase {
-      width: 100px;
-      padding: 0.8em 0.5em;
+      min-width: 100px;
+      flex: 0 0 100px;
+      padding: 0.9em 0.6em;
       text-align: center;
-      font-size: 10pt;
-      font-weight: 600;
+      font-size: 10.5pt;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      border: 2px solid;
+      border: 2px solid var(--navy);
+      background: white;
+      color: var(--navy);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      z-index: 2;
+    }
+    .flow-phase span {
+      font-size: 8pt;
+      opacity: 0.8;
+      margin-top: 0.2em;
     }
     .flow-content {
       flex: 1;
-      padding: 0.8em 1em;
-      border: 2px solid;
+      padding: 0.9em 1.2em;
+      border: 2px solid var(--navy);
       border-left: none;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     }
     .flow-title {
-      font-weight: 600;
-      font-size: 10.5pt;
-      margin-bottom: 0.2em;
+      font-weight: 700;
+      font-size: 11pt;
+      margin-bottom: 0.3em;
+      color: var(--navy);
     }
     .flow-desc {
-      font-size: 10pt;
+      font-size: 10.5pt;
       color: var(--slate);
     }
-    .flow-step-1 .flow-phase {
-      background: var(--navy);
-      color: white;
-      border-color: var(--navy);
-    }
-    .flow-step-1 .flow-content {
-      background: var(--blue-light);
-      border-color: var(--navy);
-    }
-    .flow-step-2 .flow-phase {
-      background: var(--blue);
-      color: white;
-      border-color: var(--blue);
-      border-top: none;
-    }
-    .flow-step-2 .flow-content {
-      background: var(--bg-highlight);
-      border-color: var(--blue);
-      border-top: none;
-    }
-    .flow-step-3 .flow-phase {
-      background: var(--slate);
-      color: white;
-      border-color: var(--slate);
-      border-top: none;
-    }
-    .flow-step-3 .flow-content {
-      background: white;
-      border-color: var(--slate);
-      border-top: none;
-    }
-    .flow-step-4 .flow-phase {
-      background: var(--green);
-      color: white;
-      border-color: var(--green);
-      border-top: none;
-    }
-    .flow-step-4 .flow-content {
-      background: var(--green-light);
-      border-color: var(--green);
-      border-top: none;
-    }
+    /* Step colors */
+    .flow-step-1 .flow-phase { background: var(--navy); color: white; border-color: var(--navy); }
+    .flow-step-1 .flow-content { background: var(--blue-light); border-color: var(--navy); }
+    .flow-step-2 .flow-phase { background: var(--blue); color: white; border-color: var(--blue); border-top: none; }
+    .flow-step-2 .flow-content { background: var(--bg-highlight); border-color: var(--blue); border-top: none; }
+    .flow-step-3 .flow-phase { background: var(--slate); color: white; border-color: var(--slate); border-top: none; }
+    .flow-step-3 .flow-content { background: white; border-color: var(--slate); border-top: none; }
+    .flow-step-4 .flow-phase { background: var(--green); color: white; border-color: var(--green); border-top: none; }
+    .flow-step-4 .flow-content { background: var(--green-light); border-color: var(--green); border-top: none; }
     .flow-caption {
       text-align: center;
-      font-size: 10pt;
+      font-size: 10.5pt;
       color: var(--gray);
-      margin-top: 1em;
+      margin-top: 1.2em;
       font-style: italic;
+      font-family: 'Inter', sans-serif;
     }
-    /* Definitions */
-    .definitions {
-      background: var(--bg-highlight);
-      padding: 1em 1.2em;
-      margin: 1.5em 0;
-      border: 1px solid var(--border);
-      font-size: 10.5pt;
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+      body {
+        padding: 0.6in 0.4in 1in;
+        font-size: 11.25pt;
+      }
+      h1 { font-size: 20pt; }
+      h2 { font-size: 12.5pt; }
+      .flow-step {
+        flex-direction: column;
+      }
+      .flow-phase {
+        min-width: auto;
+        width: 100%;
+        border-bottom: none;
+        border-right: none;
+        border-top: 2px solid var(--navy);
+      }
+      .flow-content {
+        border-left: 2px solid var(--navy);
+        border-top: none;
+      }
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+      .value-list ul {
+        padding-left: 1em;
+      }
+      .header-logo {
+        max-width: 100%;
+      }
     }
-    .definitions dt {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-weight: 600;
-      color: var(--navy);
-      margin-top: 0.8em;
-    }
-    .definitions dt:first-child {
-      margin-top: 0;
-    }
-    .definitions dd {
-      margin: 0.2em 0 0 0;
-      color: var(--slate);
-    }
-    /* Table */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5em 0;
-      font-size: 10.5pt;
-    }
-    th, td {
-      border: 1px solid var(--border);
-      padding: 0.6em 0.8em;
-      vertical-align: top;
-    }
-    th {
-      background: var(--navy);
-      color: white;
-      text-align: left;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-weight: 600;
-      font-size: 10pt;
-      letter-spacing: 0.03em;
-    }
-    td:first-child {
-      color: var(--gray);
-    }
-    td:last-child {
-      color: var(--navy);
-    }
-    /* Team Section */
-    .team-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2em;
-      margin: 1.2em 0;
-    }
-    .team-member {
-      padding: 0.8em 1em;
-      border: 1px solid var(--border);
-      background: var(--bg-highlight);
-    }
-    .team-member h4 {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 10.5pt;
-      font-weight: 600;
-      color: var(--navy);
-      margin: 0 0 0.3em;
-    }
-    .team-member p {
-      font-size: 10pt;
-      color: var(--slate);
-      margin: 0;
-      line-height: 1.5;
-    }
-    /* Value List */
-    .value-list {
-      background: var(--green-light);
-      border: 1px solid var(--green);
-      padding: 1em 1.2em;
-      margin: 1.5em 0;
-    }
-    .value-list h3 {
-      color: var(--green);
-      margin: 0 0 0.6em;
-      font-size: 11pt;
-    }
-    .value-list ul {
-      margin: 0;
-      padding-left: 1.2em;
-    }
-    .value-list li {
-      color: var(--navy);
-      font-size: 10.5pt;
-    }
-    /* Next Steps */
-    .next-steps {
-      background: var(--navy);
-      color: white;
-      padding: 1.2em 1.4em;
-      margin: 2em 0 1.5em;
-    }
-    .next-steps h2 {
-      color: white;
-      border-bottom-color: rgba(255,255,255,0.3);
-      margin-top: 0;
-      font-size: 12pt;
-    }
-    .next-steps p {
-      margin: 0.6em 0;
-      font-size: 11pt;
-    }
-    .next-steps .action {
-      margin-top: 1em;
-    }
-    .next-steps .action strong {
-      display: block;
-      margin-bottom: 0.2em;
-    }
-    .next-steps .commitment {
-      margin-top: 1em;
-      padding-top: 0.8em;
-      border-top: 1px solid rgba(255,255,255,0.2);
-      font-size: 10pt;
-      opacity: 0.9;
-    }
-    /* Signature */
-    .signature {
-      margin-top: 2em;
-      text-align: right;
-      font-style: italic;
-      font-size: 10.5pt;
-      color: var(--slate);
-    }
-    .signature strong {
-      font-style: normal;
-      color: var(--navy);
-    }
-    /* Footer */
-    .footer {
-      margin-top: 3em;
-      padding-top: 1em;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 9.5pt;
-      color: var(--gray);
-    }
+    /* Print optimizations */
     @media print {
       body {
-        font-size: 11pt;
+        font-size: 11.25pt;
+        background: white !important;
         padding: 0;
       }
       .next-steps, .flow-phase, .free-badge, .value-list, .highlight, .highlight-green, .example-box, .team-member, th {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+      }
+      .header-logo, .flow-content, .flow-phase {
+        box-shadow: none;
       }
       .page-break-before {
         page-break-before: always;
@@ -516,25 +407,22 @@
   </div>
 
   <h2>Key Terms (Plain Language)</h2>
-<dl class="definitions">
-  <dt>VAULT</dt>
-  <dd>
-    PublicLogic’s governance framework. It defines authority, ownership, sequencing, and documentation requirements so municipal work stays clear, defensible, and sustainable under pressure, turnover, and audit.
-  </dd>
+  <dl class="definitions">
+    <dt>VAULT</dt>
+    <dd>
+      PublicLogic’s governance framework. It defines authority, ownership, sequencing, and documentation requirements so municipal work stays clear, defensible, and sustainable under pressure, turnover, and audit.
+    </dd>
+    <dt>CASE</dt>
+    <dd>
+      A structured workspace for a specific piece of municipal work. Each CASE has a clear owner, visible status, required documentation, and a defined closeout point aligned with public records and retention requirements.
+    </dd>
+    <dt>Kismet</dt>
+    <dd>
+      The law-embedded artifacts and automation produced during the pilot to live inside each CASE. These are town-owned, cataloged tools, forms, templates, and automated steps that operate inside your workspace, remain usable without vendor lock-in, and can be maintained and improved over time.
+    </dd>
+  </dl>
 
-  <dt>CASE</dt>
-  <dd>
-    A structured workspace for a specific piece of municipal work. Each CASE has a clear owner, visible status, required documentation, and a defined closeout point aligned with public records and retention requirements.
-  </dd>
-
-  <dt>Kismet</dt>
-  <dd>
-    The law-embedded artifacts and automation produced during the pilot to live inside each CASE. These are town-owned, cataloged tools, forms, templates, and automated steps that operate inside your workspace, remain usable without vendor lock-in, and can be maintained and improved over time.
-  </dd>
-</dl>
-
-<h2 class="page-break-before">Before and After the Pilot</h2>
-
+  <h2 class="page-break-before">Before and After the Pilot</h2>
   <table>
     <tr>
       <th style="width:48%">Before</th>
@@ -575,28 +463,25 @@
     <strong>Empowering Diverse Contributors:</strong> Clear structure reduces the "Wild West" nature of municipal work, making roles accessible to seniors, volunteers, and people with disabilities. Staff can rely on defined processes rather than personal memory—improving retention, equity, and continuity.
   </div>
 
- <h2>Why This Team</h2>
-<div class="team-grid">
-  <div class="team-member">
-    <h4>Nathan R. Boudreau, MPA, MCPPO</h4>
-    <p>
-      Massachusetts municipal leader with final responsibility for budgets, labor, facilities, legal deadlines, and organizational risk. Builds the financial and operational systems he is accountable for so work is clearly owned, documented, and transferable. Known for turning high-pressure, real-world operations into simple structures that hold up through turnover, audits, and leadership change. Founder of PublicLogic LLC. Professional anchor: If the work cannot be handed off safely, the system is not complete.
-    </p>
+  <h2>Why This Team</h2>
+  <div class="team-grid">
+    <div class="team-member">
+      <h4>Nathan R. Boudreau, MPA, MCPPO</h4>
+      <p>
+        Massachusetts municipal leader with final responsibility for budgets, labor, facilities, legal deadlines, and organizational risk. Builds the financial and operational systems he is accountable for so work is clearly owned, documented, and transferable. Known for turning high-pressure, real-world operations into simple structures that hold up through turnover, audits, and leadership change. Founder of PublicLogic LLC. Professional anchor: If the work cannot be handed off safely, the system is not complete.
+      </p>
+    </div>
+    <div class="team-member">
+      <h4>Dr. Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA</h4>
+      <p>
+        Organizational psychologist focused on how teams actually function under pressure. Ensures workflows are realistic, usable, and sustainable when staff are busy, tired, short-staffed, or under scrutiny. Her work helps reduce confusion, prevent burnout, and support reliable documentation and reporting across diverse teams, including seniors, volunteers, and individuals with disabilities.
+      </p>
+    </div>
   </div>
-
-  <div class="team-member">
-    <h4>Dr. Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA</h4>
-    <p>
-      Organizational psychologist focused on how teams actually function under pressure. Ensures workflows are realistic, usable, and sustainable when staff are busy, tired, short-staffed, or under scrutiny. Her work helps reduce confusion, prevent burnout, and support reliable documentation and reporting across diverse teams, including seniors, volunteers, and individuals with disabilities.
-    </p>
-  </div>
-</div>
-
-<p style="margin-top:0.8em;">
-  <strong>Polimorphic</strong> provides implementation support, system configuration, and ongoing
-  operational assistance once structure is in place.
-</p>
-
+  <p style="margin-top:0.8em;">
+    <strong>Polimorphic</strong> provides implementation support, system configuration, and ongoing
+    operational assistance once structure is in place.
+  </p>
 
   <div class="value-list page-break-before">
     <h3>What Participating Communities Receive</h3>
@@ -610,6 +495,10 @@
     <p style="font-size: 10pt; color: #425466; margin: 0.8em 0 0 0;">
       Communities own all materials produced during the pilot outright and may use them for internal operations, procurement decisions, or budget justification without restriction.
     </p>
+  </div>
+
+  <div class="highlight highlight-green" style="margin-top:2em;">
+    <strong>See it in action:</strong> Visit <a href="https://www.publiclogic.org/demo" style="color:var(--blue); font-weight:600; text-decoration:underline;">LogicVille</a> — a small window into what we can do with structure and PublicLogic. This interactive demo shows how clear governance transforms daily municipal work.
   </div>
 
   <h2>Why This Matters Now</h2>

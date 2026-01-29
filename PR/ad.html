@@ -3,545 +3,409 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VAULT™ – Municipal Data Tagged for Compliance</title>
+    <title>VAULT™ – The Missing Layer</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
-
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         * { margin:0; padding:0; box-sizing:border-box; }
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0a0e17 0%, #1e293b 100%);
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #0a0e17;
             color: #e2e8f0;
+            min-height: 100vh;
             overflow-x: hidden;
-            overflow-y: auto;
-            height: 100vh;
         }
-        .container {
-            width: 100vw;
-            height: 100vh;
+        .hero {
             position: relative;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            padding: 0 1.5rem;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .logo {
+            font-size: clamp(6rem, 18vw, 14rem);
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            background: linear-gradient(90deg, #60a5fa, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 80px rgba(96,165,250,0.5);
+            margin-bottom: 1rem;
+        }
+        .tagline {
+            font-size: clamp(2.2rem, 7vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #c084fc, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            font-size: clamp(1.4rem, 4.5vw, 2rem);
+            max-width: 900px;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        .governance {
+            font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+            color: #94a3b8;
+            max-width: 820px;
+            margin: 1.5rem auto 3rem;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.5;
+        }
+        .scene-container {
+            position: relative;
+            height: 90vh;
+            min-height: 700px;
         }
         .scene {
             position: absolute;
             inset: 0;
             opacity: 0;
-            transition: opacity 1.6s ease-in-out;
+            transition: opacity 2s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
+            padding: 2rem 1rem;
         }
         .scene.active { opacity: 1; }
-
-        .split { 
-            position: absolute; 
-            inset: 0; 
-            background: linear-gradient(to right, #661919 50%, #1e3a8a 50%); 
-            z-index: -2; 
-        }
-
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 0.8rem;
-            z-index: 10;
-        }
-        .seal {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            border: 3px solid #60a5fa;
-            box-shadow: 0 0 25px rgba(59,130,246,0.5);
-        }
-
-        .title {
-            font-size: clamp(2.5rem, 8vw, 5.8rem);
-            font-weight: 900;
-            text-align: center;
-            line-height: 1.05;
-            text-shadow: 0 4px 25px rgba(0,0,0,0.7);
-        }
-        .problem { color: #f87171; }
-        .solution { color: #60a5fa; }
-
-        .conveyor {
-            width: 98%;
-            max-width: 980px;
-            height: 170px;
-            position: relative;
-            margin: 1rem 0;
-            border-radius: 1.2rem;
+        .vault-frame {
+            width: 92%;
+            max-width: 1400px;
+            height: 380px;
+            background: linear-gradient(145deg, #111827, #0f172a);
+            border: 3px solid #334155;
+            border-radius: 2rem;
             overflow: hidden;
-            box-shadow: 0 18px 55px rgba(0,0,0,0.7);
+            position: relative;
+            box-shadow: 0 30px 100px rgba(0,0,0,0.8), inset 0 0 60px rgba(96,165,250,0.08);
         }
         .belt {
             position: absolute;
             inset: 0;
-            background: repeating-linear-gradient(90deg, #334155 0, #334155 60px, #1e293b 60px, #1e293b 120px);
-            animation: move 5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+            background: repeating-linear-gradient(90deg, #1e293b 0, #1e293b 120px, #111827 120px, #111827 240px);
+            animation: belt-move 5.5s linear infinite;
         }
-        @keyframes move { 0% { transform: translateX(0); } 100% { transform: translateX(-120px); } }
-
-        .doc-stack {
+        @keyframes belt-move { 0% { transform: translateX(0); } 100% { transform: translateX(-240px); } }
+        .docs {
             position: absolute;
-            top: 20px;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
-            z-index: 5;
+            padding: 0 2rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
         }
         .doc {
-            width: 100px;
-            animation: gentleRock 9s ease-in-out infinite;
-            animation-delay: calc(var(--i) * 0.5s);
+            width: 160px;
+            max-width: 33%;
+            animation: cinematic-float 10s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.8s);
+            transform-origin: center;
         }
-        @keyframes gentleRock {
-            0%,100% { transform: translateY(0) rotate(0deg) scale(0.92); }
-            50% { transform: translateY(-5px) rotate(var(--rock, 1.2deg)) scale(0.95); }
+        @keyframes cinematic-float {
+            0%,100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-28px) rotate(var(--rot, 3deg)) scale(1.05); }
         }
-        .paper {
-            background: #fff;
-            border-radius: 0.75rem;
-            padding: 0.8rem 0.6rem;
-            box-shadow: 0 7px 22px rgba(0,0,0,0.6);
+        .doc-paper {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            color: #111827;
+            padding: 1.4rem 1rem;
+            border-radius: 1.1rem;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.6), inset 0 0 15px rgba(255,255,255,0.3);
             text-align: center;
-            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid #60a5fa33;
         }
-        .icon { font-size: 2.8rem; margin-bottom: 0.25rem; }
-        .type { font-weight: 800; color: #111827; font-size: 0.8rem; line-height: 1.1; }
-
-        .tags {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
+        .icon { font-size: 5.5rem; margin-bottom: 0.7rem; line-height: 1; }
+        .type { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; }
         .tag {
             position: absolute;
-            padding: 0.3rem 0.7rem;
-            border-radius: 0.35rem;
-            font-size: 0.65rem;
-            font-weight: 700;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-            white-space: nowrap;
-        }
-
-        .chaos-tag {
-            background: #dc2626;
-            color: white;
-            animation: chaosFly 5.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
-            opacity: 0.9;
-        }
-        @keyframes chaosFly {
-            0%   { transform: translate(0,0) rotate(0deg) scale(1); opacity: 0.9; }
-            30%  { transform: translate(var(--dx1, 100px), var(--dy1, -80px)) rotate(var(--dr1, 35deg)) scale(1.15); opacity: 0.7; }
-            60%  { transform: translate(var(--dx2, -110px), var(--dy2, 90px)) rotate(var(--dr2, -40deg)) scale(0.85); opacity: 0.4; }
-            100% { transform: translate(var(--dx3, 140px), var(--dy3, -120px)) rotate(var(--dr3, 50deg)) scale(0.5); opacity: 0; }
-        }
-
-        .safe-tag {
-            background: #60a5fa;
-            color: white;
-            border: 1.2px solid #3b82f6;
-            font-family: monospace;
-            box-shadow: 0 0 11px rgba(96,165,250,0.4);
-            font-size: 0.63rem;
-            transform-origin: center;
-            animation: safeSnap 3.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, glow 2.2s infinite alternate;
-            opacity: 0;
-        }
-        @keyframes safeSnap {
-            0%   { transform: translate(var(--sx, -140px), var(--sy, -100px)) scale(0.6) rotate(-12deg); opacity: 0; }
-            50%  { transform: translate(var(--ex, 0), var(--ey, 0)) scale(1.18) rotate(6deg); opacity: 1; }
-            100% { transform: translate(0,0) scale(1) rotate(0deg); opacity: 1; }
-        }
-        @keyframes glow { 0% { box-shadow: 0 0 11px rgba(96,165,250,0.4); } 100% { box-shadow: 0 0 20px rgba(96,165,250,0.8); } }
-
-        .station {
-            position: absolute;
-            top: -130px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 160px;
-            background: #1e293b;
+            padding: 1.1rem 1.9rem;
             border-radius: 1.1rem;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.65);
-            z-index: 10;
-            font-size: 0.9rem;
+            font-size: 1.25rem;
+            font-weight: 900;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 1.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0;
+            transform: translateY(70px) scale(0.7) rotate(-4deg);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
         }
-        .vault-station {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            animation: pulse 2.8s ease-in-out infinite;
+        .chaos { background: #991b1b; color: white; border: 4px solid #ef4444; }
+        .compliance {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+            border: 4px solid #a5b4fc;
         }
-        .vault-station::after {
-            content: "Authority Applied Here";
-            display: block;
-            font-size: 0.72rem;
-            opacity: 0.85;
-            margin-top: 0.3rem;
+        .compliance.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(0deg);
         }
-        @keyframes pulse { 0%,100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.06); } }
-
-        .beam {
+        .tag-emoji { font-size: 2.2rem; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+        .authority-note {
             position: absolute;
-            bottom: -170px;
+            bottom: 8%;
             left: 50%;
             transform: translateX(-50%);
-            width: 4.5px;
-            height: 170px;
-            background: linear-gradient(to bottom, #f87171, transparent);
-            animation: scan 2.6s ease-in-out infinite;
-        }
-        .vault-beam { background: linear-gradient(to bottom, #60a5fa, transparent); }
-        @keyframes scan { 0%,100% { opacity: 0.45; } 50% { opacity: 0.95; } }
-
-        .text {
-            font-size: clamp(1.35rem, 4.3vw, 2.1rem);
+            background: rgba(30,41,59,0.8);
+            color: #cbd5e1;
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            font-weight: 500;
             text-align: center;
-            max-width: 88%;
-            line-height: 1.4;
-            margin-top: 1.2rem;
-            font-weight: 600;
-            z-index: 5;
+            max-width: 85%;
+            backdrop-filter: blur(6px);
         }
-        .highlight { font-weight: 900; }
-
-        .benefits {
-            font-size: clamp(1.55rem, 5.3vw, 2.6rem);
-            line-height: 1.6;
-            text-align: left;
-            max-width: 82%;
-            margin-top: 1rem;
-        }
-        .benefits div { margin: 0.7rem 0; }
-
-        .logo {
-            font-size: clamp(7.5rem, 21vw, 15rem);
+        .text-overlay {
+            font-size: clamp(2.5rem, 7.5vw, 5rem);
             font-weight: 900;
-            color: #60a5fa;
-            text-shadow: 0 0 75px rgba(96,165,250,0.8);
-            letter-spacing: 0.55rem;
-        }
-        .tagline {
-            font-size: clamp(2.3rem, 7vw, 4.2rem);
-            font-weight: 800;
-            margin: 0.9rem 0;
             text-align: center;
+            max-width: 92%;
+            margin: 2.5rem 0 1.5rem;
+            background: linear-gradient(90deg, #c084fc, #60a5fa, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 30px rgba(96,165,250,0.4);
         }
-        .sub {
-            font-size: clamp(1.15rem, 3.8vw, 1.8rem);
-            color: #94a3b8;
-            max-width: 82%;
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2.5rem;
+            max-width: 1300px;
+            margin: 5rem auto 6rem;
+            padding: 0 2rem;
+        }
+        .benefit-card {
+            background: rgba(30,41,59,0.7);
+            border: 2px solid #334155;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
             text-align: center;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
         }
-
+        .benefit-icon { font-size: 5rem; margin-bottom: 1.5rem; }
+        .benefit-title { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; color: #60a5fa; }
         .progress {
             position: fixed;
-            bottom: 1.2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 88%;
-            max-width: 620px;
-            height: 10px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        .fill {
-            height: 100%;
-            background: linear-gradient(to right, #60a5fa, #3b82f6);
-            width: 0;
-            animation: fill 28s linear forwards;
-        }
-        @keyframes fill { to { width: 100%; } }
-
-        .controls {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 12px;
+            background: rgba(96,165,250,0.1);
             z-index: 100;
-            display: flex;
-            gap: 1rem;
+            box-shadow: 0 -4px 20px rgba(96,165,250,0.3);
         }
-        .btn {
-            background: rgba(96,165,250,0.18);
-            border: 2px solid #60a5fa;
-            color: #60a5fa;
-            padding: 0.85rem 1.6rem;
-            border-radius: 0.85rem;
-            cursor: pointer;
-            font-weight: 700;
-            transition: all 0.3s ease;
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #60a5fa, #a5b4fc, #c084fc);
+            width: 0;
+            animation: progress 30s linear forwards;
         }
-        .btn:hover { background: rgba(96,165,250,0.35); transform: scale(1.05); }
-
+        @keyframes progress { to { width: 100%; } }
         @media (max-width: 768px) {
-            .conveyor { height: 140px; }
-            .doc { width: 90px; }
-            .paper { padding: 0.75rem 0.55rem; }
-            .icon { font-size: 2.5rem; }
-            .type { font-size: 0.75rem; }
-            .tags { width: 180px; height: 180px; }
-            .tag { font-size: 0.6rem; padding: 0.25rem 0.55rem; }
-            .station { width: 145px; top: -115px; font-size: 0.8rem; }
-            .title { font-size: clamp(2.2rem, 8vw, 4.5rem); }
-            .doc-stack { flex-wrap: wrap; padding: 0 8px; }
+            .scene-container { height: 70vh; min-height: 600px; }
+            .vault-frame { height: 280px; }
+            .doc { width: 140px; max-width: 45%; }
+            .icon { font-size: 4.5rem; }
+            .docs { padding: 0 1.5rem; gap: 1.2rem; }
+            .tag { font-size: 1.1rem; padding: 0.9rem 1.6rem; }
+            .text-overlay { font-size: clamp(2rem, 6.5vw, 3.8rem); }
+            .benefits { padding: 0 1.5rem; gap: 2rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .belt, .doc, .tag, .progress-fill { animation: none !important; transition: none !important; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="split"></div>
 
-        <!-- Scene 1: Chaos – red tags flying off wildly -->
+    <section class="hero">
+        <div class="logo">VAULT™</div>
+        <div class="tagline">The Missing Layer</div>
+        <div class="subtitle">Intake encoding that turns municipal volume into provable continuity</div>
+        <div class="governance">
+            VAULT structurally encodes MA retention schedules, PRR obligations, fiscal/vendor rules, onboarding/new hire processes, and governance into immutable audit trails.<br>
+            It does not replace statutory authority, professional judgment, corrections, or legal oversight.
+        </div>
+    </section>
+
+    <div class="scene-container">
+        <!-- Scene 1 – Pressure / Chaos -->
         <div class="scene active" id="s1">
-            <div class="header">
-                <div class="seal">🏛️</div>
-                <div>Municipal Data</div>
-            </div>
-            <div class="title problem">UNTAGGED = LOST FOREVER</div>
-            <div class="conveyor" style="background:#661919;">
+            <div class="text-overlay" style="color:#f87171;">Volume never stops. Rules get forgotten.</div>
+            <div class="vault-frame">
                 <div class="belt"></div>
-                <div class="doc-stack">
-                    <div class="doc" style="--rock:1.2deg;--i:0;">
-                        <div class="paper">
+                <div class="docs">
+                    <div class="doc" style="--rot:3deg;--i:0;">
+                        <div class="doc-paper">
                             <div class="icon">🏗️</div>
                             <div class="type">Building Permit</div>
                         </div>
                     </div>
-                    <div class="doc" style="--rock:-1.1deg;--i:1;">
-                        <div class="paper">
+                    <div class="doc" style="--rot:-2.8deg;--i:1;">
+                        <div class="doc-paper">
                             <div class="icon">💍</div>
                             <div class="type">Marriage License</div>
                         </div>
                     </div>
-                    <div class="doc" style="--rock:0.9deg;--i:2;">
-                        <div class="paper">
-                            <div class="icon">💼</div>
-                            <div class="type">Business License</div>
-                        </div>
-                    </div>
-                    <div class="doc" style="--rock:-1.3deg;--i:3;">
-                        <div class="paper">
+                    <div class="doc" style="--rot:2.2deg;--i:2;">
+                        <div class="doc-paper">
                             <div class="icon">📜</div>
-                            <div class="type">Zoning Approval</div>
+                            <div class="type">PRR Request</div>
                         </div>
                     </div>
-                    <div class="doc" style="--rock:1deg;--i:4;">
-                        <div class="paper">
-                            <div class="icon">🐕</div>
-                            <div class="type">Dog License</div>
+                    <div class="doc" style="--rot:-2.2deg;--i:3;">
+                        <div class="doc-paper">
+                            <div class="icon">💳</div>
+                            <div class="type">Vendor Payment</div>
+                        </div>
+                    </div>
+                    <div class="doc" style="--rot:1.8deg;--i:4;">
+                        <div class="doc-paper">
+                            <div class="icon">👔</div>
+                            <div class="type">New Hire</div>
                         </div>
                     </div>
                 </div>
-                <div class="tags">
-                    <div class="chaos-tag" style="--dx1:140px;--dy1:-90px;--dr1:45deg;--dx2:-160px;--dy2:110px;--dr2:-55deg;--dx3:200px;--dy3:-160px;top:12%;left:4%;animation-delay:0s;">Lost?</div>
-                    <div class="chaos-tag" style="--dx1:-120px;--dy1:80px;--dr1:-40deg;--dx2:150px;--dy2:-100px;--dr2:50deg;--dx3:-180px;--dy3:130px;top:6%;right:6%;animation-delay:0.4s;">No owner</div>
-                    <div class="chaos-tag" style="--dx1:110px;--dy1:-110px;--dr1:35deg;--dx2:-140px;--dy2:90px;--dr2:-45deg;--dx3:170px;--dy3:-130px;bottom:38%;left:5%;animation-delay:0.8s;">Audit fail</div>
-                    <div class="chaos-tag" style="--dx1:-150px;--dy1:100px;--dr1:-50deg;--dx2:180px;--dy2:-130px;--dr2:60deg;--dx3:-200px;--dy3:150px;bottom:10%;right:3%;animation-delay:1.2s;">Vanished</div>
-                </div>
+                <div class="tag chaos" style="top:10%;left:4%;">Obligations unclear</div>
+                <div class="tag chaos" style="top:28%;right:5%;">Audit exposure</div>
+                <div class="tag chaos" style="bottom:25%;left:7%;">PRR / Payment delays</div>
             </div>
-            <div class="text">
-                Busy municipal records fly untagged...<br>
-                <span style="color:#f87171; font-weight:900;">Loss. Chaos. Destruction.</span>
+            <div class="text-overlay" style="color:#f87171;margin-top:2.5rem;">
+                Turnover erases memory.<br>Audits become crises.<br>Continuity breaks.
             </div>
         </div>
 
-        <!-- Scene 2: Safe tagging – blue tags gliding in & snapping safely -->
+        <!-- Scene 2 – The Lock / Activation -->
         <div class="scene" id="s2">
-            <div class="header">
-                <div class="seal">🏛️</div>
-                <div>Municipal Data</div>
-            </div>
-            <div class="title solution">VAULT™ TAGS UPSTREAM</div>
-            <div class="conveyor" style="border:4px solid #60a5fa; background:#1e293b;">
+            <div class="text-overlay" style="color:#60a5fa;">VAULT locks structure at intake.</div>
+            <div class="vault-frame" style="border-color:#60a5fa;">
                 <div class="belt"></div>
-                <div class="station vault-station">
-                    <div style="font-size:3.2rem;">✓</div>
-                    <div>AUTO TAGGING</div>
-                    <div class="beam vault-beam"></div>
-                </div>
-                <div class="doc-stack">
-                    <div class="doc" style="--rock:0.8deg;--i:0;">
-                        <div class="paper">
+                <div class="docs">
+                    <div class="doc" style="--rot:2.8deg;--i:0;">
+                        <div class="doc-paper">
                             <div class="icon">🏗️</div>
                             <div class="type">Building Permit</div>
                         </div>
                     </div>
-                    <div class="doc" style="--rock:-0.9deg;--i:1;">
-                        <div class="paper">
+                    <div class="doc" style="--rot:-2.5deg;--i:1;">
+                        <div class="doc-paper">
                             <div class="icon">💍</div>
                             <div class="type">Marriage License</div>
                         </div>
                     </div>
-                    <div class="doc" style="--rock:1.1deg;--i:2;">
-                        <div class="paper">
-                            <div class="icon">💼</div>
-                            <div class="type">Business License</div>
-                        </div>
-                    </div>
-                    <div class="doc" style="--rock:-1deg;--i:3;">
-                        <div class="paper">
+                    <div class="doc" style="--rot:2deg;--i:2;">
+                        <div class="doc-paper">
                             <div class="icon">📜</div>
-                            <div class="type">Zoning Approval</div>
+                            <div class="type">PRR Request</div>
                         </div>
                     </div>
-                    <div class="doc" style="--rock:0.7deg;--i:4;">
-                        <div class="paper">
-                            <div class="icon">🐕</div>
-                            <div class="type">Dog License</div>
+                    <div class="doc" style="--rot:-2deg;--i:3;">
+                        <div class="doc-paper">
+                            <div class="icon">💳</div>
+                            <div class="type">Vendor Payment</div>
+                        </div>
+                    </div>
+                    <div class="doc" style="--rot:1.5deg;--i:4;">
+                        <div class="doc-paper">
+                            <div class="icon">👔</div>
+                            <div class="type">New Hire</div>
                         </div>
                     </div>
                 </div>
-                <div class="tags">
-                    <div class="safe-tag" style="--sx:-160px;--sy:-110px;--ex:12px;--ey:-15px;top:6%;left:2%;animation-delay:0.3s;">Building Permit: Life of Bldg (MA)</div>
-                    <div class="safe-tag" style="--sx:150px;--sy:-100px;--ex:-12px;--ey:-12px;top:6%;right:2%;animation-delay:0.6s;">Marriage Lic: Permanent</div>
-                    <div class="safe-tag" style="--sx:-130px;--sy:90px;--ex:18px;--ey:8px;bottom:16%;left:1%;animation-delay:0.9s;">Business Lic: 7 yrs post-exp</div>
-                    <div class="safe-tag" style="--sx:140px;--sy:100px;--ex:-18px;--ey:10px;bottom:16%;right:1%;animation-delay:1.2s;">Zoning Appr: Permanent log</div>
-                    <div class="safe-tag" style="--sx:-100px;--sy:80px;--ex:10px;--ey:6px;top:55%;left:4%;animation-delay:1.5s;">Dog Lic: 2 yrs after audit</div>
-                    <div class="safe-tag" style="--sx:0;--sy:0;--ex:0;--ey:0;top:42%;left:42%;animation-delay:1.8s;">AUDIT: Provable</div>
+                <div class="tag compliance visible" style="top:8%;left:3%;transition-delay:0.4s;"><span class="tag-emoji">📅</span> Permanent / Life of structure</div>
+                <div class="tag compliance visible" style="top:22%;right:4%;transition-delay:0.8s;"><span class="tag-emoji">📅</span> Permanent – Vital Record</div>
+                <div class="tag compliance visible" style="bottom:30%;left:5%;transition-delay:1.2s;"><span class="tag-emoji">📅</span> 7 Years After Payment</div>
+                <div class="tag compliance visible" style="bottom:20%;right:4%;transition-delay:1.6s;"><span class="tag-emoji">📅</span> 3 Years Post-Hiring</div>
+                <div class="tag compliance visible" style="top:45%;left:45%;transition-delay:2s;"><span class="tag-emoji">✅</span> Audit trail locked</div>
+                <div class="authority-note">
+                    Tags encode defaults & deadlines. Authority remains with the office.
                 </div>
+                <div class="vault-seal" id="seal">🏛️</div>
             </div>
-            <div class="text">
-                Same busy flow — now tagged safely with exact MA laws<br>
-                <span class="highlight">VAULT™ delivers compliance at intake.</span>
+            <div class="text-overlay" style="color:#60a5fa;margin-top:2.5rem;">
+                MA retention, PRR, vendor payments & new hire obligations structurally encoded.<br>
+                Immutable audit trail of every action & decision.
             </div>
         </div>
 
-        <!-- Scene 3: Controlled flow -->
+        <!-- Scene 3 – Outcome -->
         <div class="scene" id="s3">
-            <div class="header">
-                <div class="seal">🏛️</div>
-                <div>Municipal Data</div>
-            </div>
-            <div class="title solution">YOUR TOWN WINS</div>
-            <div class="conveyor" style="border:4px solid #60a5fa; background:#1e293b;">
-                <div class="belt"></div>
-                <div class="doc-stack">
-                    <div class="doc" style="--rock:0.9deg;--i:0;">
-                        <div class="paper">
-                            <div class="icon">🏗️</div>
-                            <div class="type">Building Permit</div>
-                        </div>
-                    </div>
-                    <div class="doc" style="--rock:-0.8deg;--i:1;">
-                        <div class="paper">
-                            <div class="icon">💍</div>
-                            <div class="type">Marriage License</div>
-                        </div>
-                    </div>
-                    <div class="doc" style="--rock:1deg;--i:2;">
-                        <div class="paper">
-                            <div class="icon">💼</div>
-                            <div class="type">Business License</div>
-                        </div>
-                    </div>
-                    <div class="doc" style="--rock:-1.1deg;--i:3;">
-                        <div class="paper">
-                            <div class="icon">📜</div>
-                            <div class="type">Zoning Approval</div>
-                        </div>
-                    </div>
-                    <div class="doc" style="--rock:0.8deg;--i:4;">
-                        <div class="paper">
-                            <div class="icon">🐕</div>
-                            <div class="type">Dog License</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tags">
-                    <div class="safe-tag" style="--sx:0;--sy:0;--ex:0;--ey:0;top:8%;left:4%;animation-delay:0s;">Rules applied • Safe</div>
-                    <div class="safe-tag" style="--sx:0;--sy:0;--ex:0;--ey:0;top:8%;right:4%;animation-delay:0.3s;">MA Law matched</div>
-                    <div class="safe-tag" style="--sx:0;--sy:0;--ex:0;--ey:0;bottom:18%;left:2%;animation-delay:0.6s;">AUDIT: Provable</div>
-                </div>
-            </div>
+            <div class="text-overlay" style="color:#22c55e;">Towns that last.</div>
             <div class="benefits">
-                <div>✅ Nothing disappears — even slammed</div>
-                <div>✅ Audits become routine</div>
-                <div>✅ Residents get instant answers</div>
-                <div>✅ Compliance proven auto</div>
-                <div>✅ Turnover-proof memory</div>
-            </div>
-            <div class="text" style="margin-top:1rem;">
-                <span class="highlight">One upstream change.</span><br>
-                Zero downstream excuses.
-            </div>
-        </div>
-
-        <!-- Scene 4: Final close -->
-        <div class="scene" id="s4">
-            <div class="logo">VAULT™</div>
-            <div class="tagline">Municipal Data Tagged for Compliance</div>
-            <div class="sub">
-                Different laws for different licenses — all handled upstream<br>
-                MA retention schedules • Immutable trails • Smart routing<br>
-                ONE CHANGE. ZERO EXCUSES.
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔒</div>
+                    <div class="benefit-title">Survives Turnover</div>
+                    <p>Obligations & memory preserved — no matter who leaves.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-title">Audit-Ready Proof</div>
+                    <p>Visual, provable trail of compliance actions taken.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-title">Fast, Defensible PRR & Payments</div>
+                    <p>Encoded deadlines → responses & invoices that hold up.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <div class="benefit-title">One Upstream Fix</div>
+                    <p>Intake encoding ends downstream chaos — for good.</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="progress"><div class="fill"></div></div>
-
-    <div class="controls">
-        <button class="btn" onclick="restart()">↻ Restart</button>
-        <button class="btn pause-btn">⏸ Pause</button>
-    </div>
+    <div class="progress"><div class="progress-fill"></div></div>
 
     <script>
-        let idx = 1, paused = false, tmr;
-        const times = [6000, 8000, 7500, 8000]; // ~28s total
+        let idx = 1;
+        const scenes = 3;
+        const timings = [8000, 12000, 12000];
 
         function show(n) {
             document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
             document.getElementById(`s${n}`).classList.add('active');
+
+            if (n === 2) {
+                const seal = document.getElementById('seal');
+                seal.classList.remove('active');
+                void seal.offsetWidth;
+                seal.classList.add('active');
+
+                document.querySelectorAll('#s2 .compliance').forEach(t => {
+                    t.classList.remove('visible');
+                    void t.offsetWidth;
+                    t.classList.add('visible');
+                });
+            }
         }
 
-        function advance() {
-            if (paused) return;
-            idx = idx < 4 ? idx + 1 : 1;
+        function cycle() {
+            idx = idx < scenes ? idx + 1 : 1;
             show(idx);
-            schedule();
+            setTimeout(cycle, timings[idx-1]);
         }
 
-        function schedule() {
-            clearTimeout(tmr);
-            tmr = setTimeout(advance, times[idx-1]);
-        }
+        show(1);
+        setTimeout(cycle, timings[0]);
 
-        function restart() {
-            idx = 1; paused = false;
+        document.addEventListener('click', () => {
+            idx = 1;
             show(1);
-            const fill = document.querySelector('.fill');
-            fill.style.animation = 'none';
-            setTimeout(() => fill.style.animation = 'fill 28s linear forwards', 100);
-            document.querySelector('.pause-btn').textContent = '⏸ Pause';
-            schedule();
-        }
-
-        function togglePause() {
-            paused = !paused;
-            const btn = document.querySelector('.pause-btn');
-            btn.textContent = paused ? '▶ Play' : '⏸ Pause';
-            const fill = document.querySelector('.fill');
-            fill.style.animationPlayState = paused ? 'paused' : 'running';
-            if (paused) clearTimeout(tmr); else schedule();
-        }
-
-        schedule();
+        });
     </script>
 </body>
 </html>

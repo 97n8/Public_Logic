@@ -3,225 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VAULT™ – The Missing Layer</title>
+    <title>VAULT™ Showcase – 30 Seconds</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
         * { margin:0; padding:0; box-sizing:border-box; }
         body {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', sans-serif;
             background: #0a0e17;
             color: #e2e8f0;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        .hero {
-            position: relative;
             height: 100vh;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
+        }
+        .vault-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            position: relative;
+        }
+        .title-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(10,14,23,0.9);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 0 1.5rem;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        }
-        .logo {
-            font-size: clamp(6rem, 18vw, 14rem);
+            font-size: clamp(2rem, 6vw, 3.5rem);
             font-weight: 900;
-            letter-spacing: -0.05em;
             background: linear-gradient(90deg, #60a5fa, #a5b4fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 80px rgba(96,165,250,0.5);
-            margin-bottom: 1rem;
         }
-        .tagline {
-            font-size: clamp(2.2rem, 7vw, 4.5rem);
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, #c084fc, #60a5fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .subtitle {
-            font-size: clamp(1.4rem, 4.5vw, 2rem);
-            max-width: 900px;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-        .governance {
-            font-size: clamp(1.1rem, 3.5vw, 1.4rem);
-            color: #94a3b8;
-            max-width: 820px;
-            margin: 1.5rem auto 3rem;
-            font-weight: 400;
-            font-style: italic;
-            line-height: 1.5;
-        }
-        .scene-container {
-            position: relative;
-            height: 90vh;
-            min-height: 700px;
-        }
-        .scene {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 2s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 1rem;
-        }
-        .scene.active { opacity: 1; }
         .vault-frame {
-            width: 92%;
+            width: 94vw;
             max-width: 1400px;
-            height: 380px;
+            height: 58vh;
+            min-height: 420px;
             background: linear-gradient(145deg, #111827, #0f172a);
-            border: 3px solid #334155;
+            border: 5px solid #334155;
             border-radius: 2rem;
             overflow: hidden;
+            box-shadow: 0 30px 100px rgba(0,0,0,0.9), inset 0 0 80px rgba(96,165,250,0.1);
             position: relative;
-            box-shadow: 0 30px 100px rgba(0,0,0,0.8), inset 0 0 60px rgba(96,165,250,0.08);
         }
         .belt {
             position: absolute;
             inset: 0;
-            background: repeating-linear-gradient(90deg, #1e293b 0, #1e293b 120px, #111827 120px, #111827 240px);
-            animation: belt-move 5.5s linear infinite;
+            background: repeating-linear-gradient(90deg, #1e293b 0, #1e293b 140px, #111827 140px, #111827 280px);
+            animation: belt-move 5s linear infinite;
         }
-        @keyframes belt-move { 0% { transform: translateX(0); } 100% { transform: translateX(-240px); } }
+        @keyframes belt-move { 0% { transform: translateX(0); } 100% { transform: translateX(-280px); } }
         .docs {
             position: absolute;
             inset: 0;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 3rem;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 2rem;
         }
         .doc {
-            width: 160px;
-            max-width: 33%;
-            animation: cinematic-float 10s ease-in-out infinite;
+            width: 180px;
+            animation: float 8s ease-in-out infinite;
             animation-delay: calc(var(--i) * 0.8s);
-            transform-origin: center;
         }
-        @keyframes cinematic-float {
+        @keyframes float {
             0%,100% { transform: translateY(0) rotate(0deg) scale(1); }
-            50% { transform: translateY(-28px) rotate(var(--rot, 3deg)) scale(1.05); }
+            50% { transform: translateY(-35px) rotate(var(--rot, 4deg)) scale(1.08); }
         }
         .doc-paper {
             background: linear-gradient(135deg, #f8fafc, #e2e8f0);
             color: #111827;
-            padding: 1.4rem 1rem;
-            border-radius: 1.1rem;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.6), inset 0 0 15px rgba(255,255,255,0.3);
+            padding: 1.6rem 1.2rem;
+            border-radius: 1.2rem;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.7);
             text-align: center;
-            border: 2px solid #60a5fa33;
+            border: 3px solid #60a5fa40;
         }
-        .icon { font-size: 5.5rem; margin-bottom: 0.7rem; line-height: 1; }
-        .type { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; }
+        .icon { font-size: 6.5rem; margin-bottom: 0.8rem; }
+        .type { font-weight: 900; font-size: 1.3rem; }
         .tag {
             position: absolute;
-            padding: 1.1rem 1.9rem;
-            border-radius: 1.1rem;
-            font-size: 1.25rem;
+            padding: 1.2rem 2.2rem;
+            border-radius: 1.2rem;
+            font-size: 1.35rem;
             font-weight: 900;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
             display: flex;
             align-items: center;
-            gap: 1rem;
-            transition: all 1.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            gap: 1.2rem;
+            transition: all 1.5s cubic-bezier(0.34,1.56,0.64,1);
             opacity: 0;
-            transform: translateY(70px) scale(0.7) rotate(-4deg);
-            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+            transform: translateY(80px) scale(0.7) rotate(-5deg);
         }
-        .chaos { background: #991b1b; color: white; border: 4px solid #ef4444; }
-        .compliance {
+        .chaos { background: #991b1b; color: white; border: 5px solid #ef4444; }
+        .compliance { 
             background: linear-gradient(135deg, #3b82f6, #60a5fa);
             color: white;
-            border: 4px solid #a5b4fc;
+            border: 5px solid #a5b4fc;
         }
-        .compliance.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1) rotate(0deg);
-        }
-        .tag-emoji { font-size: 2.2rem; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+        .compliance.visible { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+        .tag-emoji { font-size: 2.4rem; }
         .authority-note {
             position: absolute;
-            bottom: 8%;
+            bottom: 5%;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(30,41,59,0.8);
+            background: rgba(30,41,59,0.9);
             color: #cbd5e1;
-            padding: 1rem 2rem;
-            border-radius: 1rem;
-            font-size: clamp(1rem, 3vw, 1.25rem);
+            padding: 1rem 2.2rem;
+            border-radius: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 500;
             text-align: center;
             max-width: 85%;
-            backdrop-filter: blur(6px);
-        }
-        .text-overlay {
-            font-size: clamp(2.5rem, 7.5vw, 5rem);
-            font-weight: 900;
-            text-align: center;
-            max-width: 92%;
-            margin: 2.5rem 0 1.5rem;
-            background: linear-gradient(90deg, #c084fc, #60a5fa, #a5b4fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 4px 30px rgba(96,165,250,0.4);
-        }
-        .benefits {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 2.5rem;
-            max-width: 1300px;
-            margin: 5rem auto 6rem;
-            padding: 0 2rem;
-        }
-        .benefit-card {
-            background: rgba(30,41,59,0.7);
-            border: 2px solid #334155;
-            border-radius: 1.5rem;
-            padding: 2.5rem;
-            text-align: center;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.6);
             backdrop-filter: blur(8px);
         }
-        .benefit-icon { font-size: 5rem; margin-bottom: 1.5rem; }
-        .benefit-title { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; color: #60a5fa; }
+        .text-overlay {
+            font-size: clamp(2.5rem, 7vw, 4.8rem);
+            font-weight: 900;
+            text-align: center;
+            margin: 1.5rem 0 1rem;
+            background: linear-gradient(90deg, #c084fc, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 30px rgba(96,165,250,0.5);
+        }
         .progress {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
             height: 12px;
-            background: rgba(96,165,250,0.1);
+            background: rgba(96,165,250,0.15);
             z-index: 100;
-            box-shadow: 0 -4px 20px rgba(96,165,250,0.3);
         }
         .progress-fill {
             height: 100%;
-            background: linear-gradient(to right, #60a5fa, #a5b4fc, #c084fc);
+            background: linear-gradient(to right, #60a5fa, #a5b4fc);
             width: 0;
             animation: progress 30s linear forwards;
         }
         @keyframes progress { to { width: 100%; } }
         @media (max-width: 768px) {
-            .scene-container { height: 70vh; min-height: 600px; }
-            .vault-frame { height: 280px; }
-            .doc { width: 140px; max-width: 45%; }
-            .icon { font-size: 4.5rem; }
-            .docs { padding: 0 1.5rem; gap: 1.2rem; }
-            .tag { font-size: 1.1rem; padding: 0.9rem 1.6rem; }
-            .text-overlay { font-size: clamp(2rem, 6.5vw, 3.8rem); }
-            .benefits { padding: 0 1.5rem; gap: 2rem; }
+            .vault-frame { height: 55vh; min-height: 420px; }
+            .doc { width: 140px; }
+            .icon { font-size: 5rem; }
+            .docs { padding: 0 2rem; gap: 1.5rem; }
+            .tag { font-size: 1.15rem; padding: 1rem 1.8rem; }
+            .text-overlay { font-size: clamp(2rem, 6.5vw, 3.5rem); }
         }
         @media (prefers-reduced-motion: reduce) {
             .belt, .doc, .tag, .progress-fill { animation: none !important; transition: none !important; }
@@ -230,181 +170,112 @@
 </head>
 <body>
 
-    <section class="hero">
-        <div class="logo">VAULT™</div>
-        <div class="tagline">The Missing Layer</div>
-        <div class="subtitle">Intake encoding that turns municipal volume into provable continuity</div>
-        <div class="governance">
-            VAULT structurally encodes MA retention schedules, PRR obligations, fiscal/vendor rules, onboarding/new hire processes, and governance into immutable audit trails.<br>
-            It does not replace statutory authority, professional judgment, corrections, or legal oversight.
-        </div>
-    </section>
+    <div class="title-bar">VAULT™</div>
 
-    <div class="scene-container">
-        <!-- Scene 1 – Pressure / Chaos -->
-        <div class="scene active" id="s1">
-            <div class="text-overlay" style="color:#f87171;">Volume never stops. Rules get forgotten.</div>
-            <div class="vault-frame">
-                <div class="belt"></div>
-                <div class="docs">
-                    <div class="doc" style="--rot:3deg;--i:0;">
-                        <div class="doc-paper">
-                            <div class="icon">🏗️</div>
-                            <div class="type">Building Permit</div>
-                        </div>
-                    </div>
-                    <div class="doc" style="--rot:-2.8deg;--i:1;">
-                        <div class="doc-paper">
-                            <div class="icon">💍</div>
-                            <div class="type">Marriage License</div>
-                        </div>
-                    </div>
-                    <div class="doc" style="--rot:2.2deg;--i:2;">
-                        <div class="doc-paper">
-                            <div class="icon">📜</div>
-                            <div class="type">PRR Request</div>
-                        </div>
-                    </div>
-                    <div class="doc" style="--rot:-2.2deg;--i:3;">
-                        <div class="doc-paper">
-                            <div class="icon">💳</div>
-                            <div class="type">Vendor Payment</div>
-                        </div>
-                    </div>
-                    <div class="doc" style="--rot:1.8deg;--i:4;">
-                        <div class="doc-paper">
-                            <div class="icon">👔</div>
-                            <div class="type">New Hire</div>
-                        </div>
+    <div class="vault-container">
+        <!-- Single animated vault frame – always visible -->
+        <div class="vault-frame">
+            <div class="belt"></div>
+            <div class="docs">
+                <div class="doc" style="--rot:3.5deg;--i:0;">
+                    <div class="doc-paper">
+                        <div class="icon">🏗️</div>
+                        <div class="type">Building Permit</div>
                     </div>
                 </div>
-                <div class="tag chaos" style="top:10%;left:4%;">Obligations unclear</div>
-                <div class="tag chaos" style="top:28%;right:5%;">Audit exposure</div>
-                <div class="tag chaos" style="bottom:25%;left:7%;">PRR / Payment delays</div>
+                <div class="doc" style="--rot:-3deg;--i:1;">
+                    <div class="doc-paper">
+                        <div class="icon">💍</div>
+                        <div class="type">Marriage License</div>
+                    </div>
+                </div>
+                <div class="doc" style="--rot:2.5deg;--i:2;">
+                    <div class="doc-paper">
+                        <div class="icon">📜</div>
+                        <div class="type">PRR Request</div>
+                    </div>
+                </div>
+                <div class="doc" style="--rot:-2.5deg;--i:3;">
+                    <div class="doc-paper">
+                        <div class="icon">💳</div>
+                        <div class="type">Vendor Payment</div>
+                    </div>
+                </div>
+                <div class="doc" style="--rot:2deg;--i:4;">
+                    <div class="doc-paper">
+                        <div class="icon">👔</div>
+                        <div class="type">New Hire</div>
+                    </div>
+                </div>
             </div>
-            <div class="text-overlay" style="color:#f87171;margin-top:2.5rem;">
-                Turnover erases memory.<br>Audits become crises.<br>Continuity breaks.
-            </div>
-        </div>
 
-        <!-- Scene 2 – The Lock / Activation -->
-        <div class="scene" id="s2">
-            <div class="text-overlay" style="color:#60a5fa;">VAULT locks structure at intake.</div>
-            <div class="vault-frame" style="border-color:#60a5fa;">
-                <div class="belt"></div>
-                <div class="docs">
-                    <div class="doc" style="--rot:2.8deg;--i:0;">
-                        <div class="doc-paper">
-                            <div class="icon">🏗️</div>
-                            <div class="type">Building Permit</div>
-                        </div>
-                    </div>
-                    <div class="doc" style="--rot:-2.5deg;--i:1;">
-                        <div class="doc-paper">
-                            <div class="icon">💍</div>
-                            <div class="type">Marriage License</div>
-                        </div>
-                    </div>
-                    <div class="doc" style="--rot:2deg;--i:2;">
-                        <div class="doc-paper">
-                            <div class="icon">📜</div>
-                            <div class="type">PRR Request</div>
-                        </div>
-                    </div>
-                    <div class="doc" style="--rot:-2deg;--i:3;">
-                        <div class="doc-paper">
-                            <div class="icon">💳</div>
-                            <div class="type">Vendor Payment</div>
-                        </div>
-                    </div>
-                    <div class="doc" style="--rot:1.5deg;--i:4;">
-                        <div class="doc-paper">
-                            <div class="icon">👔</div>
-                            <div class="type">New Hire</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tag compliance visible" style="top:8%;left:3%;transition-delay:0.4s;"><span class="tag-emoji">📅</span> Permanent / Life of structure</div>
-                <div class="tag compliance visible" style="top:22%;right:4%;transition-delay:0.8s;"><span class="tag-emoji">📅</span> Permanent – Vital Record</div>
-                <div class="tag compliance visible" style="bottom:30%;left:5%;transition-delay:1.2s;"><span class="tag-emoji">📅</span> 7 Years After Payment</div>
-                <div class="tag compliance visible" style="bottom:20%;right:4%;transition-delay:1.6s;"><span class="tag-emoji">📅</span> 3 Years Post-Hiring</div>
-                <div class="tag compliance visible" style="top:45%;left:45%;transition-delay:2s;"><span class="tag-emoji">✅</span> Audit trail locked</div>
-                <div class="authority-note">
-                    Tags encode defaults & deadlines. Authority remains with the office.
-                </div>
-                <div class="vault-seal" id="seal">🏛️</div>
+            <!-- Tags appear in sequence during cycle -->
+            <div class="tag chaos" id="chaos1" style="top:10%;left:3%;">Obligations unclear</div>
+            <div class="tag chaos" id="chaos2" style="top:30%;right:4%;">Audit exposure</div>
+            <div class="tag chaos" id="chaos3" style="bottom:25%;left:5%;">PRR / Payment delays</div>
+
+            <div class="tag compliance" id="comp1" style="top:8%;left:2%;transition-delay:0.5s;"><span class="tag-emoji">📅</span> Permanent / Life of structure</div>
+            <div class="tag compliance" id="comp2" style="top:22%;right:3%;transition-delay:1s;"><span class="tag-emoji">📅</span> Permanent – Vital</div>
+            <div class="tag compliance" id="comp3" style="bottom:30%;left:4%;transition-delay:1.5s;"><span class="tag-emoji">📅</span> 7 Years After Payment</div>
+            <div class="tag compliance" id="comp4" style="bottom:20%;right:3%;transition-delay:2s;"><span class="tag-emoji">📅</span> 3 Years Post-Hiring</div>
+            <div class="tag compliance" id="comp5" style="top:45%;left:45%;transition-delay:2.5s;"><span class="tag-emoji">✅</span> Audit trail locked</div>
+
+            <div class="authority-note">
+                Tags encode defaults & deadlines. Authority remains with the office.
             </div>
-            <div class="text-overlay" style="color:#60a5fa;margin-top:2.5rem;">
-                MA retention, PRR, vendor payments & new hire obligations structurally encoded.<br>
-                Immutable audit trail of every action & decision.
-            </div>
+
+            <div class="vault-seal" id="seal">🏛️</div>
         </div>
 
-        <!-- Scene 3 – Outcome -->
-        <div class="scene" id="s3">
-            <div class="text-overlay" style="color:#22c55e;">Towns that last.</div>
-            <div class="benefits">
-                <div class="benefit-card">
-                    <div class="benefit-icon">🔒</div>
-                    <div class="benefit-title">Survives Turnover</div>
-                    <p>Obligations & memory preserved — no matter who leaves.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">✅</div>
-                    <div class="benefit-title">Audit-Ready Proof</div>
-                    <p>Visual, provable trail of compliance actions taken.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">⚡</div>
-                    <div class="benefit-title">Fast, Defensible PRR & Payments</div>
-                    <p>Encoded deadlines → responses & invoices that hold up.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🛡️</div>
-                    <div class="benefit-title">One Upstream Fix</div>
-                    <p>Intake encoding ends downstream chaos — for good.</p>
-                </div>
-            </div>
-        </div>
+        <!-- Dynamic text overlay – changes with scene -->
+        <div id="overlay" class="text-overlay">Volume never stops.<br>Rules get forgotten.</div>
     </div>
 
     <div class="progress"><div class="progress-fill"></div></div>
 
     <script>
-        let idx = 1;
-        const scenes = 3;
-        const timings = [8000, 12000, 12000];
+        const phases = [
+            { time: 0, text: "Volume never stops.<br>Rules get forgotten.", color: "#f87171", chaos: true, compliance: false },
+            { time: 7000, text: "VAULT locks structure at intake.", color: "#60a5fa", chaos: false, compliance: true },
+            { time: 17000, text: "Towns that last.", color: "#22c55e", chaos: false, compliance: true },
+            { time: 27000, text: "VAULT™<br>The Missing Layer", color: "#60a5fa", chaos: false, compliance: true }
+        ];
 
-        function show(n) {
-            document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
-            document.getElementById(`s${n}`).classList.add('active');
+        let phaseIdx = 0;
+        const totalCycle = 30000; // 30 seconds
 
-            if (n === 2) {
-                const seal = document.getElementById('seal');
-                seal.classList.remove('active');
-                void seal.offsetWidth;
+        function updatePhase() {
+            const phase = phases[phaseIdx];
+            document.getElementById('overlay').innerHTML = phase.text;
+            document.getElementById('overlay').style.color = phase.color;
+
+            // Show/hide tag groups
+            document.querySelectorAll('.chaos').forEach(t => {
+                t.style.opacity = phase.chaos ? '0.9' : '0';
+            });
+            document.querySelectorAll('.compliance').forEach(t => {
+                t.classList.toggle('visible', phase.compliance);
+            });
+
+            // Seal pulse in tagging phase
+            const seal = document.getElementById('seal');
+            if (phaseIdx === 1) {
                 seal.classList.add('active');
-
-                document.querySelectorAll('#s2 .compliance').forEach(t => {
-                    t.classList.remove('visible');
-                    void t.offsetWidth;
-                    t.classList.add('visible');
-                });
+            } else {
+                seal.classList.remove('active');
             }
+
+            phaseIdx = (phaseIdx + 1) % phases.length;
+            setTimeout(updatePhase, phases[phaseIdx].time - (phases[phaseIdx-1]?.time || 0));
         }
 
-        function cycle() {
-            idx = idx < scenes ? idx + 1 : 1;
-            show(idx);
-            setTimeout(cycle, timings[idx-1]);
-        }
+        // Start loop
+        updatePhase();
 
-        show(1);
-        setTimeout(cycle, timings[0]);
-
+        // Restart on click/tap
         document.addEventListener('click', () => {
-            idx = 1;
-            show(1);
+            phaseIdx = 0;
+            updatePhase();
         });
     </script>
 </body>

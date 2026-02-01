@@ -20,6 +20,21 @@
         box-sizing: border-box;
         padding: 34px 42px 28px;
     }
+    .content-box {
+        background: #f9fbfa;
+        border: 1px solid #e0ece6;
+        border-radius: 4px;
+        padding: 12px 16px;
+        margin: 8px 0;
+    }
+    .content-box p, .content-box li {
+        text-align: justify;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        line-height: 1.45;
+    }
     .header {
         text-align: center;
         margin-bottom: 12px;
@@ -85,8 +100,6 @@
     }
     .intro {
         font-size: 12.8px;
-        line-height: 1.45;
-        text-align: center;
         margin: 8px 0 12px;
         color: #2c3e35;
     }
@@ -95,8 +108,6 @@
     }
     .what-it-is {
         font-size: 12.2px;
-        line-height: 1.48;
-        text-align: center;
         margin: 8px 0 12px;
         color: #3a4a42;
         font-style: italic;
@@ -112,6 +123,7 @@
         font-weight: 700;
         color: #1f3d2b;
         margin-bottom: 5px;
+        text-align: left;
     }
     .section ul {
         margin: 0;
@@ -131,7 +143,6 @@
         margin: 10px 0 12px;
         font-size: 11.5px;
         line-height: 1.48;
-        text-align: center;
         color: #2c3e35;
     }
     .highlight strong {
@@ -157,7 +168,7 @@
         margin-bottom: 8px;
     }
     .person {
-        margin-bottom: 9px;
+        margin-bottom: 10px;
     }
     .person-name {
         font-size: 12.8px;
@@ -166,7 +177,7 @@
         margin-bottom: 4px;
     }
     .person-bio {
-        font-size: 11.5px;
+        font-size: 11.2px;
         line-height: 1.45;
         color: #45554d;
     }
@@ -242,13 +253,13 @@
         <div class="name">Mark Pellegrino</div>
     </div>
 
-    <div class="intro">
+    <div class="content-box intro">
         This certificate provides one <strong>no-cost, hands-on Systems Review</strong>.<br>
-        Use it yourself or gift it to a nonprofit, school, town department, or community group.
+        You’ll walk away with a clear written summary of where friction lives and what practical next steps could help — use it yourself or gift it to a nonprofit, school, town department, or community group.
     </div>
 
-    <div class="what-it-is">
-        Not a sales call or software demo — just a clear, human-centered conversation about where work feels heavy and what could make it noticeably easier.
+    <div class="content-box what-it-is">
+        Not a sales call or software demo — just a straightforward conversation about where work feels heavy and what might make it a little easier.
     </div>
 
     <div class="two-col">
@@ -275,6 +286,7 @@
 
     <div class="highlight">
         <strong>60-day window.</strong> Redeem within 60 days of issue, subject to mutual scheduling availability.<br>
+        To redeem, just email nathan@publiclogic.org — we’ll coordinate timing that works for you.<br>
         <strong>Zero commitment.</strong> Full hands-on session — no follow-on expectation. Quick wins shown. Larger ideas (if helpful) come with clear, honest options — no pressure.
 
         <div class="notice">
@@ -285,22 +297,24 @@
 
     <div class="team">
         <div class="team-title">Who You’ll Work With</div>
+        
         <div class="person">
-            <div class="person-name">Dr. Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA</div>
-            <div class="person-bio">
-                Doctor of psychology and behavioral systems expert. Works directly with people and teams to protect mental bandwidth, prevent burnout, and build workflows that actually support human beings under real pressure and change.
+            <div class="person-name">Dr. Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA</div>
+            <div class="person-bio content-box">
+                Doctor of psychology with a focus on leadership and organizational behavior. Licensed clinical social worker and board-certified behavior analyst. Spent many years working in nonprofit and human services settings trying to help teams and people carry heavy loads without breaking. Tries to listen carefully and build small changes that actually make daily life more manageable.
             </div>
         </div>
+        
         <div class="person">
             <div class="person-name">Nathan Boudreau, MPA, MCPPO</div>
-            <div class="person-bio">
-                Municipal systems builder and public administration professional. Focuses on creating practical continuity — so organizations and teams keep functioning smoothly during turnover, absences, transitions, leadership changes, or high-stress periods.
+            <div class="person-bio content-box">
+                Former town administrator who spent years running small-town operations on tight budgets with limited staff. Learned the hard way how quickly things fall apart when people leave or get overwhelmed. Focuses on simple, realistic ways to document work, reduce single points of failure, and use everyday tools (mostly Microsoft 365) to make things a bit more steady and less stressful.
             </div>
         </div>
     </div>
 
-    <div class="closing">
-        We start with the people, then shape the systems around them — so the solutions actually work in real life.
+    <div class="content-box closing">
+        We try to start with the people who do the work, then build the systems around them — hoping the result is something that actually helps in real life.
     </div>
 
     <div class="footer">

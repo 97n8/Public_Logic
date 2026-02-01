@@ -11,7 +11,6 @@
         background: white;
         font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
         color: #1a2f22;
-        font-size: 11.8px;
     }
     .certificate {
         width: 8.5in;
@@ -19,20 +18,7 @@
         background: white;
         border: 2.5px solid #2d5a3d;
         box-sizing: border-box;
-        padding: 28px 38px 24px;
-    }
-    .content-box {
-        background: #f9fbfa;
-        border: 1px solid #e0ece6;
-        border-radius: 3px;
-        padding: 9px 13px;
-        margin: 6px 0;
-    }
-    .content-box p, .content-box li {
-        text-align: justify;
-        hyphens: auto;
-        line-height: 1.38;
-        margin: 0.35em 0;
+        padding: 28px 38px 20px;
     }
     .header {
         text-align: center;
@@ -50,6 +36,7 @@
         letter-spacing: 1.6px;
         text-transform: uppercase;
         color: #4a5f55;
+        font-weight: 500;
     }
     .partnership {
         text-align: center;
@@ -64,7 +51,7 @@
         margin: 0 0 8px;
     }
     .title h2 {
-        font-size: 21px;
+        font-size: 20px;
         font-weight: 700;
         color: #1f3d2b;
         margin: 0 0 3px;
@@ -97,14 +84,17 @@
         line-height: 1.05;
     }
     .intro {
-        font-size: 12.2px;
+        font-size: 12px;
+        line-height: 1.4;
+        text-align: center;
         margin: 6px 0 8px;
+        color: #2c3e35;
     }
-    .intro strong {
-        color: #1f3d2b;
-    }
+    .intro strong { color: #1f3d2b; }
     .what-it-is {
-        font-size: 11.8px;
+        font-size: 11.5px;
+        line-height: 1.42;
+        text-align: center;
         margin: 6px 0 8px;
         color: #3a4a42;
         font-style: italic;
@@ -116,42 +106,37 @@
         margin: 8px 0;
     }
     .section-title {
-        font-size: 12.2px;
+        font-size: 12px;
         font-weight: 700;
         color: #1f3d2b;
         margin-bottom: 4px;
-        text-align: left;
     }
     .section ul {
         margin: 0;
         padding-left: 16px;
-        font-size: 11px;
+        font-size: 10.8px;
         line-height: 1.38;
         color: #2f453c;
     }
-    .section li {
-        margin-bottom: 2.5px;
-    }
+    .section li { margin-bottom: 3px; }
     .highlight {
         background: #f8faf9;
         border: 1px solid #d8e5df;
         border-radius: 3px;
-        padding: 9px 12px;
+        padding: 8px 12px;
         margin: 8px 0 10px;
-        font-size: 11px;
-        line-height: 1.42;
+        font-size: 10.8px;
+        line-height: 1.4;
         color: #2c3e35;
     }
-    .highlight strong {
-        color: #1f3d2b;
-    }
+    .highlight strong { color: #1f3d2b; }
     .highlight .notice {
         margin-top: 7px;
         padding-top: 7px;
         border-top: 1px solid #d0e0d8;
-        font-size: 10.5px;
+        font-size: 10.2px;
         color: #45554d;
-        line-height: 1.38;
+        line-height: 1.35;
         text-align: left;
     }
     .team {
@@ -159,27 +144,28 @@
     }
     .team-title {
         text-align: center;
-        font-size: 13px;
+        font-size: 12.8px;
         font-weight: 700;
         color: #1f3d2b;
         margin-bottom: 6px;
     }
     .person {
-        margin-bottom: 8px;
+        margin-bottom: 7px;
     }
     .person-name {
-        font-size: 12.4px;
+        font-size: 12px;
         font-weight: 700;
         color: #1f3d2b;
         margin-bottom: 3px;
     }
     .person-bio {
-        font-size: 11px;
-        line-height: 1.42;
+        font-size: 10.8px;
+        line-height: 1.38;
         color: #45554d;
     }
     .closing {
-        font-size: 12.4px;
+        text-align: center;
+        font-size: 12px;
         font-style: italic;
         color: #1f3d2b;
         font-weight: 600;
@@ -192,11 +178,11 @@
         align-items: center;
         padding-top: 8px;
         border-top: 1.8px solid #2d5a3d;
-        font-size: 10.5px;
+        font-size: 10.2px;
         color: #3a4a42;
     }
     .footer-left strong {
-        font-size: 15px;
+        font-size: 14.5px;
         color: #1f3d2b;
         display: block;
         margin-bottom: 2px;
@@ -204,14 +190,14 @@
     .footer-value {
         font-weight: 700;
         color: #2d5a3d;
-        font-size: 12.2px;
+        font-size: 11.8px;
         margin-top: 3px;
         display: block;
     }
     .footer-right {
         border: 1.8px solid #2d5a3d;
-        padding: 4px 10px;
-        font-size: 9px;
+        padding: 4px 9px;
+        font-size: 8.8px;
         font-weight: 700;
         letter-spacing: 1px;
         text-transform: uppercase;
@@ -249,13 +235,13 @@
         <div class="name">Mark Pellegrino</div>
     </div>
 
-    <div class="content-box intro">
+    <div class="intro">
         This certificate provides one <strong>no-cost, hands-on Systems Review</strong>.<br>
         You’ll walk away with a clear written summary of where friction lives and what practical next steps could help — use it yourself or gift it to a nonprofit, school, town department, or community group.
     </div>
 
-    <div class="content-box what-it-is">
-        Not a sales call or software demo — just a straightforward conversation about where work feels heavy and what might make it a little easier.
+    <div class="what-it-is">
+        Not a sales call or software demo — just a clear, human-centered conversation about where work feels heavy and what could make it noticeably easier.
     </div>
 
     <div class="two-col">
@@ -293,24 +279,22 @@
 
     <div class="team">
         <div class="team-title">Who You’ll Work With</div>
-        
         <div class="person">
             <div class="person-name">Dr. Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA</div>
-            <div class="person-bio content-box">
-                Doctor of psychology with a focus on leadership and organizational behavior. Licensed clinical social worker and board-certified behavior analyst. Spent many years working in nonprofit and human services settings trying to help teams and people carry heavy loads without breaking. Tries to listen carefully and build small changes that actually make daily life more manageable.
+            <div class="person-bio">
+                Doctor of psychology and behavioral systems expert. Works directly with people and teams to protect mental bandwidth, prevent burnout, and build workflows that actually support human beings under real pressure and change.
             </div>
         </div>
-        
         <div class="person">
             <div class="person-name">Nathan Boudreau, MPA, MCPPO</div>
-            <div class="person-bio content-box">
-                Former town administrator who spent years running small-town operations on tight budgets with limited staff. Learned the hard way how quickly things fall apart when people leave or get overwhelmed. Focuses on simple, realistic ways to document work, reduce single points of failure, and use everyday tools (mostly Microsoft 365) to make things a bit more steady and less stressful.
+            <div class="person-bio">
+                Municipal systems builder and public administration professional. Focuses on creating practical continuity — so organizations and teams keep functioning smoothly during turnover, absences, transitions, leadership changes, or high-stress periods.
             </div>
         </div>
     </div>
 
-    <div class="content-box closing">
-        We try to start with the people who do the work, then build the systems around them — hoping the result is something that actually helps in real life.
+    <div class="closing">
+        We start with the people, then shape the systems around them — so the solutions actually work in real life.
     </div>
 
     <div class="footer">

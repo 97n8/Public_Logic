@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PublicLogic Systems Review – Mark Pellegrino</title>
+<style>
+    @page { size: 8.5in 11in; margin: 0; }
+    body {
+        margin: 0;
+        padding: 0;
+        background: #f9fafb;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        color: #1a2f22;
+    }
+    .certificate {
+        width: 8.5in;
+        height: 11in;
+        background: white;
+        border: 4px solid #2d5a3d;
+        box-sizing: border-box;
+        padding: 40px 48px;
+        margin: 0 auto;
+    }
+    .header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .header h1 {
+        font-size: 38px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        margin: 0 0 4px;
+        color: #1f3d2b;
+    }
+    .header .tagline {
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #4a5f55;
+        font-weight: 500;
+    }
+    .partnership {
+        text-align: center;
+        font-size: 11px;
+        color: #5a6b60;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+        margin: 0 0 20px;
+    }
+    .title {
+        text-align: center;
+        margin: 0 0 22px;
+    }
+    .title h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: #1f3d2b;
+        margin: 0 0 6px;
+    }
+    .title .period {
+        font-size: 14px;
+        color: #2d5a3d;
+        font-weight: 600;
+    }
+    .recipient {
+        text-align: center;
+        padding: 18px 0;
+        margin: 18px 0;
+        border-top: 1px solid #d8e5df;
+        border-bottom: 1px solid #d8e5df;
+    }
+    .recipient .label {
+        font-size: 11.5px;
+        text-transform: uppercase;
+        letter-spacing: 1.6px;
+        color: #5f7068;
+        margin-bottom: 6px;
+        font-weight: 600;
+    }
+    .recipient .name {
+        font-size: 34px;
+        font-weight: 700;
+        color: #1f3d2b;
+        margin: 6px 0 8px;
+    }
+    .intro {
+        font-size: 14.5px;
+        line-height: 1.6;
+        text-align: center;
+        margin: 16px 0 20px;
+        color: #2c3e35;
+    }
+    .intro strong { color: #1f3d2b; }
+    .what-it-is {
+        font-size: 13.5px;
+        line-height: 1.65;
+        text-align: center;
+        margin: 16px 0 22px;
+        color: #3a4a42;
+        font-style: italic;
+    }
+    .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        margin: 18px 0;
+    }
+    .section-title {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: #1f3d2b;
+        margin-bottom: 8px;
+    }
+    .section ul {
+        margin: 0;
+        padding-left: 20px;
+        font-size: 13px;
+        line-height: 1.6;
+        color: #2f453c;
+    }
+    .section li { margin-bottom: 7px; }
+    .highlight {
+        background: #f5f9f7;
+        border: 1px solid #d8e5df;
+        border-radius: 4px;
+        padding: 16px 20px;
+        margin: 20px 0;
+        font-size: 13px;
+        line-height: 1.65;
+        text-align: center;
+        color: #2c3e35;
+    }
+    .highlight strong { color: #1f3d2b; }
+    .highlight .notice {
+        margin-top: 14px;
+        padding-top: 12px;
+        border-top: 1px solid #d8e5df;
+        font-size: 12.5px;
+        color: #45554d;
+        line-height: 1.5;
+    }
+    .team {
+        margin: 18px 0 22px;
+    }
+    .team-title {
+        text-align: center;
+        font-size: 15px;
+        font-weight: 700;
+        color: #1f3d2b;
+        margin-bottom: 12px;
+    }
+    .person {
+        margin-bottom: 12px;
+    }
+    .person-name {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: #1f3d2b;
+        margin-bottom: 4px;
+    }
+    .person-bio {
+        font-size: 12.5px;
+        line-height: 1.55;
+        color: #45554d;
+    }
+    .closing {
+        text-align: center;
+        font-size: 14px;
+        font-style: italic;
+        color: #1f3d2b;
+        font-weight: 600;
+        margin: 18px 0 22px;
+        line-height: 1.5;
+    }
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 16px;
+        border-top: 2px solid #2d5a3d;
+        font-size: 12px;
+        color: #3a4a42;
+    }
+    .footer-left strong {
+        font-size: 18px;
+        color: #1f3d2b;
+        display: block;
+        margin-bottom: 4px;
+    }
+    .footer-value {
+        font-weight: 700;
+        color: #2d5a3d;
+        font-size: 14px;
+        margin-top: 6px;
+        display: block;
+    }
+    .footer-right {
+        border: 2px solid #2d5a3d;
+        padding: 8px 14px;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 1.4;
+        border-radius: 3px;
+        background: #f8faf9;
+    }
+    @media print {
+        body { background: white; }
+        .certificate { box-shadow: none; border-width: 3px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="certificate">
+
+    <div class="header">
+        <h1>PUBLICLOGIC</h1>
+        <div class="tagline">Smart Systems. Stronger Communities.</div>
+    </div>
+
+    <div class="partnership">
+        In Partnership with CrossFit 696 & Nutrition + 696
+    </div>
+
+    <div class="title">
+        <h2>White-Glove Systems Review Certificate</h2>
+        <div class="period">Committed Club Winner • January 2026</div>
+    </div>
+
+    <div class="recipient">
+        <div class="label">Awarded To</div>
+        <div class="name">Mark Pellegrino</div>
+    </div>
+
+    <div class="intro">
+        This certificate gives you one <strong>no-cost, white-glove PublicLogic Systems Review</strong>.<br>
+        Use it yourself or give it to a nonprofit, school, town department, or community group.
+    </div>
+
+    <div class="what-it-is">
+        Not a sales call or software demo — just a clear, human-centered conversation about where work feels heavy and what could make it noticeably easier.
+    </div>
+
+    <div class="two-col">
+        <div class="section">
+            <div class="section-title">What We Look At Together</div>
+            <ul>
+                <li>Real daily workflow and decision patterns</li>
+                <li>What happens when someone is out or leaves</li>
+                <li>Authority, handoffs, and clarity gaps</li>
+                <li>Use of Microsoft 365, Google Workspace or similar tools</li>
+                <li>Ways to reduce cognitive load, repetition & turnover pressure</li>
+            </ul>
+        </div>
+        <div class="section">
+            <div class="section-title">What Can Come Next (Only If Desired)</div>
+            <ul>
+                <li>Practical workflow redesign</li>
+                <li>Targeted automation that fits your tools</li>
+                <li>Training to cut repetitive work</li>
+                <li>VAULT™ compliant records & approvals (when needed)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="highlight">
+        <strong>60-day window.</strong> Redeem within 60 days of issue.<br><br>
+        <strong>Zero commitment.</strong> Full white-glove session — no follow-on expectation. Quick wins will be shown. Larger ideas (if helpful) come with clear, honest options — no pressure.<br>
+
+        <div class="notice">
+            <strong>Professional Services Notice</strong><br>
+            This certificate provides access to a facilitated professional conversation. It is not a certification, audit, compliance determination, or endorsement of any organization, system, or practice.
+        </div>
+    </div>
+
+    <div class="team">
+        <div class="team-title">Who You’ll Work With</div>
+        <div class="person">
+            <div class="person-name">Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA</div>
+            <div class="person-bio">
+                Behavioral systems expert. Focuses on mental bandwidth, burnout prevention, and workflows that actually support people under pressure.
+            </div>
+        </div>
+        <div class="person">
+            <div class="person-name">Nathan Boudreau, MPA, MCPPO</div>
+            <div class="person-bio">
+                Systems builder. Specializes in practical continuity during turnover, absences, transitions, or stress.
+            </div>
+        </div>
+    </div>
+
+    <div class="closing">
+        We start with the people, then shape the systems around them — so the solutions actually work in real life.
+    </div>
+
+    <div class="footer">
+        <div class="footer-left">
+            <strong>PublicLogic</strong>
+            Smart Systems. Stronger Communities.
+            <span class="footer-value">Professional Value: $1,500</span>
+        </div>
+        <div class="footer-right">
+            Official Certificate<br>
+            60-DAY REDEMPTION
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

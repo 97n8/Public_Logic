@@ -8,11 +8,11 @@
   <!-- Styles -->
   <link rel="stylesheet" href="./styles.css" />
 
-  <!-- MSAL Browser (NO INTEGRITY — avoids CDN hash mismatch) -->
-  <script src="https://alcdn.msauth.net/browser/2.38.1/js/msal-browser.min.js"></script>
-
-  <!-- App Config -->
-  <script src="./config.js"></script>
+  <!-- MSAL Browser -->
+  <script
+    src="https://alcdn.msauth.net/browser/2.38.1/js/msal-browser.min.js"
+    crossorigin="anonymous">
+  </script>
 </head>
 <body>
   <!-- Background -->
@@ -20,6 +20,9 @@
 
   <!-- App mount -->
   <div id="app"></div>
+
+  <!-- CONFIG MUST LOAD FIRST -->
+  <script src="./config.js"></script>
 
   <!-- App boot -->
   <script type="module" src="./app.js"></script>

@@ -35,7 +35,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -124,91 +125,15 @@ a.btn:active {
   color: rgba(251, 113, 133, 0.98);
 }
 
-/* Focus state (accessibility) */
+/* Focus state – accessibility */
 .btn:focus-visible,
-a.btn:focus-visible,
-.navlink:focus-visible,
-.nav a:focus-visible {
+a.btn:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.3);
 }
 
 /* ==========================================================================
-   NAVIGATION
-   ========================================================================== */
-.navlink,
-.nav a {
-  display: block;
-  padding: 10px 14px;
-  border-radius: 14px;
-  border: 1px solid transparent;
-  background: rgba(0, 0, 0, 0.14);
-  color: var(--muted);
-  font-weight: 700;
-  font-size: 13px;
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-.navlink:hover,
-.nav a:hover {
-  background: rgba(52, 211, 153, 0.08);
-  border-color: rgba(52, 211, 153, 0.22);
-  color: var(--ink);
-  transform: translateY(-1px);
-}
-
-.navlink[data-active="1"],
-.nav a[aria-current="page"] {
-  border-color: rgba(52, 211, 153, 0.38);
-  background: rgba(52, 211, 153, 0.14);
-  color: rgba(52, 211, 153, 0.98);
-}
-
-/* ==========================================================================
-   LAYOUT & CONTAINERS
-   ========================================================================== */
-.app {
-  position: relative;
-  min-height: 100vh;
-  padding: 24px;
-}
-
-.shell {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 20px;
-}
-
-@media (max-width: 960px) {
-  .shell {
-    grid-template-columns: 1fr;
-  }
-}
-
-.sidebar {
-  position: sticky;
-  top: 24px;
-  height: calc(100vh - 48px);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.18));
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-}
-
-.main {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.12));
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-}
-
-/* ==========================================================================
-   CARDS & CONTENT
+   CARDS & DASHBOARD COMPONENTS
    ========================================================================== */
 .card {
   border: 1px solid var(--line);
@@ -231,14 +156,104 @@ a.btn:focus-visible,
   color: var(--ink);
 }
 
-.card__description {
+.card__description,
+.card__subtitle {
   font-size: 13px;
   color: var(--muted);
   line-height: 1.45;
 }
 
+/* Special card variants */
+.card--hero {
+  background: linear-gradient(145deg, rgba(52, 211, 153, 0.08), rgba(0, 0, 0, 0.22));
+  border-color: rgba(52, 211, 153, 0.3);
+  padding: 1.6rem 1.8rem;
+}
+
+.card--calm {
+  background: rgba(0, 0, 0, 0.16);
+  border-color: rgba(247, 245, 239, 0.08);
+  color: var(--muted);
+}
+
+/* Quick links */
+.quick-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65em;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.14s ease;
+}
+
+.quick-link:hover {
+  background: rgba(52, 211, 153, 0.09);
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+/* Icons in links/buttons */
+.icon {
+  width: 1.1em;
+  text-align: center;
+  opacity: 0.82;
+  flex-shrink: 0;
+}
+
+/* External link indicator */
+.external {
+  font-size: 0.78em;
+  opacity: 0.6;
+  margin-left: 0.4em;
+}
+
 /* ==========================================================================
-   TYPOGRAPHY (MARKDOWN)
+   LAYOUT & GRID
+   ========================================================================== */
+.app {
+  position: relative;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.shell {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 960px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.12));
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 960px) {
+  .grid > * {
+    grid-column: span 12 !important;
+  }
+}
+
+/* ==========================================================================
+   TYPOGRAPHY (MARKDOWN & GENERAL)
    ========================================================================== */
 .markdown {
   font-size: 15px;
@@ -254,9 +269,15 @@ a.btn:focus-visible,
   margin: 1.4em 0 0.6em;
 }
 
-.markdown h1 { font-size: 2.1rem; }
-.markdown h2 { font-size: 1.7rem; }
-.markdown h3 { font-size: 1.35rem; }
+.markdown h1 {
+  font-size: 2.1rem;
+}
+.markdown h2 {
+  font-size: 1.7rem;
+}
+.markdown h3 {
+  font-size: 1.35rem;
+}
 
 .markdown a {
   color: var(--accent);
@@ -283,28 +304,24 @@ a.btn:focus-visible,
 }
 
 /* ==========================================================================
-   GRID & RESPONSIVE
+   UTILITIES
    ========================================================================== */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 16px;
+.small {
+  font-size: 0.82rem;
+  color: var(--muted);
 }
 
-@media (max-width: 960px) {
-  .grid > * {
-    grid-column: span 12 !important;
-  }
+.muted {
+  color: var(--muted);
+}
+
+.text-center {
+  text-align: center;
 }
 
 /* ==========================================================================
-   UTILITIES
+   REDUCED MOTION
    ========================================================================== */
-.small { font-size: 0.82rem; color: var(--muted); }
-.muted { color: var(--muted); }
-.text-center { text-align: center; }
-
-/* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -1,17 +1,17 @@
 /* ==========================================================================
-   ROOT & VARIABLES
+   ROOT & VARIABLES — PublicLogic color & style identity
    ========================================================================== */
 :root {
-  --bg0: #022c22;
-  --bg1: #052f28;
-  --ink: rgba(247, 245, 239, 0.96);
+  --bg0: #022c22;              /* deep forest green base */
+  --bg1: #052f28;              /* slightly lighter variant */
+  --ink: rgba(247, 245, 239, 0.96);     /* warm off-white text */
   --muted: rgba(247, 245, 239, 0.68);
   --faint: rgba(247, 245, 239, 0.14);
   --line: rgba(247, 245, 239, 0.12);
   --surface: rgba(0, 0, 0, 0.22);
   --surface-raised: rgba(0, 0, 0, 0.32);
-  --accent: #34d399;
-  --accent2: #fbbf24;
+  --accent: #34d399;           /* signature mint */
+  --accent2: #fbbf24;          /* gold accent (use sparingly) */
   --danger: #fb7185;
 
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.28);
@@ -51,7 +51,7 @@ body {
 }
 
 /* ==========================================================================
-   BACKGROUND LAYER
+   BACKGROUND LAYER — signature PL texture + glows
    ========================================================================== */
 .bg {
   position: fixed;
@@ -125,7 +125,7 @@ a.btn:active {
   color: rgba(251, 113, 133, 0.98);
 }
 
-/* Focus state – accessibility */
+/* Focus states – accessibility */
 .btn:focus-visible,
 a.btn:focus-visible {
   outline: none;
@@ -139,34 +139,35 @@ a.btn:focus-visible {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
-  padding: 16px;
+  padding: 16px 18px;
   min-height: 88px;
   transition: transform 160ms ease, box-shadow 160ms ease;
+  backdrop-filter: blur(8px);
 }
 
 .card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-sm);
 }
 
-.card__title {
+.card-title {
   margin: 0 0 8px;
   font-size: 15px;
   font-weight: 700;
   color: var(--ink);
 }
 
-.card__description,
-.card__subtitle {
+.card-subtitle,
+.card__description {
   font-size: 13px;
   color: var(--muted);
   line-height: 1.45;
 }
 
-/* Special card variants */
+/* Special variants */
 .card--hero {
-  background: linear-gradient(145deg, rgba(52, 211, 153, 0.08), rgba(0, 0, 0, 0.22));
-  border-color: rgba(52, 211, 153, 0.3);
+  background: linear-gradient(145deg, rgba(52, 211, 153, 0.09), rgba(0, 0, 0, 0.24));
+  border-color: rgba(52, 211, 153, 0.32);
   padding: 1.6rem 1.8rem;
 }
 
@@ -195,14 +196,16 @@ a.btn:focus-visible {
 }
 
 /* Icons in links/buttons */
-.icon {
+.icon,
+.action-icon,
+.fab-icon {
   width: 1.1em;
   text-align: center;
   opacity: 0.82;
   flex-shrink: 0;
 }
 
-/* External link indicator */
+/* External indicator */
 .external {
   font-size: 0.78em;
   opacity: 0.6;
@@ -269,15 +272,9 @@ a.btn:focus-visible {
   margin: 1.4em 0 0.6em;
 }
 
-.markdown h1 {
-  font-size: 2.1rem;
-}
-.markdown h2 {
-  font-size: 1.7rem;
-}
-.markdown h3 {
-  font-size: 1.35rem;
-}
+.markdown h1 { font-size: 2.1rem; }
+.markdown h2 { font-size: 1.7rem; }
+.markdown h3 { font-size: 1.35rem; }
 
 .markdown a {
   color: var(--accent);
@@ -306,21 +303,12 @@ a.btn:focus-visible {
 /* ==========================================================================
    UTILITIES
    ========================================================================== */
-.small {
-  font-size: 0.82rem;
-  color: var(--muted);
-}
-
-.muted {
-  color: var(--muted);
-}
-
-.text-center {
-  text-align: center;
-}
+.small { font-size: 0.82rem; color: var(--muted); }
+.muted { color: var(--muted); }
+.text-center { text-align: center; }
 
 /* ==========================================================================
-   REDUCED MOTION
+   REDUCED MOTION (accessibility)
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   *,

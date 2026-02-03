@@ -15,14 +15,12 @@ window.PUBLICLOGIC_OS_CONFIG = {
   },
 
   access: {
-    allowedEmails: [
-      "nate@publiclogic.org"
-    ]
+    allowedEmails: ["nate@publiclogic.org"]
   },
 
   sharepoint: {
-    hostname: "publiclogicorg.sharepoint.com",
-    sitePath: "/sites/PublicLogic",
+    hostname: "publiclogic978.sharepoint.com",
+    sitePath: "/sites/PL",
 
     archieve: {
       enabled: true,

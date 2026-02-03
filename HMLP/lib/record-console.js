@@ -1,21 +1,58 @@
 import { el } from "./dom.js";
-import { mountRecordConsole } from "./record-console-mount.js";
 
 export function openRecordConsole(ctx) {
-  const overlay = el("div", {
-    style: `
-      position: fixed;
-      inset: 0;
-      background: rgba(2,6,23,0.9);
-      z-index: 9999;
-      overflow: auto;
-    `
+  const backdrop = el("div", { class: "modal__backdrop" });
+
+  const textarea = el("textarea", {
+    class: "textarea",
+    placeholder: "Record what matters. Factual. Transferable. Defensible.",
   });
 
-  document.body.appendChild(overlay);
+  const pushBtn = el(
+    "button",
+    {
+      class: "btn btn--primary",
+      type: "button",
+      onclick: () => {
+        console.log("RECORD", {
+          user: ctx.userEmail,
+          time: new Date().toISOString(),
+          content: textarea.value,
+        });
+        backdrop.remove();
+      },
+    },
+    ["Push"]
+  );
 
-  mountRecordConsole(overlay, {
-    ctx,
-    onClose: () => overlay.remove()
-  });
+  const closeBtn = el(
+    "button",
+    {
+      class: "btn",
+      type: "button",
+      onclick: () => backdrop.remove(),
+    },
+    ["Close"]
+  );
+
+  const modal = el("div", { class: "modal" }, [
+    el("div", { class: "modal__top" }, [
+      el("div", { class: "modal__title" }, ["New Record"]),
+      closeBtn,
+    ]),
+    el("div", { class: "modal__body" }, [
+      el("div", { class: "label" }, ["Content"]),
+      textarea,
+      el("div", { class: "chiprow", style: "margin-top:12px;" }, [
+        pushBtn,
+        closeBtn,
+      ]),
+      el("div", { class: "small", style: "margin-top:10px;" }, [
+        "Local-only for now. Next step is SharePoint wiring.",
+      ]),
+    ]),
+  ]);
+
+  backdrop.appendChild(modal);
+  document.body.appendChild(backdrop);
 }

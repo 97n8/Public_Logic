@@ -3,6 +3,30 @@ import { el } from "../lib/dom.js";
 import { openRecordConsole } from "../lib/record-console.js";
 import { getConfig, getLinks } from "../lib/config.js";
 
+const SHAREPOINT_BASE = "https://publiclogic978.sharepoint.com/sites/PL";
+
+/**
+ * Original card renderer — restored exactly + safe children
+ */
+function renderCard({ label, title, description, children, variant = "" }) {
+  const classes = ["card"];
+  if (variant) classes.push(`card--${variant}`);
+
+  // Safeguard: make sure children is always an array
+  const safeChildren = Array.isArray(children) ? children : children ? [children] : [];
+
+  return el(
+    "div",
+    { class: classes.join(" ") },
+    [
+      label && el("div", { class: "card__label" }, [label]),
+      title && el("div", { class: "card__title" }, [title]),
+      description && el("div", { class: "small" }, [description]),
+      ...safeChildren,
+    ].filter(Boolean)
+  );
+}
+
 function formatDateHeading(date = new Date()) {
   return date.toLocaleDateString("en-US", {
     weekday: "long",
@@ -12,99 +36,79 @@ function formatDateHeading(date = new Date()) {
   });
 }
 
-function renderCard({ label, title, description, children, variant = "" }) {
-  const classes = ["card"];
-  if (variant) classes.push(`card--${variant}`);
-
-  const safeChildren = Array.isArray(children)
-    ? children
-    : children
-    ? [children]
-    : [];
-
-  return el("section", { class: classes.join(" ") }, [
-    label && el("div", { class: "card__label" }, [label]),
-    title && el("h2", { class: "card__title" }, [title]),
-    description &&
-      el("p", { class: "card__description" }, [description]),
-    ...safeChildren,
-  ]);
-}
-
 export async function renderDashboard(ctx) {
   const cfg = getConfig() || {};
   const links = getLinks(cfg) || {};
 
+  // Top actions — restored from your original version
   const actions = [
     {
       label: "New Record",
       variant: "primary",
-      action: () => openRecordConsole(ctx),
+      onClick: () => openRecordConsole(ctx),
     },
-    links.site && { label: "SharePoint", href: links.site },
-    links.archiveList && { label: "Archive", href: links.archiveList },
-  ].filter(Boolean);
-
-  const capabilities = [
-    { label: "Record", description: "Create defensible records" },
-    { label: "Create", description: "Pages, lists, documents" },
-    { label: "Navigate", description: "Direct SharePoint access" },
+    {
+      label: "New SharePoint Page",
+      href: links.createPage || `${SHAREPOINT_BASE}/_layouts/15/CreatePage.aspx`,
+    },
+    {
+      label: "Open SharePoint",
+      href: links.site || SHAREPOINT_BASE,
+    },
   ];
 
-  const quickLinks = [
-    { label: "Tasks", href: links.tasksList },
-    { label: "Projects", href: links.projectsList },
-    { label: "Pipeline", href: links.pipelineList },
-    { label: "Meetings", href: links.meetings },
-    { label: "Documents", href: links.documents },
-    { label: "Budget", href: links.budget },
-  ].filter(l => l.href);
+  // Add Archive only if configured
+  if (links.archiveList) {
+    actions.push({
+      label: "Archive",
+      href: links.archiveList,
+    });
+  }
 
-  const content = el("div", { class: "dashboard" }, [
+  // Capabilities — restored exactly as in original
+  const capabilities = [
+    {
+      label: "Record",
+      description: "Capture factual, defensible records. These will route into ARCHIEVE.",
+    },
+    {
+      label: "Create",
+      description: "Create SharePoint pages, lists, and artifacts without context switching.",
+    },
+    {
+      label: "Navigate",
+      description: "Jump directly into the real operating system when you need full power.",
+    },
+  ];
+
+  // Main content — restored original structure
+  const content = el("div", { class: "stack gap-lg" }, [
+    // Hero card
     renderCard({
-      title: "Command Center",
-      description: "Create records, move work, stay oriented.",
-      variant: "hero",
+      title: "Work Command Center",
+      description:
+        "This space is for creating, recording, and pushing work into SharePoint. Nothing here depends on existing lists.",
     }),
 
-    el(
-      "div",
-      { class: "grid grid--3" },
-      capabilities.map(c =>
-        renderCard({
-          label: c.label,
-          description: c.description,
-        })
-      )
-    ),
+    // Capabilities grid
+    el("div", { class: "grid grid--3" }, capabilities.map(renderCard)),
 
-    el("div", { class: "grid grid--2" }, [
-      renderCard({
-        title: "Today",
-        description: "No required actions. No backlog pressure.",
-        variant: "calm",
-      }),
-
-      renderCard({
-        title: "Quick Links",
-        children:
-          quickLinks.length > 0
-            ? quickLinks.map(l =>
-                el(
-                  "a",
-                  { href: l.href, class: "quick-link" },
-                  [l.label]
-                )
-              )
-            : el("div", { class: "muted" }, ["No links configured"]),
-      }),
-    ]),
+    // Today card
+    renderCard({
+      title: "Today",
+      description: "No required tasks. No guilt. Just context.",
+    }),
   ]);
 
   return {
     title: "Command Center",
     subtitle: formatDateHeading(),
-    actions,
+    actions: actions.map(a => ({
+      label: a.label,
+      variant: a.variant,
+      href: a.href,
+      onClick: a.onClick,
+    })),
     content,
   };
 }

@@ -7,16 +7,19 @@ import { createSharePointClient } from "./lib/sharepoint.js";
 import { ensureArchieveList } from "./lib/archieve.js";
 import { getRoute, onRouteChange, setRoute } from "./lib/router.js";
 
+// Host pages
 import { renderDashboard } from "./pages/dashboard.js";
 import { renderToday } from "./pages/today.js";
 import { renderTasks } from "./pages/tasks.js";
 import { renderPipeline } from "./pages/pipeline.js";
 import { renderProjects } from "./pages/projects.js";
 import { renderEnvironments } from "./pages/environments.js";
-import { renderPhillipstonPrr } from "./pages/phillipston-prr.js";
 import { renderPlaybooks } from "./pages/playbooks.js";
 import { renderTools } from "./pages/tools.js";
 import { renderSettings } from "./pages/settings.js";
+
+// ✅ Internal app
+import { PhillipstonApp } from "./src/phillipston/index.js";
 
 /* ================= SHELL ================= */
 
@@ -28,12 +31,18 @@ function buildShell({ onLogout, who }) {
     ["/pipeline", "Pipeline"],
     ["/projects", "Projects"],
     ["/environments", "Environments"],
+
+    // ✅ Phillipston internal app
+    ["/phillipston", "Phillipston"],
+
     ["/playbooks", "Playbooks"],
     ["/tools", "Tools"],
     ["/settings", "Settings"]
   ];
 
-  const nav = el("nav", { class: "nav" },
+  const nav = el(
+    "nav",
+    { class: "nav" },
     navItems.map(([path, label]) => {
       const a = el("a", { href: `#${path}` }, [label]);
       a.dataset.path = path;
@@ -86,7 +95,14 @@ const PAGES = {
   "/pipeline": renderPipeline,
   "/projects": renderProjects,
   "/environments": renderEnvironments,
-  "/phillipston-prr": renderPhillipstonPrr,
+
+  // ✅ Phillipston internal app (mounted, not rendered as a page)
+  "/phillipston": ({ cfg, auth, sp }) => ({
+    title: "Phillipston",
+    subtitle: "Internal Operations",
+    content: PhillipstonApp({ cfg, auth, sp })
+  }),
+
   "/playbooks": renderPlaybooks,
   "/tools": renderTools,
   "/settings": renderSettings
@@ -119,10 +135,14 @@ async function main() {
     app.appendChild(
       el("div", { class: "boot" }, [
         el("h2", {}, ["Sign in required"]),
-        el("button", {
-          class: "btn btn--primary",
-          onclick: () => auth.login()
-        }, ["Sign In"])
+        el(
+          "button",
+          {
+            class: "btn btn--primary",
+            onclick: () => auth.login()
+          },
+          ["Sign In"]
+        )
       ])
     );
     return;

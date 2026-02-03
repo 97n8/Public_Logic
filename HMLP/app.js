@@ -2,6 +2,7 @@ import { el, clear } from "./lib/dom.js";
 import { getConfig, validateConfig } from "./lib/config.js";
 import { createAuth, getSignedInEmail, isAllowedAccount } from "./lib/auth.js";
 import { createSharePointClient } from "./lib/sharepoint.js";
+import { ensureArchieveList } from "./lib/archieve.js";
 import { getRoute, onRouteChange, setRoute } from "./lib/router.js";
 
 import { renderDashboard } from "./pages/dashboard.js";
@@ -12,6 +13,10 @@ import { renderProjects } from "./pages/projects.js";
 import { renderPlaybooks } from "./pages/playbooks.js";
 import { renderTools } from "./pages/tools.js";
 import { renderSettings } from "./pages/settings.js";
+
+/* =========================
+   UI HELPERS
+   ========================= */
 
 function actionNode(a) {
   if (a.href) {
@@ -246,6 +251,11 @@ async function main() {
 
   const userEmail = getSignedInEmail(account);
   const sp = createSharePointClient(auth);
+
+  // 🔐 ARCHIEVE initialization (one-time, authoritative)
+  if (cfg.sharepoint.archieve?.enabled) {
+    await ensureArchieveList(sp, cfg);
+  }
 
   const shell = buildShell({
     onLogout: () => auth.logout(),

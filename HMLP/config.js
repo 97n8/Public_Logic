@@ -1,19 +1,19 @@
 window.PUBLICLOGIC_OS_CONFIG = {
   access: {
     allowedEmails: [
-      "admin@publiclogic.org",
+      "allie@publiclogic.org",
       "nate@publiclogic.org"
     ]
   },
 
   auth: {
-    clientId: "LOCAL_ONLY",
-    tenantId: "LOCAL_ONLY",
+    clientId: "DEMO_MODE",
+    tenantId: "DEMO_MODE",
     redirectUri: window.location.origin + "/hmlp/"
   },
 
   sharepoint: {
-    siteUrl: "LOCAL_ONLY",
+    siteUrl: "DEMO_MODE",
     lists: {
       tasks: "Tasks",
       pipeline: "Pipeline",

@@ -2,7 +2,6 @@ import { getConfig } from "./config.js";
 import { graphGet, graphPost, graphPatch } from "./graph.js";
 
 function encodeODataStringLiteral(s) {
-  // OData single quotes are escaped by doubling.
   return String(s).replace(/'/g, "''");
 }
 
@@ -13,67 +12,109 @@ export function createSharePointClient(auth) {
     listsByName: new Map()
   };
 
+  /* ---------------- SITE ---------------- */
+
   async function getSite() {
     if (cache.site) return cache.site;
 
-    const hostname = cfg.sharepoint.hostname;
-    const sitePath = cfg.sharepoint.sitePath;
+    const site = await graphGet(
+      auth,
+      `/sites/${cfg.sharepoint.hostname}:${cfg.sharepoint.sitePath}`
+    );
 
-    // Path-based addressing.
-    const site = await graphGet(auth, `/sites/${hostname}:${sitePath}`);
     cache.site = site;
     return site;
   }
 
-  async function getListByDisplayName(displayName) {
-    if (cache.listsByName.has(displayName)) return cache.listsByName.get(displayName);
+  /* ---------------- LISTS ---------------- */
+
+  async function findListByName(displayName) {
+    if (cache.listsByName.has(displayName)) {
+      return cache.listsByName.get(displayName);
+    }
 
     const site = await getSite();
     const safe = encodeODataStringLiteral(displayName);
 
-    const res = await graphGet(auth, `/sites/${site.id}/lists?$filter=displayName eq '${safe}'`);
-    const list = res?.value?.[0];
-    if (!list) throw new Error(`SharePoint list not found: ${displayName}`);
+    const res = await graphGet(
+      auth,
+      `/sites/${site.id}/lists?$filter=displayName eq '${safe}'`
+    );
+
+    const list = res?.value?.[0] || null;
+    if (list) cache.listsByName.set(displayName, list);
+    return list;
+  }
+
+  async function createList({ displayName, description }) {
+    const site = await getSite();
+
+    const list = await graphPost(auth, `/sites/${site.id}/lists`, {
+      displayName,
+      description,
+      list: { template: "genericList" }
+    });
 
     cache.listsByName.set(displayName, list);
     return list;
   }
 
-  async function listItems(displayName, { selectFields = [], top = 200 } = {}) {
+  async function createColumn(listId, columnDef) {
     const site = await getSite();
-    const list = await getListByDisplayName(displayName);
+    return await graphPost(
+      auth,
+      `/sites/${site.id}/lists/${listId}/columns`,
+      columnDef
+    );
+  }
 
-    const select = selectFields.length > 0 ? `($select=${selectFields.map(encodeURIComponent).join(",")})` : "";
-    const expand = select ? `fields${select}` : "fields";
+  /* ---------------- ITEMS ---------------- */
 
-    const res = await graphGet(auth, `/sites/${site.id}/lists/${list.id}/items?$expand=${expand}&$top=${top}`);
+  async function listItems(displayName, { top = 200 } = {}) {
+    const site = await getSite();
+    const list = await findListByName(displayName);
+    if (!list) throw new Error(`List not found: ${displayName}`);
 
-    const items = (res?.value || []).map((it) => ({
+    const res = await graphGet(
+      auth,
+      `/sites/${site.id}/lists/${list.id}/items?$expand=fields&$top=${top}`
+    );
+
+    return (res?.value || []).map(it => ({
       itemId: it.id,
       webUrl: it.webUrl,
       ...(it.fields || {})
     }));
-
-    return items;
   }
 
   async function createItem(displayName, fields) {
     const site = await getSite();
-    const list = await getListByDisplayName(displayName);
+    const list = await findListByName(displayName);
+    if (!list) throw new Error(`List not found: ${displayName}`);
 
-    const body = { fields };
-    const res = await graphPost(auth, `/sites/${site.id}/lists/${list.id}/items`, body);
-    return res;
+    return await graphPost(
+      auth,
+      `/sites/${site.id}/lists/${list.id}/items`,
+      { fields }
+    );
   }
 
   async function updateItemFields(displayName, itemId, fields) {
     const site = await getSite();
-    const list = await getListByDisplayName(displayName);
-    await graphPatch(auth, `/sites/${site.id}/lists/${list.id}/items/${itemId}/fields`, fields);
+    const list = await findListByName(displayName);
+
+    await graphPatch(
+      auth,
+      `/sites/${site.id}/lists/${list.id}/items/${itemId}/fields`,
+      fields
+    );
   }
 
   return {
     getSite,
+    findListByName,
+    createList,
+    createColumn,
     listItems,
     createItem,
     updateItemFields

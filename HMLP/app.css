@@ -1,0 +1,85 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f6f7f8;
+  color: #1f2937;
+}
+
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell__header {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 20px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shell__header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.shell__header p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.shell__header nav button {
+  background: none;
+  border: none;
+  margin-left: 16px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.shell__header nav button[aria-current="true"] {
+  border-bottom: 2px solid #111827;
+}
+
+.shell__main {
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.case-space {
+  width: 100%;
+  max-width: 960px;
+  display: grid;
+  gap: 32px;
+}
+
+.case-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.stat {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.staff-intake {
+  max-width: 640px;
+  width: 100%;
+}
+
+.intake-form {
+  display: grid;
+  gap: 16px;
+}

@@ -1,5 +1,4 @@
 import { PrrRouter } from "./PrrRouter.js";
-import "./app.css";
 
 export function PhillipstonShell({ cfg, auth, sp }) {
   const root = document.createElement("div");

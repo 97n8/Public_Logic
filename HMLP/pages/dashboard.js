@@ -45,3 +45,12 @@ export async function renderDashboard(ctx) {
     title: "Command Center",
     subtitle: formatDateHeading(new Date()),
     actions: actions.map((a) => ({
+actions: actions.map((a) => ({
+      label: a.label,
+      variant: a.variant,
+      href: a.href,
+      onClick: a.onClick
+    })),
+    content
+  };
+}

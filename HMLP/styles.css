@@ -1022,3 +1022,323 @@ a.btn:disabled {
     box-shadow: none;
   }
 }
+/* ==========================================================================
+   DASHBOARD MODERN COMPONENTS
+   Add these to the end of your styles.css (before reduced motion section)
+   ========================================================================== */
+
+/* Dashboard Container */
+.dashboard-container {
+  max-width: 100%;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 32px;
+}
+
+/* Hero Section */
+.dashboard-hero {
+  background: linear-gradient(145deg, rgba(52, 211, 153, 0.12), rgba(0, 0, 0, 0.28));
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dashboard-hero__title {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+
+.dashboard-hero__subtitle {
+  font-size: 16px;
+  color: var(--muted);
+  margin: 0;
+  max-width: 600px;
+}
+
+.dashboard-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+/* Stat Cards */
+.stat-card {
+  background: rgba(0, 0, 0, 0.32);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+  transition: var(--transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.stat-card__label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.stat-card__value {
+  font-size: 32px;
+  font-weight: 800;
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.stat-card__trend {
+  font-size: 13px;
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.stat-card--accent {
+  border-color: rgba(52, 211, 153, 0.3);
+  background: rgba(52, 211, 153, 0.08);
+}
+
+.stat-card--accent .stat-card__value {
+  color: rgba(52, 211, 153, 0.98);
+}
+
+.stat-card--gold {
+  border-color: rgba(251, 191, 36, 0.3);
+  background: rgba(251, 191, 36, 0.08);
+}
+
+.stat-card--gold .stat-card__value {
+  color: rgba(251, 191, 36, 0.98);
+}
+
+.stat-card--mint {
+  border-color: rgba(52, 211, 153, 0.3);
+  background: rgba(52, 211, 153, 0.08);
+}
+
+.stat-card--mint .stat-card__value {
+  color: rgba(52, 211, 153, 0.98);
+}
+
+/* Section Titles */
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 20px;
+  color: var(--ink);
+}
+
+/* Quick Actions */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.quick-action {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: all 180ms ease;
+  text-decoration: none;
+}
+
+.quick-action:hover {
+  transform: translateY(-4px);
+  border-color: rgba(52, 211, 153, 0.35);
+  background: rgba(52, 211, 153, 0.08);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+}
+
+.quick-action--primary {
+  border-color: rgba(52, 211, 153, 0.35);
+  background: linear-gradient(145deg, rgba(52, 211, 153, 0.12), rgba(0, 0, 0, 0.22));
+}
+
+.quick-action--primary:hover {
+  border-color: rgba(52, 211, 153, 0.5);
+  background: linear-gradient(145deg, rgba(52, 211, 153, 0.18), rgba(0, 0, 0, 0.28));
+}
+
+.quick-action__icon {
+  font-size: 32px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.quick-action__content {
+  flex: 1;
+}
+
+.quick-action__title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.quick-action__description {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Document Cards */
+.doc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.doc-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  background: rgba(0, 0, 0, 0.14);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  transition: all 160ms ease;
+  text-decoration: none;
+  position: relative;
+}
+
+.doc-card:hover {
+  transform: translateX(4px);
+  border-color: rgba(52, 211, 153, 0.3);
+  background: rgba(52, 211, 153, 0.06);
+  text-decoration: none;
+}
+
+.doc-card__icon {
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.doc-card__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.doc-card__title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doc-card__description {
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doc-card__arrow {
+  font-size: 18px;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.doc-card:hover .doc-card__arrow {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+/* M365 Grid (smaller cards) */
+.m365-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.m365-grid .doc-card {
+  padding: 16px 18px;
+}
+
+.m365-grid .doc-card__icon {
+  font-size: 20px;
+}
+
+.m365-grid .doc-card__title {
+  font-size: 13px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 920px) {
+  .dashboard-hero {
+    padding: 24px;
+  }
+
+  .dashboard-hero__title {
+    font-size: 28px;
+  }
+
+  .dashboard-hero__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-actions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .m365-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-hero {
+    padding: 20px;
+  }
+
+  .dashboard-hero__title {
+    font-size: 24px;
+  }
+
+  .stat-card__value {
+    font-size: 28px;
+  }
+
+  .m365-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-content {
+    gap: 32px;
+  }
+}

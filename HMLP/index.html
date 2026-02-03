@@ -8,23 +8,20 @@
   <!-- Styles -->
   <link rel="stylesheet" href="./styles.css" />
 
-  <!-- MSAL Browser -->
+  <!-- MSAL (GLOBAL, NO INTEGRITY) -->
   <script
     src="https://alcdn.msauth.net/browser/2.38.1/js/msal-browser.min.js"
     crossorigin="anonymous">
   </script>
 </head>
 <body>
-  <!-- Background -->
   <div class="bg"></div>
-
-  <!-- App mount -->
   <div id="app"></div>
 
-  <!-- CONFIG MUST LOAD FIRST -->
+  <!-- CONFIG FIRST -->
   <script src="./config.js"></script>
 
-  <!-- App boot -->
+  <!-- APP -->
   <script type="module" src="./app.js"></script>
 </body>
 </html>

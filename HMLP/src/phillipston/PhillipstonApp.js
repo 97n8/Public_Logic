@@ -1,21 +1,21 @@
-import { PhillipstonShell } from "./PhillipstonShell";
+import { PhillipstonShell } from "./PhillipstonShell.js";
 
-type PhillipstonAppProps = {
-  cfg: any;
-  auth: any;
-  sp: any;
-};
-
-export function PhillipstonApp({ cfg, auth, sp }: PhillipstonAppProps) {
+export function PhillipstonApp({ cfg, auth, sp }) {
   // Hard internal gate (defense in depth)
   if (!auth?.hasRole?.("phillipston_internal")) {
-    return (
-      <div style={{ padding: "2rem" }}>
-        <h2>Access denied</h2>
-        <p>Phillipston internal access only.</p>
-      </div>
-    );
+    const denied = document.createElement("div");
+    denied.style.padding = "2rem";
+
+    const h2 = document.createElement("h2");
+    h2.textContent = "Access denied";
+
+    const p = document.createElement("p");
+    p.textContent = "Phillipston internal access only.";
+
+    denied.appendChild(h2);
+    denied.appendChild(p);
+    return denied;
   }
 
-  return <PhillipstonShell cfg={cfg} auth={auth} sp={sp} />;
+  return PhillipstonShell({ cfg, auth, sp });
 }

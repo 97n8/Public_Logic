@@ -1,30 +1,16 @@
+// pages/tasks.js
 import { el } from "../lib/dom.js";
-import { pill, showModal, button } from "../lib/ui.js";
+import { showModal, button } from "../lib/ui.js";
 import { openCreateTaskModal } from "../lib/forms.js";
+import { statusPill, renderTable, actionButtons } from "../lib/tables.js";
+import { TASK_STATUS, compareByOrder } from "../lib/constants.js";
+import { hasTasksList } from "../lib/config.js";
 
-const STATUS_ORDER = ["Today", "This Week", "Backlog", "Blocked", "Done"];
+const compareStatus = compareByOrder(TASK_STATUS);
 
 function normalizeStatus(s) {
   const x = String(s || "").trim();
-  if (!x) return "Backlog";
-  return x;
-}
-
-function compareStatus(a, b) {
-  const ia = STATUS_ORDER.indexOf(normalizeStatus(a));
-  const ib = STATUS_ORDER.indexOf(normalizeStatus(b));
-  const ra = ia === -1 ? 999 : ia;
-  const rb = ib === -1 ? 999 : ib;
-  return ra - rb;
-}
-
-function statusPill(status) {
-  const s = normalizeStatus(status);
-  const key = s.toLowerCase();
-  if (key === "done") return pill("Done", "mint");
-  if (key === "blocked") return pill("Blocked", "rose");
-  if (key === "today") return pill("Today", "gold");
-  return pill(s, "");
+  return x || "Backlog";
 }
 
 function quickSetButtons({ sp, listName, itemId, onUpdated }) {
@@ -70,25 +56,23 @@ function openEditTaskModal({ cfg, sp, task, onUpdated }) {
   const modal = showModal({
     title: "Edit Task",
     body,
-    actions: [
-      {
-        label: "Save",
-        variant: "primary",
-        onClick: async () => {
-          await sp.updateItemFields(cfg.sharepoint.lists.tasks, task.itemId, {
-            Title: title.value.trim(),
-            Owner: owner.value.trim(),
-            Status: status.value.trim(),
-            DueDate: due.value || null,
-            Priority: priority.value.trim(),
-            Area: area.value.trim(),
-            Notes: notes.value
-          });
-          modal.close();
-          onUpdated();
-        }
+    actions: [{
+      label: "Save",
+      variant: "primary",
+      onClick: async () => {
+        await sp.updateItemFields(cfg.sharepoint.lists.tasks, task.itemId, {
+          Title: title.value.trim(),
+          Owner: owner.value.trim(),
+          Status: status.value.trim(),
+          DueDate: due.value || null,
+          Priority: priority.value.trim(),
+          Area: area.value.trim(),
+          Notes: notes.value
+        });
+        modal.close();
+        onUpdated();
       }
-    ]
+    }]
   });
 }
 
@@ -97,14 +81,8 @@ function filterTasks(tasks, { ownerEmail, status } = {}) {
   const wantStatus = status && status !== "all" ? status.toLowerCase() : null;
 
   return tasks.filter((t) => {
-    if (wantOwner) {
-      const o = String(t.Owner || "").toLowerCase();
-      if (o !== wantOwner) return false;
-    }
-    if (wantStatus) {
-      const s = String(t.Status || "").toLowerCase();
-      if (s !== wantStatus) return false;
-    }
+    if (wantOwner && String(t.Owner || "").toLowerCase() !== wantOwner) return false;
+    if (wantStatus && String(t.Status || "").toLowerCase() !== wantStatus) return false;
     return true;
   });
 }
@@ -112,47 +90,38 @@ function filterTasks(tasks, { ownerEmail, status } = {}) {
 export async function renderTasks(ctx) {
   const { cfg, sp } = ctx;
 
+  if (!hasTasksList(cfg)) {
+    return {
+      title: "Tasks",
+      subtitle: "Not configured",
+      actions: [],
+      content: el("div", { class: "notice" }, ["Tasks list not configured. Add sharepoint.lists.tasks to config.js"])
+    };
+  }
+
   let tasks = [];
   let error = null;
 
   try {
-    tasks = await sp.listItems(cfg.sharepoint.lists.tasks, { selectFields: ["Title", "Owner", "Status", "DueDate", "Priority", "Area", "Notes"] });
+    tasks = await sp.listItems(cfg.sharepoint.lists.tasks);
   } catch (e) {
     error = e;
   }
 
   const ownerOptions = [
     { label: "All", value: "all" },
-    ...((cfg.team?.people || []).map((p) => ({ label: p.name, value: p.email })))
+    ...(cfg.team?.people || []).map((p) => ({ label: p.name, value: p.email }))
   ];
 
   const statusOptions = [
     { label: "All", value: "all" },
-    ...STATUS_ORDER.map((s) => ({ label: s, value: s }))
+    ...TASK_STATUS.map((s) => ({ label: s, value: s }))
   ];
 
-  const state = {
-    owner: "all",
-    status: "all"
-  };
+  const state = { owner: "all", status: "all" };
 
   const ownerSelect = el("select", { class: "select" }, ownerOptions.map((o) => el("option", { value: o.value }, [o.label])));
   const statusSelect = el("select", { class: "select" }, statusOptions.map((o) => el("option", { value: o.value }, [o.label])));
-
-  ownerSelect.addEventListener("change", () => {
-    state.owner = ownerSelect.value;
-    rerenderTable();
-  });
-
-  statusSelect.addEventListener("change", () => {
-    state.status = statusSelect.value;
-    rerenderTable();
-  });
-
-  const controls = el("div", { class: "split" }, [
-    el("div", {}, [el("div", { class: "label" }, ["Owner"]), ownerSelect]),
-    el("div", {}, [el("div", { class: "label" }, ["Status"]), statusSelect])
-  ]);
 
   const tableWrap = el("div", {});
 
@@ -165,76 +134,51 @@ export async function renderTasks(ctx) {
     }
 
     const filtered = filterTasks(tasks, { ownerEmail: state.owner, status: state.status })
-      .slice()
       .sort((a, b) => {
-        const cs = compareStatus(a.Status, b.Status);
+        const cs = compareStatus(normalizeStatus(a.Status), normalizeStatus(b.Status));
         if (cs !== 0) return cs;
-        const da = String(a.DueDate || "");
-        const db = String(b.DueDate || "");
-        return da.localeCompare(db);
+        return String(a.DueDate || "").localeCompare(String(b.DueDate || ""));
       });
 
-    if (filtered.length === 0) {
-      tableWrap.appendChild(el("div", { class: "notice" }, ["No tasks match your filters yet."]));
-      return;
-    }
+    const table = renderTable({
+      emptyMessage: "No tasks match your filters.",
+      columns: [
+        { label: "Task", key: "Title", render: (t) => t.Title || "(no title)" },
+        { label: "Owner", key: "Owner", muted: true },
+        { label: "Status", render: (t) => statusPill(t.Status, "Backlog") },
+        { label: "Due", render: (t) => String(t.DueDate || "").slice(0, 10), muted: true },
+        { label: "Priority", key: "Priority", muted: true },
+        { label: "Area", key: "Area", muted: true },
+        {
+          label: "Actions",
+          render: (t) => actionButtons([
+            { label: "Edit", onClick: () => openEditTaskModal({ cfg, sp, task: t, onUpdated: ctx.refresh }) },
+            t.webUrl && { label: "Open", href: t.webUrl },
+            { label: "Done", variant: "primary", onClick: async () => {
+              await sp.updateItemFields(cfg.sharepoint.lists.tasks, t.itemId, { Status: "Done" });
+              ctx.refresh();
+            }}
+          ])
+        }
+      ],
+      rows: filtered
+    });
 
-    const table = el("table", { class: "table" });
-    table.appendChild(el("thead", {}, [
-      el("tr", {}, [
-        el("th", {}, ["Task"]),
-        el("th", {}, ["Owner"]),
-        el("th", {}, ["Status"]),
-        el("th", {}, ["Due"]),
-        el("th", {}, ["Priority"]),
-        el("th", {}, ["Area"]),
-        el("th", {}, ["Actions"])
-      ])
-    ]));
-
-    const tbody = el("tbody");
-    for (const t of filtered) {
-      const tr = el("tr");
-      tr.appendChild(el("td", {}, [t.Title || "(no title)"]));
-      tr.appendChild(el("td", { class: "row-muted" }, [t.Owner || ""]));
-      tr.appendChild(el("td", {}, [statusPill(t.Status)]));
-      tr.appendChild(el("td", { class: "row-muted" }, [String(t.DueDate || "").slice(0, 10)]));
-      tr.appendChild(el("td", { class: "row-muted" }, [t.Priority || ""]));
-      tr.appendChild(el("td", { class: "row-muted" }, [t.Area || ""]));
-
-      const actions = el("td", {}, [
-        el("div", { class: "chiprow" }, [
-          button("Edit", { onClick: () => openEditTaskModal({ cfg, sp, task: t, onUpdated: ctx.refresh }) }),
-          ...(t.webUrl ? [el("a", { class: "btn", href: t.webUrl, target: "_blank", rel: "noreferrer" }, ["Open"]) ] : []),
-          button("Done", { variant: "primary", onClick: async () => {
-            await sp.updateItemFields(cfg.sharepoint.lists.tasks, t.itemId, { Status: "Done" });
-            ctx.refresh();
-          } })
-        ])
-      ]);
-
-      tr.appendChild(actions);
-      tbody.appendChild(tr);
-    }
-
-    table.appendChild(tbody);
     tableWrap.appendChild(table);
   }
 
-  rerenderTable();
+  ownerSelect.addEventListener("change", () => { state.owner = ownerSelect.value; rerenderTable(); });
+  statusSelect.addEventListener("change", () => { state.status = statusSelect.value; rerenderTable(); });
 
-  const actions = [
-    {
-      label: "New Task",
-      variant: "primary",
-      onClick: () => openCreateTaskModal({ cfg, sp, defaultOwnerEmail: ctx.userEmail, onCreated: ctx.refresh })
-    }
-  ];
+  rerenderTable();
 
   const content = el("div", {}, [
     el("div", { class: "card" }, [
       el("h3", {}, ["Filters"]),
-      controls
+      el("div", { class: "split" }, [
+        el("div", {}, [el("div", { class: "label" }, ["Owner"]), ownerSelect]),
+        el("div", {}, [el("div", { class: "label" }, ["Status"]), statusSelect])
+      ])
     ]),
     el("div", { style: "height: 12px;" }),
     el("div", { class: "card" }, [
@@ -245,8 +189,12 @@ export async function renderTasks(ctx) {
 
   return {
     title: "Tasks",
-    subtitle: "Shared commitments for you and Allie (stored in Microsoft Lists)",
-    actions,
+    subtitle: "Shared commitments (stored in Microsoft Lists)",
+    actions: [{
+      label: "New Task",
+      variant: "primary",
+      onClick: () => openCreateTaskModal({ cfg, sp, defaultOwnerEmail: ctx.userEmail, onCreated: ctx.refresh })
+    }],
     content
   };
 }

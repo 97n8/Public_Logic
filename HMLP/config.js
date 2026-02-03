@@ -24,7 +24,6 @@ window.PUBLICLOGIC_OS_CONFIG = {
     hostname: "publiclogicorg.sharepoint.com",
     sitePath: "/sites/PublicLogic",
 
-    // Canonical system of record
     archieve: {
       enabled: true,
       listName: "ARCHIEVE"

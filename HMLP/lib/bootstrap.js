@@ -1,7 +1,7 @@
 export async function ensureArchieveList(sp) {
   const LIST_NAME = "ARCHIEVE";
 
-  // 1. Check existence
+  // 1. Check if list already exists
   const existing = await sp.findListByName(LIST_NAME);
   if (existing) {
     console.log("ARCHIEVE already exists");
@@ -10,13 +10,13 @@ export async function ensureArchieveList(sp) {
 
   console.log("Creating ARCHIEVE list…");
 
-  // 2. Create list
+  // 2. Create the list
   const list = await sp.createList({
     displayName: LIST_NAME,
     description: "Canonical system-of-record for PublicLogic OS"
   });
 
-  // 3. Create schema columns
+  // 3. Create columns
   for (const col of ARCHIEVE_COLUMNS()) {
     await sp.createColumn(list.id, col);
   }
@@ -30,8 +30,8 @@ export async function ensureArchieveList(sp) {
 function ARCHIEVE_COLUMNS() {
   return [
     choice("RecordType", [
-      "task","project","pipeline","decision","page","file",
-      "note","workflow","intake","system"
+      "task","project","pipeline","decision",
+      "page","file","note","workflow","intake","system"
     ]),
     text("RecordSubType"),
 
@@ -88,3 +88,38 @@ function ARCHIEVE_COLUMNS() {
 
     choice("ReplicationStatus", ["local","replicated","conflict"]),
     text("ReplicationTarget"),
+
+    boolean("Locked"),
+    text("LockedReason")
+  ];
+}
+
+/* ================== COLUMN HELPERS ================== */
+
+const text = (name) => ({
+  name,
+  text: {}
+});
+
+const multiline = (name) => ({
+  name,
+  text: { allowMultipleLines: true }
+});
+
+const boolean = (name) => ({
+  name,
+  boolean: {}
+});
+
+const datetime = (name) => ({
+  name,
+  dateTime: {}
+});
+
+const choice = (name, choices) => ({
+  name,
+  choice: {
+    choices,
+    displayAs: "dropDownMenu"
+  }
+});

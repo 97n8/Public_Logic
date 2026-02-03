@@ -7,6 +7,16 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="./styles.css" />
+
+  <!-- MSAL Browser (REQUIRED FOR AUTH) -->
+  <script
+    src="https://alcdn.msauth.net/browser/2.38.1/js/msal-browser.min.js"
+    integrity="sha384-JW9yQ5p1+t0NenE2no0RvrRZtGJPD7W82dManIeZDV4SSQSSHqzTeWY5Avzkdxl3"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- App Config (must load before app.js) -->
+  <script src="./config.js"></script>
 </head>
 <body>
   <!-- Background -->
@@ -14,9 +24,6 @@
 
   <!-- App mount -->
   <div id="app"></div>
-
-  <!-- CONFIG MUST LOAD FIRST -->
-  <script src="./config.js"></script>
 
   <!-- App boot -->
   <script type="module" src="./app.js"></script>

@@ -1,5 +1,5 @@
+// lib/config.js
 export function getConfig() {
-  // eslint-disable-next-line no-undef
   return window.PUBLICLOGIC_OS_CONFIG || null;
 }
 
@@ -26,7 +26,6 @@ export function validateConfig(cfg) {
   if (!cfg.sharepoint?.hostname) errors.push("sharepoint.hostname is missing");
   if (!cfg.sharepoint?.sitePath) errors.push("sharepoint.sitePath is missing");
 
-  // ✅ ARCHIEVE is now the only required list
   if (!cfg.sharepoint?.archieve?.enabled) {
     errors.push("sharepoint.archieve.enabled must be true");
   }
@@ -36,4 +35,16 @@ export function validateConfig(cfg) {
   }
 
   return errors;
+}
+
+export function hasTasksList(cfg) {
+  return Boolean(cfg?.sharepoint?.lists?.tasks);
+}
+
+export function hasPipelineList(cfg) {
+  return Boolean(cfg?.sharepoint?.lists?.pipeline);
+}
+
+export function hasProjectsList(cfg) {
+  return Boolean(cfg?.sharepoint?.lists?.projects);
 }

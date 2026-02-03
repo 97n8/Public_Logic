@@ -16,7 +16,7 @@ import { renderPlaybooks } from "./pages/playbooks.js";
 import { renderTools } from "./pages/tools.js";
 import { renderSettings } from "./pages/settings.js";
 
-// NEW: Phillipston PRR demo environment
+// NEW: Phillipston PRR environment (only linked from Environments)
 import { renderPhillipstonPrr } from "./pages/phillipston-prr.js";
 
 /* =========================
@@ -254,7 +254,7 @@ const PAGES = {
   "/playbooks": renderPlaybooks,
   "/tools": renderTools,
   "/settings": renderSettings,
-  "/phillipston-prr": renderPhillipstonPrr   // ← NEW Phillipston PRR environment
+  "/phillipston-prr": renderPhillipstonPrr   // ← Phillipston PRR environment
 };
 
 /* =========================
@@ -297,7 +297,7 @@ async function main() {
   const userEmail = getSignedInEmail(account);
   const sp = createSharePointClient(auth);
 
-  // One-time ARCHIEVE list setup (only if enabled)
+  // One-time ARCHIEVE list setup
   if (cfg.sharepoint?.archieve?.enabled) {
     try {
       await ensureArchieveList(sp, cfg);

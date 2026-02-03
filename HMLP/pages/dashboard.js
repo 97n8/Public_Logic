@@ -1,87 +1,192 @@
-.card--hero {
-  background: linear-gradient(145deg, rgba(52, 211, 153, 0.08), rgba(0,0,0,0.2));
-  border-color: rgba(52, 211, 153, 0.28);
-  padding: 1.5rem 1.75rem;
+// pages/dashboard.js
+import { el } from "../lib/dom.js";
+import { openRecordConsole } from "../lib/record-console.js";
+import { getConfig, getLinks } from "../lib/config.js";
+
+function renderCard({ label, title, description, children, variant = "" }) {
+  const classes = ["card"];
+  if (variant) classes.push(`card--${variant}`);
+
+  return el(
+    "div",
+    { class: classes.join(" ") },
+    [
+      label && el("div", { class: "card__label" }, [label]),
+      title && el("div", { class: "card__title" }, [title]),
+      description && el("div", { class: "card__description small" }, [description]),
+      ...(children || []),
+    ].filter(Boolean)
+  );
 }
 
-.card__title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
+function formatDateHeading(date = new Date()) {
+  return date.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
 }
 
-.card__subtitle {
-  font-size: 0.95rem;
-  color: var(--muted);
-  margin-top: 0.25rem;
-}
+export async function renderDashboard(ctx) {
+  const cfg = getConfig();
+  const links = getLinks(cfg);
 
-.btn {
-  display: flex;
-  align-items: center;
-  gap: 0.6em;
-  justify-content: center;
-  width: 100%;
-  text-align: left;
-}
+  // ─────────────────────────────────────────────
+  // Primary Actions – most important things first
+  // ─────────────────────────────────────────────
+  const primaryActions = [
+    {
+      label: "New Record",
+      icon: "✎",
+      variant: "primary",
+      action: () => openRecordConsole(ctx),
+    },
+    {
+      label: "New Page",
+      icon: "📄",
+      href: links.createPage,
+    },
+    {
+      label: "SharePoint",
+      icon: "🌐",
+      href: links.site,
+    },
+  ];
 
-.btn--primary {
-  font-weight: 700;
-}
+  if (links.archiveList) {
+    primaryActions.push({
+      label: "Archive",
+      icon: "📦",
+      href: links.archiveList,
+    });
+  }
 
-.link-list {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0 0;
-}
+  // ─────────────────────────────────────────────
+  // Quick municipal / internal links
+  // ─────────────────────────────────────────────
+  const quickLinks = [
+    { label: "Tasks", href: links.tasksList, icon: "✓" },
+    { label: "Projects", href: links.projectsList, icon: "📋" },
+    { label: "Pipeline", href: links.pipelineList, icon: "→" },
+    { label: "Departments", href: links.departments, icon: "🏢" },
+    { label: "Meetings", href: links.meetings, icon: "🗓" },
+    { label: "Permits", href: links.permits, icon: "📝" },
+    { label: "Documents", href: links.documents, icon: "📁" },
+    { label: "Ordinances", href: links.ordinances, icon: "⚖" },
+    { label: "Budget", href: links.budget, icon: "💰" },
+    { label: "Town Website", href: links.townWebsite, icon: "🌍", external: true },
+    { label: "Public Records", href: links.publicRecords, icon: "🔍", external: true },
+  ].filter((item) => item.href);
 
-.link-item {
-  margin: 0.35rem 0;
-}
+  // ─────────────────────────────────────────────
+  // Capabilities (small overview cards)
+  // ─────────────────────────────────────────────
+  const capabilities = [
+    {
+      label: "Record",
+      description: "Capture factual, defensible records → ARCHIEVE",
+    },
+    {
+      label: "Create",
+      description: "Pages, lists, documents — stay in flow",
+    },
+    {
+      label: "Navigate",
+      description: "Full SharePoint access when needed",
+    },
+  ];
 
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.6em;
-  padding: 0.5rem 0.75rem;
-  border-radius: 10px;
-  color: var(--muted);
-  text-decoration: none;
-  transition: all 0.14s ease;
-}
+  // ─────────────────────────────────────────────
+  // Main content structure
+  // ─────────────────────────────────────────────
+  const content = el("div", { class: "stack gap-xl" }, [
+    // Hero / welcome area
+    renderCard({
+      title: "Work Command Center",
+      description:
+        "Create. Record. Push work into SharePoint. Clean, no dependencies.",
+      variant: "hero",
+    }),
 
-.nav-link:hover {
-  background: rgba(52, 211, 153, 0.08);
-  color: var(--accent);
-}
+    // Primary actions block
+    renderCard({
+      title: "Start Here",
+      children: [
+        el(
+          "div",
+          { class: "grid grid--2 gap-md" },
+          primaryActions.map((a) =>
+            el(
+              a.action ? "button" : "a",
+              {
+                class: ["btn", a.variant && `btn--${a.variant}`].filter(Boolean).join(" "),
+                href: a.href,
+                target: a.href ? "_blank" : undefined,
+                rel: a.href ? "noopener noreferrer" : undefined,
+                onclick: a.action ? () => a.action() : undefined,
+              },
+              [a.icon && el("span", { class: "icon" }, [a.icon]), a.label]
+            )
+          )
+        ),
+      ],
+    }),
 
-.icon {
-  width: 1.1em;
-  text-align: center;
-  opacity: 0.75;
-}
+    // Capabilities + Today + Quick Links
+    el("div", { class: "grid grid--2 gap-lg" }, [
+      // Left column: capabilities + today
+      el("div", { class: "stack gap-lg" }, [
+        el("div", { class: "grid grid--3 gap-md" }, capabilities.map(renderCard)),
+        renderCard({
+          title: "Today",
+          description: "No required tasks. No guilt. Just context.",
+          variant: "calm",
+        }),
+      ]),
 
-.external {
-  font-size: 0.8em;
-  opacity: 0.6;
-  margin-left: 0.4em;
-}
+      // Right column: Quick Links
+      renderCard({
+        title: "Quick Links",
+        children:
+          quickLinks.length > 0
+            ? [
+                el(
+                  "div",
+                  { class: "stack gap-xs" },
+                  quickLinks.map((link) =>
+                    el(
+                      "a",
+                      {
+                        href: link.href,
+                        target: link.external ? "_blank" : undefined,
+                        rel: link.external ? "noopener noreferrer" : undefined,
+                        class: "quick-link",
+                      },
+                      [
+                        link.icon && el("span", { class: "icon" }, [link.icon]),
+                        link.label,
+                        link.external && el("span", { class: "external" }, ["↗"]),
+                      ]
+                    )
+                  )
+                ),
+              ]
+            : [el("p", { class: "muted small" }, ["More links will appear here when configured"])],
+      }),
+    ]),
+  ]);
 
-.status-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 0.5rem 0;
-}
-
-.status {
-  font-weight: 600;
-}
-
-.status--ok {
-  color: var(--accent);
-}
-
-.status--error {
-  color: var(--danger);
+  return {
+    title: "Command Center",
+    subtitle: formatDateHeading(),
+    actions: primaryActions.map((a) => ({
+      label: a.label,
+      variant: a.variant,
+      href: a.href,
+      action: a.action,
+      icon: a.icon,
+    })),
+    content,
+  };
 }

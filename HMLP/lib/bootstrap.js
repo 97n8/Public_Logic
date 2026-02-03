@@ -1,47 +1,55 @@
-export async function ensureArchieveList(sp, cfg) {
-  const listName = "ARCHIEVE";
+export async function ensureArchieveList(sp) {
+  const LIST_NAME = "ARCHIEVE";
 
-  // 1. Check if list already exists
-  const existing = await sp.findListByName(listName);
+  // 1. Check existence
+  const existing = await sp.findListByName(LIST_NAME);
   if (existing) {
     console.log("ARCHIEVE already exists");
     return existing;
   }
 
-  console.log("Creating ARCHIEVE list...");
+  console.log("Creating ARCHIEVE list…");
 
-  // 2. Create the list
+  // 2. Create list
   const list = await sp.createList({
-    displayName: listName,
-    description: "Canonical system-of-record for PublicLogic OS",
-    template: "genericList"
+    displayName: LIST_NAME,
+    description: "Canonical system-of-record for PublicLogic OS"
   });
 
-  const listId = list.id;
-
-  // 3. Create columns
-  const columns = ARCHIEVE_COLUMNS();
-  for (const col of columns) {
-    await sp.createColumn(listId, col);
+  // 3. Create schema columns
+  for (const col of ARCHIEVE_COLUMNS()) {
+    await sp.createColumn(list.id, col);
   }
 
   console.log("ARCHIEVE list created");
   return list;
 }
 
+/* ================== SCHEMA ================== */
+
 function ARCHIEVE_COLUMNS() {
   return [
-    text("RecordID"),
-    choice("RecordType", ["task","project","pipeline","decision","page","file","note","workflow","intake","system"]),
+    choice("RecordType", [
+      "task","project","pipeline","decision","page","file",
+      "note","workflow","intake","system"
+    ]),
     text("RecordSubType"),
+
     text("AuthorityOwner"),
     text("ResponsibleParty"),
     text("OriginatingSystem"),
 
-    choice("Status", ["draft","active","waiting","approved","completed","archived","void"]),
-    choice("LifecycleStage", ["intake","review","execution","record","closed"]),
+    choice("Status", [
+      "draft","active","waiting","approved",
+      "completed","archived","void"
+    ]),
+    choice("LifecycleStage", [
+      "intake","review","execution","record","closed"
+    ]),
+
     boolean("IsAuthoritative"),
     text("SupersedesRecordID"),
+
     choice("Disposition", ["retain","archive","destroy"]),
     datetime("DispositionDate"),
 
@@ -49,12 +57,15 @@ function ARCHIEVE_COLUMNS() {
     datetime("CreatedAt"),
     text("LastModifiedByEmail"),
     datetime("LastModifiedAt"),
+
     text("SourceRoute"),
     text("SourceAction"),
     multiline("ChangeReason"),
 
     multiline("LegalContext"),
-    choice("ComplianceCategory", ["none","finance","HR","records","procurement","safety"]),
+    choice("ComplianceCategory", [
+      "none","finance","HR","records","procurement","safety"
+    ]),
     choice("RiskLevel", ["low","moderate","high","critical"]),
     boolean("RequiresReview"),
     text("ReviewedBy"),
@@ -70,42 +81,10 @@ function ARCHIEVE_COLUMNS() {
     multiline("StructuredPayload"),
     multiline("RenderedContent"),
     multiline("AttachmentLinks"),
-    text("Checksum"),
 
+    text("Checksum"),
     text("SystemVersion"),
     text("SchemaVersion"),
+
     choice("ReplicationStatus", ["local","replicated","conflict"]),
     text("ReplicationTarget"),
-    boolean("Locked"),
-    text("LockedReason")
-  ];
-}
-
-/* column helpers */
-const text = (name) => ({
-  name,
-  text: { allowMultipleLines: false }
-});
-
-const multiline = (name) => ({
-  name,
-  text: { allowMultipleLines: true }
-});
-
-const boolean = (name) => ({
-  name,
-  boolean: {}
-});
-
-const datetime = (name) => ({
-  name,
-  dateTime: {}
-});
-
-const choice = (name, choices) => ({
-  name,
-  choice: {
-    choices,
-    displayAs: "dropDownMenu"
-  }
-});

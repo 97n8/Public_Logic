@@ -4,27 +4,16 @@
   <meta charset="utf-8" />
   <title>PublicLogic OS</title>
 
-  <!-- CSP SAFE -->
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self';
-                 script-src 'self' https://cdn.jsdelivr.net;
-                 style-src 'self' 'unsafe-inline';
-                 img-src 'self' data:;
-                 connect-src 'self';
-                 font-src 'self';
-                 object-src 'none';
-                 base-uri 'self';
-                 frame-ancestors 'none';">
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- CSS MUST EXIST -->
   <link rel="stylesheet" href="/hmlp/styles/app.css" />
 </head>
 
 <body>
   <div id="app"></div>
 
-  <!-- IMPORTANT: no inline JS -->
-  <script type="module" src="/hmlp/pages/dashboard.js"></script>
+  <!-- SINGLE ENTRYPOINT -->
+  <script type="module" src="/hmlp/app.js"></script>
 </body>
 </html>

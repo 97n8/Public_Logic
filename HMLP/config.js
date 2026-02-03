@@ -1,7 +1,7 @@
 // PublicLogic OS config (no secrets). Safe to ship.
 //
 // This file contains your real Entra ID (Azure AD) application values.
-// Keep it in the repository root — it has no secrets.
+// Keep it in the repository — it has no secrets.
 // Do NOT commit client secrets or passwords here.
 
 window.PUBLICLOGIC_OS_CONFIG = {
@@ -10,8 +10,10 @@ window.PUBLICLOGIC_OS_CONFIG = {
   msal: {
     clientId: "1b53d140-0779-4a64-943c-a11ba19ec0ce",
     tenantId: "12879dad-927b-419b-8a2e-fda32e1732be",
-    redirectUri: "https://www.publiclogic.org/HMLP/",
-    postLogoutRedirectUri: "https://www.publiclogic.org/HMLP/",
+    // NOTE: Your site currently canonicalizes to lowercase /hmlp/.
+    // Use the lowercase URL in Entra ID redirect URIs to avoid redirect loops during login callbacks.
+    redirectUri: "https://www.publiclogic.org/hmlp/",
+    postLogoutRedirectUri: "https://www.publiclogic.org/hmlp/",
     cacheLocation: "sessionStorage"   // recommended for security on shared machines
   },
 

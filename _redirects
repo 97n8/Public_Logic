@@ -1,3 +1,5 @@
-/HMLP   /HMLP/   301!
-/HMLP/* /HMLP/index.html 200
+/HMLP    /hmlp/           301!
+/HMLP/*  /hmlp/:splat     301!
+/hmlp    /hmlp/           301!
+/hmlp/*  /hmlp/index.html 200
 /*      /index.html 200

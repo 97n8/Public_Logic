@@ -1,91 +1,135 @@
 // lib/archieve.js
-// ARCHIEVE = Authoritative Record Collection for History, Integrity, Evidence, Validation, and Enforcement
+import { createSharePointClient } from "./sharepoint.js";
 
-export async function ensureArchieveList(sp, cfg) {
-  const listName = cfg.sharepoint.archieve?.listName || "ARCHIEVE";
+/**
+ * Get current/next fiscal year folder name
+ * Assumes Massachusetts fiscal year starts July 1
+ */
+function getFiscalYearFolder() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1; // 0-based → 1-12
 
-  const existing = await sp.findListByName(listName);
-  if (existing) {
-    console.log(`ARCHIEVE list exists: ${listName}`);
-    return existing;
-  }
-
-  console.log(`Creating ARCHIEVE list: ${listName}`);
-
-  const list = await sp.createList({
-    displayName: listName,
-    description: "Canonical system-of-record for PublicLogic OS"
-  });
-
-  for (const col of ARCHIEVE_COLUMNS) {
-    try {
-      await sp.createColumn(list.id, col);
-    } catch (e) {
-      console.warn(`Column ${col.name} may already exist:`, e.message);
-    }
-  }
-
-  console.log("ARCHIEVE list created");
-  return list;
+  // If July or later → current year to next
+  // If Jan–June → previous year to current
+  const startYear = month >= 7 ? year : year - 1;
+  return `FY${startYear}-${startYear + 1}`;
 }
 
-const text = (name) => ({ name, text: {} });
-const multiline = (name) => ({ name, text: { allowMultipleLines: true } });
-const boolean = (name) => ({ name, boolean: {} });
-const datetime = (name) => ({ name, dateTime: {} });
-const choice = (name, choices) => ({ name, choice: { choices, displayAs: "dropDownMenu" } });
+/**
+ * Create folder path recursively if missing
+ */
+async function ensureFolderPath(sp, sitePath, listName, segments) {
+  let current = `${sitePath}/${listName}`;
+  for (const segment of segments) {
+    current += `/${segment}`;
+    try {
+      await sp.web.getFolderByServerRelativeUrl(current).select('Exists')();
+    } catch (err) {
+      if (err.status === 404) {
+        await sp.web.folders.addUsingPath(current);
+        console.log(`Created folder: ${current}`);
+      } else {
+        throw err;
+      }
+    }
+  }
+  return current;
+}
 
-const ARCHIEVE_COLUMNS = [
-  choice("RecordType", ["task", "project", "pipeline", "decision", "page", "file", "note", "workflow", "intake", "system"]),
-  text("RecordSubType"),
+/**
+ * Ensure ARCHIEVE list exists + prepare folder structure
+ */
+export async function ensureArchieveList(sp, cfg) {
+  const sitePath = cfg.sharepoint.sitePath || '/sites/PublicLogic';
+  const listName = cfg.sharepoint.archieve?.listName || 'ARCHIEVE';
 
-  text("AuthorityOwner"),
-  text("ResponsibleParty"),
-  text("OriginatingSystem"),
+  let listId;
+  try {
+    const list = await sp.web.lists.getByTitle(listName).select('Id')();
+    listId = list.Id;
+    console.log(`ARCHIEVE list exists: ${listId}`);
+  } catch (err) {
+    if (err.status !== 404) throw err;
 
-  choice("Status", ["draft", "active", "waiting", "approved", "completed", "archived", "void"]),
-  choice("LifecycleStage", ["intake", "review", "execution", "record", "closed"]),
+    const newList = await sp.web.lists.add({
+      Title: listName,
+      Description: 'PublicLogic ARCHIEVE – M.G.L. c.66 compliant records',
+      TemplateType: 100,
+      EnableVersioning: true,
+      ContentTypesEnabled: true,
+    });
 
-  boolean("IsAuthoritative"),
-  text("SupersedesRecordID"),
+    listId = newList.data.Id;
 
-  choice("Disposition", ["retain", "archive", "destroy"]),
-  datetime("DispositionDate"),
+    // Add fields
+    await Promise.all([
+      sp.web.lists.getByTitle(listName).fields.addText('RecordType', { Required: true }),
+      sp.web.lists.getByTitle(listName).fields.addDateTime('RecordDate', { Required: true }),
+      sp.web.lists.getByTitle(listName).fields.addMultilineText('Content', { RichText: true, Required: true }),
+      sp.web.lists.getByTitle(listName).fields.addText('Tags', {}),
+      sp.web.lists.getByTitle(listName).fields.addChoice('RetentionClass', {
+        Choices: ['Permanent', 'Reference_7y', 'Transactional_1y', 'Transactional_2y'],
+        Required: true,
+      }),
+      sp.web.lists.getByTitle(listName).fields.addBoolean('Locked', { DefaultValue: true }),
+      sp.web.lists.getByTitle(listName).fields.addDateTime('RetentionEndDate', {}),
+    ]);
 
-  text("CreatedByEmail"),
-  datetime("CreatedAt"),
-  text("LastModifiedByEmail"),
-  datetime("LastModifiedAt"),
+    console.log(`Created ARCHIEVE list: ${listId}`);
+  }
 
-  text("SourceRoute"),
-  text("SourceAction"),
-  multiline("ChangeReason"),
+  // Auto-create folder structure for Phillipston PRR
+  const fy = getFiscalYearFolder();           // e.g. FY2025-2026
+  const dept = "PHILLIPSTON";
+  const category = "PRR";
 
-  multiline("LegalContext"),
-  choice("ComplianceCategory", ["none", "finance", "HR", "records", "procurement", "safety"]),
-  choice("RiskLevel", ["low", "moderate", "high", "critical"]),
-  boolean("RequiresReview"),
-  text("ReviewedBy"),
-  datetime("ReviewedAt"),
+  const folderPath = await ensureFolderPath(sp, sitePath, listName, [fy, dept, category]);
+  console.log(`Phillipston PRR folder: ${folderPath}`);
 
-  text("ParentRecordID"),
-  multiline("RelatedRecordIDs"),
-  text("ProjectCode"),
-  text("ExternalReference"),
-  boolean("TransferReady"),
+  return { listId, folderPath };
+}
 
-  multiline("Summary"),
-  multiline("StructuredPayload"),
-  multiline("RenderedContent"),
-  multiline("AttachmentLinks"),
+/**
+ * Save PRR submission to ARCHIEVE list + dedicated folder
+ */
+export async function savePrrSubmission(sp, cfg, formData) {
+  const listName = cfg.sharepoint.archieve?.listName || 'ARCHIEVE';
+  const fy = getFiscalYearFolder();
+  const folderPath = `${cfg.sharepoint.sitePath}/${listName}/${fy}/PHILLIPSTON/PRR`;
 
-  text("Checksum"),
-  text("SystemVersion"),
-  text("SchemaVersion"),
+  // Ensure folder exists
+  await ensureFolderPath(sp, cfg.sharepoint.sitePath, listName, [fy, "PHILLIPSTON", "PRR"]);
 
-  choice("ReplicationStatus", ["local", "replicated", "conflict"]),
-  text("ReplicationTarget"),
+  // Generate filename
+  const date = new Date().toISOString().split('T')[0];
+  const slug = (formData.request || 'request').slice(0, 40).toLowerCase().replace(/[^a-z0-9]/g, '-');
+  const filename = `PRR_${date}_${slug}.md`;
 
-  boolean("Locked"),
-  text("LockedReason")
-];
+  // Markdown content
+  const markdown = `# Phillipston Public Records Request\n\n` +
+    `**Submitted:** ${new Date().toLocaleString()}\n` +
+    `**Requester:** ${formData.name} <${formData.email}> ${formData.phone ? `(${formData.phone})` : ''}\n\n` +
+    `**Request:**\n${formData.request}\n\n` +
+    `---\n\n**Status:** Received\n**T10 Deadline:** ${new Date(Date.now() + 10*24*60*60*1000).toLocaleDateString()}`;
+
+  // Upload file
+  const file = await sp.web.getFolderByServerRelativeUrl(folderPath).files.addUsingPath(filename, markdown, true);
+
+  // Add list item (metadata)
+  const listItem = await sp.web.lists.getByTitle(listName).items.add({
+    Title: `PRR - ${formData.name} - ${date}`,
+    RecordType: 'Public Records Request',
+    RecordDate: new Date().toISOString(),
+    Content: formData.request,
+    Tags: 'Phillipston,PRR,MGL c.66',
+    RetentionClass: 'Permanent',
+  });
+
+  return {
+    itemId: listItem.data.Id,
+    fileUrl: file.data.ServerRelativeUrl,
+    filename,
+    caseId: `PRR-${date.replace(/-/g, '')}-${listItem.data.Id}`,
+  };
+}

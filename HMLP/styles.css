@@ -1,122 +1,422 @@
+/* ==========================================================================
+   ROOT & VARIABLES — PublicLogic signature palette
+   ========================================================================== */
 :root {
-  --bg: #021c16;
-  --panel: #0c2a22;
-  --border: rgba(255, 255, 255, 0.08);
-
-  --ink: rgba(247, 245, 239, 0.95);
-  --muted: rgba(247, 245, 239, 0.6);
-
+  --bg0: #022c22;
+  --bg1: #052f28;
+  --ink: rgba(247, 245, 239, 0.96);
+  --muted: rgba(247, 245, 239, 0.68);
+  --faint: rgba(247, 245, 239, 0.14);
+  --line: rgba(247, 245, 239, 0.12);
+  --surface: rgba(0, 0, 0, 0.22);
+  --surface-raised: rgba(0, 0, 0, 0.32);
   --accent: #34d399;
+  --accent2: #fbbf24;
+  --danger: #fb7185;
 
-  --radius: 14px;
-  --shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.38);
 
-  --font-sans: system-ui, -apple-system, sans-serif;
-  --font-serif: Georgia, serif;
+  --radius: 18px;
+  --radius-sm: 12px;
+  --radius-lg: 24px;
+
+  --font-sans: "Sora", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: "Fraunces", ui-serif, Georgia, serif;
+
+  --transition: all 140ms ease;
 }
 
+/* ==========================================================================
+   BASE & RESET
+   ========================================================================== */
 * {
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
-  background: linear-gradient(180deg, #000, var(--bg));
   color: var(--ink);
   font-family: var(--font-sans);
+  background: var(--bg0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== Layout ===== */
-
-.dashboard {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 48px 32px 120px;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+/* ==========================================================================
+   BACKGROUND LAYER
+   ========================================================================== */
+.bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 700px at 20% 10%, rgba(52, 211, 153, 0.14), transparent 60%),
+    radial-gradient(900px 500px at 85% 20%, rgba(251, 191, 36, 0.10), transparent 60%),
+    radial-gradient(900px 900px at 50% 85%, rgba(52, 211, 153, 0.08), transparent 65%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.30), transparent 40%),
+    url("./assets/noise.svg");
+  mix-blend-mode: normal;
+  opacity: 1;
+  z-index: -2;
 }
 
-/* ===== Grid ===== */
-
-.grid {
-  display: grid;
-  gap: 24px;
-}
-
-.grid--2 {
-  grid-template-columns: 1fr 1fr;
-}
-
-.grid--3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-@media (max-width: 900px) {
-  .grid--2,
-  .grid--3 {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===== Cards ===== */
-
-.card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px;
-  box-shadow: var(--shadow);
-}
-
-.card--hero {
-  padding: 36px;
-}
-
-.card--calm {
-  background: #0a241d;
-}
-
-.card__label {
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-.card__title {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  margin: 0 0 12px;
-}
-
-.card__description {
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-/* ===== Quick links ===== */
-
-.quick-link {
-  display: block;
-  padding: 10px 0;
-  border-top: 1px solid var(--border);
+/* ==========================================================================
+   LINKS & BASIC BUTTONS
+   ========================================================================== */
+a {
   color: var(--ink);
   text-decoration: none;
 }
 
-.quick-link:first-child {
-  border-top: none;
+a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
 }
 
-.quick-link:hover {
+.btn,
+a.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn:hover,
+a.btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(52, 211, 153, 0.38);
+  background: rgba(52, 211, 153, 0.12);
+}
+
+.btn:active,
+a.btn:active {
+  transform: translateY(0);
+  opacity: 0.92;
+}
+
+.btn--primary {
+  border-color: rgba(52, 211, 153, 0.45);
+  background: rgba(52, 211, 153, 0.18);
+  color: rgba(52, 211, 153, 0.98);
+}
+
+/* Focus states */
+.btn:focus-visible,
+a.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.3);
+}
+
+/* ==========================================================================
+   NAVIGATION & SIDEBAR
+   ========================================================================== */
+.navlink {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(247, 245, 239, 0.12);
+  background: rgba(0,0,0,0.14);
+  color: rgba(247, 245, 239, 0.78);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 13px;
+  margin: 8px 0 0;
+  transition: var(--transition);
+}
+
+.navlink:hover {
+  transform: translateY(-1px);
+  border-color: rgba(52, 211, 153, 0.22);
+  background: rgba(52, 211, 153, 0.10);
+}
+
+.navlink[data-active="1"] {
+  border-color: rgba(52, 211, 153, 0.34);
+  background: rgba(52, 211, 153, 0.14);
+  color: rgba(52, 211, 153, 0.98);
+}
+
+/* ==========================================================================
+   CARDS & DASHBOARD COMPONENTS
+   ========================================================================== */
+.card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 14px 16px;
+  min-height: 80px;
+  animation: fadeIn 220ms ease-out both;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.card__title,
+.card-title {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.card__description,
+.card-subtitle,
+.small {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* Variants */
+.card--hero {
+  background: linear-gradient(145deg, rgba(52, 211, 153, 0.09), rgba(0, 0, 0, 0.24));
+  border-color: rgba(52, 211, 153, 0.32);
+  padding: 1.8rem 2rem;
+}
+
+.card--calm {
+  background: rgba(0, 0, 0, 0.16);
+  border-color: rgba(247, 245, 239, 0.08);
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   LAYOUT & GRID
+   ========================================================================== */
+.app {
+  position: relative;
+  min-height: 100%;
+  padding: 22px;
+}
+
+.shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 920px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.12));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 920px) {
+  .grid > * {
+    grid-column: span 12 !important;
+  }
+}
+
+/* ==========================================================================
+   TYPOGRAPHY (MARKDOWN & GENERAL)
+   ========================================================================== */
+.markdown {
+  color: rgba(247, 245, 239, 0.92);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.markdown h1, .markdown h2, .markdown h3, .markdown h4 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+  margin: 18px 0 10px;
+}
+
+.markdown h1 { font-size: 22px; }
+.markdown h2 { font-size: 18px; }
+.markdown h3 { font-size: 16px; }
+.markdown h4 { font-size: 14px; }
+
+.markdown p { margin: 10px 0; color: rgba(247, 245, 239, 0.84); }
+
+.markdown code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  background: rgba(0,0,0,0.20);
+  border: 1px solid var(--line);
+  padding: 2px 6px;
+  border-radius: 10px;
+  color: rgba(52, 211, 153, 0.95);
+}
+
+.markdown pre {
+  background: rgba(0,0,0,0.22);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 12px;
+  overflow: auto;
+}
+
+.markdown pre code {
+  display: block;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: rgba(247, 245, 239, 0.90);
+}
+
+.markdown ul {
+  margin: 10px 0 10px 18px;
+  color: rgba(247, 245, 239, 0.84);
+}
+
+.markdown li { margin: 6px 0; }
+
+.markdown a {
+  color: rgba(52, 211, 153, 0.95);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.markdown blockquote {
+  margin: 12px 0;
+  padding: 10px 12px;
+  border-left: 3px solid rgba(251, 191, 36, 0.55);
+  background: rgba(251, 191, 36, 0.10);
+  border-radius: 12px;
+  color: rgba(247, 245, 239, 0.85);
+}
+
+/* ==========================================================================
+   DASHBOARD-SPECIFIC STYLES (Work Command Center)
+   ========================================================================== */
+
+/* Brand elements */
+.brand {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.brand__mark {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(52, 211, 153, 0.35), transparent 55%),
+    linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.12));
+  border: 1px solid rgba(52, 211, 153, 0.28);
+  color: rgba(52, 211, 153, 0.95);
+}
+
+.brand__name {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: 20px;
+}
+
+.brand__tag {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* Actions */
+.main__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Pill buttons (used for secondary links) */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(247, 245, 239, 0.16);
+  color: rgba(247, 245, 239, 0.76);
+  background: rgba(0,0,0,0.14);
+  font-size: 12px;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.pill:hover {
+  background: rgba(52, 211, 153, 0.10);
   color: var(--accent);
 }
 
-/* ===== Muted ===== */
+/* ==========================================================================
+   GRID & RESPONSIVE
+   ========================================================================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 12px;
+}
 
-.muted {
-  color: var(--muted);
-  font-size: 0.9rem;
+@media (max-width: 920px) {
+  .grid > * {
+    grid-column: span 12 !important;
+  }
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+.small { font-size: 12px; color: var(--muted); }
+.muted { color: var(--muted); }
+.text-center { text-align: center; }
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

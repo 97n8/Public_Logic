@@ -8,7 +8,10 @@ window.PUBLICLOGIC_OS_CONFIG = {
   },
 
   graph: {
-    scopes: ["User.Read"]
+    scopes: [
+      "User.Read",
+      "Sites.ReadWrite.All"
+    ]
   },
 
   access: {
@@ -17,6 +20,9 @@ window.PUBLICLOGIC_OS_CONFIG = {
 
   sharepoint: {
     hostname: "publiclogicorg.sharepoint.com",
-    sitePath: "/sites/PublicLogic"
+    sitePath: "/sites/PublicLogic",
+    lists: {
+      archieve: "ARCHIEVE"
+    }
   }
 };

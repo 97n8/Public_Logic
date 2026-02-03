@@ -16,6 +16,9 @@ import { renderPlaybooks } from "./pages/playbooks.js";
 import { renderTools } from "./pages/tools.js";
 import { renderSettings } from "./pages/settings.js";
 
+// NEW: Phillipston PRR demo environment
+import { renderPhillipstonPrr } from "./pages/phillipston-prr.js";
+
 /* =========================
    UI HELPERS
    ========================= */
@@ -72,7 +75,7 @@ function createMobileNav(sidebar) {
   toggle.addEventListener("click", toggleNav);
   overlay.addEventListener("click", closeNav);
 
-  // Close when clicking nav links
+  // Close nav when clicking nav links
   sidebar.querySelectorAll(".nav a").forEach(link => {
     link.addEventListener("click", closeNav);
   });
@@ -250,7 +253,8 @@ const PAGES = {
   "/environments": renderEnvironments,
   "/playbooks": renderPlaybooks,
   "/tools": renderTools,
-  "/settings": renderSettings
+  "/settings": renderSettings,
+  "/phillipston-prr": renderPhillipstonPrr   // ← NEW Phillipston PRR environment
 };
 
 /* =========================
@@ -299,7 +303,7 @@ async function main() {
       await ensureArchieveList(sp, cfg);
     } catch (err) {
       console.warn("Archieve list setup failed:", err);
-      // Continue anyway — not fatal
+      // Continue — not fatal
     }
   }
 

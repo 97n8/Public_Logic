@@ -1,4 +1,4 @@
-import { PrrRouter } from "./prr";
+import { PrrRouter } from "./PrrRouter";
 
 export function PhillipstonShell() {
   return (

@@ -6,18 +6,42 @@ window.PUBLICLOGIC_OS_CONFIG = {
     postLogoutRedirectUri: "https://www.publiclogic.org/hmlp/",
     cacheLocation: "sessionStorage"
   },
+
   graph: {
     scopes: ["User.Read", "Sites.ReadWrite.All"]
   },
+
   access: {
     allowedEmails: ["nate@publiclogic.org"]
   },
+
   sharepoint: {
     hostname: "publiclogic978.sharepoint.com",
     sitePath: "/sites/PL",
     archieve: {
       enabled: true,
-      listName: "ARCHIEVE"
+      listName: "ARCHIEVE",
+      // Folder structure pattern for PRR submissions
+      folderTemplate: "{FY}/{DEPT}/PRR",     // will become FY2025-2026/PHILLIPSTON/PRR
+      defaultDept: "PHILLIPSTON",
+      defaultCategory: "PRR"
+    }
+  },
+
+  // NEW: Phillipston-specific environment settings
+  environments: {
+    phillipston: {
+      name: "Phillipston MA",
+      description: "Public Records Request Form – Phillipston, MA",
+      path: "/phillipston-prr",
+      // Overrides for this environment
+      sharepointOverrides: {
+        folderPrefix: "PHILLIPSTON",
+        retentionClass: "Permanent",
+        tags: ["Phillipston", "PRR", "MGL c.66", "Public Records"]
+      },
+      // Legal & compliance info shown in form footer
+      legalNotice: "This request is submitted under M.G.L. c. 66 §10 and 950 CMR 32.00. The Town of Phillipston must respond within 10 business days unless a valid extension applies."
     }
   }
 };

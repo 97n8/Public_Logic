@@ -3,169 +3,108 @@ import { el } from "../lib/dom.js";
 import { openRecordConsole } from "../lib/record-console.js";
 import { getConfig, getLinks } from "../lib/config.js";
 
-/* -------------------------------------------------------
- * Utilities
- * ----------------------------------------------------- */
-
-function formatNiceDate() {
-  return new Date().toLocaleDateString("en-US", {
+function formatDateHeading(date = new Date()) {
+  return date.toLocaleDateString("en-US", {
     weekday: "long",
-    month: "long",
+    month: "short",
     day: "numeric",
+    year: "numeric",
   });
 }
 
-function ensureArray(children) {
-  if (Array.isArray(children)) return children;
-  if (!children) return [];
-  return [children];
-}
-
-/* -------------------------------------------------------
- * UI Primitives
- * ----------------------------------------------------- */
-
-function renderCard({ title, description, children, variant = "" }) {
+function renderCard({ label, title, description, children, variant = "" }) {
   const classes = ["card"];
   if (variant) classes.push(`card--${variant}`);
 
-  return el("div", { class: classes.join(" ") }, [
-    title && el("div", { class: "card-title" }, [title]),
-    description && el("div", { class: "card-subtitle" }, [description]),
-    ...ensureArray(children),
+  const safeChildren = Array.isArray(children)
+    ? children
+    : children
+    ? [children]
+    : [];
+
+  return el("section", { class: classes.join(" ") }, [
+    label && el("div", { class: "card__label" }, [label]),
+    title && el("h2", { class: "card__title" }, [title]),
+    description &&
+      el("p", { class: "card__description" }, [description]),
+    ...safeChildren,
   ]);
 }
-
-/* -------------------------------------------------------
- * Data (manual, intentional)
- * ----------------------------------------------------- */
-
-// Recent files reflect real, current PL work.
-// Keep manual to preserve signal over automation noise.
-const RECENT_FILES = [
-  {
-    name: "CASE_Workspace.md",
-    href: "https://github.com/97n8/pl-poli-case-workspace/blob/main/CASE_Workspace.md",
-    time: "45 min ago",
-  },
-  {
-    name: "AI-for-impact.html",
-    href: "https://github.com/97n8/pl-poli-case-workspace/blob/main/AI-for-impact.html",
-    time: "5 hr ago",
-  },
-  {
-    name: "00_CLERK_Charter.md",
-    href: "https://github.com/97n8/pl-poli-case-workspace/blob/main/00_CLERK_Charter.md",
-    time: "yesterday",
-  },
-  {
-    name: "Audience_and_Use.md",
-    href: "https://github.com/97n8/pl-poli-case-workspace/blob/main/Audience_and_Use.md",
-    time: "3 days ago",
-  },
-  {
-    name: "planning-notes-2026.txt",
-    href: "#",
-    time: "4 days ago",
-  },
-];
-
-/* -------------------------------------------------------
- * Main Render
- * ----------------------------------------------------- */
 
 export async function renderDashboard(ctx) {
   const cfg = getConfig() || {};
   const links = getLinks(cfg) || {};
 
-  const content = el("div", { class: "workbench" }, [
-    /* ---------------- Header ---------------- */
+  const actions = [
+    {
+      label: "New Record",
+      variant: "primary",
+      action: () => openRecordConsole(ctx),
+    },
+    links.site && { label: "SharePoint", href: links.site },
+    links.archiveList && { label: "Archive", href: links.archiveList },
+  ].filter(Boolean);
 
-    el("header", { class: "header" }, [
-      el("div", { class: "brand" }, [
-        el("div", { class: "brand-mark" }, ["PL"]),
-        el("div", {}, [
-          el("div", { class: "brand-name" }, ["PublicLogic"]),
-          el("div", { class: "date" }, [formatNiceDate()]),
-        ]),
-      ]),
-    ]),
+  const capabilities = [
+    { label: "Record", description: "Create defensible records" },
+    { label: "Create", description: "Pages, lists, documents" },
+    { label: "Navigate", description: "Direct SharePoint access" },
+  ];
 
-    /* ---------------- Main ---------------- */
+  const quickLinks = [
+    { label: "Tasks", href: links.tasksList },
+    { label: "Projects", href: links.projectsList },
+    { label: "Pipeline", href: links.pipelineList },
+    { label: "Meetings", href: links.meetings },
+    { label: "Documents", href: links.documents },
+    { label: "Budget", href: links.budget },
+  ].filter(l => l.href);
 
-    el("main", { class: "main-content" }, [
-      // Primary action: always visible, always safe
-      el(
-        "button",
-        {
-          class: "fab primary",
-          onclick: () => openRecordConsole(ctx),
-        },
-        [
-          el("span", { class: "fab-icon" }, ["✎"]),
-          el("span", { class: "fab-label" }, ["New Record"]),
-        ]
-      ),
+  const content = el("div", { class: "dashboard" }, [
+    renderCard({
+      title: "Command Center",
+      description: "Create records, move work, stay oriented.",
+      variant: "hero",
+    }),
 
-      // Recent Work: highest signal, first read
-      renderCard({
-        title: "Recent Work",
-        children: el(
-          "ul",
-          { class: "recent-list" },
-          RECENT_FILES.map((file) =>
-            el("li", { class: "recent-item" }, [
-              el(
-                "a",
-                {
-                  href: file.href,
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                  class: "file-link",
-                },
-                [file.name]
-              ),
-              el("span", { class: "time" }, [file.time]),
-            ])
-          )
-        ),
-      }),
+    el(
+      "div",
+      { class: "grid grid--3" },
+      capabilities.map(c =>
+        renderCard({
+          label: c.label,
+          description: c.description,
+        })
+      )
+    ),
 
-      // Tone-setting state card
+    el("div", { class: "grid grid--2" }, [
       renderCard({
         title: "Today",
+        description: "No required actions. No backlog pressure.",
         variant: "calm",
-        description: "No meetings. No rush. Just deep work.",
       }),
 
-      // Quiet utility links
-      el("div", { class: "secondary-links" }, [
-        el(
-          "a",
-          {
-            href: links.site || "#",
-            target: "_blank",
-            class: "pill",
-          },
-          ["SharePoint"]
-        ),
-        links.archiveList &&
-          el(
-            "a",
-            {
-              href: links.archiveList,
-              target: "_blank",
-              class: "pill",
-            },
-            ["Archive"]
-          ),
-      ]),
+      renderCard({
+        title: "Quick Links",
+        children:
+          quickLinks.length > 0
+            ? quickLinks.map(l =>
+                el(
+                  "a",
+                  { href: l.href, class: "quick-link" },
+                  [l.label]
+                )
+              )
+            : el("div", { class: "muted" }, ["No links configured"]),
+      }),
     ]),
   ]);
 
   return {
-    title: "PL Workbench",
-    subtitle: formatNiceDate(),
+    title: "Command Center",
+    subtitle: formatDateHeading(),
+    actions,
     content,
   };
 }

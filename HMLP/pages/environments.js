@@ -1,24 +1,12 @@
 // pages/environments.js
 import { el } from "../lib/dom.js";
 
-function environmentCard({ name, description, onClick, href, badge }) {
-  const cardProps = href
-    ? {
-        href,
-        target: "_blank",
-        rel: "noreferrer"
-      }
-    : {
-        role: "button",
-        tabindex: "0",
-        onclick: onClick
-      };
-
-  const Tag = href ? "a" : "div";
-
-  return el(Tag, {
+function environmentCard({ name, description, href, badge }) {
+  return el("a", {
     class: "env-card",
-    ...cardProps
+    href,
+    target: "_blank",
+    rel: "noreferrer"
   }, [
     el("div", { class: "env-card__header" }, [
       el("div", { class: "env-card__name" }, [name]),
@@ -31,30 +19,29 @@ function environmentCard({ name, description, onClick, href, badge }) {
   ]);
 }
 
-export async function renderEnvironments(ctx) {
+export async function renderEnvironments() {
   const content = el("div", { class: "environments-container" }, [
 
     el("h2", { class: "section-title" }, ["Environments"]),
 
     el("div", { class: "env-grid" }, [
 
-      // PHILLIPSTON — INTERNAL ENVIRONMENT
+      // PHILLIPSTON — LIVE PRR FILE SYSTEM
       environmentCard({
         name: "Phillipston, MA",
         badge: "Live",
         description:
-          "Public Records Request intake and ARCHIEVE-backed statutory tracking for the Town of Phillipston.",
-        onClick: () => {
-          location.hash = "#/phillipston-prr";
-        }
+          "Public Records Requests (PRR). Official working folder for intake, response artifacts, and ARCHIEVE-backed records.",
+        href:
+          "https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/01_Towns/MA/Phillipston/PRR"
       }),
 
-      // LOGICVILLE — EXTERNAL DEMO
+      // LOGICVILLE — SAFE DEMO
       environmentCard({
         name: "Logicville",
         badge: "Demo",
         description:
-          "A safe, fictional municipality used to demonstrate VAULT, ARCHIEVE, and law-embedded workflows.",
+          "Fictional municipality used to demonstrate VAULT, ARCHIEVE, and law-embedded workflows.",
         href: "https://www.publiclogic.org/demo"
       })
 

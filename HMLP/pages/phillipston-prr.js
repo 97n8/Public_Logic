@@ -10,6 +10,17 @@ export async function renderPhillipstonPrr(ctx) {
   let error = null;
   let deadline = null;
 
+  const SHAREPOINT_PRR_URL =
+    "https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/Forms/AllItems.aspx" +
+    "?id=%2Fsites%2FPL%2FShared%20Documents%2FPL%5FSharePoint%5FLibrary%2F01%5FTowns%2FMA%2FPhillipston%2FPRR" +
+    "&viewid=8f70cafa%2D6e8f%2D47de%2Db9ef%2D674717c6a3db";
+
+  const ARCHIEVE_LIST_URL =
+    cfg?.sharepoint?.archieve?.listUrl || "#";
+
+  const TRAINING_URL =
+    "https://www.publiclogic.org/demo"; // replace later with Phillipston-specific SOP if needed
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     error = null;
@@ -32,15 +43,15 @@ export async function renderPhillipstonPrr(ctx) {
     try {
       result = await savePrrSubmission(sp, cfg, data);
 
-      // Calculate T10 deadline (10 business days from now)
-      let daysToAdd = 10;
-      let current = new Date();
-      while (daysToAdd > 0) {
-        current.setDate(current.getDate() + 1);
-        const day = current.getDay();
-        if (day !== 0 && day !== 6) daysToAdd--; // skip weekends
+      // T10 deadline (10 business days)
+      let days = 10;
+      let d = new Date();
+      while (days > 0) {
+        d.setDate(d.getDate() + 1);
+        if (![0, 6].includes(d.getDay())) days--;
       }
-      deadline = current.toLocaleDateString("en-US", {
+
+      deadline = d.toLocaleDateString("en-US", {
         month: "long",
         day: "numeric",
         year: "numeric",
@@ -49,108 +60,129 @@ export async function renderPhillipstonPrr(ctx) {
       submitted = true;
     } catch (err) {
       console.error(err);
-      error = "Failed to save request. Please try again or contact support.";
+      error = "Failed to save request. Please try again.";
     }
 
     refresh?.();
   };
 
-  const content = el("div", { class: "stack gap-xl" }, [
-    renderCard({
-      title: "Phillipston Public Records Request",
-      description: "Submit your request under Massachusetts Public Records Law (M.G.L. c. 66 §10 & 950 CMR 32.00)",
-      variant: "hero",
-    }),
+  /* =========================
+     LEFT: PUBLIC PRR INTAKE
+     ========================= */
+  const intakePanel = el("div", { class: "card card--hero stack gap-lg" }, [
+    el("h2", {}, ["Phillipston Public Records Request"]),
+    el("p", { class: "muted" }, [
+      "Submit a request under Massachusetts Public Records Law ",
+      "(M.G.L. c. 66 §10 and 950 CMR 32.00)."
+    ]),
 
     submitted
-      ? el("div", { class: "card text-center py-12" }, [
-          el("div", { class: "text-6xl mb-6 text-green-500" }, ["✓"]),
-          el("h2", { class: "text-3xl font-bold mb-4" }, ["Request Received"]),
-          el("p", { class: "text-xl mb-6" }, [
-            "Your request has been securely saved in ARCHIEVE.",
-            el("br"),
-            `Case ID: ${result.caseId}`
+      ? el("div", { class: "stack gap-md" }, [
+          el("h3", {}, ["Request Received"]),
+          el("p", {}, [
+            "Case ID: ",
+            el("strong", {}, [result.caseId])
           ]),
-          el("p", { class: "text-lg mb-8" }, [
-            "Phillipston must respond by ",
+          el("p", {}, [
+            "The Town must respond by ",
             el("strong", {}, [deadline]),
-            ". You will be notified."
+            "."
           ]),
           el("a", {
             href: result.fileUrl,
             target: "_blank",
-            class: "btn btn--primary mt-6",
+            class: "btn btn--primary"
           }, ["View Saved Record"]),
           el("button", {
-            class: "btn mt-4",
+            class: "btn",
             onclick: () => {
               submitted = false;
               result = null;
               error = null;
               refresh?.();
-            },
-          }, ["Submit Another"]),
+            }
+          }, ["Submit Another Request"])
         ])
-      : el("form", {
-          class: "stack gap-xl",
-          onsubmit: handleSubmit,
-        }, [
-          el("div", { class: "grid grid--2 gap-lg" }, [
-            el("div", { class: "stack gap-md" }, [
+      : el("form", { class: "stack gap-lg", onsubmit: handleSubmit }, [
+          el("div", { class: "split" }, [
+            el("div", {}, [
               el("label", { class: "label" }, ["Full Name *"]),
-              el("input", { type: "text", name: "name", class: "input", required: true }),
+              el("input", { name: "name", class: "input", required: true })
             ]),
-            el("div", { class: "stack gap-md" }, [
-              el("label", { class: "label" }, ["Email Address *"]),
-              el("input", { type: "email", name: "email", class: "input", required: true }),
-            ]),
+            el("div", {}, [
+              el("label", { class: "label" }, ["Email *"]),
+              el("input", { type: "email", name: "email", class: "input", required: true })
+            ])
           ]),
-
-          el("div", { class: "stack gap-md" }, [
-            el("label", { class: "label" }, ["Phone Number (optional)"]),
-            el("input", { type: "tel", name: "phone", class: "input" }),
+          el("div", {}, [
+            el("label", { class: "label" }, ["Phone (optional)"]),
+            el("input", { name: "phone", class: "input" })
           ]),
-
-          el("div", { class: "stack gap-md" }, [
-            el("label", { class: "label" }, ["Describe the records requested *"]),
+          el("div", {}, [
+            el("label", { class: "label" }, ["Records Requested *"]),
             el("textarea", {
               name: "request",
               class: "textarea",
-              rows: 8,
-              required: true,
-              placeholder: "Be as specific as possible (date range, departments, names, topics, document types...)",
-            }),
+              rows: 6,
+              required: true
+            })
           ]),
-
-          el("div", { class: "flex items-start gap-md" }, [
-            el("input", { type: "checkbox", id: "agree", name: "agree", class: "checkbox mt-1", required: true }),
-            el("label", { for: "agree", class: "text-sm leading-tight" }, [
-              "I understand this is a public records request under Massachusetts law and that the Town will respond within 10 business days unless a valid extension is required."
-            ]),
+          el("label", { class: "stack gap-sm" }, [
+            el("input", { type: "checkbox", name: "agree", required: true }),
+            el("span", { class: "small" }, [
+              "I understand this is a public records request and the Town will respond within statutory timeframes."
+            ])
           ]),
-
           error && el("div", { class: "error" }, [error]),
+          el("button", { class: "btn btn--primary" }, ["Submit Request"])
+        ])
+  ]);
 
-          el("button", {
-            type: "submit",
-            class: "btn btn--primary w-full py-4 text-lg",
-          }, ["Submit Public Records Request"]),
-        ]),
-
-    renderCard({
-      title: "What happens next?",
-      description: "The Town of Phillipston will confirm receipt. All requests are stored in ARCHIEVE under /PHILLIPSTON/PRR.",
-      variant: "calm",
-    }),
-
-    el("p", { class: "small muted text-center" }, [
-      "Managed by PublicLogic • Helping towns reduce liability and serve residents better"
+  /* =========================
+     RIGHT: CASE SPACE
+     ========================= */
+  const casePanel = el("div", { class: "card card--calm stack gap-md" }, [
+    el("h3", {}, ["Phillipston PRR Case Space"]),
+    el("p", { class: "small muted" }, [
+      "Operator access to records, tracking, and training. This is the system of record."
     ]),
+
+    el("a", {
+      href: SHAREPOINT_PRR_URL,
+      target: "_blank",
+      class: "navlink"
+    }, ["📁 PRR Document Folder"]),
+
+    el("a", {
+      href: ARCHIEVE_LIST_URL,
+      target: "_blank",
+      class: "navlink"
+    }, ["🗄️ ARCHIEVE Records List"]),
+
+    el("a", {
+      href: TRAINING_URL,
+      target: "_blank",
+      class: "navlink"
+    }, ["📘 Training & SOPs"]),
+
+    el("div", { class: "hr" }),
+
+    el("p", { class: "small muted" }, [
+      "All actions are logged. Records are immutable. Turnover-safe by design."
+    ])
+  ]);
+
+  /* =========================
+     PAGE LAYOUT
+     ========================= */
+  const content = el("div", { class: "grid" }, [
+    el("div", { style: "grid-column: span 7;" }, [intakePanel]),
+    el("div", { style: "grid-column: span 5;" }, [casePanel])
   ]);
 
   return {
-    title: "Phillipston PRR Form",
-    subtitle: "Public Records Request – Phillipston, MA",
-    content,
+    title: "Phillipston PRR",
+    subtitle: "Public Records Request and Case Space",
+    content
   };
 }

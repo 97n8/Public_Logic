@@ -1,18 +1,31 @@
+/* ==========================================================================
+   WORKBENCH — Calm, spacious, desktop + mobile
+   ========================================================================== */
+
 .workbench {
   min-height: 100vh;
-  padding: 24px 24px 120px;
+  padding: 32px 24px 120px;
+  max-width: 1200px;
+  margin: 0 auto;
   background: var(--bg0);
   color: var(--ink);
+  font-family: var(--font-sans);
 }
 
+@media (max-width: 768px) {
+  .workbench {
+    padding: 24px 16px 100px;
+  }
+}
+
+/* Header — simple and centered on mobile */
 .header {
-  padding-bottom: 32px;
-  display: flex;
-  align-items: center;
+  padding-bottom: 40px;
+  text-align: center;
 }
 
 .brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 14px;
 }
@@ -43,11 +56,9 @@
   margin-top: 4px;
 }
 
-/* Floating action button */
-.fab {
+/* Floating Action Button — always visible, position adapts */
+.fab.primary {
   position: fixed;
-  bottom: 40px;
-  right: 32px;
   z-index: 100;
   width: 80px;
   height: 80px;
@@ -62,12 +73,36 @@
   gap: 4px;
   font-weight: 700;
   box-shadow: 0 10px 40px rgba(52, 211, 153, 0.5);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.fab:hover {
-  transform: scale(1.15);
-  box-shadow: 0 14px 48px rgba(52, 211, 153, 0.6);
+/* Mobile: bottom-right */
+@media (max-width: 768px) {
+  .fab.primary {
+    bottom: 32px;
+    right: 32px;
+  }
+
+  .fab.primary:hover,
+  .fab.primary:active {
+    transform: scale(1.12);
+    box-shadow: 0 14px 48px rgba(52, 211, 153, 0.6);
+  }
+}
+
+/* Desktop: top-right corner */
+@media (min-width: 769px) {
+  .fab.primary {
+    top: 40px;
+    right: 40px;
+    width: 72px;
+    height: 72px;
+  }
+
+  .fab.primary:hover {
+    transform: scale(1.12);
+    box-shadow: 0 14px 48px rgba(52, 211, 153, 0.6);
+  }
 }
 
 .fab-icon {
@@ -78,20 +113,27 @@
   font-size: 0.85rem;
 }
 
-/* Main content */
+/* Main content area */
 .main-content {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  max-width: 720px;
+  gap: 40px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  .main-content {
+    gap: 32px;
+  }
+}
+
+/* Cards */
 .card {
   background: rgba(0, 0, 0, 0.18);
   border: 1px solid rgba(247, 245, 239, 0.08);
   border-radius: 20px;
-  padding: 28px;
+  padding: 32px;
   backdrop-filter: blur(12px);
   transition: all 0.28s ease;
 }
@@ -106,6 +148,7 @@
   font-size: 1.45rem;
   font-weight: 800;
   margin-bottom: 12px;
+  color: var(--ink);
 }
 
 .card-subtitle {
@@ -116,12 +159,13 @@
 
 .card--calm {
   text-align: center;
-  padding: 40px 24px;
+  padding: 48px 32px;
   background: rgba(0, 0, 0, 0.14);
   border-color: transparent;
+  font-size: 1.05rem;
 }
 
-/* Recent list */
+/* Recent work list */
 .recent-list {
   list-style: none;
   padding: 0;
@@ -134,7 +178,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 .recent-item:first-child {
@@ -157,16 +201,17 @@
   white-space: nowrap;
 }
 
-/* Secondary tiny links */
-.secondary-links {
+/* Secondary small links (SharePoint, Archive, etc.) */
+.secondary-row {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  justify-content: center;
   margin-top: 24px;
 }
 
 .pill {
-  padding: 10px 16px;
+  padding: 10px 18px;
   background: rgba(52, 211, 153, 0.08);
   border-radius: 999px;
   color: var(--accent);
@@ -179,16 +224,27 @@
   background: rgba(52, 211, 153, 0.16);
 }
 
-/* Mobile breathing room */
-@media (max-width: 640px) {
+/* Desktop — slightly wider and more spacious */
+@media (min-width: 769px) {
   .workbench {
-    padding: 16px 16px 120px;
+    padding: 48px 60px 140px;
   }
 
-  .fab {
-    bottom: 28px;
-    right: 24px;
-    width: 68px;
-    height: 68px;
+  .main-content {
+    max-width: 1000px;
+    gap: 48px;
+  }
+
+  .card {
+    padding: 36px 40px;
+  }
+
+  .card-title {
+    font-size: 1.65rem;
+  }
+
+  .fab.primary {
+    top: 48px;
+    right: 48px;
   }
 }

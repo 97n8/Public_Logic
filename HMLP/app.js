@@ -10,6 +10,7 @@ import { renderToday } from "./pages/today.js";
 import { renderTasks } from "./pages/tasks.js";
 import { renderPipeline } from "./pages/pipeline.js";
 import { renderProjects } from "./pages/projects.js";
+import { renderEnvironments } from "./pages/environments.js";
 import { renderPlaybooks } from "./pages/playbooks.js";
 import { renderTools } from "./pages/tools.js";
 import { renderSettings } from "./pages/settings.js";
@@ -144,6 +145,7 @@ function buildShell({ onLogout, whoText }) {
     { path: "/tasks", label: "Tasks" },
     { path: "/pipeline", label: "Pipeline" },
     { path: "/projects", label: "Projects" },
+    { path: "/environments", label: "Environments" },
     { path: "/playbooks", label: "Playbooks" },
     { path: "/tools", label: "Tools" },
     { path: "/settings", label: "Settings" }
@@ -212,6 +214,7 @@ const PAGES = {
   "/tasks": renderTasks,
   "/pipeline": renderPipeline,
   "/projects": renderProjects,
+  "/environments": renderEnvironments,
   "/playbooks": renderPlaybooks,
   "/tools": renderTools,
   "/settings": renderSettings
@@ -252,7 +255,7 @@ async function main() {
   const userEmail = getSignedInEmail(account);
   const sp = createSharePointClient(auth);
 
-  // 🔐 ARCHIEVE initialization (one-time, authoritative)
+  // ARCHIEVE initialization (one-time, authoritative)
   if (cfg.sharepoint.archieve?.enabled) {
     await ensureArchieveList(sp, cfg);
   }

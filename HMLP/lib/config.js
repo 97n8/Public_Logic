@@ -7,45 +7,30 @@ export function validateConfig(cfg) {
   const errors = [];
 
   if (!cfg) {
-    errors.push(
-      "Missing config.js (window.PUBLICLOGIC_OS_CONFIG is null). Copy config.example.js -> config.js and fill values."
-    );
+    errors.push("Missing config.js (window.PUBLICLOGIC_OS_CONFIG is null).");
     return errors;
   }
 
-  // MSAL
-  if (!cfg.msal?.clientId || cfg.msal.clientId.includes("00000000")) {
-    errors.push("msal.clientId is missing");
-  }
-  if (!cfg.msal?.tenantId || cfg.msal.tenantId.includes("00000000")) {
-    errors.push("msal.tenantId is missing");
-  }
-  if (!cfg.msal?.redirectUri) {
-    errors.push("msal.redirectUri is missing");
-  }
+  if (!cfg.msal?.clientId) errors.push("msal.clientId is missing");
+  if (!cfg.msal?.tenantId) errors.push("msal.tenantId is missing");
+  if (!cfg.msal?.redirectUri) errors.push("msal.redirectUri is missing");
 
-  // Access control
   if (!Array.isArray(cfg.access?.allowedEmails) || cfg.access.allowedEmails.length === 0) {
-    errors.push("access.allowedEmails must include at least one authorized user");
+    errors.push("access.allowedEmails must include at least one allowed user");
   }
 
-  // Graph
   if (!Array.isArray(cfg.graph?.scopes) || cfg.graph.scopes.length === 0) {
     errors.push("graph.scopes is missing");
   }
 
-  // SharePoint base
-  if (!cfg.sharepoint?.hostname) {
-    errors.push("sharepoint.hostname is missing");
-  }
-  if (!cfg.sharepoint?.sitePath) {
-    errors.push("sharepoint.sitePath is missing");
-  }
+  if (!cfg.sharepoint?.hostname) errors.push("sharepoint.hostname is missing");
+  if (!cfg.sharepoint?.sitePath) errors.push("sharepoint.sitePath is missing");
 
-  // ARCHIEVE (canonical system of record)
+  // ✅ ARCHIEVE is now the only required list
   if (!cfg.sharepoint?.archieve?.enabled) {
     errors.push("sharepoint.archieve.enabled must be true");
   }
+
   if (!cfg.sharepoint?.archieve?.listName) {
     errors.push("sharepoint.archieve.listName is missing");
   }

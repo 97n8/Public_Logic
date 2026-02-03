@@ -1,126 +1,114 @@
 // lib/config.js
 
-/**
- * Returns the public configuration object exposed via window.
- * @returns {Object|null} The config object or null if not found
- */
 export function getConfig() {
   return window.PUBLICLOGIC_OS_CONFIG || null;
 }
 
-/**
- * Validates the configuration object and returns an array of error messages.
- * Returns empty array if config is valid.
- * @param {Object|null} cfg - The configuration object
- * @returns {string[]} Array of validation error messages
- */
 export function validateConfig(cfg) {
   const errors = [];
 
-  if (!cfg || typeof cfg !== 'object') {
-    errors.push('Configuration is missing or invalid (window.PUBLICLOGIC_OS_CONFIG is not set or not an object)');
+  if (!cfg) {
+    errors.push("Missing config (window.PUBLICLOGIC_OS_CONFIG is null or undefined).");
     return errors;
   }
 
-  // MSAL / Authentication
-  if (!cfg.msal) {
-    errors.push('msal configuration object is missing');
-  } else {
-    if (!cfg.msal.clientId) errors.push('msal.clientId is required');
-    if (!cfg.msal.tenantId) errors.push('msal.tenantId is required');
-    if (!cfg.msal.redirectUri) errors.push('msal.redirectUri is required');
-  }
+  if (!cfg.msal?.clientId) errors.push("msal.clientId is missing");
+  if (!cfg.msal?.tenantId) errors.push("msal.tenantId is missing");
+  if (!cfg.msal?.redirectUri) errors.push("msal.redirectUri is missing");
 
-  // Access control
   if (!Array.isArray(cfg.access?.allowedEmails) || cfg.access.allowedEmails.length === 0) {
-    errors.push('access.allowedEmails must be a non-empty array of allowed email addresses');
+    errors.push("access.allowedEmails must be a non-empty array of allowed emails");
   }
 
-  // Microsoft Graph
   if (!Array.isArray(cfg.graph?.scopes) || cfg.graph.scopes.length === 0) {
-    errors.push('graph.scopes must be a non-empty array of permission scopes');
+    errors.push("graph.scopes must be a non-empty array");
   }
 
-  // SharePoint core
-  if (!cfg.sharepoint) {
-    errors.push('sharepoint configuration object is missing');
-  } else {
-    if (!cfg.sharepoint.hostname) {
-      errors.push('sharepoint.hostname is required (e.g. "contoso.sharepoint.com")');
-    }
-    if (!cfg.sharepoint.sitePath) {
-      errors.push('sharepoint.sitePath is required (e.g. "/sites/PublicLogic")');
-    }
-  }
+  if (!cfg.sharepoint?.hostname) errors.push("sharepoint.hostname is missing");
+  if (!cfg.sharepoint?.sitePath) errors.push("sharepoint.sitePath is missing");
 
-  // Archieve (required feature)
   if (!cfg.sharepoint?.archieve) {
-    errors.push('sharepoint.archieve configuration is missing');
+    errors.push("sharepoint.archieve configuration object is missing");
   } else {
     if (cfg.sharepoint.archieve.enabled !== true) {
-      errors.push('sharepoint.archieve.enabled must be true (archiving is required)');
+      errors.push("sharepoint.archieve.enabled must be true");
     }
     if (!cfg.sharepoint.archieve.listName) {
-      errors.push('sharepoint.archieve.listName is required (name of the target archive list)');
+      errors.push("sharepoint.archieve.listName is missing");
     }
   }
 
   return errors;
 }
 
-/**
- * Check if the tasks list is configured
- * @param {Object} cfg - The configuration object
- * @returns {boolean}
- */
 export function hasTasksList(cfg) {
   return Boolean(cfg?.sharepoint?.lists?.tasks);
 }
 
-/**
- * Check if the pipeline list is configured
- * @param {Object} cfg - The configuration object
- * @returns {boolean}
- */
 export function hasPipelineList(cfg) {
   return Boolean(cfg?.sharepoint?.lists?.pipeline);
 }
 
-/**
- * Check if the projects list is configured
- * @param {Object} cfg - The configuration object
- * @returns {boolean}
- */
 export function hasProjectsList(cfg) {
   return Boolean(cfg?.sharepoint?.lists?.projects);
 }
 
-/**
- * Convenience function: returns true if config is present and has no validation errors
- * @returns {boolean}
- */
-export function isConfigValid() {
-  const config = getConfig();
-  return config !== null && validateConfig(config).length === 0;
+export function hasArchiveList(cfg) {
+  return Boolean(
+    cfg?.sharepoint?.archieve?.enabled === true &&
+    cfg?.sharepoint?.archieve?.listName
+  );
 }
 
 /**
- * Get a formatted error message string (useful for alerts, console, UI)
- * @returns {string} Empty string if valid, otherwise joined error messages
+ * Returns normalized, ready-to-use links based on the config.
+ * All paths are constructed safely with fallbacks.
  */
-export function getConfigErrorMessage() {
-  const config = getConfig();
-  if (!config) {
-    return 'Application configuration is missing. Please check that config.js is loaded correctly.';
-  }
+export function getLinks(cfg) {
+  if (!cfg?.sharepoint) return {};
 
-  const errors = validateConfig(config);
-  if (errors.length === 0) {
-    return '';
-  }
+  const hostname = cfg.sharepoint.hostname;
+  const sitePath = cfg.sharepoint.sitePath;
 
-  return [
-    'Configuration validation failed:',
-    ...errors.map((err, i) => `  ${i + 1}. ${err}`),
-  ].join('\n');
+  const base = `https://${hostname}`;
+  const site = `${base}${sitePath}`;
+
+  return {
+    // Core SharePoint
+    root: base,
+    site: site,
+    siteContents: `${site}/_layouts/15/viewlsts.aspx`,
+    createPage: `${site}/_layouts/15/CreatePage.aspx`,
+    permissions: `${site}/_layouts/15/user.aspx`,
+
+    // Archive / Records
+    archiveList: cfg.sharepoint.archieve?.listName
+      ? `${site}/Lists/${cfg.sharepoint.archieve.listName}/AllItems.aspx`
+      : null,
+
+    // Configured lists
+    tasksList: cfg.sharepoint.lists?.tasks
+      ? `${site}/Lists/${cfg.sharepoint.lists.tasks}/AllItems.aspx`
+      : null,
+    pipelineList: cfg.sharepoint.lists?.pipeline
+      ? `${site}/Lists/${cfg.sharepoint.lists.pipeline}/AllItems.aspx`
+      : null,
+    projectsList: cfg.sharepoint.lists?.projects
+      ? `${site}/Lists/${cfg.sharepoint.lists.projects}/AllItems.aspx`
+      : null,
+
+    // Optional municipal / departmental areas
+    departments: cfg.links?.departments ? `${site}${cfg.links.departments}` : null,
+    meetings: cfg.links?.meetings ? `${site}${cfg.links.meetings}` : null,
+    permits: cfg.links?.permits ? `${site}${cfg.links.permits}` : null,
+    documents: cfg.links?.documents ? `${site}${cfg.links.documents}` : null,
+    ordinances: cfg.links?.ordinances ? `${site}${cfg.links.ordinances}` : null,
+    budget: cfg.links?.budget ? `${site}${cfg.links.budget}` : null,
+
+    // External public links
+    townWebsite: cfg.links?.townWebsite || null,
+    publicRecords: cfg.links?.publicRecords || null,
+    calendar: cfg.links?.calendar || null,
+    gis: cfg.links?.gis || null,
+  };
 }

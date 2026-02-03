@@ -9,20 +9,16 @@ window.PUBLICLOGIC_OS_CONFIG = {
 
   msal: {
     clientId: "1b53d140-0779-4a64-943c-a11ba19ec0ce",
-    tenantId: "12879dad-927b-419b-8a2e-fda32e1732be",
-    // NOTE: Your site currently canonicalizes to lowercase /hmlp/.
-    // Use the lowercase URL in Entra ID redirect URIs to avoid redirect loops during login callbacks.
+    tenantId: "12879da8-d927-419b-8a2e-fda32e1732be",
     redirectUri: "https://www.publiclogic.org/hmlp/",
     postLogoutRedirectUri: "https://www.publiclogic.org/hmlp/",
-    cacheLocation: "sessionStorage"   // recommended for security on shared machines
+    cacheLocation: "sessionStorage"
   },
 
   access: {
-    // Only these email addresses can sign in to the OS
     allowedEmails: [
       "nate@publiclogic.org",
       "allie@publiclogic.org"
-      // ← add any additional team members here, e.g. "jane@publiclogic.org"
     ]
   },
 
@@ -38,13 +34,12 @@ window.PUBLICLOGIC_OS_CONFIG = {
   sharepoint: {
     hostname: "publiclogic978.sharepoint.com",
     sitePath: "/sites/PL",
-
     lists: {
       tasks:     "OS Tasks",
       pipeline:  "OS Pipeline",
       projects:  "OS Projects",
-      scorecard: "OS Scorecard",     // optional – can be removed if not using
-      decisions: "OS Decisions"      // optional – can be removed if not using
+      scorecard: "OS Scorecard",
+      decisions: "OS Decisions"
     }
   },
 
@@ -52,7 +47,6 @@ window.PUBLICLOGIC_OS_CONFIG = {
     people: [
       { name: "Nate",  email: "nate@publiclogic.org" },
       { name: "Allie", email: "allie@publiclogic.org" }
-      // ← add more team members here if needed
     ]
   },
 
@@ -61,6 +55,5 @@ window.PUBLICLOGIC_OS_CONFIG = {
     { title: "Outlook Calendar",   url: "https://outlook.office.com/calendar/" },
     { title: "Microsoft Teams",    url: "https://teams.microsoft.com/" },
     { title: "SharePoint PL Site", url: "https://publiclogic978.sharepoint.com/sites/PL" }
-    // ← feel free to add more useful links here
   ]
 };

@@ -1,141 +1,87 @@
-// pages/dashboard.js
-import { el } from "../lib/dom.js";
-import { openRecordConsole } from "../lib/record-console.js";
-import { getConfig, getLinks } from "../lib/config.js";
-
-function renderCard({ label, title, description, children, variant = "" }) {
-  const classes = ["card"];
-  if (variant) classes.push(`card--${variant}`);
-
-  return el(
-    "div",
-    { class: classes.join(" ") },
-    [
-      label && el("div", { class: "card__label" }, [label]),
-      title && el("div", { class: "card__title" }, [title]),
-      description && el("div", { class: "card__description small" }, [description]),
-      ...(children || []),
-    ].filter(Boolean)
-  );
+.card--hero {
+  background: linear-gradient(145deg, rgba(52, 211, 153, 0.08), rgba(0,0,0,0.2));
+  border-color: rgba(52, 211, 153, 0.28);
+  padding: 1.5rem 1.75rem;
 }
 
-function formatDateHeading(date) {
-  return date.toLocaleDateString("en-US", {
-    weekday: "long",
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
+.card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
 }
 
-export async function renderDashboard(ctx) {
-  const cfg = getConfig();
-  const links = getLinks(cfg);
+.card__subtitle {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
 
-  // Actions / quick access buttons
-  const actions = [
-    {
-      label: "New Record",
-      variant: "primary",
-      action: () => openRecordConsole(ctx),
-    },
-    {
-      label: "New Page",
-      href: links.createPage,
-    },
-    {
-      label: "SharePoint",
-      href: links.site,
-    },
-  ];
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  justify-content: center;
+  width: 100%;
+  text-align: left;
+}
 
-  // Add Archive link only if configured
-  if (links.archiveList) {
-    actions.push({
-      label: "Archive",
-      href: links.archiveList,
-    });
-  }
+.btn--primary {
+  font-weight: 700;
+}
 
-  const capabilities = [
-    {
-      label: "Record",
-      description: "Capture factual, defensible records → ARCHIEVE",
-    },
-    {
-      label: "Create",
-      description: "Pages, lists, documents — no context switching",
-    },
-    {
-      label: "Navigate",
-      description: "Full access to SharePoint when needed",
-    },
-  ];
+.link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+}
 
-  // Quick municipal / internal links (only show ones that exist)
-  const quickLinks = [
-    { label: "Tasks", href: links.tasksList, icon: "✓" },
-    { label: "Projects", href: links.projectsList, icon: "📋" },
-    { label: "Pipeline", href: links.pipelineList, icon: "→" },
-    { label: "Departments", href: links.departments },
-    { label: "Meetings", href: links.meetings },
-    { label: "Permits", href: links.permits },
-    { label: "Documents", href: links.documents },
-    { label: "Ordinances", href: links.ordinances },
-    { label: "Budget", href: links.budget },
-    { label: "Town Website", href: links.townWebsite, external: true },
-    { label: "Public Records", href: links.publicRecords, external: true },
-  ].filter(item => item.href); // only keep links that actually exist
+.link-item {
+  margin: 0.35rem 0;
+}
 
-  const content = el("div", { class: "stack gap-xl" }, [
-    // Hero / welcome
-    renderCard({
-      title: "Work Command Center",
-      description:
-        "Create, record, and move work into SharePoint — clean, no dependencies on existing lists.",
-      variant: "hero",
-    }),
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.14s ease;
+}
 
-    // Capabilities
-    el("div", { class: "grid grid--3 gap-md" }, capabilities.map(renderCard)),
+.nav-link:hover {
+  background: rgba(52, 211, 153, 0.08);
+  color: var(--accent);
+}
 
-    // Today + quick status
-    el("div", { class: "grid grid--1-2 gap-lg" }, [
-      renderCard({
-        title: "Today",
-        description: "No required tasks. No guilt. Just context.",
-        variant: "calm",
-      }),
+.icon {
+  width: 1.1em;
+  text-align: center;
+  opacity: 0.75;
+}
 
-      renderCard({
-        title: "Quick Links",
-        children: quickLinks.length > 0
-          ? quickLinks.map(link =>
-              el(
-                link.external ? "a" : "a",
-                {
-                  href: link.href,
-                  target: link.external ? "_blank" : undefined,
-                  rel: link.external ? "noopener noreferrer" : undefined,
-                  class: "quick-link",
-                },
-                [link.icon ? `${link.icon} ${link.label}` : link.label]
-              )
-            )
-          : [el("p", { class: "muted" }, ["(configured links will appear here)"])],
-      }),
-    ]),
-  ]);
+.external {
+  font-size: 0.8em;
+  opacity: 0.6;
+  margin-left: 0.4em;
+}
 
-  return {
-    title: "Command Center",
-    subtitle: formatDateHeading(new Date()),
-    actions: actions.map(a => ({
-      label: a.label,
-      variant: a.variant,
-      href: a.href,
-      action: a.action,
-    })),
-    content,
-  };
+.status-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.status {
+  font-weight: 600;
+}
+
+.status--ok {
+  color: var(--accent);
+}
+
+.status--error {
+  color: var(--danger);
 }

@@ -1,5 +1,5 @@
 import { getConfig } from "./config.js";
-import { graphGet, graphPost, graphPatch } from "./graph.js";
+import { graphGet, graphPost } from "./graph.js";
 
 function encodeODataStringLiteral(s) {
   return String(s).replace(/'/g, "''");
@@ -11,8 +11,6 @@ export function createSharePointClient(auth) {
     site: null,
     listsByName: new Map()
   };
-
-  /* ---------------- SITE ---------------- */
 
   async function getSite() {
     if (cache.site) return cache.site;
@@ -26,13 +24,9 @@ export function createSharePointClient(auth) {
     return site;
   }
 
-  /* ---------------- LISTS ---------------- */
+  /* ================= LIST DISCOVERY ================= */
 
   async function findListByName(displayName) {
-    if (cache.listsByName.has(displayName)) {
-      return cache.listsByName.get(displayName);
-    }
-
     const site = await getSite();
     const safe = encodeODataStringLiteral(displayName);
 
@@ -41,73 +35,70 @@ export function createSharePointClient(auth) {
       `/sites/${site.id}/lists?$filter=displayName eq '${safe}'`
     );
 
-    const list = res?.value?.[0] || null;
-    if (list) cache.listsByName.set(displayName, list);
-    return list;
+    return res?.value?.[0] || null;
   }
 
   async function createList({ displayName, description }) {
     const site = await getSite();
 
-    const list = await graphPost(auth, `/sites/${site.id}/lists`, {
+    const body = {
       displayName,
       description,
       list: { template: "genericList" }
-    });
+    };
 
+    const list = await graphPost(auth, `/sites/${site.id}/lists`, body);
     cache.listsByName.set(displayName, list);
     return list;
   }
 
-  async function createColumn(listId, columnDef) {
+  async function createColumn(listId, column) {
     const site = await getSite();
-    return await graphPost(
+    await graphPost(
       auth,
       `/sites/${site.id}/lists/${listId}/columns`,
-      columnDef
+      column
     );
   }
 
-  /* ---------------- ITEMS ---------------- */
+  /* ================= ITEMS ================= */
 
-  async function listItems(displayName, { top = 200 } = {}) {
+  async function listItems(displayName) {
     const site = await getSite();
-    const list = await findListByName(displayName);
+    const list =
+      cache.listsByName.get(displayName) ||
+      (await findListByName(displayName));
+
     if (!list) throw new Error(`List not found: ${displayName}`);
+
+    cache.listsByName.set(displayName, list);
 
     const res = await graphGet(
       auth,
-      `/sites/${site.id}/lists/${list.id}/items?$expand=fields&$top=${top}`
+      `/sites/${site.id}/lists/${list.id}/items?$expand=fields`
     );
 
-    return (res?.value || []).map(it => ({
+    return (res?.value || []).map((it) => ({
       itemId: it.id,
-      webUrl: it.webUrl,
       ...(it.fields || {})
     }));
   }
 
   async function createItem(displayName, fields) {
     const site = await getSite();
-    const list = await findListByName(displayName);
+    const list =
+      cache.listsByName.get(displayName) ||
+      (await findListByName(displayName));
+
     if (!list) throw new Error(`List not found: ${displayName}`);
 
-    return await graphPost(
+    const res = await graphPost(
       auth,
       `/sites/${site.id}/lists/${list.id}/items`,
       { fields }
     );
-  }
 
-  async function updateItemFields(displayName, itemId, fields) {
-    const site = await getSite();
-    const list = await findListByName(displayName);
-
-    await graphPatch(
-      auth,
-      `/sites/${site.id}/lists/${list.id}/items/${itemId}/fields`,
-      fields
-    );
+    return res;
   }
 
   return {
@@ -116,7 +107,6 @@ export function createSharePointClient(auth) {
     createList,
     createColumn,
     listItems,
-    createItem,
-    updateItemFields
+    createItem
   };
 }

@@ -1,3 +1,4 @@
+// main.js (or app.js / index.js — your main entry point)
 import { el, clear } from "./lib/dom.js";
 import { getConfig, validateConfig } from "./lib/config.js";
 import { createAuth, getSignedInEmail, isAllowedAccount } from "./lib/auth.js";
@@ -18,15 +19,12 @@ import { renderSettings } from "./pages/settings.js";
 /* =========================
    UI HELPERS
    ========================= */
-
 function actionNode(a) {
   if (a.href) {
     return el(
       "a",
       {
-        class: ["btn", a.variant ? `btn--${a.variant}` : ""]
-          .filter(Boolean)
-          .join(" "),
+        class: ["btn", a.variant ? `btn--${a.variant}` : ""].filter(Boolean).join(" "),
         href: a.href,
         target: "_blank",
         rel: "noreferrer"
@@ -37,9 +35,7 @@ function actionNode(a) {
   return el(
     "button",
     {
-      class: ["btn", a.variant ? `btn--${a.variant}` : ""]
-        .filter(Boolean)
-        .join(" "),
+      class: ["btn", a.variant ? `btn--${a.variant}` : ""].filter(Boolean).join(" "),
       type: "button",
       onclick: a.onClick
     },
@@ -48,12 +44,47 @@ function actionNode(a) {
 }
 
 /* =========================
+   MOBILE NAVIGATION
+   ========================= */
+function createMobileNav(sidebar) {
+  const toggle = el("button", { class: "mobile-nav-toggle", "aria-label": "Toggle navigation" }, [
+    el("span"),
+    el("span"),
+    el("span")
+  ]);
+
+  const overlay = el("div", { class: "sidebar-overlay" });
+
+  const toggleNav = () => {
+    toggle.classList.toggle("active");
+    sidebar.classList.toggle("active");
+    overlay.classList.toggle("active");
+    document.body.style.overflow = sidebar.classList.contains("active") ? "hidden" : "";
+  };
+
+  const closeNav = () => {
+    toggle.classList.remove("active");
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+    document.body.style.overflow = "";
+  };
+
+  toggle.addEventListener("click", toggleNav);
+  overlay.addEventListener("click", closeNav);
+
+  // Close when clicking nav links
+  sidebar.querySelectorAll(".nav a").forEach(link => {
+    link.addEventListener("click", closeNav);
+  });
+
+  return { toggle, overlay, closeNav };
+}
+
+/* =========================
    BOOT SCREENS
    ========================= */
-
 function renderSetup(appEl, { errors = [] } = {}) {
   clear(appEl);
-
   appEl.appendChild(
     el("div", { class: "boot" }, [
       el("div", { class: "brand" }, [
@@ -73,10 +104,7 @@ function renderSetup(appEl, { errors = [] } = {}) {
       errors.length
         ? el(
             "div",
-            {
-              class: "error",
-              style: "margin-top:12px; white-space:pre-wrap;"
-            },
+            { class: "error", style: "margin-top:12px; white-space:pre-wrap;" },
             [errors.join("\n")]
           )
         : null
@@ -86,7 +114,6 @@ function renderSetup(appEl, { errors = [] } = {}) {
 
 function renderSignedOut(appEl, { onLogin }) {
   clear(appEl);
-
   appEl.appendChild(
     el("div", { class: "boot" }, [
       el("div", { class: "brand" }, [
@@ -108,7 +135,6 @@ function renderSignedOut(appEl, { onLogin }) {
 
 function renderNotAllowed(appEl, { email, allowedEmails, onLogout }) {
   clear(appEl);
-
   appEl.appendChild(
     el("div", { class: "boot" }, [
       el("div", { class: "brand" }, [
@@ -135,9 +161,8 @@ function renderNotAllowed(appEl, { email, allowedEmails, onLogout }) {
 }
 
 /* =========================
-   SHELL
+   SHELL (desktop + mobile nav)
    ========================= */
-
 function buildShell({ onLogout, whoText }) {
   const navItems = [
     { path: "/dashboard", label: "Command Center" },
@@ -154,7 +179,7 @@ function buildShell({ onLogout, whoText }) {
   const nav = el(
     "nav",
     { class: "nav" },
-    navItems.map((n) => {
+    navItems.map(n => {
       const a = el("a", { href: `#${n.path}` }, [n.label]);
       a.dataset.path = n.path;
       return a;
@@ -185,13 +210,22 @@ function buildShell({ onLogout, whoText }) {
     contentEl
   ]);
 
+  // Mobile nav controls
+  const mobileNav = createMobileNav(sidebar);
+
+  const shell = el("div", { class: "shell" }, [sidebar, main]);
+
   return {
-    shell: el("div", { class: "shell" }, [sidebar, main]),
+    shell,
+    sidebar,
     nav,
     titleEl,
     subEl,
     actionsEl,
-    contentEl
+    contentEl,
+    mobileToggle: mobileNav.toggle,
+    mobileOverlay: mobileNav.overlay,
+    closeMobileNav: mobileNav.closeNav
   };
 }
 
@@ -204,9 +238,8 @@ function setActiveNav(navEl, path) {
 }
 
 /* =========================
-   ROUTING
+   ROUTING & PAGE MAP
    ========================= */
-
 const PAGES = {
   "/": renderDashboard,
   "/dashboard": renderDashboard,
@@ -221,14 +254,18 @@ const PAGES = {
 };
 
 /* =========================
-   MAIN
+   MAIN APP ENTRY
    ========================= */
-
 async function main() {
   const appEl = document.getElementById("app");
-  const cfg = getConfig();
+  if (!appEl) {
+    console.error("No #app element found");
+    return;
+  }
 
+  const cfg = getConfig();
   const errors = validateConfig(cfg);
+
   if (errors.length) {
     renderSetup(appEl, { errors });
     return;
@@ -238,6 +275,7 @@ async function main() {
   await auth.init();
 
   const account = auth.getAccount();
+
   if (!account) {
     renderSignedOut(appEl, { onLogin: () => auth.login() });
     return;
@@ -255,11 +293,17 @@ async function main() {
   const userEmail = getSignedInEmail(account);
   const sp = createSharePointClient(auth);
 
-  // ARCHIEVE initialization (one-time, authoritative)
-  if (cfg.sharepoint.archieve?.enabled) {
-    await ensureArchieveList(sp, cfg);
+  // One-time ARCHIEVE list setup (only if enabled)
+  if (cfg.sharepoint?.archieve?.enabled) {
+    try {
+      await ensureArchieveList(sp, cfg);
+    } catch (err) {
+      console.warn("Archieve list setup failed:", err);
+      // Continue anyway — not fatal
+    }
   }
 
+  // Build shell UI
   const shell = buildShell({
     onLogout: () => auth.logout(),
     whoText: userEmail
@@ -268,39 +312,53 @@ async function main() {
   clear(appEl);
   appEl.appendChild(shell.shell);
 
+  // Add mobile nav controls
+  document.body.appendChild(shell.mobileToggle);
+  document.body.appendChild(shell.mobileOverlay);
+
   const ctx = {
     cfg,
     auth,
     sp,
     userEmail,
     route: getRoute(),
-    refresh: async () => renderRoute()
+    refresh: async () => renderRoute(),
+    closeMobileNav: shell.closeMobileNav
   };
 
   async function renderRoute() {
     const path = getRoute().path || "/dashboard";
-    const page = await (PAGES[path] || renderDashboard)(ctx);
+    const pageFn = PAGES[path] || renderDashboard;
+    const page = await pageFn(ctx);
 
     setActiveNav(shell.nav, path);
+
     shell.titleEl.textContent = page.title || "";
     shell.subEl.textContent = page.subtitle || "";
-    shell.actionsEl.innerHTML = "";
 
-    for (const a of page.actions || []) {
+    clear(shell.actionsEl);
+    (page.actions || []).forEach(a => {
       shell.actionsEl.appendChild(actionNode(a));
-    }
+    });
 
     clear(shell.contentEl);
     shell.contentEl.appendChild(page.content);
+
+    // Close mobile nav on navigation
+    shell.closeMobileNav();
   }
 
+  // Initial route
   if (!location.hash) setRoute("/dashboard");
+
   onRouteChange(renderRoute);
   await renderRoute();
 }
 
-main().catch((e) => {
-  renderSetup(document.getElementById("app"), {
-    errors: [String(e.message || e)]
-  });
+main().catch(err => {
+  console.error("App startup failed:", err);
+  const appEl = document.getElementById("app");
+  if (appEl) {
+    renderSetup(appEl, { errors: [String(err.message || err)] });
+  }
 });

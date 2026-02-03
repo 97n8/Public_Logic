@@ -1,19 +1,18 @@
 // pages/phillipston-prr.js
 import { el } from "../lib/dom.js";
-import { archiveRecord } from "../lib/archieve.js";  // your existing archiver
+import { savePrrSubmission } from "../lib/archieve.js";
 
 export async function renderPhillipstonPrr(ctx) {
   const { sp, cfg, refresh } = ctx;
 
   let submitted = false;
-  let caseId = null;
+  let result = null;
   let error = null;
   let deadline = null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     error = null;
-    submitted = false;
 
     const formData = new FormData(e.target);
     const data = {
@@ -31,19 +30,9 @@ export async function renderPhillipstonPrr(ctx) {
     }
 
     try {
-      // Prepare record for ARCHIEVE
-      const record = {
-        title: `PRR - ${data.name} - ${new Date().toLocaleDateString()}`,
-        type: "Public Records Request",
-        content: `Requester: ${data.name} <${data.email}> ${data.phone ? `(${data.phone})` : ''}\n\nRequest:\n${data.request}`,
-        tags: ["Phillipston", "PRR", "MGL c.66"],
-        retentionClass: "Permanent",
-      };
+      result = await savePrrSubmission(sp, cfg, data);
 
-      // Save to ARCHIEVE (list + file in folder)
-      const saved = await archiveRecord(sp, cfg, record);
-
-      // Calculate T10 deadline (10 business days)
+      // Calculate T10 deadline (10 business days from now)
       let daysToAdd = 10;
       let current = new Date();
       while (daysToAdd > 0) {
@@ -51,13 +40,16 @@ export async function renderPhillipstonPrr(ctx) {
         const day = current.getDay();
         if (day !== 0 && day !== 6) daysToAdd--; // skip weekends
       }
-      deadline = current.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+      deadline = current.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      });
 
-      caseId = `PRR-${saved.Id.toString().padStart(4, '0')}`;
       submitted = true;
     } catch (err) {
       console.error(err);
-      error = "Failed to submit request. Please try again or contact support.";
+      error = "Failed to save request. Please try again or contact support.";
     }
 
     refresh?.();
@@ -66,7 +58,7 @@ export async function renderPhillipstonPrr(ctx) {
   const content = el("div", { class: "stack gap-xl" }, [
     renderCard({
       title: "Phillipston Public Records Request",
-      description: "Submit under Massachusetts Public Records Law (M.G.L. c. 66 §10 & 950 CMR 32.00)",
+      description: "Submit your request under Massachusetts Public Records Law (M.G.L. c. 66 §10 & 950 CMR 32.00)",
       variant: "hero",
     }),
 
@@ -77,23 +69,27 @@ export async function renderPhillipstonPrr(ctx) {
           el("p", { class: "text-xl mb-6" }, [
             "Your request has been securely saved in ARCHIEVE.",
             el("br"),
-            `Case ID: ${caseId}`
+            `Case ID: ${result.caseId}`
           ]),
           el("p", { class: "text-lg mb-8" }, [
             "Phillipston must respond by ",
-            el("strong", {}, [deadline || "within 10 business days"]),
+            el("strong", {}, [deadline]),
             ". You will be notified."
           ]),
-          el("button", {
+          el("a", {
+            href: result.fileUrl,
+            target: "_blank",
             class: "btn btn--primary mt-6",
+          }, ["View Saved Record"]),
+          el("button", {
+            class: "btn mt-4",
             onclick: () => {
               submitted = false;
-              caseId = null;
-              deadline = null;
+              result = null;
               error = null;
               refresh?.();
             },
-          }, ["Submit Another Request"]),
+          }, ["Submit Another"]),
         ])
       : el("form", {
           class: "stack gap-xl",
@@ -122,7 +118,7 @@ export async function renderPhillipstonPrr(ctx) {
               class: "textarea",
               rows: 8,
               required: true,
-              placeholder: "Be specific: date range, departments, names, topics, document types...",
+              placeholder: "Be as specific as possible (date range, departments, names, topics, document types...)",
             }),
           ]),
 
@@ -143,7 +139,7 @@ export async function renderPhillipstonPrr(ctx) {
 
     renderCard({
       title: "What happens next?",
-      description: "The Town of Phillipston will confirm receipt and must respond within 10 business days unless an extension applies. All requests are stored in ARCHIEVE under /PHILLIPSTON/PRR.",
+      description: "The Town of Phillipston will confirm receipt. All requests are stored in ARCHIEVE under /PHILLIPSTON/PRR.",
       variant: "calm",
     }),
 

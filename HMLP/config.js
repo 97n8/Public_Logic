@@ -21,22 +21,3 @@ window.PUBLICLOGIC_OS_CONFIG = {
     }
   }
 };
-```
-
-### 2. `/lib/config.js` (LIBRARY - YOU ALREADY HAVE THIS)
-This reads from the global variable. Keep as-is.
-
----
-
-## **Your file structure should be:**
-```
-publiclogic-os-ui/
-├── index.html
-├── config.js          ← CREATE THIS (sets window.PUBLICLOGIC_OS_CONFIG)
-├── styles.css
-├── app.js
-└── lib/
-    ├── config.js      ← YOU HAVE THIS (reads window.PUBLICLOGIC_OS_CONFIG)
-    ├── auth.js
-    ├── sharepoint.js
-    └── ...

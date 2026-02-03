@@ -1,119 +1,42 @@
-// lib/config.js
-
-export function getConfig() {
-  return window.PUBLICLOGIC_OS_CONFIG || null;
-}
-
-export function validateConfig(cfg) {
-  const errors = [];
-
-  if (!cfg) {
-    errors.push("Missing config (window.PUBLICLOGIC_OS_CONFIG is null or undefined).");
-    return errors;
-  }
-
-  // MSAL (required)
-  if (!cfg.msal?.clientId) errors.push("msal.clientId is missing");
-  if (!cfg.msal?.tenantId) errors.push("msal.tenantId is missing");
-  if (!cfg.msal?.redirectUri) errors.push("msal.redirectUri is missing");
-
-  // Access control (required)
-  if (!Array.isArray(cfg.access?.allowedEmails) || cfg.access.allowedEmails.length === 0) {
-    errors.push("access.allowedEmails must be a non-empty array of allowed emails");
-  }
-
-  // Graph API (required)
-  if (!Array.isArray(cfg.graph?.scopes) || cfg.graph.scopes.length === 0) {
-    errors.push("graph.scopes must be a non-empty array");
-  }
-
-  // SharePoint (required)
-  if (!cfg.sharepoint?.hostname) errors.push("sharepoint.hostname is missing");
-  if (!cfg.sharepoint?.sitePath) errors.push("sharepoint.sitePath is missing");
-
-  // ARCHIEVE (required)
-  if (!cfg.sharepoint?.archieve) {
-    errors.push("sharepoint.archieve configuration object is missing");
-  } else {
-    if (cfg.sharepoint.archieve.enabled !== true) {
-      errors.push("sharepoint.archieve.enabled must be true");
-    }
-    if (!cfg.sharepoint.archieve.listName) {
-      errors.push("sharepoint.archieve.listName is missing");
+window.PUBLICLOGIC_OS_CONFIG = {
+  msal: {
+    clientId: "1b53d140-0779-4a64-943c-a11ba19ec0ce",
+    tenantId: "12879da8-d927-419b-8a2e-fda32e1732be",
+    redirectUri: "https://www.publiclogic.org/hmlp/",
+    postLogoutRedirectUri: "https://www.publiclogic.org/hmlp/",
+    cacheLocation: "sessionStorage"
+  },
+  graph: {
+    scopes: ["User.Read", "Sites.ReadWrite.All"]
+  },
+  access: {
+    allowedEmails: ["nate@publiclogic.org"]
+  },
+  sharepoint: {
+    hostname: "publiclogic978.sharepoint.com",
+    sitePath: "/sites/PL",
+    archieve: {
+      enabled: true,
+      listName: "ARCHIEVE"
     }
   }
+};
+```
 
-  return errors;
-}
+### 2. `/lib/config.js` (LIBRARY - YOU ALREADY HAVE THIS)
+This reads from the global variable. Keep as-is.
 
-export function hasTasksList(cfg) {
-  return Boolean(cfg?.sharepoint?.lists?.tasks);
-}
+---
 
-export function hasPipelineList(cfg) {
-  return Boolean(cfg?.sharepoint?.lists?.pipeline);
-}
-
-export function hasProjectsList(cfg) {
-  return Boolean(cfg?.sharepoint?.lists?.projects);
-}
-
-export function hasArchiveList(cfg) {
-  return Boolean(
-    cfg?.sharepoint?.archieve?.enabled === true &&
-    cfg?.sharepoint?.archieve?.listName
-  );
-}
-
-/**
- * Returns normalized, ready-to-use links based on the config.
- * All paths are constructed safely with fallbacks.
- */
-export function getLinks(cfg) {
-  if (!cfg?.sharepoint) return {};
-
-  const hostname = cfg.sharepoint.hostname;
-  const sitePath = cfg.sharepoint.sitePath;
-
-  const base = `https://${hostname}`;
-  const site = `${base}${sitePath}`;
-
-  return {
-    // Core SharePoint
-    root: base,
-    site: site,
-    siteContents: `${site}/_layouts/15/viewlsts.aspx`,
-    createPage: `${site}/_layouts/15/CreatePage.aspx`,
-    permissions: `${site}/_layouts/15/user.aspx`,
-
-    // Archive / Records
-    archiveList: cfg.sharepoint.archieve?.listName
-      ? `${site}/Lists/${encodeURIComponent(cfg.sharepoint.archieve.listName)}/AllItems.aspx`
-      : null,
-
-    // Configured lists
-    tasksList: cfg.sharepoint.lists?.tasks
-      ? `${site}/Lists/${encodeURIComponent(cfg.sharepoint.lists.tasks)}/AllItems.aspx`
-      : null,
-    pipelineList: cfg.sharepoint.lists?.pipeline
-      ? `${site}/Lists/${encodeURIComponent(cfg.sharepoint.lists.pipeline)}/AllItems.aspx`
-      : null,
-    projectsList: cfg.sharepoint.lists?.projects
-      ? `${site}/Lists/${encodeURIComponent(cfg.sharepoint.lists.projects)}/AllItems.aspx`
-      : null,
-
-    // Optional municipal / departmental areas
-    departments: cfg.links?.departments ? `${site}${cfg.links.departments}` : null,
-    meetings: cfg.links?.meetings ? `${site}${cfg.links.meetings}` : null,
-    permits: cfg.links?.permits ? `${site}${cfg.links.permits}` : null,
-    documents: cfg.links?.documents ? `${site}${cfg.links.documents}` : null,
-    ordinances: cfg.links?.ordinances ? `${site}${cfg.links.ordinances}` : null,
-    budget: cfg.links?.budget ? `${site}${cfg.links.budget}` : null,
-
-    // External public links
-    townWebsite: cfg.links?.townWebsite || null,
-    publicRecords: cfg.links?.publicRecords || null,
-    calendar: cfg.links?.calendar || null,
-    gis: cfg.links?.gis || null,
-  };
-}
+## **Your file structure should be:**
+```
+publiclogic-os-ui/
+├── index.html
+├── config.js          ← CREATE THIS (sets window.PUBLICLOGIC_OS_CONFIG)
+├── styles.css
+├── app.js
+└── lib/
+    ├── config.js      ← YOU HAVE THIS (reads window.PUBLICLOGIC_OS_CONFIG)
+    ├── auth.js
+    ├── sharepoint.js
+    └── ...

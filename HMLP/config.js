@@ -1,9 +1,3 @@
-// PublicLogic OS config (no secrets). Safe to ship.
-//
-// This file contains your real Entra ID (Azure AD) application values.
-// Keep it in the repository — it has no secrets.
-// Do NOT commit client secrets or passwords here.
-
 window.PUBLICLOGIC_OS_CONFIG = {
   envName: "prod",
 

@@ -70,7 +70,7 @@ export async function renderDashboard(ctx) {
   const links = getLinks(cfg) || {};
   const { sp } = ctx;
 
-  // Get some basic stats
+  // Get live operational stats
   let taskCount = 0;
   let pipelineCount = 0;
   let projectCount = 0;
@@ -105,89 +105,88 @@ export async function renderDashboard(ctx) {
   // Hero section
   const hero = el("div", { class: "dashboard-hero" }, [
     el("div", { class: "dashboard-hero__content" }, [
-      el("h1", { class: "dashboard-hero__title" }, ["Command Center"]),
+      el("h1", { class: "dashboard-hero__title" }, ["PublicLogic Operations"]),
       el("p", { class: "dashboard-hero__subtitle" }, [
-        "Your operations hub for PublicLogic. Record, create, and launch from here."
+        "Municipal consulting powered by institutional memory. Record decisions, launch work, and keep Massachusetts towns running."
       ])
     ]),
     el("div", { class: "dashboard-hero__stats" }, [
-      statCard({ label: "Open Tasks", value: String(taskCount), variant: "accent" }),
-      statCard({ label: "Active Pipeline", value: String(pipelineCount), variant: "gold" }),
-      statCard({ label: "Live Projects", value: String(projectCount), variant: "mint" })
+      statCard({ label: "Active Commitments", value: String(taskCount), variant: "accent" }),
+      statCard({ label: "Municipal Pipeline", value: String(pipelineCount), variant: "gold" }),
+      statCard({ label: "Live Engagements", value: String(projectCount), variant: "mint" })
     ])
   ]);
 
   // Quick actions
   const quickActions = el("div", {}, [
-    el("h2", { class: "section-title" }, ["Quick Actions"]),
+    el("h2", { class: "section-title" }, ["Capture & Create"]),
     el("div", { class: "quick-actions-grid" }, [
       quickActionCard({
         icon: "📝",
-        title: "New Record",
-        description: "Capture a decision, meeting note, or commitment",
+        title: "Record Decision",
+        description: "Capture meeting outcomes, commitments, or policy calls for ARCHIEVE",
         onClick: () => openRecordConsole(ctx),
         variant: "primary"
       }),
       quickActionCard({
         icon: "📄",
-        title: "New SharePoint Page",
+        title: "New Page",
         href: links.createPage || `https://publiclogic978.sharepoint.com/sites/PL/_layouts/15/CreatePage.aspx`,
-        description: "Create a formatted page in SharePoint"
+        description: "Create formatted documentation in SharePoint"
       }),
       quickActionCard({
         icon: "📊",
-        title: "Open SharePoint",
+        title: "SharePoint Site",
         href: links.site || `https://publiclogic978.sharepoint.com/sites/PL`,
-        description: "Full SharePoint site with all lists and libraries"
+        description: "Full access to lists, libraries, and site administration"
       }),
       links.archiveList && quickActionCard({
         icon: "🗄️",
         title: "ARCHIEVE",
         href: links.archiveList,
-        description: "View all records and institutional memory"
+        description: "Authoritative record collection - institutional memory that survives turnover"
       })
     ].filter(Boolean))
   ]);
 
   // Documents & Resources
   const documents = el("div", {}, [
-    el("h2", { class: "section-title" }, ["Documents & Resources"]),
+    el("h2", { class: "section-title" }, ["Municipal Workspaces"]),
     el("div", { class: "doc-grid" }, [
-      // CASE Space 1 (assuming this is a SharePoint library or folder)
       documentCard({
         icon: "📁",
         title: "CASE Space 1",
-        description: "Primary document workspace",
+        description: "Primary engagement documents and deliverables",
         url: `https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/Forms/AllItems.aspx`
       }),
       documentCard({
         icon: "📋",
-        title: "Operating Procedures",
-        description: "SOPs, templates, and playbooks",
+        title: "Playbooks & SOPs",
+        description: "How PublicLogic runs - frameworks and operating procedures",
         url: `${links.site}/SitePages/Playbooks.aspx`
       }),
       documentCard({
-        icon: "💼",
-        title: "Client Files",
-        description: "Municipal project documentation",
+        icon: "🏛️",
+        title: "Town Files",
+        description: "Client documentation organized by municipality",
         url: `https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/Clients`
       }),
       documentCard({
-        icon: "📊",
-        title: "Grant Applications",
-        description: "Community Compact and other funding",
+        icon: "💰",
+        title: "Grant Materials",
+        description: "Community Compact IT, ARPA, and other funding applications",
         url: `https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/Grants`
       }),
       documentCard({
         icon: "🎯",
-        title: "Marketing Materials",
-        description: "One-pagers, case studies, proposals",
+        title: "Marketing & Sales",
+        description: "Discovery one-pagers, proposals, and case studies",
         url: `https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/Marketing`
       }),
       documentCard({
         icon: "⚙️",
-        title: "Internal Operations",
-        description: "Contracts, policies, admin docs",
+        title: "Business Operations",
+        description: "Contracts, policies, and administrative documentation",
         url: `https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/Internal`
       })
     ])
@@ -195,7 +194,7 @@ export async function renderDashboard(ctx) {
 
   // Microsoft 365 Quick Links
   const m365 = el("div", {}, [
-    el("h2", { class: "section-title" }, ["Microsoft 365"]),
+    el("h2", { class: "section-title" }, ["Microsoft 365 Tools"]),
     el("div", { class: "m365-grid" }, [
       documentCard({
         icon: "📧",
@@ -230,7 +229,7 @@ export async function renderDashboard(ctx) {
   ]);
 
   return {
-    title: "Command Center",
+    title: "PublicLogic Operations",
     subtitle: formatDateHeading(),
     actions: [],
     content

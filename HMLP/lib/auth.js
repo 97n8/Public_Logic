@@ -7,11 +7,10 @@ function ensureMsalLoaded() {
 }
 
 export function getSignedInEmail(account) {
-  if (!account) return null;
   return (
-    account.username ||
-    account.idTokenClaims?.preferred_username ||
-    account.idTokenClaims?.email ||
+    account?.username ||
+    account?.idTokenClaims?.preferred_username ||
+    account?.idTokenClaims?.email ||
     null
   );
 }
@@ -25,7 +24,7 @@ export function createAuth() {
   ensureMsalLoaded();
   const cfg = getConfig();
 
-  const msalConfig = {
+  const instance = new window.msal.PublicClientApplication({
     auth: {
       clientId: cfg.msal.clientId,
       authority: `https://login.microsoftonline.com/${cfg.msal.tenantId}`,
@@ -34,12 +33,10 @@ export function createAuth() {
       navigateToLoginRequestUrl: false
     },
     cache: {
-      cacheLocation: cfg.msal.cacheLocation,
+      cacheLocation: cfg.msal.cacheLocation || "sessionStorage",
       storeAuthStateInCookie: false
     }
-  };
-
-  const instance = new window.msal.PublicClientApplication(msalConfig);
+  });
 
   async function init() {
     const result = await instance.handleRedirectPromise();
@@ -73,7 +70,7 @@ export function createAuth() {
 
     try {
       return await instance.acquireTokenSilent({ scopes, account });
-    } catch (err) {
+    } catch {
       await instance.acquireTokenRedirect({ scopes, account });
       return null;
     }

@@ -13,18 +13,18 @@
   --accent: #34d399;
   --accent2: #fbbf24;
   --danger: #fb7185;
-  
+
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.28);
   --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.38);
   --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.42);
-  
+
   --radius-sm: 10px;
   --radius: 16px;
   --radius-lg: 20px;
-  
+
   --font-sans: "Sora", system-ui, -apple-system, sans-serif;
   --font-serif: "Fraunces", Georgia, serif;
-  
+
   --transition: all 140ms ease;
 }
 
@@ -46,6 +46,7 @@ body {
   background: var(--bg0);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
 }
 
 /* ==========================================================================
@@ -78,6 +79,7 @@ a {
 a:hover {
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
 }
 
 .btn,
@@ -86,7 +88,7 @@ a.btn {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 16px;
+  padding: 10px 18px;
   font-weight: 700;
   font-size: 13px;
   border-radius: 999px;
@@ -107,6 +109,7 @@ a.btn:hover {
 .btn:active,
 a.btn:active {
   transform: translateY(0);
+  opacity: 0.92;
 }
 
 .btn--primary {
@@ -121,7 +124,7 @@ a.btn:active {
   color: rgba(251, 113, 133, 0.98);
 }
 
-/* Focus state for accessibility */
+/* Focus state (accessibility) */
 .btn:focus-visible,
 a.btn:focus-visible,
 .navlink:focus-visible,
@@ -139,7 +142,7 @@ a.btn:focus-visible,
   padding: 10px 14px;
   border-radius: 14px;
   border: 1px solid transparent;
-  background: rgba(0,0,0,0.14);
+  background: rgba(0, 0, 0, 0.14);
   color: var(--muted);
   font-weight: 700;
   font-size: 13px;
@@ -191,7 +194,7 @@ a.btn:focus-visible,
   height: calc(100vh - 48px);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(0,0,0,0.36), rgba(0,0,0,0.18));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.18));
   box-shadow: var(--shadow-md);
   overflow: hidden;
 }
@@ -199,7 +202,7 @@ a.btn:focus-visible,
 .main {
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.12));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.12));
   box-shadow: var(--shadow-md);
   overflow: hidden;
 }
@@ -243,7 +246,9 @@ a.btn:focus-visible,
   color: rgba(247, 245, 239, 0.92);
 }
 
-.markdown h1, .markdown h2, .markdown h3 {
+.markdown h1,
+.markdown h2,
+.markdown h3 {
   font-family: var(--font-serif);
   letter-spacing: -0.02em;
   margin: 1.4em 0 0.6em;
@@ -263,14 +268,14 @@ a.btn:focus-visible,
 .markdown code {
   font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Menlo, Monaco, monospace;
   font-size: 0.9em;
-  background: rgba(0,0,0,0.24);
+  background: rgba(0, 0, 0, 0.24);
   padding: 0.15em 0.4em;
   border-radius: 6px;
   color: var(--accent);
 }
 
 .markdown pre {
-  background: rgba(0,0,0,0.28);
+  background: rgba(0, 0, 0, 0.28);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 14px;

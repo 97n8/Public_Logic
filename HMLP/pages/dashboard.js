@@ -32,9 +32,7 @@ export async function renderDashboard(ctx) {
   const cfg = getConfig();
   const links = getLinks(cfg);
 
-  // ─────────────────────────────────────────────
-  // Primary Actions – most important things first
-  // ─────────────────────────────────────────────
+  // Primary Actions – most important items first
   const primaryActions = [
     {
       label: "New Record",
@@ -62,9 +60,7 @@ export async function renderDashboard(ctx) {
     });
   }
 
-  // ─────────────────────────────────────────────
-  // Quick municipal / internal links
-  // ─────────────────────────────────────────────
+  // Quick municipal / internal links – only show what's configured
   const quickLinks = [
     { label: "Tasks", href: links.tasksList, icon: "✓" },
     { label: "Projects", href: links.projectsList, icon: "📋" },
@@ -79,9 +75,7 @@ export async function renderDashboard(ctx) {
     { label: "Public Records", href: links.publicRecords, icon: "🔍", external: true },
   ].filter((item) => item.href);
 
-  // ─────────────────────────────────────────────
-  // Capabilities (small overview cards)
-  // ─────────────────────────────────────────────
+  // Capabilities overview
   const capabilities = [
     {
       label: "Record",
@@ -97,11 +91,9 @@ export async function renderDashboard(ctx) {
     },
   ];
 
-  // ─────────────────────────────────────────────
   // Main content structure
-  // ─────────────────────────────────────────────
   const content = el("div", { class: "stack gap-xl" }, [
-    // Hero / welcome area
+    // Hero / welcome
     renderCard({
       title: "Work Command Center",
       description:
@@ -126,7 +118,10 @@ export async function renderDashboard(ctx) {
                 rel: a.href ? "noopener noreferrer" : undefined,
                 onclick: a.action ? () => a.action() : undefined,
               },
-              [a.icon && el("span", { class: "icon" }, [a.icon]), a.label]
+              [
+                a.icon && el("span", { class: "icon" }, [a.icon]),
+                a.label,
+              ]
             )
           )
         ),
@@ -135,7 +130,7 @@ export async function renderDashboard(ctx) {
 
     // Capabilities + Today + Quick Links
     el("div", { class: "grid grid--2 gap-lg" }, [
-      // Left column: capabilities + today
+      // Left column
       el("div", { class: "stack gap-lg" }, [
         el("div", { class: "grid grid--3 gap-md" }, capabilities.map(renderCard)),
         renderCard({
@@ -145,7 +140,7 @@ export async function renderDashboard(ctx) {
         }),
       ]),
 
-      // Right column: Quick Links
+      // Right column – Quick Links
       renderCard({
         title: "Quick Links",
         children:

@@ -1,18 +1,31 @@
-import { PrrRouter } from "./PrrRouter";
+import { useState } from "react";
+import { CaseSpace } from "./pages/CaseSpace";
+import { StaffIntake } from "./pages/StaffIntake";
 
-export function PhillipstonShell() {
+type View = "space" | "intake";
+
+export function PrrRouter() {
+  const [view, setView] = useState<View>("space");
+
   return (
-    <div className="shell">
-      <header className="shell__header">
-        <div>
-          <h1>Phillipston PRR</h1>
-          <p>Staff Operations & Institutional Record</p>
-        </div>
-      </header>
+    <>
+      <nav className="prr-nav">
+        <button
+          onClick={() => setView("space")}
+          aria-current={view === "space"}
+        >
+          Case Space
+        </button>
 
-      <main className="shell__main">
-        <PrrRouter />
-      </main>
-    </div>
+        <button
+          onClick={() => setView("intake")}
+          aria-current={view === "intake"}
+        >
+          Staff Intake
+        </button>
+      </nav>
+
+      {view === "intake" ? <StaffIntake /> : <CaseSpace />}
+    </>
   );
 }

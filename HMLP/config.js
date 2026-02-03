@@ -15,14 +15,19 @@ window.PUBLICLOGIC_OS_CONFIG = {
   },
 
   access: {
-    allowedEmails: ["nate@publiclogic.org"]
+    allowedEmails: [
+      "nate@publiclogic.org"
+    ]
   },
 
   sharepoint: {
     hostname: "publiclogicorg.sharepoint.com",
     sitePath: "/sites/PublicLogic",
-    lists: {
-      archieve: "ARCHIEVE"
+
+    // Canonical system of record
+    archieve: {
+      enabled: true,
+      listName: "ARCHIEVE"
     }
   }
 };

@@ -1,12 +1,341 @@
 /* ==========================================================================
-   WORKBENCH — Calm, spacious, desktop + mobile
+   ROOT & VARIABLES — PublicLogic identity
+   ========================================================================== */
+:root {
+  --bg0: #022c22;
+  --bg1: #052f28;
+  --ink: rgba(247, 245, 239, 0.96);
+  --muted: rgba(247, 245, 239, 0.68);
+  --faint: rgba(247, 245, 239, 0.14);
+  --line: rgba(247, 245, 239, 0.12);
+  --surface: rgba(0, 0, 0, 0.22);
+  --surface-raised: rgba(0, 0, 0, 0.32);
+  --accent: #34d399;
+  --accent2: #fbbf24;
+  --danger: #fb7185;
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.38);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.42);
+
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 20px;
+
+  --font-sans: "Sora", system-ui, -apple-system, sans-serif;
+  --font-serif: "Fraunces", Georgia, serif;
+
+  --transition: all 140ms ease;
+}
+
+/* ==========================================================================
+   BASE & RESET
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  background: var(--bg0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   BACKGROUND LAYER
+   ========================================================================== */
+.bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 700px at 20% 10%, rgba(52, 211, 153, 0.14), transparent 60%),
+    radial-gradient(900px 500px at 85% 20%, rgba(251, 191, 36, 0.10), transparent 60%),
+    radial-gradient(900px 900px at 50% 85%, rgba(52, 211, 153, 0.08), transparent 65%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.30), transparent 40%),
+    url("./assets/noise.svg");
+  background-attachment: fixed;
+  mix-blend-mode: normal;
+  opacity: 1;
+  z-index: -2;
+}
+
+/* ==========================================================================
+   LINKS & BUTTONS
+   ========================================================================== */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+}
+
+.btn,
+a.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn:hover,
+a.btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(52, 211, 153, 0.38);
+  background: rgba(52, 211, 153, 0.12);
+}
+
+.btn:active,
+a.btn:active {
+  transform: translateY(0);
+  opacity: 0.92;
+}
+
+.btn--primary {
+  border-color: rgba(52, 211, 153, 0.45);
+  background: rgba(52, 211, 153, 0.18);
+  color: rgba(52, 211, 153, 0.98);
+}
+
+.btn--danger {
+  border-color: rgba(251, 113, 133, 0.45);
+  background: rgba(251, 113, 133, 0.18);
+  color: rgba(251, 113, 133, 0.98);
+}
+
+/* Focus states */
+.btn:focus-visible,
+a.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.3);
+}
+
+/* ==========================================================================
+   CARDS & DASHBOARD COMPONENTS
+   ========================================================================== */
+.card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 16px 18px;
+  min-height: 88px;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  backdrop-filter: blur(8px);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-title {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.card-subtitle,
+.card__description {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* Variants */
+.card--hero {
+  background: linear-gradient(145deg, rgba(52, 211, 153, 0.09), rgba(0, 0, 0, 0.24));
+  border-color: rgba(52, 211, 153, 0.32);
+  padding: 1.6rem 1.8rem;
+}
+
+.card--calm {
+  background: rgba(0, 0, 0, 0.16);
+  border-color: rgba(247, 245, 239, 0.08);
+  color: var(--muted);
+}
+
+/* Quick links */
+.quick-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65em;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.14s ease;
+}
+
+.quick-link:hover {
+  background: rgba(52, 211, 153, 0.09);
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+/* Icons */
+.icon,
+.action-icon,
+.fab-icon {
+  width: 1.1em;
+  text-align: center;
+  opacity: 0.82;
+  flex-shrink: 0;
+}
+
+/* External indicator */
+.external {
+  font-size: 0.78em;
+  opacity: 0.6;
+  margin-left: 0.4em;
+}
+
+/* ==========================================================================
+   LAYOUT & GRID
+   ========================================================================== */
+.app {
+  position: relative;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.shell {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 960px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.12));
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 960px) {
+  .grid > * {
+    grid-column: span 12 !important;
+  }
+}
+
+/* ==========================================================================
+   TYPOGRAPHY (MARKDOWN & GENERAL)
+   ========================================================================== */
+.markdown {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(247, 245, 239, 0.92);
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+  margin: 1.4em 0 0.6em;
+}
+
+.markdown h1 { font-size: 2.1rem; }
+.markdown h2 { font-size: 1.7rem; }
+.markdown h3 { font-size: 1.35rem; }
+
+.markdown a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+  text-underline-offset: 0.2em;
+}
+
+.markdown code {
+  font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Menlo, Monaco, monospace;
+  font-size: 0.9em;
+  background: rgba(0, 0, 0, 0.24);
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  color: var(--accent);
+}
+
+.markdown pre {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  overflow-x: auto;
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+.small {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   WORKBENCH / DASHBOARD STYLES
    ========================================================================== */
 
 .workbench {
   min-height: 100vh;
-  padding: 32px 24px 120px;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 24px 24px 120px;
   background: var(--bg0);
   color: var(--ink);
   font-family: var(--font-sans);
@@ -14,13 +343,13 @@
 
 @media (max-width: 768px) {
   .workbench {
-    padding: 24px 16px 100px;
+    padding: 16px 16px 100px;
   }
 }
 
-/* Header — simple and centered on mobile */
+/* Header */
 .header {
-  padding-bottom: 40px;
+  padding-bottom: 32px;
   text-align: center;
 }
 
@@ -56,7 +385,7 @@
   margin-top: 4px;
 }
 
-/* Floating Action Button — always visible, position adapts */
+/* Floating Action Button */
 .fab.primary {
   position: fixed;
   z-index: 100;
@@ -76,33 +405,25 @@
   transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Mobile: bottom-right */
+/* Mobile placement */
 @media (max-width: 768px) {
   .fab.primary {
     bottom: 32px;
     right: 32px;
   }
-
-  .fab.primary:hover,
-  .fab.primary:active {
-    transform: scale(1.12);
-    box-shadow: 0 14px 48px rgba(52, 211, 153, 0.6);
-  }
 }
 
-/* Desktop: top-right corner */
+/* Desktop placement */
 @media (min-width: 769px) {
   .fab.primary {
     top: 40px;
     right: 40px;
-    width: 72px;
-    height: 72px;
   }
+}
 
-  .fab.primary:hover {
-    transform: scale(1.12);
-    box-shadow: 0 14px 48px rgba(52, 211, 153, 0.6);
-  }
+.fab.primary:hover {
+  transform: scale(1.15);
+  box-shadow: 0 14px 48px rgba(52, 211, 153, 0.6);
 }
 
 .fab-icon {
@@ -113,7 +434,7 @@
   font-size: 0.85rem;
 }
 
-/* Main content area */
+/* Main content */
 .main-content {
   display: flex;
   flex-direction: column;
@@ -122,18 +443,12 @@
   margin: 0 auto;
 }
 
-@media (max-width: 768px) {
-  .main-content {
-    gap: 32px;
-  }
-}
-
 /* Cards */
 .card {
   background: rgba(0, 0, 0, 0.18);
   border: 1px solid rgba(247, 245, 239, 0.08);
   border-radius: 20px;
-  padding: 32px;
+  padding: 28px;
   backdrop-filter: blur(12px);
   transition: all 0.28s ease;
 }
@@ -148,7 +463,6 @@
   font-size: 1.45rem;
   font-weight: 800;
   margin-bottom: 12px;
-  color: var(--ink);
 }
 
 .card-subtitle {
@@ -162,10 +476,9 @@
   padding: 48px 32px;
   background: rgba(0, 0, 0, 0.14);
   border-color: transparent;
-  font-size: 1.05rem;
 }
 
-/* Recent work list */
+/* Recent list */
 .recent-list {
   list-style: none;
   padding: 0;
@@ -201,13 +514,13 @@
   white-space: nowrap;
 }
 
-/* Secondary small links (SharePoint, Archive, etc.) */
+/* Secondary pills */
 .secondary-row {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
-  margin-top: 24px;
+  margin-top: 32px;
 }
 
 .pill {
@@ -222,29 +535,4 @@
 
 .pill:hover {
   background: rgba(52, 211, 153, 0.16);
-}
-
-/* Desktop — slightly wider and more spacious */
-@media (min-width: 769px) {
-  .workbench {
-    padding: 48px 60px 140px;
-  }
-
-  .main-content {
-    max-width: 1000px;
-    gap: 48px;
-  }
-
-  .card {
-    padding: 36px 40px;
-  }
-
-  .card-title {
-    font-size: 1.65rem;
-  }
-
-  .fab.primary {
-    top: 48px;
-    right: 48px;
-  }
 }

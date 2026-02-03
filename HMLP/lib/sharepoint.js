@@ -1,6 +1,6 @@
 // lib/sharepoint.js
 import { getConfig } from "./config.js";
-import { graphGet, graphPost, graphPatch } from "./graph.js";
+import { graphGet, graphPost, graphPatch, graphDelete } from "./graph.js";
 
 function encodeODataStringLiteral(s) {
   return String(s).replace(/'/g, "''");
@@ -10,7 +10,9 @@ export function createSharePointClient(auth) {
   const cfg = getConfig();
   const cache = {
     site: null,
-    listsByName: new Map()
+    listsByName: new Map(),
+    listItemsCache: new Map(),
+    lastFetch: new Map()
   };
 
   async function getSite() {
@@ -55,38 +57,78 @@ export function createSharePointClient(auth) {
     await graphPost(auth, `/sites/${site.id}/lists/${listId}/columns`, column);
   }
 
-  async function listItems(displayName, { selectFields, top } = {}) {
+  function invalidateListCache(displayName) {
+    cache.listItemsCache.delete(displayName);
+    cache.lastFetch.delete(displayName);
+  }
+
+  function invalidateAllCaches() {
+    cache.listItemsCache.clear();
+    cache.lastFetch.clear();
+  }
+
+  async function listItems(displayName, { selectFields, top, forceRefresh = false } = {}) {
     const site = await getSite();
     const list = await getList(displayName);
+
+    // Check cache freshness (5 second threshold)
+    const cacheKey = `${displayName}:${top || "all"}`;
+    const lastFetch = cache.lastFetch.get(cacheKey);
+    const now = Date.now();
+    
+    if (!forceRefresh && lastFetch && (now - lastFetch) < 5000) {
+      const cached = cache.listItemsCache.get(cacheKey);
+      if (cached) return cached;
+    }
 
     let path = `/sites/${site.id}/lists/${list.id}/items?$expand=fields`;
     if (top) path += `&$top=${top}`;
 
     const res = await graphGet(auth, path);
 
-    return (res?.value || []).map((it) => ({
+    const items = (res?.value || []).map((it) => ({
       itemId: it.id,
       webUrl: it.webUrl,
       ...(it.fields || {})
     }));
+
+    cache.listItemsCache.set(cacheKey, items);
+    cache.lastFetch.set(cacheKey, now);
+
+    return items;
   }
 
   async function createItem(displayName, fields) {
     const site = await getSite();
     const list = await getList(displayName);
-    return graphPost(auth, `/sites/${site.id}/lists/${list.id}/items`, { fields });
+    const result = await graphPost(auth, `/sites/${site.id}/lists/${list.id}/items`, { fields });
+    
+    // Invalidate cache after mutation
+    invalidateListCache(displayName);
+    
+    return result;
   }
 
   async function updateItemFields(displayName, itemId, fields) {
     const site = await getSite();
     const list = await getList(displayName);
-    return graphPatch(auth, `/sites/${site.id}/lists/${list.id}/items/${itemId}/fields`, fields);
+    const result = await graphPatch(auth, `/sites/${site.id}/lists/${list.id}/items/${itemId}/fields`, fields);
+    
+    // Invalidate cache after mutation
+    invalidateListCache(displayName);
+    
+    return result;
   }
 
   async function deleteItem(displayName, itemId) {
     const site = await getSite();
     const list = await getList(displayName);
-    return graphDelete(auth, `/sites/${site.id}/lists/${list.id}/items/${itemId}`);
+    const result = await graphDelete(auth, `/sites/${site.id}/lists/${list.id}/items/${itemId}`);
+    
+    // Invalidate cache after mutation
+    invalidateListCache(displayName);
+    
+    return result;
   }
 
   return {
@@ -97,6 +139,8 @@ export function createSharePointClient(auth) {
     listItems,
     createItem,
     updateItemFields,
-    deleteItem
+    deleteItem,
+    invalidateListCache,
+    invalidateAllCaches
   };
 }

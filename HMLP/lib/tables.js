@@ -1,47 +1,38 @@
-// lib/config.js
-export function getConfig() {
-  return window.PUBLICLOGIC_OS_CONFIG || null;
+// lib/tables.js
+import { el } from "./dom.js";
+import { getPillVariant } from "./constants.js";
+
+export function statusPill(status, fallback = "") {
+  const text = status || fallback;
+  const variant = getPillVariant(text);
+  const cls = ["pill", variant ? `pill--${variant}` : ""].filter(Boolean).join(" ");
+  return el("span", { class: cls }, [text]);
 }
 
-export function validateConfig(cfg) {
-  const errors = [];
-
-  if (!cfg) {
-    errors.push("Missing config.js (window.PUBLICLOGIC_OS_CONFIG is null).");
-    return errors;
+export function renderTable({ columns, rows, emptyMessage = "No data." }) {
+  if (!rows || rows.length === 0) {
+    return el("div", { class: "small" }, [emptyMessage]);
   }
 
-  if (!cfg.msal?.clientId) errors.push("msal.clientId is missing");
-  if (!cfg.msal?.tenantId) errors.push("msal.tenantId is missing");
-  if (!cfg.msal?.redirectUri) errors.push("msal.redirectUri is missing");
+  const thead = el("thead", {}, [
+    el("tr", {}, columns.map((c) => el("th", {}, [c.label])))
+  ]);
 
-  if (!Array.isArray(cfg.access?.allowedEmails) || cfg.access.allowedEmails.length === 0) {
-    errors.push("access.allowedEmails must include at least one allowed user");
-  }
+  const tbody = el("tbody", {}, rows.map((row) =>
+    el("tr", {}, columns.map((c) => {
+      const content = c.render ? c.render(row) : (row[c.key] || "");
+      return el("td", { class: c.muted ? "row-muted" : "" }, [content]);
+    }))
+  ));
 
-  if (!Array.isArray(cfg.graph?.scopes) || cfg.graph.scopes.length === 0) {
-    errors.push("graph.scopes is missing");
-  }
-
-  if (!cfg.sharepoint?.hostname) errors.push("sharepoint.hostname is missing");
-  if (!cfg.sharepoint?.sitePath) errors.push("sharepoint.sitePath is missing");
-
-  // ARCHIEVE is required
-  if (cfg.sharepoint?.archieve?.enabled && !cfg.sharepoint?.archieve?.listName) {
-    errors.push("sharepoint.archieve.listName is missing");
-  }
-
-  return errors;
+  return el("table", { class: "table" }, [thead, tbody]);
 }
 
-export function hasTasksList(cfg) {
-  return Boolean(cfg.sharepoint?.lists?.tasks);
-}
-
-export function hasPipelineList(cfg) {
-  return Boolean(cfg.sharepoint?.lists?.pipeline);
-}
-
-export function hasProjectsList(cfg) {
-  return Boolean(cfg.sharepoint?.lists?.projects);
+export function actionButtons(actions) {
+  const valid = (actions || []).filter(Boolean);
+  return el("div", { class: "chiprow" }, valid.map((a) =>
+    a.href
+      ? el("a", { class: "btn", href: a.href, target: "_blank", rel: "noreferrer" }, [a.label])
+      : el("button", { class: ["btn", a.variant ? `btn--${a.variant}` : ""].filter(Boolean).join(" "), type: "button", onclick: a.onClick }, [a.label])
+  ));
 }

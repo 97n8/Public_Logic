@@ -1,4 +1,8 @@
-// main.js (or app.js / index.js — your main entry point)
+// main.js — PublicLogic OS (Production Entry Point)
+
+/* =========================
+   IMPORTS
+   ========================= */
 import { el, clear } from "./lib/dom.js";
 import { getConfig, validateConfig } from "./lib/config.js";
 import { createAuth, getSignedInEmail, isAllowedAccount } from "./lib/auth.js";
@@ -16,8 +20,15 @@ import { renderPlaybooks } from "./pages/playbooks.js";
 import { renderTools } from "./pages/tools.js";
 import { renderSettings } from "./pages/settings.js";
 
-// NEW: Phillipston PRR environment (only linked from Environments)
+// Environment pages
 import { renderPhillipstonPrr } from "./pages/phillipston-prr.js";
+
+/* =========================
+   ROUTE CLASSIFICATION
+   ========================= */
+const ENVIRONMENT_ROUTES = new Set([
+  "/phillipston-prr"
+]);
 
 /* =========================
    UI HELPERS
@@ -35,6 +46,7 @@ function actionNode(a) {
       [a.label]
     );
   }
+
   return el(
     "button",
     {
@@ -58,11 +70,11 @@ function createMobileNav(sidebar) {
 
   const overlay = el("div", { class: "sidebar-overlay" });
 
-  const toggleNav = () => {
-    toggle.classList.toggle("active");
-    sidebar.classList.toggle("active");
-    overlay.classList.toggle("active");
-    document.body.style.overflow = sidebar.classList.contains("active") ? "hidden" : "";
+  const openNav = () => {
+    toggle.classList.add("active");
+    sidebar.classList.add("active");
+    overlay.classList.add("active");
+    document.body.style.overflow = "hidden";
   };
 
   const closeNav = () => {
@@ -72,10 +84,12 @@ function createMobileNav(sidebar) {
     document.body.style.overflow = "";
   };
 
-  toggle.addEventListener("click", toggleNav);
+  toggle.addEventListener("click", () => {
+    sidebar.classList.contains("active") ? closeNav() : openNav();
+  });
+
   overlay.addEventListener("click", closeNav);
 
-  // Close nav when clicking nav links
   sidebar.querySelectorAll(".nav a").forEach(link => {
     link.addEventListener("click", closeNav);
   });
@@ -105,11 +119,9 @@ function renderSetup(appEl, { errors = [] } = {}) {
         ])
       ]),
       errors.length
-        ? el(
-            "div",
-            { class: "error", style: "margin-top:12px; white-space:pre-wrap;" },
-            [errors.join("\n")]
-          )
+        ? el("div", { class: "error", style: "margin-top:12px; white-space:pre-wrap;" }, [
+            errors.join("\n")
+          ])
         : null
     ])
   );
@@ -127,11 +139,7 @@ function renderSignedOut(appEl, { onLogin }) {
         ])
       ]),
       el("div", { class: "hr" }),
-      el(
-        "button",
-        { class: "btn btn--primary", onclick: onLogin },
-        ["Sign In"]
-      )
+      el("button", { class: "btn btn--primary", onclick: onLogin }, ["Sign In"])
     ])
   );
 }
@@ -154,17 +162,13 @@ function renderNotAllowed(appEl, { email, allowedEmails, onLogout }) {
           `Allowed: ${(allowedEmails || []).join(", ")}`
         ])
       ]),
-      el(
-        "button",
-        { class: "btn btn--danger", onclick: onLogout },
-        ["Sign Out"]
-      )
+      el("button", { class: "btn btn--danger", onclick: onLogout }, ["Sign Out"])
     ])
   );
 }
 
 /* =========================
-   SHELL (desktop + mobile nav)
+   SHELL
    ========================= */
 function buildShell({ onLogout, whoText }) {
   const navItems = [
@@ -179,15 +183,11 @@ function buildShell({ onLogout, whoText }) {
     { path: "/settings", label: "Settings" }
   ];
 
-  const nav = el(
-    "nav",
-    { class: "nav" },
-    navItems.map(n => {
-      const a = el("a", { href: `#${n.path}` }, [n.label]);
-      a.dataset.path = n.path;
-      return a;
-    })
-  );
+  const nav = el("nav", { class: "nav" }, navItems.map(n => {
+    const a = el("a", { href: `#${n.path}` }, [n.label]);
+    a.dataset.path = n.path;
+    return a;
+  }));
 
   const sidebar = el("aside", { class: "sidebar" }, [
     el("div", { class: "sidebar__top" }, [
@@ -213,35 +213,33 @@ function buildShell({ onLogout, whoText }) {
     contentEl
   ]);
 
-  // Mobile nav controls
   const mobileNav = createMobileNav(sidebar);
-
   const shell = el("div", { class: "shell" }, [sidebar, main]);
+
+  shell.appendChild(mobileNav.toggle);
+  shell.appendChild(mobileNav.overlay);
 
   return {
     shell,
-    sidebar,
     nav,
     titleEl,
     subEl,
     actionsEl,
     contentEl,
-    mobileToggle: mobileNav.toggle,
-    mobileOverlay: mobileNav.overlay,
     closeMobileNav: mobileNav.closeNav
   };
 }
 
 function setActiveNav(navEl, path) {
-  for (const a of navEl.querySelectorAll("a")) {
+  navEl.querySelectorAll("a").forEach(a => {
     a.dataset.path === path
       ? a.setAttribute("aria-current", "page")
       : a.removeAttribute("aria-current");
-  }
+  });
 }
 
 /* =========================
-   ROUTING & PAGE MAP
+   ROUTES
    ========================= */
 const PAGES = {
   "/": renderDashboard,
@@ -254,22 +252,18 @@ const PAGES = {
   "/playbooks": renderPlaybooks,
   "/tools": renderTools,
   "/settings": renderSettings,
-  "/phillipston-prr": renderPhillipstonPrr   // ← Phillipston PRR environment
+  "/phillipston-prr": renderPhillipstonPrr
 };
 
 /* =========================
-   MAIN APP ENTRY
+   MAIN
    ========================= */
 async function main() {
   const appEl = document.getElementById("app");
-  if (!appEl) {
-    console.error("No #app element found");
-    return;
-  }
+  if (!appEl) return;
 
   const cfg = getConfig();
   const errors = validateConfig(cfg);
-
   if (errors.length) {
     renderSetup(appEl, { errors });
     return;
@@ -277,7 +271,6 @@ async function main() {
 
   const auth = createAuth();
   await auth.init();
-
   const account = auth.getAccount();
 
   if (!account) {
@@ -294,46 +287,32 @@ async function main() {
     return;
   }
 
-  const userEmail = getSignedInEmail(account);
   const sp = createSharePointClient(auth);
 
-  // One-time ARCHIEVE list setup
   if (cfg.sharepoint?.archieve?.enabled) {
     try {
       await ensureArchieveList(sp, cfg);
     } catch (err) {
       console.warn("Archieve list setup failed:", err);
-      // Continue — not fatal
     }
   }
 
-  // Build shell UI
   const shell = buildShell({
     onLogout: () => auth.logout(),
-    whoText: userEmail
+    whoText: getSignedInEmail(account)
   });
 
   clear(appEl);
   appEl.appendChild(shell.shell);
 
-  // Add mobile nav controls
-  document.body.appendChild(shell.mobileToggle);
-  document.body.appendChild(shell.mobileOverlay);
-
-  const ctx = {
-    cfg,
-    auth,
-    sp,
-    userEmail,
-    route: getRoute(),
-    refresh: async () => renderRoute(),
-    closeMobileNav: shell.closeMobileNav
-  };
-
   async function renderRoute() {
     const path = getRoute().path || "/dashboard";
     const pageFn = PAGES[path] || renderDashboard;
-    const page = await pageFn(ctx);
+    const isEnvironment = ENVIRONMENT_ROUTES.has(path);
+
+    shell.shell.dataset.environment = isEnvironment ? "1" : "0";
+
+    const page = await pageFn({ cfg, auth, sp });
 
     setActiveNav(shell.nav, path);
 
@@ -341,28 +320,19 @@ async function main() {
     shell.subEl.textContent = page.subtitle || "";
 
     clear(shell.actionsEl);
-    (page.actions || []).forEach(a => {
-      shell.actionsEl.appendChild(actionNode(a));
-    });
+    (page.actions || []).forEach(a => shell.actionsEl.appendChild(actionNode(a)));
 
     clear(shell.contentEl);
     shell.contentEl.appendChild(page.content);
 
-    // Close mobile nav on navigation
-    shell.closeMobileNav();
+    if (!isEnvironment) shell.closeMobileNav();
   }
 
-  // Initial route
   if (!location.hash) setRoute("/dashboard");
-
   onRouteChange(renderRoute);
   await renderRoute();
 }
 
 main().catch(err => {
-  console.error("App startup failed:", err);
-  const appEl = document.getElementById("app");
-  if (appEl) {
-    renderSetup(appEl, { errors: [String(err.message || err)] });
-  }
+  console.error(err);
 });

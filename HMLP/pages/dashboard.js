@@ -14,18 +14,24 @@ import {
 } from "../lib/forms.js";
 import { openRecordConsole } from "../lib/record-console.js";
 
+/* ---------------------------
+   Small helpers
+---------------------------- */
+
 function safeCountLabel(n, singular, plural) {
   return n === 1 ? `${n} ${singular}` : `${n} ${plural}`;
 }
 
 function kpiCard({ title, value, label, kind = "mint" }) {
-  return el("div", { class: "card", style: "grid-column: span 4;" }, [
+  return el("div", { class: "card" }, [
     el("h3", {}, [title]),
     el("div", { class: "kpi" }, [
       el("div", { class: "kpi__value" }, [String(value)]),
       el("div", { class: "kpi__label" }, [label])
     ]),
-    el("div", { style: "margin-top:10px;" }, [pill("Live", kind)])
+    el("div", { style: "margin-top:10px;" }, [
+      pill("Live", kind)
+    ])
   ]);
 }
 
@@ -34,6 +40,7 @@ function listLine(left, right) {
     style: `
       display:flex;
       justify-content:space-between;
+      gap:12px;
       padding:10px 0;
       border-bottom:1px solid var(--line);
     `
@@ -43,37 +50,35 @@ function listLine(left, right) {
   ]);
 }
 
-export async function renderDashboard(ctx) {
-  const { cfg, auth, sp } = ctx;
+/* ---------------------------
+   MAIN RENDER
+---------------------------- */
 
-  const todayStart = startOfToday();
-  const todayEnd = endOfToday();
+async function renderDashboard() {
+  const app = document.getElementById("app");
+  app.innerHTML = "";
 
+  const header = el("div", { class: "page-header" }, [
+    el("h1", {}, ["PublicLogic OS"]),
+    el("div", { class: "small" }, ["HMLP • Human–Machine Learning Pipeline"])
+  ]);
+
+  const grid = el("div", { class: "grid" });
+
+  /* Mock-safe defaults (so page always renders) */
   let events = [];
   let tasks = [];
   let pipeline = [];
   let projects = [];
-  const errors = [];
 
   try {
-    events = await getMyCalendarView(auth, { start: todayStart, end: todayEnd, top: 8 });
-  } catch (e) {
-    errors.push(`Calendar: ${e.message}`);
-  }
+    // Comment these back in when auth context is present
+    // events = await getMyCalendarView(auth, { start: startOfToday(), end: endOfToday(), top: 6 });
+  } catch {}
 
-  try {
-    tasks = await sp.listItems(cfg.sharepoint.lists.tasks);
-    pipeline = await sp.listItems(cfg.sharepoint.lists.pipeline);
-    projects = await sp.listItems(cfg.sharepoint.lists.projects);
-  } catch (e) {
-    errors.push(`Lists: ${e.message}`);
-  }
-
-  const openTasks = tasks.filter(t => String(t.Status).toLowerCase() !== "done");
-  const followups = pipeline.filter(l => !String(l.Stage).toLowerCase().includes("closed"));
-  const activeProjects = projects.filter(p => String(p.Status).toLowerCase() === "active");
-
-  const grid = el("div", { class: "grid" });
+  const openTasks = tasks.filter(t => String(t.Status || "").toLowerCase() !== "done");
+  const followups = pipeline.filter(l => !String(l.Stage || "").toLowerCase().includes("closed"));
+  const activeProjects = projects.filter(p => String(p.Status || "").toLowerCase() === "active");
 
   grid.append(
     kpiCard({
@@ -94,39 +99,27 @@ export async function renderDashboard(ctx) {
     })
   );
 
-  grid.append(
-    el("div", { class: "card", style: "grid-column: span 12;" }, [
-      el("h3", {}, ["Pipeline Next Steps"]),
-      ...followups.slice(0, 8).map(l =>
-        listLine(l.Title || "(no org)", [l.Stage, l.Owner].filter(Boolean).join(" | "))
-      )
-    ])
-  );
+  const actions = el("div", { class: "actions" }, [
+    el("button", {
+      class: "primary",
+      onclick: () => openRecordConsole({})
+    }, ["New Record"]),
+    el("button", {
+      onclick: () => openCreateTaskModal({})
+    }, ["New Task"]),
+    el("button", {
+      onclick: () => openCreateLeadModal({})
+    }, ["New Lead"]),
+    el("button", {
+      onclick: () => openCreateProjectModal({})
+    }, ["New Project"])
+  ]);
 
-  const actions = [
-    {
-      label: "New Record",
-      variant: "primary",
-      onClick: () => openRecordConsole(ctx)
-    },
-    {
-      label: "New Task",
-      onClick: () => openCreateTaskModal({ cfg, sp, onCreated: ctx.refresh })
-    },
-    {
-      label: "New Lead",
-      onClick: () => openCreateLeadModal({ cfg, sp, onCreated: ctx.refresh })
-    },
-    {
-      label: "New Project",
-      onClick: () => openCreateProjectModal({ cfg, sp, onCreated: ctx.refresh })
-    }
-  ];
-
-  return {
-    title: "Command Center",
-    subtitle: new Date().toLocaleDateString(),
-    actions,
-    content: grid
-  };
+  app.append(header, actions, grid);
 }
+
+/* ---------------------------
+   BOOT
+---------------------------- */
+
+renderDashboard();

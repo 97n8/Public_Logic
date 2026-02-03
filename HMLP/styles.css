@@ -16,13 +16,13 @@
   --line: rgba(247, 245, 239, 0.12);
   --surface: rgba(0, 0, 0, 0.22);
   --surface-raised: rgba(0, 0, 0, 0.32);
-  --accent: #34d399;         /* PublicLogic mint */
+  --accent: #34d399;
   --accent2: #fbbf24;
   --danger: #fb7185;
-  --warning: #f59e0b;        /* used for T10/T25 warnings */
+  --warning: #f59e0b;
   --success: #10b981;
 
-  /* Shadows & depth */
+  /* Shadows */
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.28);
   --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.38);
   --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.42);
@@ -55,13 +55,11 @@ html, body {
 }
 
 body {
-  margin: 0;
   color: var(--ink);
   font-family: var(--font-sans);
   background: var(--bg0);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ==========================================================================
@@ -78,8 +76,6 @@ body {
     linear-gradient(180deg, rgba(0, 0, 0, 0.30), transparent 40%),
     url("./assets/noise.svg");
   background-attachment: fixed;
-  mix-blend-mode: normal;
-  opacity: 1;
   z-index: -2;
 }
 
@@ -89,55 +85,39 @@ body {
 a {
   color: var(--accent);
   text-decoration: none;
-  transition: var(--transition);
 }
 
 a:hover {
   text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 2px;
 }
 
-.btn,
-a.btn {
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 10px 18px;
-  font-weight: 700;
   font-size: 13px;
+  font-weight: 700;
   border-radius: 999px;
   border: 1px solid var(--line);
   background: var(--surface);
   color: var(--ink);
   cursor: pointer;
-  transition: var(--transition);
-  text-decoration: none;
-  white-space: nowrap;
 }
 
-.btn:hover,
-a.btn:hover {
+.btn:hover {
   transform: translateY(-1px);
-  border-color: rgba(52, 211, 153, 0.38);
-  background: rgba(52, 211, 153, 0.12);
-}
-
-.btn:active,
-a.btn:active {
-  transform: translateY(0);
-  opacity: 0.92;
 }
 
 .btn--primary {
-  border-color: rgba(52, 211, 153, 0.45);
   background: rgba(52, 211, 153, 0.18);
+  border-color: rgba(52, 211, 153, 0.45);
   color: rgba(52, 211, 153, 0.98);
 }
 
 /* ==========================================================================
-   CARDS & LAYOUT COMPONENTS
+   CARDS
    ========================================================================== */
 .card {
   border: 1px solid var(--line);
@@ -145,45 +125,27 @@ a.btn:active {
   background: var(--surface);
   padding: 20px;
   min-height: 80px;
-  transition: transform 160ms ease, box-shadow 160ms ease;
-  backdrop-filter: blur(8px);
+  transition: transform 160ms ease;
 }
 
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-sm);
 }
 
 .card-title {
-  margin: 0 0 10px;
   font-size: 15px;
   font-weight: 700;
-  color: var(--ink);
+  margin-bottom: 8px;
 }
 
 .card-subtitle {
   font-size: 13px;
   color: var(--muted);
-  line-height: 1.45;
-}
-
-/* Variants */
-.card--hero {
-  background: linear-gradient(145deg, rgba(52, 211, 153, 0.09), rgba(0, 0, 0, 0.24));
-  border-color: rgba(52, 211, 153, 0.32);
-  padding: 1.8rem 2rem;
-}
-
-.card--calm {
-  background: rgba(0, 0, 0, 0.16);
-  border-color: rgba(247, 245, 239, 0.08);
-  color: var(--muted);
 }
 
 /* ==========================================================================
-   PHILLIPSTON PRR FORM STYLING
+   PRR FORM
    ========================================================================== */
-
 .prr-hero {
   background: linear-gradient(145deg, rgba(16, 185, 129, 0.12), rgba(0, 0, 0, 0.28));
   border: 1px solid rgba(16, 185, 129, 0.3);
@@ -197,7 +159,6 @@ a.btn:active {
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 2rem;
-  backdrop-filter: blur(12px);
 }
 
 .prr-form .label {
@@ -205,7 +166,6 @@ a.btn:active {
   font-weight: 700;
   color: var(--muted);
   margin-bottom: 8px;
-  display: block;
 }
 
 .prr-form .input,
@@ -215,9 +175,8 @@ a.btn:active {
   background: rgba(0, 0, 0, 0.32);
   border: 1px solid var(--line);
   border-radius: 12px;
-  color: var(--ink);
   font-size: 15px;
-  transition: border-color 0.2s ease;
+  color: var(--ink);
 }
 
 .prr-form .input:focus,
@@ -225,13 +184,6 @@ a.btn:active {
   outline: none;
   border-color: var(--success);
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-}
-
-.prr-form .checkbox {
-  accent-color: var(--success);
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
 }
 
 .prr-success {
@@ -242,33 +194,18 @@ a.btn:active {
   text-align: center;
 }
 
-.prr-success .icon {
-  font-size: 4.5rem;
-  color: var(--success);
-  margin-bottom: 1.5rem;
-}
-
 .prr-success h2 {
   font-size: 2.25rem;
-  font-weight: 800;
   margin-bottom: 1rem;
 }
 
-.prr-success .case-id {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin: 1rem 0;
-}
-
 .prr-success .deadline {
-  font-size: 1.1rem;
   color: var(--warning);
   font-weight: 600;
 }
 
 /* ==========================================================================
-   GRID & RESPONSIVE
+   GRID
    ========================================================================== */
 .grid {
   display: grid;
@@ -278,7 +215,7 @@ a.btn:active {
 
 @media (max-width: 920px) {
   .grid > * {
-    grid-column: span 12 !important;
+    grid-column: span 12;
   }
 }
 
@@ -286,19 +223,72 @@ a.btn:active {
    UTILITIES
    ========================================================================== */
 .small { font-size: 12px; color: var(--muted); }
-.muted { color: var(--muted); }
 .text-center { text-align: center; }
 
 /* ==========================================================================
    REDUCED MOTION
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   MOBILE POSTURE — COMMERCIAL FINISH
+   ========================================================================== */
+@media (max-width: 640px) {
+
+  body {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .bg {
+    opacity: 0.85;
+    background-attachment: scroll;
+  }
+
+  .card,
+  .prr-form,
+  .prr-hero,
+  .prr-success {
+    padding: 1.25rem;
+    border-radius: 14px;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .card-title {
+    font-size: 16px;
+  }
+
+  .card-subtitle,
+  .small {
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  .prr-success h2 {
+    font-size: 1.75rem;
+  }
+
+  .prr-success .deadline {
+    font-size: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
   }
 }

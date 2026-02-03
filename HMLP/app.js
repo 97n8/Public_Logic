@@ -3,7 +3,6 @@ import { getConfig, validateConfig } from "./lib/config.js";
 import { createAuth, getSignedInEmail, isAllowedAccount } from "./lib/auth.js";
 import { createSharePointClient } from "./lib/sharepoint.js";
 import { getRoute, onRouteChange, setRoute } from "./lib/router.js";
-import { ensureArchieveList } from "./lib/archieve.js";
 
 import { renderDashboard } from "./pages/dashboard.js";
 import { renderToday } from "./pages/today.js";
@@ -13,8 +12,6 @@ import { renderProjects } from "./pages/projects.js";
 import { renderPlaybooks } from "./pages/playbooks.js";
 import { renderTools } from "./pages/tools.js";
 import { renderSettings } from "./pages/settings.js";
-
-/* ---------- helpers ---------- */
 
 function actionNode(a) {
   if (a.href) {
@@ -44,7 +41,9 @@ function actionNode(a) {
   );
 }
 
-/* ---------- setup / error ---------- */
+/* =========================
+   BOOT SCREENS
+   ========================= */
 
 function renderSetup(appEl, { errors = [] } = {}) {
   clear(appEl);
@@ -59,7 +58,22 @@ function renderSetup(appEl, { errors = [] } = {}) {
         ])
       ]),
       el("div", { class: "hr" }),
-      el("div", { class: "error" }, errors)
+      el("div", { class: "notice" }, [
+        "This OS is not configured yet.",
+        el("div", { class: "small", style: "margin-top:8px;" }, [
+          "Check config.js for required Microsoft 365 and SharePoint settings."
+        ])
+      ]),
+      errors.length
+        ? el(
+            "div",
+            {
+              class: "error",
+              style: "margin-top:12px; white-space:pre-wrap;"
+            },
+            [errors.join("\n")]
+          )
+        : null
     ])
   );
 }
@@ -77,7 +91,11 @@ function renderSignedOut(appEl, { onLogin }) {
         ])
       ]),
       el("div", { class: "hr" }),
-      el("button", { class: "btn btn--primary", onclick: onLogin }, ["Sign In"])
+      el(
+        "button",
+        { class: "btn btn--primary", onclick: onLogin },
+        ["Sign In"]
+      )
     ])
   );
 }
@@ -87,18 +105,32 @@ function renderNotAllowed(appEl, { email, allowedEmails, onLogout }) {
 
   appEl.appendChild(
     el("div", { class: "boot" }, [
-      el("div", { class: "error" }, [
-        `Signed in as ${email}, but this account is not allowed.`,
-        el("div", { class: "small" }, [
-          `Allowed: ${allowedEmails.join(", ")}`
+      el("div", { class: "brand" }, [
+        el("div", { class: "brand__mark" }, ["PL"]),
+        el("div", {}, [
+          el("div", { class: "brand__name" }, ["Access denied"]),
+          el("div", { class: "brand__tag" }, ["This portal is private"])
         ])
       ]),
-      el("button", { class: "btn btn--danger", onclick: onLogout }, ["Sign Out"])
+      el("div", { class: "hr" }),
+      el("div", { class: "error" }, [
+        `Signed in as ${email}`,
+        el("div", { class: "small", style: "margin-top:8px;" }, [
+          `Allowed: ${(allowedEmails || []).join(", ")}`
+        ])
+      ]),
+      el(
+        "button",
+        { class: "btn btn--danger", onclick: onLogout },
+        ["Sign Out"]
+      )
     ])
   );
 }
 
-/* ---------- shell ---------- */
+/* =========================
+   SHELL
+   ========================= */
 
 function buildShell({ onLogout, whoText }) {
   const navItems = [
@@ -115,7 +147,7 @@ function buildShell({ onLogout, whoText }) {
   const nav = el(
     "nav",
     { class: "nav" },
-    navItems.map(n => {
+    navItems.map((n) => {
       const a = el("a", { href: `#${n.path}` }, [n.label]);
       a.dataset.path = n.path;
       return a;
@@ -158,12 +190,15 @@ function buildShell({ onLogout, whoText }) {
 
 function setActiveNav(navEl, path) {
   for (const a of navEl.querySelectorAll("a")) {
-    if (a.dataset.path === path) a.setAttribute("aria-current", "page");
-    else a.removeAttribute("aria-current");
+    a.dataset.path === path
+      ? a.setAttribute("aria-current", "page")
+      : a.removeAttribute("aria-current");
   }
 }
 
-/* ---------- routing ---------- */
+/* =========================
+   ROUTING
+   ========================= */
 
 const PAGES = {
   "/": renderDashboard,
@@ -177,21 +212,17 @@ const PAGES = {
   "/settings": renderSettings
 };
 
-/* ---------- main ---------- */
+/* =========================
+   MAIN
+   ========================= */
 
 async function main() {
   const appEl = document.getElementById("app");
-
   const cfg = getConfig();
-  const configErrors = validateConfig(cfg);
 
-  // allow boot even if lists are missing
-  const fatalErrors = configErrors.filter(
-    e => !e.startsWith("sharepoint.lists")
-  );
-
-  if (fatalErrors.length > 0) {
-    renderSetup(appEl, { errors: fatalErrors });
+  const errors = validateConfig(cfg);
+  if (errors.length) {
+    renderSetup(appEl, { errors });
     return;
   }
 
@@ -216,16 +247,6 @@ async function main() {
   const userEmail = getSignedInEmail(account);
   const sp = createSharePointClient(auth);
 
-  // 🔑 AUTO-PROVISION ARCHIEVE
-  try {
-    await ensureArchieveList(sp);
-  } catch (e) {
-    renderSetup(appEl, {
-      errors: ["ARCHIEVE initialization failed", String(e)]
-    });
-    return;
-  }
-
   const shell = buildShell({
     onLogout: () => auth.logout(),
     whoText: userEmail
@@ -244,18 +265,14 @@ async function main() {
   };
 
   async function renderRoute() {
-    ctx.route = getRoute();
-    const path = ctx.route.path || "/";
-    const renderer = PAGES[path] || renderDashboard;
+    const path = getRoute().path || "/dashboard";
+    const page = await (PAGES[path] || renderDashboard)(ctx);
 
-    setActiveNav(shell.nav, path === "/" ? "/dashboard" : path);
-
-    const page = await renderer(ctx);
-
+    setActiveNav(shell.nav, path);
     shell.titleEl.textContent = page.title || "";
     shell.subEl.textContent = page.subtitle || "";
-
     shell.actionsEl.innerHTML = "";
+
     for (const a of page.actions || []) {
       shell.actionsEl.appendChild(actionNode(a));
     }
@@ -264,12 +281,13 @@ async function main() {
     shell.contentEl.appendChild(page.content);
   }
 
-  if (!window.location.hash) setRoute("/dashboard");
-  onRouteChange(ctx.refresh);
+  if (!location.hash) setRoute("/dashboard");
+  onRouteChange(renderRoute);
   await renderRoute();
 }
 
-main().catch(err => {
-  const appEl = document.getElementById("app");
-  renderSetup(appEl, { errors: [String(err)] });
+main().catch((e) => {
+  renderSetup(document.getElementById("app"), {
+    errors: [String(e.message || e)]
+  });
 });

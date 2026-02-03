@@ -1,149 +1,122 @@
-/* ==========================================================================
-   ROOT & VARIABLES — PublicLogic identity
-   ========================================================================== */
 :root {
-  --bg0: #022c22;
-  --bg1: #052f28;
+  --bg: #021c16;
+  --panel: #0c2a22;
+  --border: rgba(255, 255, 255, 0.08);
 
-  --ink: rgba(247, 245, 239, 0.96);
-  --muted: rgba(247, 245, 239, 0.68);
-  --faint: rgba(247, 245, 239, 0.14);
-  --line: rgba(247, 245, 239, 0.12);
-
-  --surface: rgba(0, 0, 0, 0.28);
-  --surface-raised: rgba(0, 0, 0, 0.38);
+  --ink: rgba(247, 245, 239, 0.95);
+  --muted: rgba(247, 245, 239, 0.6);
 
   --accent: #34d399;
-  --accent2: #fbbf24;
-  --danger: #fb7185;
 
-  --shadow-sm: 0 6px 16px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 14px 36px rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.55);
+  --radius: 14px;
+  --shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
 
-  --radius-sm: 10px;
-  --radius: 16px;
-  --radius-lg: 20px;
-
-  --font-sans: "Sora", system-ui, -apple-system, sans-serif;
-  --font-serif: "Fraunces", Georgia, serif;
-
-  --transition: all 140ms ease;
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --font-serif: Georgia, serif;
 }
 
-/* ==========================================================================
-   BASE & RESET
-   ========================================================================== */
 * {
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 body {
   margin: 0;
-  background: var(--bg0);
+  background: linear-gradient(180deg, #000, var(--bg));
   color: var(--ink);
   font-family: var(--font-sans);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ==========================================================================
-   BACKGROUND LAYER
-   ========================================================================== */
-.bg {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(1200px 700px at 20% 10%, rgba(52, 211, 153, 0.12), transparent 60%),
-    radial-gradient(900px 600px at 80% 20%, rgba(251, 191, 36, 0.10), transparent 60%),
-    linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.25)),
-    url("./assets/noise.svg");
-  background-attachment: fixed;
-  z-index: -2;
+/* ===== Layout ===== */
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 32px 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
-/* ==========================================================================
-   LINKS & BUTTONS
-   ========================================================================== */
-a {
-  color: var(--accent);
-  text-decoration: none;
+/* ===== Grid ===== */
+
+.grid {
+  display: grid;
+  gap: 24px;
 }
 
-a:hover {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+.grid--2 {
+  grid-template-columns: 1fr 1fr;
 }
 
-.btn,
-a.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  font-size: 13px;
-  font-weight: 700;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--ink);
-  cursor: pointer;
-  transition: var(--transition);
+.grid--3 {
+  grid-template-columns: repeat(3, 1fr);
 }
 
-.btn:hover {
-  background: rgba(52, 211, 153, 0.12);
-  border-color: rgba(52, 211, 153, 0.35);
+@media (max-width: 900px) {
+  .grid--2,
+  .grid--3 {
+    grid-template-columns: 1fr;
+  }
 }
 
-/* ==========================================================================
-   CARD SYSTEM — CORE AUTHORITY
-   ========================================================================== */
+/* ===== Cards ===== */
+
 .card {
-  background: var(--surface);
-  border: 1px solid var(--line);
+  background: var(--panel);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 20px 22px;
-  backdrop-filter: blur(10px);
-  transition: transform 140ms ease, box-shadow 140ms ease;
+  padding: 28px;
+  box-shadow: var(--shadow);
 }
 
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
+.card--hero {
+  padding: 36px;
 }
 
-.card-title {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: 800;
+.card--calm {
+  background: #0a241d;
+}
+
+.card__label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
   margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
-.card-subtitle {
-  font-size: 0.95rem;
+.card__title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  margin: 0 0 12px;
+}
+
+.card__description {
   color: var(--muted);
   line-height: 1.5;
 }
 
-.card--calm {
-  background: rgba(0,0,0,0.22);
-  border-color: rgba(247,245,239,0.08);
+/* ===== Quick links ===== */
+
+.quick-link {
+  display: block;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+  color: var(--ink);
+  text-decoration: none;
 }
 
-/* ==========================================================================
-   WORKBENCH — COMMAND FRAME
-   ========================================================================== */
-.workbench {
-  min-height: 100vh;
-  padding: 48px 24px 140px;
-  background:
-    radial-gradient(1200px 700px at 20% 10%, rgba(52, 211, 153, 0.10), transparent 60%),
-    linear-gradient(180deg, rgba(0,
+.quick-link:first-child {
+  border-top: none;
+}
+
+.quick-link:hover {
+  color: var(--accent);
+}
+
+/* ===== Muted ===== */
+
+.muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+}

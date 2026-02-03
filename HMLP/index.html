@@ -8,14 +8,10 @@
   <!-- Styles -->
   <link rel="stylesheet" href="./styles.css" />
 
-  <!-- MSAL Browser (REQUIRED FOR AUTH) -->
-  <script
-    src="https://alcdn.msauth.net/browser/2.38.1/js/msal-browser.min.js"
-    integrity="sha384-JW9yQ5p1+t0NenE2no0RvrRZtGJPD7W82dManIeZDV4SSQSSHqzTeWY5Avzkdxl3"
-    crossorigin="anonymous"
-  ></script>
+  <!-- MSAL Browser (NO INTEGRITY — avoids CDN hash mismatch) -->
+  <script src="https://alcdn.msauth.net/browser/2.38.1/js/msal-browser.min.js"></script>
 
-  <!-- App Config (must load before app.js) -->
+  <!-- App Config -->
   <script src="./config.js"></script>
 </head>
 <body>

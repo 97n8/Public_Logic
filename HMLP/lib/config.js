@@ -1,46 +1,39 @@
-// lib/constants.js
-// Centralized status/stage definitions
-
-export const TASK_STATUS = ["Today", "This Week", "Backlog", "Blocked", "Done"];
-export const TASK_PRIORITY = ["P0", "P1", "P2"];
-export const TASK_AREA = ["Ops", "Sales", "Delivery", "Admin"];
-
-export const PIPELINE_STAGES = ["Lead", "Discovery", "Proposal", "Active", "Closed Won", "Closed Lost"];
-
-export const PROJECT_STATUS = ["Active", "Paused", "Complete"];
-
-export const PILL_VARIANTS = {
-  // Tasks
-  done: "mint",
-  blocked: "rose",
-  today: "gold",
-  "this week": "",
-  backlog: "",
-  
-  // Pipeline
-  "closed won": "mint",
-  "closed lost": "rose",
-  proposal: "gold",
-  discovery: "gold",
-  active: "mint",
-  lead: "",
-  
-  // Projects
-  complete: "mint",
-  paused: "gold"
-};
-
-export function getPillVariant(status) {
-  const key = String(status || "").toLowerCase();
-  return PILL_VARIANTS[key] || "";
+export function getConfig() {
+  // eslint-disable-next-line no-undef
+  return window.PUBLICLOGIC_OS_CONFIG || null;
 }
 
-export function compareByOrder(order) {
-  return (a, b) => {
-    const ia = order.indexOf(a);
-    const ib = order.indexOf(b);
-    const ra = ia === -1 ? 999 : ia;
-    const rb = ib === -1 ? 999 : ib;
-    return ra - rb;
-  };
+export function validateConfig(cfg) {
+  const errors = [];
+
+  if (!cfg) {
+    errors.push("Missing config.js (window.PUBLICLOGIC_OS_CONFIG is null).");
+    return errors;
+  }
+
+  if (!cfg.msal?.clientId) errors.push("msal.clientId is missing");
+  if (!cfg.msal?.tenantId) errors.push("msal.tenantId is missing");
+  if (!cfg.msal?.redirectUri) errors.push("msal.redirectUri is missing");
+
+  if (!Array.isArray(cfg.access?.allowedEmails) || cfg.access.allowedEmails.length === 0) {
+    errors.push("access.allowedEmails must include at least one allowed user");
+  }
+
+  if (!Array.isArray(cfg.graph?.scopes) || cfg.graph.scopes.length === 0) {
+    errors.push("graph.scopes is missing");
+  }
+
+  if (!cfg.sharepoint?.hostname) errors.push("sharepoint.hostname is missing");
+  if (!cfg.sharepoint?.sitePath) errors.push("sharepoint.sitePath is missing");
+
+  // ✅ ARCHIEVE is now the only required list
+  if (!cfg.sharepoint?.archieve?.enabled) {
+    errors.push("sharepoint.archieve.enabled must be true");
+  }
+
+  if (!cfg.sharepoint?.archieve?.listName) {
+    errors.push("sharepoint.archieve.listName is missing");
+  }
+
+  return errors;
 }

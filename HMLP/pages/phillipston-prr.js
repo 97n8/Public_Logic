@@ -2,309 +2,204 @@
 import { el } from "../lib/dom.js";
 import { savePrrSubmission } from "../lib/archieve.js";
 
-const SHAREPOINT_PRR_FOLDER =
-  "https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/01_Towns/MA/Phillipston/PRR";
-
-export function renderPhillipstonPrr(ctx) {
+export async function renderPhillipstonPrr(ctx) {
   const { sp, cfg, refresh } = ctx;
 
-  // ── State ────────────────────────────────────────────────────────────────
-  let formState = {
-    isSubmitting: false,
-    saveResult: null,
-    error: null,
-    fieldErrors: {},
-  };
+  let submitted = false;
+  let result = null;
+  let error = null;
+  let deadline = null;
 
-  const ARCHIEVE_LIST_URL = cfg?.sharepoint?.archieve?.listUrl || null;
+  const PRR_FOLDER =
+    "https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/01_Towns/MA/Phillipston/PRR";
 
-  // ── Handlers ─────────────────────────────────────────────────────────────
-  async function handleSubmit(e) {
+  const ARCHIEVE_LIST =
+    cfg?.sharepoint?.archieve?.listUrl || "#";
+
+  /* =========================
+     SUBMIT HANDLER
+     ========================= */
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    formState.error = null;
-    formState.fieldErrors = {};
+    error = null;
 
-    const formData = new FormData(e.target);
-    const values = {
-      requester: (formData.get("requester") || "").trim(),
-      email: (formData.get("email") || "").trim() || null,
-      source: formData.get("source") || "",
-      request: (formData.get("request") || "").trim(),
+    const fd = new FormData(e.target);
+    const data = {
+      name: fd.get("name")?.trim(),
+      email: fd.get("email")?.trim(),
+      phone: fd.get("phone")?.trim() || "",
+      request: fd.get("request")?.trim(),
+      agree: fd.get("agree"),
     };
 
-    // Client-side validation
-    const errors = {};
-    if (!values.requester) errors.requester = "Requester name is required";
-    if (!values.source) errors.source = "Please select a source";
-    if (!values.request) errors.request = "Request description is required";
-    if (values.request.length > 4000) {
-      errors.request = "Description is too long (max 4000 characters)";
-    }
-
-    if (Object.keys(errors).length > 0) {
-      formState.fieldErrors = errors;
-      refresh();
+    if (!data.name || !data.email || !data.request || !data.agree) {
+      error = "All required fields must be completed.";
+      refresh?.();
       return;
     }
 
-    formState.isSubmitting = true;
-    formState.error = null;
-    refresh();
-
     try {
-      const result = await savePrrSubmission(sp, cfg, {
-        name: values.requester,
-        email: values.email,
-        source: values.source,
-        request: values.request,
+      result = await savePrrSubmission(sp, cfg, data);
+
+      let days = 10;
+      let d = new Date();
+      while (days > 0) {
+        d.setDate(d.getDate() + 1);
+        if (![0,6].includes(d.getDay())) days--;
+      }
+
+      deadline = d.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric"
       });
 
-      formState.saveResult = result;
-      formState.isSubmitting = false;
-      // Optional: auto-reset after success (uncomment if desired)
-      // setTimeout(() => { resetForm(); refresh(); }, 12000);
+      submitted = true;
     } catch (err) {
-      console.error("PRR submission failed", err);
-      formState.error =
-        err.message?.includes("network") || err.message?.includes("timeout")
-          ? "Network error — please check your connection and try again."
-          : "Failed to save PRR. Please try again or contact support.";
-      formState.isSubmitting = false;
+      console.error(err);
+      error = "Failed to save request.";
     }
 
-    refresh();
-  }
+    refresh?.();
+  };
 
-  function resetForm() {
-    formState = {
-      isSubmitting: false,
-      saveResult: null,
-      error: null,
-      fieldErrors: {},
-    };
-    refresh();
-  }
-
-  // ── Form Fields ──────────────────────────────────────────────────────────
-  function Field({ label, name, type = "text", required, autoComplete, error }) {
-    const hasError = !!error || !!formState.fieldErrors[name];
-    const errorMessage = error || formState.fieldErrors[name];
-
-    return el("div", { class: "field" }, [
-      el(
-        "label",
-        { class: "label", for: name },
-        required ? `${label} *` : label
-      ),
-      el("input", {
-        id: name,
-        name,
-        type,
-        class: `input ${hasError ? "input--error" : ""}`,
-        required,
-        autocomplete: autoComplete || "off",
-        "aria-invalid": hasError ? "true" : "false",
-        "aria-describedby": hasError ? `${name}-error` : undefined,
-      }),
-      hasError &&
-        el(
-          "div",
-          { id: `${name}-error`, class: "field-error", role: "alert" },
-          errorMessage
-        ),
-    ]);
-  }
-
-  function TextArea({ label, name, required }) {
-    const error = formState.fieldErrors[name];
-    return el("div", { class: "field" }, [
-      el("label", { class: "label", for: name }, required ? `${label} *` : label),
-      el("textarea", {
-        id: name,
-        name,
-        class: `textarea ${error ? "input--error" : ""}`,
-        rows: 7,
-        required,
-        "aria-invalid": error ? "true" : "false",
-        "aria-describedby": error ? `${name}-error` : undefined,
-      }),
-      error &&
-        el(
-          "div",
-          { id: `${name}-error`, class: "field-error", role: "alert" },
-          error
-        ),
-    ]);
-  }
-
-  function Select({ label, name, options, required }) {
-    const error = formState.fieldErrors[name];
-    return el("div", { class: "field" }, [
-      el("label", { class: "label", for: name }, required ? `${label} *` : label),
-      el(
-        "select",
-        {
-          id: name,
-          name,
-          class: `input ${error ? "input--error" : ""}`,
-          required,
-          "aria-invalid": error ? "true" : "false",
-          "aria-describedby": error ? `${name}-error` : undefined,
-        },
-        [
-          el("option", { value: "", disabled: true, selected: true }, "— Select —"),
-          ...options.map((opt) => el("option", { value: opt }, opt)),
-        ]
-      ),
-      error &&
-        el(
-          "div",
-          { id: `${name}-error`, class: "field-error", role: "alert" },
-          error
-        ),
-    ]);
-  }
-
-  // ── UI Fragments ─────────────────────────────────────────────────────────
-  const successView = formState.saveResult
-    ? el("div", { class: "stack gap-xl text-center py-lg" }, [
-        el("div", { class: "success-icon" }, "✓"),
-        el("h3", { class: "success-title" }, "PRR Recorded"),
-        el("div", { class: "metric-block" }, [
-          el("div", { class: "metric-label" }, "Case ID"),
-          el("div", { class: "metric-value" }, formState.saveResult.caseId),
-        ]),
-        el(
-          "a",
-          {
-            href: formState.saveResult.fileUrl,
-            target: "_blank",
-            rel: "noopener noreferrer",
-            class: "btn btn--primary btn--large",
-          },
-          "Open Case File"
-        ),
-        el(
-          "button",
-          {
-            class: "btn btn--outline mt-lg",
-            onclick: resetForm,
-            type: "button",
-          },
-          "Record Another PRR"
-        ),
+  /* =========================
+     HEADER (APP IDENTITY)
+     ========================= */
+  const header = el("div", { class: "prr-app-header" }, [
+    el("div", { class: "prr-app-header__left" }, [
+      el("div", { class: "prr-badge" }, ["PRR"]),
+      el("div", {}, [
+        el("h1", { class: "prr-title" }, ["Phillipston Public Records"]),
+        el("div", { class: "prr-sub" }, [
+          "Staff Console • System of Record"
+        ])
       ])
-    : null;
-
-  const formView = el("form", { class: "stack gap-lg", onsubmit: handleSubmit }, [
-    Field({
-      label: "Requester Name",
-      name: "requester",
-      required: true,
-      autoComplete: "name",
-    }),
-    Field({
-      label: "Requester Email",
-      name: "email",
-      type: "email",
-      autoComplete: "email",
-    }),
-    Select({
-      label: "Request Source",
-      name: "source",
-      options: ["Email", "Phone", "Walk-in", "Mail", "Other"],
-      required: true,
-    }),
-    TextArea({
-      label: "Request Description",
-      name: "request",
-      required: true,
-    }),
-
-    formState.error &&
-      el("div", { class: "error-banner", role: "alert" }, formState.error),
-
-    el("div", { class: "flex gap-md justify-end mt-md" }, [
-      el(
-        "button",
-        {
-          type: "submit",
-          class: "btn btn--primary",
-          disabled: formState.isSubmitting,
-        },
-        formState.isSubmitting ? "Saving..." : "Save PRR"
-      ),
-      el(
-        "button",
-        {
-          type: "button",
-          class: "btn btn--outline",
-          onclick: resetForm,
-          disabled: formState.isSubmitting,
-        },
-        "Cancel"
-      ),
     ]),
+    el("div", { class: "prr-app-header__right" }, [
+      el("span", { class: "pill pill--mint" }, ["Live"]),
+      el("span", { class: "small muted" }, ["ARCHIEVE-backed"])
+    ])
   ]);
 
-  const intake = el("div", { class: "card stack gap-xl" }, [
-    el("div", { class: "header-block" }, [
-      el("h2", {}, "New Public Records Request"),
-      el("p", { class: "subtitle" }, "Staff intake — email, phone, walk-in, mail, etc."),
+  /* =========================
+     LEFT: STAFF INTAKE
+     ========================= */
+  const intake = el("div", { class: "card stack gap-lg" }, [
+
+    el("h2", {}, ["Record Incoming PRR"]),
+    el("p", { class: "small muted" }, [
+      "Use this form to log any public records request received by email, phone, mail, or in person."
     ]),
-    successView || formView,
+
+    submitted
+      ? el("div", { class: "stack gap-md" }, [
+          el("h3", {}, ["Request Recorded"]),
+          el("p", {}, ["Case ID: ", el("strong", {}, [result.caseId])]),
+          el("p", {}, [
+            "Initial response due by ",
+            el("strong", {}, [deadline])
+          ]),
+          el("a", {
+            href: result.fileUrl,
+            target: "_blank",
+            class: "btn btn--primary"
+          }, ["Open Saved Record"]),
+          el("button", {
+            class: "btn",
+            onclick: () => {
+              submitted = false;
+              result = null;
+              error = null;
+              refresh?.();
+            }
+          }, ["Record Another PRR"])
+        ])
+      : el("form", { class: "stack gap-lg", onsubmit: handleSubmit }, [
+
+          el("div", { class: "split" }, [
+            el("div", {}, [
+              el("label", { class: "label" }, ["Requester Name *"]),
+              el("input", { name: "name", class: "input", required: true })
+            ]),
+            el("div", {}, [
+              el("label", { class: "label" }, ["Email *"]),
+              el("input", { type: "email", name: "email", class: "input", required: true })
+            ])
+          ]),
+
+          el("div", {}, [
+            el("label", { class: "label" }, ["Phone (optional)"]),
+            el("input", { name: "phone", class: "input" })
+          ]),
+
+          el("div", {}, [
+            el("label", { class: "label" }, ["Records Requested *"]),
+            el("textarea", {
+              name: "request",
+              class: "textarea",
+              rows: 6,
+              required: true
+            })
+          ]),
+
+          el("label", { class: "stack gap-sm" }, [
+            el("input", { type: "checkbox", name: "agree", required: true }),
+            el("span", { class: "small" }, [
+              "This request is subject to Massachusetts Public Records Law (M.G.L. c. 66 §10)."
+            ])
+          ]),
+
+          error && el("div", { class: "error" }, [error]),
+
+          el("div", { class: "hr" }),
+
+          el("button", {
+            class: "btn btn--primary"
+          }, ["Save to ARCHIEVE"])
+        ])
   ]);
 
-  // ── Dashboard (future: fetch real data) ──────────────────────────────────
-  const dashboard = el("div", { class: "card card--calm stack gap-lg" }, [
-    el("h3", {}, "Phillipston PRR Overview"),
-    el("p", { class: "muted small" }, "Live system of record: SharePoint"),
+  /* =========================
+     RIGHT: COMMAND PANEL
+     ========================= */
+  const command = el("div", { class: "card card--calm stack gap-md" }, [
 
-    el("div", { class: "metrics-grid" }, [
-      el("div", { class: "metric" }, [
-        el("div", { class: "metric-label" }, "Open Requests"),
-        el("div", { class: "metric-value" }, "8"),
-        el("div", { class: "metric-trend positive" }, "↑ 2 this week"),
-      ]),
-      el("div", { class: "metric" }, [
-        el("div", { class: "metric-label" }, "Next 10-Day Deadline"),
-        el("div", { class: "metric-value urgent" }, "Feb 11, 2026"),
-      ]),
-      el("div", { class: "metric" }, [
-        el("div", { class: "metric-label" }, "Compliance"),
-        el("div", { class: "metric-value success" }, "On Track"),
-      ]),
-    ]),
+    el("h3", {}, ["Command Panel"]),
 
-    el("div", { class: "divider my-lg" }),
+    el("a", {
+      href: PRR_FOLDER,
+      target: "_blank",
+      class: "btn btn--primary"
+    }, ["Open PRR Workspace"]),
 
-    el("div", { class: "stack gap-md" }, [
-      el("a", { href: SHAREPOINT_PRR_FOLDER, target: "_blank", class: "link-block" }, [
-        el("span", {}, "📁 PRR Working Folder"),
-        el("span", { class: "muted small" }, "SharePoint"),
-      ]),
-      ARCHIEVE_LIST_URL &&
-        el("a", { href: ARCHIEVE_LIST_URL, target: "_blank", class: "link-block" }, [
-          el("span", {}, "🗄 ARCHIEVE List"),
-          el("span", { class: "muted small" }, "All submissions"),
-        ]),
-      el("a", { href: "https://www.publiclogic.org/demo", target: "_blank", class: "link-block" }, [
-        el("span", {}, "📘 PRR Procedures & Training"),
-      ]),
-    ]),
+    el("a", {
+      href: ARCHIEVE_LIST,
+      target: "_blank",
+      class: "btn"
+    }, ["View ARCHIEVE Records"]),
 
-    el("p", { class: "muted small mt-auto pt-lg border-top" }, 
-      "All actions logged • Immutable • Turnover-safe"
-    ),
+    el("div", { class: "hr" }),
+
+    el("div", { class: "small muted" }, [
+      "All actions are logged. Records are immutable. This system is designed to survive staff turnover and audit scrutiny."
+    ])
   ]);
 
-  // ── Root layout ──────────────────────────────────────────────────────────
+  /* =========================
+     FINAL LAYOUT
+     ========================= */
+  const content = el("div", { class: "prr-app-frame" }, [
+    header,
+    el("div", { class: "grid" }, [
+      el("div", { style: "grid-column: span 7;" }, [intake]),
+      el("div", { style: "grid-column: span 5;" }, [command])
+    ])
+  ]);
+
   return {
     title: "Phillipston PRR",
-    subtitle: "Intake & Case Overview",
-    content: el("div", { class: "grid-responsive gap-xl" }, [
-      el("div", { class: "col-main" }, [intake]),
-      el("div", { class: "col-sidebar" }, [dashboard]),
-    ]),
+    subtitle: "Staff Intake and Records Console",
+    content
   };
 }

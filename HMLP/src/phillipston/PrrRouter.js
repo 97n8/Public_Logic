@@ -19,6 +19,7 @@ export function PrrRouter({ cfg, auth, sp }) {
   nav.appendChild(btnIntake);
 
   const body = document.createElement("div");
+  body.style.marginTop = "24px";
 
   function render(nextView) {
     view = nextView;

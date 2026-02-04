@@ -1,21 +1,27 @@
+import { getSignedInEmail } from "../../lib/auth.js";
 import { PhillipstonShell } from "./PhillipstonShell.js";
 
 export function PhillipstonApp({ cfg, auth, sp }) {
-  const email = auth?.getSignedInEmail?.();
+  const account = auth?.getAccount?.();
+  const email = getSignedInEmail(account)?.toLowerCase();
 
-  const hasAccess =
-    auth?.hasRole?.("phillipston_internal") ||
-    email === "nate@publiclogic.org";
+  const allowedEmails = [
+    "nate@publiclogic.org",
+    "allie@publiclogic.org"
+  ];
+
+  const hasAccess = allowedEmails.includes(email);
 
   if (!hasAccess) {
     const denied = document.createElement("div");
+    denied.className = "card";
     denied.style.padding = "2rem";
 
     const h2 = document.createElement("h2");
-    h2.textContent = "Access denied";
+    h2.textContent = "Access Denied";
 
     const p = document.createElement("p");
-    p.textContent = "Phillipston internal access only.";
+    p.textContent = `Phillipston internal access only. Signed in as: ${email || "(unknown)"}`;
 
     denied.appendChild(h2);
     denied.appendChild(p);

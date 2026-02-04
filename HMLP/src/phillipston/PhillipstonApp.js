@@ -1,32 +1,88 @@
-import { getSignedInEmail } from "../../lib/auth.js";
-import { PhillipstonShell } from "./PhillipstonShell.js";
+import { el, clear } from "../../lib/dom.js";
 
-export function PhillipstonApp({ cfg, auth, sp }) {
-  const account = auth?.getAccount?.();
-  const email = getSignedInEmail(account)?.toLowerCase();
+/*
+  PhillipstonShell
 
-  const allowedEmails = [
-    "nate@publiclogic.org",
-    "allie@publiclogic.org"
-  ];
+  Purpose:
+  - Primary CaseSpace container for Phillipston
+  - Allows staff to toggle between:
+    - Staff CaseSpace view
+    - Resident-facing PRR view (iframe)
 
-  const hasAccess = allowedEmails.includes(email);
+  Notes:
+  - Resident view is the real public experience
+  - No permissions or access logic lives here
+  - Toggle is local to this CaseSpace only
+*/
 
-  if (!hasAccess) {
-    const denied = document.createElement("div");
-    denied.className = "card";
-    denied.style.padding = "2rem";
+export function PhillipstonShell({ cfg, auth, sp, viewer }) {
+  const root = el("div", { class: "phillipston-shell" });
+  let residentView = false;
 
-    const h2 = document.createElement("h2");
-    h2.textContent = "Access Denied";
-
-    const p = document.createElement("p");
-    p.textContent = `Phillipston internal access only. Signed in as: ${email || "(unknown)"}`;
-
-    denied.appendChild(h2);
-    denied.appendChild(p);
-    return denied;
+  function toggleResidentView() {
+    residentView = !residentView;
+    render();
   }
 
-  return PhillipstonShell({ cfg, auth, sp });
+  function ViewToggle() {
+    return el("div", { class: "view-toggle" }, [
+      el("div", { class: "view-toggle__status muted small" }, [
+        residentView ? "Resident view" : "Staff view"
+      ]),
+      el(
+        "button",
+        {
+          class: "btn btn-secondary",
+          onclick: toggleResidentView
+        },
+        [residentView ? "Exit resident view" : "View as resident"]
+      )
+    ]);
+  }
+
+  function StaffCaseSpace() {
+    return el("div", { class: "casespace staff-view" }, [
+      el("h2", {}, ["Phillipston CaseSpace"]),
+      el("p", { class: "muted" }, [
+        "Internal workspace for Phillipston public records requests."
+      ]),
+
+      // Placeholder for your existing CaseSpace content
+      el("div", { class: "card" }, [
+        el("p", {}, [
+          "Staff tools, internal notes, workflows, and records live here."
+        ])
+      ])
+    ]);
+  }
+
+  function ResidentFrame() {
+    return el("div", { class: "resident-frame" }, [
+      el("div", { class: "resident-frame__notice muted small" }, [
+        "You are viewing the resident-facing Public Records Request form. Submissions here are real."
+      ]),
+      el("iframe", {
+        src: "https://phillipstonma.gov/public-records-request",
+        title: "Phillipston Public Records Request",
+        loading: "lazy",
+        referrerpolicy: "no-referrer",
+        sandbox: "allow-forms allow-scripts allow-same-origin"
+      })
+    ]);
+  }
+
+  function render() {
+    clear(root);
+
+    root.appendChild(ViewToggle());
+
+    if (residentView) {
+      root.appendChild(ResidentFrame());
+    } else {
+      root.appendChild(StaffCaseSpace());
+    }
+  }
+
+  render();
+  return root;
 }

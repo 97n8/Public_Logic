@@ -1,8 +1,13 @@
 import { PhillipstonShell } from "./PhillipstonShell.js";
 
 export function PhillipstonApp({ cfg, auth, sp }) {
-  // Hard internal gate (defense in depth)
-  if (!auth?.hasRole?.("phillipston_internal")) {
+  const email = auth?.getSignedInEmail?.();
+
+  const hasAccess =
+    auth?.hasRole?.("phillipston_internal") ||
+    email === "nate@publiclogic.org";
+
+  if (!hasAccess) {
     const denied = document.createElement("div");
     denied.style.padding = "2rem";
 

@@ -1,4 +1,4 @@
-export function CaseSpace() {
+export function CaseSpace({ cfg, auth, sp }) {
   const root = document.createElement("div");
   root.className = "case-space";
 
@@ -34,7 +34,11 @@ export function CaseSpace() {
     "https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/01_Towns/MA/Phillipston/PRR"
   ));
 
-  actions.appendChild(link("🗄️ ARCHIEVE List", "#"));
+  actions.appendChild(link(
+    "🗄️ ARCHIEVE List",
+    `https://${cfg?.sharepoint?.hostname}${cfg?.sharepoint?.sitePath}/Lists/${cfg?.sharepoint?.archieve?.listName || "ARCHIEVE"}/AllItems.aspx`
+  ));
+
   actions.appendChild(link("📘 Training & SOPs", "https://www.publiclogic.org/demo"));
 
   /* ===== Notes ===== */

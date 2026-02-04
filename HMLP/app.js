@@ -17,8 +17,9 @@ import { renderEnvironments } from "./pages/environments.js";
 import { renderPlaybooks } from "./pages/playbooks.js";
 import { renderTools } from "./pages/tools.js";
 import { renderSettings } from "./pages/settings.js";
+import { renderPhillipstonPrr } from "./pages/phillipston-prr.js";
 
-// ✅ Internal app
+// Internal app
 import { PhillipstonApp } from "./src/phillipston/index.js";
 
 /* ================= SHELL ================= */
@@ -31,10 +32,7 @@ function buildShell({ onLogout, who }) {
     ["/pipeline", "Pipeline"],
     ["/projects", "Projects"],
     ["/environments", "Environments"],
-
-    // ✅ Phillipston internal app
     ["/phillipston", "Phillipston"],
-
     ["/playbooks", "Playbooks"],
     ["/tools", "Tools"],
     ["/settings", "Settings"]
@@ -96,12 +94,15 @@ const PAGES = {
   "/projects": renderProjects,
   "/environments": renderEnvironments,
 
-  // ✅ Phillipston internal app (mounted, not rendered as a page)
+  // Phillipston internal app (embedded shell)
   "/phillipston": ({ cfg, auth, sp }) => ({
     title: "Phillipston",
     subtitle: "Internal Operations",
     content: PhillipstonApp({ cfg, auth, sp })
   }),
+
+  // Phillipston PRR staff console (standalone page)
+  "/phillipston-prr": renderPhillipstonPrr,
 
   "/playbooks": renderPlaybooks,
   "/tools": renderTools,

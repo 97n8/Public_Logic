@@ -12,7 +12,10 @@ window.PUBLICLOGIC_OS_CONFIG = {
   },
 
   access: {
-    allowedEmails: ["nate@publiclogic.org"]
+    allowedEmails: [
+      "nate@publiclogic.org",
+      "allie@publiclogic.org"
+    ]
   },
 
   sharepoint: {
@@ -21,27 +24,24 @@ window.PUBLICLOGIC_OS_CONFIG = {
     archieve: {
       enabled: true,
       listName: "ARCHIEVE",
-      // Folder structure pattern for PRR submissions
-      folderTemplate: "{FY}/{DEPT}/PRR",     // will become FY2025-2026/PHILLIPSTON/PRR
+      folderTemplate: "{FY}/{DEPT}/PRR",
       defaultDept: "PHILLIPSTON",
       defaultCategory: "PRR"
     }
   },
 
-  // NEW: Phillipston-specific environment settings
   environments: {
     phillipston: {
       name: "Phillipston MA",
       description: "Public Records Request Form – Phillipston, MA",
       path: "/phillipston-prr",
-      // Overrides for this environment
       sharepointOverrides: {
         folderPrefix: "PHILLIPSTON",
         retentionClass: "Permanent",
         tags: ["Phillipston", "PRR", "MGL c.66", "Public Records"]
       },
-      // Legal & compliance info shown in form footer
-      legalNotice: "This request is submitted under M.G.L. c. 66 §10 and 950 CMR 32.00. The Town of Phillipston must respond within 10 business days unless a valid extension applies."
+      legalNotice:
+        "This request is submitted under M.G.L. c. 66 §10 and 950 CMR 32.00. The Town of Phillipston must respond within 10 business days unless a valid extension applies."
     }
   }
 };

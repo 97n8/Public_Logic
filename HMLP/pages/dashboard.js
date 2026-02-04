@@ -119,10 +119,10 @@ export async function renderDashboard(ctx) {
 
   const timeHint =
     now.getHours() < 12
-      ? "Start your day"
+      ? "Start with the signal"
       : now.getHours() < 17
-      ? "Midday check-in"
-      : "Wrap up";
+      ? "Midday check-in and recalibrate"
+      : "Close strong, set tomorrow";
 
   const userName = ctx.userEmail
     ? ctx.userEmail.split("@")[0]
@@ -187,31 +187,31 @@ export async function renderDashboard(ctx) {
     el("div", { class: "dashboard-section__header" }, [
       el("h3", {}, ["Actions"]),
       el("span", { class: "dashboard-section__hint" }, [
-        "Fast access"
+        "Quick launch"
       ])
     ]),
     el("div", { class: "quick-actions-grid" }, [
       quickAction({
         label: "Ask Claude",
-        description: "Opens in new tab",
+        description: "Think, draft, decide",
         icon: ICONS.ai,
         href: "https://claude.ai"
       }),
       quickAction({
         label: "Apple Notes",
-        description: "External notes",
+        description: "Capture stray thoughts",
         icon: ICONS.notes,
         href: "https://www.icloud.com/notes"
       }),
       quickAction({
         label: "Calendar",
-        description: "Outlook",
+        description: "See the day",
         icon: ICONS.calendar,
         href: "https://outlook.office.com/calendar/"
       }),
       quickAction({
         label: "Tasks",
-        description: "View task list",
+        description: "Triage your queue",
         icon: ICONS.task,
         onClick: () => (window.location.hash = "#/tasks")
       })
@@ -224,27 +224,27 @@ export async function renderDashboard(ctx) {
     el("div", { class: "dashboard-section__header" }, [
       el("h3", {}, ["System Connections"]),
       el("span", { class: "dashboard-section__hint" }, [
-        "Verified only"
+        "Verified + trusted"
       ])
     ]),
     el("div", { class: "integrations-grid" }, [
       integrationCard({
         name: "Claude AI",
-        description: "External AI service",
+        description: "Summaries, synthesis, and drafts",
         icon: ICONS.ai,
         connected: integrationsConfig.claude,
         href: "https://claude.ai"
       }),
       integrationCard({
         name: "Apple Notes",
-        description: "External notes service",
+        description: "Personal notes and capture",
         icon: ICONS.notes,
         connected: integrationsConfig.appleNotes,
         href: "https://www.icloud.com/notes"
       }),
       integrationCard({
         name: "Microsoft 365",
-        description: "Identity and documents",
+        description: "Identity, mail, SharePoint",
         icon: ICONS.projects,
         connected: integrationsConfig.m365,
         href: "https://www.office.com"
@@ -258,11 +258,11 @@ export async function renderDashboard(ctx) {
     el("div", { class: "dashboard-section__header" }, [
       el("h3", {}, ["System Activity"]),
       el("span", { class: "dashboard-section__hint" }, [
-        "Nothing yet"
+        "Quiet for now"
       ])
     ]),
     el("div", { class: "activity-empty" }, [
-      "Nothing yet. Activity will appear here once sources are connected."
+      "No activity yet. Connect sources to start the stream."
     ])
   ]);
 

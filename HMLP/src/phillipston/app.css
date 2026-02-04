@@ -1,78 +1,277 @@
-* { box-sizing: border-box; }
+/* ==========================================================================
+   Phillipston Module – Inherits OS Light Theme
+   ========================================================================== */
 
 .phillipston-shell {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
 }
 
 .phillipston-shell__header {
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  padding: 20px 32px;
+  background: var(--color-bg-surface-2);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-5) var(--space-6);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  margin: calc(-1 * var(--space-6));
+  margin-bottom: var(--space-5);
+  width: calc(100% + var(--space-6) * 2);
 }
 
 .phillipston-shell__header h1 {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-bold);
   margin: 0;
-  font-size: 20px;
 }
 
 .phillipston-shell__header p {
+  font-size: var(--fs-00);
+  color: var(--color-text-tertiary);
   margin: 2px 0 0;
-  font-size: 12px;
-  color: #6b7280;
-}
-
-.phillipston-shell__header nav button {
-  background: none;
-  border: none;
-  margin-left: 16px;
-  padding: 6px 10px;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.phillipston-shell__header nav button[aria-current="true"] {
-  border-bottom: 2px solid #111827;
 }
 
 .phillipston-shell__main {
-  padding: 40px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: var(--space-5);
 }
 
+/* ===== PRR Nav Tabs ===== */
+.prr-nav {
+  display: flex;
+  gap: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.prr-nav button {
+  background: none;
+  border: 1px solid transparent;
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  font-size: var(--fs-0);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  transition: all 0.12s ease;
+}
+
+.prr-nav button:hover {
+  background: var(--color-bg-surface-2);
+  color: var(--color-text-primary);
+}
+
+.prr-nav button[aria-current="true"] {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+/* ===== Case Space ===== */
 .case-space {
-  width: 100%;
-  max-width: 960px;
-  display: grid;
-  gap: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.case-hero h2 {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--space-2);
+}
+
+.case-hero p {
+  color: var(--color-text-tertiary);
 }
 
 .case-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-4);
 }
 
 .stat {
-  background: white;
-  padding: 16px;
-  border-radius: 8px;
+  background: var(--color-bg-surface-2);
+  border: 1px solid var(--color-border);
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
   display: flex;
-  gap: 12px;
+  gap: var(--space-3);
   align-items: center;
 }
 
+.stat__icon {
+  font-size: var(--fs-4);
+}
+
+.stat__value {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+}
+
+.stat__label {
+  font-size: var(--fs-00);
+  color: var(--color-text-tertiary);
+}
+
+.case-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.case-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-bg-surface-2);
+  border: 1px solid var(--color-border);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--color-text-primary);
+  font-weight: var(--fw-medium);
+  transition: all 0.12s ease;
+}
+
+.case-actions a:hover {
+  background: var(--color-bg-surface-3);
+  border-color: var(--color-border-strong);
+}
+
+.case-notes {
+  background: rgba(180, 83, 9, 0.08);
+  border: 1px solid var(--color-warning);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  font-size: var(--fs-0);
+  color: var(--color-warning);
+}
+
+/* ===== Staff Intake ===== */
 .staff-intake {
-  max-width: 640px;
-  width: 100%;
+  max-width: 600px;
+}
+
+.staff-intake h2 {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--space-2);
+}
+
+.staff-intake > p {
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-5);
 }
 
 .intake-form {
-  display: grid;
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.intake-form label {
+  display: block;
+  font-size: var(--fs-00);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: var(--space-1);
+}
+
+.intake-form input,
+.intake-form textarea {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-0);
+  color: var(--color-text-primary);
+  background: var(--color-bg-surface-1);
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.intake-form input:focus,
+.intake-form textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-glow);
+}
+
+.intake-form button[type="submit"] {
+  align-self: flex-start;
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-0);
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.intake-form button[type="submit"]:hover {
+  background: var(--color-accent-dark);
+}
+
+.intake-form button[type="submit"]:disabled {
+  background: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+/* ===== PRR App Header (standalone page) ===== */
+.prr-app-frame {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.prr-app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-4);
+}
+
+.prr-app-header__left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.prr-app-header__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.prr-badge {
+  background: var(--color-accent);
+  color: #fff;
+  font-size: var(--fs-00);
+  font-weight: var(--fw-bold);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
+}
+
+.prr-title {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-bold);
+  margin: 0;
+}
+
+.prr-sub {
+  font-size: var(--fs-00);
+  color: var(--color-text-tertiary);
 }

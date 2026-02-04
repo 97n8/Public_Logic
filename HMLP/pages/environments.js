@@ -25,13 +25,13 @@ export async function renderEnvironments() {
 
     el("div", { class: "env-grid" }, [
 
-      // ✅ PHILLIPSTON — INTERNAL APP
+      // PHILLIPSTON — INTERNAL APP
       environmentCard({
         name: "Phillipston, MA",
         badge: "Live",
         description:
           "Staff PRR intake and case command center. ARCHIEVE-backed. SharePoint-authoritative.",
-        onOpen: () => setRoute("/phillipston-prr")
+        onOpen: () => setRoute("/phillipston")
       }),
 
       // DEMO — external

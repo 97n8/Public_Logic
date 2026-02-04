@@ -14,7 +14,7 @@ export async function renderPhillipstonPrr(ctx) {
     "https://publiclogic978.sharepoint.com/sites/PL/Shared%20Documents/01_Towns/MA/Phillipston/PRR";
 
   const ARCHIEVE_LIST =
-    cfg?.sharepoint?.archieve?.listUrl || "#";
+    `https://${cfg?.sharepoint?.hostname}${cfg?.sharepoint?.sitePath}/Lists/${cfg?.sharepoint?.archieve?.listName || "ARCHIEVE"}/AllItems.aspx`;
 
   /* =========================
      SUBMIT HANDLER

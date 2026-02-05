@@ -14,6 +14,7 @@ import Tools from "./pages/Tools";
 import PhillipstonPRR from "./environments/phillipston/prr/PhillipstonPRR";
 import PhillipstonLegacy from "./pages/PhillipstonLegacy";
 import TownShell from "./environments/TownShell";
+import PhillipstonHome from "./environments/phillipston/PhillipstonHome";
 
 export default function App() {
   return (
@@ -21,6 +22,19 @@ export default function App() {
       <RequireAllowedUser>
         <Routes>
           {/* Town environments render with their own chrome (feels like a separate governed app). */}
+          <Route
+            path="/phillipston"
+            element={
+              <TownShell
+                town="Phillipston"
+                subtitle="Governed Case Space"
+                className="env-phillipston"
+              >
+                <PhillipstonHome />
+              </TownShell>
+            }
+          />
+
           <Route
             path="/phillipston/prr/*"
             element={

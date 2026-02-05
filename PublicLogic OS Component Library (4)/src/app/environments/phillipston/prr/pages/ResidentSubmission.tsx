@@ -20,10 +20,10 @@ import useSharePointClient from "../../../../hooks/useSharePointClient";
 import { archivePrrCaseToSharePoint } from "../sharepoint";
 
 const Schema = z.object({
-  name: z.string().min(2, "Name is required"),
-  email: z.string().email("Valid email required").optional().or(z.literal("")),
-  phone: z.string().optional().or(z.literal("")),
-  requestText: z.string().min(10, "Please provide details (10+ chars)"),
+  name: z.string().trim().min(2, "Name is required"),
+  email: z.union([z.literal(""), z.string().trim().email("Valid email required")]),
+  phone: z.union([z.literal(""), z.string().trim()]).optional(),
+  requestText: z.string().trim().min(10, "Please provide details (10+ chars)"),
   agree: z.literal(true, { message: "Required" }),
 });
 
@@ -42,6 +42,7 @@ export default function ResidentSubmission() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(Schema),
+    mode: "onChange",
     defaultValues: { agree: false, email: "", phone: "" },
   });
 

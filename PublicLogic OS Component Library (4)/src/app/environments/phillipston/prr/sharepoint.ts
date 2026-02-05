@@ -2,19 +2,24 @@ import { formatISO } from "date-fns";
 import type { VaultPrrCase } from "./vaultprr";
 import { encodeResidentSubmissionMarkdown } from "./vaultprr";
 import { getSharePointRuntimeConfig } from "../../../../auth/publiclogicConfig";
+import { getVaultMode } from "./vaultMode";
 
 export type SharePointPrrSetup = {
   casesListName: string;
   auditListName: string;
   libraryRoot: string;
+  vaultMode: "test" | "prod";
 };
 
 export function getPrrSetup(): SharePointPrrSetup {
   const cfg = getSharePointRuntimeConfig();
+  const vaultMode = getVaultMode();
+  const suffix = vaultMode === "test" ? "_TEST" : "";
   return {
-    casesListName: cfg.vault.casesListName,
-    auditListName: cfg.vault.auditListName,
+    casesListName: `${cfg.vault.casesListName}${suffix}`,
+    auditListName: `${cfg.vault.auditListName}${suffix}`,
     libraryRoot: cfg.vault.libraryRoot,
+    vaultMode,
   };
 }
 
@@ -28,9 +33,10 @@ export function getFiscalYearFolder(d: Date) {
 
 export function caseFolderSegments(caseData: VaultPrrCase) {
   const received = new Date(caseData.intake.receivedAt);
-  const { libraryRoot } = getPrrSetup();
+  const { libraryRoot, vaultMode } = getPrrSetup();
   return [
     libraryRoot,
+    ...(vaultMode === "test" ? ["TEST"] : []),
     getFiscalYearFolder(received),
     "PHILLIPSTON",
     "PRR",
@@ -42,6 +48,21 @@ export function caseMarkdownFileName(caseData: VaultPrrCase) {
   return `${caseData.caseId}.md`;
 }
 
+export async function ensurePrrVaultRoot(sp: {
+  ensureDriveFolder: (segments: string[]) => Promise<{ path: string; item: any }>;
+}) {
+  const { libraryRoot, vaultMode } = getPrrSetup();
+  const fy = getFiscalYearFolder(new Date());
+  const segments = [
+    libraryRoot,
+    ...(vaultMode === "test" ? ["TEST"] : []),
+    fy,
+    "PHILLIPSTON",
+    "PRR",
+  ];
+  return await sp.ensureDriveFolder(segments);
+}
+
 export async function ensurePrrSharePointSchema(sp: {
   ensureListWithColumns: (args: {
     displayName: string;
@@ -49,11 +70,14 @@ export async function ensurePrrSharePointSchema(sp: {
     columns: any[];
   }) => Promise<any>;
 }) {
-  const { casesListName, auditListName } = getPrrSetup();
+  const { casesListName, auditListName, vaultMode } = getPrrSetup();
 
   await sp.ensureListWithColumns({
     displayName: casesListName,
-    description: "PublicLogic PRR Cases (index)",
+    description:
+      vaultMode === "test"
+        ? "PublicLogic PRR Cases (index) — TEST"
+        : "PublicLogic PRR Cases (index)",
     columns: [
       { name: "CaseId", text: {} },
       { name: "Environment", text: {} },
@@ -72,7 +96,10 @@ export async function ensurePrrSharePointSchema(sp: {
 
   await sp.ensureListWithColumns({
     displayName: auditListName,
-    description: "PublicLogic PRR Audit Log (append-only)",
+    description:
+      vaultMode === "test"
+        ? "PublicLogic PRR Audit Log (append-only) — TEST"
+        : "PublicLogic PRR Audit Log (append-only)",
     columns: [
       { name: "CaseId", text: {} },
       { name: "At", dateTime: { displayAs: "default" } },

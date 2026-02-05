@@ -18,11 +18,11 @@ import useSharePointClient from "../../../../hooks/useSharePointClient";
 import { archivePrrCaseToSharePoint } from "../sharepoint";
 
 const Schema = z.object({
-  name: z.string().min(2),
-  email: z.string().email().optional().or(z.literal("")),
-  phone: z.string().optional().or(z.literal("")),
-  requestText: z.string().min(10),
-  receivedAt: z.string().min(10),
+  name: z.string().trim().min(2, "Name is required"),
+  email: z.union([z.literal(""), z.string().trim().email("Valid email required")]),
+  phone: z.union([z.literal(""), z.string().trim()]).optional(),
+  requestText: z.string().trim().min(10, "Please provide details (10+ chars)"),
+  receivedAt: z.string().min(10, "Received date is required"),
 });
 
 type FormValues = z.infer<typeof Schema>;
@@ -35,6 +35,7 @@ export default function StaffIntake() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(Schema),
+    mode: "onChange",
     defaultValues: {
       name: "",
       email: "",

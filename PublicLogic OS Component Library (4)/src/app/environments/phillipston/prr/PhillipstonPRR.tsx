@@ -1,4 +1,6 @@
-import { Navigate, NavLink, Route, Routes } from "react-router-dom";
+import { Navigate, NavLink, Route, Routes, Link } from "react-router-dom";
+import { Button } from "../../../components/ui/button";
+import { LayoutDashboard } from "lucide-react";
 import PageHeader from "../../../components/PageHeader";
 import ResidentSubmission from "./pages/ResidentSubmission";
 import StaffCaseSpace from "./pages/StaffCaseSpace";
@@ -13,6 +15,14 @@ export default function PhillipstonPRR() {
       <PageHeader
         title="Phillipston PRR"
         subtitle="Public Records Requests (MA). Resident submissions + staff intake + case management + archiving with audit trails."
+        actions={
+          <Button asChild variant="outline" className="rounded-full">
+            <Link to="/phillipston">
+              <LayoutDashboard className="mr-2 h-4 w-4" />
+              CaseSpace
+            </Link>
+          </Button>
+        }
       />
 
       <div className="mb-6 rounded-3xl border border-primary/25 bg-accent p-6 text-sm font-semibold text-foreground">

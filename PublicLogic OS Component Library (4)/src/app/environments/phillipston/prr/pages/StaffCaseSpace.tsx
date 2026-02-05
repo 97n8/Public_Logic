@@ -6,12 +6,14 @@ import { Card } from "../../../../components/ui/card";
 import { Button } from "../../../../components/ui/button";
 import { loadCases } from "../store";
 import useSharePointClient from "../../../../hooks/useSharePointClient";
-import { ensurePrrSharePointSchema, getPrrSetup } from "../sharepoint";
+import { ensurePrrSharePointSchema, ensurePrrVaultRoot, getPrrSetup } from "../sharepoint";
+import { getVaultMode, setVaultMode } from "../vaultMode";
 
 export default function StaffCaseSpace() {
   const sp = useSharePointClient();
   const localCases = loadCases();
   const setup = getPrrSetup();
+  const vaultMode = getVaultMode();
 
   const casesQuery = useQuery({
     enabled: Boolean(sp.client),
@@ -39,8 +41,28 @@ export default function StaffCaseSpace() {
               Staff dashboard for intake, case management, and archiving to the
               Municipal Vault (SharePoint).
             </div>
+            <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-black uppercase tracking-widest text-foreground">
+              Vault mode:{" "}
+              <span className={vaultMode === "test" ? "text-yellow-700" : "text-emerald-700"}>
+                {vaultMode.toUpperCase()}
+              </span>
+              <span className="text-muted-foreground font-semibold normal-case tracking-normal">
+                (cases list: {setup.casesListName})
+              </span>
+            </div>
           </div>
           <div className="flex flex-wrap gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              className="rounded-full"
+              onClick={() => {
+                setVaultMode(vaultMode === "test" ? "prod" : "test");
+                window.location.reload();
+              }}
+            >
+              Switch to {vaultMode === "test" ? "PROD" : "TEST"}
+            </Button>
             <Button
               type="button"
               variant="outline"
@@ -49,7 +71,10 @@ export default function StaffCaseSpace() {
                 if (!sp.client) return;
                 try {
                   await ensurePrrSharePointSchema(sp.client as any);
-                  toast.success("SharePoint schema ready");
+                  const root = await ensurePrrVaultRoot(sp.client as any);
+                  toast.success("SharePoint vault ready", {
+                    description: root?.item?.webUrl ? "Root folder created." : undefined,
+                  });
                 } catch (e: any) {
                   toast.error("SharePoint setup failed", {
                     description: String(e?.message || e),

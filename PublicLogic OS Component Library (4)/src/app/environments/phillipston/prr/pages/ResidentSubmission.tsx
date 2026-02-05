@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useMsal } from "@azure/msal-react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Card } from "../../../../components/ui/card";
@@ -9,13 +10,16 @@ import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
 import { Textarea } from "../../../../components/ui/textarea";
 import { Checkbox } from "../../../../components/ui/checkbox";
+import useSharePointClient from "../../../../hooks/useSharePointClient";
 import { computeT10 } from "../deadlines";
 import {
   CaseSchema,
   createCaseId,
   encodeResidentSubmissionMarkdown,
+  type VaultPrrCase,
 } from "../vaultprr";
 import { saveCase } from "../store";
+import { archivePrrCaseToSharePoint, getPrrSetup } from "../sharepoint";
 
 const Schema = z.object({
   name: z.string().trim().min(2, "Name is required"),
@@ -35,11 +39,21 @@ type FormValues = z.infer<typeof Schema>;
 
 export default function ResidentSubmission() {
   const [confirmation, setConfirmation] = useState<{
+    caseData: VaultPrrCase;
+    files: File[];
     caseId: string;
     t10: string;
     packet: string;
     attachmentsCount: number;
+    sharepoint?: { folderPath: string; markdownWebUrl?: string };
+    sharepointError?: string;
   } | null>(null);
+  const [isArchiving, setIsArchiving] = useState(false);
+
+  const { accounts } = useMsal();
+  const actor = accounts[0]?.username || "resident";
+  const { client: sp } = useSharePointClient();
+  const setup = getPrrSetup();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(Schema),
@@ -51,8 +65,55 @@ export default function ResidentSubmission() {
   const t10 = useMemo(() => computeT10(receivedAt), [receivedAt]);
   const [attachments, setAttachments] = useState<File[]>([]);
 
+  async function archiveToSharePoint(caseData: VaultPrrCase, files: File[]) {
+    if (!sp) {
+      throw new Error("SharePoint connection not ready");
+    }
+
+    const tid = toast.loading("Archiving to SharePoint…");
+    setIsArchiving(true);
+    try {
+      const result = await archivePrrCaseToSharePoint(sp, caseData, {
+        actor,
+        attachments: files,
+      });
+      toast.success("Archived to SharePoint", {
+        id: tid,
+        description:
+          setup.vaultMode === "test"
+            ? "Saved to TEST vault."
+            : "Saved to production vault.",
+      });
+      setConfirmation((prev) =>
+        prev?.caseId === caseData.caseId
+          ? {
+              ...prev,
+              sharepoint: {
+                folderPath: result.folderPath,
+                markdownWebUrl: result.markdownWebUrl,
+              },
+              sharepointError: undefined,
+            }
+          : prev,
+      );
+    } catch (e) {
+      const message = e instanceof Error ? e.message : String(e);
+      toast.error("SharePoint archive failed", { id: tid, description: message });
+      setConfirmation((prev) =>
+        prev?.caseId === caseData.caseId
+          ? { ...prev, sharepointError: message }
+          : prev,
+      );
+      throw e;
+    } finally {
+      setIsArchiving(false);
+    }
+  }
+
   async function onSubmit(values: FormValues) {
     const caseId = createCaseId();
+    const files = attachments;
+
     const caseData = CaseSchema.parse({
       caseId,
       environment: "PHILLIPSTON",
@@ -70,7 +131,7 @@ export default function ResidentSubmission() {
         legalNoticeAccepted: true,
       },
       deadlines: { t10: t10.toISOString() },
-      attachments: attachments.map((f) => ({
+      attachments: files.map((f) => ({
         name: f.name,
         type: f.type || undefined,
         size: f.size || undefined,
@@ -89,19 +150,25 @@ export default function ResidentSubmission() {
     const packet = encodeResidentSubmissionMarkdown(caseData);
     void navigator.clipboard?.writeText(packet).catch(() => {});
     toast.success("Request drafted", {
-      description: attachments.length
-        ? "Packet copied to clipboard. Attachments are not uploaded in this model."
+      description: files.length
+        ? "Packet copied to clipboard. If the vault is connected, attachments will upload to SharePoint."
         : "Packet copied to clipboard.",
     });
 
     setConfirmation({
+      caseData,
+      files,
       caseId,
       t10: format(t10, "MMM d, yyyy"),
       packet,
-      attachmentsCount: attachments.length,
+      attachmentsCount: files.length,
     });
     form.reset({ name: "", email: "", phone: "", requestText: "", agree: false });
     setAttachments([]);
+
+    if (sp) {
+      await archiveToSharePoint(caseData, files).catch(() => {});
+    }
   }
 
   function downloadPacket() {
@@ -207,8 +274,8 @@ export default function ResidentSubmission() {
               onChange={(e) => setAttachments(Array.from(e.target.files || []))}
             />
             <div className="mt-2 text-xs font-semibold text-muted-foreground">
-              Add PDFs/photos or supporting docs. In this model, files are not
-              uploaded yet; include them when you send the request to staff.
+              Add PDFs/photos or supporting docs. Attachments upload to the case
+              folder in SharePoint when the vault is connected.
             </div>
           </div>
 
@@ -239,7 +306,7 @@ export default function ResidentSubmission() {
             <div className="mt-4 text-xs font-semibold text-muted-foreground">
               Packet copied to your clipboard.
               {confirmation.attachmentsCount ? (
-                <> Attachments selected: {confirmation.attachmentsCount} (not uploaded in this model).</>
+                <> Attachments selected: {confirmation.attachmentsCount}.</>
               ) : null}
             </div>
 
@@ -252,6 +319,53 @@ export default function ResidentSubmission() {
                 <li>Response due by T10 (10 business days).</li>
                 <li>Extensions / fee estimates issued before T10 when applicable.</li>
               </ul>
+            </div>
+
+            <div className="mt-4 rounded-2xl border border-border bg-card p-4">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="text-xs font-black uppercase tracking-widest text-muted-foreground">
+                    SharePoint archive
+                  </div>
+                  {confirmation.sharepoint?.markdownWebUrl ? (
+                    <div className="mt-2 text-sm font-semibold text-muted-foreground">
+                      Archived to {setup.vaultMode === "test" ? "TEST" : "PROD"} vault.
+                    </div>
+                  ) : confirmation.sharepointError ? (
+                    <div className="mt-2 text-sm font-semibold text-red-700">
+                      {confirmation.sharepointError}
+                    </div>
+                  ) : (
+                    <div className="mt-2 text-sm font-semibold text-muted-foreground">
+                      {isArchiving ? "Archiving…" : "Ready to archive when connected."}
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {confirmation.sharepoint?.markdownWebUrl ? (
+                    <Button asChild variant="outline" className="rounded-full">
+                      <a
+                        href={confirmation.sharepoint.markdownWebUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Open in SharePoint
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="rounded-full"
+                      disabled={isArchiving || !sp}
+                      onClick={() => void archiveToSharePoint(confirmation.caseData, confirmation.files)}
+                    >
+                      {isArchiving ? "Archiving…" : "Archive to SharePoint"}
+                    </Button>
+                  )}
+                </div>
+              </div>
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">

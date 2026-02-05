@@ -21,15 +21,15 @@ export default function RequireAuth({ children }: { children: ReactNode }) {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 p-10">
-        <div className="mx-auto max-w-xl rounded-3xl border border-slate-200 bg-white p-10 shadow-xl">
-          <div className="text-xs font-black uppercase tracking-[0.3em] text-emerald-600">
-            PublicLogic OS
+      <div className="min-h-screen bg-background p-10">
+        <div className="mx-auto max-w-xl rounded-3xl border border-border bg-card p-10 shadow-lg">
+          <div className="text-xs font-black uppercase tracking-[0.32em] text-primary">
+            Governed App
           </div>
-          <h1 className="mt-3 text-2xl font-black tracking-tight text-slate-900">
+          <h1 className="mt-3 text-2xl font-black tracking-tight text-foreground">
             Signing you in…
           </h1>
-          <p className="mt-3 text-sm font-semibold text-slate-600">
+          <p className="mt-3 text-sm font-semibold text-muted-foreground">
             If nothing happens, refresh the page to retry.
           </p>
         </div>

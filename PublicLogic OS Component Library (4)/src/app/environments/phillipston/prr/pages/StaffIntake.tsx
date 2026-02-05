@@ -3,19 +3,23 @@ import { format } from "date-fns";
 import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useMsal } from "@azure/msal-react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Card } from "../../../../components/ui/card";
 import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
 import { Textarea } from "../../../../components/ui/textarea";
+import useSharePointClient from "../../../../hooks/useSharePointClient";
 import { addBusinessDays, computeT10 } from "../deadlines";
 import {
   CaseSchema,
   createCaseId,
   encodeResidentSubmissionMarkdown,
+  type VaultPrrCase,
 } from "../vaultprr";
 import { saveCase } from "../store";
+import { archivePrrCaseToSharePoint, getPrrSetup } from "../sharepoint";
 
 const Schema = z.object({
   name: z.string().trim().min(2, "Name is required"),
@@ -36,14 +40,22 @@ type FormValues = z.infer<typeof Schema>;
 export default function StaffIntake() {
   const [attachments, setAttachments] = useState<File[]>([]);
   const [confirmation, setConfirmation] = useState<{
+    caseData: VaultPrrCase;
+    files: File[];
     caseId: string;
     t10: string;
     reminderT3: string;
     reminderT1: string;
     packet: string;
     attachmentsCount: number;
+    sharepoint?: { folderPath: string; markdownWebUrl?: string };
+    sharepointError?: string;
   } | null>(null);
+  const [isArchiving, setIsArchiving] = useState(false);
   const navigate = useNavigate();
+  const { accounts } = useMsal();
+  const actor = accounts[0]?.username || "staff";
+  const { client: sp } = useSharePointClient();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(Schema),
@@ -78,6 +90,8 @@ export default function StaffIntake() {
   const fmt = (d: Date | null) =>
     d && !Number.isNaN(d.getTime()) ? format(d, "MMM d, yyyy") : "—";
 
+  const setup = getPrrSetup();
+
   function downloadPacket(packet: string, caseId: string) {
     const blob = new Blob([packet], { type: "text/markdown;charset=utf-8" });
     const url = URL.createObjectURL(blob);
@@ -88,10 +102,50 @@ export default function StaffIntake() {
     URL.revokeObjectURL(url);
   }
 
+  async function archiveToSharePoint(caseData: VaultPrrCase, files: File[]) {
+    if (!sp) throw new Error("SharePoint connection not ready");
+    const tid = toast.loading("Archiving to SharePoint…");
+    setIsArchiving(true);
+    try {
+      const result = await archivePrrCaseToSharePoint(sp, caseData, {
+        actor,
+        attachments: files,
+      });
+      toast.success("Archived to SharePoint", {
+        id: tid,
+        description: setup.vaultMode === "test" ? "Saved to TEST vault." : "Saved to production vault.",
+      });
+      setConfirmation((prev) =>
+        prev?.caseId === caseData.caseId
+          ? {
+              ...prev,
+              sharepoint: {
+                folderPath: result.folderPath,
+                markdownWebUrl: result.markdownWebUrl,
+              },
+              sharepointError: undefined,
+            }
+          : prev,
+      );
+    } catch (e) {
+      const message = e instanceof Error ? e.message : String(e);
+      toast.error("SharePoint archive failed", { id: tid, description: message });
+      setConfirmation((prev) =>
+        prev?.caseId === caseData.caseId
+          ? { ...prev, sharepointError: message }
+          : prev,
+      );
+      throw e;
+    } finally {
+      setIsArchiving(false);
+    }
+  }
+
   async function onSubmit(values: FormValues) {
     const receivedAt = new Date(values.receivedAt + "T12:00:00");
     const t10 = computeT10(receivedAt);
     const caseId = createCaseId();
+    const files = attachments;
 
     const caseData = CaseSchema.parse({
       caseId,
@@ -110,7 +164,7 @@ export default function StaffIntake() {
         legalNoticeAccepted: true,
       },
       deadlines: { t10: t10.toISOString() },
-      attachments: attachments.map((f) => ({
+      attachments: files.map((f) => ({
         name: f.name,
         type: f.type || undefined,
         size: f.size || undefined,
@@ -129,18 +183,20 @@ export default function StaffIntake() {
     const md = encodeResidentSubmissionMarkdown(caseData);
     void navigator.clipboard?.writeText(md).catch(() => {});
     toast.success("Intake saved", {
-      description: attachments.length
-        ? `Case ${caseId} saved. Packet copied to clipboard. Attachments are listed in the packet (${attachments.length}).`
+      description: files.length
+        ? `Case ${caseId} saved. Packet copied to clipboard. Attachments are listed in the packet (${files.length}).`
         : `Case ${caseId} saved. Packet copied to clipboard.`,
     });
 
     setConfirmation({
+      caseData,
+      files,
       caseId,
       t10: format(t10, "MMM d, yyyy"),
       reminderT3: format(addBusinessDays(receivedAt, 7), "MMM d, yyyy"),
       reminderT1: format(addBusinessDays(receivedAt, 9), "MMM d, yyyy"),
       packet: md,
-      attachmentsCount: attachments.length,
+      attachmentsCount: files.length,
     });
 
     form.reset({
@@ -151,6 +207,10 @@ export default function StaffIntake() {
       requestText: "",
     });
     setAttachments([]);
+
+    if (sp) {
+      await archiveToSharePoint(caseData, files).catch(() => {});
+    }
   }
 
   return (
@@ -231,17 +291,18 @@ export default function StaffIntake() {
             <div className="mb-2 text-[11px] font-black uppercase tracking-widest text-muted-foreground">
               Forwarded email / attachments (optional)
             </div>
-            <input
-              type="file"
-              multiple
-              className="block w-full text-sm"
-              onChange={(e) => setAttachments(Array.from(e.target.files || []))}
-            />
-            <div className="mt-2 text-xs font-semibold text-muted-foreground">
-              Files are not uploaded yet; this model lists attachment names inside
-              the case packet for staff workflow.
-            </div>
+          <input
+            type="file"
+            multiple
+            className="block w-full text-sm"
+            onChange={(e) => setAttachments(Array.from(e.target.files || []))}
+          />
+          <div className="mt-2 text-xs font-semibold text-muted-foreground">
+            Attachments are uploaded to the case folder in SharePoint when the
+            vault is connected. If SharePoint is unavailable, the files are not
+            uploaded (names are still listed in the packet).
           </div>
+        </div>
 
           <div className="md:col-span-2">
             <Button type="submit" className="rounded-full">
@@ -298,11 +359,63 @@ export default function StaffIntake() {
                 <div className="mt-2 text-sm font-semibold text-muted-foreground">
                   {confirmation.reminderT3} (T-3) • {confirmation.reminderT1} (T-1)
                 </div>
-                {confirmation.attachmentsCount ? (
-                  <div className="mt-2 text-xs font-semibold text-muted-foreground">
-                    Attachments listed: {confirmation.attachmentsCount} (not uploaded yet).
+              </div>
+            </div>
+
+            <div className="mt-4 rounded-2xl border border-border bg-card p-4">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="text-xs font-black uppercase tracking-widest text-muted-foreground">
+                    SharePoint archive
                   </div>
-                ) : null}
+                  {confirmation.sharepoint?.markdownWebUrl ? (
+                    <div className="mt-2 text-sm font-semibold text-muted-foreground">
+                      Archived to {setup.vaultMode === "test" ? "TEST" : "PROD"} vault.
+                    </div>
+                  ) : confirmation.sharepointError ? (
+                    <div className="mt-2 text-sm font-semibold text-red-700">
+                      {confirmation.sharepointError}
+                    </div>
+                  ) : (
+                    <div className="mt-2 text-sm font-semibold text-muted-foreground">
+                      {isArchiving ? "Archiving…" : "Ready to archive when connected."}
+                    </div>
+                  )}
+                  {confirmation.sharepoint?.folderPath ? (
+                    <div className="mt-2 text-xs font-semibold text-muted-foreground">
+                      Vault path:{" "}
+                      <span className="rounded bg-muted px-2 py-1 font-mono">
+                        {confirmation.sharepoint.folderPath}
+                      </span>
+                    </div>
+                  ) : null}
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {confirmation.sharepoint?.markdownWebUrl ? (
+                    <Button asChild variant="outline" className="rounded-full">
+                      <a
+                        href={confirmation.sharepoint.markdownWebUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Open in SharePoint
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="rounded-full"
+                      disabled={isArchiving || !sp}
+                      onClick={() =>
+                        void archiveToSharePoint(confirmation.caseData, confirmation.files)
+                      }
+                    >
+                      {isArchiving ? "Archiving…" : "Archive to SharePoint"}
+                    </Button>
+                  )}
+                </div>
               </div>
             </div>
 

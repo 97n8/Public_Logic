@@ -21,36 +21,46 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Navigate to="/phillipston" replace />} />
 
-      {/* Town environments render with their own chrome (feels like a separate governed app). */}
+      {/* Phillipston governed app (enclosed). */}
       <Route
-        path="/phillipston"
         element={
-          <TownShell
-            town="Phillipston"
-            subtitle="CaseSpace"
-            className="env-phillipston"
-            homeTo="/phillipston/prr/staff"
-            homeLabel="PRR"
-          >
-            <PhillipstonHome />
-          </TownShell>
+          <div className="env env-phillipston">
+            <RequireAuth>
+              <Outlet />
+            </RequireAuth>
+          </div>
         }
-      />
+      >
+        <Route
+          path="/phillipston"
+          element={
+            <TownShell
+              town="Phillipston"
+              subtitle="CaseSpace"
+              className="env-phillipston"
+              homeTo="/phillipston/prr/staff"
+              homeLabel="PRR"
+            >
+              <PhillipstonHome />
+            </TownShell>
+          }
+        />
 
-      <Route
-        path="/phillipston/prr/*"
-        element={
-          <TownShell
-            town="Phillipston"
-            subtitle="Public Records Requests (M.G.L. c. 66 §10)"
-            className="env-phillipston"
-            homeTo="/phillipston"
-            homeLabel="CaseSpace"
-          >
-            <PhillipstonPRR />
-          </TownShell>
-        }
-      />
+        <Route
+          path="/phillipston/prr/*"
+          element={
+            <TownShell
+              town="Phillipston"
+              subtitle="Public Records Requests (M.G.L. c. 66 §10)"
+              className="env-phillipston"
+              homeTo="/phillipston"
+              homeLabel="CaseSpace"
+            >
+              <PhillipstonPRR />
+            </TownShell>
+          }
+        />
+      </Route>
 
       {/* PublicLogic ops portal (private) */}
       <Route

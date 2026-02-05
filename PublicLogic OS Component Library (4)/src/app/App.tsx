@@ -1,27 +1,46 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import EnvHome from "./pages/EnvHome";
-import FrontDoor from "./pages/FrontDoor";
+import RequireAllowedUser from "../auth/RequireAllowedUser";
+import RequireAuth from "../auth/RequireAuth";
+import AppShell from "./shell/AppShell";
+import Dashboard from "./pages/Dashboard";
+import Environments from "./pages/Environments";
+import Pipeline from "./pages/Pipeline";
+import Playbooks from "./pages/Playbooks";
+import Projects from "./pages/Projects";
+import Settings from "./pages/Settings";
+import Tasks from "./pages/Tasks";
+import Today from "./pages/Today";
+import Tools from "./pages/Tools";
+import PhillipstonPRR from "./environments/phillipston/prr/PhillipstonPRR";
 import PhillipstonLegacy from "./pages/PhillipstonLegacy";
-import PrincetonCaseSpace from "./pages/PrincetonCaseSpace";
-import PrincetonPRR from "./pages/PrincetonPRR";
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<FrontDoor />} />
-      <Route path="/env/:envId" element={<EnvHome />} />
+    <RequireAuth>
+      <RequireAllowedUser>
+        <AppShell>
+          <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/today" element={<Today />} />
+            <Route path="/tasks" element={<Tasks />} />
+            <Route path="/pipeline" element={<Pipeline />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/playbooks" element={<Playbooks />} />
+            <Route path="/tools" element={<Tools />} />
+            <Route path="/environments" element={<Environments />} />
+            <Route path="/settings" element={<Settings />} />
 
-      {/* Princeton sub-app */}
-      <Route path="/env/princeton/case-space" element={<PrincetonCaseSpace />} />
-      <Route path="/env/princeton/prr" element={<PrincetonPRR />} />
+            {/* Environment modules */}
+            <Route path="/phillipston/prr/*" element={<PhillipstonPRR />} />
 
-      {/* Legacy demo (kept as reference) */}
-      <Route path="/env/phillipston/legacy" element={<PhillipstonLegacy />} />
+            {/* Legacy demo screens (reference only) */}
+            <Route path="/legacy/phillipston" element={<PhillipstonLegacy />} />
 
-      {/* Convenience aliases */}
-      <Route path="/hmlp" element={<Navigate to="/" replace />} />
-
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+            <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          </Routes>
+        </AppShell>
+      </RequireAllowedUser>
+    </RequireAuth>
   );
 }

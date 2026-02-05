@@ -178,7 +178,6 @@ export default function Dashboard() {
       setCaptureText("");
       toast.success("Saved", { id: tid, description: res.recordId });
       await qc.invalidateQueries({ queryKey: ["archieve"] });
-      if (res.webUrl) window.open(res.webUrl, "_blank", "noreferrer");
     } catch (e) {
       toast.error("Could not save", {
         id: tid,
@@ -218,7 +217,7 @@ export default function Dashboard() {
     <div>
       <PageHeader
         title="Dashboard"
-        subtitle="Cognitive unload. Capture → ARCHIEVE. Everything stays attached to Microsoft 365."
+        subtitle="Daily workspace for PublicLogic OS. Capture notes, review ARCHIEVE, and stay on top of town work."
         actions={
           <>
             <Button
@@ -261,15 +260,14 @@ export default function Dashboard() {
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
               <div className="text-xs font-black uppercase tracking-[0.32em] text-muted-foreground">
-                Capture → {ARCHIEVE_LIST_NAME}
+                Quick capture
               </div>
               <div className="mt-2 text-sm font-semibold text-muted-foreground">
-                Dump anything here. It becomes an ARCHIEVE record (and can be turned into a list item later).
+                Save notes, decisions, links, and next steps to{" "}
+                <span className="font-mono">{ARCHIEVE_LIST_NAME}</span>{" "}
+                (SharePoint).
               </div>
               <div className="mt-3 flex flex-wrap items-center gap-2 text-xs font-black uppercase tracking-widest text-muted-foreground">
-                <span className="rounded-full border border-border bg-muted px-3 py-1">
-                  Vault: {vaultMode === "test" ? "TEST" : "PROD"}
-                </span>
                 <span className="rounded-full border border-border bg-muted px-3 py-1">
                   {isConnecting
                     ? "Connecting…"
@@ -303,7 +301,7 @@ export default function Dashboard() {
 
           <Textarea
             className="mt-4 min-h-[180px]"
-            placeholder="Type anything… decisions, links, call notes, next steps. Save pushes it to ARCHIEVE."
+            placeholder="Capture notes, links, and next steps…"
             value={captureText}
             onChange={(e) => setCaptureText(e.target.value)}
           />
@@ -332,7 +330,7 @@ export default function Dashboard() {
               onClick={() => void qc.invalidateQueries({ queryKey: ["archieve"] })}
               disabled={!sp}
             >
-              Refresh inbox
+              Refresh
             </Button>
           </div>
 
@@ -343,7 +341,7 @@ export default function Dashboard() {
                   Inbox preview
                 </div>
                 <div className="mt-2 text-sm font-semibold text-muted-foreground">
-                  Latest {ARCHIEVE_LIST_NAME} records (INBOX)
+                  Latest {ARCHIEVE_LIST_NAME} items (Inbox)
                 </div>
               </div>
               {archieveUrlQuery.data ? (
@@ -414,10 +412,10 @@ export default function Dashboard() {
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="text-xs font-black uppercase tracking-[0.32em] text-muted-foreground">
-                  Calendars
+                  Today’s schedule
                 </div>
                 <div className="mt-2 text-sm font-semibold text-muted-foreground">
-                  Today (Allie + Nate).
+                  Allie + Nate (from Microsoft 365).
                 </div>
               </div>
               <div className="rounded-full border border-border bg-muted px-3 py-1 text-xs font-black uppercase tracking-widest text-muted-foreground">
@@ -431,7 +429,7 @@ export default function Dashboard() {
               </div>
             ) : calendarsQuery.isError ? (
               <div className="mt-4 text-sm font-semibold text-red-700">
-                Calendar unavailable. Click “Connect Microsoft 365”.
+                Calendar view is unavailable. Click “Connect Microsoft 365”.
               </div>
             ) : calendarsQuery.data?.length ? (
               <div className="mt-4 space-y-4">
@@ -503,7 +501,7 @@ export default function Dashboard() {
               Workspaces
             </div>
             <div className="mt-2 text-sm font-semibold text-muted-foreground">
-              The stuff you actually use.
+              Frequently used links.
             </div>
 
             <div className="mt-4 grid grid-cols-1 gap-2">
@@ -520,7 +518,7 @@ export default function Dashboard() {
                 onClick={() => void openPhillipstonDocs()}
               >
                 <FileText className="mr-2 h-4 w-4" />
-                Phillipston documents folder
+                Phillipston documents
               </Button>
               <Button
                 asChild
@@ -543,7 +541,7 @@ export default function Dashboard() {
                   rel="noreferrer"
                 >
                   <NotebookPen className="mr-2 h-4 w-4" />
-                  Apple Notes
+                  Notes (iCloud)
                 </a>
               </Button>
               <Button
@@ -557,7 +555,7 @@ export default function Dashboard() {
                   rel="noreferrer"
                 >
                   <CalendarClock className="mr-2 h-4 w-4" />
-                  Apple Reminders
+                  Reminders (iCloud)
                 </a>
               </Button>
             </div>

@@ -9,6 +9,11 @@ export type PublicLogicRuntimeConfig = {
     hostname?: string;
     sitePath?: string;
     url?: string;
+    vault?: {
+      libraryRoot?: string;
+      casesListName?: string;
+      auditListName?: string;
+    };
   };
   allowedEmails?: string[];
 };
@@ -54,6 +59,10 @@ export function getSharePointRuntimeConfig() {
     hostname: custom.sharepoint?.hostname ?? "publiclogic978.sharepoint.com",
     sitePath: custom.sharepoint?.sitePath ?? "sites/PL",
     url: custom.sharepoint?.url ?? "https://publiclogic978.sharepoint.com/sites/PL",
+    vault: {
+      libraryRoot: custom.sharepoint?.vault?.libraryRoot ?? "MunicipalVault",
+      casesListName: custom.sharepoint?.vault?.casesListName ?? "PL_PRR_Cases",
+      auditListName: custom.sharepoint?.vault?.auditListName ?? "PL_PRR_Audit",
+    },
   };
 }
-

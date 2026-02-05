@@ -12,7 +12,13 @@ window.PUBLICLOGIC_OS_CONFIG = {
     hostname: "publiclogic978.sharepoint.com",
     sitePath: "sites/PL",
     url: "https://publiclogic978.sharepoint.com/sites/PL",
+    vault: {
+      // Stored in the site's default document library under this folder.
+      libraryRoot: "MunicipalVault",
+      // SharePoint Lists used for case index + immutable audit log (append-only).
+      casesListName: "PL_PRR_Cases",
+      auditListName: "PL_PRR_Audit",
+    },
   },
   allowedEmails: ["nate@publiclogic.org", "allie@publiclogic.org"],
 };
-

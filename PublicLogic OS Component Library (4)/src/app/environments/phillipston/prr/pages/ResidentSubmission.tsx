@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { toast } from "sonner";
+import { useMsal } from "@azure/msal-react";
 import { Card } from "../../../../components/ui/card";
 import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
@@ -13,9 +14,10 @@ import { computeT10 } from "../deadlines";
 import {
   CaseSchema,
   createCaseId,
-  encodeResidentSubmissionMarkdown,
 } from "../vaultprr";
 import { saveCase } from "../store";
+import useSharePointClient from "../../../../hooks/useSharePointClient";
+import { archivePrrCaseToSharePoint } from "../sharepoint";
 
 const Schema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -28,9 +30,14 @@ const Schema = z.object({
 type FormValues = z.infer<typeof Schema>;
 
 export default function ResidentSubmission() {
+  const { accounts } = useMsal();
+  const actor = accounts[0]?.username || "staff";
+  const sp = useSharePointClient();
+
   const [confirmation, setConfirmation] = useState<{
     caseId: string;
     t10: string;
+    webUrl?: string;
   } | null>(null);
 
   const form = useForm<FormValues>({
@@ -40,8 +47,16 @@ export default function ResidentSubmission() {
 
   const receivedAt = useMemo(() => new Date(), []);
   const t10 = useMemo(() => computeT10(receivedAt), [receivedAt]);
+  const [attachments, setAttachments] = useState<File[]>([]);
 
   async function onSubmit(values: FormValues) {
+    if (!sp.client) {
+      toast.error("SharePoint not connected yet", {
+        description: "Finish sign-in and try again.",
+      });
+      return;
+    }
+
     const caseId = createCaseId();
     const caseData = CaseSchema.parse({
       caseId,
@@ -71,16 +86,22 @@ export default function ResidentSubmission() {
 
     saveCase(caseData);
 
-    // NOTE: In production this must archive to SharePoint (no backend).
-    // For now we store locally and provide a markdown payload preview.
-    const md = encodeResidentSubmissionMarkdown(caseData);
-    void navigator.clipboard?.writeText(md).catch(() => {});
-    toast.success("Request created (demo)", {
-      description: "A markdown payload was copied to your clipboard.",
+    const res = await archivePrrCaseToSharePoint(sp.client as any, caseData, {
+      actor,
+      attachments,
     });
 
-    setConfirmation({ caseId, t10: format(t10, "MMM d, yyyy") });
+    toast.success("Request archived to SharePoint", {
+      description: res.markdownWebUrl ? "Case file uploaded successfully." : "Case saved.",
+    });
+
+    setConfirmation({
+      caseId,
+      t10: format(t10, "MMM d, yyyy"),
+      webUrl: res.markdownWebUrl,
+    });
     form.reset({ name: "", email: "", phone: "", requestText: "", agree: false });
+    setAttachments([]);
   }
 
   return (
@@ -90,8 +111,8 @@ export default function ResidentSubmission() {
           Resident submission
         </div>
         <div className="mt-2 text-sm font-semibold text-slate-600">
-          Use this form to capture resident requests. In production, submissions
-          must be archived to SharePoint with immutable audit logs.
+          Use this form to capture resident requests. This model writes directly
+          to SharePoint (cases list + vault folder) using your Microsoft sign-in.
         </div>
 
         <form
@@ -164,8 +185,24 @@ export default function ResidentSubmission() {
             )}
           </div>
 
+          <div className="rounded-2xl border border-slate-200 bg-white p-4">
+            <div className="mb-2 text-[11px] font-black uppercase tracking-widest text-slate-500">
+              Attachments (optional)
+            </div>
+            <input
+              type="file"
+              multiple
+              className="block w-full text-sm"
+              onChange={(e) => setAttachments(Array.from(e.target.files || []))}
+            />
+            <div className="mt-2 text-xs font-semibold text-slate-500">
+              Use for forwarded emails (.eml/.msg), PDFs, photos, or any provided
+              documents. Stored under the case folder.
+            </div>
+          </div>
+
           <Button type="submit" className="rounded-full">
-            Submit PRR (demo)
+            Submit PRR
           </Button>
         </form>
       </Card>
@@ -189,7 +226,21 @@ export default function ResidentSubmission() {
               {confirmation.t10}
             </div>
             <div className="mt-4 text-xs font-semibold text-slate-500">
-              A markdown payload was copied to your clipboard (demo behavior).
+              Case archived to SharePoint.
+              {confirmation.webUrl ? (
+                <>
+                  {" "}
+                  <a
+                    className="underline underline-offset-4"
+                    href={confirmation.webUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Open case file
+                  </a>
+                  .
+                </>
+              ) : null}
             </div>
           </div>
         ) : (
@@ -201,4 +252,3 @@ export default function ResidentSubmission() {
     </div>
   );
 }
-

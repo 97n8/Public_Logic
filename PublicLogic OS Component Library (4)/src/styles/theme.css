@@ -1,18 +1,43 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg-dark: #f0fdf4;
-  --color-bg-medium: #ffffff;
-  --color-text-primary: #064e3b;
-  --color-text-muted: #4b5563;
-  --color-accent-primary: #10b981;
-  --color-accent-secondary: #d97706;
-  --color-success: #059669;
-  --color-warning: #d97706;
-  --color-danger: #e11d48;
-  --color-line: #e2e8f0;
-  --color-surface: #ffffff;
-  --color-surface-hover: #f1f5f9;
+  /* Shadcn-style semantic tokens */
+  --color-background: #f6fbf8;
+  --color-foreground: #06281f;
+
+  --color-card: #ffffff;
+  --color-card-foreground: #06281f;
+
+  --color-popover: #ffffff;
+  --color-popover-foreground: #06281f;
+
+  --color-primary: #059669; /* mint */
+  --color-primary-foreground: #ecfdf5;
+
+  --color-secondary: #eaf6f0;
+  --color-secondary-foreground: #06281f;
+
+  --color-muted: #eef7f3;
+  --color-muted-foreground: #1f5b4a;
+
+  --color-accent: #dff3ea;
+  --color-accent-foreground: #06281f;
+
+  --color-destructive: #e11d48;
+  --color-destructive-foreground: #fff1f2;
+
+  --color-border: #d7ebe2;
+  --color-input: #cfe7dc;
+  --color-input-background: #ffffff;
+  --color-ring: #10b981;
+
+  /* Sidebar tokens used by shadcn sidebar */
+  --color-sidebar: #eaf6f0;
+  --color-sidebar-foreground: #06281f;
+  --color-sidebar-accent: #dff3ea;
+  --color-sidebar-accent-foreground: #06281f;
+  --color-sidebar-border: #cfe7dc;
+  --color-sidebar-ring: #10b981;
 
   --radius-small: 12px;
   --radius-default: 16px;
@@ -26,9 +51,63 @@
   --font-inter: "Inter", system-ui, sans-serif;
 }
 
+.dark {
+  --color-background: #061a14;
+  --color-foreground: #e6fff5;
+
+  --color-card: #08231b;
+  --color-card-foreground: #e6fff5;
+
+  --color-popover: #08231b;
+  --color-popover-foreground: #e6fff5;
+
+  --color-primary: #10b981;
+  --color-primary-foreground: #042016;
+
+  --color-secondary: #0a2a20;
+  --color-secondary-foreground: #e6fff5;
+
+  --color-muted: #0b2f24;
+  --color-muted-foreground: #9fd8c5;
+
+  --color-accent: #0f3a2c;
+  --color-accent-foreground: #e6fff5;
+
+  --color-destructive: #fb7185;
+  --color-destructive-foreground: #3b0a13;
+
+  --color-border: #0f3a2c;
+  --color-input: #1a4b3a;
+  --color-input-background: #08231b;
+  --color-ring: #34d399;
+
+  --color-sidebar: #071f18;
+  --color-sidebar-foreground: #e6fff5;
+  --color-sidebar-accent: #0f3a2c;
+  --color-sidebar-accent-foreground: #e6fff5;
+  --color-sidebar-border: #0f3a2c;
+  --color-sidebar-ring: #34d399;
+}
+
+/* Environment branding overrides (make towns feel like separate governed spaces) */
+.env-phillipston {
+  --color-primary: #0ea5e9; /* ocean */
+  --color-ring: #38bdf8;
+  --color-sidebar-accent: #e0f2fe;
+  --color-accent: #e0f2fe;
+}
+
+.dark .env-phillipston {
+  --color-primary: #38bdf8;
+  --color-primary-foreground: #06281f;
+  --color-ring: #7dd3fc;
+  --color-sidebar-accent: #0b2a3a;
+  --color-accent: #0b2a3a;
+}
+
 @layer base {
   body {
-    @apply bg-bg-dark text-text-primary font-inter antialiased;
+    @apply bg-background text-foreground font-inter antialiased;
     margin: 0;
   }
 
@@ -49,17 +128,17 @@
   }
 
   label {
-    @apply text-[13px] font-bold uppercase tracking-[0.05em] text-text-muted;
+    @apply text-[13px] font-bold uppercase tracking-[0.05em] text-muted-foreground;
   }
 }
 
 @layer components {
   .glass {
-    @apply bg-surface backdrop-blur-md border border-line;
+    @apply bg-card/80 backdrop-blur-md border border-border;
   }
 
   .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-bg-dark;
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
   }
 
   .scrollbar-hide::-webkit-scrollbar {

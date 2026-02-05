@@ -15,8 +15,8 @@ export default function PhillipstonPRR() {
         subtitle="Public Records Requests (MA). Resident submissions + staff intake + case management + archiving with audit trails."
       />
 
-      <div className="mb-6 rounded-3xl border border-emerald-200 bg-emerald-50 p-6 text-sm font-semibold text-emerald-900">
-        <div className="text-xs font-black uppercase tracking-[0.3em] text-emerald-700">
+      <div className="mb-6 rounded-3xl border border-primary/25 bg-accent p-6 text-sm font-semibold text-foreground">
+        <div className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground">
           Legal notice
         </div>
         <div className="mt-2 leading-relaxed">{LEGAL_NOTICE}</div>
@@ -24,9 +24,9 @@ export default function PhillipstonPRR() {
 
       <div className="mb-6 flex flex-wrap gap-2">
         {[
-          { to: "resident", label: "Resident" },
-          { to: "staff", label: "Staff" },
-          { to: "intake", label: "Staff Intake" },
+          { to: "/phillipston/prr/resident", label: "Resident" },
+          { to: "/phillipston/prr/staff", label: "Staff" },
+          { to: "/phillipston/prr/intake", label: "Staff Intake" },
         ].map((t) => (
           <NavLink
             key={t.to}
@@ -35,8 +35,8 @@ export default function PhillipstonPRR() {
               [
                 "rounded-full px-6 py-3 text-xs font-black uppercase tracking-widest transition",
                 isActive
-                  ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/20"
-                  : "border border-slate-300 bg-white text-slate-800 hover:bg-slate-50",
+                  ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
+                  : "border border-border bg-card text-foreground hover:bg-accent",
               ].join(" ")
             }
           >
@@ -46,7 +46,7 @@ export default function PhillipstonPRR() {
       </div>
 
       <Routes>
-        <Route path="/" element={<Navigate to="staff" replace />} />
+        <Route path="/" element={<Navigate to="/phillipston/prr/staff" replace />} />
         <Route path="resident" element={<ResidentSubmission />} />
         <Route path="staff" element={<StaffCaseSpace />} />
         <Route path="intake" element={<StaffIntake />} />
@@ -54,4 +54,3 @@ export default function PhillipstonPRR() {
     </div>
   );
 }
-

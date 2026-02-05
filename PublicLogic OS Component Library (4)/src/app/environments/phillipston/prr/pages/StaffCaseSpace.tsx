@@ -27,7 +27,7 @@ export default function StaffCaseSpace() {
       </Card>
 
       <Card className="rounded-3xl border-slate-200 p-0 shadow-sm overflow-hidden">
-        <div className="bg-slate-50 px-6 py-3 text-xs font-black uppercase tracking-widest text-slate-500 grid grid-cols-12">
+        <div className="bg-muted px-6 py-3 text-xs font-black uppercase tracking-widest text-muted-foreground grid grid-cols-12">
           <div className="col-span-4">Case</div>
           <div className="col-span-5">Requester</div>
           <div className="col-span-3">T10</div>
@@ -37,13 +37,13 @@ export default function StaffCaseSpace() {
           cases.map((c) => (
             <div
               key={c.caseId}
-              className="grid grid-cols-12 border-t border-slate-200 px-6 py-4 text-sm font-semibold text-slate-800"
+              className="grid grid-cols-12 border-t border-border px-6 py-4 text-sm font-semibold text-foreground"
             >
               <div className="col-span-4 font-mono">{c.caseId}</div>
               <div className="col-span-5 truncate">
                 {c.requester.name}
                 {c.requester.email ? (
-                  <span className="text-slate-500"> • {c.requester.email}</span>
+                  <span className="text-muted-foreground"> • {c.requester.email}</span>
                 ) : null}
               </div>
               <div className="col-span-3">
@@ -60,4 +60,3 @@ export default function StaffCaseSpace() {
     </div>
   );
 }
-

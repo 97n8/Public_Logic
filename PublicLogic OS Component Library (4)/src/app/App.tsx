@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import RequireAllowedUser from "../auth/RequireAllowedUser";
 import RequireAuth from "../auth/RequireAuth";
 import AppShell from "./shell/AppShell";
@@ -13,13 +13,35 @@ import Today from "./pages/Today";
 import Tools from "./pages/Tools";
 import PhillipstonPRR from "./environments/phillipston/prr/PhillipstonPRR";
 import PhillipstonLegacy from "./pages/PhillipstonLegacy";
+import TownShell from "./environments/TownShell";
 
 export default function App() {
   return (
     <RequireAuth>
       <RequireAllowedUser>
-        <AppShell>
-          <Routes>
+        <Routes>
+          {/* Town environments render with their own chrome (feels like a separate governed app). */}
+          <Route
+            path="/phillipston/prr/*"
+            element={
+              <TownShell
+                town="Phillipston"
+                subtitle="Public Records Requests (M.G.L. c. 66 §10)"
+                className="env-phillipston"
+              >
+                <PhillipstonPRR />
+              </TownShell>
+            }
+          />
+
+          {/* PublicLogic ops portal */}
+          <Route
+            element={
+              <AppShell>
+                <Outlet />
+              </AppShell>
+            }
+          >
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/today" element={<Today />} />
@@ -31,15 +53,12 @@ export default function App() {
             <Route path="/environments" element={<Environments />} />
             <Route path="/settings" element={<Settings />} />
 
-            {/* Environment modules */}
-            <Route path="/phillipston/prr/*" element={<PhillipstonPRR />} />
-
             {/* Legacy demo screens (reference only) */}
             <Route path="/legacy/phillipston" element={<PhillipstonLegacy />} />
 
             <Route path="*" element={<Navigate to="/dashboard" replace />} />
-          </Routes>
-        </AppShell>
+          </Route>
+        </Routes>
       </RequireAllowedUser>
     </RequireAuth>
   );

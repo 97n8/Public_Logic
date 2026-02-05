@@ -31,10 +31,10 @@ export default function AppShell({ children }: { children: ReactNode }) {
               <ShieldCheck className="h-5 w-5" />
             </div>
             <div className="min-w-0">
-              <div className="truncate text-sm font-black uppercase tracking-widest text-slate-900">
+              <div className="truncate text-sm font-black uppercase tracking-widest text-sidebar-foreground">
                 PublicLogic
               </div>
-              <div className="truncate text-xs font-semibold text-slate-500">
+              <div className="truncate text-xs font-semibold text-sidebar-foreground/70">
                 CaseSpace
               </div>
             </div>
@@ -54,8 +54,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
                       [
                         "flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-bold transition",
                         isActive
-                          ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/20"
-                          : "text-slate-700 hover:bg-slate-100",
+                          ? "bg-sidebar-accent text-sidebar-accent-foreground shadow-lg shadow-sidebar-ring/20"
+                          : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
                       ].join(" ")
                     }
                   >
@@ -69,12 +69,12 @@ export default function AppShell({ children }: { children: ReactNode }) {
         </SidebarContent>
 
         <SidebarFooter>
-          <div className="px-2 pb-2">
-            <div className="rounded-2xl border border-slate-200 bg-white p-3">
-              <div className="text-[10px] font-black uppercase tracking-[0.22em] text-slate-500">
+            <div className="px-2 pb-2">
+            <div className="rounded-2xl border border-sidebar-border bg-sidebar-accent/30 p-3">
+              <div className="text-[10px] font-black uppercase tracking-[0.22em] text-sidebar-foreground/70">
                 Signed in
               </div>
-              <div className="mt-1 truncate text-xs font-semibold text-slate-800">
+              <div className="mt-1 truncate text-xs font-semibold text-sidebar-foreground">
                 {email || "(unknown)"}
               </div>
               <Button
@@ -86,7 +86,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
                 Log out
               </Button>
             </div>
-            <div className="mt-2 px-2 text-[10px] font-semibold text-slate-500">
+            <div className="mt-2 px-2 text-[10px] font-semibold text-sidebar-foreground/70">
               <Link to="/phillipston/prr" className="underline underline-offset-4">
                 Phillipston PRR
               </Link>
@@ -96,17 +96,16 @@ export default function AppShell({ children }: { children: ReactNode }) {
       </Sidebar>
 
       <SidebarInset>
-        <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-slate-200 bg-white/80 px-4 py-3 backdrop-blur">
+        <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-border bg-background/80 px-4 py-3 backdrop-blur">
           <SidebarTrigger />
-          <div className="flex-1 text-sm font-black uppercase tracking-widest text-slate-800">
+          <div className="flex-1 text-sm font-black uppercase tracking-widest text-foreground">
             Operations Portal
           </div>
         </header>
-        <main className="min-h-[calc(100vh-56px)] bg-gradient-to-b from-slate-50 to-slate-100 p-6">
+        <main className="min-h-[calc(100vh-56px)] bg-background p-6">
           <div className="mx-auto w-full max-w-6xl">{children}</div>
         </main>
       </SidebarInset>
     </SidebarProvider>
   );
 }
-

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>CaseSpace</title>
+  <circle cx="32" cy="32" r="30" fill="#2e7d32" />
+  <!-- Roof -->
+  <path d="M32 14 L16 28 H48 Z" fill="#ffffff" />
+  <!-- Body -->
+  <rect x="18" y="27" width="28" height="20" rx="2.5" fill="#ffffff" />
+  <!-- Base -->
+  <rect x="14" y="45" width="36" height="6" rx="3" fill="#ffffff" />
+  <!-- Column gaps -->
+  <rect x="26.5" y="31" width="3" height="14" rx="1.5" fill="#2e7d32" />
+  <rect x="30.5" y="31" width="3" height="14" rx="1.5" fill="#2e7d32" />
+  <rect x="34.5" y="31" width="3" height="14" rx="1.5" fill="#2e7d32" />
+  <!-- Door -->
+  <rect x="30" y="38" width="4" height="9" rx="2" fill="#2e7d32" />
+</svg>

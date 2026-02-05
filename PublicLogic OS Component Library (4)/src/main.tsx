@@ -19,7 +19,7 @@ createRoot(document.getElementById("root")!).render(
   <MsalProvider instance={msalInstance}>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <HashRouter basename={import.meta.env.BASE_URL}>
+        <HashRouter>
           <App />
         </HashRouter>
         <Toaster position="bottom-left" />

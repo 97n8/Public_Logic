@@ -9,13 +9,13 @@ export default function StaffCaseSpace() {
 
   return (
     <div className="grid grid-cols-1 gap-6">
-      <Card className="rounded-3xl border-slate-200 p-6 shadow-sm">
+      <Card className="rounded-3xl border-border bg-card p-6 shadow-sm">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <div className="text-xs font-black uppercase tracking-widest text-slate-500">
+            <div className="text-xs font-black uppercase tracking-widest text-muted-foreground">
               Records Office Dashboard
             </div>
-            <div className="mt-2 text-sm font-semibold text-slate-600">
+            <div className="mt-2 text-sm font-semibold text-muted-foreground">
               Draft intake, track deadlines, and package responses for public
               records requests.
             </div>
@@ -31,7 +31,7 @@ export default function StaffCaseSpace() {
         </div>
       </Card>
 
-      <Card className="rounded-3xl border-slate-200 p-0 shadow-sm overflow-hidden">
+      <Card className="rounded-3xl border-border bg-card p-0 shadow-sm overflow-hidden">
         <div className="bg-muted px-6 py-3 text-xs font-black uppercase tracking-widest text-muted-foreground grid grid-cols-12">
           <div className="col-span-4">Case</div>
           <div className="col-span-5">Requester</div>
@@ -66,7 +66,7 @@ export default function StaffCaseSpace() {
             </div>
           ))
         ) : (
-          <div className="px-6 py-8 text-sm font-semibold text-slate-600">
+          <div className="px-6 py-8 text-sm font-semibold text-muted-foreground">
             No requests yet. Use Resident or Staff Intake to draft a request.
           </div>
         )}

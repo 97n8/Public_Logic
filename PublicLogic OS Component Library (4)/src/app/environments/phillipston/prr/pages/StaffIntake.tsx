@@ -98,11 +98,11 @@ export default function StaffIntake() {
   }
 
   return (
-    <Card className="rounded-3xl border-slate-200 p-6 shadow-sm">
-      <div className="text-xs font-black uppercase tracking-widest text-slate-500">
+    <Card className="rounded-3xl border-border bg-card p-6 shadow-sm">
+      <div className="text-xs font-black uppercase tracking-widest text-muted-foreground">
         Staff intake
       </div>
-      <div className="mt-2 text-sm font-semibold text-slate-600">
+      <div className="mt-2 text-sm font-semibold text-muted-foreground">
         Use for email/phone/in-person PRRs. This model drafts a case packet and
         stores it locally in the browser (SharePoint wiring comes next).
       </div>
@@ -112,35 +112,35 @@ export default function StaffIntake() {
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <div className="md:col-span-1">
-          <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-slate-500">
+          <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-muted-foreground">
             Received date
           </div>
           <Input type="date" {...form.register("receivedAt")} />
         </div>
 
         <div className="md:col-span-1">
-          <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-slate-500">
+          <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-muted-foreground">
             Requester name
           </div>
           <Input placeholder="Jane Public" {...form.register("name")} />
         </div>
 
         <div className="md:col-span-1">
-          <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-slate-500">
+          <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-muted-foreground">
             Email
           </div>
           <Input placeholder="email@example.com" {...form.register("email")} />
         </div>
 
         <div className="md:col-span-1">
-          <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-slate-500">
+          <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-muted-foreground">
             Phone
           </div>
           <Input placeholder="(555) 555-5555" {...form.register("phone")} />
         </div>
 
         <div className="md:col-span-2">
-          <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-slate-500">
+          <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-muted-foreground">
             Request details
           </div>
           <Textarea
@@ -150,8 +150,8 @@ export default function StaffIntake() {
           />
         </div>
 
-        <div className="md:col-span-2 rounded-2xl border border-slate-200 bg-white p-4">
-          <div className="mb-2 text-[11px] font-black uppercase tracking-widest text-slate-500">
+        <div className="md:col-span-2 rounded-2xl border border-border bg-card p-4">
+          <div className="mb-2 text-[11px] font-black uppercase tracking-widest text-muted-foreground">
             Forwarded email / attachments (optional)
           </div>
           <input
@@ -160,7 +160,7 @@ export default function StaffIntake() {
             className="block w-full text-sm"
             onChange={(e) => setAttachments(Array.from(e.target.files || []))}
           />
-          <div className="mt-2 text-xs font-semibold text-slate-500">
+          <div className="mt-2 text-xs font-semibold text-muted-foreground">
             Add the forwarded email (.eml/.msg) or supporting docs. In this model,
             files are not uploaded yet; include them when you deliver the response.
           </div>

@@ -93,11 +93,20 @@
 /* Environment branding overrides (make towns feel like separate governed spaces) */
 .env-phillipston {
   /* Phillipston is a distinct "governed space" but stays in the PublicLogic green family */
-  --color-primary: #2e7d32; /* accent green */
+  --color-background: #f7fbf8; /* light mint */
+  --color-card: #ffffff;
+  --color-muted: #eef7f1;
+  --color-accent: #e7f5ec;
+  --color-border: #dcebe1;
+  --color-input: #cfe5d8;
+
+  --color-primary: #2e7d32; /* Phillipston accent green */
   --color-ring: #2e7d32;
-  --color-sidebar: #f2fbf4;
-  --color-sidebar-accent: #ddf3e5;
-  --color-accent: #e8f5e9;
+
+  --color-sidebar: #f1fbf3;
+  --color-sidebar-accent: #dcf3e4;
+  --color-sidebar-border: #dcebe1;
+  --color-sidebar-ring: #2e7d32;
 }
 
 .dark .env-phillipston {

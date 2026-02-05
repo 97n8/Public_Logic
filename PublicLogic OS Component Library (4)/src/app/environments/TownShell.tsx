@@ -1,5 +1,5 @@
 import { ArrowLeft, Landmark } from "lucide-react";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 export default function TownShell({
@@ -19,6 +19,15 @@ export default function TownShell({
 }) {
   const linkTo = homeTo ?? "/dashboard";
   const label = homeLabel ?? (homeTo ? "Home" : "Portal");
+
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const previousTitle = document.title;
+    document.title = `Town of ${town} — ${subtitle}`;
+    return () => {
+      document.title = previousTitle;
+    };
+  }, [town, subtitle]);
 
   return (
     <div className={["env", className].filter(Boolean).join(" ")}>

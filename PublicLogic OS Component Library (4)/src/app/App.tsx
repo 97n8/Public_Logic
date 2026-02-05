@@ -19,6 +19,8 @@ import PhillipstonHome from "./environments/phillipston/PhillipstonHome";
 export default function App() {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="/phillipston" replace />} />
+
       {/* Town environments render with their own chrome (feels like a separate governed app). */}
       <Route
         path="/phillipston"
@@ -62,7 +64,6 @@ export default function App() {
           </RequireAuth>
         }
       >
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/today" element={<Today />} />
         <Route path="/tasks" element={<Tasks />} />

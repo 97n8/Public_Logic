@@ -112,11 +112,11 @@ export default function ResidentSubmission() {
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-      <Card className="lg:col-span-7 rounded-3xl border-slate-200 p-6 shadow-sm">
-        <div className="text-xs font-black uppercase tracking-widest text-slate-500">
+      <Card className="lg:col-span-7 rounded-3xl border-border bg-card p-6 shadow-sm">
+        <div className="text-xs font-black uppercase tracking-widest text-muted-foreground">
           Public records request
         </div>
-        <div className="mt-2 text-sm font-semibold text-slate-600">
+        <div className="mt-2 text-sm font-semibold text-muted-foreground">
           Submit a request for public records from the Town of Phillipston. This
           model generates a case packet and deadline for staff review.
         </div>
@@ -127,7 +127,7 @@ export default function ResidentSubmission() {
         >
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
-              <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-slate-500">
+              <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-muted-foreground">
                 Full name
               </div>
               <Input placeholder="Jane Public" {...form.register("name")} />
@@ -138,7 +138,7 @@ export default function ResidentSubmission() {
               )}
             </div>
             <div>
-              <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-slate-500">
+              <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-muted-foreground">
                 Email (optional)
               </div>
               <Input placeholder="email@example.com" {...form.register("email")} />
@@ -151,14 +151,14 @@ export default function ResidentSubmission() {
           </div>
 
           <div>
-            <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-slate-500">
+            <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-muted-foreground">
               Phone (optional)
             </div>
             <Input placeholder="(555) 555-5555" {...form.register("phone")} />
           </div>
 
           <div>
-            <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-slate-500">
+            <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-muted-foreground">
               Request details
             </div>
             <Textarea
@@ -173,13 +173,13 @@ export default function ResidentSubmission() {
             )}
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+          <div className="rounded-2xl border border-border bg-accent p-4">
             <label className="flex cursor-pointer items-start gap-3">
               <Checkbox
                 checked={form.watch("agree")}
                 onCheckedChange={(v) => form.setValue("agree", v === true)}
               />
-              <span className="text-sm font-semibold text-slate-700">
+              <span className="text-sm font-semibold text-foreground">
                 I acknowledge this is a public records request under M.G.L. c. 66
                 §10.
               </span>
@@ -191,8 +191,8 @@ export default function ResidentSubmission() {
             )}
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="mb-2 text-[11px] font-black uppercase tracking-widest text-slate-500">
+          <div className="rounded-2xl border border-border bg-card p-4">
+            <div className="mb-2 text-[11px] font-black uppercase tracking-widest text-muted-foreground">
               Attachments (optional)
             </div>
             <input
@@ -201,7 +201,7 @@ export default function ResidentSubmission() {
               className="block w-full text-sm"
               onChange={(e) => setAttachments(Array.from(e.target.files || []))}
             />
-            <div className="mt-2 text-xs font-semibold text-slate-500">
+            <div className="mt-2 text-xs font-semibold text-muted-foreground">
               Add PDFs/photos or supporting docs. In this model, files are not
               uploaded yet; include them when you send the request to staff.
             </div>
@@ -213,25 +213,25 @@ export default function ResidentSubmission() {
         </form>
       </Card>
 
-      <Card className="lg:col-span-5 rounded-3xl border-slate-200 p-6 shadow-sm">
-        <div className="text-xs font-black uppercase tracking-widest text-slate-500">
+      <Card className="lg:col-span-5 rounded-3xl border-border bg-card p-6 shadow-sm">
+        <div className="text-xs font-black uppercase tracking-widest text-muted-foreground">
           Confirmation
         </div>
         {confirmation ? (
           <div className="mt-4">
-            <div className="text-sm font-semibold text-slate-700">
+            <div className="text-sm font-semibold text-foreground">
               Case created:
             </div>
-            <div className="mt-2 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 font-mono text-sm font-bold text-emerald-800">
+            <div className="mt-2 rounded-2xl border border-primary/25 bg-accent p-4 font-mono text-sm font-bold text-foreground">
               {confirmation.caseId}
             </div>
-            <div className="mt-4 text-sm font-semibold text-slate-700">
+            <div className="mt-4 text-sm font-semibold text-foreground">
               T10 deadline:
             </div>
-            <div className="mt-2 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm font-semibold text-slate-800">
+            <div className="mt-2 rounded-2xl border border-border bg-muted p-4 text-sm font-semibold text-foreground">
               {confirmation.t10}
             </div>
-            <div className="mt-4 text-xs font-semibold text-slate-500">
+            <div className="mt-4 text-xs font-semibold text-muted-foreground">
               Packet copied to your clipboard.
               {confirmation.attachmentsCount ? (
                 <> Attachments selected: {confirmation.attachmentsCount} (not uploaded in this model).</>
@@ -258,7 +258,7 @@ export default function ResidentSubmission() {
             </div>
           </div>
         ) : (
-          <div className="mt-4 text-sm font-semibold text-slate-600">
+          <div className="mt-4 text-sm font-semibold text-muted-foreground">
             Submit a request to see the case ID and deadline.
           </div>
         )}

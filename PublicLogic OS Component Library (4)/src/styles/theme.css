@@ -2,42 +2,43 @@
 
 @theme {
   /* Shadcn-style semantic tokens */
-  --color-background: #f6fbf8;
-  --color-foreground: #06281f;
+  /* Match PublicLogic brand system (styles.css) */
+  --color-background: #f6faf7; /* soft */
+  --color-foreground: #111827; /* ink */
 
   --color-card: #ffffff;
-  --color-card-foreground: #06281f;
+  --color-card-foreground: #111827;
 
   --color-popover: #ffffff;
-  --color-popover-foreground: #06281f;
+  --color-popover-foreground: #111827;
 
-  --color-primary: #059669; /* mint */
-  --color-primary-foreground: #ecfdf5;
+  --color-primary: #1d4d30; /* brand green */
+  --color-primary-foreground: #ffffff;
 
-  --color-secondary: #eaf6f0;
-  --color-secondary-foreground: #06281f;
+  --color-secondary: #e9f4ec;
+  --color-secondary-foreground: #111827;
 
-  --color-muted: #eef7f3;
-  --color-muted-foreground: #1f5b4a;
+  --color-muted: #eef6f0;
+  --color-muted-foreground: #6b7280; /* slate */
 
-  --color-accent: #dff3ea;
-  --color-accent-foreground: #06281f;
+  --color-accent: #e2f1e7;
+  --color-accent-foreground: #111827;
 
   --color-destructive: #e11d48;
   --color-destructive-foreground: #fff1f2;
 
-  --color-border: #d7ebe2;
-  --color-input: #cfe7dc;
+  --color-border: #e7efe9; /* line */
+  --color-input: #d9e8de;
   --color-input-background: #ffffff;
-  --color-ring: #10b981;
+  --color-ring: #2e7d32; /* accent green */
 
   /* Sidebar tokens used by shadcn sidebar */
-  --color-sidebar: #eaf6f0;
-  --color-sidebar-foreground: #06281f;
-  --color-sidebar-accent: #dff3ea;
-  --color-sidebar-accent-foreground: #06281f;
-  --color-sidebar-border: #cfe7dc;
-  --color-sidebar-ring: #10b981;
+  --color-sidebar: #eef6f0;
+  --color-sidebar-foreground: #111827;
+  --color-sidebar-accent: #e2f1e7;
+  --color-sidebar-accent-foreground: #111827;
+  --color-sidebar-border: #d9e8de;
+  --color-sidebar-ring: #2e7d32;
 
   --radius-small: 12px;
   --radius-default: 16px;
@@ -91,10 +92,12 @@
 
 /* Environment branding overrides (make towns feel like separate governed spaces) */
 .env-phillipston {
-  --color-primary: #0ea5e9; /* ocean */
-  --color-ring: #38bdf8;
-  --color-sidebar-accent: #e0f2fe;
-  --color-accent: #e0f2fe;
+  /* Phillipston is a distinct "governed space" but stays in the PublicLogic green family */
+  --color-primary: #2e7d32; /* accent green */
+  --color-ring: #2e7d32;
+  --color-sidebar: #edf7ef;
+  --color-sidebar-accent: #dff3ea;
+  --color-accent: #e2f1e7;
 }
 
 .dark .env-phillipston {

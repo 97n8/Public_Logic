@@ -1,6 +1,8 @@
 import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
+import { useMsal } from "@azure/msal-react";
 import RequireAllowedUser from "../auth/RequireAllowedUser";
 import RequireAuth from "../auth/RequireAuth";
+import { getAllowedEmails } from "../auth/publiclogicConfig";
 import AppShell from "./shell/AppShell";
 import Dashboard from "./pages/Dashboard";
 import Environments from "./pages/Environments";
@@ -15,6 +17,23 @@ import PhillipstonPRR from "./environments/phillipston/prr/PhillipstonPRR";
 import PhillipstonLegacy from "./pages/PhillipstonLegacy";
 import TownShell from "./environments/TownShell";
 import PhillipstonHome from "./environments/phillipston/PhillipstonHome";
+
+function normalizeEmail(value: string) {
+  return value.trim().toLowerCase();
+}
+
+function HomeRedirect() {
+  const { accounts } = useMsal();
+  const email = normalizeEmail(accounts[0]?.username ?? "");
+  const allowed = getAllowedEmails().map(normalizeEmail);
+
+  // Default: internal users land in PublicLogic OS; others land in Phillipston demo space.
+  return allowed.includes(email) ? (
+    <Navigate to="/dashboard" replace />
+  ) : (
+    <Navigate to="/phillipston" replace />
+  );
+}
 
 function PhillipstonLayout() {
   const location = useLocation();
@@ -38,7 +57,14 @@ function PhillipstonLayout() {
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/phillipston" replace />} />
+      <Route
+        path="/"
+        element={
+          <RequireAuth>
+            <HomeRedirect />
+          </RequireAuth>
+        }
+      />
 
       {/* Phillipston governed app (enclosed). */}
       <Route
@@ -79,7 +105,7 @@ export default function App() {
         <Route path="/legacy/phillipston" element={<PhillipstonLegacy />} />
       </Route>
 
-      <Route path="*" element={<Navigate to="/phillipston" replace />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }

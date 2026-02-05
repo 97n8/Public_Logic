@@ -32,10 +32,10 @@ export default function AppShell({ children }: { children: ReactNode }) {
             </div>
             <div className="min-w-0">
               <div className="truncate text-sm font-black uppercase tracking-widest text-sidebar-foreground">
-                PublicLogic
+                PublicLogic OS
               </div>
               <div className="truncate text-xs font-semibold text-sidebar-foreground/70">
-                CaseSpace
+                Operations
               </div>
             </div>
           </div>
@@ -87,8 +87,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
               </Button>
             </div>
             <div className="mt-2 px-2 text-[10px] font-semibold text-sidebar-foreground/70">
-              <Link to="/phillipston/prr" className="underline underline-offset-4">
-                Phillipston PRR
+              <Link to="/phillipston" className="underline underline-offset-4">
+                Phillipston CaseSpace
               </Link>
             </div>
           </div>

@@ -1,12 +1,12 @@
 {
-  "name": "Phillipston CaseSpace",
-  "short_name": "CaseSpace",
-  "description": "Town of Phillipston — CaseSpace. Public Records Requests (M.G.L. c. 66 §10).",
-  "start_url": "./#/phillipston",
+  "name": "PublicLogic OS",
+  "short_name": "PublicLogic",
+  "description": "Private operations portal and governed municipal case spaces.",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f7fbf8",
-  "theme_color": "#2e7d32",
+  "theme_color": "#1d4d30",
   "icons": [
     {
       "src": "./icon-192.png",

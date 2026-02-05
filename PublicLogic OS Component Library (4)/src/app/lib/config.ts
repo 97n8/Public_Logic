@@ -1,5 +1,5 @@
 /**
- * Phillipston Global Configuration
+ * PublicLogic Global Configuration
  */
 
 export interface AppConfig {
@@ -17,12 +17,13 @@ export interface AppConfig {
 
 export function getConfig(): AppConfig {
   const custom = (window as any).PUBLICLOGIC_OS_CONFIG;
+  const baseUrl = window.location.origin + import.meta.env.BASE_URL;
   
   return {
     msal: {
       clientId: custom?.msal?.clientId || "1b53d140-0779-4a64-943c-a11ba19ec0ce",
       tenantId: custom?.msal?.tenantId || "publiclogic978.onmicrosoft.com",
-      redirectUri: custom?.msal?.redirectUri || "https://www.publiclogic.org/HMLP/",
+      redirectUri: custom?.msal?.redirectUri || baseUrl,
     },
     sharepoint: {
       hostname: custom?.sharepoint?.hostname || "publiclogic978.sharepoint.com",

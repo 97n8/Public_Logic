@@ -8,8 +8,10 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   const isProduction = mode === 'production';
   const isDemo = env.VITE_DEMO_MODE === 'true';
+  const base = env.VITE_BASE || process.env.VITE_BASE || '/';
 
   return {
+    base,
     plugins: [
       react(),
       tailwindcss(),

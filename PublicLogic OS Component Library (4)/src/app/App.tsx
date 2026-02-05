@@ -10,7 +10,7 @@ import Pipeline from "./pages/Pipeline";
 import Playbooks from "./pages/Playbooks";
 import Projects from "./pages/Projects";
 import Settings from "./pages/Settings";
-import Tasks from "./pages/Tasks";
+import Lists from "./pages/Lists";
 import Today from "./pages/Today";
 import Tools from "./pages/Tools";
 import PhillipstonPRR from "./environments/phillipston/prr/PhillipstonPRR";
@@ -93,7 +93,8 @@ export default function App() {
       >
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/today" element={<Today />} />
-        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/lists" element={<Lists />} />
+        <Route path="/tasks" element={<Navigate to="/lists" replace />} />
         <Route path="/pipeline" element={<Pipeline />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/playbooks" element={<Playbooks />} />

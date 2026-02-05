@@ -20,7 +20,7 @@ export type NavItem = {
 export const NAV_ITEMS: NavItem[] = [
   { to: "/dashboard", label: "Dashboard", icon: Gauge },
   { to: "/today", label: "Today", icon: CalendarDays },
-  { to: "/tasks", label: "Tasks", icon: ListTodo },
+  { to: "/lists", label: "Lists", icon: ListTodo },
   { to: "/pipeline", label: "Pipeline", icon: GitBranch },
   { to: "/projects", label: "Projects", icon: FolderKanban },
   { to: "/playbooks", label: "Playbooks", icon: Globe },

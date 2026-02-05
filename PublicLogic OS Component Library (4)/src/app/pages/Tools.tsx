@@ -2,10 +2,13 @@ import PageHeader from "../components/PageHeader";
 import { Card } from "../components/ui/card";
 
 const TOOLS = [
-  { label: "Outlook", href: "https://outlook.office.com/mail/" },
-  { label: "Microsoft Planner", href: "https://tasks.office.com/" },
+  { label: "Outlook (Mail)", href: "https://outlook.office.com/mail/" },
+  { label: "Outlook (Calendar)", href: "https://outlook.office.com/calendar/" },
   { label: "SharePoint Site", href: "https://publiclogic978.sharepoint.com/sites/PL" },
   { label: "OneDrive", href: "https://www.office.com/launch/onedrive" },
+  { label: "ChatGPT", href: "https://chatgpt.com/" },
+  { label: "Apple Notes (iCloud)", href: "https://www.icloud.com/notes/" },
+  { label: "Apple Reminders (iCloud)", href: "https://www.icloud.com/reminders/" },
 ] as const;
 
 export default function Tools() {
@@ -36,4 +39,3 @@ export default function Tools() {
     </div>
   );
 }
-

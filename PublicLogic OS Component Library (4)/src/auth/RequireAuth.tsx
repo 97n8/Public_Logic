@@ -10,6 +10,7 @@ export default function RequireAuth({ children }: { children: ReactNode }) {
 
   const isAuthenticated = useIsAuthenticated();
   const { instance, inProgress, accounts } = useMsal();
+  const brandMarkUrl = `${import.meta.env.BASE_URL}brand/publiclogic-mark.svg`;
 
   useEffect(() => {
     if (inProgress !== "none") return;
@@ -23,12 +24,19 @@ export default function RequireAuth({ children }: { children: ReactNode }) {
     return (
       <div className="min-h-screen bg-background p-10">
         <div className="mx-auto max-w-xl rounded-3xl border border-border bg-card p-10 shadow-lg">
-          <div className="text-xs font-black uppercase tracking-[0.32em] text-primary">
-            Governed App
+          <div className="flex items-center gap-4">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-muted shadow-sm ring-1 ring-black/5">
+              <img src={brandMarkUrl} alt="" aria-hidden className="h-8 w-8" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-xs font-black uppercase tracking-[0.32em] text-primary">
+                Governed App
+              </div>
+              <h1 className="mt-2 text-2xl font-black tracking-tight text-foreground">
+                Signing you in…
+              </h1>
+            </div>
           </div>
-          <h1 className="mt-3 text-2xl font-black tracking-tight text-foreground">
-            Signing you in…
-          </h1>
           <p className="mt-3 text-sm font-semibold text-muted-foreground">
             If nothing happens, refresh the page to retry.
           </p>

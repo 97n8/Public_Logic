@@ -1,5 +1,5 @@
 import { useMsal } from "@azure/msal-react";
-import { LogOut, ShieldCheck } from "lucide-react";
+import { LogOut } from "lucide-react";
 import type { ReactNode } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { NAV_ITEMS } from "./nav";
@@ -21,14 +21,20 @@ import { Button } from "../components/ui/button";
 export default function AppShell({ children }: { children: ReactNode }) {
   const { instance, accounts } = useMsal();
   const email = accounts[0]?.username ?? "";
+  const brandMarkUrl = `${import.meta.env.BASE_URL}brand/publiclogic-mark.svg`;
 
   return (
     <SidebarProvider defaultOpen>
       <Sidebar>
         <SidebarHeader>
           <div className="flex items-center gap-3 px-2 py-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20">
-              <ShieldCheck className="h-5 w-5" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-black/5">
+              <img
+                src={brandMarkUrl}
+                alt=""
+                aria-hidden
+                className="h-7 w-7"
+              />
             </div>
             <div className="min-w-0">
               <div className="truncate text-sm font-black uppercase tracking-widest text-sidebar-foreground">

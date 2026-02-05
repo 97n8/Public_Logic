@@ -9,7 +9,7 @@ const BUILTIN_PLAYBOOKS = [
   {
     id: "welcome",
     title: "Welcome",
-    body: `# PublicLogic Playbooks\n\nThis section will load markdown from a \`content/\` folder (Netlify-friendly) and render it with a sidebar.\n\n- Mission / vision\n- Delivery playbooks\n- Ops cadence\n`,
+    body: `# Playbooks\n\nShort, practical guides for delivery and compliance.\n\n- Intake → deliver\n- Records discipline (ARCHIEVE)\n- Town environment operations\n`,
   },
   {
     id: "prr",
@@ -60,4 +60,3 @@ export default function Playbooks() {
     </div>
   );
 }
-

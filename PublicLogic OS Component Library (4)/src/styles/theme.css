@@ -3,7 +3,7 @@
 @theme {
   /* Shadcn-style semantic tokens */
   /* Match PublicLogic brand system (styles.css) */
-  --color-background: #f6faf7; /* soft */
+  --color-background: #ffffff; /* page bg */
   --color-foreground: #111827; /* ink */
 
   --color-card: #ffffff;
@@ -15,29 +15,29 @@
   --color-primary: #1d4d30; /* brand green */
   --color-primary-foreground: #ffffff;
 
-  --color-secondary: #e9f4ec;
+  --color-secondary: #f6faf7; /* soft */
   --color-secondary-foreground: #111827;
 
-  --color-muted: #eef6f0;
+  --color-muted: #f3f8f5;
   --color-muted-foreground: #6b7280; /* slate */
 
-  --color-accent: #e2f1e7;
+  --color-accent: #edf7ef;
   --color-accent-foreground: #111827;
 
   --color-destructive: #e11d48;
   --color-destructive-foreground: #fff1f2;
 
-  --color-border: #e7efe9; /* line */
-  --color-input: #d9e8de;
+  --color-border: #e2ece6; /* line */
+  --color-input: #d6e8dd;
   --color-input-background: #ffffff;
   --color-ring: #2e7d32; /* accent green */
 
   /* Sidebar tokens used by shadcn sidebar */
-  --color-sidebar: #eef6f0;
+  --color-sidebar: #f6faf7;
   --color-sidebar-foreground: #111827;
-  --color-sidebar-accent: #e2f1e7;
+  --color-sidebar-accent: #e8f5e9;
   --color-sidebar-accent-foreground: #111827;
-  --color-sidebar-border: #d9e8de;
+  --color-sidebar-border: #dfece5;
   --color-sidebar-ring: #2e7d32;
 
   --radius-small: 12px;
@@ -45,9 +45,9 @@
   --radius-large: 20px;
   --radius-pill: 999px;
 
-  --shadow-small: 0 4px 12px rgba(0, 0, 0, 0.28);
-  --shadow-medium: 0 12px 32px rgba(0, 0, 0, 0.38);
-  --shadow-large: 0 20px 60px rgba(0, 0, 0, 0.42);
+  --shadow-small: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 8px 18px rgba(0, 0, 0, 0.06);
+  --shadow-large: 0 20px 50px rgba(0, 0, 0, 0.1);
 
   --font-inter: "Inter", system-ui, sans-serif;
 }
@@ -95,9 +95,9 @@
   /* Phillipston is a distinct "governed space" but stays in the PublicLogic green family */
   --color-primary: #2e7d32; /* accent green */
   --color-ring: #2e7d32;
-  --color-sidebar: #edf7ef;
-  --color-sidebar-accent: #dff3ea;
-  --color-accent: #e2f1e7;
+  --color-sidebar: #f2fbf4;
+  --color-sidebar-accent: #ddf3e5;
+  --color-accent: #e8f5e9;
 }
 
 .dark .env-phillipston {

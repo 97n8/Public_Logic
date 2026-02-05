@@ -27,7 +27,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
       <Sidebar>
         <SidebarHeader>
           <div className="flex items-center gap-3 px-2 py-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-lg shadow-emerald-600/20">
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20">
               <ShieldCheck className="h-5 w-5" />
             </div>
             <div className="min-w-0">
@@ -55,7 +55,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
                         "flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-bold transition",
                         isActive
                           ? "bg-sidebar-accent text-sidebar-accent-foreground shadow-lg shadow-sidebar-ring/20"
-                          : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+                          : "text-sidebar-foreground/90 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
                       ].join(" ")
                     }
                   >

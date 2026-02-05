@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { toast } from "sonner";
-import { useMsal } from "@azure/msal-react";
 import { Card } from "../../../../components/ui/card";
 import { Button } from "../../../../components/ui/button";
 import { Input } from "../../../../components/ui/input";
@@ -14,15 +13,20 @@ import { computeT10 } from "../deadlines";
 import {
   CaseSchema,
   createCaseId,
+  encodeResidentSubmissionMarkdown,
 } from "../vaultprr";
 import { saveCase } from "../store";
-import useSharePointClient from "../../../../hooks/useSharePointClient";
-import { archivePrrCaseToSharePoint } from "../sharepoint";
 
 const Schema = z.object({
   name: z.string().trim().min(2, "Name is required"),
-  email: z.union([z.literal(""), z.string().trim().email("Valid email required")]),
-  phone: z.union([z.literal(""), z.string().trim()]).optional(),
+  email: z
+    .string()
+    .trim()
+    .refine(
+      (v) => !v || z.string().email().safeParse(v).success,
+      "Valid email required",
+    ),
+  phone: z.string().trim().optional(),
   requestText: z.string().trim().min(10, "Please provide details (10+ chars)"),
   agree: z.literal(true, { message: "Required" }),
 });
@@ -30,14 +34,11 @@ const Schema = z.object({
 type FormValues = z.infer<typeof Schema>;
 
 export default function ResidentSubmission() {
-  const { accounts } = useMsal();
-  const actor = accounts[0]?.username || "staff";
-  const sp = useSharePointClient();
-
   const [confirmation, setConfirmation] = useState<{
     caseId: string;
     t10: string;
-    webUrl?: string;
+    packet: string;
+    attachmentsCount: number;
   } | null>(null);
 
   const form = useForm<FormValues>({
@@ -51,13 +52,6 @@ export default function ResidentSubmission() {
   const [attachments, setAttachments] = useState<File[]>([]);
 
   async function onSubmit(values: FormValues) {
-    if (!sp.client) {
-      toast.error("SharePoint not connected yet", {
-        description: "Finish sign-in and try again.",
-      });
-      return;
-    }
-
     const caseId = createCaseId();
     const caseData = CaseSchema.parse({
       caseId,
@@ -87,33 +81,44 @@ export default function ResidentSubmission() {
 
     saveCase(caseData);
 
-    const res = await archivePrrCaseToSharePoint(sp.client as any, caseData, {
-      actor,
-      attachments,
-    });
-
-    toast.success("Request archived to SharePoint", {
-      description: res.markdownWebUrl ? "Case file uploaded successfully." : "Case saved.",
+    const packet = encodeResidentSubmissionMarkdown(caseData);
+    void navigator.clipboard?.writeText(packet).catch(() => {});
+    toast.success("Request drafted", {
+      description: attachments.length
+        ? "Packet copied to clipboard. Attachments are not uploaded in this model."
+        : "Packet copied to clipboard.",
     });
 
     setConfirmation({
       caseId,
       t10: format(t10, "MMM d, yyyy"),
-      webUrl: res.markdownWebUrl,
+      packet,
+      attachmentsCount: attachments.length,
     });
     form.reset({ name: "", email: "", phone: "", requestText: "", agree: false });
     setAttachments([]);
+  }
+
+  function downloadPacket() {
+    if (!confirmation) return;
+    const blob = new Blob([confirmation.packet], { type: "text/markdown;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${confirmation.caseId}.md`;
+    a.click();
+    URL.revokeObjectURL(url);
   }
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
       <Card className="lg:col-span-7 rounded-3xl border-slate-200 p-6 shadow-sm">
         <div className="text-xs font-black uppercase tracking-widest text-slate-500">
-          Resident submission
+          Public records request
         </div>
         <div className="mt-2 text-sm font-semibold text-slate-600">
-          Use this form to capture resident requests. This model writes directly
-          to SharePoint (cases list + vault folder) using your Microsoft sign-in.
+          Submit a request for public records from the Town of Phillipston. This
+          model generates a case packet and deadline for staff review.
         </div>
 
         <form
@@ -197,13 +202,13 @@ export default function ResidentSubmission() {
               onChange={(e) => setAttachments(Array.from(e.target.files || []))}
             />
             <div className="mt-2 text-xs font-semibold text-slate-500">
-              Use for forwarded emails (.eml/.msg), PDFs, photos, or any provided
-              documents. Stored under the case folder.
+              Add PDFs/photos or supporting docs. In this model, files are not
+              uploaded yet; include them when you send the request to staff.
             </div>
           </div>
 
           <Button type="submit" className="rounded-full">
-            Submit PRR
+            Submit request
           </Button>
         </form>
       </Card>
@@ -227,21 +232,29 @@ export default function ResidentSubmission() {
               {confirmation.t10}
             </div>
             <div className="mt-4 text-xs font-semibold text-slate-500">
-              Case archived to SharePoint.
-              {confirmation.webUrl ? (
-                <>
-                  {" "}
-                  <a
-                    className="underline underline-offset-4"
-                    href={confirmation.webUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Open case file
-                  </a>
-                  .
-                </>
+              Packet copied to your clipboard.
+              {confirmation.attachmentsCount ? (
+                <> Attachments selected: {confirmation.attachmentsCount} (not uploaded in this model).</>
               ) : null}
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                className="rounded-full"
+                onClick={() => void navigator.clipboard?.writeText(confirmation.packet).catch(() => {})}
+              >
+                Copy packet
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                className="rounded-full"
+                onClick={downloadPacket}
+              >
+                Download .md
+              </Button>
             </div>
           </div>
         ) : (

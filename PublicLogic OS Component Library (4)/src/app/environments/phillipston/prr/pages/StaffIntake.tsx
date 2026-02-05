@@ -1,5 +1,4 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMsal } from "@azure/msal-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -12,15 +11,20 @@ import { computeT10 } from "../deadlines";
 import {
   CaseSchema,
   createCaseId,
+  encodeResidentSubmissionMarkdown,
 } from "../vaultprr";
 import { saveCase } from "../store";
-import useSharePointClient from "../../../../hooks/useSharePointClient";
-import { archivePrrCaseToSharePoint } from "../sharepoint";
 
 const Schema = z.object({
   name: z.string().trim().min(2, "Name is required"),
-  email: z.union([z.literal(""), z.string().trim().email("Valid email required")]),
-  phone: z.union([z.literal(""), z.string().trim()]).optional(),
+  email: z
+    .string()
+    .trim()
+    .refine(
+      (v) => !v || z.string().email().safeParse(v).success,
+      "Valid email required",
+    ),
+  phone: z.string().trim().optional(),
   requestText: z.string().trim().min(10, "Please provide details (10+ chars)"),
   receivedAt: z.string().min(10, "Received date is required"),
 });
@@ -28,9 +32,6 @@ const Schema = z.object({
 type FormValues = z.infer<typeof Schema>;
 
 export default function StaffIntake() {
-  const { accounts } = useMsal();
-  const actor = accounts[0]?.username || "staff";
-  const sp = useSharePointClient();
   const [attachments, setAttachments] = useState<File[]>([]);
 
   const form = useForm<FormValues>({
@@ -46,13 +47,6 @@ export default function StaffIntake() {
   });
 
   async function onSubmit(values: FormValues) {
-    if (!sp.client) {
-      toast.error("SharePoint not connected yet", {
-        description: "Finish sign-in and try again.",
-      });
-      return;
-    }
-
     const receivedAt = new Date(values.receivedAt + "T12:00:00");
     const t10 = computeT10(receivedAt);
     const caseId = createCaseId();
@@ -85,13 +79,12 @@ export default function StaffIntake() {
 
     saveCase(caseData);
 
-    const res = await archivePrrCaseToSharePoint(sp.client as any, caseData, {
-      actor,
-      attachments,
-    });
-
-    toast.success("Intake archived to SharePoint", {
-      description: res.markdownWebUrl ? `Case ${caseId} uploaded.` : `Case ${caseId} saved.`,
+    const md = encodeResidentSubmissionMarkdown(caseData);
+    void navigator.clipboard?.writeText(md).catch(() => {});
+    toast.success("Intake created", {
+      description: attachments.length
+        ? `Case ${caseId} saved. Packet copied to clipboard. Attachments are not uploaded in this model (${attachments.length}).`
+        : `Case ${caseId} saved. Packet copied to clipboard.`,
     });
 
     form.reset({
@@ -110,9 +103,8 @@ export default function StaffIntake() {
         Staff intake
       </div>
       <div className="mt-2 text-sm font-semibold text-slate-600">
-        Use for email/phone/in-person PRRs. This model writes directly to
-        SharePoint (cases list + vault folder) and appends to an immutable audit
-        log list.
+        Use for email/phone/in-person PRRs. This model drafts a case packet and
+        stores it locally in the browser (SharePoint wiring comes next).
       </div>
 
       <form
@@ -169,8 +161,8 @@ export default function StaffIntake() {
             onChange={(e) => setAttachments(Array.from(e.target.files || []))}
           />
           <div className="mt-2 text-xs font-semibold text-slate-500">
-            Attach the forwarded email (.eml/.msg) or any supporting docs; they’ll
-            be stored under the case’s SharePoint folder.
+            Add the forwarded email (.eml/.msg) or supporting docs. In this model,
+            files are not uploaded yet; include them when you deliver the response.
           </div>
         </div>
 

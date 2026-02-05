@@ -76,8 +76,8 @@ export async function ensurePrrSharePointSchema(sp: {
     displayName: casesListName,
     description:
       vaultMode === "test"
-        ? "PublicLogic PRR Cases (index) — TEST"
-        : "PublicLogic PRR Cases (index)",
+        ? "Phillipston PRR Cases (index) — TEST"
+        : "Phillipston PRR Cases (index)",
     columns: [
       { name: "CaseId", text: {} },
       { name: "Environment", text: {} },
@@ -98,8 +98,8 @@ export async function ensurePrrSharePointSchema(sp: {
     displayName: auditListName,
     description:
       vaultMode === "test"
-        ? "PublicLogic PRR Audit Log (append-only) — TEST"
-        : "PublicLogic PRR Audit Log (append-only)",
+        ? "Phillipston PRR Audit Log (append-only) — TEST"
+        : "Phillipston PRR Audit Log (append-only)",
     columns: [
       { name: "CaseId", text: {} },
       { name: "At", dateTime: { displayAs: "default" } },

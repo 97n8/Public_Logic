@@ -7,12 +7,19 @@ export default function TownShell({
   subtitle,
   children,
   className,
+  homeTo,
+  homeLabel,
 }: {
   town: string;
   subtitle: string;
   children: ReactNode;
   className?: string;
+  homeTo?: string;
+  homeLabel?: string;
 }) {
+  const linkTo = homeTo ?? "/dashboard";
+  const label = homeLabel ?? (homeTo ? "Home" : "Portal");
+
   return (
     <div className={["env", className].filter(Boolean).join(" ")}>
       <div className="min-h-screen bg-background">
@@ -33,11 +40,11 @@ export default function TownShell({
               </div>
             </div>
             <Link
-              to="/dashboard"
+              to={linkTo}
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-black uppercase tracking-widest text-foreground hover:bg-accent"
             >
               <ArrowLeft className="h-4 w-4" />
-              Portal
+              {label}
             </Link>
           </div>
         </header>

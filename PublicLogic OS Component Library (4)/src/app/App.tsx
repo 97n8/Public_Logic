@@ -1,4 +1,4 @@
-import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 import RequireAllowedUser from "../auth/RequireAllowedUser";
 import RequireAuth from "../auth/RequireAuth";
 import AppShell from "./shell/AppShell";
@@ -16,6 +16,25 @@ import PhillipstonLegacy from "./pages/PhillipstonLegacy";
 import TownShell from "./environments/TownShell";
 import PhillipstonHome from "./environments/phillipston/PhillipstonHome";
 
+function PhillipstonLayout() {
+  const location = useLocation();
+  const isPrr = location.pathname.startsWith("/phillipston/prr");
+
+  return (
+    <TownShell
+      town="Phillipston"
+      subtitle={
+        isPrr ? "Public Records Requests (M.G.L. c. 66 §10)" : "CaseSpace"
+      }
+      className="env-phillipston"
+      homeTo={isPrr ? "/phillipston" : "/phillipston/prr/staff"}
+      homeLabel={isPrr ? "CaseSpace" : "PRR"}
+    >
+      <Outlet />
+    </TownShell>
+  );
+}
+
 export default function App() {
   return (
     <Routes>
@@ -23,43 +42,15 @@ export default function App() {
 
       {/* Phillipston governed app (enclosed). */}
       <Route
+        path="/phillipston"
         element={
-          <div className="env env-phillipston">
-            <RequireAuth>
-              <Outlet />
-            </RequireAuth>
-          </div>
+          <RequireAuth>
+            <PhillipstonLayout />
+          </RequireAuth>
         }
       >
-        <Route
-          path="/phillipston"
-          element={
-            <TownShell
-              town="Phillipston"
-              subtitle="CaseSpace"
-              className="env-phillipston"
-              homeTo="/phillipston/prr/staff"
-              homeLabel="PRR"
-            >
-              <PhillipstonHome />
-            </TownShell>
-          }
-        />
-
-        <Route
-          path="/phillipston/prr/*"
-          element={
-            <TownShell
-              town="Phillipston"
-              subtitle="Public Records Requests (M.G.L. c. 66 §10)"
-              className="env-phillipston"
-              homeTo="/phillipston"
-              homeLabel="CaseSpace"
-            >
-              <PhillipstonPRR />
-            </TownShell>
-          }
-        />
+        <Route index element={<PhillipstonHome />} />
+        <Route path="prr/*" element={<PhillipstonPRR />} />
       </Route>
 
       {/* PublicLogic ops portal (private) */}

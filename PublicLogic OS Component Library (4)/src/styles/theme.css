@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-dark: #f0fdf4;
+  --color-bg-medium: #ffffff;
+  --color-text-primary: #064e3b;
+  --color-text-muted: #4b5563;
+  --color-accent-primary: #10b981;
+  --color-accent-secondary: #d97706;
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-danger: #e11d48;
+  --color-line: #e2e8f0;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f5f9;
+
+  --radius-small: 12px;
+  --radius-default: 16px;
+  --radius-large: 20px;
+  --radius-pill: 999px;
+
+  --shadow-small: 0 4px 12px rgba(0, 0, 0, 0.28);
+  --shadow-medium: 0 12px 32px rgba(0, 0, 0, 0.38);
+  --shadow-large: 0 20px 60px rgba(0, 0, 0, 0.42);
+
+  --font-inter: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-dark text-text-primary font-inter antialiased;
+    margin: 0;
+  }
+
+  h1 {
+    @apply text-[22px] font-bold tracking-tight;
+  }
+
+  h2 {
+    @apply text-[18px] font-bold tracking-tight;
+  }
+
+  h3 {
+    @apply text-[16px] font-bold;
+  }
+
+  p {
+    @apply text-[14px] leading-relaxed;
+  }
+
+  label {
+    @apply text-[13px] font-bold uppercase tracking-[0.05em] text-text-muted;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-surface backdrop-blur-md border border-line;
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-bg-dark;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

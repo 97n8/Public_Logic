@@ -86,7 +86,6 @@ export default function StaffCaseSpace() {
 
   useEffect(() => {
     void refreshCases({ forceRefresh: true });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sp, setup.casesListName, vaultMode]);
 
   async function handleInitialize() {

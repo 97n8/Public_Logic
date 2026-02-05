@@ -1,5 +1,6 @@
-import { formatISO } from "date-fns";
+import { format, formatISO } from "date-fns";
 import { z } from "zod";
+import { addBusinessDays } from "./deadlines";
 
 export const VaultPrrState = z.enum([
   "S000_CREATED",
@@ -32,6 +33,14 @@ export const DeadlinesSchema = z.object({
   t10: z.string(),
 });
 
+export const AttachmentSchema = z.object({
+  name: z.string().min(1),
+  type: z.string().optional(),
+  size: z.number().optional(),
+});
+
+export type VaultPrrAttachment = z.infer<typeof AttachmentSchema>;
+
 export const AuditEntrySchema = z.object({
   at: z.string(),
   actor: z.string(),
@@ -47,6 +56,7 @@ export const CaseSchema = z.object({
   requester: RequesterSchema,
   intake: IntakeSchema,
   deadlines: DeadlinesSchema,
+  attachments: z.array(AttachmentSchema).optional(),
   auditLog: z.array(AuditEntrySchema).default([]),
 });
 
@@ -108,6 +118,17 @@ export function encodeYamlFrontmatter(obj: unknown) {
 }
 
 export function encodeResidentSubmissionMarkdown(caseData: VaultPrrCase) {
+  const receivedAt = new Date(caseData.intake.receivedAt);
+  const reminderT3 = Number.isNaN(receivedAt.getTime())
+    ? null
+    : addBusinessDays(receivedAt, 7);
+  const reminderT1 = Number.isNaN(receivedAt.getTime())
+    ? null
+    : addBusinessDays(receivedAt, 9);
+
+  const fmt = (d: Date | null) =>
+    d && !Number.isNaN(d.getTime()) ? format(d, "MMM d, yyyy") : "—";
+
   const frontmatter = encodeYamlFrontmatter({
     caseId: caseData.caseId,
     environment: caseData.environment,
@@ -116,6 +137,7 @@ export function encodeResidentSubmissionMarkdown(caseData: VaultPrrCase) {
     receivedAt: caseData.intake.receivedAt,
     t10: caseData.deadlines.t10,
     requester: caseData.requester,
+    attachments: caseData.attachments?.map((a) => a.name) ?? [],
   });
 
   return (
@@ -126,6 +148,15 @@ export function encodeResidentSubmissionMarkdown(caseData: VaultPrrCase) {
     `${caseData.intake.requestText}\n\n` +
     `## Deadlines\n\n` +
     `- **T10 (10 business days):** ${caseData.deadlines.t10}\n\n` +
+    `## SLAs & Triggers (model)\n\n` +
+    `- **Acknowledgement (target):** within 1 business day.\n` +
+    `- **Staff reminders (model):** ${fmt(reminderT3)} (T-3), ${fmt(reminderT1)} (T-1).\n` +
+    `- **Extensions / fee estimates:** issued before T10 when applicable.\n\n` +
+    (caseData.attachments?.length
+      ? `## Attachments (not uploaded in this model)\n\n${caseData.attachments
+          .map((a) => `- ${a.name}`)
+          .join("\n")}\n\n`
+      : "") +
     `## Audit Log\n\n` +
     (caseData.auditLog.length
       ? caseData.auditLog

@@ -27,7 +27,7 @@ const Schema = z.object({
       "Valid email required",
     ),
   phone: z.string().trim().optional(),
-  requestText: z.string().trim().min(10, "Please provide details (10+ chars)"),
+  requestText: z.string().trim().min(3, "Please provide request details"),
   agree: z.literal(true, { message: "Required" }),
 });
 
@@ -70,6 +70,11 @@ export default function ResidentSubmission() {
         legalNoticeAccepted: true,
       },
       deadlines: { t10: t10.toISOString() },
+      attachments: attachments.map((f) => ({
+        name: f.name,
+        type: f.type || undefined,
+        size: f.size || undefined,
+      })),
       auditLog: [
         {
           at: new Date().toISOString(),
@@ -236,6 +241,17 @@ export default function ResidentSubmission() {
               {confirmation.attachmentsCount ? (
                 <> Attachments selected: {confirmation.attachmentsCount} (not uploaded in this model).</>
               ) : null}
+            </div>
+
+            <div className="mt-4 rounded-2xl border border-border bg-muted p-4">
+              <div className="text-xs font-black uppercase tracking-widest text-muted-foreground">
+                SLAs & triggers (model)
+              </div>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm font-semibold text-muted-foreground">
+                <li>Acknowledgement target: within 1 business day.</li>
+                <li>Response due by T10 (10 business days).</li>
+                <li>Extensions / fee estimates issued before T10 when applicable.</li>
+              </ul>
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">

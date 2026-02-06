@@ -11,7 +11,7 @@ export default function Settings() {
     <div>
       <PageHeader
         title="Settings"
-        subtitle="Config validator and connection checks (MSAL + Graph + SharePoint)."
+        subtitle="Access controls and connection details."
       />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -46,12 +46,11 @@ export default function Settings() {
             Site path: <span className="font-mono">{sharepoint.sitePath}</span>
           </div>
           <div className="mt-4 text-xs font-semibold text-slate-500">
-            Next: implement “connection checks” that verify required lists +
-            libraries exist (ARCHIEVE, Tasks, Pipeline, Projects).
+            Runtime config is loaded from{" "}
+            <span className="font-mono">public/config.js</span>.
           </div>
         </Card>
       </div>
     </div>
   );
 }
-

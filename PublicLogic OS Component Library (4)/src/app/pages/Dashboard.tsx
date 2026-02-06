@@ -23,7 +23,6 @@ import { requireInteraction } from "../../auth/RequireAuth";
 import { getUserCalendarView } from "../lib/graph-api";
 import useSharePointClient from "../hooks/useSharePointClient";
 import {
-  ARCHIEVE_LIST_NAME,
   createArchieveRecord,
   getArchieveListUrl,
   listArchieveRecords,
@@ -217,7 +216,7 @@ export default function Dashboard() {
     <div>
       <PageHeader
         title="Dashboard"
-        subtitle="Daily workspace for PublicLogic OS. Capture notes, review ARCHIEVE, and stay on top of town work."
+        subtitle="Daily workspace. Capture emerging issues and decisions, then review and resolve them in ARCHIEVE."
         actions={
           <>
             <Button
@@ -260,12 +259,11 @@ export default function Dashboard() {
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
               <div className="text-xs font-black uppercase tracking-[0.32em] text-muted-foreground">
-                Quick capture
+                Intake
               </div>
               <div className="mt-2 text-sm font-semibold text-muted-foreground">
-                Save notes, decisions, links, and next steps to{" "}
-                <span className="font-mono">{ARCHIEVE_LIST_NAME}</span>{" "}
-                (SharePoint).
+                Capture issues, decisions, observations, and links. Items are
+                recorded in ARCHIEVE for review and follow-through.
               </div>
               <div className="mt-3 flex flex-wrap items-center gap-2 text-xs font-black uppercase tracking-widest text-muted-foreground">
                 <span className="rounded-full border border-border bg-muted px-3 py-1">
@@ -293,7 +291,7 @@ export default function Dashboard() {
               <Button asChild variant="outline" className="rounded-full">
                 <Link to="/lists">
                   <Inbox className="mr-2 h-4 w-4" />
-                  Lists
+                  Inbox
                 </Link>
               </Button>
             </div>
@@ -301,7 +299,7 @@ export default function Dashboard() {
 
           <Textarea
             className="mt-4 min-h-[180px]"
-            placeholder="Capture notes, links, and next steps…"
+            placeholder="Capture an issue, decision, observation, or link…"
             value={captureText}
             onChange={(e) => setCaptureText(e.target.value)}
           />
@@ -338,10 +336,10 @@ export default function Dashboard() {
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <div className="text-[11px] font-black uppercase tracking-[0.28em] text-muted-foreground">
-                  Inbox preview
+                  Inbox
                 </div>
                 <div className="mt-2 text-sm font-semibold text-muted-foreground">
-                  Latest {ARCHIEVE_LIST_NAME} items (Inbox)
+                  Recent items awaiting review
                 </div>
               </div>
               {archieveUrlQuery.data ? (

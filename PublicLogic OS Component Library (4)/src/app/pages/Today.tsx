@@ -8,12 +8,12 @@ export default function Today() {
     <div>
       <PageHeader
         title="Today"
-        subtitle="Use the Dashboard for capture, calendars, and inbox."
+        subtitle="Use the Dashboard for intake, calendars, and review."
       />
 
       <Card className="rounded-3xl border-border bg-card p-6 shadow-sm">
         <div className="text-sm font-semibold text-muted-foreground">
-          This deployment keeps “Today” consolidated into the main dashboard.
+          This app keeps daily work consolidated into the main dashboard.
         </div>
         <div className="mt-4">
           <Button asChild className="rounded-full">

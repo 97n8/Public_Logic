@@ -1,7 +1,7 @@
 import {
   Building2,
   Gauge,
-  ListTodo,
+  Inbox,
   Settings,
   Wrench,
 } from "lucide-react";
@@ -15,7 +15,7 @@ export type NavItem = {
 
 export const NAV_ITEMS: NavItem[] = [
   { to: "/dashboard", label: "Dashboard", icon: Gauge },
-  { to: "/lists", label: "Lists", icon: ListTodo },
+  { to: "/lists", label: "Inbox", icon: Inbox },
   { to: "/tools", label: "Tools", icon: Wrench },
   { to: "/environments", label: "Environments", icon: Building2 },
   { to: "/settings", label: "Settings", icon: Settings },

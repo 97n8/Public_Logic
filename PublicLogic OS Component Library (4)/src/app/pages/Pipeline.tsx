@@ -8,17 +8,17 @@ export default function Pipeline() {
     <div>
       <PageHeader
         title="Pipeline"
-        subtitle="Use Lists to track leads in ARCHIEVE."
+        subtitle="Capture and track opportunities in ARCHIEVE."
       />
 
       <Card className="rounded-3xl border-border bg-card p-6 shadow-sm">
         <div className="text-sm font-semibold text-muted-foreground">
-          Pipeline is intentionally lightweight here. Capture leads as list items
-          in ARCHIEVE, then promote them into a dedicated pipeline module later.
+          Use ARCHIEVE as a lightweight pipeline: capture in Inbox, move to Active
+          while in motion, and close items when resolved.
         </div>
         <div className="mt-4">
           <Button asChild className="rounded-full">
-            <Link to="/lists">Open Lists</Link>
+            <Link to="/lists">Open Inbox</Link>
           </Button>
         </div>
       </Card>

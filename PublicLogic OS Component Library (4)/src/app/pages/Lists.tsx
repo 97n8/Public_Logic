@@ -14,7 +14,6 @@ import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import useSharePointClient from "../hooks/useSharePointClient";
 import {
-  ARCHIEVE_LIST_NAME,
   createArchieveRecord,
   getArchieveListUrl,
   listArchieveRecords,
@@ -133,8 +132,8 @@ export default function Lists() {
   return (
     <div>
       <PageHeader
-        title="Lists"
-        subtitle="Fast working lists backed by ARCHIEVE (SharePoint)."
+        title="Inbox"
+        subtitle="Review captured items and move them through Inbox → Active → Done. Everything is recorded in ARCHIEVE."
         actions={
           listUrlQuery.data ? (
             <Button asChild variant="outline" className="rounded-full">
@@ -152,10 +151,10 @@ export default function Lists() {
           <div className="flex items-start justify-between gap-3">
             <div>
               <div className="text-xs font-black uppercase tracking-[0.32em] text-muted-foreground">
-                New item
+                New intake
               </div>
               <div className="mt-2 text-sm font-semibold text-muted-foreground">
-                Everything you write here becomes a record in {ARCHIEVE_LIST_NAME}.
+                Everything captured here is recorded in ARCHIEVE.
               </div>
             </div>
             {statusPill}
@@ -181,7 +180,10 @@ export default function Lists() {
               <div className="mb-1 text-[11px] font-black uppercase tracking-widest text-muted-foreground">
                 Title
               </div>
-              <Input placeholder="What needs doing?" {...form.register("title")} />
+              <Input
+                placeholder="Issue, decision, or follow-up"
+                {...form.register("title")}
+              />
               {form.formState.errors.title ? (
                 <div className="mt-1 text-xs font-semibold text-red-600">
                   {form.formState.errors.title.message}
@@ -211,7 +213,7 @@ export default function Lists() {
 
             {!sp ? (
               <div className="text-sm font-semibold text-muted-foreground">
-                Connect Microsoft 365 to load and save list items.
+                Connect Microsoft 365 to load and save ARCHIEVE items.
               </div>
             ) : connectError ? (
               <div className="text-sm font-semibold text-red-700">
@@ -302,4 +304,3 @@ export default function Lists() {
     </div>
   );
 }
-

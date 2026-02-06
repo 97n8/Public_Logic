@@ -7,7 +7,7 @@ const ENVS = [
     id: "phillipston",
     title: "Phillipston PRR",
     description:
-      "Standalone-ish PRR environment: resident submissions, staff intake, case management, and SharePoint archiving (M.G.L. c. 66 §10).",
+      "Dedicated PRR environment: resident submissions, staff intake, case management, and SharePoint archiving (M.G.L. c. 66 §10).",
     to: "/phillipston/prr",
   },
   {
@@ -53,4 +53,3 @@ export default function Environments() {
     </div>
   );
 }
-

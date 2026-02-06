@@ -21,7 +21,7 @@ import { Button } from "../components/ui/button";
 export default function AppShell({ children }: { children: ReactNode }) {
   const { instance, accounts } = useMsal();
   const email = accounts[0]?.username ?? "";
-  const brandMarkUrl = `${import.meta.env.BASE_URL}brand/publiclogic-mark.svg`;
+  const brandMarkUrl = `${import.meta.env.BASE_URL}brand/publiclogic-duck-mark.svg`;
 
   return (
     <SidebarProvider defaultOpen>

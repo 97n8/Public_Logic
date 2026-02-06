@@ -1,6 +1,7 @@
 import { useMsal } from "@azure/msal-react";
-import { LogOut } from "lucide-react";
+import { LogOut, NotebookPen, Search } from "lucide-react";
 import type { ReactNode } from "react";
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { NAV_ITEMS } from "./nav";
 import {
@@ -17,14 +18,24 @@ import {
   SidebarTrigger,
 } from "../components/ui/sidebar";
 import { Button } from "../components/ui/button";
+import CommandPalette from "./CommandPalette";
+import GlobalCaptureDialog from "./GlobalCaptureDialog";
 
 export default function AppShell({ children }: { children: ReactNode }) {
   const { instance, accounts } = useMsal();
   const email = accounts[0]?.username ?? "";
   const brandMarkUrl = `${import.meta.env.BASE_URL}brand/publiclogic-duck-mark.svg`;
+  const [commandOpen, setCommandOpen] = useState(false);
+  const [captureOpen, setCaptureOpen] = useState(false);
 
   return (
     <SidebarProvider defaultOpen>
+      <CommandPalette
+        open={commandOpen}
+        onOpenChange={setCommandOpen}
+        onOpenCapture={() => setCaptureOpen(true)}
+      />
+      <GlobalCaptureDialog open={captureOpen} onOpenChange={setCaptureOpen} />
       <Sidebar>
         <SidebarHeader>
           <div className="flex items-center gap-3 px-2 py-2">
@@ -106,6 +117,29 @@ export default function AppShell({ children }: { children: ReactNode }) {
           <SidebarTrigger />
           <div className="flex-1 text-sm font-black uppercase tracking-widest text-foreground">
             Operations Portal
+          </div>
+          <div className="flex items-center gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              className="rounded-full"
+              onClick={() => setCaptureOpen(true)}
+            >
+              <NotebookPen className="mr-2 h-4 w-4" />
+              Capture
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              className="rounded-full"
+              onClick={() => setCommandOpen(true)}
+            >
+              <Search className="mr-2 h-4 w-4" />
+              Command
+              <span className="ml-2 rounded-md border border-border bg-muted px-2 py-0.5 text-[10px] font-black tracking-widest text-muted-foreground">
+                ⌘K
+              </span>
+            </Button>
           </div>
         </header>
         <main className="min-h-[calc(100vh-56px)] bg-background p-6">

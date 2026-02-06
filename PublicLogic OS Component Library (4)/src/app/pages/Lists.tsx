@@ -295,8 +295,24 @@ export default function Lists() {
               ))}
             </div>
           ) : (
-            <div className="mt-6 text-sm font-semibold text-muted-foreground">
-              No items yet.
+            <div className="mt-6 rounded-2xl border border-border bg-muted p-6">
+              <div className="flex items-start gap-4">
+                <img
+                  src={`${import.meta.env.BASE_URL}brand/publiclogic-duck-mark.svg`}
+                  alt=""
+                  aria-hidden
+                  className="h-10 w-10 opacity-80"
+                />
+                <div className="min-w-0">
+                  <div className="text-sm font-black text-foreground">
+                    Inbox is clear.
+                  </div>
+                  <div className="mt-1 text-sm font-semibold text-muted-foreground">
+                    Capture new items as they arrive, or return to the dashboard
+                    for intake.
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </Card>

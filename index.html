@@ -16,13 +16,20 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
 
+    /* Loader */
     .loader {
       position: fixed;
       inset: 0;
       display: grid;
       place-items: center;
       color: rgba(255,255,255,0.85);
-      z-index: 1;
+      z-index: 10;
+      background: #022c22;
+      transition: opacity 200ms ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
       pointer-events: none;
     }
 
@@ -40,6 +47,7 @@
       text-transform: uppercase;
       font-size: 11px;
       margin-bottom: 14px;
+      justify-content: center;
     }
 
     .title {
@@ -60,7 +68,7 @@
 
     iframe {
       position: relative;
-      z-index: 2;
+      z-index: 1;
       border: none;
       width: 100%;
       height: 100vh;
@@ -68,12 +76,24 @@
       display: block;
       background: #022c22;
     }
+
+    noscript {
+      color: white;
+      padding: 24px;
+      display: block;
+      text-align: center;
+    }
   </style>
 </head>
 
 <body>
 
-  <div class="loader" id="loader" aria-live="polite" aria-busy="true">
+  <div
+    class="loader"
+    id="loader"
+    aria-live="polite"
+    aria-busy="true"
+  >
     <div>
       <div class="badge">PublicLogic</div>
       <p class="title">Loading…</p>
@@ -81,17 +101,34 @@
     </div>
   </div>
 
+  <!-- IMPORTANT:
+       This must NOT be "/"
+       Point it at your real app entrypoint -->
   <iframe
-    src="/"
-    title="PublicLogic"
+    id="app"
+    src="/app"
+    title="PublicLogic Application"
     allow="clipboard-read; clipboard-write; fullscreen"
-    loading="eager"
-    onload="
-      const l = document.getElementById('loader');
-      l.style.display='none';
-      l.setAttribute('aria-busy','false');
-    "
   ></iframe>
+
+  <noscript>
+    This application requires JavaScript to run.
+  </noscript>
+
+  <script>
+    const loader = document.getElementById('loader');
+    const iframe = document.getElementById('app');
+
+    iframe.addEventListener('load', () => {
+      loader.classList.add('hidden');
+      loader.setAttribute('aria-busy', 'false');
+
+      // fully remove after fade
+      setTimeout(() => {
+        loader.remove();
+      }, 250);
+    });
+  </script>
 
 </body>
 </html>

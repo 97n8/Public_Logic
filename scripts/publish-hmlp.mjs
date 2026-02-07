@@ -35,37 +35,13 @@ const sourceDist = path.join(sourceRoot, 'dist');
 const outputRoot = path.join(repoRoot, 'dist');
 const destDir = path.join(outputRoot, 'hmlp');
 
-function writeRootIndex() {
-  const indexPath = path.join(outputRoot, 'index.html');
-  const html = `<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="refresh" content="0; url=/hmlp/" />
-    <title>PublicLogic</title>
-    <style>
-      html, body { height: 100%; margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; background: #f7fbf8; color: #0f172a; }
-      .wrap { height: 100%; display: grid; place-items: center; padding: 24px; }
-      .card { max-width: 520px; width: 100%; border: 1px solid rgba(15, 23, 42, 0.10); background: white; border-radius: 24px; padding: 20px; box-shadow: 0 20px 60px rgba(15,23,42,0.08); }
-      .kicker { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 900; color: rgba(15,23,42,0.55); }
-      h1 { margin: 10px 0 0; font-size: 22px; }
-      p { margin: 10px 0 0; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.70); font-weight: 600; }
-      a { color: #0f766e; font-weight: 900; text-decoration: underline; text-underline-offset: 3px; }
-    </style>
-  </head>
-  <body>
-    <div class="wrap">
-      <div class="card">
-        <div class="kicker">Governed App</div>
-        <h1>Redirecting to the portal…</h1>
-        <p>If you are not redirected, open <a href="/hmlp/">/hmlp/</a>.</p>
-      </div>
-    </div>
-  </body>
-</html>
-`;
-  fs.writeFileSync(indexPath, html);
+function copyRootIndex() {
+  const src = path.join(repoRoot, 'index.html');
+  const dest = path.join(outputRoot, 'index.html');
+  if (!fs.existsSync(src)) {
+    throw new Error(`Root index.html not found: ${src}`);
+  }
+  fs.copyFileSync(src, dest);
 }
 
 function ensureSource() {
@@ -125,7 +101,7 @@ if (!fs.existsSync(sourceDist)) {
 
 fs.rmSync(outputRoot, { recursive: true, force: true });
 fs.mkdirSync(outputRoot, { recursive: true });
-writeRootIndex();
+copyRootIndex();
 copyDir(sourceDist, destDir);
 
 if (preservedConfig) {

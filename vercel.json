@@ -1,12 +1,12 @@
 {
   "buildCommand": "npm run vercel-build",
-  "outputDirectory": ".",
+  "outputDirectory": "dist",
   "builds": [
     {
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "."
+        "distDir": "dist"
       }
     }
   ],

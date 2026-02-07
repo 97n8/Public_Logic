@@ -7,20 +7,35 @@
   ],
   "headers": [
     {
-      "source": "/hmlp/index.html",
+      "source": "/os/index.html",
       "headers": [
         { "key": "Cache-Control", "value": "no-cache" }
       ]
     },
     {
-      "source": "/hmlp/config.js",
+      "source": "/os/config.js",
       "headers": [
         { "key": "Cache-Control", "value": "no-cache" }
+      ]
+    },
+    {
+      "source": "/os/:path*",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "no-referrer" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload" },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; script-src 'self' https://alcdn.msauth.net https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://graph.microsoft.com https://login.microsoftonline.com https://*.msauth.net https://*.msftauth.net; frame-src https://login.microsoftonline.com https://*.msauth.net https://*.msftauth.net;"
+        }
       ]
     },
     {
       "source": "/hmlp/:path*",
       "headers": [
+        { "key": "Cache-Control", "value": "no-cache" },
         { "key": "X-Frame-Options", "value": "DENY" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "Referrer-Policy", "value": "no-referrer" },
@@ -34,7 +49,20 @@
     }
   ],
   "rewrites": [
-    { "source": "/hmlp", "destination": "/hmlp/index.html" },
-    { "source": "/hmlp/:path*", "destination": "/hmlp/index.html" }
+    { "source": "/hmlp/config.js", "destination": "/os/config.js" },
+    { "source": "/hmlp/manifest.webmanifest", "destination": "/os/manifest.webmanifest" },
+    { "source": "/hmlp/apple-touch-icon.png", "destination": "/os/apple-touch-icon.png" },
+    { "source": "/hmlp/favicon.ico", "destination": "/os/favicon.ico" },
+    { "source": "/hmlp/favicon-32.png", "destination": "/os/favicon-32.png" },
+    { "source": "/hmlp/icon-192.png", "destination": "/os/icon-192.png" },
+    { "source": "/hmlp/icon-512.png", "destination": "/os/icon-512.png" },
+    { "source": "/hmlp/brand/:path*", "destination": "/os/brand/:path*" },
+    { "source": "/hmlp/assets/:path*", "destination": "/os/assets/:path*" },
+
+    { "source": "/os", "destination": "/os/index.html" },
+    { "source": "/os/:path*", "destination": "/os/index.html" },
+
+    { "source": "/hmlp", "destination": "/os/index.html" },
+    { "source": "/hmlp/:path*", "destination": "/os/index.html" }
   ]
 }

@@ -96,15 +96,35 @@ function ensureSource() {
   }
 
   fs.mkdirSync(cacheRoot, { recursive: true });
-  if (!fs.existsSync(clonedRepoDir)) {
-    run('git', ['clone', '--depth', '1', 'https://github.com/97n8/AGNOSTIC.git', clonedRepoDir], {
-      cwd: cacheRoot,
-    });
+  const cloneArgs = [
+    'clone',
+    '--depth',
+    '1',
+    '--branch',
+    'main',
+    'https://github.com/97n8/AGNOSTIC.git',
+    clonedRepoDir,
+  ];
+
+  const hasGitDir = fs.existsSync(path.join(clonedRepoDir, '.git'));
+  if (!fs.existsSync(clonedRepoDir) || !hasGitDir) {
+    // Defensive: build caches can restore partial directories without .git.
+    fs.rmSync(clonedRepoDir, { recursive: true, force: true });
+    run('git', cloneArgs, { cwd: cacheRoot, env: { ...process.env, GIT_TERMINAL_PROMPT: '0' } });
   } else {
-    // Keep the cached clone fresh across builds (Vercel caches .cache between deploys).
-    run('git', ['fetch', '--depth', '1', 'origin', 'main'], { cwd: clonedRepoDir });
-    run('git', ['reset', '--hard', 'FETCH_HEAD'], { cwd: clonedRepoDir });
-    run('git', ['clean', '-fdx'], { cwd: clonedRepoDir });
+    // Keep the cached clone fresh across builds (if .cache is preserved between deploys).
+    try {
+      run('git', ['fetch', '--depth', '1', 'origin', 'main'], {
+        cwd: clonedRepoDir,
+        env: { ...process.env, GIT_TERMINAL_PROMPT: '0' },
+      });
+      run('git', ['reset', '--hard', 'FETCH_HEAD'], { cwd: clonedRepoDir });
+      run('git', ['clean', '-fdx'], { cwd: clonedRepoDir });
+    } catch (err) {
+      // If the cached clone is corrupted/locked, fall back to a fresh clone.
+      fs.rmSync(clonedRepoDir, { recursive: true, force: true });
+      run('git', cloneArgs, { cwd: cacheRoot, env: { ...process.env, GIT_TERMINAL_PROMPT: '0' } });
+    }
   }
 
   if (!fs.existsSync(sourceRoot)) {

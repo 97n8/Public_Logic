@@ -35,6 +35,15 @@ const sourceDist = path.join(sourceRoot, 'dist');
 const outputRoot = path.join(repoRoot, 'dist');
 const destDir = path.join(outputRoot, 'hmlp');
 
+function copyStaticFile(relativePath, destinationRelativePath = relativePath) {
+  const src = path.join(repoRoot, relativePath);
+  if (!fs.existsSync(src)) return;
+
+  const dest = path.join(outputRoot, destinationRelativePath);
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.copyFileSync(src, dest);
+}
+
 function copyRootIndex() {
   const src = path.join(repoRoot, 'index.html');
   const dest = path.join(outputRoot, 'index.html');
@@ -164,6 +173,7 @@ if (!fs.existsSync(sourceDist)) {
 fs.rmSync(outputRoot, { recursive: true, force: true });
 fs.mkdirSync(outputRoot, { recursive: true });
 copyRootIndex();
+copyStaticFile('portal-signin.html');
 copyDir(sourceDist, destDir);
 
 if (preservedConfig) {

@@ -41,6 +41,8 @@ type SharePointClient = {
     columns: any[];
   }) => Promise<any>;
   createItem: (listName: string, fields: any) => Promise<any>;
+  updateItemFields: (listName: string, itemId: string, fields: any) => Promise<any>;
+  deleteItem: (listName: string, itemId: string) => Promise<any>;
   listItems: (
     listName: string,
     args?: { selectFields?: string[]; top?: number; forceRefresh?: boolean },
@@ -120,3 +122,16 @@ export async function getArchieveListUrl(sp: SharePointClient) {
   return (list?.webUrl as string | undefined) ?? undefined;
 }
 
+export async function updateArchieveStatus(
+  sp: SharePointClient,
+  itemId: string,
+  status: ArchieveStatus,
+) {
+  await ensureArchieveSchema(sp);
+  await sp.updateItemFields(ARCHIEVE_LIST_NAME, itemId, { Status: status });
+}
+
+export async function deleteArchieveItem(sp: SharePointClient, itemId: string) {
+  await ensureArchieveSchema(sp);
+  await sp.deleteItem(ARCHIEVE_LIST_NAME, itemId);
+}

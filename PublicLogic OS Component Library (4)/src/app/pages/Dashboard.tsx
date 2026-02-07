@@ -11,7 +11,7 @@ import {
   Landmark,
   ShieldCheck,
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import PageHeader from "../components/PageHeader";
@@ -24,11 +24,19 @@ import { getUserCalendarView } from "../lib/graph-api";
 import useSharePointClient from "../hooks/useSharePointClient";
 import {
   createArchieveRecord,
+  type ArchieveStatus,
   getArchieveListUrl,
   listArchieveRecords,
+  updateArchieveStatus,
 } from "../lib/archieve";
 import { getSharePointRuntimeConfig } from "../../auth/publiclogicConfig";
 import { getVaultMode } from "../environments/phillipston/prr/vaultMode";
+import {
+  enqueueLocalArchieveItem,
+  loadLocalArchieveQueue,
+  LOCAL_ARCHIEVE_QUEUE_EVENT,
+  saveLocalArchieveQueue,
+} from "../lib/local-archieve-queue";
 
 function getFiscalYearFolder(d: Date) {
   // Massachusetts FY starts July 1
@@ -50,6 +58,16 @@ export default function Dashboard() {
   const { client: sp, isLoading: isConnecting, error: connectError } =
     useSharePointClient();
   const [captureText, setCaptureText] = useState("");
+  const [localQueue, setLocalQueue] = useState(() => loadLocalArchieveQueue());
+  const localQueueCount = localQueue.length;
+  const [statusUpdatingId, setStatusUpdatingId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const refresh = () => setLocalQueue(loadLocalArchieveQueue());
+    refresh();
+    window.addEventListener(LOCAL_ARCHIEVE_QUEUE_EVENT, refresh);
+    return () => window.removeEventListener(LOCAL_ARCHIEVE_QUEUE_EVENT, refresh);
+  }, []);
 
   async function connectGraphIfNeeded() {
     if (!account) return;
@@ -103,6 +121,26 @@ export default function Dashboard() {
     },
   });
 
+  const activeQuery = useQuery({
+    queryKey: ["archieve", "active", dayKey, !!sp],
+    enabled: !!sp,
+    staleTime: 5 * 1000,
+    queryFn: async () => {
+      if (!sp) return [];
+      const items = await listArchieveRecords(sp as any, {
+        status: "ACTIVE",
+        top: 12,
+        forceRefresh: true,
+      });
+      items.sort((a: any, b: any) => {
+        const ad = new Date(a.CreatedAt || a.Created || 0).getTime();
+        const bd = new Date(b.CreatedAt || b.Created || 0).getTime();
+        return bd - ad;
+      });
+      return items;
+    },
+  });
+
   const calendarsQuery = useQuery({
     queryKey: ["graph", "calendars", account?.homeAccountId, dayKey],
     enabled: !!account,
@@ -143,44 +181,111 @@ export default function Dashboard() {
     },
   });
 
+  async function setItemStatus(itemId: string | undefined, status: ArchieveStatus) {
+    if (!sp || !itemId) return;
+    const tid = toast.loading("Updating…");
+    setStatusUpdatingId(itemId);
+    try {
+      await updateArchieveStatus(sp as any, itemId, status);
+      toast.success("Updated", { id: tid });
+      await qc.invalidateQueries({ queryKey: ["archieve"] });
+    } catch (e) {
+      toast.error("Could not update", {
+        id: tid,
+        description: e instanceof Error ? e.message : String(e),
+      });
+    } finally {
+      setStatusUpdatingId(null);
+    }
+  }
+
+  async function syncLocalQueueToArchieve() {
+    if (!sp) {
+      toast.error("Connect Microsoft 365 to sync local items.");
+      return;
+    }
+
+    const queued = loadLocalArchieveQueue();
+    if (!queued.length) {
+      toast.message("No local items to sync.");
+      return;
+    }
+
+    const tid = toast.loading(`Syncing ${queued.length} item(s)…`);
+    let synced = 0;
+    const remaining: typeof queued = [];
+
+    // Oldest-first so ARCHIEVE reads naturally.
+    for (const q of [...queued].reverse()) {
+      const { localId: _localId, createdAt: _createdAt, ...input } = q;
+      try {
+        await createArchieveRecord(sp as any, input);
+        synced += 1;
+      } catch {
+        remaining.unshift(q);
+      }
+    }
+
+    saveLocalArchieveQueue(remaining);
+    await qc.invalidateQueries({ queryKey: ["archieve"] });
+
+    if (remaining.length) {
+      toast.error("Partial sync", {
+        id: tid,
+        description: `${synced} saved. ${remaining.length} remaining locally.`,
+      });
+      return;
+    }
+
+    toast.success("Synced", { id: tid, description: `${synced} saved to ARCHIEVE.` });
+  }
+
   async function saveCapture() {
     const trimmed = captureText.trim();
     if (!trimmed) return;
 
     const title = trimmed.split("\n")[0].trim().slice(0, 120);
     const body = trimmed;
+    const input = {
+      title: title || "Capture",
+      body,
+      recordType: "CAPTURE" as const,
+      status: "INBOX" as const,
+      actor,
+      environment: "PUBLICLOGIC",
+      module: "DASHBOARD",
+      sourceUrl: window.location.href,
+    };
 
     if (!sp) {
+      enqueueLocalArchieveItem(input);
+      setCaptureText("");
       try {
         await navigator.clipboard.writeText(body);
-        toast.message("Copied to clipboard", {
-          description: "Connect Microsoft 365 to save to ARCHIEVE.",
+        toast.success("Saved locally", {
+          description: "Connect Microsoft 365 to sync to ARCHIEVE.",
         });
       } catch {
-        toast.error("Connect Microsoft 365 to save to ARCHIEVE.");
+        toast.message("Saved locally", {
+          description: "Connect Microsoft 365 to sync to ARCHIEVE.",
+        });
       }
       return;
     }
 
     const tid = toast.loading("Saving to ARCHIEVE…");
     try {
-      const res = await createArchieveRecord(sp as any, {
-        title: title || "Capture",
-        body,
-        recordType: "CAPTURE",
-        status: "INBOX",
-        actor,
-        environment: "PUBLICLOGIC",
-        module: "DASHBOARD",
-        sourceUrl: window.location.href,
-      });
+      const res = await createArchieveRecord(sp as any, input);
       setCaptureText("");
       toast.success("Saved", { id: tid, description: res.recordId });
       await qc.invalidateQueries({ queryKey: ["archieve"] });
     } catch (e) {
-      toast.error("Could not save", {
+      enqueueLocalArchieveItem(input);
+      setCaptureText("");
+      toast.message("Saved locally", {
         id: tid,
-        description: e instanceof Error ? e.message : String(e),
+        description:
+          "Saved locally. Connect Microsoft 365 to sync to ARCHIEVE.",
       });
     }
   }
@@ -250,6 +355,23 @@ export default function Dashboard() {
                 </a>
               </Button>
             ) : null}
+            {localQueueCount ? (
+              <Button
+                type="button"
+                variant="outline"
+                className="rounded-full"
+                onClick={() => void syncLocalQueueToArchieve()}
+                disabled={!sp}
+                title={
+                  sp
+                    ? "Sync local items to ARCHIEVE"
+                    : "Connect Microsoft 365 to sync local items"
+                }
+              >
+                <NotebookPen className="mr-2 h-4 w-4" />
+                Sync local ({localQueueCount})
+              </Button>
+            ) : null}
           </>
         }
       />
@@ -275,6 +397,11 @@ export default function Dashboard() {
                         ? "Microsoft 365 connected"
                         : "Not connected"}
                 </span>
+                {localQueueCount ? (
+                  <span className="rounded-full border border-border bg-muted px-3 py-1">
+                    Local: {localQueueCount}
+                  </span>
+                ) : null}
               </div>
             </div>
 
@@ -387,13 +514,35 @@ export default function Dashboard() {
                         ) : null}
                       </div>
                     </div>
-                    {it.webUrl ? (
-                      <Button asChild size="sm" variant="outline" className="rounded-full">
-                        <a href={it.webUrl} target="_blank" rel="noreferrer">
-                          <ExternalLink className="h-4 w-4" />
-                        </a>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant="outline"
+                        className="rounded-full"
+                        disabled={!sp || statusUpdatingId === String(it.itemId || "")}
+                        onClick={() => void setItemStatus(String(it.itemId || ""), "ACTIVE")}
+                      >
+                        Activate
                       </Button>
-                    ) : null}
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant="outline"
+                        className="rounded-full"
+                        disabled={!sp || statusUpdatingId === String(it.itemId || "")}
+                        onClick={() => void setItemStatus(String(it.itemId || ""), "DONE")}
+                      >
+                        Done
+                      </Button>
+                      {it.webUrl ? (
+                        <Button asChild size="sm" variant="outline" className="rounded-full">
+                          <a href={it.webUrl} target="_blank" rel="noreferrer">
+                            <ExternalLink className="h-4 w-4" />
+                          </a>
+                        </Button>
+                      ) : null}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -406,6 +555,88 @@ export default function Dashboard() {
         </Card>
 
         <div className="lg:col-span-5 grid grid-cols-1 gap-6">
+          <Card className="rounded-3xl border-border bg-card p-6 shadow-sm">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <div className="text-xs font-black uppercase tracking-[0.32em] text-muted-foreground">
+                  In flight
+                </div>
+                <div className="mt-2 text-sm font-semibold text-muted-foreground">
+                  Active items in ARCHIEVE.
+                </div>
+              </div>
+              <Button asChild size="sm" variant="outline" className="rounded-full">
+                <Link to="/lists">
+                  <Inbox className="mr-2 h-4 w-4" />
+                  Inbox
+                </Link>
+              </Button>
+            </div>
+
+            {!sp ? (
+              <div className="mt-4 text-sm font-semibold text-muted-foreground">
+                Connect Microsoft 365 to load active items.
+              </div>
+            ) : activeQuery.isLoading ? (
+              <div className="mt-4 text-sm font-semibold text-muted-foreground">
+                Loading…
+              </div>
+            ) : activeQuery.isError ? (
+              <div className="mt-4 text-sm font-semibold text-red-700">
+                {activeQuery.error instanceof Error
+                  ? activeQuery.error.message
+                  : String(activeQuery.error)}
+              </div>
+            ) : activeQuery.data?.length ? (
+              <div className="mt-4 space-y-2">
+                {activeQuery.data.slice(0, 6).map((it: any) => (
+                  <div
+                    key={it.itemId || it.RecordId || it.Title}
+                    className="flex flex-wrap items-start justify-between gap-3 rounded-xl border border-border bg-muted p-3"
+                  >
+                    <div className="min-w-0">
+                      <div className="truncate text-sm font-black text-foreground">
+                        {it.Title || "(untitled)"}
+                      </div>
+                      <div className="mt-1 text-xs font-semibold text-muted-foreground">
+                        {(it.RecordId as string) || ""}
+                        {it.CreatedAt ? (
+                          <>
+                            {" · "}
+                            {format(new Date(it.CreatedAt), "MMM d, h:mm a")}
+                          </>
+                        ) : null}
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant="outline"
+                        className="rounded-full"
+                        disabled={!sp || statusUpdatingId === String(it.itemId || "")}
+                        onClick={() => void setItemStatus(String(it.itemId || ""), "DONE")}
+                      >
+                        Done
+                      </Button>
+                      {it.webUrl ? (
+                        <Button asChild size="sm" variant="outline" className="rounded-full">
+                          <a href={it.webUrl} target="_blank" rel="noreferrer">
+                            <ExternalLink className="h-4 w-4" />
+                          </a>
+                        </Button>
+                      ) : null}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="mt-4 text-sm font-semibold text-muted-foreground">
+                No active items.
+              </div>
+            )}
+          </Card>
+
           <Card className="rounded-3xl border-border bg-card p-6 shadow-sm">
             <div className="flex items-start justify-between gap-3">
               <div>

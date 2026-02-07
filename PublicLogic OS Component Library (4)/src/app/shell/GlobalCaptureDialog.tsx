@@ -3,6 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { createArchieveRecord } from "../lib/archieve";
+import { enqueueLocalArchieveItem } from "../lib/local-archieve-queue";
 import useSharePointClient from "../hooks/useSharePointClient";
 import { Button } from "../components/ui/button";
 import { Textarea } from "../components/ui/textarea";
@@ -48,40 +49,47 @@ export default function GlobalCaptureDialog({
 
     const title = trimmed.split("\n")[0].trim().slice(0, 120) || "Capture";
     const body = trimmed;
+    const input = {
+      title,
+      body,
+      recordType: "CAPTURE" as const,
+      status: "INBOX" as const,
+      actor,
+      environment: "PUBLICLOGIC",
+      module: "CAPTURE",
+      sourceUrl: window.location.href,
+    };
 
     if (!sp) {
+      enqueueLocalArchieveItem(input);
       try {
         await navigator.clipboard.writeText(body);
-        toast.message("Copied to clipboard", {
-          description: "Connect Microsoft 365 to save to ARCHIEVE.",
+        toast.success("Saved locally", {
+          description: "Connect Microsoft 365 to sync to ARCHIEVE.",
         });
         onOpenChange(false);
       } catch {
-        toast.error("Connect Microsoft 365 to save to ARCHIEVE.");
+        toast.message("Saved locally", {
+          description: "Connect Microsoft 365 to sync to ARCHIEVE.",
+        });
+        onOpenChange(false);
       }
       return;
     }
 
     const tid = toast.loading("Saving to ARCHIEVE…");
     try {
-      const res = await createArchieveRecord(sp as any, {
-        title,
-        body,
-        recordType: "CAPTURE",
-        status: "INBOX",
-        actor,
-        environment: "PUBLICLOGIC",
-        module: "CAPTURE",
-        sourceUrl: window.location.href,
-      });
+      const res = await createArchieveRecord(sp as any, input);
       toast.success("Saved", { id: tid, description: res.recordId });
       await qc.invalidateQueries({ queryKey: ["archieve"] });
       onOpenChange(false);
     } catch (e) {
-      toast.error("Could not save", {
+      enqueueLocalArchieveItem(input);
+      toast.message("Saved locally", {
         id: tid,
-        description: e instanceof Error ? e.message : String(e),
+        description: "Connect Microsoft 365 to sync to ARCHIEVE.",
       });
+      onOpenChange(false);
     }
   }
 
@@ -138,4 +146,3 @@ export default function GlobalCaptureDialog({
     </Dialog>
   );
 }
-

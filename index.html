@@ -2,37 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>PublicLogic — Systems for Public Administration</title>
+  <title>PublicLogic</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#022c22" />
 
   <style>
-    :root {
-      --bg: #022c22;
-      --accent: rgba(52, 211, 153, 0.95);
-      --muted: rgba(255,255,255,0.55);
-      --border: rgba(52, 211, 153, 0.25);
-    }
-
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      background: var(--bg);
-      color: rgba(255,255,255,0.9);
+      background: #022c22;
+      overflow: hidden;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
 
-    body {
+    .loader {
+      position: fixed;
+      inset: 0;
       display: grid;
       place-items: center;
-      overflow: hidden;
-    }
-
-    .container {
-      text-align: center;
-      max-width: 520px;
-      padding: 24px;
+      color: rgba(255,255,255,0.85);
+      z-index: 1;
+      pointer-events: none;
     }
 
     .badge {
@@ -41,96 +32,66 @@
       gap: 10px;
       padding: 10px 16px;
       border-radius: 999px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(52, 211, 153, 0.25);
       background: rgba(0,0,0,0.25);
-      color: var(--accent);
+      color: rgba(52, 211, 153, 0.95);
       font-weight: 900;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       font-size: 11px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
-    h1 {
-      font-size: 22px;
+    .title {
+      font-size: 20px;
       font-weight: 900;
       letter-spacing: -0.02em;
-      margin: 0 0 8px;
-    }
-
-    p {
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .divider {
-      height: 1px;
-      background: rgba(255,255,255,0.1);
-      margin: 22px 0;
-    }
-
-    .links {
-      display: grid;
-      gap: 10px;
-    }
-
-    .link {
-      display: block;
-      padding: 12px 16px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(0,0,0,0.25);
-      color: rgba(255,255,255,0.9);
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 13px;
-      letter-spacing: 0.02em;
-      transition: transform .08s ease, border-color .08s ease;
-    }
-
-    .link:hover {
-      transform: translateY(-1px);
-      border-color: var(--accent);
-    }
-
-    footer {
-      position: fixed;
-      bottom: 12px;
-      width: 100%;
+      margin: 0 0 6px;
       text-align: center;
-      font-size: 11px;
-      color: rgba(255,255,255,0.35);
+    }
+
+    .sub {
+      margin: 0;
+      text-align: center;
+      color: rgba(255,255,255,0.55);
       font-weight: 700;
-      letter-spacing: 0.04em;
+      font-size: 13px;
+    }
+
+    iframe {
+      position: relative;
+      z-index: 2;
+      border: none;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      display: block;
+      background: #022c22;
     }
   </style>
 </head>
 
 <body>
-  <main class="container" role="main">
-    <div class="badge">PublicLogic</div>
 
-    <h1>Smart Systems. Stronger Communities.</h1>
+  <div class="loader" id="loader" aria-live="polite" aria-busy="true">
+    <div>
+      <div class="badge">PublicLogic</div>
+      <p class="title">Loading…</p>
+      <p class="sub">Smart Systems. Stronger Communities.</p>
+    </div>
+  </div>
 
-    <p>
-      PublicLogic builds law-embedded apps, durable artifacts, and
-      administrative automation for public institutions.
-    </p>
+  <iframe
+    src="/"
+    title="PublicLogic"
+    allow="clipboard-read; clipboard-write; fullscreen"
+    loading="eager"
+    onload="
+      const l = document.getElementById('loader');
+      l.style.display='none';
+      l.setAttribute('aria-busy','false');
+    "
+  ></iframe>
 
-    <div class="divider"></div>
-
-    <nav class="links" aria-label="PublicLogic systems">
-      <a class="link" href="#" aria-disabled="true">Governance Artifacts</a>
-      <a class="link" href="#" aria-disabled="true">Administrative Automation</a>
-      <a class="link" href="#" aria-disabled="true">PublicLogic OS</a>
-    </nav>
-  </main>
-
-  <footer>
-    © PublicLogic
-  </footer>
 </body>
 </html>

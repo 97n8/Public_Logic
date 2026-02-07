@@ -10,7 +10,7 @@ export default function RequireAuth({ children }: { children: ReactNode }) {
 
   const isAuthenticated = useIsAuthenticated();
   const { instance, inProgress, accounts } = useMsal();
-  const brandMarkUrl = `${import.meta.env.BASE_URL}brand/publiclogic-duck-mark.svg`;
+  const brandMarkUrl = `${import.meta.env.BASE_URL}brand/publiclogic-duck-mark.png`;
 
   useEffect(() => {
     if (inProgress !== "none") return;

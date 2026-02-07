@@ -553,7 +553,7 @@ export default function Lists() {
 	            <div className="mt-6 rounded-2xl border border-border bg-muted p-6">
 	              <div className="flex items-start gap-4">
 	                <img
-	                  src={`${import.meta.env.BASE_URL}brand/publiclogic-duck-mark.svg`}
+	                  src={`${import.meta.env.BASE_URL}brand/publiclogic-duck-mark.png`}
 	                  alt=""
 	                  aria-hidden
 	                  className="h-10 w-10 opacity-80"

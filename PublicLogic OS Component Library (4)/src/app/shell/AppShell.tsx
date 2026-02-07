@@ -24,7 +24,7 @@ import GlobalCaptureDialog from "./GlobalCaptureDialog";
 export default function AppShell({ children }: { children: ReactNode }) {
   const { instance, accounts } = useMsal();
   const email = accounts[0]?.username ?? "";
-  const brandMarkUrl = `${import.meta.env.BASE_URL}brand/publiclogic-duck-mark.svg`;
+  const brandMarkUrl = `${import.meta.env.BASE_URL}brand/publiclogic-duck-mark.png`;
   const [commandOpen, setCommandOpen] = useState(false);
   const [captureOpen, setCaptureOpen] = useState(false);
 

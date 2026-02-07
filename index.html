@@ -33,7 +33,7 @@
       z-index: 9999;
       background: rgba(2,44,34,0.92);
       transition: opacity .28s ease, visibility .28s ease;
-      pointer-events: auto;              /* block interaction while loading */
+      pointer-events: auto;
       opacity: 1;
       visibility: visible;
     }
@@ -75,14 +75,12 @@
       font-size: 13px;
     }
 
-    /* simple centered "card" */
     .loader-inner {
       text-align: center;
       max-width: 420px;
       padding: 18px;
     }
 
-    /* spinner */
     .spinner {
       width: 36px;
       height: 36px;
@@ -94,18 +92,13 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    iframe {
-      position: relative;
-      z-index: 1;
-      border: none;
-      width: 100%;
-      height: 100vh;     /* fallback */
+    /* App container (left empty — your SPA / SSR will render here) */
+    #app {
+      min-height: 100vh;
       height: 100dvh;
-      display: block;
       background: var(--bg);
     }
 
-    /* small helper for the noscript link */
     .noscript-note {
       margin-top: 12px;
       display: inline-block;
@@ -122,12 +115,14 @@
 
 <body>
 
+  <!-- Loader overlay -->
   <div class="loader" id="loader" role="status" aria-live="polite" aria-busy="true">
-    <div class="loader-inner" id="loaderInner">
+    <div class="loader-inner">
       <div class="badge" aria-hidden="true">PublicLogic</div>
       <p class="title">Loading…</p>
       <p class="sub">Smart Systems. Stronger Communities.</p>
       <div class="spinner" aria-hidden="true"></div>
+
       <noscript>
         <div style="margin-top:16px;color:var(--muted-white);font-size:13px">
           JavaScript is required to load the app. <a class="noscript-note" href="/app" aria-label="Open PublicLogic app">Open the app</a>
@@ -136,77 +131,31 @@
     </div>
   </div>
 
-  <!--
-    IMPORTANT:
-    - Set DEST_PATH below to the real path or full URL of your application.
-    - Avoid setting the iframe src to "/" when the current document is served at "/"
-      — that can embed this page into itself and cause recursion or a 404 in some hosting configs.
-  -->
-  <iframe
-    id="appFrame"
-    title="PublicLogic App"
-    allow="clipboard-read; clipboard-write; fullscreen"
-    loading="eager"
-    src="about:blank"        <!-- will be set by JS to avoid self-embedding -->
-  ></iframe>
+  <!-- App root — your SPA/SSR should render here (Next.js, CRA, etc.) -->
+  <div id="app"></div>
 
   <script>
+    // Simple loader that fades out when the page has loaded.
+    // If you want the loader to respond to router-level loading
+    // or hydration, wire this to your framework (React useEffect/useTransition).
     (function () {
       const loader = document.getElementById('loader');
-      const iframe = document.getElementById('appFrame');
 
-      // Change this to your app's path or absolute URL if different.
-      // Example: const DEST_PATH = '/app';
-      // Example for an absolute URL: const DEST_PATH = 'https://www.publiclogic.org/app/';
-      const DEST_PATH = '/app';
-
-      // Safety: do not embed the same page into itself.
-      // If your index.html is served at the same path as DEST_PATH, we avoid embedding.
-      try {
-        const pagePath = window.location.pathname.replace(/\/$/, '');
-        const destNormalized = (new URL(DEST_PATH, window.location.origin)).pathname.replace(/\/$/, '');
-
-        if (pagePath === destNormalized) {
-          // We're already on the app path; hide loader and do not create an iframe loop.
-          loader.classList.add('hidden');
-          loader.setAttribute('aria-busy', 'false');
-          // Optionally show a friendly message / redirect. If you want to redirect:
-          // window.location.href = DEST_PATH;
-          return;
-        }
-      } catch (err) {
-        // If URL parsing fails for some reason, fall through and try to load the DEST_PATH below.
-        console.warn('Error normalizing paths:', err);
-      }
-
-      // Set iframe src only after we do the safety check.
-      iframe.src = DEST_PATH;
-
-      // Hide loader when the iframe load event fires.
       function hideLoader() {
         if (!loader.classList.contains('hidden')) {
           loader.classList.add('hidden');
           loader.setAttribute('aria-busy', 'false');
+          setTimeout(() => {
+            try { loader.remove(); } catch (e) { /* ignore */ }
+          }, 300);
         }
       }
 
-      iframe.addEventListener('load', function () {
-        // Note: some servers return a 404 page but still fire load. If you need to
-        // detect 404 pages inside the same-origin iframe you can inspect iframe.contentWindow.document,
-        // but cross-origin frames prevent that. Usually the visual 404 inside the iframe is
-        // a hosting/configuration issue — see note below.
-        hideLoader();
-      });
+      // Hide when the top-level window fires load.
+      window.addEventListener('load', hideLoader);
 
-      // Fallback: if the iframe hasn't fired load after N seconds, hide loader so user can interact.
-      // You can increase the timeout if your app takes longer to start.
-      const LOADING_TIMEOUT_MS = 10000;
-      const timeout = setTimeout(() => {
-        hideLoader();
-      }, LOADING_TIMEOUT_MS);
-
-      // Clean up timeout if load happens earlier
-      iframe.addEventListener('load', () => clearTimeout(timeout));
+      // Safety fallback (in case load never fires)
+      setTimeout(hideLoader, 12000);
     })();
   </script>
 

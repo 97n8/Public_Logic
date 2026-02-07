@@ -6,7 +6,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "vercel-build": "node scripts/publish-hmlp.mjs"
+    "vercel-build": "node scripts/publish-os.mjs"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",

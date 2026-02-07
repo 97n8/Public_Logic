@@ -33,7 +33,7 @@ const sourceRoot = process.env.HMLP_SOURCE_DIR || clonedViteDir;
 
 const sourceDist = path.join(sourceRoot, 'dist');
 const outputRoot = path.join(repoRoot, 'dist');
-const destDir = path.join(outputRoot, 'hmlp');
+const destDir = path.join(outputRoot, 'os');
 
 function copyStaticFile(relativePath, destinationRelativePath = relativePath) {
   const src = path.join(repoRoot, relativePath);
@@ -147,7 +147,7 @@ function ensureSource() {
 ensureSource();
 
 // Preserve runtime config if present (don’t stomp secrets/ids during builds).
-const repoConfigPath = path.join(repoRoot, 'hmlp', 'config.js');
+const repoConfigPath = path.join(repoRoot, 'os', 'config.js');
 const existingConfigPath = path.join(destDir, 'config.js');
 const preservedConfig = fs.existsSync(repoConfigPath)
   ? fs.readFileSync(repoConfigPath, 'utf8')
@@ -160,7 +160,7 @@ run(
   {
     env: {
       ...process.env,
-      VITE_BASE: '/hmlp/',
+      VITE_BASE: '/os/',
       VITE_DEMO_MODE: process.env.VITE_DEMO_MODE ?? 'false',
     },
   },

@@ -3,6 +3,7 @@
   "outputDirectory": "dist",
   "redirects": [
     { "source": "/HMLP", "destination": "/hmlp/", "permanent": true },
+    { "source": "/HMLP/", "destination": "/hmlp/", "permanent": true },
     { "source": "/HMLP/:path*", "destination": "/hmlp/:path*", "permanent": true }
   ],
   "headers": [
@@ -63,6 +64,7 @@
     { "source": "/os/:path*", "destination": "/os/index.html" },
 
     { "source": "/hmlp", "destination": "/os/index.html" },
+    { "source": "/hmlp/", "destination": "/os/index.html" },
     { "source": "/hmlp/:path*", "destination": "/os/index.html" }
   ]
 }

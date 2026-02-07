@@ -1,13 +1,6 @@
 {
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": "dist",
   "redirects": [
     { "source": "/HMLP", "destination": "/hmlp/", "permanent": true },
     { "source": "/HMLP/:path*", "destination": "/hmlp/:path*", "permanent": true }

@@ -1,0 +1,46 @@
+import qrcode
+from PIL import Image, ImageDraw, ImageFont
+
+# --- vCard data ---
+vcard = """BEGIN:VCARD
+VERSION:3.0
+N:Rothschild;Allie
+FN:Allie – PB&J Homestead
+ORG:PB&J Homestead
+TITLE:Owner / Maker
+EMAIL:pbjhomestead@gmail.com
+TEL;TYPE=cell:+16173472951
+URL:https://www.instagram.com/pbjhomestead/
+URL:https://alliesellsherwares.etsy.com/
+END:VCARD"""
+
+# --- QR code ---
+qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=12, border=4)
+qr.add_data(vcard)
+qr.make(fit=True)
+qr_img = qr.make_image(fill_color="black", back_color="white").convert("L")
+
+# --- carve PBJ out of QR ---
+draw = ImageDraw.Draw(qr_img)
+font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf", 200)
+txt = "PBJ"
+tw, th = draw.textsize(txt, font=font)
+W, H = qr_img.size
+draw.text(((W - tw)//2, (H - th)//2), txt, fill=255, font=font)   # 255 = white, removes ink
+
+# --- place caption below ---
+dpi = 300
+canvas_w, canvas_h = W, H + int(0.6 * dpi)
+card = Image.new("L", (canvas_w, canvas_h), 255)
+card.paste(qr_img, (0, 0))
+
+caption = "Scan to save Allie."
+font_cap = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf", 48)
+d = ImageDraw.Draw(card)
+cw, ch = d.textsize(caption, font=font_cap)
+d.text(((canvas_w - cw)//2, H + 40), caption, fill=0, font=font_cap)
+
+# --- save ---
+card.save("PBJ_Homestead_QR_BrandCarved.png")
+card.save("PBJ_Homestead_QR_BrandCarved.pdf", resolution=dpi)
+print("Created PBJ_Homestead_QR_BrandCarved.png and .pdf")

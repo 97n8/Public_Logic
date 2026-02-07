@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Compliance frameworks that actually work. PublicLogic designs systems that make municipal operations lawful, organized, and manageable. VAULT, ARCHIEVE, PublicInsight frameworks built by practitioners. Grant-aligned and staff-friendly." />
+<meta name="keywords" content="municipal administration, VAULT framework, municipal compliance, public records management, grant funding, municipal research, town administration, Massachusetts municipalities" />
+<meta name="author" content="PublicLogic LLC" />
+<meta property="og:title" content="PublicLogic — Municipal Compliance Frameworks" />
+<meta property="og:description" content="Compliance frameworks that actually work. Municipal operations made lawful, organized, and manageable. Built by practitioners. Grant-aligned. Staff-friendly." />
+<meta property="og:type" content="website" />
+<link rel="canonical" href="https://publiclogic.org" />
+<title>PublicLogic™ — Municipal Compliance Frameworks | Smart Systems. Stronger Communities.</title>
+
+<!-- Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PublicLogic LLC",
+  "legalName": "PublicLogic LLC",
+  "url": "https://publiclogic.org",
+  "logo": "https://publiclogic.org/logo.png",
+  "description": "Compliance frameworks that actually work. Municipal operations made lawful, organized, and manageable through operational logic and behavioral design.",
+  "email": "info@publiclogic.org",
+  "foundingDate": "2025",
+  "founders": [
+    {
+      "@type": "Person",
+      "name": "Nathan Boudreau",
+      "jobTitle": "Town Administrator and Municipal Systems Architect",
+      "alumniOf": "Master of Public Administration",
+      "affiliation": "Hubbardston, Massachusetts"
+    },
+    {
+      "@type": "Person",
+      "name": "Allison Weiss Rothschild",
+      "jobTitle": "Behavioral Systems Scientist",
+      "honorificPrefix": "Dr.",
+      "hasCredential": ["PsyD", "MSW", "LICSW", "BCBA", "LABA"]
+    }
+  ],
+  "sameAs": [],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "nate@publiclogic.org",
+    "contactType": "Municipal Operations"
+  }
+}
+</script>
+
+<style>
+  :root {
+    --bg: #ffffff;
+    --paper: #ffffff;
+    --ink: #0b1713;
+    --brand: #1f6b4a;
+    --muted: #5e6864;
+    --line: #e5ebe7;
+    --accent: #145c3a;
+    --chip: #eef7f1;
+    --hover: #134d32;
+    --shadow: rgba(11, 23, 19, 0.08);
+  }
+  
+  * { 
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Skip to main content for accessibility */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--brand);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+  
+  .brandbar {
+    padding: 1.5rem 1.5rem 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(11, 23, 19, 0.05);
+  }
+  
+  .brandbar h1 {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--brand);
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+  
+  .brandbar a {
+    transition: color 0.2s ease;
+  }
+  
+  .brandbar a:hover {
+    color: var(--hover);
+  }
+  
+  .hero {
+    padding: 4rem 1.5rem 3.5rem 1.5rem;
+    text-align: center;
+    background: var(--paper);
+  }
+  
+  .hero h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--brand);
+    margin: 0 0 1.5rem 0;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+  
+  .hero p {
+    max-width: 740px;
+    margin: 0 auto 1.2rem auto;
+    font-size: 1.1rem;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  
+  .hero p:last-of-type {
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero strong {
+    color: var(--brand);
+    font-weight: 600;
+  }
+  
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .7rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .chip {
+    background: var(--chip);
+    color: var(--accent);
+    padding: .5rem .9rem;
+    border-radius: 999px;
+    font-size: .88rem;
+    font-weight: 500;
+    border: 1px solid var(--line);
+  }
+  
+  .btn {
+    background: var(--brand);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.85rem 1.6rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: background 0.2s ease;
+  }
+  
+  .btn:hover {
+    background: var(--hover);
+  }
+  
+  .btn:focus {
+    outline: 3px solid var(--chip);
+    outline-offset: 2px;
+  }
+  
+  main {
+    min-height: 60vh;
+  }
+  
+  section {
+    max-width: 920px;
+    margin: 4.5rem auto;
+    padding: 0 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+    letter-spacing: -0.02em;
+  }
+  
+  h3::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--brand), transparent);
+    bottom: -8px;
+    left: 0;
+    border-radius: 2px;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  
+  .card h4 {
+    margin: 0 0 .8rem 0;
+    color: var(--brand);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  
+  .card p {
+    margin: 0;
+    line-height: 1.65;
+  }
+  
+  .steps { 
+    margin-top: 2rem; 
+  }
+  
+  .step { 
+    border: 1px solid var(--line); 
+    border-radius: 10px; 
+    padding: 1.4rem;
+  }
+  
+  .step + .step { 
+    margin-top: 1rem; 
+  }
+  
+  .step strong {
+    color: var(--brand);
+    font-size: 1.05rem;
+    display: block;
+    margin-bottom: .6rem;
+  }
+  
+  .step p {
+    margin: 0;
+  }
+  
+  .muted { 
+    color: var(--muted); 
+  }
+  
+  .founders {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .founder { 
+    background: var(--paper); 
+    border: 1px solid var(--line); 
+    border-radius: 12px; 
+    padding: 1.5rem;
+  }
+  
+  .founder h4 { 
+    margin: 0 0 .6rem 0; 
+    color: var(--brand); 
+    font-size: 1.08rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  
+  .founder p {
+    margin: 0;
+    line-height: 1.65;
+  }
+  
+  .cta { 
+    text-align: center; 
+    margin: 5rem 0 4.5rem 0; 
+  }
+  
+  .cta h3 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .cta p {
+    max-width: 600px;
+    margin: 0 auto 1.2rem auto;
+    line-height: 1.7;
+  }
+  
+  .cta a:not(.btn) {
+    color: var(--brand);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+  
+  .cta a:not(.btn):hover {
+    color: var(--hover);
+    text-decoration: underline;
+  }
+  
+  footer {
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.8;
+    margin-top: 3rem;
+  }
+  
+  footer p {
+    margin: 0.5rem 0;
+  }
+  
+  footer a { 
+    color: var(--brand); 
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  footer a:hover {
+    color: var(--hover);
+    text-decoration: underline;
+  }
+  
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    outline: 3px solid var(--brand);
+    outline-offset: 2px;
+  }
+  
+  /* Responsive improvements */
+  @media (max-width: 768px) {
+    .hero h2 {
+      font-size: 1.75rem;
+    }
+    
+    .hero p {
+      font-size: 1.05rem;
+    }
+    
+    h3 {
+      font-size: 1.4rem;
+    }
+    
+    section {
+      margin: 3.5rem auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .brandbar {
+      padding: 1.2rem 1rem;
+    }
+    
+    .brandbar h1 {
+      font-size: 1.2rem;
+    }
+    
+    .hero {
+      padding: 3rem 1rem 2.5rem 1rem;
+    }
+    
+    .hero h2 {
+      font-size: 1.5rem;
+    }
+    
+    section {
+      margin: 3rem auto;
+    }
+    
+    .btn {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+  
+  /* Print styles */
+  @media print {
+    .btn, .chips { display: none; }
+    body { background: white; }
+    .card, .founder, .step { 
+      border-color: #ccc; 
+      page-break-inside: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  
+  <header class="brandbar">
+    <h1>PublicLogic™</h1>
+    <p style="margin: 0.5rem 0 0 0; color: var(--muted); font-size: 0.95rem;">Smart Systems. Stronger Communities.</p>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <h2>Compliance frameworks that actually work</h2>
+      <p style="font-size: 1.15rem; color: var(--ink); font-weight: 500; margin-bottom: 1.5rem;">We design systems that make daily municipal operations lawful, organized, and manageable. Clear workflows. Automated records. Work that staff can actually handle.</p>
+      <p>PublicLogic combines operational logic with behavioral design. Our frameworks—<strong>VAULT™</strong>, <strong>ARCHIEVE™</strong>, <strong>PublicInsight™</strong>, and <strong>Public Instinct™</strong>—layer into CivicPlus, Microsoft 365, and Google Workspace to automate intake, organize records, and track workflows. Modernization that's both compliant and kind.</p>
+      <p style="margin-top: 1.2rem;"><strong>Grant-fundable</strong> through Community One Stop, Community Compact, Digital Equity, and similar programs.</p>
+      <div class="chips">
+        <span class="chip">Compliance-first</span>
+        <span class="chip">Staff-friendly</span>
+        <span class="chip">Grant-aligned</span>
+        <span class="chip">Built by practitioners</span>
+      </div>
+    </section>
+
+    <section id="fit">
+      <h3>How it works</h3>
+      <div class="grid">
+        <div class="card">
+          <h4>Lawful and human-centered</h4>
+          <p class="muted">Frameworks layer into CivicPlus, Microsoft 365, and Google Workspace. File naming, folder placement, retention dates—all automatic. Staff spend less time guessing and more time serving residents.</p>
+        </div>
+        <div class="card">
+          <h4>Compliance-first, staff-friendly</h4>
+          <p class="muted">Plain-language workflows guide staff through each step. Clerk processes route to clerk staff. DPW requests route to DPW. Structure that people can actually manage.</p>
+        </div>
+        <div class="card">
+          <h4>Grant-aligned and measurable</h4>
+          <p class="muted">PublicInsight™ tracks adoption, cycle-time reduction, and compliance outcomes. Built to meet funding accountability and reporting requirements for Community Compact, One Stop for Growth, and similar programs.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <h3>Framework components</h3>
+      <div class="steps">
+        <div class="step">
+          <strong>VAULT™ — Verified Automation & Unified Logic for Towns</strong>
+          <p class="muted">Automates routing, retention, and audit trails in accordance with Massachusetts law. Forms capture what matters. Rules ensure documents land in the right folders with proper retention dates.</p>
+        </div>
+        <div class="step">
+          <strong>ARCHIEVE™ — Records Logic</strong>
+          <p class="muted">Retention and enforcement engine that ensures transparency and compliance. Standardized file naming, folder structures, and retention schedules based on state law make public records requests and audits straightforward.</p>
+        </div>
+        <div class="step">
+          <strong>PublicInsight™ — Applied Research</strong>
+          <p class="muted">Behavioral and organizational research framework that measures readiness, learning, and sustained adoption. Tracks cycle-time reduction, staff adoption patterns, and compliance verification to show what works.</p>
+        </div>
+        <div class="step">
+          <strong>Public Instinct™ — Operational Analytics</strong>
+          <p class="muted">Dashboard-based reporting on workload trends, bottlenecks, and performance. Shows leaders what's happening without adding reporting burden to staff. Data that protects people, not just processes.</p>
+        </div>
+      </div>
+      <p class="muted" style="margin-top: 1.5rem; text-align: center; font-size: 0.9rem;">PublicLogic™ operates under a patent-pending municipal automation framework.</p>
+    </section>
+
+    <section id="grants">
+      <h3>Grant funding</h3>
+      <p class="muted" style="margin-bottom: 2rem;">PublicLogic frameworks are designed to qualify for state and federal grant programs. Municipal clients can pursue funding through:</p>
+      <div class="grid">
+        <div class="card">
+          <h4>Community One Stop for Growth</h4>
+          <p class="muted">Community Planning Grants, Rural Development Fund, and other EOHLC programs fund assessment, design, and implementation.</p>
+        </div>
+        <div class="card">
+          <h4>Digital Equity Programs</h4>
+          <p class="muted">MassTech's Digital Equity Implementation and similar federal programs cover technology infrastructure and staff capacity building.</p>
+        </div>
+        <div class="card">
+          <h4>Municipal Modernization</h4>
+          <p class="muted">Community Compact Cabinet grants, DLTA technical assistance, and efficiency initiatives support process improvements and training.</p>
+        </div>
+      </div>
+      <p class="muted" style="margin-top: 1.5rem;">PublicInsight™ evaluation deliverables are built to meet grant reporting requirements: cycle-time reduction, staff efficiency gains, and compliance improvements.</p>
+    </section>
+
+    <section id="team">
+      <h3>Team</h3>
+      <p class="muted" style="margin-bottom: 2rem;">PublicLogic is led by a practicing Town Administrator and a behavioral systems scientist. We build frameworks from the field—testing them in real municipal operations and measuring what actually helps teams adopt change.</p>
+      <div class="founders">
+        <div class="founder">
+          <h4>Nathan Boudreau, MPA, MCPPO</h4>
+          <p class="muted">Massachusetts Town Administrator with state-level legislative experience, local council, and other executive and departmental operations and policy roles. Over 15+ years, Nathan has worked across municipalities under 2,000 residents to regional collaboratives—spanning operations, finance, public works, emergency response, and administration. He's managed complex multi-position payroll, public records under tight statutory deadlines, union negotiations, and day-to-day departmental coordination. Over his career, he's secured millions in competitive grants across infrastructure, digital equity, planning, public safety, and operational capacity—not just one program, but whatever funding fits the need. He's led digital transformation initiatives including custom civic platforms built on Microsoft 365 and SharePoint, and guided major capital projects with strong community support. He's a systems thinker who designs VAULT and ARCHIEVE frameworks to solve problems he encounters daily in his own office—testing in live municipal work before offering to others. MPA and MCPPO credentials inform compliance design. He knows what breaks, what scales, and what actually helps staff get through the day.</p>
+        </div>
+        <div class="founder">
+          <h4>Dr. Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA</h4>
+          <p class="muted">Licensed clinical psychologist and Board Certified Behavior Analyst with dual clinical and organizational expertise. Allison holds a PsyD in Clinical Psychology, an MSW, and certifications as a Licensed Independent Clinical Social Worker (LICSW), Board Certified Behavior Analyst (BCBA), and Licensed Applied Behavior Analyst (LABA). Her training spans both human systems and applied behavior analysis—the science of understanding and changing behavior in organizational contexts. She designs PublicInsight evaluation frameworks to measure what matters: whether staff actually adopt new processes, whether cognitive load increases or decreases, and whether behavior change sustains over time. Her research background ensures frameworks measure readiness, learning patterns, and adoption—not just compliance checkboxes. She focuses on making modernization work for people by understanding how humans actually respond to change, building systems that reduce rather than add to staff burden.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <h3>Get started</h3>
+      <p class="muted">PublicLogic is developing pilot implementations for 2026. Town administrators, department heads, and grant coordinators interested in compliance-first, staff-friendly frameworks can reach out to discuss opportunities.</p>
+      <p><strong>Municipal operations:</strong> <a href="mailto:nate@publiclogic.org">nate@publiclogic.org</a><br>
+         <strong>Research and evaluation:</strong> <a href="mailto:allie@publiclogic.org">allie@publiclogic.org</a></p>
+      <a href="mailto:nate@publiclogic.org" class="btn" aria-label="Email about municipal frameworks">Start a conversation</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 PublicLogic™ LLC</p>
+    <p>Smart Systems. Stronger Communities.</p>
+    <p>Working with technology and implementation partners to modernize municipal operations.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem;">VAULT™, ARCHIEVE™, PublicInsight™, and Public Instinct™ are trademarks of PublicLogic LLC.</p>
+    <p><a href="mailto:info@publiclogic.org">info@publiclogic.org</a></p>
+  </footer>
+</body>
+</html>

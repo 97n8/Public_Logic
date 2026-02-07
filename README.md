@@ -1,47 +1,17 @@
-## AGNOSTIC
 
-This repo contains two Vite + React projects:
+  # Branding Strategy Development
 
-- `./` — a lightweight React sandbox app (Vite + TypeScript)
-- `PublicLogic OS Component Library (4)/` — the exported PublicLogic OS component bundle
+  This is a code bundle for Branding Strategy Development. The original project is available at https://www.figma.com/design/Q4tO7Y8QN1nelP5b0rg3AJ/Branding-Strategy-Development.
 
-### View it locally
+  ## Running the code
 
-#### App (root)
+  Run `npm i` to install the dependencies.
 
-```bash
-cd /Users/n8/AGNOSTIC
-npm install
-npm run dev
-```
+  Run `npm run dev` to start the development server.
 
-Open the URL Vite prints (typically `http://localhost:5173/`).
+  ## HMLP (PublicLogic App)
 
-#### Component library bundle
+  The app served at `/hmlp/` is built during deploy via `scripts/publish-hmlp.mjs`, which pulls the latest frontend from the `97n8/AGNOSTIC` repo and publishes the built assets into `hmlp/`.
 
-```bash
-cd "/Users/n8/AGNOSTIC/PublicLogic OS Component Library (4)"
-npm install
-npm run dev
-```
-
-Open `http://localhost:3000/` (the bundle’s `vite.config.ts` uses port 3000).
-
-### Publish it (GitHub Pages)
-
-This repo includes a GitHub Actions workflow that deploys the component bundle to GitHub Pages on every push to `main`:
-
-- Workflow: `/Users/n8/AGNOSTIC/.github/workflows/pages.yml:1`
-- Public URL (default): `https://97n8.github.io/AGNOSTIC/`
-
-First time only: in GitHub repo settings, set **Pages → Build and deployment → Source** to **GitHub Actions**.
-
-### Quality checks
-
-From the repo root:
-
-```bash
-npm run verify
-```
-
-This runs root lint + builds for both projects.
+  Runtime config lives at `hmlp/config.js` (MSAL + SharePoint site + vault list names).
+  

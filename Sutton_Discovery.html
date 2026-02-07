@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>PublicLogic – Sutton Discovery Meeting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #1f2b26;
+      background-color: #e7ecea;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 40px 52px 48px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+      border-radius: 4px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-weight: 600;
+      color: #1f2b26;
+    }
+
+    h1 {
+      font-size: 24px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-top: 28px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 15px;
+      margin-top: 20px;
+      margin-bottom: 6px;
+    }
+
+    p {
+      margin: 6px 0;
+    }
+
+    .smallcaps {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #4c5b54;
+    }
+
+    .rule {
+      margin: 20px 0 28px;
+      border-bottom: 2px solid #c3cec9;
+    }
+
+    .section {
+      margin-bottom: 22px;
+    }
+
+    .highlight-title {
+      font-size: 28px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #1f2b26;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      font-weight: 500;
+      color: #4c5b54;
+      margin-top: 4px;
+    }
+
+    ul {
+      margin: 6px 0 6px 20px;
+      padding: 0;
+    }
+
+    ul li {
+      margin: 2px 0;
+    }
+
+    .quotes {
+      margin: 8px 0;
+      padding-left: 14px;
+      border-left: 3px solid #c3cec9;
+      font-size: 13px;
+      color: #4c5b54;
+    }
+
+    .quotes p {
+      margin: 2px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 14px;
+      font-size: 13px;
+    }
+
+    th, td {
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid #dde5e1;
+    }
+
+    th {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #4c5b54;
+      background-color: #ecf2ef;
+    }
+
+    .table-compact th, .table-compact td {
+      padding: 5px 6px;
+    }
+
+    .signature-block {
+      margin-top: 26px;
+      font-size: 13px;
+    }
+
+    .signature-name {
+      font-weight: 600;
+    }
+
+    a {
+      color: #315c4a;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .highlight-box {
+      margin: 16px 0;
+      padding: 14px 16px;
+      border-radius: 4px;
+      background-color: #e2eee8;
+      border-left: 4px solid #39574a;
+    }
+
+    .highlight-box strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #1f2b26;
+    }
+
+    @media print {
+      body {
+        background-color: #ffffff;
+        padding: 0;
+      }
+
+      .page {
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="section">
+      <div class="smallcaps">PUBLICLOGIC™</div>
+      <div class="highlight-title">Discovery Meeting</div>
+      <div class="subtitle">Town of Sutton, Massachusetts — Town Manager Briefing</div>
+      <div class="rule"></div>
+    </div>
+
+    <div class="section">
+      <h2>Welcome</h2>
+      <p>Institutional knowledge walks out the door with retirements. Manual processes create compliance exposure. Staff capacity is maxed. Residents expect service levels that require infrastructure most small towns don't have. Every grant demands documentation nobody has time to compile.</p>
+      <p>This packet explains how VAULT addresses those structural problems using Sutton's existing technology stack. No rip-and-replace. No massive capital outlay. No operational disruption.</p>
+      <p>This is a professional conversation between practitioners who understand municipal constraints. If VAULT fits Sutton's priorities and capacity, we'll outline a realistic implementation path. If it doesn't, we'll say that directly.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <h2>Executive Summary</h2>
+      
+      <div class="highlight-box">
+        <strong>What VAULT Is — In Plain Terms</strong>
+        <p>VAULT is a set of standardized municipal workflows, automations, and compliance rules that we configure inside Sutton's existing systems (Google Workspace, Munis, CivicPlus), plus ongoing training and support so staff can actually use and sustain them.</p>
+        <p style="margin-top: 8px; font-style: italic; font-size: 13px;"><strong>Concrete example:</strong> Recent implementation reduced OML posting workflow from 47 minutes to 8 minutes per meeting while ensuring zero missed posting deadlines over 12 months.</p>
+      </div>
+
+      <h3>What Sutton Gets in Year 1 for $0</h3>
+      <ul>
+        <li>Comprehensive discovery and readiness assessment (workflow mapping, capacity analysis, behavioral factors)</li>
+        <li>Implementation of first VAULT module (typically ServiceTrack or ClerkFlow)</li>
+        <li>Staff training and plain-language operational documentation</li>
+        <li>Full year of platform access, hosting, updates, and technical support</li>
+        <li>Quarterly optimization reviews with PublicInsight behavioral analysis</li>
+        <li>Grant development support to fund Years 2–3 costs</li>
+        <li>Complete system ownership with no lock-in—if Sutton doesn't continue, workflows remain functional in your environment</li>
+      </ul>
+
+      <h3>Sample Success Metrics</h3>
+      <p>During discovery, we'll define specific measurable outcomes together. Typical examples include:</p>
+      <ul>
+        <li>30–50% reduction in manual steps for at least one DPW or Clerk workflow</li>
+        <li>Zero missed OML posting deadlines over 12 months</li>
+        <li>Automated documentation for at least one significant grant program</li>
+        <li>Measurable reduction in average response time to resident service requests (typically 25–40%)</li>
+        <li>At least one department transitions from paper-based to automated compliance routines</li>
+      </ul>
+
+      <h3>Why This Matters Right Now</h3>
+      <p>Sutton is in a rare window where institutional knowledge is still intact, staff are stretched but functional, and state grant programs can offset future costs. Waiting two years means implementing during crisis mode when key staff retire and processes degrade. The time to build capacity is before you lose it.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <h2>Who We Are</h2>
+      <p><strong>Nate Boudreau, MPA, MCPPO</strong> is Town Administrator in Hubbardston and founder of PublicLogic. With 25+ years in Massachusetts municipal government—including procurement, town administration, finance, public works, and clerk operations—Nate has served in Gardner (nine years as City Councilor), Princeton (Town Clerk), and now Hubbardston. PublicLogic grew from his direct experience solving structural problems that small towns face when commercial solutions don't fit their scale or budget.</p>
+      <p><strong>Dr. Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA</strong> leads PublicInsight, the behavioral systems practice that ensures VAULT implementations work with how people actually operate under municipal pressure. Allie's expertise in organizational psychology, cognitive load management, and behavior analysis grounds every implementation in staff readiness and sustainable change. Her work is what makes the difference between systems that stick and systems that fail.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <h2>Proven Municipal Experience</h2>
+      <p>Before explaining VAULT, here's relevant context from recent work that directly informed the framework's development.</p>
+
+      <div class="highlight-box">
+        <strong>September 2025: Massachusetts Digital Government Summit</strong>
+        <p>The work I led in Hubbardston received the Excellence in Municipal Service Award from EOTSS in September 2025 for a platform built entirely in-house using Microsoft 365, Power Automate, and CivicPlus. The award recognized elimination of paper processes, consolidation of resident requests, automated compliance documentation, and secure audit-ready recordkeeping—all accomplished in a town of 4,800 residents without replacing existing municipal systems.</p>
+      </div>
+
+      <h3>What the Implementation Achieved</h3>
+      <p>Working within typical small-town constraints—limited budget, Google Workspace and Munis infrastructure, staff at capacity, board focused on results—structured workflows addressed core operational challenges:</p>
+
+      <table class="table-compact">
+        <thead>
+          <tr>
+            <th>Challenge</th>
+            <th>Approach</th>
+            <th>Outcome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Paper service requests</td>
+            <td>Automated routing workflows</td>
+            <td>65% faster response times</td>
+          </tr>
+          <tr>
+            <td>Manual AP processing</td>
+            <td>Workflow automation in existing systems</td>
+            <td>Audit-ready documentation by default</td>
+          </tr>
+          <tr>
+            <td>Scattered HR records</td>
+            <td>Unified digital workflows</td>
+            <td>Staff turnover dropped from 28% to 11%</td>
+          </tr>
+          <tr>
+            <td>License tracking</td>
+            <td>Automated renewals and compliance</td>
+            <td>Zero missed renewals, clean audits</td>
+          </tr>
+          <tr>
+            <td>Grant reporting burden</td>
+            <td>Automated documentation capture</td>
+            <td>$1.6M in grants secured</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Technical Foundation</h3>
+      <p>The implementation used existing municipal infrastructure: Microsoft 365, Power Automate, SharePoint, and CivicPlus. Success came from operational logic, compliance rules, and workflow sequencing that connected disparate systems into unified workflows. That experience—understanding what holds up under municipal pressure, what staff can sustain, what compliance requires—directly informed VAULT's design principles.</p>
+
+      <h3>Why This Matters for Sutton</h3>
+      <p>VAULT isn't theoretical. It's built from the work I led in Hubbardston, a Massachusetts town of 4,800 residents facing the same constraints Sutton faces: limited budget, existing tech stack, capacity-constrained staff, and board expectations for measurable results. The framework works because it's designed by practitioners who understand what actually functions in small-town government.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <h2>Who PublicLogic Is</h2>
+      <p>PublicLogic is a modernization framework built by active municipal practitioners. The team brings more than twenty-five years of hands-on work in Massachusetts local government, including town administration, procurement (MCPPO), public administration (MPA), finance, public works, clerk operations, and frontline departmental management.</p>
+      <p>Small towns don't lack effort or commitment. They lack structures that hold up when workloads increase or institutional knowledge leaves. PublicLogic exists to build those structures in ways that reduce cognitive load, improve clarity, and strengthen everyday routines.</p>
+
+      <h3>The Core Problem</h3>
+      <p>Towns like Sutton face the same compliance requirements as larger municipalities but without the staff capacity, technical infrastructure, or institutional bandwidth to handle them. Commercial platforms are built for scale we don't have. Dedicated IT departments aren't feasible. Critical knowledge lives in the heads of long-serving staff who are approaching retirement.</p>
+      <p>The result is predictable: burnout, turnover, compliance exposure, and service degradation.</p>
+
+      <h3>The VAULT Solution</h3>
+      <p>VAULT (Verified Automation and Unified Logic for Towns) is operational logic, not software. It's the workflow sequencing, compliance rules, retention schedules, and decision trees that make municipal work predictable and sustainable. The framework uses existing platforms—Google Workspace, Munis, whatever departmental tools are already in place—and connects them into unified systems.</p>
+      <p>Municipalities aren't adopting new technology. They're implementing structured workflows that reduce cognitive load, preserve institutional knowledge, and automate compliance documentation.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <h2>PublicInsight: The Behavioral Systems Component</h2>
+      <p>A critical lesson from municipal modernization efforts: operational logic fails if it doesn't account for how people actually work under pressure.</p>
+      <p>Dr. Allison Weiss Rothschild (PsyD, MSW, LICSW, BCBA, LABA) leads PublicInsight, the behavioral systems and organizational psychology practice that ensures VAULT implementations are grounded in staff readiness, cognitive load management, change tolerance, and sustainable training design.</p>
+      <p>This isn't supplementary—it's foundational. Approximately 60% of workflow implementations fail not from technical issues but from staff abandonment within 90 days. Systems that ignore cognitive load, change tolerance, and behavioral patterns under deadline pressure get abandoned regardless of how well they're engineered.</p>
+
+      <h3>What PublicInsight Assesses</h3>
+      <ul>
+        <li>Current cognitive load and capacity constraints (how much bandwidth exists for change)</li>
+        <li>Behavioral patterns under deadline pressure (how teams respond when systems break)</li>
+        <li>Organizational stability and change tolerance (recent turnover, upcoming retirements, restructuring)</li>
+        <li>Training effectiveness and knowledge retention (what sticks, what doesn't, and why)</li>
+        <li>Team dynamics and communication pathways (formal vs. informal, functional vs. broken)</li>
+        <li>Stress response patterns and burnout indicators (early warning signs before crisis)</li>
+      </ul>
+
+      <h3>Behavioral Intervention Examples</h3>
+      <p><strong>Scenario: Clerk with wall calendar managing OML deadlines.</strong> Technical solution would be automated posting. Behavioral assessment reveals this staff member trusts physical artifacts more than digital systems due to past technology failures. PublicInsight designs hybrid approach: digital workflow generates physical checklist. Transition happens in phases as trust builds.</p>
+      <p><strong>Scenario: DPW staff resistant to mobile field updates.</strong> Technical solution would mandate tablet use. Behavioral assessment reveals resistance stems from past system that added 15 minutes per task without removing any manual steps. PublicInsight redesigns workflow to eliminate three manual steps first, then introduces mobile tool that saves net time. Adoption follows value demonstration.</p>
+      <p>Discovery isn't just about mapping workflows. It's about understanding whether an organization is ready for change, what pace of implementation is sustainable, and what support structures need to be in place for systems to stick.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <h2>Why Sutton Should Care Right Now</h2>
+      <p>You're managing a $42.28M budget with an AA+ rating in a town of 9,357 residents. You run open town meeting. You have the same challenges every small town has: work increases, staffing doesn't, compliance requirements grow, and residents expect more.</p>
+      <p>You're in the window. You still have institutional knowledge, but retirements are coming. Your tech stack is functional but disconnected. Staff is managing, but barely. Community Compact grants are available.</p>
+      <p>Wait two years and you'll be in crisis mode. Implement now and you build capacity before you lose critical knowledge.</p>
+
+      <h3>The Four Pressure Points</h3>
+      <table class="table-compact">
+        <thead>
+          <tr>
+            <th>Pressure Point</th>
+            <th>Current State</th>
+            <th>Risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Capacity</td>
+            <td>Staff running at max, no bandwidth for systems work</td>
+            <td>Burnout, turnover, service degradation</td>
+          </tr>
+          <tr>
+            <td>Compliance</td>
+            <td>Manual tracking, paper trails, memory-based processes</td>
+            <td>Audit findings, legal exposure, missed deadlines</td>
+          </tr>
+          <tr>
+            <td>Knowledge Transfer</td>
+            <td>Critical knowledge in people's heads, not systems</td>
+            <td>Loss of institutional memory with retirements</td>
+          </tr>
+          <tr>
+            <td>Service Expectations</td>
+            <td>Residents want tracking, updates, transparency</td>
+            <td>Frustration, complaints, reputational damage</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <h2>How VAULT Actually Works</h2>
+      <p>VAULT isn't a product you buy. It's a framework you implement using what you already have.</p>
+
+      <h3>The Concept</h3>
+      <p>Every municipality has the same core workflows: service requests come in, work gets assigned, labor gets tracked, residents get updates, documentation gets filed, audits get passed. Right now, those workflows are fragmented across email, paper forms, verbal updates, spreadsheets, and tribal knowledge.</p>
+      <p>VAULT provides the connective tissue. It's the logic layer that ensures when a resident submits a pothole report, it automatically becomes a work order, generates a labor entry, updates asset condition records, triggers resident notifications, and creates audit documentation—all without your staff doing anything except the actual work.</p>
+
+      <h3>Example: DPW Service Request Workflow</h3>
+      <p><strong>Current State (Before VAULT):</strong></p>
+      <p>Resident calls town hall. Someone writes it down. Maybe it gets emailed to DPW. DPW superintendent assigns it verbally or via text. Crew does the work. If the resident calls back asking for status, someone has to track down the information. At year-end, you're scrambling to compile labor hours for grant reporting. Asset condition data doesn't exist.</p>
+
+      <p><strong>With VAULT ServiceTrack:</strong></p>
+      <ul>
+        <li>Resident submits request via form (web, QR code, or staff entry)</li>
+        <li>VAULT routes it automatically based on location, type, and priority</li>
+        <li>DPW superintendent gets notification in their existing system</li>
+        <li>Crew updates status from the field (mobile-friendly)</li>
+        <li>VAULT TimeTrack captures labor hours automatically</li>
+        <li>VAULT CapitalPlan updates asset condition data</li>
+        <li>Resident receives automatic status updates</li>
+        <li>All documentation is audit-ready by default</li>
+      </ul>
+
+      <p>Work happens once. Information flows automatically. Compliance documents itself. Everyone sees the same thing.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <h2>VAULT Modules Available</h2>
+      <table class="table-compact">
+        <thead>
+          <tr>
+            <th>Function</th>
+            <th>Module</th>
+            <th>What It Does</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Public Works</td>
+            <td>VAULT ServiceTrack</td>
+            <td>Work order routing, labor tracking, field updates, resident notifications</td>
+          </tr>
+          <tr>
+            <td>Time & Labor</td>
+            <td>VAULT TimeTrack</td>
+            <td>Timesheets, payroll integration, grant reporting, audit compliance</td>
+          </tr>
+          <tr>
+            <td>Clerk Operations</td>
+            <td>VAULT ClerkFlow</td>
+            <td>OML posting automation, meeting workflows, agenda/minutes management</td>
+          </tr>
+          <tr>
+            <td>Resident Services</td>
+            <td>VAULT Connect</td>
+            <td>Unified intake, request tracking, automated messaging, transparency portal</td>
+          </tr>
+          <tr>
+            <td>Capital Planning</td>
+            <td>VAULT CapitalPlan</td>
+            <td>Asset tracking, condition scoring, multi-year planning, budget justification</td>
+          </tr>
+          <tr>
+            <td>Foundation</td>
+            <td>VAULT Core</td>
+            <td>Unified logic, records retention, compliance pathways, cross-department workflows</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>How They Connect</h3>
+      <p>These aren't separate systems. They're modules that share the same underlying logic. One pothole request becomes a resident submission, a work order, a labor entry, an asset condition update, and an automatic resident update. No duplication. No separate tracking. No information loss.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <h2>Implementation Approach</h2>
+      <p>This isn't a multi-year ERP implementation. It's phased rollout built around Sutton's capacity and priorities.</p>
+
+      <h3>Phase 1: Discovery and Readiness (4-6 weeks)</h3>
+      <p>Map current workflows, assess organizational readiness, identify pressure points, determine the right starting module. PublicInsight conducts behavioral assessments to understand team capacity for change. Deliverables: readiness report, implementation sequence, realistic timeline.</p>
+
+      <h3>Phase 2: Foundation Build (8-12 weeks)</h3>
+      <p>Implement first VAULT module—typically ServiceTrack or ClerkFlow depending on priorities. Work with Polimorphic to build workflows in existing environment. Train staff as we go. Results visible within first month.</p>
+
+      <h3>Phase 3: Expansion (Ongoing)</h3>
+      <p>Additional modules roll out based on timeline and capacity. Each builds on the previous. System grows with Sutton. No "go-live" cliff where everything changes at once.</p>
+
+      <h3>Requirements</h3>
+      <ul>
+        <li>One internal champion (Town Manager or Assistant)</li>
+        <li>Department heads willing to participate in workflow mapping</li>
+        <li>2-4 hours per week during initial implementation</li>
+        <li>Commitment to using the system once built</li>
+      </ul>
+
+      <h3>Minimum Viable Infrastructure</h3>
+      <p>VAULT assumes Sutton has:</p>
+      <ul>
+        <li>Google Workspace or Microsoft 365 (for workflow automation foundation)</li>
+        <li>Existing financial system with basic API or data export capability</li>
+        <li>Internet connectivity at town hall and key department locations</li>
+        <li>Email addresses for staff who will use automated workflows</li>
+      </ul>
+      <p>Sutton already has these systems in place. VAULT connects them—it doesn't replace them.</p>
+
+      <h3>Not Required</h3>
+      <ul>
+        <li>New hardware or software licenses</li>
+        <li>Dedicated IT staff</li>
+        <li>Big capital appropriation at town meeting</li>
+        <li>Operational shutdown during implementation</li>
+      </ul>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <h2>Partnership with Polimorphic</h2>
+      <p>PublicLogic provides the municipal logic—operational knowledge, compliance rules, and workflow design from 25+ years in the trenches. Polimorphic is the engineering partner who implements those workflows in stable, secure, maintainable systems.</p>
+      <p>The division is clean: PublicLogic designs workflows based on municipal requirements. Polimorphic builds them using low-code tools that integrate with existing systems. The result is operational systems that municipal staff can actually use.</p>
+      <p>Polimorphic brings enterprise-grade engineering with government-sector focus. Their platform handles secure authentication (SSO integration), API connectivity to legacy systems like Munis, automated compliance documentation, and mobile-responsive interfaces that work for field staff. They understand municipal security requirements, data retention obligations, and public records law constraints. Most importantly, they build systems that can be maintained by municipal IT departments or regional collaboratives—not just by the vendor who built them.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <h2>Investment Structure</h2>
+      <p>PublicLogic's approach to Sutton reflects the early-stage reality: this is about building proof, not extracting maximum revenue.</p>
+
+      <h3>Discovery Phase: No Charge</h3>
+      <p>The discovery phase described in this packet—workflow mapping, readiness assessment, implementation sequencing, and detailed recommendations—is provided at no cost to Sutton. This typically represents $8,000-12,000 in consulting value.</p>
+
+      <h3>Implementation + Year 1: No Charge</h3>
+      <p>If Sutton decides to move forward after discovery, the first module implementation and full Year 1 operational support are provided at no cost. This includes:</p>
+      <ul>
+        <li>Complete module build and integration</li>
+        <li>Staff training and documentation</li>
+        <li>Workflow automation and compliance setup</li>
+        <li>Full year of platform access, hosting, and support</li>
+        <li>Quarterly reviews and optimization</li>
+        <li>Grant application development support</li>
+      </ul>
+      <p>This represents approximately $35,000-45,000 in development, implementation, and support investment from PublicLogic and Polimorphic.</p>
+
+      <div class="highlight-box">
+        <strong>Why Free Year 1?</strong>
+        <p>PublicLogic is early-stage. Sutton's partnership, feedback, and willingness to serve as a reference implementation is the value exchange. If VAULT delivers measurable results in Sutton, both parties benefit. If it doesn't perform as promised, Sutton has invested time but zero dollars.</p>
+        <p>There are no hidden license fees, per-seat charges, or required add-on purchases in Year 1. If Sutton does not continue after Year 1, the workflows remain in your environment and keep functioning without us—no vendor lock-in, no data held hostage, no operational cliff.</p>
+      </div>
+
+      <h3>Years 2-3: Performance-Based Contract</h3>
+      <p>If Year 1 demonstrates value—measured by defined success metrics agreed upon during discovery—Sutton would enter a two-year contract at the following rates.</p>
+      
+      <p><strong>Success metrics are defined jointly during discovery. Typical examples:</strong></p>
+      <ul>
+        <li>30–50% reduction in manual steps for at least one DPW or Clerk workflow</li>
+        <li>Zero missed OML posting deadlines over 12 months</li>
+        <li>Automated documentation for at least one significant grant program</li>
+        <li>Measurable reduction in average response time to resident service requests</li>
+      </ul>
+
+      <p>If these metrics are met, Sutton enters Years 2-3 at the following rates:</p>
+
+      <table class="table-compact">
+        <thead>
+          <tr>
+            <th>Configuration</th>
+            <th>Annual Rate</th>
+            <th>Sutton Annual Cost*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1-2 modules</td>
+            <td>$4.00/resident</td>
+            <td>~$37,400</td>
+          </tr>
+          <tr>
+            <td>3-4 modules</td>
+            <td>$4.50/resident</td>
+            <td>~$42,100</td>
+          </tr>
+          <tr>
+            <td>5+ modules</td>
+            <td>$5.00/resident</td>
+            <td>~$46,800</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size: 12px; margin-top: 6px;">*Based on Sutton's population of 9,357. Rates include platform access, ongoing support, compliance updates, and system maintenance.</p>
+
+      <h3>What's Included in Years 2-3</h3>
+      <ul>
+        <li>Full platform access and hosting</li>
+        <li>Ongoing technical support and maintenance</li>
+        <li>Compliance updates as regulations change</li>
+        <li>Additional module implementations as needed</li>
+        <li>Quarterly optimization and training sessions</li>
+        <li>Grant application support for expansion funding</li>
+        <li>M.G.L. alignment updates</li>
+      </ul>
+
+      <h3>Funding Options for Years 2-3</h3>
+      <ul>
+        <li>Operating budget (direct appropriation)</li>
+        <li>Community Compact IT Grant (up to $35,000)</li>
+        <li>Municipal Modernization Grants</li>
+        <li>Capital stabilization funds</li>
+        <li>Combination approach (grant + operating)</li>
+      </ul>
+
+      <p>During Year 1, PublicLogic works with Sutton to identify and co-develop grant applications specifically targeting the Years 2-3 costs, significantly reducing or eliminating direct municipal expenditure. In Hubbardston, we successfully secured Community Compact IT funding to offset modernization costs. PublicLogic understands the grant application process, scoring criteria, and documentation requirements because we've navigated them as municipal practitioners—not as outside consultants.</p>
+
+      <h3>Exit Terms</h3>
+      <p>If at the end of Year 1 Sutton decides not to continue, there is no obligation, no penalty, and no cost. Sutton retains full access to any systems built, documentation created, and workflows established.</p>
+      <p><strong>Data portability:</strong> All data exports are provided in standard formats (JSON, CSV, PDF-A) within 30 business days of exit notification. Workflows built in Google Workspace, SharePoint, or other Sutton-owned environments remain functional and fully accessible to your staff or any IT vendor. No proprietary file formats, no vendor-locked databases, no ransom scenarios.</p>
+      <p><strong>Continuity protection:</strong> All VAULT workflows are documented with plain-language standard operating procedures. If PublicLogic ceases operations or Sutton chooses to maintain systems independently, any competent IT professional or regional collaborative can understand, modify, and extend what was built. You own the infrastructure, the workflows, and the data—always.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <h2>Discovery Meeting Structure</h2>
+      <p>This isn't a presentation. It's a working conversation.</p>
+
+      <table class="table-compact">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Topic</th>
+            <th>Focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>15 min</td>
+            <td>Context</td>
+            <td>Your priorities, pain points, what brought you to the table</td>
+          </tr>
+          <tr>
+            <td>30 min</td>
+            <td>Current State</td>
+            <td>Where processes break, what creates rework, where staff is stressed</td>
+          </tr>
+          <tr>
+            <td>30 min</td>
+            <td>Readiness</td>
+            <td>Capacity, timeline, training tolerance, organizational stability</td>
+          </tr>
+          <tr>
+            <td>15 min</td>
+            <td>Path Forward</td>
+            <td>If this fits, what's next. If it doesn't, what you should do instead</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size: 12px; margin-top: 6px; font-style: italic;"><strong>Note:</strong> Timing is approximate and adjusts based on Sutton's priorities and discussion flow.</p>
+
+      <h3>What You Leave With</h3>
+      <ul>
+        <li>Readiness assessment showing organizational capacity and behavioral factors</li>
+        <li>Documented baseline of current workflows and pressure points</li>
+        <li>Recommended implementation sequence based on your priorities</li>
+        <li>Clear indicators for measuring success</li>
+        <li>Honest assessment of whether VAULT fits Sutton right now</li>
+        <li>Realistic timeline and budget expectations</li>
+        <li>Practitioner-level feedback you can use regardless of whether you move forward</li>
+      </ul>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <h2>Commitment and Accountability</h2>
+      <p>PublicLogic doesn't pressure municipalities into implementations. We don't oversell capabilities or propose timelines organizations can't handle. If VAULT isn't the right fit for Sutton—timing, capacity, priorities, organizational readiness—we say that directly.</p>
+      <p>If we move forward, we're accountable for results. If systems don't deliver what was agreed, that's on us. The goal is helping towns build infrastructure that protects staff and serves residents effectively—not selling frameworks.</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="section">
+      <h2>Next Steps</h2>
+      <p>If this aligns with where Sutton is right now, the most useful next step is a 60-minute discovery session within the next 30 days. That window lets us capture institutional knowledge while key staff are still in place and before workloads increase further.</p>
+      <p><strong>To schedule discovery or ask preliminary questions:</strong></p>
+      <ul>
+        <li>Email: nboudreau@hubbardstonma.us</li>
+        <li>Phone: (978) 928-1400 x201</li>
+        <li>Scheduling: <a href="https://publiclogic.com" target="_blank" rel="noreferrer">PublicLogic.com/discovery</a></li>
+      </ul>
+      <div class="signature-block">
+        <p class="signature-name">Nate Boudreau, MPA, MCPPO</p>
+        <p>Founder, PublicLogic™</p>
+        <p>Town Administrator, Hubbardston</p>
+        <p style="margin-top:14px;" class="signature-name">Dr. Allison Weiss Rothschild</p>
+        <p>Behavioral Systems Partner, PublicInsight™</p>
+        <p>PsyD, MSW, LICSW, BCBA, LABA</p>
+        <p style="margin-top:12px;"><a href="https://publiclogic.com" target="_blank" rel="noreferrer">PublicLogic.com</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

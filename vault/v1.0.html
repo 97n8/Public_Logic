@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="PublicLogic LLC">
+  <meta name="dcterms.created" content="2026-01-13">
+  <meta name="dcterms.type" content="Text">
+  <meta name="dcterms.format" content="text/html">
+  <link rel="canonical" href="https://publiclogic.org/vault/v1.0">
+  <title>VAULT™ Governance Framework v1.0</title>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ 
+      startOnLoad: true, 
+      theme: 'neutral', 
+      flowchart: { useMaxWidth: true, curve: 'basis' },
+      securityLevel: 'loose'
+    });
+  </script>
+  <style>
+    :root { 
+      --accent: #15803d; /* Deep green */
+      --link: #16a34a; /* Brighter green for links */
+      --border: #e5e7eb; 
+      --bg: #f0fdf4; /* Very light green tint */
+      --vignette: #ecfdf5; 
+      --subtle-border: #bbf7d0; 
+      --text: #111;
+      --muted: #4b5563;
+    }
+    body { 
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+      max-width: 1100px; 
+      margin: 0 auto; 
+      padding: 3rem 1.5rem; 
+      line-height: 1.7; 
+      background: white; 
+      color: var(--text); 
+    }
+    h1, h2, h3, h4 { 
+      color: var(--accent); 
+      margin-top: 3rem; 
+      margin-bottom: 1rem; 
+      scroll-margin-top: 2rem;
+    }
+    h1 { font-size: 2.6rem; text-align: center; margin: 1rem 0 0.5rem; }
+    h2 { font-size: 2rem; border-bottom: 3px solid var(--subtle-border); padding-bottom: 0.8rem; }
+    h3 { font-size: 1.5rem; }
+    h4 { font-size: 1.3rem; margin-top: 2rem; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    p { margin: 1.2rem 0; }
+    strong { color: var(--accent); font-weight: 600; }
+    em { font-style: italic; }
+    ul, ol { padding-left: 1.8rem; margin: 1.5rem 0; }
+    li { margin: 0.8rem 0; }
+    .plain-english { 
+      background: var(--bg); 
+      padding: 2rem; 
+      border-left: 8px solid var(--accent); 
+      margin: 2rem 0 3rem; 
+      font-size: 1.15rem; 
+      border-radius: 0 12px 12px 0; 
+      box-shadow: 0 4px 12px rgba(21,128,61,0.08);
+    }
+    .failure-mode { 
+      background: #fff5f5; 
+      padding: 2rem; 
+      border-left: 6px solid #dc2626; 
+      margin: 3rem 0; 
+      border-radius: 0 12px 12px 0;
+    }
+    .intro { 
+      background: var(--bg); 
+      padding: 2.5rem; 
+      border-left: 8px solid var(--accent); 
+      margin: 3rem 0; 
+      font-size: 1.15rem; 
+      border-radius: 0 12px 12px 0; 
+      box-shadow: 0 4px 12px rgba(21,128,61,0.08);
+    }
+    .highlight { 
+      background: var(--bg); 
+      padding: 2rem; 
+      border-left: 6px solid var(--accent); 
+      margin: 3rem 0; 
+      font-size: 1.2rem; 
+      border-radius: 0 12px 12px 0;
+    }
+    .dimensions { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); 
+      gap: 2rem; 
+      margin: 3rem 0; 
+    }
+    .dimension { 
+      background: var(--vignette); 
+      padding: 2rem; 
+      border-radius: 12px; 
+      border: 1px solid var(--border); 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .case-box { 
+      background: var(--vignette); 
+      padding: 2.5rem; 
+      border-radius: 12px; 
+      border: 1px solid var(--border); 
+      margin: 3rem 0; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .section { margin: 5rem 0; }
+    header { 
+      text-align: center; 
+      margin-bottom: 4rem; 
+      padding-bottom: 2rem; 
+      border-bottom: 1px solid var(--border); 
+    }
+    .letterhead-main { 
+      font-size: 2.2rem; 
+      font-weight: 800; 
+      color: var(--accent); 
+      margin-bottom: 0.5rem;
+    }
+    .letterhead-tagline { 
+      font-size: 1.4rem; 
+      color: var(--accent); 
+      font-weight: 500; 
+      margin-bottom: 1.5rem;
+    }
+    .subtitle { font-size: 1.3rem; color: var(--muted); margin-top: 1rem; }
+    .toc {
+      background: var(--bg);
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 3rem 0;
+      font-size: 1.1rem;
+    }
+    .toc ul { list-style: none; padding-left: 0; }
+    .toc li { margin: 0.8rem 0; }
+    .toc a { color: var(--accent); font-weight: 500; }
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 6px;
+      background: var(--accent);
+      color: white;
+      padding: 8px;
+      border-radius: 4px;
+      transition: top 0.3s;
+    }
+    .skip-link:focus { top: 6px; }
+    footer { 
+      text-align: center; 
+      margin-top: 8rem; 
+      padding: 3rem 2rem 2rem; 
+      border-top: 1px solid var(--border); 
+      color: var(--muted); 
+      font-size: 0.95rem; 
+      line-height: 1.6;
+    }
+    .mermaid-container { 
+      background: var(--vignette); 
+      border: 1px solid var(--border); 
+      border-radius: 12px; 
+      padding: 2rem; 
+      margin: 3rem 0; 
+      text-align: center; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow-x: auto;
+    }
+    .mermaid-container p { 
+      font-size: 0.95rem; 
+      margin-top: 1.5rem; 
+      color: var(--muted); 
+    }
+    .faq { 
+      background: var(--bg); 
+      padding: 2rem; 
+      border-radius: 12px; 
+      margin: 3rem 0;
+    }
+    .compliance-box { 
+      background: var(--bg); 
+      padding: 2rem; 
+      border-left: 6px solid var(--accent); 
+      border-radius: 0 12px 12px 0;
+      margin: 3rem 0;
+    }
+    .raci-table, .checklist { 
+      border-collapse: collapse; 
+      width: 100%; 
+      margin: 2rem 0;
+    }
+    .raci-table th, .raci-table td, .checklist th, .checklist td { 
+      border: 1px solid var(--border); 
+      padding: 0.8rem; 
+      text-align: left;
+    }
+    .raci-table th, .checklist th { 
+      background: var(--bg); 
+      font-weight: bold;
+    }
+    .implementation-section { 
+      margin-top: 4rem;
+    }
+    @media (max-width: 768px) {
+      body { padding: 2rem 1rem; font-size: 1rem; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      .dimensions { grid-template-columns: 1fr; }
+      .toc { padding: 1.5rem; }
+      .plain-english, .intro, .highlight, .case-box, .faq, .compliance-box { padding: 1.5rem; }
+      .mermaid-container { padding: 1rem; }
+      .raci-table, .checklist { font-size: 0.9rem; }
+    }
+    @media (max-width: 480px) {
+      body { padding: 1.5rem 1rem; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.6rem; }
+      .toc li { margin: 0.6rem 0; }
+      .raci-table, .checklist { font-size: 0.85rem; overflow-x: auto; display: block; }
+    }
+    @media print {
+      body { padding: 0.5in; font-size: 11pt; line-height: 1.5; }
+      .toc { page-break-after: always; }
+      .skip-link, .toc { display: none; }
+      .mermaid-container { page-break-inside: avoid; }
+      .section, .highlight, .case-box, .dimension, .plain-english, .failure-mode, .compliance-box { page-break-inside: avoid; }
+      h2, h3 { page-break-after: avoid; }
+      header, footer { position: static; }
+      a { color: inherit; text-decoration: none; }
+      .intro, .highlight, .faq, .plain-english, .compliance-box { box-shadow: none; border-left: 6px solid black; }
+      .failure-mode { border-left: 6px solid black; background: #f0f0f0; }
+      .raci-table, .checklist { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="letterhead-main">PublicLogic™</div>
+    <div class="letterhead-tagline">Smart Systems. Stronger Communities.</div>
+    <h1>VAULT™ Governance Framework</h1>
+    <p class="subtitle">Version 1.0 — Public Release<br>Issued by PublicLogic™<br>January 13, 2026</p>
+  </header>
+
+  <nav class="toc" aria-label="Table of Contents">
+    <strong>Table of Contents</strong>
+    <ul>
+      <li><a href="#plain-english">Plain English Summary</a></li>
+      <li><a href="#failure-mode">What Happens Without VAULT</a></li>
+      <li><a href="#how-to-read">How to Read This Document</a></li>
+      <li><a href="#purpose">1. Purpose</a></li>
+      <li><a href="#core-principle">2. Core Principle</a></li>
+      <li><a href="#structure">3. Framework Structure</a></li>
+      <li><a href="#charters">4. Charters</a></li>
+      <li><a href="#dimensions">5. VAULT Governance Dimensions</a></li>
+      <li><a href="#modules">6. VAULT Statutory Modules</a></li>
+      <li><a href="#case">7. CASE™</a></li>
+      <li><a href="#relationship">8. Relationship Summary</a></li>
+      <li><a href="#review">9. Behavioral and Clinical Review</a></li>
+      <li><a href="#not">10. What VAULT Is Not</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+      <li><a href="#conclusion">11. Conclusion</a></li>
+      <li><a href="#version-history">Version History</a></li>
+    </ul>
+  </nav>
+
+  <main id="main" role="main">
+
+    <div class="plain-english" id="plain-english">
+      <strong>Plain English: Why VAULT Exists</strong>
+      <p>Most municipal failures do not come from lazy or unskilled staff. They come from legally required work starting before clear authority, durable records, time boundaries, or fiscal limits are in place.</p>
+      <p>When that happens, the institution quietly transfers undefendable risk onto individual employees—the people least able to refuse it.</p>
+      <p>VAULT™ prevents that transfer. It requires statutory work to exist only inside a governed container (called a CASE™) that the institution owns and can defend.</p>
+      <p>This protects staff from personal liability, preserves institutional memory across turnover, and ensures compliance holds under pressure.</p>
+      <p>The rest of this document explains exactly how.</p>
+    </div>
+
+    <div class="failure-mode" id="failure-mode">
+      <strong>What Happens Without VAULT</strong>
+      <ul>
+        <li>Statutory work accumulates informally (email threads, personal notes, shared drives), creating undefendable exposure when challenged.</li>
+        <li>Turnover erases context and rationale, forcing remaining staff to reconstruct or absorb liability.</li>
+        <li>Under pressure, individuals make decisions without explicit authority, leading to personal risk and institutional vulnerability.</li>
+      </ul>
+      <p>VAULT addresses these observed failure modes directly.</p>
+    </div>
+
+    <section class="section" id="how-to-read">
+      <h2>How to Read This Document</h2>
+      <ul>
+        <li><strong>Municipal leaders and clerks:</strong> Start with the Plain English Summary, What Happens Without VAULT, Purpose (Section 1), CASE™ (Section 7), and Conclusion (Section 11).</li>
+        <li><strong>Technical and implementation partners:</strong> Focus on Framework Structure (Section 3), Governance Dimensions (Section 5), Statutory Modules (Section 6), CASE™ (Section 7), and Relationship Summary (Section 8).</li>
+        <li><strong>Legal and compliance officers:</strong> Prioritize Charters (Section 4), Governance Dimensions (Section 5), Statutory Modules (Section 6), and Behavioral Review (Section 9).</li>
+        <li><strong>Legislators, researchers, and auditors:</strong> Read Core Principle (Section 2), Framework Structure (Section 3), Conclusion (Section 11), and use the recommended citation in the footer.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="purpose">
+      <h2>1. Purpose</h2>
+      <div class="intro">
+        <p>VAULT™ is a governance framework that ensures statutory municipal work enters an institution in a form it can survive.</p>
+        <p>Municipal institutions operate under sustained legal, political, and operational pressure. Failure most often occurs not because staff lack skill or commitment, but because work enters the organization without explicit authority, durable records, bounded time and fiscal exposure, or continuity protections. In those conditions, institutional risk is displaced onto individuals.</p>
+        <p><strong>VAULT exists to prevent that transfer.</strong></p>
+        <p>VAULT does not manage work.<br>VAULT governs the conditions under which work is allowed to exist.</p>
+      </div>
+    </section>
+
+    <section class="section" id="core-principle">
+      <h2>2. Core Principle</h2>
+      <div class="highlight">
+        <p>Institutions fail when risk lives in people instead of structure.</p>
+        <p>VAULT ensures that institutional risk is carried by governance rather than absorbed by individuals.</p>
+      </div>
+    </section>
+
+    <section class="section" id="structure">
+      <h2>3. Framework Structure</h2>
+      <p>VAULT is composed of four integrated constructs, each addressing a distinct and common failure mode:</p>
+      <ol>
+        <li><strong>Charters</strong> – what authorizes actors to exist and act</li>
+        <li><strong>Governance Dimensions</strong> – how institutional risk is held</li>
+        <li><strong>Statutory Modules</strong> – where legally defined work occurs</li>
+        <li><strong>CASE™</strong> – where work and data are allowed to exist safely</li>
+      </ol>
+      <p>These constructs are interdependent but not interchangeable.</p>
+
+      <div class="mermaid-container" role="img" aria-label="Diagram showing high-level overview of VAULT™ construct interdependence.">
+        <pre class="mermaid">
+graph TD
+    A[Charters] -->|authorize| B[Authorized Actors]
+    B -->|create| C[CASE™]
+    C -->|contains| D[Statutory Module Work]
+    E[Governance Dimensions] -->|enforce on| C
+    style A fill:#f0f4f8,stroke:#15803d,stroke-width:2px
+    style B fill:#f0f4f8,stroke:#15803d,stroke-width:2px
+    style C fill:#ecfdf5,stroke:#15803d,stroke-width:4px
+    style D fill:#f0f4f8,stroke:#15803d,stroke-width:2px
+    style E fill:#f0f4f8,stroke:#15803d,stroke-width:2px
+        </pre>
+        <p>High-level overview of VAULT™ construct interdependence (conceptual only).</p>
+        <noscript>
+          <p>Text description: Charters authorize actors → actors create CASE™ → CASE™ contains statutory module work. Governance Dimensions enforce uniformly on CASE™.</p>
+        </noscript>
+      </div>
+    </section>
+
+    <section class="section" id="charters">
+      <h2>4. Charters <em>(Who is authorized to act)</em></h2>
+      <p>A charter is the formal delegation that grants authority to a role, body, or office.</p>
+      <p>Charters establish lawful standing and define scope. They are issued through statute, charter, bylaw, vote, appointment, or formal designation. Charters create authorized actors. They do not create work.</p>
+      <p>Authorization without structural containment is insufficient.</p>
+      <p><strong>VAULT does not recognize unchartered authority.</strong></p>
+    </section>
+
+    <section class="section" id="dimensions">
+      <h2>5. VAULT Governance Dimensions <em>(How risk is held)</em></h2>
+      <p>The following six governance dimensions apply to <em>all</em> statutory work, without exception. They are constraints, not services.</p>
+      <div class="dimensions">
+        <div class="dimension">
+          <h4>AUTHORITY</h4>
+          <p>Decision power is explicit, lawful, and bounded.<br>Who may decide, approve, deny, escalate, or override is documented in advance. Authority is never inferred from urgency, tenure, or proximity.<br>If authority cannot be explicitly located, work does not proceed.</p>
+        </div>
+        <div class="dimension">
+          <h4>RECORD</h4>
+          <p>Institutional memory is durable and auditable.<br>Work exists as an official record from inception. Records are a condition of legitimacy, not a byproduct.<br>When people leave, the record remains. When pressure rises, the record holds.</p>
+        </div>
+        <div class="dimension">
+          <h4>TIME</h4>
+          <p>Deadlines are owned by structure, not vigilance.<br>Statutory clocks, review points, escalation thresholds, and closure conditions are governed structurally.<br>If time cannot be governed, work does not advance.</p>
+        </div>
+        <div class="dimension">
+          <h4>FISCAL</h4>
+          <p>Financial exposure is explicit and bounded.<br>Fees, waivers, costs, revenues, and thresholds are visible and authorized. Money is treated as a governance risk.<br>Money moves only where authority and record already exist.</p>
+        </div>
+        <div class="dimension">
+          <h4>CORRECTION</h4>
+          <p>Errors are repairable without personal liability.<br>Work can be amended, reversed, reopened, or remediated safely. Correction is structural remediation, not discipline.<br>If a system cannot be corrected safely, it is not governable.</p>
+        </div>
+        <div class="dimension">
+          <h4>TRANSFER</h4>
+          <p>Work survives people.<br>Authority, knowledge, and responsibility are transferable across turnover, absence, and succession.<br>If work depends on a specific individual, it is structurally unsafe.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="modules">
+      <h2>6. VAULT Statutory Modules <em>(Where statutory work occurs)</em></h2>
+      <p>VAULT modules are Massachusetts General Law–specific, statute-bound municipal workflows. Each module operates under all six governance dimensions simultaneously.</p>
+      <ul>
+        <li>Public Records – MGL c.66, c.4 §7(26)</li>
+        <li>Vital Records – MGL c.46</li>
+        <li>Elections – MGL c.54 and related statutes</li>
+        <li>Licensing and Permitting – MGL c.140, c.110, and related provisions</li>
+        <li>Appointments and Oaths – MGL c.268A, c.30A, and related statutes</li>
+        <li>Clerk and Constituent Services – Statutory and charter-based duties</li>
+      </ul>
+      <p>Modules define legal domains, not technical implementations.</p>
+      <p>VAULT does not replace statute.<br>VAULT governs how statutory work is carried safely.</p>
+      <p>While these modules are Massachusetts-specific, the VAULT governance structure itself is jurisdiction-agnostic and applies wherever statutory authority, records law, and institutional liability exist.</p>
+    </section>
+
+    <section class="section" id="case">
+      <h2>7. CASE™ <em>(Chartered Administrative Structural Environment)</em></h2>
+      <p>CASE™ (Chartered Administrative Structural Environment) is a trademarked structural construct within the VAULT™ Governance Framework.</p>
+      <p>A CASE™ is a formally chartered institutional environment in which statutory work and its data are allowed to exist. It embeds its authorizing charter, enforces all VAULT governance dimensions, and is owned by the institution rather than any individual.</p>
+      <p><strong>CASE™ is the minimum unit of institutional legitimacy.</strong></p>
+      <p>Unchartered work cannot form a CASE™.<br>Work that cannot exist within a CASE™ is not allowed to exist informally.</p>
+
+      <div class="mermaid-container" role="img" aria-label="Diagram showing CASE™ as central container enforcing the six governance dimensions with records, decisions, communications, and artifacts converging into it.">
+        <pre class="mermaid">
+graph TD
+    A[CASE™] --> B[Authority]
+    A --> C[Record]
+    A --> D[Time]
+    A --> E[Fiscal]
+    A --> F[Correction]
+    A --> G[Transfer]
+    H["Records\nDecisions\nCommunications\nArtifacts"] -->|converge in| A
+    style A fill:#ecfdf5,stroke:#15803d,stroke-width:4px
+    style B fill:#f0f4f8,stroke:#15803d
+    style C fill:#f0f4f8,stroke:#15803d
+    style D fill:#f0f4f8,stroke:#15803d
+    style E fill:#f0f4f8,stroke:#15803d
+    style F fill:#f0f4f8,stroke:#15803d
+    style G fill:#f0f4f8,stroke:#15803d
+    style H fill:#f0f4f8,stroke:#15803d
+        </pre>
+        <p>Conceptual view of CASE™ as the governed container (enforcing dimensions and converging all materials).</p>
+        <noscript>
+          <p>Text description: CASE™ centrally enforces the six governance dimensions. All records, decisions, communications, and artifacts converge into the CASE™.</p>
+        </noscript>
+      </div>
+
+      <div class="case-box">
+        <h3>What CASE™ Ensures</h3>
+        <ul>
+          <li>authority is exercised lawfully and visibly,</li>
+          <li>records are official and durable,</li>
+          <li>statutory time is governed,</li>
+          <li>fiscal exposure is bounded,</li>
+          <li>correction is possible without personal liability, and</li>
+          <li>work and knowledge survive turnover.</li>
+          <li>artifacts (forms, certificates, reports, permits, evidence packages, correspondence, etc.) are complete, governed, and institutionally owned from creation.</li>
+        </ul>
+
+        <h3>What CASE™ Protects Against</h3>
+        <ul>
+          <li>Data silos and incomplete artifacts, by converging all material records, decisions, communications, and artifacts (including forms, certificates, reports, and evidence packages) in one governed environment.</li>
+          <li>Turnover loss, by preserving context, rationale, and statutory posture across staff change.</li>
+          <li>Informal data ownership, by making institutional data structurally owned rather than personally curated.</li>
+        </ul>
+        <p>A CASE™ protects both people and institutional memory.</p>
+      </div>
+    </section>
+
+    <section class="section" id="relationship">
+      <h2>8. Relationship Summary</h2>
+      <p>The correct sequence is:</p>
+
+      <div class="mermaid-container" role="img" aria-label="Diagram showing required sequence: Charter → Authorized Actor → CASE™ → Statutory Module Work, with Governance Dimensions applying to CASE™.">
+        <pre class="mermaid">
+flowchart LR
+    A[Charter] --> B[Authorized Actor]
+    B --> C[CASE™]
+    C --> D[Statutory Module Work]
+    E["Governance Dimensions\n(Authority, Record, Time,\nFiscal, Correction, Transfer)"] -->|apply to all| C
+    style A fill:#f0f4f8,stroke:#15803d,stroke-width:2px
+    style B fill:#f0f4f8,stroke:#15803d,stroke-width:2px
+    style C fill:#ecfdf5,stroke:#15803d,stroke-width:4px
+    style D fill:#f0f4f8,stroke:#15803d,stroke-width:2px
+    style E fill:#f0f4f8,stroke:#15803d,stroke-width:2px
+        </pre>
+        <p>Required sequence and enforcement (conceptual only).</p>
+        <noscript>
+          <p>Text description: Charter authorizes actor → actor creates CASE™ → CASE™ contains statutory work. Governance Dimensions apply uniformly to CASE™.</p>
+        </noscript>
+      </div>
+
+      <ul>
+        <li>Charters authorize who may act.</li>
+        <li>CASE™ contains work and data.</li>
+        <li>Governance dimensions hold risk.</li>
+        <li>Modules define the legal domain.</li>
+      </ul>
+      <p>VAULT requires all four.</p>
+    </section>
+
+    <section class="section" id="review">
+      <h2>9. Behavioral and Clinical Review</h2>
+      <p>This framework has been reviewed for behavioral survivability and human risk transfer by Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA, behavioral systems lead for PublicLogic™ and co-author of <em>Institutional Stewardship</em>.</p>
+      <p>The review confirms that VAULT:</p>
+      <ul>
+        <li>treats human cognitive and physiological limits as design constraints,</li>
+        <li>prevents prolonged exposure to unowned authority and ambiguous responsibility, and</li>
+        <li>reduces predictable stress injury by relocating vigilance and decision burden from individuals to structure.</li>
+      </ul>
+      <p>No clinical services, evaluations, or treatment claims are made or implied.</p>
+    </section>
+
+    <section class="section" id="not">
+      <h2>10. What VAULT Is Not</h2>
+      <ul>
+        <li>VAULT is not software.</li>
+        <li>VAULT is not a workflow.</li>
+        <li>VAULT is not change management.</li>
+        <li>VAULT is not culture reform.</li>
+      </ul>
+      <p>VAULT governs whether work is safe to absorb before execution begins.</p>
+    </section>
+
+    <section class="section" id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq">
+        <h3>Is VAULT open source?</h3>
+        <p>The governance concepts in this document are fully public and may be freely referenced or adopted. Implementation-specific encoding specifications, runtime logic, and enforcement mechanisms are proprietary and maintained separately for deployment partners.</p>
+
+        <h3>Can we implement VAULT ourselves?</h3>
+        <p>The framework itself is public and non-proprietary. However, achieving full governance enforcement requires disciplined translation into enforceable systems. PublicLogic offers partnership for validated implementations.</p>
+
+        <h3>Does VAULT replace our current systems?</h3>
+        <p>No. VAULT governs the conditions under which statutory work may exist within any system. It is system-agnostic and can overlay existing tools.</p>
+
+        <h3>What is the difference between VAULT and traditional case management software?</h3>
+        <p>Traditional case management focuses on workflow efficiency and task tracking. VAULT is a governance framework that defines structural constraints (authority, record, time, fiscal, correction, transfer) as conditions of legitimacy—preventing risk displacement onto individuals regardless of the underlying software.</p>
+      </div>
+    </section>
+
+    <section class="section" id="conclusion">
+      <h2>11. Conclusion</h2>
+      <div class="highlight">
+        <p>VAULT™ ensures municipal institutions do not outsource risk to the people least able to refuse it.</p>
+        <p>When VAULT is present:</p>
+        <ul>
+          <li>statutory work is defensible,</li>
+          <li>data is institutional,</li>
+          <li>compliance is structural,</li>
+          <li>turnover is survivable, and</li>
+          <li>governance holds under pressure.</li>
+        </ul>
+        <p>VAULT does not make institutions impressive.<br>It makes them <strong>survivable</strong>.</p>
+      </div>
+    </section>
+
+    <section class="section" id="version-history">
+      <h2>Version History</h2>
+      <ul>
+        <li><strong>v1.0</strong> (January 13, 2026) — Public release. Initial locked framework establishing core doctrine, constructs, and boundaries.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p><strong>Trademark Notice</strong><br>
+    VAULT™, CASE™, and related marks are trademarks of PublicLogic LLC.<br>
+    This document describes governance concepts only and does not disclose proprietary implementation mechanisms.<br>
+    <br>
+    This document is the complete public framework. Implementation-specific encoding specifications and runtime mechanisms are proprietary and maintained separately for deployment partners.<br>
+    <br>
+    <strong>Recommended Citation</strong><br>
+    PublicLogic LLC. (2026). <em>VAULT™ Governance Framework, Version 1.0</em>. Gardner, MA: PublicLogic LLC. Retrieved from <a href="https://publiclogic.org/vault/v1.0">https://publiclogic.org/vault/v1.0</a><br>
+    <br>
+    © 2026 PublicLogic LLC. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research — PublicLogic™</title>
+  <meta name="description" content="PublicInsight™ and Dr. Allison Weiss Rothschild form the research and training backbone of the PublicLogic Framework." />
+  <meta name="keywords" content="PublicInsight, research, municipal behavior, training, PublicLogic, Allison Weiss Rothschild" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#1f6b4a" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Research — PublicLogic" />
+  <meta property="og:description" content="PublicInsight™ and Dr. Allison Weiss Rothschild form the research and training backbone of the PublicLogic Framework." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://publiclogic.org/research.html" />
+  <meta property="og:image" content="https://publiclogic.org/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Research — PublicLogic" />
+  <meta name="twitter:description" content="PublicInsight™ and Dr. Allison Weiss Rothschild form the research and training backbone of the PublicLogic Framework." />
+  <meta name="twitter:image" content="https://publiclogic.org/og-image.jpg" />
+
+  <link rel="canonical" href="https://publiclogic.org/research.html" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #ffffff;
+      --paper: #ffffff;
+      --ink: #0b1713;
+      --brand: #1f6b4a;
+      --muted: #5e6864;
+      --line: #e5ebe7;
+      --accent: #145c3a;
+      --chip: #eef7f1;
+      --hover: #134d32;
+      --shadow: rgba(11, 23, 19, 0.08);
+      --focus: #0a7e51;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    p { max-width: 62ch; }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute; left: 0; top: -40px; background: var(--brand); color: #fff;
+      padding: .5rem .75rem; border-radius: 6px; z-index: 1000; text-decoration: none;
+    }
+    .skip-link:focus { top: 8px; outline: 3px solid #fff; }
+
+    /* Navigation */
+    .nav-wrap {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 1px 3px rgba(11, 23, 19, 0.05);
+    }
+    .nav {
+      max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; color: var(--brand); font-weight: 800; font-size: 1.2rem; }
+    .nav ul { display: flex; list-style: none; gap: 1.5rem; flex-wrap: wrap; }
+    .nav a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: .95rem; transition: color .2s; }
+    .nav a:hover { color: var(--brand); }
+
+    /* Hero */
+    .hero { background: linear-gradient(135deg, #eef7f1 0%, #ffffff 100%); padding: 5rem 1.5rem; text-align: center; }
+    .hero-inner { max-width: 800px; margin: 0 auto; padding-top: 1rem; }
+    .hero h1 { font-size: clamp(1.9rem, 3.5vw, 2.75rem); font-weight: 800; color: var(--brand); margin: 0 0 1.5rem 0; letter-spacing: -0.03em; line-height: 1.2; }
+    .hero p { font-size: 1.15rem; color: var(--ink); line-height: 1.7; margin-bottom: 1rem; max-width: 62ch; margin-left: auto; margin-right: auto; }
+    .mb-3 { margin-bottom: 2rem !important; }
+
+    /* Buttons */
+    .btn { display: inline-block; background: var(--brand); color: #fff; padding: .85rem 1.6rem; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background .2s, transform .06s; margin: .5rem; box-shadow: 0 2px 4px var(--shadow); }
+    .btn:hover { background: var(--hover); }
+    .btn:active { transform: translateY(1px); }
+    .btn.secondary { background: transparent; color: var(--brand); border: 2px solid var(--brand); }
+    .btn.secondary:hover { background: var(--chip); }
+
+    /* Main Content */
+    .main { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .wrap { padding: 4.5rem 0; }
+    .section-title { font-size: 1.9rem; font-weight: 800; color: var(--accent); margin-bottom: 2.5rem; text-align: center; letter-spacing: -0.02em; position: relative; }
+    .section-title::after { content: ""; position: absolute; width: 60px; height: 4px; background: var(--brand); bottom: -12px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
+
+    /* Grids */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+
+    /* Cards */
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 2rem; box-shadow: 0 2px 6px var(--shadow); }
+    .kicker { color: var(--brand); font-weight: 800; font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .75rem; }
+    .card h3 { font-size: 1.3rem; font-weight: 800; color: var(--brand); margin: 0 0 1rem 0; }
+    .mt-0 { margin-top: 0 !important; }
+    .mb-0 { margin-bottom: .5rem !important; }
+    .card p { color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+    .card p:last-child { margin-bottom: 0; }
+
+    /* Badges */
+    .badges { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; margin-bottom: 1.25rem; }
+    .badge { background: var(--chip); color: var(--accent); padding: .5rem 1rem; border-radius: 999px; font-size: .85rem; font-weight: 700; border: 1px solid var(--line); }
+
+    /* Footer */
+    .footer { background: var(--paper); border-top: 1px solid var(--line); padding: 3rem 1.5rem; margin-top: 5rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; text-align: center; color: var(--muted); font-size: .95rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav { flex-direction: column; align-items: flex-start; }
+      .nav ul { width: 100%; flex-direction: column; gap: .75rem; }
+      .hero { padding: 3.5rem 1.5rem; }
+      .hero p { font-size: 1.05rem; }
+      .wrap { padding: 3.5rem 0; }
+      .section-title { font-size: 1.6rem; }
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .btn { display: block; width: 100%; max-width: 320px; margin: .5rem auto; }
+    }
+
+    *:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  </style>
+
+  <!-- Schema.org Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PublicLogic",
+    "url": "https://publiclogic.org",
+    "logo": "https://publiclogic.org/icon.svg",
+    "sameAs": [
+      "https://www.linkedin.com/company/publiclogic"
+    ],
+    "slogan": "Smart Systems. Stronger Communities.",
+    "founder": {
+      "@type": "Person",
+      "name": "Nathan Boudreau, MPA, MCPPO"
+    }
+  }
+  </script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="nav-wrap" role="navigation" aria-label="Main">
+  <nav class="nav">
+    <a class="logo" href="/" aria-label="PublicLogic home"><span>PublicLogic™</span></a>
+    <ul role="list">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/solutions.html">Solutions</a></li>
+      <li><a href="/partners.html">Partners</a></li>
+      <li><a href="/research.html" aria-current="page">Research</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <h1>Research</h1>
+    <p>The behavioral backbone of modern municipal operations.</p>
+    <p class="mb-3">
+      PublicInsight™, supported by the research leadership of
+      <strong>Dr. Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA</strong>,
+      defines how PublicLogic learns, teaches, and standardizes change.
+    </p>
+  </div>
+</header>
+
+<main id="main" class="main" tabindex="-1">
+  <section class="wrap">
+    <h2 class="section-title">Our Research Foundation</h2>
+    <p style="max-width:750px;margin:0 auto 2.5rem auto;text-align:center;color:var(--muted);line-height:1.7;">
+      Modernization succeeds when it is built on predictable behavior, clear standards, and repeatable learning.
+      PublicInsight™ is our structured approach to understanding how municipal systems actually function in real workplaces.
+      Our research informs the SOPs, training, and operational models that help towns move forward with confidence.
+    </p>
+  </section>
+
+  <section class="wrap">
+    <div class="grid-3">
+      <article class="card">
+        <div class="kicker">Behavioral Instruments</div>
+        <h3 class="mt-0 mb-0">PublicInsight™</h3>
+        <p>
+          PublicInsight™ uses short, high-signal instruments to measure readiness, workflow friction, staff load,
+          communication patterns, and adoption health. These tools are non clinical, plain language, and designed specifically
+          for municipal environments.
+        </p>
+        <p>
+          The focus stays on the system: how work moves, where breakdowns happen, and what structures improve outcomes.
+          No HR data, no monitoring, no performance scoring. Only operational truth.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="kicker">SOPs and Operational Standards</div>
+        <h3 class="mt-0 mb-0">Standard Operating Playbooks</h3>
+        <p>
+          Research findings directly shape each community’s SOPs. We convert behavioral insights into practical,
+          step-by-step playbooks that clarify roles, improve communication, and reduce operational risk.
+        </p>
+        <p>
+          These playbooks are built for real municipal constraints. They shorten onboarding, support compliance,
+          and give staff confidence with new systems and expectations.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="kicker">Training and Learning</div>
+        <h3 class="mt-0 mb-0">Evidence-based Training</h3>
+        <p>
+          Dr. Allison Weiss Rothschild leads the research and behavioral architecture behind all PublicLogic training.
+          Her work ensures that every module, workshop, and implementation plan is grounded in cognitive load,
+          attention, sequencing, and follow-through.
+        </p>
+        <p>
+          The result is training that is clear, repeatable, and built around how municipal teams actually learn and adopt.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2 class="section-title">Methodology</h2>
+    <div class="grid-2">
+      <article class="card">
+        <h3 class="mt-0">Low friction, high signal</h3>
+        <p>
+          Instruments typically take under five minutes and are designed to fit seamlessly into municipal workflows.
+          Every question ties directly to decisions about staffing, workflow, training, or compliance.
+        </p>
+      </article>
+      <article class="card">
+        <h3 class="mt-0">Ethical and compliant</h3>
+        <p>
+          All research aligns with state retention schedules, public records requirements, and municipal privacy expectations.
+          We retain only operational signals — never personal identifiers. Research is built to support transparency, not surveillance.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2 class="section-title">How Findings Become Action</h2>
+    <p style="max-width:750px;margin:0 auto 2.5rem auto;text-align:center;color:var(--muted);line-height:1.7;">
+      Insights from PublicInsight™ translates directly into operational changes: SOP updates, workflow tuning,
+      training sequences, staffing adjustments, and risk reduction. Municipalities build lasting structure by learning
+      from their own lived experience.
+    </p>
+  </section>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="badges" aria-label="Framework badges">
+      <span class="badge" aria-label="VAULT trademark">VAULT™</span>
+      <span class="badge" aria-label="FormKey trademark">FormKey™</span>
+      <span class="badge" aria-label="SEAL trademark">SEAL™</span>
+      <span class="badge" aria-label="ARCHIEVE trademark">ARCHIEVE™</span>
+      <span class="badge" aria-label="PublicInsight trademark">PublicInsight™</span>
+      <span class="badge" aria-label="PublicPulse trademark">PublicPulse™</span>
+    </div>
+    <div>© 2025 PublicLogic™ LLC</div>
+    <div style="margin-top: .5rem; color: var(--brand); font-weight: 700;">Built by practitioners who understand government and where it needs to go.</div>
+    <div style="margin-top: .25rem; color: var(--brand); font-weight: 700;">Smart Systems. Stronger Communities.</div>
+    <div style="margin-top: 1rem;">
+      <a href="/privacy.html" style="color: var(--muted); text-decoration: none; font-weight: 600;">Privacy</a>
+      <span aria-hidden="true" style="margin: 0 .5rem; color: var(--line);">•</span>
+      <a href="/accessibility.html" style="color: var(--muted); text-decoration: none; font-weight: 600;">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

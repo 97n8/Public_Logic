@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PublicLogic™ — Technical Partnership Proposal (Polimorphic)</title>
+  <meta name="description" content="PublicLogic × Polimorphic technical partnership: compliance-first municipal modernization with VAULT™ outcome references, ARCHIVE™ evidence references, and staff-ready SOPs." />
+  <meta name="theme-color" content="#2c3e50" />
+  <style>
+    :root{
+      --ink:#1a252f;--ink-2:#2c3e50;--muted:#6c7a89;--bg:#ffffff;--bg-2:#f6f8fa;--accent:#3498db;--accent-2:#2980b9;--green:#22c55e;--amber:#f59e0b;--red:#ef4444;--card:#ffffff;--shadow:0 10px 30px rgba(26,37,47,.08)
+    }
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+    a{color:var(--accent)}
+    header.hero{background:linear-gradient(180deg,#1a252f 0%,#223345 60%,#2c3e50 100%);color:#fff;padding:56px 20px 32px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+    .brand{display:flex;gap:16px;align-items:center}
+    .brand .mark{width:58px;height:58px;border-radius:16px;background:#0ea5a4;display:grid;place-items:center;box-shadow:var(--shadow)}
+    .brand .mark span{display:block;width:36px;height:36px;border-radius:10px;background:#0f172a;position:relative}
+    .brand h1{font-size:clamp(20px,4vw,34px);margin:0 0 4px;font-weight:800;letter-spacing:.2px}
+    .brand p{margin:0;font-size:clamp(13px,2vw,16px);color:#cbd5e1}
+    .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .meta .chip{background:rgba(255,255,255,.08);padding:6px 10px;border-radius:999px;font-size:12px;border:1px solid rgba(255,255,255,.1)}
+    nav.toc{background:var(--bg-2);border-bottom:1px solid #e2e8f0}
+    nav.toc .wrap{display:flex;flex-wrap:wrap;gap:10px;padding:12px 20px}
+    nav.toc a{font-size:14px;color:var(--ink-2);text-decoration:none;padding:8px 10px;border-radius:8px}
+    nav.toc a:hover, nav.toc a:focus{background:#e2e8f0;outline:none}
+    section{padding:40px 0;border-bottom:1px solid #e2e8f0}
+    h2{font-size:clamp(20px,3vw,28px);margin:0 0 14px}
+    h3{font-size:clamp(16px,2.2vw,20px);margin:28px 0 10px}
+    p{margin:10px 0}
+    .lead{font-size:18px;color:var(--ink-2)}
+    .grid{display:grid;gap:18px}
+    @media(min-width:900px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:repeat(3,1fr)}}
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    .badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;border:1px solid #e2e8f0;background:var(--bg-2);color:var(--ink-2)}
+    ul{padding-left:20px}
+    code, pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#0b1020;color:#e6f3ff}
+    code{padding:2px 6px;border-radius:6px}
+    pre{border-radius:14px;padding:16px;overflow:auto;box-shadow:var(--shadow)}
+    table{border-collapse:separate;border-spacing:0;width:100%;background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+    th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #e2e8f0}
+    th{background:#f1f5f9;font-weight:600}
+    tbody tr:hover{background:#f8fafc}
+    .inputs-grid{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .inputs-grid .field{border:1px solid #e2e8f0;border-radius:8px;padding:10px;background:#fff}
+    .inputs-grid .field label{display:block;font-size:12px;color:#475569;margin-bottom:6px}
+    .inputs-grid .field div{font-size:14px;color:#0f172a}
+    footer{padding:40px 0;color:#475569}
+    @media print{
+      nav.toc, .meta, .brand .mark{display:none}
+      body{color:#000}
+      a{text-decoration:none;color:#000}
+      section{page-break-inside:avoid}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" role="banner">
+    <div class="wrap">
+      <div class="brand" aria-label="PublicLogic brand">
+        <div class="mark" aria-hidden="true"><span></span></div>
+        <div>
+          <h1>PublicLogic™ — Technical Partnership Proposal for Polimorphic</h1>
+          <p>Compliance-first municipal modernization with VAULT™ outcome references, ARCHIVE™ evidence references, and staff-ready workflows.</p>
+        </div>
+      </div>
+      <div class="meta" role="contentinfo">
+        <span class="chip">Author: Nathan Boudreau, MPA, MCPPO</span>
+        <span class="chip">Release: v1.2 — September 2025</span>
+        <span class="chip">Accessibility: WCAG 2.1 AA</span>
+        <span class="chip">Distribution: Vendor Handoff / Website</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="wrap">
+      <a href="#summary">Executive Summary</a>
+      <a href="#assumptions">Assumptions & Limits</a>
+      <a href="#changes">What Changes for Staff/Residents</a>
+      <a href="#ops-model">Operating Model & Swim-Lanes</a>
+      <a href="#sutton-tools">Sutton Tools & Data Flows</a>
+      <a href="#compliance">Compliance & Evidence</a>
+      <a href="#targets">Targets & Measures</a>
+      <a href="#access">Accessibility Gate</a>
+      <a href="#risks">Risks & Mitigations</a>
+      <a href="#implementation">Implementation Plan</a>
+      <a href="#training">MA Pilot Training</a>
+      <a href="#contract">Integration Contract</a>
+      <a href="#appendix">Appendix (Acronym Legend)</a>
+      <a href="#next">Next Steps</a>
+    </div>
+  </nav>
+
+  <main id="content" class="wrap" role="main">
+    <!-- Executive Summary -->
+    <section id="summary">
+      <h2>Executive Summary</h2>
+      <p class="lead">PublicLogic is system-agnostic. Municipalities own data, configurations, exports, and audit logs. Polimorphic delivers the resident/staff UX and workflow engine; PublicLogic supplies standards, SOPs, and outcome references only — <strong>VAULT™</strong> (retention and hold references) and <strong>ARCHIVE™</strong> (evidence-package references). Internal mechanics of VAULT/ARCHIVE are out of scope.</p>
+    </section>
+
+    <!-- Assumptions & Limits -->
+    <section id="assumptions">
+      <h2>Assumptions & Limits</h2>
+      <div class="card">
+        <ul>
+          <li>Verified facts only; unknowns are marked <code>[TBD]</code> and listed here.</li>
+          <li>Targets and pilot examples (Town, Month YYYY); not guarantees.</li>
+          <li>Time rules: TZ = America/New_York; business days = Mon–Fri; exclude town holidays (configurable).</li>
+          <li>Security posture (targets): TLS ≥1.2; AES-256 at rest; OAuth2/OIDC SSO; SAML2 where required; RBAC; webhook signing (HMAC-SHA256); CSP; HSTS; periodic key rotation; tested backups with defined RPO/RTO.</li>
+          <li>Data portability guaranteed via quarterly exports and on-demand ARCHIVE package requests.</li>
+          <li>VAULT/ARCHIVE referenced by policy/evidence IDs only; no internal logic disclosed.</li>
+        </ul>
+        <h3>Inputs</h3>
+        <div class="inputs-grid">
+          <div class="field"><label>Municipality/Dept(s)</label><div>[TBD]</div></div>
+          <div class="field"><label>Modules in scope</label><div>[CLERK, FIX, AGENDA, PERMIT, etc.]</div></div>
+          <div class="field"><label>Statutes/standards</label><div>[M.G.L. cites, ADA Title II, 201 CMR 17.00, WCAG 2.1 AA]</div></div>
+          <div class="field"><label>Current state (1–3 bullets)</label><div>[TBD]</div></div>
+          <div class="field"><label>Constraints</label><div>[budget/staff/timeline/union]</div></div>
+          <div class="field"><label>Outcomes sought (targets)</label><div>[TBD]</div></div>
+          <div class="field"><label>Evidence available</label><div>[pilot data/exports/SOPs]</div></div>
+          <div class="field"><label>Dates & owners</label><div>[TBD]</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What Changes -->
+    <section id="changes">
+      <h2>What Changes for Staff/Residents</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Staff</h3>
+          <ul>
+            <li>Unified queues with SLA timers; policy and evidence IDs surfaced in case pages.</li>
+            <li>One-click export: CSV/JSON/PDF/A-2u with per-file SHA-256 and checksum-of-checksums.</li>
+            <li>Retention and holds applied via VAULT policy reference IDs; no manual date math.</li>
+            <li>Mobile capture (photos/signatures); GIS links; payment receipt IDs attached to cases.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Residents</h3>
+          <ul>
+            <li>Mobile-first forms; clear status pages with timestamps and receipt IDs.</li>
+            <li>Accessibility: WCAG 2.1 AA; screen-reader and keyboard tested.</li>
+            <li>Receipts: email confirmations; links to public pages as applicable.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Operating Model -->
+    <section id="ops-model">
+      <h2>Operating Model & Swim-Lanes</h2>
+      <table>
+        <thead><tr><th>Actor</th><th>Scope</th></tr></thead>
+        <tbody>
+          <tr><td>Municipality</td><td>Owns data, configurations, workflows; records custodian; policy decisions.</td></tr>
+          <tr><td>Polimorphic</td><td>Resident/staff UX; forms; workflow engine; integrations (GIS, payments, SSO, email/SMS); observability.</td></tr>
+          <tr><td>PublicLogic</td><td>Standards/SOPs; VAULT policy references; ARCHIVE evidence references; QA gates; change management; MA pilot training.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Sutton Tools & Data Flows -->
+    <section id="sutton-tools">
+      <h2>Sutton Tools & Data Flows</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Google Workspace (GWS)</h3>
+          <ul>
+            <li>SSO/Identity: OIDC (preferred) or SAML2 with Google as IdP; group-based RBAC; optional SCIM.</li>
+            <li>Email auth: SPF/DKIM/DMARC; service accounts for export jobs to Shared Drives.</li>
+            <li>File of record (working): Drive; ARCHIVE exports are immutable (PDF/A-2u + JSON manifest + per-file SHA-256 + checksum-of-checksums).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Town Website & PEG</h3>
+          <ul>
+            <li>Public site routes PRR, agendas/minutes, bill pay, Cable/PEG.</li>
+            <li>PEG/Video: Cable site + YouTube [TBD]; include video URL and posting receipts; Verizon 31 / Spectrum 191.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>GIS & Payments</h3>
+          <ul>
+            <li>ArcGIS Online (AGO) viewer/layers; parcel/feature IDs and lat/lon; capture AGO URLs; offline tiles if needed.</li>
+            <li>Payments vendor [TBD]; require redirect-back receipts and transaction IDs stored with records.</li>
+          </ul>
+        </div>
+      </div>
+      <h3>Flow (text)</h3>
+      <pre><code>Resident/Staff → Polimorphic UX → (Webhook OAuth2) → PublicLogic endpoints
+→ Policy/Evidence IDs returned → Workflow applies SLA/queues
+→ Exports to GWS Drive (working) + ARCHIVE bundle (PDF/A-2u + manifest.json + checksums)
+→ Public links published as applicable; PEG/YouTube URLs captured in case metadata</code></pre>
+    </section>
+
+    <!-- Compliance & Evidence -->
+    <section id="compliance">
+      <h2>Compliance & Evidence</h2>
+      <ul class="card">
+        <li>Anchor statutes/standards: M.G.L. c.66 §10 (Public Records), c.30A (Open Meeting Law), c.140/c.138 (Licensing), c.143 (Inspections), 201 CMR 17.00 (data security), ADA Title II, WCAG 2.1 AA.</li>
+        <li>Exports and portability: routine CSV/JSON/PDF/A-2u; file-level SHA-256; checksum-of-checksums in <code>manifest.json</code>; quarterly export jobs; on-demand pulls by <code>requestId</code> or <code>archiveEvidenceId</code>.</li>
+        <li>Accessibility gate: automated axe checks and manual keyboard/screen-reader tests; explicit pass/fail.</li>
+      </ul>
+    </section>
+
+    <!-- Targets & Measures -->
+    <section id="targets">
+      <h2>Targets & Measures</h2>
+      <table>
+        <thead><tr><th>Metric</th><th>Definition</th><th>Target</th><th>Evidence Source</th></tr></thead>
+        <tbody>
+          <tr><td>PRR timeliness</td><td>% completed within statutory window</td><td>≥95%</td><td>PRR log (CSV) + PDF/A-2u binder</td></tr>
+          <tr><td>Tier-1 response</td><td>Safety tickets acknowledged &lt;4h</td><td>≥98%</td><td>Workflow timestamps; supervisor dashboard</td></tr>
+          <tr><td>Export integrity</td><td>Checksum verification success</td><td>100%</td><td><code>manifest.json</code> + <code>manifest.sha256_all</code></td></tr>
+          <tr><td>Accessibility</td><td>Axe + manual keyboard/reader checks</td><td>Pass</td><td>Automated report + manual checklist</td></tr>
+        </tbody>
+      </table>
+
+      <h3>SLA Calculation Example</h3>
+      <p>A request submitted Friday 4:55 PM begins counting Monday 9:00 AM. A 10-business-day clock excludes configured town holidays and ends on the 10th business day at 5:00 PM. Timers pause during formal holds or appeals. Supervisors receive alerts when timers enter a warning state.</p>
+    </section>
+
+    <!-- Accessibility Gate -->
+    <section id="access">
+      <h2>Accessibility Gate</h2>
+      <ul class="card">
+        <li>Automated axe tests for forms, queues, and status pages.</li>
+        <li>Manual keyboard navigation and screen-reader checks.</li>
+        <li>Explicit pass/fail; defects tracked; re-test before go-live.</li>
+      </ul>
+    </section>
+
+    <!-- Risks & Mitigations -->
+    <section id="risks">
+      <h2>Risks & Mitigations</h2>
+      <table>
+        <thead><tr><th>Risk</th><th>Mitigation</th></tr></thead>
+        <tbody>
+          <tr><td>SSO drift (group/role mismatch)</td><td>Weekly sync audit; test accounts; forced reauth on role elevation.</td></tr>
+          <tr><td>Webhook retries</td><td>Idempotent endpoints; HMAC-SHA256 signatures; exponential backoff; DLQ monitoring.</td></tr>
+          <tr><td>GIS outage</td><td>Cache key parcel data; offline tiles; record AGO URLs in case binder.</td></tr>
+          <tr><td>Email deliverability</td><td>SPF/DKIM/DMARC alignment; bounce monitoring; optional SMS fallback where permitted.</td></tr>
+          <tr><td>Holiday clocks</td><td>Business-day calendar with town holiday exclusions; SLA views reflect rules.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Webhook Retry Parameters</h3>
+      <p>Retries: 30s, 2m, 8m, 32m (maximum 4 attempts). Dead Letter Queue alert if more than 5 webhook failures occur per hour.</p>
+    </section>
+
+    <!-- Implementation Plan -->
+    <section id="implementation">
+      <h2>Implementation Plan</h2>
+      <ol class="card">
+        <li><strong>Pilot (Discovery → Build → UAT):</strong> confirm entities/fields, statutes, retention classes; configure queues; run UAT against acceptance criteria. <em>Pilot example: [Town, Month YYYY]</em></li>
+        <li><strong>Expand:</strong> add departments; enable export jobs (quarterly and on-demand); publish SOPs; accessibility re-test.</li>
+        <li><strong>Standardize:</strong> finalize naming/metadata; schedule training; change control; QA gates.</li>
+      </ol>
+    </section>
+
+    <!-- Training -->
+    <section id="training">
+      <h2>MA Pilot Training</h2>
+      <ul class="card">
+        <li>Role-based curricula for Clerk, DPW, and Supervisors.</li>
+        <li>Sandbox → live with scripted exercises and success checklists.</li>
+        <li>On-counter iPad setup (Guided Access; Pencil; kiosk icons).</li>
+        <li>Hypercare 30–60 days with office hours and weekly issue log.</li>
+      </ul>
+
+      <h3>Training Curriculum</h3>
+      <table>
+        <thead><tr><th>Role</th><th>Duration</th><th>Format</th><th>Success Criteria</th></tr></thead>
+        <tbody>
+          <tr><td>Clerk</td><td>4 hrs</td><td>In-person + 2 sandbox exercises</td><td>Complete 5 mock PRRs under 10 minutes each</td></tr>
+          <tr><td>DPW Staff</td><td>2 hrs</td><td>Video + iPad walkthrough</td><td>Submit 3 test work orders with photo attachments</td></tr>
+          <tr><td>Supervisors</td><td>1.5 hrs</td><td>Workshop + dashboard review</td><td>Verify SLA and evidence export reports</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Integration Contract -->
+    <section id="contract">
+      <h2>Integration Contract</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Inbound → PublicLogic (OAuth2 bearer)</h3>
+<pre><code>POST /vault/policy/match
+POST /archive/evidence/create
+GET  /archive/package/export
+POST /vault/hold/apply
+POST /vault/hold/release
+POST /vault/policy/batch</code></pre>
+        </div>
+        <div class="card">
+          <h3>Outbound/Webhooks ← PublicLogic (HMAC-SHA256 signed)</h3>
+<pre><code>POST /webhooks/disposition-ready
+POST /webhooks/export-complete
+POST /webhooks/hold-applied
+POST /webhooks/hold-released</code></pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Evidence Bundle (Structure)</h3>
+        <ul>
+          <li><code>case_binder.pdf</code> (PDF/A-2u)</li>
+          <li><code>metadata.json</code></li>
+          <li><code>attachments.zip</code></li>
+          <li>Per-file SHA-256 + <code>manifest.sha256_all</code> (checksum-of-checksums)</li>
+        </ul>
+        <h3>Evidence Package Schema (Example)</h3>
+<pre><code>{
+  "schemaVersion": "1.0",
+  "caseId": "PRR-2025-0042",
+  "createdAt": "2025-09-29T14:32:00Z",
+  "files": [
+    {"name": "case_binder.pdf", "sha256": "abc123...", "mimeType": "application/pdf"},
+    {"name": "metadata.json", "sha256": "def456...", "mimeType": "application/json"},
+    {"name": "attachments.zip", "sha256": "ghi789...", "mimeType": "application/zip"}
+  ],
+  "checksumOfChecksums": "xyz789..."
+}</code></pre>
+        <p class="card">Naming guidance: <code>case_binder.pdf</code> = <code>{module}-{requestId}-binder.pdf</code>. Attachments may be nested by type; original filenames preserved in <code>metadata.json</code>.</p>
+      </div>
+      <p class="card">Do not include any VAULT/ARCHIVE internal logic. References are by policy/evidence IDs only.</p>
+    </section>
+
+    <!-- Appendix -->
+    <section id="appendix">
+      <h2>Appendix — Acronym / Abbrev Legend</h2>
+      <p>AI, AGO (ArcGIS Online), API, CSP, CSV, DMARC, DKIM, DPW, DR, GWS (Google Workspace), HMAC-SHA256, HSTS, IAM, IdP, JSON, OIDC, PDF/A-2u, PII, RBAC, RPO/RTO, SAML2, SHA-256, SLA, SSO, TLS 1.2+, WCAG 2.1 AA.</p>
+    </section>
+
+    <!-- Next Steps -->
+    <section id="next">
+      <h2>Next Steps</h2>
+      <table>
+        <thead><tr><th>Owner</th><th>Action</th><th>Due</th></tr></thead>
+        <tbody>
+          <tr><td>Town Admin</td><td>Confirm modules, applicable statutes, and holiday calendar</td><td>[TBD]</td></tr>
+          <tr><td>Polimorphic</td><td>Enable OIDC with Google as IdP; map groups to RBAC</td><td>[TBD]</td></tr>
+          <tr><td>PublicLogic</td><td>Publish SOPs; provide VAULT policy IDs and ARCHIVE evidence IDs</td><td>[TBD]</td></tr>
+          <tr><td>Town IT</td><td>Implement SPF/DKIM/DMARC; service accounts for export jobs</td><td>[TBD]</td></tr>
+          <tr><td>Clerk/DPW Leads</td><td>Approve UAT criteria; schedule role training</td><td>[TBD]</td></tr>
+        </tbody>
+      </table>
+      <p class="card">Contact: Nathan Boudreau, MPA, MCPPO — Town Administrator (Hubbardston, MA) and Founder, PublicLogic™.</p>
+    </section>
+  </main>
+
+  <footer class="wrap" role="contentinfo">
+    <p>© <span id="year"></span> PublicLogic™. All rights reserved. Municipalities retain ownership and control. System-agnostic implementation.</p>
+    <hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0" />
+    <p><strong>Distribution:</strong> Vendor Handoff / Website • <strong>Version:</strong> v1.2 (September 2025) • <strong>Contact:</strong> <a href="mailto:nathan@publiclogic.io">nathan@publiclogic.io</a></p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    (function fixMojibake(){
+      const map={"â„¢":"™","â€”":"–","â€“":"–","â€\"":"–","â€’":"–","â€˜":"'","â€™":"'","â€œ":"\"","â€":"\"","â€'":"-","Â§":"§","Ã—":"×"};
+      function walk(n){if(n.nodeType===3){let t=n.nodeValue,r=t;for(const [b,g] of Object.entries(map)){r=r.split(b).join(g);}if(r!==t)n.nodeValue=r;}else{for(const c of n.childNodes)walk(c);}}
+      walk(document.body);
+    })();
+  </script>
+</body>
+</html>

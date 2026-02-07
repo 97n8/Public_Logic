@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>PublicLogic Press Release</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    /* ===== Design tokens ===== */
+    :root {
+      --bg: #e8e8e8;
+      --card: #ffffff;
+      --ink: #24332e;
+      --ink-muted: #5c6a64;
+      --rule: #d0d7d3;
+      --accent: #1f4637;
+      --accent-soft: #9fb7aa;
+
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(0,0,0,0.08);
+      --space-1: 6px;
+      --space-2: 10px;
+      --space-3: 14px;
+      --space-4: 18px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: clamp(28px, 4vw, 48px);
+      --container-pad-x: clamp(16px, 5vw, 56px);
+      --container-pad-y: clamp(20px, 5vw, 48px);
+
+      --font-size: clamp(16px, 0.9rem + 0.4vw, 18px);
+      --h1-size: clamp(24px, 2.2rem + 0.2vw, 34px);
+      --meta-size: clamp(13px, 0.8rem, 14px);
+      --small-size: clamp(13px, 0.78rem, 13.5px);
+      --line: 1.7;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1412;
+        --card: #121a17;
+        --ink: #e8efe9;
+        --ink-muted: #a5b2ac;
+        --rule: #274138;
+        --accent: #9fd6bf;
+        --accent-soft: #3a6154;
+        --shadow: 0 8px 24px rgba(0,0,0,0.5);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: var(--font-size);
+      line-height: var(--line);
+      color: var(--ink);
+      background-color: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .page {
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    }
+
+    .press-container {
+      max-width: 720px;
+      margin: 0 auto;
+      background-color: var(--card);
+      padding: var(--container-pad-y) var(--container-pad-x);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    /* ===== Header / Branding ===== */
+    .logo-block { text-align: center; margin-bottom: var(--space-5); }
+    .logo-block img {
+      width: min(100%, 420px);
+      height: auto;
+      display: inline-block;
+      border-radius: 10px;
+    }
+
+    .header-rule {
+      border: 0; height: 1px; background: var(--rule);
+      margin: var(--space-4) 0 var(--space-5);
+    }
+
+    /* ===== Meta block ===== */
+    .meta { font-size: var(--meta-size); margin-bottom: var(--space-4); color: var(--ink-muted); }
+    .meta strong { text-transform: uppercase; letter-spacing: 0.06em; font-size: calc(var(--meta-size) - 1px); color: var(--ink); }
+
+    /* ===== Typography ===== */
+    h1 {
+      font-size: var(--h1-size);
+      margin: 0 0 var(--space-3) 0;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--accent);
+      line-height: 1.25;
+    }
+
+    p { margin: 0 0 var(--space-3) 0; }
+
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover, a:focus { text-decoration: underline; }
+
+    .quote {
+      margin: var(--space-4) 0; padding: 0 0 0 var(--space-3);
+      border-left: 4px solid var(--accent-soft);
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    .footer { margin-top: var(--space-6); font-size: var(--small-size); color: var(--ink-muted); }
+
+    /* ===== Responsive spacing for very small screens ===== */
+    @media (max-width: 380px) {
+      .press-container { padding: calc(var(--container-pad-y) - 6px) calc(var(--container-pad-x) - 6px); }
+      .logo-block { margin-bottom: var(--space-4); }
+    }
+
+    /* ===== Comfortable tap targets on mobile ===== */
+    .footer a, .meta a { padding: 2px 0; display: inline-block; }
+
+    /* ===== Reduced motion ===== */
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+    }
+
+    /* ===== Print styles ===== */
+    @media print {
+      :root { --bg: #ffffff; --card: #ffffff; --ink: #000; --accent: #000; --rule: #999; }
+      body { background: #fff; }
+      .press-container { box-shadow: none; padding: 24px 28px; border-radius: 0; }
+      a { color: #000; text-decoration: none; }
+      .logo-block img { filter: grayscale(100%); }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <article class="press-container" role="article" aria-labelledby="press-title">
+
+      <header class="logo-block">
+        <img src="publiclogic-header.png" width="1200" height="340" alt="PublicLogic — Smart Systems. Stronger Communities." />
+      </header>
+
+      <hr class="header-rule" />
+
+      <section class="meta" aria-label="press details">
+        <p><strong>For Immediate Release</strong></p>
+        <p>
+          <strong>Contact:</strong> PublicLogic Communications<br />
+          <strong>Email:</strong> <a href="mailto:info@publiclogic.org">info@publiclogic.org</a><br />
+          <strong>Website:</strong> <a href="https://publiclogic.org">PublicLogic.org</a>
+        </p>
+      </section>
+
+      <h1 id="press-title">PublicLogic Launches to Help Communities Build Stronger and More Resilient Internal Systems</h1>
+
+      <p>PublicLogic has launched as a municipal modernization firm serving communities across Massachusetts. The company helps towns organize their internal operations, strengthen consistency, and prepare for the long term as roles shift, staff retire, and workloads grow.</p>
+
+      <p>PublicLogic was created by <strong>Nathan Boudreau, MPA, MCPPO</strong>, a municipal administrator who has spent years building the systems that keep local government running. The firm is built on a simple belief: communities function better when their internal work is clear, consistent, and easy for staff to follow.</p>
+
+      <p>PublicLogic partners with communities to pilot the systems and training they need based on readiness. Every town begins in a different place. PublicLogic helps them build stability step by step so the work holds up during transitions, turnover, or leadership changes.</p>
+
+      <p>A core part of the company is <strong>PublicInsight</strong>, the research and behavioral systems arm led by <strong>Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA</strong>. PublicInsight studies how people work, how teams communicate, and where organizations need support. This research guides how PublicLogic designs training, capacity building, and readiness planning so modernization feels realistic and supportive instead of overwhelming.</p>
+
+      <p>PublicLogic is also home to <strong>VAULT</strong>, a protected framework that brings structure to records, workflows, and cross-departmental processes by creating shared organization across departments so information is no longer trapped in personal systems or isolated files. VAULT gives communities a dependable way to stay organized without buying new software. The framework remains part of PublicLogic intellectual property.</p>
+
+      <p>To help communities put these structures into action, PublicLogic partners with trusted runtime and automation teams who support implementation inside tools towns already use. This system-agnostic approach gives communities systems that work in real life.</p>
+
+      <p>PublicLogic also helps communities identify and apply for grants that support modernization, training, and long-term infrastructure. The goal is to help communities invest in their systems without carrying the burden alone.</p>
+
+      <p class="quote">"Our job is to help communities get organized and stay organized," said Boudreau. "When towns have clear systems that hold up during staff changes, everything becomes easier for the people who work there and for the residents they serve."</p>
+
+      <p class="quote">Dr. Rothschild added, "Through PublicInsight, we help communities understand their capacity and build changes that last. Modernization only works when people feel supported and ready to use the systems in front of them."</p>
+
+      <p>PublicLogic provides frameworks for records and clerk operations, licensing and permitting, service requests, finance and AP processing, payroll and time tracking, and cross-departmental planning. All frameworks remain protected intellectual property.</p>
+
+      <p>PublicLogic is now forming partnerships and accepting interest in pilot opportunities. Organizations and collaborators who wish to learn more may reach out directly.</p>
+
+      <footer class="footer" aria-label="contact">
+        <p>📩 <a href="mailto:info@publiclogic.org">info@publiclogic.org</a><br />
+        🌐 <a href="https://publiclogic.org">PublicLogic.org</a></p>
+      </footer>
+
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+  <meta name="description" content="PublicLogic governance frameworks define the structural conditions institutions need to operate safely under pressure. Authority-first, record-first, and designed to survive turnover." />
+  <meta name="author" content="PublicLogic LLC">
+  <title>Frameworks — PublicLogic</title>
+
+  <!-- Performance & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Canonical (update to .org when ready) -->
+  <link rel="canonical" href="https://publiclogic.org/frameworks.html">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Frameworks — PublicLogic" />
+  <meta property="og:description" content="Governance frameworks that make institutional responsibility explicit, survivable, and transferable." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://publiclogic.org/frameworks.html" />
+  <meta property="og:image" content="https://publiclogic.org/PL_FB_Logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="PublicLogic — Governance frameworks that are authority-first and record-first" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Frameworks — PublicLogic" />
+  <meta name="twitter:description" content="Governance frameworks that make institutional responsibility explicit, survivable, and transferable." />
+  <meta name="twitter:image" content="https://publiclogic.org/PL_FB_Logo.png" />
+
+  <!-- Mermaid (diagrams) -->
+  <script type="module" defer>
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'neutral',
+      flowchart: { useMaxWidth: true, curve: 'basis' },
+      securityLevel: 'loose',
+      animation: !prefersReducedMotion
+    });
+  </script>
+
+  <style>
+    :root {
+      --primary: #059669;
+      --accent: #a7f3d0;
+      --light-bg: #d1fae5;
+      --dark: #111827;
+      --gray: #4b5563;
+      --white: #ffffff;
+      --focus: #0ea5e9;
+    }
+
+    html:focus-within { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html:focus-within { scroll-behavior: auto; }
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.65;
+      color: var(--dark);
+      margin: 0;
+      background: var(--light-bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+      z-index: 999;
+      background: var(--primary);
+      color: white;
+      padding: 1rem;
+      font-weight: 700;
+      border-radius: .5rem;
+    }
+    .skip-link:focus { top: 1rem; left: 1rem; }
+
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: .375rem; }
+
+    .container { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; text-align: center; }
+
+    header[role="banner"] {
+      background: var(--primary);
+      color: var(--white);
+      padding: clamp(1.5rem, 4vw, 2.5rem) 0 1rem;
+    }
+
+    .wordmark { font-size: clamp(2.6rem, 8vw, 3.4rem); font-weight: 900; letter-spacing: -0.03em; margin: 0 0 0.5rem 0; line-height: 1; }
+    .wordmark .public { color: var(--white); }
+    .wordmark .logic { color: var(--accent); }
+
+    .strapline { font-size: clamp(1.1rem, 4vw, 1.4rem); font-weight: 600; margin: 0 0 1rem 0; opacity: 0.95; }
+
+    nav[aria-label] ul { list-style: none; padding: 0; margin: 0.5rem 0 0; display: inline-flex; flex-wrap: wrap; justify-content: center; gap: clamp(0.9rem, 3vw, 1.5rem); }
+    nav a { color: var(--white); text-decoration: none; font-weight: 700; font-size: clamp(0.95rem, 3vw, 1.1rem); padding: 0.5rem 0.9rem; border-radius: 0.375rem; transition: background 140ms ease; }
+    nav a:hover, nav a:focus-visible { background: rgba(255,255,255,.18); }
+    nav a[aria-current="page"] { background: rgba(255,255,255,.24); }
+
+    .hero { padding: clamp(2rem, 6vw, 3.5rem) 1rem 2rem; background: linear-gradient(to bottom, #e8f5e9, var(--light-bg)); }
+    .hero h1 { font-size: clamp(2.2rem, 6.5vw, 3.2rem); margin: 0 0 1rem; color: var(--primary); font-weight: 900; letter-spacing: -0.02em; }
+    .lead { font-size: clamp(1.15rem, 3.8vw, 1.35rem); max-width: 58rem; margin: 0 auto 1.5rem; font-weight: 500; }
+
+    .section { padding: clamp(2rem, 8vw, 4rem) 0; }
+    .promo { background: white; padding: clamp(1.25rem, 4vw, 2rem); border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); margin: 1.5rem auto; max-width: 68rem; }
+    .mermaid-container { background: white; padding: 1rem; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.08); margin: 1rem 0; overflow-x: auto; }
+    .mermaid-container p { font-size: 0.95rem; color: var(--gray); margin: 0.75rem 0 0; text-align: center; }
+
+    .cta { padding: clamp(3rem, 10vw, 5rem) 1rem; background: var(--primary); color: var(--white); border-radius: 16px; margin: 2.5rem 0; }
+    .button { display: inline-block; padding: 1rem 2rem; background: var(--white); color: var(--primary); font-weight: 900; text-decoration: none; border-radius: 60px; font-size: 1.05rem; min-width: 13rem; box-shadow: 0 8px 24px rgba(0,0,0,0.15); transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease; }
+    .button:hover, .button:focus-visible { background: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+
+    footer { text-align: center; padding: 2.5rem 1rem; color: var(--gray); font-size: 1rem; border-top: 1px solid var(--accent); }
+
+    @media (max-width: 768px) {
+      header[role="banner"] { padding: 1.75rem 0 1.25rem; }
+      .wordmark { font-size: clamp(2.2rem, 12vw, 3rem); margin-bottom: .5rem; }
+      .strapline { font-size: 1.1rem; margin-bottom: 1rem; }
+      nav[aria-label] ul { gap: 0.75rem 1.25rem; flex-direction: column; }
+      nav a { padding: 0.5rem 0.9rem; }
+      .hero { padding: 2rem 1rem 1.5rem; }
+      main { padding: 1.5rem 0 3rem; }
+      .mermaid-container { padding: 0.75rem; }
+    }
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PublicLogic",
+    "url": "https://publiclogic.org/",
+    "logo": "https://publiclogic.org/PL_FB_Logo.png",
+    "foundingDate": "2023",
+    "address": {"@type": "PostalAddress", "addressLocality": "Gardner", "addressRegion": "MA", "addressCountry": "US"}
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header role="banner">
+    <div class="container">
+      <h1 class="wordmark"><span class="public">Public</span><span class="logic">Logic</span></h1>
+      <p class="strapline">Governance That Survives Real Life</p>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/frameworks.html" aria-current="page">Frameworks</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/writing.html">Writing</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="container">
+    <section class="hero" aria-labelledby="page-title">
+      <h1 id="page-title" class="page-title">Frameworks</h1>
+      <p class="lead">Governance frameworks that make institutional responsibility explicit, survivable, and transferable.</p>
+    </section>
+
+    <section class="section promo" aria-labelledby="what-frameworks">
+      <h2 id="what-frameworks">What we mean by frameworks</h2>
+      <p>PublicLogic frameworks are governance structures — not software, methodologies, or change programs.</p>
+      <p>They define the minimum conditions required for work to be carried safely by an institution rather than by individuals.</p>
+      <p>Each framework addresses a recurring failure mode: unclear authority, unbounded responsibility, fragmented records, or continuity that depends on people instead of systems.</p>
+    </section>
+
+    <section class="section promo" aria-labelledby="why-frameworks">
+      <h2 id="why-frameworks">Why frameworks matter</h2>
+      <p>Public institutions rarely fail from bad intent or lack of effort. They fail when risk is allowed to live in individuals instead of in structure.</p>
+      <p>When authority is implicit, responsibility unbounded, or work unable to survive turnover, people compensate through vigilance, memory, and personal sacrifice. That compensation is not durable.</p>
+      <p>PublicLogic frameworks interrupt this pattern by making institutional responsibility explicit, documented, and owned.</p>
+    </section>
+
+    <section class="section promo" aria-labelledby="vault">
+      <h2 id="vault">VAULT™ — Core Governance Framework</h2>
+      <p>VAULT™ is authority-first and record-first — designed for environments with statutory obligations, public accountability, and staff turnover.</p>
+      <p>It focuses on six structural domains that determine whether governance holds under pressure:</p>
+      <ul>
+        <li>Authority: who can decide, approve, and override, and under what conditions</li>
+        <li>Records: what must exist, where it lives, and who owns it</li>
+        <li>Time: deadlines, duration, and obligation over time</li>
+        <li>Fiscal responsibility: how financial authority and accountability are carried</li>
+        <li>Correction: how errors are identified, addressed, and closed</li>
+        <li>Transfer: how work survives staff and leadership change</li>
+      </ul>
+      <p>VAULT does not prescribe tools or workflows. It defines the minimum structural conditions required for governance to be defensible, auditable, and survivable.</p>
+      <p style="font-size:.95rem; color:#555;">This diagram illustrates governance domains, not process steps or implementation sequence.</p>
+      <div class="mermaid-container" role="img" aria-label="Diagram of VAULT governance domains">
+        <pre class="mermaid">
+graph TD
+    A[VAULT™ Governance Framework] --> B[Authority]
+    A --> C[Records]
+    A --> D[Time]
+    A --> E[Fiscal responsibility]
+    A --> F[Correction]
+    A --> G[Transfer]
+    style A fill:#e8f5e9,stroke:#059669,stroke-width:4px
+    style B fill:#f5f9f5,stroke:#059669
+    style C fill:#f5f9f5,stroke:#059669
+    style D fill:#f5f9f5,stroke:#059669
+    style E fill:#f5f9f5,stroke:#059669
+    style F fill:#f5f9f5,stroke:#059669
+    style G fill:#f5f9f5,stroke:#059669
+        </pre>
+        <p>Six structural domains that determine whether governance holds under pressure</p>
+      </div>
+    </section>
+
+    <section class="section promo" aria-labelledby="stewardship">
+      <h2 id="stewardship">Institutional Stewardship — The Governing Model</h2>
+      <p>Institutional Stewardship is the governance model that PublicLogic is built upon and continues to refine.</p>
+      <p>It begins with a simple question: before new work enters an organization, has the institution decided where the resulting risk will live?</p>
+      <p>The model defines four non-negotiable structural conditions that must be resolved before change proceeds:</p>
+      <ul>
+        <li>Authority must be explicit, lawful, and documented</li>
+        <li>Responsibility must be bounded and survivable</li>
+        <li>Scope must be explicit and controlled</li>
+        <li>Continuity must not depend on individuals</li>
+      </ul>
+      <p>When these conditions are unmet, institutions unintentionally transfer risk onto staff. Institutional Stewardship exists to prevent that transfer by requiring structural ownership before action.</p>
+      <p>VAULT is the practical governance framework we developed to address the failure modes Institutional Stewardship makes visible.</p>
+      <p style="font-size:.95rem; color:#555;">This model defines structural conditions, not a change methodology.</p>
+      <div class="mermaid-container" role="img" aria-label="Diagram of four conditions for Institutional Stewardship">
+        <pre class="mermaid">
+graph TD
+    A[Institutional Stewardship] --> B[Explicit, lawful authority]
+    A --> C[Bounded, survivable responsibility]
+    A --> D[Explicit, controlled scope]
+    A --> E[Individual-independent continuity]
+    style A fill:#e8f5e9,stroke:#059669,stroke-width:4px
+    style B fill:#f5f9f5,stroke:#059669
+    style C fill:#f5f9f5,stroke:#059669
+    style D fill:#f5f9f5,stroke:#059669
+    style E fill:#f5f9f5,stroke:#059669
+        </pre>
+        <p>Four non-negotiable conditions for safe institutional change</p>
+      </div>
+    </section>
+
+    <section class="section promo" aria-labelledby="use">
+      <h2 id="use">How frameworks are used</h2>
+      <p>Frameworks are not delivered as stand-alone products. They are used to:</p>
+      <ul>
+        <li>Guide governance design decisions</li>
+        <li>Shape artifacts, records, and interfaces</li>
+        <li>Evaluate whether responsibility is defensible</li>
+        <li>Support training and operational clarity</li>
+        <li>Test whether structures will survive pressure and turnover</li>
+      </ul>
+      <p>Frameworks do not replace local judgment or statutory nuance. They provide a stable lens for making those judgments deliberately rather than implicitly.</p>
+    </section>
+
+    <section class="section promo" aria-labelledby="not">
+      <h2 id="not">What frameworks are not</h2>
+      <ul>
+        <li>Software platforms</li>
+        <li>Diagnostic products</li>
+        <li>Culture change programs</li>
+        <li>Compliance shortcuts</li>
+        <li>Substitutes for leadership or counsel</li>
+      </ul>
+      <p>Frameworks are successful when they disappear into practice and no longer require explanation.</p>
+    </section>
+
+    <section class="section promo" aria-labelledby="services">
+      <h2 id="services">Relationship to services</h2>
+      <p>Frameworks describe what must be structurally true for governance to be safe.</p>
+      <p>Services describe how we help institutions make those conditions real.</p>
+      <p>Not every engagement uses every framework. Frameworks are applied selectively, based on actual risk and institutional conditions.</p>
+    </section>
+
+    <section class="cta" aria-labelledby="cta">
+      <h2 id="cta">Interested in how this applies to your town?</h2>
+      <p>Frameworks are most useful when applied to real conditions. If you are unsure how governance risk is currently being carried, that uncertainty is often the right place to start.</p>
+      <a href="/contact.html" class="button" aria-label="Start a conversation about applying frameworks to your town">Start a Conversation →</a>
+    </section>
+
+    <!-- Compliance anchors -->
+    <section class="section promo" aria-labelledby="compliance">
+      <h2 id="compliance">Compliance anchors (Massachusetts)</h2>
+      <ul>
+        <li><a href="https://www.mass.gov/orgs/office-of-the-attorney-general/resources/open-meeting-law" target="_blank" rel="noopener noreferrer nofollow">M.G.L. c.30A — Open Meeting Law (OML)</a></li>
+        <li><a href="https://www.sec.state.ma.us/pre/preidx.htm" target="_blank" rel="noopener noreferrer nofollow">M.G.L. c.66 §10 — Public Records Requests (PRR)</a></li>
+        <li><a href="https://www.mass.gov/laws-regulations/201-cmr-1700-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth" target="_blank" rel="noopener noreferrer nofollow">201 CMR 17.00 — Data Security</a></li>
+        <li><a href="https://www.ada.gov/" target="_blank" rel="noopener noreferrer nofollow">ADA — Accessibility</a></li>
+        <li><a href="https://www.mass.gov/lists/records-conservation-board-schedules" target="_blank" rel="noopener noreferrer nofollow">Massachusetts Statewide Records Retention Schedules</a></li>
+      </ul>
+      <p style="font-size:.95rem;color:#555;">References provided for orientation only; consult municipal counsel and the primary sources for definitive guidance.</p>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>
+      Governance That Survives Real Life<br>
+      © 2026 PublicLogic LLC — Gardner, Massachusetts<br>
+      <span style="opacity:.8">VAULT™ is a proprietary governance framework of PublicLogic LLC. Concepts described here are high-level; implementation logic remains IP-protected.</span>
+    </p>
+  </footer>
+</body>
+</html>

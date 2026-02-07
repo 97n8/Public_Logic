@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PublicLogic One-Pager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        @media print {
+            body { margin: 0; padding: 0; }
+            #pdf-content { box-shadow: none; }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 p-8">
+    <div class="max-w-4xl mx-auto mb-8 text-center">
+        <button 
+            onclick="downloadPDF()" 
+            class="bg-blue-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-lg text-lg">
+            Download PDF
+        </button>
+    </div>
+
+    <div id="pdf-content" class="bg-white shadow-2xl mx-auto" style="width: 8.5in; box-sizing: border-box;">
+        
+        <!-- PAGE 1 -->
+        <div style="height: 11in; display: flex; flex-direction: column;">
+            <!-- Header -->
+            <div class="bg-slate-900 text-white px-8 py-5">
+                <h1 class="text-3xl font-light tracking-tight mb-1">PublicLogic</h1>
+                <p class="text-base text-slate-300 font-light">Smart Systems. Stronger Communities.</p>
+            </div>
+
+            <!-- Main Content Page 1 -->
+            <div class="px-8 py-5 flex-1">
+                <!-- Opening -->
+                <div class="mb-5">
+                    <p class="text-sm leading-snug text-slate-700 mb-3">
+                        Municipal operations are entering a harder era. Not because staff are failing. Because workload is accelerating faster than the systems built to carry it. Most towns have pushed their current architecture as far as it can go.
+                    </p>
+                    <p class="text-sm leading-snug text-slate-900 font-medium">
+                        PublicLogic helps municipalities build stronger operational systems. Not by selling software. By designing individualized frameworks using the tools and platforms you already have.
+                    </p>
+                </div>
+
+                <!-- Where Strain Shows -->
+                <div class="mb-5">
+                    <h2 class="text-lg font-medium text-slate-900 mb-2 pb-1 border-b-2 border-slate-300">
+                        Where Strain Shows Up First
+                    </h2>
+                    <p class="text-xs leading-relaxed text-slate-600">
+                        Permits stretch from days to weeks. Resident follow up slows because intake patterns are unclear. Project handoffs lose clarity when someone leaves or gets pulled into other work. Decision points drift because the path from submitted to completed depends on memory instead of mechanism. None of this is dramatic in the moment. But it compounds. Small delays become drag. Staff feel this long before leadership sees the pattern.
+                    </p>
+                </div>
+
+                <!-- Q&A Box 1 -->
+                <div class="mb-5 bg-slate-50 border-l-4 border-blue-600 p-4">
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">Are you a software company?</h3>
+                    <p class="text-xs text-slate-700 leading-snug mb-2">
+                        No. We don't sell you tools and leave you to figure them out. We work with you to build customized operational frameworks. The systems, protocols, and workflows that help your existing tools actually work together.
+                    </p>
+                    <p class="text-xs text-slate-600 leading-snug">
+                        We're platform agnostic. You keep using what you have. We help you use it better by identifying your needs, mapping your resources, and tailoring processes rooted in what will actually work for your community. Common areas we strengthen include clerk operations, DPW workflows, and fiscal processes.
+                    </p>
+                </div>
+
+                <!-- What We Strengthen -->
+                <div class="mb-5">
+                    <h2 class="text-lg font-medium text-slate-900 mb-3 pb-1 border-b-2 border-slate-300">
+                        What PublicLogic Strengthens
+                    </h2>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="border-l-2 border-slate-400 pl-2">
+                            <h3 class="text-xs font-semibold text-slate-900 mb-1">Intake that removes uncertainty</h3>
+                            <p class="text-xs text-slate-600 leading-snug">
+                                Requests land where they belong the first time. No more emails bouncing between departments while residents wait.
+                            </p>
+                        </div>
+                        <div class="border-l-2 border-slate-400 pl-2">
+                            <h3 class="text-xs font-semibold text-slate-900 mb-1">Workflows that stabilize operations</h3>
+                            <p class="text-xs text-slate-600 leading-snug">
+                                Patterns that hold steady when staff rotate or take leave. Your permit process doesn't stall when your planning director is out.
+                            </p>
+                        </div>
+                        <div class="border-l-2 border-slate-400 pl-2">
+                            <h3 class="text-xs font-semibold text-slate-900 mb-1">Processes grounded in municipal reality</h3>
+                            <p class="text-xs text-slate-600 leading-snug">
+                                Systems built around actual pace and compliance requirements. Not software assumptions about how government should work.
+                            </p>
+                        </div>
+                        <div class="border-l-2 border-slate-400 pl-2">
+                            <h3 class="text-xs font-semibold text-slate-900 mb-1">Infrastructure aligned with how people work</h3>
+                            <p class="text-xs text-slate-600 leading-snug">
+                                Predictable cues that respect human limits. No one becomes the hero who holds it together through memory alone.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q&A Box 2 -->
+                <div class="bg-slate-50 border-l-4 border-blue-600 p-4">
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">Will my staff be replaced by automation?</h3>
+                    <p class="text-xs text-slate-700 leading-snug">
+                        Absolutely not. People are the backbone of communities and the backbone of municipal operations. Our goal is to streamline processes so your staff can spend more time doing things that actually serve your community and less time worrying about regulatory compliance or manually tracking work through disconnected systems.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 2 -->
+        <div style="height: 11in; display: flex; flex-direction: column;">
+            <!-- Page 2 Header -->
+            <div class="bg-slate-900 text-white px-8 py-3">
+                <h2 class="text-xl font-light">PublicLogic</h2>
+            </div>
+
+            <!-- Main Content Page 2 -->
+            <div class="px-8 py-5 flex-1">
+                
+                <!-- Key Quote -->
+                <div class="bg-slate-900 text-white p-4 mb-5">
+                    <p class="text-sm leading-relaxed font-light italic mb-1">
+                        When structure is weak, individuals become the safety net.
+                    </p>
+                    <p class="text-sm leading-relaxed font-light italic">
+                        When structure is strong, the system becomes the safety net.
+                    </p>
+                </div>
+
+                <!-- How We Work -->
+                <div class="mb-5">
+                    <h2 class="text-lg font-medium text-slate-900 mb-2 pb-1 border-b-2 border-slate-300">
+                        How We Work
+                    </h2>
+                    <div class="space-y-2">
+                        <div>
+                            <h3 class="text-xs font-semibold text-slate-900">Assessment <span class="font-normal text-slate-500">(2 weeks)</span></h3>
+                            <p class="text-xs text-slate-600 leading-snug mt-1">
+                                We map your workflows, intake patterns, and pressure points by shadowing the work as it actually happens. Not through surveys. We include the people who use your systems daily.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-semibold text-slate-900">Design <span class="font-normal text-slate-500">(4 to 6 weeks)</span></h3>
+                            <p class="text-xs text-slate-600 leading-snug mt-1">
+                                We build process architecture tailored to your operations. Intake protocols, decision workflows, handoff mechanisms. Your team and stakeholders are involved at every step to ensure implementation solves real problems.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-xs font-semibold text-slate-900">Implementation <span class="font-normal text-slate-500">(8 to 12 weeks)</span></h3>
+                            <p class="text-xs text-slate-600 leading-snug mt-1">
+                                We work on the back end of your operational systems to streamline and automate processes, training staff and adjusting in real time. We don't want to be just another task on an already long list.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Who We Serve -->
+                <div class="mb-5">
+                    <h2 class="text-lg font-medium text-slate-900 mb-2 pb-1 border-b-2 border-slate-300">
+                        Who We Serve
+                    </h2>
+                    <p class="text-xs leading-snug text-slate-600 mb-3">
+                        Municipalities managing 5,000 to 75,000 residents where staff capacity is tight, regulatory demands are steady, and the gap between current systems and actual workload is starting to show.
+                    </p>
+                    <div class="bg-blue-50 border border-blue-200 p-3 rounded">
+                        <p class="text-xs font-semibold text-slate-900 mb-1">Common pattern</p>
+                        <p class="text-xs text-slate-700 leading-snug">
+                            In small to mid-sized municipalities, permit processing often stretches beyond intended timelines when intake crosses multiple departments. Structured workflows and clear routing protocols typically reduce processing time by 40 to 50 percent without adding staff or purchasing new software.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Next Step -->
+                <div>
+                    <h2 class="text-lg font-medium text-slate-900 mb-2 pb-1 border-b-2 border-slate-300">
+                        Next Step
+                    </h2>
+                    <p class="text-xs leading-snug text-slate-700 mb-2">
+                        <span class="font-semibold">Schedule a complimentary 60 to 90 minute discovery session</span> to identify where your operations are most vulnerable and whether structured reinforcement makes sense for your municipality.
+                    </p>
+                    <p class="text-xs text-slate-600 leading-snug mb-3">
+                        No pitch. No obligation. Just a practitioner level conversation about what's working and what's not.
+                    </p>
+                    <div class="bg-slate-100 p-3 rounded">
+                        <p class="text-xs text-slate-700">
+                            Contact us at <a href="mailto:info@publiclogic.org" class="text-blue-600 underline">info@publiclogic.org</a> to set up a discovery call.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="bg-slate-900 text-white px-8 py-4 mt-auto">
+                <p class="text-xs text-slate-300 mb-2 leading-snug">
+                    PublicLogic is a practitioner-led municipal systems firm that partners with communities to strengthen operations before strain becomes crisis.
+                </p>
+                <div class="text-xs text-slate-300">
+                    info@publiclogic.org | publiclogic.org
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function downloadPDF() {
+            const element = document.getElementById('pdf-content');
+            if (!element) return;
+
+            const opt = {
+                margin: [0.4, 0.4, 0.4, 0.4],
+                filename: 'PublicLogic_OnePager.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Partners — PublicLogic™</title>
+  <meta name="description" content="How PublicLogic partners with implementers and platforms while keeping towns in control of their records and workflows." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#1f6b4a" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Partners — PublicLogic" />
+  <meta property="og:description" content="A vendor-neutral partner model that protects staff, compliance, and municipal ownership." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://publiclogic.org/partners.html" />
+  <meta property="og:image" content="https://publiclogic.org/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Partners — PublicLogic" />
+  <meta name="twitter:description" content="A vendor-neutral partner model that protects staff, compliance, and municipal ownership." />
+  <meta name="twitter:image" content="https://publiclogic.org/og-image.jpg" />
+
+  <link rel="canonical" href="https://publiclogic.org/partners.html" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #ffffff;
+      --paper: #ffffff;
+      --ink: #0b1713;
+      --brand: #1f6b4a;
+      --muted: #5e6864;
+      --line: #e5ebe7;
+      --accent: #145c3a;
+      --chip: #eef7f1;
+      --hover: #134d32;
+      --shadow: rgba(11, 23, 19, 0.08);
+      --focus: #0a7e51;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    p { max-width: 62ch; }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute; left: 0; top: -40px; background: var(--brand); color: #fff;
+      padding: .5rem .75rem; border-radius: 6px; z-index: 1000; text-decoration: none;
+    }
+    .skip-link:focus { top: 8px; outline: 3px solid #fff; }
+
+    /* Navigation */
+    .nav-wrap {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 1px 3px rgba(11, 23, 19, 0.05);
+    }
+    .nav {
+      max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; color: var(--brand); font-weight: 800; font-size: 1.2rem; }
+    .nav ul { display: flex; list-style: none; gap: 1.5rem; flex-wrap: wrap; }
+    .nav a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: .95rem; transition: color .2s; }
+    .nav a:hover { color: var(--brand); }
+
+    /* Hero */
+    .hero { background: linear-gradient(135deg, #eef7f1 0%, #ffffff 100%); padding: 5rem 1.5rem; text-align: center; }
+    .hero-inner { max-width: 800px; margin: 0 auto; padding-top: 1rem; }
+    .hero h1 { font-size: clamp(1.9rem, 3.5vw, 2.75rem); font-weight: 800; color: var(--brand); margin: 0 0 1.5rem 0; letter-spacing: -0.03em; line-height: 1.2; }
+    .hero p { font-size: 1.15rem; color: var(--ink); line-height: 1.7; margin-bottom: 1rem; max-width: 62ch; margin-left: auto; margin-right: auto; }
+    .mb-3 { margin-bottom: 2rem !important; }
+
+    /* Buttons */
+    .btn { display: inline-block; background: var(--brand); color: #fff; padding: .85rem 1.6rem; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background .2s, transform .06s; margin: .5rem; box-shadow: 0 2px 4px var(--shadow); }
+    .btn:hover { background: var(--hover); }
+    .btn:active { transform: translateY(1px); }
+    .btn.secondary { background: transparent; color: var(--brand); border: 2px solid var(--brand); }
+    .btn.secondary:hover { background: var(--chip); }
+
+    /* Main Content */
+    .main { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .wrap { padding: 4.5rem 0; }
+    .section-title { font-size: 1.9rem; font-weight: 800; color: var(--accent); margin-bottom: 2.5rem; text-align: center; letter-spacing: -0.02em; position: relative; }
+    .section-title::after { content: ""; position: absolute; width: 60px; height: 4px; background: var(--brand); bottom: -12px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
+
+    /* Grids */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+
+    /* Cards */
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 2rem; box-shadow: 0 2px 6px var(--shadow); }
+    .kicker { color: var(--brand); font-weight: 800; font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .75rem; }
+    .card h3 { font-size: 1.3rem; font-weight: 800; color: var(--brand); margin: 0 0 1rem 0; }
+    .mt-0 { margin-top: 0 !important; }
+    .card p { color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+    .card p:last-child { margin-bottom: 0; }
+
+    /* Badges */
+    .badges { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; margin-bottom: 1.25rem; }
+    .badge { background: var(--chip); color: var(--accent); padding: .5rem 1rem; border-radius: 999px; font-size: .85rem; font-weight: 700; border: 1px solid var(--line); }
+
+    /* Footer */
+    .footer { background: var(--paper); border-top: 1px solid var(--line); padding: 3rem 1.5rem; margin-top: 5rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; text-align: center; color: var(--muted); font-size: .95rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav { flex-direction: column; align-items: flex-start; }
+      .nav ul { width: 100%; flex-direction: column; gap: .75rem; }
+      .hero { padding: 3.5rem 1.5rem; }
+      .hero p { font-size: 1.05rem; }
+      .wrap { padding: 3.5rem 0; }
+      .section-title { font-size: 1.6rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .btn { display: block; width: 100%; max-width: 320px; margin: .5rem auto; }
+    }
+
+    *:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  </style>
+
+  <!-- Schema.org Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PublicLogic",
+    "url": "https://publiclogic.org",
+    "logo": "https://publiclogic.org/icon.svg",
+    "sameAs": [
+      "https://www.linkedin.com/company/publiclogic"
+    ],
+    "slogan": "Smart Systems. Stronger Communities.",
+    "founder": {
+      "@type": "Person",
+      "name": "Nathan Boudreau, MPA, MCPPO"
+    }
+  }
+  </script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="nav-wrap" role="navigation" aria-label="Main">
+  <nav class="nav">
+    <a class="logo" href="/" aria-label="PublicLogic home"><span>PublicLogic™</span></a>
+    <ul role="list">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/solutions.html">Solutions</a></li>
+      <li><a href="/partners.html" aria-current="page">Partners</a></li>
+      <li><a href="/research.html">Research</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <h1>Partner Model</h1>
+    <p>PublicLogic defines the framework. Partners extend the capacity. Towns keep control.</p>
+    <p class="mb-3">We are vendor-neutral. Our partner model is simple: protect people, protect compliance, and protect municipal ownership of systems and records.</p>
+  </div>
+</header>
+
+<main id="main" class="main" tabindex="-1">
+  <section class="wrap" aria-labelledby="how-title">
+    <h2 id="how-title" class="section-title">How we partner</h2>
+    <div class="grid-2">
+      <article class="card">
+        <div class="kicker">Implementation</div>
+        <h3 class="mt-0">Practitioners, not just projects</h3>
+        <p>Implementation partners work inside the PublicLogic Framework. They configure workflows, support floor-walking, and help staff adopt new structure without rewriting how the town operates.</p>
+        <p>The doctrine stays constant across towns. The details adapt to your staffing, culture, and legal environment.</p>
+      </article>
+      <article class="card">
+        <div class="kicker">Platforms</div>
+        <h3 class="mt-0">Your systems, our logic</h3>
+        <p>Platform partners help align the tools you already own with VAULT and ARCHIEVE logic. Forms, automations, and records are designed to follow the same routing and retention model, regardless of vendor.</p>
+        <p>The goal is to avoid lock-in: if a tool changes, the framework and your records remain intact.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="roles-title">
+    <h2 id="roles-title" class="section-title">Who owns what</h2>
+    <div class="grid-2">
+      <article class="card">
+        <div class="kicker">Towns</div>
+        <h3 class="mt-0">Ownership & accountability</h3>
+        <p>Your town owns your records, your workflows, and the platforms they run on. You decide where systems live, who has access, and how long data is retained.</p>
+        <p>PublicLogic and partners are there to design, configure, and support — not to take custody.</p>
+      </article>
+      <article class="card">
+        <div class="kicker">PublicLogic & Partners</div>
+        <h3 class="mt-0">Support & structure</h3>
+        <p>PublicLogic provides the framework, compliance logic, and playbooks. Partners provide implementation, training, and technical lift, all inside that structure.</p>
+        <p>This separation keeps decision rights, legal responsibility, and institutional memory inside Town Hall.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="become-title">
+    <h2 id="become-title" class="section-title">Become or bring a partner</h2>
+    <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--ink); margin-bottom: 1.5rem;">
+        We work with implementation teams, platform providers, and training organizations that are willing to put compliance, continuity, and staff well-being ahead of features and sales cycles.
+      </p>
+      <p style="margin-bottom: 2rem; color: var(--muted); max-width: 62ch; margin-left: auto; margin-right: auto;">
+        If you are a town exploring modernization, you can also invite your preferred vendors or consultants into this model. The framework is built to make good partners even more effective.
+      </p>
+      <a class="btn" href="/contact.html" aria-label="Contact PublicLogic about the partner model">Talk about the partner model</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="badges" aria-label="Framework badges">
+      <span class="badge" aria-label="VAULT trademark">VAULT™</span>
+      <span class="badge" aria-label="ARCHIEVE trademark">ARCHIEVE™</span>
+      <span class="badge" aria-label="PublicInsight trademark">PublicInsight™</span>
+      <span class="badge" aria-label="Public Instinct trademark">Public Instinct™</span>
+    </div>
+    <div>© 2025 PublicLogic™ LLC</div>
+    <div style="margin-top: .5rem; color: var(--brand); font-weight: 700;">Built by practitioners who understand government and where it needs to go.</div>
+    <div style="margin-top: .25rem; color: var(--brand); font-weight: 700;">Smart Systems. Stronger Communities.</div>
+    <div style="margin-top: 1rem;">
+      <a href="/privacy.html" style="color: var(--muted); text-decoration: none; font-weight: 600;">Privacy</a>
+      <span aria-hidden="true" style="margin: 0 .5rem; color: var(--line);">•</span>
+      <a href="/accessibility.html" style="color: var(--muted); text-decoration: none; font-weight: 600;">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

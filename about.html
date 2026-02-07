@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+  <meta name="description" content="PublicLogic helps Massachusetts towns build governance structures that survive real life — structural, durable, and focused on placing risk where it belongs." />
+  <meta name="author" content="PublicLogic LLC">
+  <title>About PublicLogic — Governance Built to Survive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #059669;
+      --accent: #a7f3d0;
+      --light-bg: #d1fae5;
+      --dark: #111827;
+      --gray: #4b5563;
+      --white: #ffffff;
+      --border: #a5d6a7;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.7;
+      color: var(--dark);
+      margin: 0;
+      background: var(--light-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: clamp(2rem, 5vw, 3rem) 0 1.5rem;
+      text-align: center;
+    }
+    .wordmark {
+      font-size: clamp(2.2rem, 7vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .wordmark .public { color: var(--white); }
+    .wordmark .logic { color: var(--accent); }
+    .strapline {
+      font-size: clamp(1rem, 3.5vw, 1.2rem);
+      font-weight: 500;
+      margin: 0.5rem 0 1rem;
+      opacity: 0.95;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.6rem;
+    }
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: clamp(1rem, 3.5vw, 1.2rem);
+      padding: 0.6rem 1.2rem;
+      border-radius: 0.5rem;
+      transition: background 0.2s ease;
+    }
+    nav a:hover { background: rgba(255,255,255,.2); }
+    main { padding: 2.5rem 0 3.5rem; }
+    h1, h2 {
+      color: var(--primary);
+      line-height: 1.3;
+    }
+    h1 { font-size: 2.2rem; text-align: center; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.8rem; margin: 2.5rem 0 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    p { margin: 1rem 0; max-width: 75ch; }
+    .highlight {
+      background: var(--white);
+      padding: 1.5rem;
+      border-left: 4px solid var(--primary);
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .highlight ul { margin: 0; padding-left: 1.2rem; }
+    .highlight li { margin: 0.75rem 0; }
+    .people {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .person {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--accent);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--accent);
+      background: var(--white);
+    }
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      width: auto;
+      height: auto;
+      background: var(--white);
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      z-index: 100;
+      border-radius: 4px;
+    }
+    @media (max-width: 640px) {
+      header { padding: 1.5rem 0; }
+      .wordmark { font-size: clamp(2rem, 8vw, 2.6rem); }
+      main { padding: 2rem 0 3rem; }
+      .people { grid-template-columns: 1fr; }
+      nav ul { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="container">
+      <h1 class="wordmark"><span class="public">Public</span><span class="logic">Logic</span></h1>
+      <p class="strapline">Governance That Survives Real Life</p>
+      <nav aria-label="Main sections">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/frameworks.html">Frameworks</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/writing.html">Writing</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <h1>About PublicLogic</h1>
+
+    <h2>Governance built to survive pressure, turnover, and time</h2>
+    <p>PublicLogic helps Massachusetts towns build governance structures that survive real life.</p>
+    <p>Local government depends on people doing difficult work under constant constraint. Turnover happens. Laws change. Records accumulate. Pressure compounds quietly over time. When governance is informal or fragmented, institutions displace that pressure onto individuals rather than carrying it structurally.</p>
+    <p>Our work is about moving that pressure back where it belongs — into structure.</p>
+
+    <h2>Why PublicLogic exists</h2>
+    <p>Most governance failures are not caused by bad intent, poor effort, or lack of care. They are caused by unowned responsibility. Authority becomes unclear. Records scatter. Knowledge lives in inboxes or memory. When people leave, the town absorbs the risk.</p>
+    <p>PublicLogic was formed to address that gap.</p>
+    <p>We help towns make institutional logic explicit and durable so work continues cleanly through turnover, audits, and scrutiny — not by adding layers or selling platforms, but by strengthening the underlying governance architecture towns already rely on.</p>
+
+    <h2>What we believe</h2>
+    <div class="highlight">
+      <ul>
+        <li><strong>Risk belongs in systems, not in people.</strong> When individuals carry unowned risk, burnout and liability follow. Governance should absorb pressure structurally.</li>
+        <li><strong>Records are institutional memory.</strong> They are not paperwork. If a decision matters, it must be recordable, retrievable, and defensible.</li>
+        <li><strong>Continuity is a governance obligation.</strong> If work cannot survive a departure, it is not complete. Completion means transferability.</li>
+        <li><strong>Structure is a form of care.</strong> Clear authority, scoped responsibility, and durable records protect the people doing the work.</li>
+      </ul>
+    </div>
+
+    <h2>Our role</h2>
+    <p>PublicLogic is a governance practice. We support towns through advisory work, structural implementation, training, and applied research — all grounded in real municipal operations.</p>
+    <p>Our role is not to manage towns, replace staff, or introduce operational dependency. It is to help institutions carry responsibility in ways that hold over time.</p>
+    <p>We focus on authority, records, time, fiscal obligation, correction, and transfer so institutional responsibility stays owned and defensible.</p>
+
+    <h2>The people behind the work</h2>
+    <div class="people">
+      <div class="person">
+        <h3>Nathan Boudreau</h3>
+        <p>Nathan brings years of hands-on municipal leadership, governance design, and operational responsibility within Massachusetts towns. His work focuses on translating statutory and fiduciary obligations into durable structures that reduce risk, protect staff, and preserve institutional continuity.</p>
+      </div>
+      <div class="person">
+        <h3>Dr. Allison Weiss Rothschild</h3>
+        <p>Dr. Allison Weiss Rothschild leads PublicLogic’s research and behavioral systems work. Her focus is on how cognitive load, ambiguity, and pressure affect institutional performance, and how governance and training can be designed to support people without relying on individual endurance. This work is embedded into governance design, not delivered as individual intervention.</p>
+      </div>
+    </div>
+
+    <h2>A Massachusetts practice</h2>
+    <p>PublicLogic is based in Massachusetts and focused on the realities of Massachusetts municipal government. Our work reflects an understanding of local governance law, public records obligations, fiduciary duty, and the practical limits towns operate within.</p>
+    <p>We build structures meant to survive scrutiny, turnover, and time.</p>
+
+    <h2>When to reach out</h2>
+    <p>Towns typically contact us when:</p>
+    <ul>
+      <li>A transition has exposed hidden risk</li>
+      <li>Institutional knowledge is at risk of loss</li>
+      <li>Compliance pressure is increasing</li>
+      <li>Informal systems are no longer defensible</li>
+      <li>Leaders want responsibility to be institutionally defensible, not personally absorbed</li>
+    </ul>
+    <p>If that sounds familiar, we are happy to talk.</p>
+  </main>
+
+  <footer>
+    <p>Governance That Survives Real Life<br>
+    Helping towns build governance that holds when people cannot.<br>
+    © 2026 PublicLogic LLC — Gardner, Massachusetts</p>
+  </footer>
+</body>
+</html>

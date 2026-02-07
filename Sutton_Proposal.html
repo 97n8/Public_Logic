@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SuttonCONNECT — Public_Logic × Polimorphic Proposal</title>
+<meta name="description" content="SuttonCONNECT: A modernization plan for Sutton that puts compliance and resident experience first. 90-day Scotch Free proof, grant-ready exports, VAULT framework, CLERK & FIX modules." />
+<meta name="author" content="Nathan Boudreau, MPA, MCPPO" />
+
+<!-- Social -->
+<meta property="og:title" content="SuttonCONNECT — Public_Logic × Polimorphic Proposal" />
+<meta property="og:description" content="A modern, compliant operating model for Sutton. 90-day Scotch Free proof. VAULT, CLERK, FIX. Resident intake → staff workflows → exports." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SuttonCONNECT" />
+<meta name="twitter:description" content="Modern municipal operations for Sutton. Compliance-first, resident-centered, grant-ready." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --ink:#111827;--ink2:#374151;--muted:#6b7280;
+  --bg:#ffffff;--bg2:#fafafa;--border:#e5e7eb;
+  --accent:#0f766e;--accent2:#115e59;--ink3:#334155;
+  --cream:#f8fafc;--shadow:0 1px 3px rgba(0,0,0,.06);
+  --focus:#0f766e;--chip-bg:#f3f4f6;--chip-bd:#d1d5db;--chip-tx:#374151;
+  --ok:#065f46;--warn:#92400e;--danger:#7f1d1d;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ink:#e5e7eb;--ink2:#d1d5db;--muted:#9ca3af;
+    --bg:#0b1220;--bg2:#121a2a;--border:#273248;
+    --ink3:#d1d5db;--cream:#0e1627;
+    --chip-bg:#121a2a;--chip-bd:#2a3652;--chip-tx:#e5e7eb;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:#0f766e;text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* Hero */
+header.hero{background:#0e1729;color:#e5e7eb;padding:68px 20px 48px;border-bottom:2px solid var(--accent)}
+header.hero h1{margin:0 0 12px;font-size:clamp(28px,3.6vw,40px);font-weight:700;line-height:1.15;letter-spacing:-.01em}
+header.hero p.kicker{margin:8px 0 0;color:#cbd5e1;font-size:clamp(15px,2vw,18px);line-height:1.6}
+.meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.meta .chip{background:var(--chip-bg);border:1px solid var(--chip-bd);color:var(--chip-tx);padding:6px 12px;border-radius:4px;font-size:13px;font-weight:600}
+
+/* Nav */
+nav.toc{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);box-shadow:0 1px 2px rgba(0,0,0,.04)}
+@media (prefers-color-scheme: dark){nav.toc{background:rgba(14,23,41,.94)}}
+nav.toc .wrap{display:flex;gap:8px;overflow:auto;padding:10px 12px}
+nav.toc a{white-space:nowrap;font-size:13px;color:var(--ink2);padding:8px 12px;border:1px solid var(--border);border-radius:6px;background:var(--bg);font-weight:600}
+nav.toc a:hover,nav.toc a:focus-visible{border-color:#9ca3af;box-shadow:0 0 0 2px rgba(15,118,110,.12)}
+nav.toc a.active{background:#ecfdf5;border-color:#0f766e;color:#115e59}
+@media (prefers-color-scheme: dark){nav.toc a.active{background:#082a29;border-color:#0f766e;color:#d1fae5}}
+
+/* Sections */
+section{padding:56px 0;border-bottom:1px solid var(--border)}
+section:nth-of-type(even){background:var(--cream)}
+h2{margin:0 0 16px;font-size:clamp(22px,2.6vw,30px);color:#0b1220;font-weight:700;line-height:1.25}
+@media (prefers-color-scheme: dark){h2{color:#e6edf6}}
+h3{margin:18px 0 10px;font-size:clamp(18px,2.2vw,22px);color:#122136;font-weight:700}
+@media (prefers-color-scheme: dark){h3{color:#e2e8f0}}
+p.lead{font-weight:600;color:#122136;font-size:17px;line-height:1.6}
+@media (prefers-color-scheme: dark){p.lead{color:#e2e8f0}}
+p{color:var(--ink3);line-height:1.7}
+
+/* Layout helpers */
+.grid{display:grid;gap:20px;margin-top:20px}
+@media(min-width:768px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:22px;box-shadow:var(--shadow)}
+.card ul{padding-left:18px;margin:10px 0}
+.card li{margin:8px 0}
+.badge{display:inline-block;border:1px solid var(--border);background:var(--bg);border-radius:999px;padding:4px 10px;font-size:12px;color:var(--ink2);font-weight:700;letter-spacing:.02em}
+
+/* Tables */
+.table-region{overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;background:var(--bg2)}
+table{border-collapse:separate;border-spacing:0;width:100%}
+th,td{padding:12px 14px;border-bottom:1px solid var(--border);text-align:left;font-size:15px;color:var(--ink2)}
+th{background:#eef2f7;font-weight:700}
+tbody tr:last-child td{border-bottom:none}
+caption{caption-side:top;text-align:left;padding:12px 14px;font-weight:700;color:var(--ink2)}
+
+/* Callouts */
+.kpis{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:16px}
+.kpi{background:#0e1729;color:#f3f4f6;padding:18px;border-radius:12px;border:1px solid #243045}
+.kpi strong{display:block;font-size:18px;margin-top:6px}
+.pull{border-left:3px solid var(--accent);padding:14px 16px;background:#ecfdf5;border-radius:8px;color:#084c4a;margin-top:16px}
+@media (prefers-color-scheme: dark){.pull{background:#082a29;color:#a7f3d0}}
+
+/* Footer */
+footer{padding:40px 0;background:#0e1729;color:#cbd5e1;text-align:center;font-size:14px}
+.note{font-size:14px;color:var(--muted);margin-top:10px}
+
+/* Print */
+@media print{
+  nav.toc{display:none}
+  section, .card, .table-region{page-break-inside:avoid}
+}
+
+/* Active section indicator */
+:target{scroll-margin-top:90px}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">Skip to main content</a>
+
+<header class="hero" role="banner">
+  <div class="wrap">
+    <h1 id="page-title">SuttonCONNECT — Let's prove this together.</h1>
+    <p class="kicker">A modernization plan that adapts to people. Resident intake → staff workflows → compliance exports → grant reporting. Massachusetts rules built-in. 90-day Scotch Free decision.</p>
+    <div class="meta" role="contentinfo" aria-label="Document metadata">
+      <span class="chip">Town of Sutton, MA</span>
+      <span class="chip">Author: Nathan Boudreau, MPA, MCPPO</span>
+      <span class="chip">978-807-0829</span>
+      <span class="chip">Updated October 1, 2025</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" role="navigation" aria-label="Section navigation">
+  <div class="wrap">
+    <a href="#plain">Plain Talk</a>
+    <a href="#sutton-now">Why Sutton</a>
+    <a href="#frameworks">VAULT • CLERK • FIX</a>
+    <a href="#u-model">Unified Model</a>
+    <a href="#scenarios">Scenarios</a>
+    <a href="#compliance-in-flow">Compliance-in-Flow</a>
+    <a href="#ai">AI Tiers</a>
+    <a href="#plan">90-Day Proof</a>
+    <a href="#exports">Exports</a>
+    <a href="#grants">Grants</a>
+    <a href="#risks">Risks & Liability</a>
+    <a href="#access">Accessibility & Compliance</a>
+    <a href="#integrations">Integrations</a>
+    <a href="#calendar">Regulatory Calendar</a>
+    <a href="#retention">Retention Matrix</a>
+    <a href="#price">Investment & Terms</a>
+    <a href="#next">Next Steps</a>
+  </div>
+</nav>
+
+<main id="main" class="wrap" role="main" aria-labelledby="page-title">
+  <section id="plain" aria-labelledby="plain-h">
+    <h2 id="plain-h">Plain Talk (No buzzwords.)</h2>
+    <p class="lead">
+      If a resident can't submit a request without calling, if staff can't see what's due when, and if we can't export history on demand—it isn't better connections.
+      <strong>SuttonCONNECT fixes those three things first, then connects everything else: resident intake → staff workflows → compliance exports → grant reporting → next year's funding.</strong>
+      Massachusetts rules are baked in (Public Records 10/25 days, OML 48h posting, dog licensing renewals, retention schedules) with immutable audit logs as a staff liability shield.
+    </p>
+    <div class="kpis" role="region" aria-label="Outcome highlights">
+      <div class="kpi"><span class="badge">Residents</span><strong>Clear intake • Clear status</strong> Simple forms, email receipts, self-serve status page.</div>
+      <div class="kpi"><span class="badge">Staff</span><strong>Queues • Timers • Checklists</strong> Work shows up where it belongs. Deadlines are visible.</div>
+      <div class="kpi"><span class="badge">Town</span><strong>Audit-ready exports</strong> Routine JSON/PDF/CSV + checksums to the Town’s Drive.</div>
+    </div>
+  </section>
+
+  <section id="sutton-now">
+    <h2>Why Sutton Right Now</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>The Problem Without This</h3>
+        <ul>
+          <li>Institutional knowledge is in heads, inboxes, and desk drawers</li>
+          <li>New staff “learn by osmosis,” not by system</li>
+          <li>Phones become the workflow because status is opaque</li>
+          <li>Compliance is manual (timers in calendars, sticky notes)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>The Change With VAULT + CLERK + FIX</h3>
+        <ul>
+          <li>Queue-driven work with visible clocks and escalation</li>
+          <li>SOPs + checklists embedded in the same place work happens</li>
+          <li>Resident status pages reduce “any update?” calls</li>
+          <li>Exports on a schedule with checksums → audit-ready by default</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pull">Succession resilience: when staff rotate, the system keeps Sutton’s know-how and compliance timers intact.</div>
+  </section>
+
+  <section id="frameworks">
+    <h2>VAULT • CLERK • FIX (What they do)</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>VAULT (Agnostic Framework)</h3>
+        <ul>
+          <li>Universal naming (e.g., <code>SUTTON_CLERK_PUBLIC_RECORD_2025-10-01_001_V1</code>)</li>
+          <li>Case schema + audit trail + retention metadata</li>
+          <li>Compliance logic: PRR timers, OML postings, retention/export jobs</li>
+          <li>Town-owned configs and documentation (no lock-in)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>CLERK (Administrative Backbone)</h3>
+        <ul>
+          <li>Public Records Requests (PRR)</li>
+          <li>Vital records requests (copies), licensing (dog, business, raffle)</li>
+          <li>Agenda posting & board/committee management</li>
+          <li>Elections intake, certifications, attestations, oaths</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>FIX (DPW & Facilities)</h3>
+        <ul>
+          <li>Potholes, signage, drainage, sidewalks, streetlights</li>
+          <li>Facility maintenance tickets, work orders, completions</li>
+          <li>Before/after photo guardrails (“no photo, no close”)</li>
+          <li>Exported histories feed grants and capital planning</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="u-model">
+    <h2>Unified Operating Model (Resident → Staff → Exports)</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>1) Intake</h3>
+        <ul>
+          <li>Web forms, email gateway, phone-to-ticket (“person bridge”), or kiosk</li>
+          <li>Auto-name, classify, and route to the right queue</li>
+          <li>Email receipt with case # and expected timeline</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>2) Work</h3>
+        <ul>
+          <li>Checklists and SOPs in-line with the case</li>
+          <li>Timers: PRR 10/25 days, OML 48h, licensing renewals</li>
+          <li>Internal notes + immutable audit log</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>3) Export</h3>
+        <ul>
+          <li>Quarterly jobs → Google Shared Drive (JSON + PDF + CSV)</li>
+          <li>Manifest with SHA-256 checksums</li>
+          <li>On-demand per-case export (attachments included)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="scenarios">
+    <h2>Concrete Scenarios (Week 1 changes)</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Public Records Request (PRR)</h3>
+        <ol>
+          <li>Resident submits PRR → clock starts automatically</li>
+          <li>Countdown shows in Clerk queue: <strong>10 business days to acknowledge</strong></li>
+          <li>If extension needed, template response with reasons + new date</li>
+          <li>Exemption/redaction tracking + counsel review notes</li>
+          <li>Export full request history on close (PDF+JSON+attachments)</li>
+        </ol>
+        <div class="note">Liability shield: immutable audit log records diligence even if a deadline slips.</div>
+      </div>
+      <div class="card">
+        <h3>Agenda Posting (Open Meeting Law)</h3>
+        <ol>
+          <li>Board submits agenda → system validates required fields</li>
+          <li>Posting reminders fire at 72/52/48 hours pre-meeting</li>
+          <li>Timestamped “proof of posting” receipt</li>
+          <li>Public status page shows latest version and time of posting</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="grid grid-2" style="margin-top:12px">
+      <div class="card">
+        <h3>Dog License (New/Renewal)</h3>
+        <ul>
+          <li>Upload rabies cert → OCR validates dates, vet, tag #</li>
+          <li>Fee rules (spayed/neutered, senior discount, late fee)</li>
+          <li>License PDF + tag mailer generated with VAULT naming</li>
+          <li>Renewal reminders 30/15/3 days before expiration</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Pothole Report (DPW)</h3>
+        <ul>
+          <li>Resident photo + map pin auto-captured</li>
+          <li>Supervisor assigns crew; SLA clock visible</li>
+          <li>“No close without after photo” enforced</li>
+          <li>Completion package (photos, materials, hours) → export</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="compliance-in-flow">
+    <h2>Compliance in the Flow of Work (not after)</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Clocks & Escalations</h3>
+        <ul>
+          <li>PRR 10-day ack / 25-day max with extensions</li>
+          <li>OML 48-hour posting reminders w/ proof receipts</li>
+          <li>License renewal windows with late-fee logic</li>
+          <li>Escalation ladder: Clerk → Dept Head → TA</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Audit Trail</h3>
+        <ul>
+          <li>Immutable history of actions and timestamps</li>
+          <li>Internal notes and counsel reviews retained</li>
+          <li>Per-case export includes index + attachments</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Retention</h3>
+        <ul>
+          <li>Per-type retention rules in VAULT metadata</li>
+          <li>Quarterly export job + checksum manifest</li>
+          <li>Drive structure by category/year/sequence</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai">
+    <h2>AI Tiers (Augment, don’t replace)</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <span class="badge">Base (Included)</span>
+        <ul>
+          <li>Auto-categorize + route cases</li>
+          <li>Urgent language detection</li>
+          <li>Receipt emails with plain-language summary</li>
+          <li>Suggest similar past cases to staff</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="badge">Plus (Optional)</span>
+        <ul>
+          <li>Draft responses for PRR (acknowledge/extend/fulfill)</li>
+          <li>Agenda → draft minutes (staff edits)</li>
+          <li>Seasonal workload predictions (snow, paving)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="badge">Pro (Optional)</span>
+        <ul>
+          <li>Sutton-specific policy recall in drafts</li>
+          <li>Grant-ready narratives from exported metrics</li>
+          <li>“What-if” resource scenarios for budgets</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">Privacy: AI runs on town-approved providers; no training on resident PII; exports remain in the town’s Drive.</div>
+  </section>
+
+  <section id="plan">
+    <h2>90-Day Proof (Scotch Free)</h2>
+    <p class="lead"><strong>Sutton has 90 days to decide with zero cost or lock-in.</strong> If it isn’t working by Day 90, you keep configs, data, and documentation. If it is working, continue at a discounted pilot price.</p>
+    <div class="table-region" role="region" aria-label="30-60-90 proof plan">
+      <table>
+        <caption>Checkpoints & evidence</caption>
+        <thead><tr><th>Day</th><th>What’s true</th><th>Evidence</th></tr></thead>
+        <tbody>
+          <tr><td>30</td><td>PRR + DPW pilot live in test; OML posting flow; SSO + GIS tested</td><td>Signed checklist; test screenshots; first automated export + checksum</td></tr>
+          <tr><td>60</td><td>Dashboards tuned; WCAG checks pass; staff training completed</td><td>axe report + keyboard/reader notes; training attendance; SOP draft</td></tr>
+          <tr><td>90</td><td>Production go-live; public status pages; export jobs automated</td><td>Export logs; adoption metrics; lessons-learned memo</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="exports">
+    <h2>Exports (Town-owned, grant-ready)</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Quarterly Job</h3>
+        <ul>
+          <li>JSON (machine), PDF (human), CSV (analysis)</li>
+          <li>Manifest with per-file SHA-256 + checksum-of-checksums</li>
+          <li>Foldering by <code>CATEGORY/YEAR/SEQUENCE</code></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>On-Demand Export</h3>
+        <ul>
+          <li>Single case package with attachments</li>
+          <li>Immutable audit log included</li>
+          <li>Named via VAULT convention</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="grants">
+    <h2>Grants (during the sprint)</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Grant-Ready Evidence</h3>
+        <ul>
+          <li>Before/after metrics built into closure workflows</li>
+          <li>Export logs + checksums show systematic approach</li>
+          <li>Case histories w/ timestamps demonstrate scale and rigor</li>
+        </ul>
+        <div class="pull">We co-author applications during the sprint. No success fees. Goal: Year-2+ costs offset by awards.</div>
+      </div>
+      <div class="card">
+        <h3>Targets (FY26)</h3>
+        <ul>
+          <li>Community Compact IT (modernization)</li>
+          <li>Digital Equity (multi-channel access)</li>
+          <li>MassWorks / Small Town Grants (infrastructure, DPW data)</li>
+          <li>Municipal ADA (WCAG-aligned design)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="risks">
+    <h2>Risks & Liability (how we mitigate)</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Adoption lag</h3>
+        <ul>
+          <li>Extend hypercare; desk-side coaching</li>
+          <li>Phone/paper bridges feed the same queues</li>
+          <li>Tune notifications & dashboards from usage</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Compliance slip</h3>
+        <ul>
+          <li>Timers, reminders, & escalations pre-breach</li>
+          <li>Immutable audit log proves diligence</li>
+          <li>Counsel templates for extensions & exemptions</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Platform issue</h3>
+        <ul>
+          <li>Data continues exporting to Drive</li>
+          <li>Configs documented as portable</li>
+          <li>12-month transition support pledge</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="access">
+    <h2>Accessibility & Compliance</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Public Records</h3>
+        <ul>
+          <li>10-day acknowledgment; 25-day max w/ extension</li>
+          <li>Exemption/redaction tracking</li>
+          <li>Immutable audit log + per-case export</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Open Meeting Law</h3>
+        <ul>
+          <li>Posting reminders at 72/52/48 hours</li>
+          <li>Receipts for proof of posting + versioning</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Accessibility</h3>
+        <ul>
+          <li>WCAG 2.1 AA checks by Day 60</li>
+          <li>Keyboard & screen-reader validation</li>
+          <li>Plain-language content patterns</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="integrations">
+    <h2>Integrations & “Person Bridges”</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Connectors (JSON/REST, SSO, GIS)</h3>
+        <ul>
+          <li>SSO (Google/Microsoft), role-based access</li>
+          <li>GIS for addresses & map pins</li>
+          <li>Email/SMS for receipts & reminders</li>
+          <li>Payments (for licensing/permit fees)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>When People Are the Bridge</h3>
+        <ul>
+          <li>Phone intake → staff form → same case queue</li>
+          <li>Counter paper → scan/OCR → same case</li>
+          <li>Kiosk/iPad “paper-feel” for legacy comfort</li>
+        </ul>
+        <div class="note">The point is one queue of truth no matter how a request arrives.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="calendar">
+    <h2>Annual Regulatory Calendar (auto-reminders)</h2>
+    <div class="table-region">
+      <table>
+        <caption>Sample calendar with default reminders (customizable)</caption>
+        <thead><tr><th>Topic</th><th>Trigger</th><th>Reminder Windows</th><th>Owner</th></tr></thead>
+        <tbody>
+          <tr><td>OML Agenda Posting</td><td>Meeting scheduled</td><td>72h • 52h • 48h (proof of posting)</td><td>Clerk / Board Admin</td></tr>
+          <tr><td>Dog License Renewals</td><td>Annual cycle</td><td>30d • 15d • 3d pre-expiration; 15d late</td><td>Clerk</td></tr>
+          <tr><td>Quarterly Exports</td><td>End of Q</td><td>+1d after Q end, verify by +3d</td><td>Records Custodian</td></tr>
+          <tr><td>PRR Timelines</td><td>On submission</td><td>Ack by 10 bd; fulfill by 25 bd or extend</td><td>RAO / Clerk</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="retention">
+    <h2>Retention Matrix (starter set, adjustable)</h2>
+    <div class="table-region">
+      <table>
+        <caption>Example retention by record type (configure to Sutton policy)</caption>
+        <thead><tr><th>Record Type</th><th>Category</th><th>Suggested Retention</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Public Records Requests</td><td>CLERK_PUBLIC_RECORD</td><td>7 years</td><td>Full case history + response + redaction log</td></tr>
+          <tr><td>Dog Licenses</td><td>CLERK_LICENSE_DOG</td><td>7 years</td><td>License PDF + proof of rabies</td></tr>
+          <tr><td>Meeting Agendas/Postings</td><td>ADMIN_MEETING</td><td>Permanent (log); 7 years (working docs)</td><td>Proof of posting receipts retained</td></tr>
+          <tr><td>DPW Work Orders</td><td>PUBLIC_WORKS_ROAD</td><td>7 years</td><td>Before/after photos, materials, labor</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">Final retention schedules to be validated by Sutton’s Records Custodian and Town Counsel. VAULT stores the schedule and applies it to exports automatically.</div>
+  </section>
+
+  <section id="price">
+    <h2>Investment & Terms</h2>
+    <div class="card">
+      <h3>Year 1</h3>
+      <p><strong>$0.</strong> 90-day Scotch Free pilot, plus a full year of hosting, training, exports, and support at no charge.</p>
+      <h3>After Year 1</h3>
+      <p>If Sutton continues, a <strong>discounted pilot price</strong> applies (typical range: $2–$7 per resident/year, depending on modules & AI tier). Target grants to offset steady-state costs.</p>
+      <div class="pull"><strong>No lock-in.</strong> If you walk away at Day 90, you retain all configs, data, exports, and documentation.</div>
+    </div>
+  </section>
+
+  <section id="next">
+    <h2>Next Steps</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Decision Path</h3>
+        <ul>
+          <li>Initial review + questions (Town Manager, Dept Heads, optional Counsel)</li>
+          <li>HubbCONNECT walkthrough + Sutton pilot scoping</li>
+          <li>Green light → Day-1 kickoff for 90-day proof</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Contact</h3>
+        <p><strong>Nathan Boudreau, MPA, MCPPO</strong><br>
+        Founder, Public_Logic<br>
+        <a href="mailto:nathan@publiclogic.co">nathan@publiclogic.co</a><br>
+        978-807-0829</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer role="contentinfo">
+  <div class="wrap">
+    <p style="margin:0 0 6px">Prepared for the Town of Sutton, Massachusetts</p>
+    <p style="margin:0 0 6px">Public_Logic × Polimorphic • October 1, 2025</p>
+    <p class="note" style="margin:0">Draft for discussion • Sutton has 90 days to decide, Scotch Free.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const navLinks=[...document.querySelectorAll('nav.toc a')];
+  const sections=navLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if(!navLinks.length||!sections.length) return;
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const id=e.target.id;
+        navLinks.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+id));
+      }
+    })
+  },{rootMargin:'-120px 0px -65%'});
+  sections.forEach(s=>io.observe(s));
+})();
+</script>
+</body>
+</html>

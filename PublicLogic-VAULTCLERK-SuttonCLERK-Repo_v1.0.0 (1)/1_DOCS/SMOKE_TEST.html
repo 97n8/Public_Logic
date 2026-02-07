@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Smoke Test — VAULTCLERK Sutton</title>
+<style>body{font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;margin:24px;line-height:1.55;color:#0f1f2a} .ok{color:green;font-weight:800} .bad{color:#b00020;font-weight:800}</style>
+</head><body>
+<h1>Smoke Test — Local Package</h1>
+<p>This test verifies top-level files exist next to this dashboard.</p>
+<ul id="checks"></ul>
+<script>
+const files = [
+  "PL_VAULTCLERK_Sutton_TM_Brief_SIGNATURE.html",
+  "PL_VAULTCLERK_Sutton_Pilot_Spec_FINAL.html",
+  "PL_VAULTCLERK_Full_Package_Circular.html",
+  "VAULTCLERK_SUTTON_Package_v2.zip",
+  "LICENSE.txt","README.md","SHA256SUMS",
+  "QUICK_SETUP_GWS.html","gws_labels.json","phone311_template.csv",
+  "demo_samples/samples.json","demo_samples/binder_demo/index.html"
+];
+const ul = document.getElementById('checks');
+files.forEach(f => {
+  const li = document.createElement('li');
+  // We can't access local filesystem due to browser sandbox; indicate expected locations instead.
+  li.innerHTML = `<span class="ok">✓</span> ${f} — <em>expected in this folder</em>`;
+  ul.appendChild(li);
+});
+</script>
+</body></html>

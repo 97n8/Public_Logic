@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Solutions — PublicLogic™</title>
+  <meta name="description" content="PublicLogic solutions are built on VAULT and ARCHIEVE logic so municipalities can modernize once, keep control, and protect staff time." />
+  <meta name="keywords" content="PublicLogic solutions, municipal workflows, VAULT, ARCHIEVE, Clerk, DPW, Finance, behavioral operations" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#1f6b4a" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Solutions — PublicLogic" />
+  <meta property="og:description" content="Solutions and implementation built to last, grounded in law, behavior, and real municipal work." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://publiclogic.org/solutions.html" />
+  <meta property="og:image" content="https://publiclogic.org/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Solutions — PublicLogic" />
+  <meta name="twitter:description" content="PublicLogic solutions are built on VAULT and ARCHIEVE logic so your town can modernize once and keep it." />
+  <meta name="twitter:image" content="https://publiclogic.org/og-image.jpg" />
+
+  <link rel="canonical" href="https://publiclogic.org/solutions.html" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #ffffff;
+      --paper: #ffffff;
+      --ink: #0b1713;
+      --brand: #1f6b4a;
+      --muted: #5e6864;
+      --line: #e5ebe7;
+      --accent: #145c3a;
+      --chip: #eef7f1;
+      --hover: #134d32;
+      --shadow: rgba(11, 23, 19, 0.08);
+      --focus: #0a7e51;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    p { max-width: 62ch; }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      left: 0;
+      top: -40px;
+      background: var(--brand);
+      color: #fff;
+      padding: .5rem .75rem;
+      border-radius: 6px;
+      z-index: 1000;
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      top: 8px;
+      outline: 3px solid #fff;
+    }
+
+    /* Navigation */
+    .nav-wrap {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(11, 23, 19, 0.05);
+    }
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      text-decoration: none;
+      color: var(--brand);
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .95rem;
+      transition: color .2s;
+    }
+    .nav-links a:hover {
+      color: var(--brand);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      padding: .4rem .5rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+    }
+    .nav-toggle-label {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .nav-toggle-bars {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3px;
+    }
+    .nav-toggle-bar {
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--ink);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #eef7f1 0%, #ffffff 100%);
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding-top: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      color: var(--brand);
+      margin: 0 0 1.5rem 0;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      max-width: 62ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .mb-3 { margin-bottom: 2rem !important; }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
+      padding: .85rem 1.6rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background .2s, transform .06s;
+      margin: .5rem;
+      box-shadow: 0 2px 4px var(--shadow);
+      border: 2px solid transparent;
+    }
+    .btn:hover {
+      background: var(--hover);
+    }
+    .btn:active {
+      transform: translateY(1px);
+    }
+    .btn.secondary {
+      background: transparent;
+      color: var(--brand);
+      border-color: var(--brand);
+    }
+    .btn.secondary:hover {
+      background: var(--chip);
+    }
+
+    /* Main Content */
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .wrap {
+      padding: 4.5rem 0;
+    }
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+      text-align: center;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      background: var(--brand);
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    /* Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: 0 2px 6px var(--shadow);
+    }
+    .kicker {
+      color: var(--brand);
+      font-weight: 800;
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .75rem;
+    }
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--brand);
+      margin: 0 0 1rem 0;
+    }
+    .mt-0 { margin-top: 0 !important; }
+    .mb-0 { margin-bottom: .5rem !important; }
+    .card p {
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Badges */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .badge {
+      background: var(--chip);
+      color: var(--accent);
+      padding: .5rem 1rem;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 700;
+      border: 1px solid var(--line);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      padding: 3rem 1.5rem;
+      margin-top: 5rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav {
+        flex-wrap: nowrap;
+        align-items: center;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: .75rem;
+        width: 100%;
+        margin-top: .75rem;
+      }
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .hero {
+        padding: 3.5rem 1.5rem;
+      }
+      .hero p {
+        font-size: 1.05rem;
+      }
+      .wrap {
+        padding: 3.5rem 0;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        display: block;
+        width: 100%;
+        max-width: 320px;
+        margin: .5rem auto;
+      }
+    }
+
+    *:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+  </style>
+
+  <!-- Schema.org Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PublicLogic",
+    "url": "https://publiclogic.org",
+    "logo": "https://publiclogic.org/icon.svg",
+    "sameAs": [
+      "https://www.linkedin.com/company/publiclogic"
+    ],
+    "slogan": "Smart Systems. Stronger Communities.",
+    "founder": {
+      "@type": "Person",
+      "name": "Nathan Boudreau, MPA, MCPPO"
+    }
+  }
+  </script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="nav-wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="logo" href="/" aria-label="PublicLogic home"><span>PublicLogic™</span></a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle main navigation" aria-controls="primary-menu">
+      <span class="nav-toggle-bars" aria-hidden="true">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+
+    <ul id="primary-menu" class="nav-links" role="list">
+      <li><a href="/framework.html">Framework</a></li>
+      <li><a href="/solutions.html" aria-current="page">Solutions</a></li>
+      <li><a href="/partners.html">Partners</a></li>
+      <li><a href="/research.html">Research</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <h1>Solutions and implementation built to last</h1>
+    <p>PublicLogic solutions are built on VAULT and ARCHIEVE logic so your town can modernize once and keep it.</p>
+    <p class="mb-3">
+      We focus on how work really moves, how much your system can carry, and what the law requires. Then we build behavioral operations
+      that protect staff time, improve compliance, and give residents a clearer view of how decisions are made.
+    </p>
+    <p>
+      <a class="btn" href="/contact.html" aria-label="Schedule a discovery session with PublicLogic">Book discovery</a>
+      <a class="btn secondary" href="/framework.html" aria-label="Learn more about the PublicLogic framework">Our framework</a>
+    </p>
+  </div>
+</header>
+
+<main id="main" class="main" tabindex="-1">
+  <section class="wrap" aria-labelledby="deliver-title">
+    <h2 id="deliver-title" class="section-title">What our solutions deliver</h2>
+    <div class="grid-3">
+      <article class="card">
+        <div class="kicker">Operational reality</div>
+        <h3 class="mt-0 mb-0">How work actually moves</h3>
+        <p>
+          We map how work enters your town, how it moves, how long it sits, and where it breaks. Solutions are designed against the real workflow,
+          not against an ideal chart that no one follows in practice.
+        </p>
+        <p>
+          Leaders receive a shared picture of bottlenecks, handoffs, and risk points across departments before any new system is introduced.
+        </p>
+      </article>
+      <article class="card">
+        <div class="kicker">Organizational readiness</div>
+        <h3 class="mt-0 mb-0">Whether you can sustain it</h3>
+        <p>
+          We measure system capacity, not individual heroics. Staff load, communication paths, decision structures, and change pacing all inform
+          which solutions you start with and how fast we move.
+        </p>
+        <p>
+          This keeps modernization aligned with what your people can actually carry and protects institutional knowledge instead of straining it.
+        </p>
+      </article>
+      <article class="card">
+        <div class="kicker">Compliance and liability</div>
+        <h3 class="mt-0 mb-0">Where gaps create exposure</h3>
+        <p>
+          Solutions are mapped to Massachusetts General Laws, state retention schedules, licensing statutes, procurement thresholds, and local policy,
+          so staff are supported with clear, auditable workflows.
+        </p>
+        <p>
+          Boards, auditors, and residents can see how legal obligations are met inside the same structure that staff use every day.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="implement-title">
+    <h2 id="implement-title" class="section-title">How we implement</h2>
+    <div class="grid-2">
+      <article class="card">
+        <div class="kicker">Step one</div>
+        <h3 class="mt-0">Discovery before building</h3>
+        <p>
+          Every engagement begins with a focused forty five minute discovery session that is designed to understand your operational reality,
+          organizational capacity, and compliance landscape.
+        </p>
+        <p>
+          You leave discovery with a clear picture of where you are, where risk sits, and which pilot will create the most value with the least disruption.
+        </p>
+        <p>
+          <a class="btn secondary" href="/contact.html" aria-label="Schedule a discovery session with PublicLogic">Schedule discovery</a>
+        </p>
+      </article>
+      <article class="card">
+        <div class="kicker">Shared foundation</div>
+        <h3 class="mt-0">Unified foundation, not isolated tools</h3>
+        <p>
+          We build on VAULT and ARCHIEVE logic, creating one shared structure across Clerk, DPW, Finance, Planning, HR, and Operations.
+          Microsoft 365, Google Workspace, CivicPlus, and partner platforms are configured to work together instead of acting as separate systems.
+        </p>
+        <p>
+          New forms, automations, and records plug into the same routing and retention patterns. You are not reinventing the wheel every time you add a department.
+        </p>
+        <p>
+          <a class="btn secondary" href="/framework.html" aria-label="See the PublicLogic framework">See the foundation</a>
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="start-title">
+    <h2 id="start-title" class="section-title">Where towns typically start</h2>
+    <p style="max-width: 800px; margin: 0 auto 2.5rem auto; text-align: center; color: var(--muted); line-height: 1.7;">
+      After discovery, we recommend a pilot based on your highest value opportunity. Most municipalities start in one of three areas. Each module is configurable,
+      grant aligned, and built to expand once staff see the impact.
+    </p>
+    <div class="grid-3">
+      <article class="card">
+        <div class="kicker">Governance</div>
+        <h3 class="mt-0">Clerk, agendas, and minutes</h3>
+        <p>
+          Front counter operations, public records requests, licensing, packet production, official minutes, and action tracking.
+          Everything required to run a compliant Clerk function with transparency, structure, and a clear audit trail.
+        </p>
+        <p>
+          Staff gain a reliable pattern for daily work. Boards gain confidence that actions are captured and followed through.
+          Residents gain a clearer view into how decisions move from request to outcome.
+        </p>
+      </article>
+      <article class="card">
+        <div class="kicker">Operations</div>
+        <h3 class="mt-0">FIX and environmental work</h3>
+        <p>
+          Requests, work orders, MS4 stormwater tracking, wetlands, and field operations. Built to support DPW, Facilities, Conservation,
+          and regulatory reporting without creating new silos or duplicate entry.
+        </p>
+        <p>
+          Field staff follow a simple pattern that works from the office or the truck. Supervisors see workload, status, and risk in one place
+          instead of across scattered lists and email threads.
+        </p>
+      </article>
+      <article class="card">
+        <div class="kicker">Finance</div>
+        <h3 class="mt-0">Fiscal and APEX</h3>
+        <p>
+          Accounts payable to warrant to treasurer with real visibility. Live style dashboards for budget and actuals, encumbrances,
+          and variance alerts. Finance operations with leadership level clarity.
+        </p>
+        <p>
+          Boards and residents can see a stable picture of the financial story. Staff spend more time managing risk and less time assembling one time reports.
+        </p>
+      </article>
+    </div>
+    <p style="text-align: center; margin-top: 2rem; color: var(--muted); max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.7;">
+      All modules run on VAULT routing and ARCHIEVE retention. You can begin with one area or bundle multiple departments. Every implementation follows
+      the same sixty to ninety day timeline, with discovery, build, and stabilization clearly defined.
+    </p>
+  </section>
+
+  <section class="wrap" aria-labelledby="own-title">
+    <h2 id="own-title" class="section-title">What you own</h2>
+    <article class="card" style="max-width:900px;margin:0 auto;text-align:center;">
+      <p style="font-size:1.05rem; color:var(--ink); margin-bottom:1.5rem;">
+        Everything we build belongs to your town. You own your records, your workflows, and your structure. PublicLogic and our partners provide the logic
+        and the implementation support, not the custody.
+      </p>
+      <p style="color:var(--muted); line-height:1.7;">
+        Solutions run on platforms you already own, with clear retention rules and audit trails. Systems are bound in legacy and designed to last through turnover,
+        budget cycles, and regulatory change.
+      </p>
+    </article>
+  </section>
+
+  <section class="wrap" aria-labelledby="receive-title">
+    <h2 id="receive-title" class="section-title">What you receive</h2>
+    <p style="max-width: 700px; margin: 0 auto 2.5rem auto; text-align: center; color: var(--muted); line-height: 1.7;">
+      After discovery, you receive a complete operational assessment. After implementation, your staff receive ongoing support so the system keeps working
+      when priorities and people change.
+    </p>
+    <div class="grid-3">
+      <article class="card">
+        <h3 class="mt-0 mb-0">Discovery deliverables</h3>
+        <p>
+          Operational process map, system readiness report, compliance analysis, and a recommended first pilot based on your highest value opportunity.
+        </p>
+        <p>
+          These pieces give you a board ready narrative about where you are today and what needs to change, written in language that staff and elected officials can both understand.
+        </p>
+      </article>
+      <article class="card">
+        <h3 class="mt-0 mb-0">Implementation support</h3>
+        <p>
+          On hand coaching during the first cycles. Floor walking for two complete rounds. Daily backups and seventy two hour rollback capability.
+          Champions trained as internal experts who can support new staff and future refinements.
+        </p>
+        <p>
+          Staff are never left alone to figure it out. Early cycles are intentionally supported so new habits become normal practice.
+        </p>
+      </article>
+      <article class="card">
+        <h3 class="mt-0 mb-0">Ongoing resources</h3>
+        <p>
+          A living SOP library with short videos, QR desk cards, and one page guides. Office hours twice weekly in the first ninety days,
+          then weekly as systems stabilize. Content updates within five business days so written instructions stay aligned with real practice.
+        </p>
+        <p>
+          Your team receives help in the moment they need it, not months later at the next all staff training.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="timeline-title">
+    <h2 id="timeline-title" class="section-title">Implementation timeline</h2>
+    <div class="grid-2" style="max-width:900px;margin:0 auto;">
+      <article class="card">
+        <div class="kicker">Days one to thirty</div>
+        <h3 class="mt-0 mb-0">Setup and training</h3>
+        <p>
+          System configuration, data migration, and initial staff training. Champions identified and prepared. Parallel run begins so staff can see the new system
+          while the old one is still available.
+        </p>
+      </article>
+      <article class="card">
+        <div class="kicker">Days thirty one to sixty</div>
+        <h3 class="mt-0 mb-0">First live cycles</h3>
+        <p>
+          Floor walking support for the first two complete cycles. Staff adoption is tracked, and process refinements are made based on real use and on behavioral
+          feedback rather than assumption.
+        </p>
+      </article>
+      <article class="card">
+        <div class="kicker">Days sixty one to ninety</div>
+        <h3 class="mt-0 mb-0">Stabilization</h3>
+        <p>
+          Optimization based on staff input. Parallel systems retired. Full audit trail verified. Go live complete with clear ownership, documentation, and a plan
+          for future refinement.
+        </p>
+      </article>
+      <article class="card">
+        <div class="kicker">Ongoing</div>
+        <h3 class="mt-0 mb-0">Support and evolution</h3>
+        <p>
+          Weekly office hours, quarterly reviews, and content updates within five business days. The system grows with your needs and with new regulatory requirements
+          so it remains a living framework, not a one time project.
+        </p>
+      </article>
+    </div>
+    <p style="text-align: center; margin-top: 2.5rem; color: var(--muted); max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.7;">
+      Target outcomes include a significant reduction in processing time, strong staff adoption within the first month of go live, and clean audit cycles
+      with documented compliance and clear ownership.
+    </p>
+  </section>
+
+  <section class="wrap" aria-labelledby="start-discovery-title">
+    <h2 id="start-discovery-title" class="section-title">Start with discovery</h2>
+    <article class="card" style="max-width:900px;margin:0 auto;text-align:center;">
+      <p style="margin-bottom:1.5rem;">
+        We begin every engagement with a focused forty five minute discovery session. It is practical, collaborative, and grounded in the realities of municipal work.
+      </p>
+      <p style="margin-bottom:2rem;">
+        There is no pressure and no sales push. Only an honest look at what your town needs, what you already have, and what will actually work for your staff and your residents.
+      </p>
+      <p>
+        <a class="btn" href="/contact.html" aria-label="Schedule a discovery session with PublicLogic">Schedule discovery</a>
+        <a class="btn secondary" href="/framework.html" aria-label="Learn more about the PublicLogic framework">Explore the framework</a>
+      </p>
+    </article>
+  </section>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="badges" aria-label="Framework badges">
+      <span class="badge" aria-label="VAULT trademark">VAULT™</span>
+      <span class="badge" aria-label="ARCHIEVE trademark">ARCHIEVE™</span>
+      <span class="badge" aria-label="PublicInsight trademark">PublicInsight™</span>
+      <span class="badge" aria-label="Public Instinct trademark">PublicInstinct™</span>
+    </div>
+    <div>© 2025 PublicLogic™ LLC</div>
+    <div style="margin-top: .5rem; color: var(--brand); font-weight: 700;">Built by practitioners who understand government and where it needs to go.</div>
+    <div style="margin-top: .25rem; color: var(--brand); font-weight: 700;">Smart Systems. Stronger Communities.</div>
+    <div style="margin-top: 1rem;">
+      <a href="/privacy.html" style="color: var(--muted); text-decoration: none; font-weight: 600;">Privacy</a>
+      <span aria-hidden="true" style="margin: 0 .5rem; color: var(--line);">•</span>
+      <a href="/accessibility.html" style="color: var(--muted); text-decoration: none; font-weight: 600;">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.getElementById('primary-menu');
+
+    if (!navToggle || !navLinks) return;
+
+    navToggle.addEventListener('click', function () {
+      const isOpen = navLinks.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  })();
+</script>
+
+</body>
+</html>

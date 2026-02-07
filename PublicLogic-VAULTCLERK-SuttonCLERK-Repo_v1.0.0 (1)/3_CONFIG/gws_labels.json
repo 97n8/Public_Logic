@@ -1,0 +1,13 @@
+{
+  "labels": [
+    "vault/intake",
+    "vault/hold",
+    "vault/published"
+  ],
+  "filters": [
+    {
+      "to": "rao@town.sutton.ma.us",
+      "apply_label": "vault/intake"
+    }
+  ]
+}

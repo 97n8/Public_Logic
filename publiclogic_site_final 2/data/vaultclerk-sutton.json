@@ -1,0 +1,34 @@
+{
+  "town": "Sutton, MA",
+  "module": "VAULTCLERK",
+  "last_published": "2025-11-16T00:00:00Z",
+  "metrics": [
+    {
+      "key": "core_forms_mapped",
+      "label": "Core licensing forms mapped",
+      "category": "Process structure",
+      "value_number": 7,
+      "value_text": "",
+      "notes": "Includes alcohol, victualler, dealer and one day licenses.",
+      "sort_order": 1
+    },
+    {
+      "key": "retention_alignment",
+      "label": "Records retention alignment",
+      "category": "Compliance",
+      "value_number": null,
+      "value_text": "Draft mapping completed to MA municipal retention schedule.",
+      "notes": "Needs final joint review.",
+      "sort_order": 2
+    },
+    {
+      "key": "staff_ready_scale",
+      "label": "Staff comfort with new intake",
+      "category": "Change readiness",
+      "value_number": 4,
+      "value_text": "on a 1 to 5 scale",
+      "notes": "Informal read. Formal survey can overwrite this.",
+      "sort_order": 3
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "dashboard": {
+    "title": "SuttonCLERK™ — Living SOP Hub",
+    "version": "1.0.1",
+    "last_updated": "2025-11-11",
+    "town": "Town of Sutton, Massachusetts",
+    "framework_family": "VAULTCLERK™",
+    "description": "Unified municipal operations dashboard connecting all Clerk workflows, automations, and retention logic under the VAULTCLERK™ standard.",
+    "base_url": "https://www.publiclogic.org/publiclogic-vaultclerk-suttonclerk-repo_v1.0.0%20(1)/",
+    "contacts": [
+      {
+        "name": "Nathan Boudreau, MPA, MCPPO",
+        "role": "Founder & Lead Consultant, PublicLogic™",
+        "email": "admin@hubbardstonma.gov",
+        "phone": "(978) 928-1400 x200"
+      },
+      {
+        "name": "Dr. Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA",
+        "role": "Behavioral Systems & Research Lead, PublicInsight™",
+        "email": "arothschild@publiclogic.org"
+      }
+    ],
+
+    "partners": {
+      "framework_owner": {
+        "name": "PublicLogic™",
+        "role": "Lawful Automation & Framework Governance",
+        "url": "https://www.publiclogic.org"
+      },
+      "behavioral_partner": {
+        "name": "PublicInsight™",
+        "role": "Readiness, Training & Behavioral Systems",
+        "url": "https://www.publiclogic.org/publicinsight"
+      },
+      "implementation_partner": {
+        "name": "Polimorphic, Inc.",
+        "role": "Platform Runtime, Integration, and AI Delivery",
+        "url": "https://www.polimorphic.com"
+      }
+    },
+
+    "runtime": {
+      "platform": "Polimorphic AI Runtime",
+      "integration_layer": "VAULT AOS API v2",
+      "deployment_context": "Town of Sutton Digital Government OS"
+    },
+
+    "licensing": {
+      "framework_license": "VAULTCLERK™ Municipal Framework License (PublicLogic)",
+      "runtime_license": "Polimorphic Municipal Deployment Agreement",
+      "data_custody": "Town retains all records; Polimorphic hosts runtime under PublicLogic compliance."
+    },
+
+    "purpose": "Provide a secure, repeatable, and transparent municipal operations framework where all SOPs, automations, and retention schedules remain synchronized and municipally owned.",
+
+    "lifecycle": [
+      { "id": "0_EXEC", "label": "Start", "description": "Launch brief and governance approvals", "owners": ["Town Administrator","Town Clerk"] },
+      { "id": "1_DOCS", "label": "Docs", "description": "Quick setup guides and smoke tests", "owners": ["Clerk’s Office"] },
+      { "id": "2_PACKAGE", "label": "Seed", "description": "Seeds 21-folder VAULT structure for reuse", "owners": ["Information Technology"] },
+      { "id": "3_CONFIG", "label": "Config", "description": "Naming conventions and environment variables", "owners": ["Information Technology"] },
+      { "id": "4_SAMPLES", "label": "Samples", "description": "Binder demo and datasets", "owners": ["Clerk’s Office"] },
+      { "id": "5_INTEGRITY", "label": "Integrity", "description": "Security, license, and audit materials", "owners": ["Town Administrator","IT"] },
+      { "id": "6_AUTOMATION", "label": "Automation", "description": "Power Automate flows and child logic", "owners": ["IT","PublicLogic™"] },
+      { "id": "7_METADATA", "label": "Metadata", "description": "SharePoint columns and JSON schemas", "owners": ["IT"] },
+      { "id": "8_TRAINING", "label": "Training", "description": "PublicInsight training decks and playbooks", "owners": ["PublicInsight™","Clerk’s Office"] },
+      { "id": "9_CONTINUITY", "label": "Continuity", "description": "Disaster recovery, backups, and retention", "owners": ["Town Administrator","IT"] }
+    ],
+
+    "roles": [
+      { "lane": "Administrator", "description": "Governance, integrity, and continuity", "folders": ["0_EXEC","1_DOCS","5_INTEGRITY","9_CONTINUITY"] },
+      { "lane": "Clerk", "description": "Licensing, meetings, records, and training", "folders": ["1_DOCS","4_SAMPLES","8_TRAINING"] },
+      { "lane": "IT", "description": "Configuration, automation, and metadata", "folders": ["2_PACKAGE","3_CONFIG","6_AUTOMATION","7_METADATA"] },
+      { "lane": "Vendor / PL", "description": "Integration and update cycles", "folders": ["3_CONFIG","5_INTEGRITY","8_TRAINING","9_CONTINUITY"] }
+    ],
+
+    "living_lists": [
+      { "name": "Master Module Register", "purpose": "Track deployed VAULT modules", "href": "./1_DOCS/Master_Module_Register.sample.csv" },
+      { "name": "Active Workflows", "purpose": "Map automation paths and triggers", "href": "./6_AUTOMATION/" },
+      { "name": "Compliance Timeline", "purpose": "Monitor PRR and retention deadlines", "href": "./5_INTEGRITY/compliance_timeline.sample.csv" },
+      { "name": "Staff Training Registry", "purpose": "Track training and refresh cycles", "href": "./8_TRAINING/" },
+      { "name": "Vendor Connector Index", "purpose": "Store integration endpoints and validations", "href": "./7_METADATA/" },
+      { "name": "Change Log / Version History", "purpose": "Immutable audit ledger", "href": "./5_INTEGRITY/change_log.sample.csv" }
+    ],
+
+    "compliance": {
+      "laws": [
+        "M.G.L. c.4 §7",
+        "M.G.L. c.66 (Public Records)",
+        "M.G.L. c.30A §§18–25 (Open Meeting Law)",
+        "M.G.L. c.46, c.207, c.110 §5, c.140 §137",
+        "950 CMR 32.00",
+        "201 CMR 17.00",
+        "ADA Title II",
+        "WCAG 2.1 AA",
+        "NIST SP 800-53 Moderate"
+      ]
+    },
+
+    "ai_boundary_matrix": {
+      "levels": "L1–L4 maturity",
+      "prohibited": ["Approve expenditures","Deny permits or licenses","Interpret legal exemptions"],
+      "escalation": "Ambiguous or high-risk items escalate to Clerk or Town Counsel."
+    },
+
+    "governance": {
+      "records_custody": "Town retains all data and records; PublicLogic governs logic and audit schema.",
+      "integrity_controls": [
+        "Digital signature metadata on all integrity documents",
+        "Checksum verification for automation assets",
+        "Weekly mirror to Town Drive; quarterly archive under retention schedule"
+      ],
+      "audit_schedule": "Quarterly technical and behavioral audits by PublicLogic™ and PublicInsight™"
+    },
+
+    "ui": {
+      "theme": {
+        "bg": "#f6fbf2",
+        "paper": "#ffffff",
+        "ink": "#0a1012",
+        "muted": "#4d5b55",
+        "edge": "#e6ecee",
+        "brand": "#115c40",
+        "chip": "#eaf6f1"
+      },
+      "sections": [
+        "HeaderWithContacts",
+        "MunicipalSystemChart",
+        "RoleLanes",
+        "PartnershipNotice",
+        "Footer"
+      ]
+    },
+
+    "partnership_notice": "This Living SOP Hub is deployed through the Polimorphic × PublicLogic Integration Stack. PublicLogic™ defines the lawful framework and compliance structure under VAULTCLERK™, Polimorphic provides runtime, automation, and integrations, and PublicInsight™ oversees readiness, training, and behavioral analytics. The Town of Sutton retains all data ownership under M.G.L. c.66 and 201 CMR 17.00.",
+
+    "footer": "© 2025 Town of Sutton | Built with PublicLogic™ (Framework), Polimorphic (Runtime), and PublicInsight™ (Training). Framework-as-a-Standard™ Implementation — VAULTCLERK™ v1.0.1."
+  }
+}

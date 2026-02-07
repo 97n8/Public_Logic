@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
+import LogicvilleGovernanceOS from './LogicvilleGovernanceOS'
+import PublicPortal from './PublicPortal'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [view, setView] = useState<'internal' | 'public'>('internal')
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app-shell">
+      <header className="app-top">
+        <div className="brand-block">
+          <div className="brand-mark">PublicLogic</div>
+          <div className="brand-sub">Logicville, MA — Living Agenda</div>
+        </div>
+        <nav className="view-toggle">
+          <button
+            className={`toggle-btn ${view === 'internal' ? 'active' : ''}`}
+            onClick={() => setView('internal')}
+          >
+            Internal Agenda
+          </button>
+          <button
+            className={`toggle-btn ${view === 'public' ? 'active' : ''}`}
+            onClick={() => setView('public')}
+          >
+            Public View
+          </button>
+        </nav>
+      </header>
+      {view === 'internal' ? <LogicvilleGovernanceOS /> : <PublicPortal />}
+    </div>
   )
 }
-
-export default App

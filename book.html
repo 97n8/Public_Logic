@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Direct Booking | PublicLogic</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image:
+        linear-gradient(#065f46 1px, transparent 1px),
+        linear-gradient(90deg, #065f46 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 160px 24px 120px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 10px 24px;
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      font-weight: 800;
+      border-radius: 999px;
+      background: #f1f5f9;
+      margin-bottom: 48px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 8rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.85;
+      margin-bottom: 64px;
+      letter-spacing: -0.06em;
+    }
+
+    h1 span {
+      color: #047857;
+      font-style: italic;
+    }
+
+    .intro {
+      font-size: clamp(1.25rem, 3vw, 2.25rem);
+      font-weight: 700;
+      color: #475569;
+      border-left: 4px solid #059669;
+      padding-left: 32px;
+      max-width: 900px;
+      font-style: italic;
+      margin-bottom: 96px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 48px;
+    }
+
+    @media (max-width: 1024px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      padding: 32px;
+      border-radius: 40px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      margin-bottom: 32px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .card p {
+      color: #64748b;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    .card-dark {
+      background: #064e3b;
+      color: #ffffff;
+      border: none;
+    }
+
+    .card-dark p {
+      color: rgba(255,255,255,0.8);
+    }
+
+    .note {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: #94a3b8;
+    }
+
+    .calendar {
+      height: 800px;
+      border-radius: 48px;
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .calendar::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(to right, transparent, #059669, transparent);
+      opacity: 0.2;
+      z-index: 1;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-grid"></div>
+
+  <main class="container">
+    <div class="badge">Direct Scheduler</div>
+
+    <h1>
+      Direct<br />
+      <span>Booking.</span>
+    </h1>
+
+    <p class="intro">
+      We combine innovative government and technology with cognitive awareness and training that sticks,
+      allowing towns to do more while enabling staff and the community to grow.
+    </p>
+
+    <section class="layout">
+      <!-- Sidebar -->
+      <aside>
+        <div class="card">
+          <h3>Briefing Window</h3>
+          <p>
+            Standard discovery sessions are 60 to 90 minutes.
+            Please ensure key municipal stakeholders are available.
+          </p>
+        </div>
+
+        <div class="card card-dark">
+          <h3>Board-Safe</h3>
+          <p>
+            All scheduled calls are conducted within our institutional privacy framework.
+          </p>
+        </div>
+
+        <div class="card">
+          <p class="note">
+            If the calendar does not load, please use the booking link provided in your briefing email.
+          </p>
+        </div>
+      </aside>
+
+      <!-- Calendar -->
+      <div class="calendar">
+        <iframe
+          src="https://outlook.office.com/book/PublicLogic1@publiclogic.org/?ismsaljsauthenabled"
+          scrolling="yes"
+          title="PublicLogic Scheduler">
+        </iframe>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

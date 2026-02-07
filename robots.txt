@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /drafts/
+Disallow: /archive/
+Disallow: /*.old.html$
+Disallow: /*_backup.html$
+Disallow: /private/
+Disallow: /.env
+Disallow: /.git/
+
+Sitemap: https://publiclogic.dev/sitemap.xml

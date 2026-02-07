@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>VAULT Module View | PublicLogic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body data-pl-view="module">
+  <header class="pl-header">
+    <div class="pl-container header-inner">
+      <div class="brand">
+        <span class="logo-dot"></span>
+        <div class="brand-text">
+          <span class="brand-name">PublicLogic</span>
+          <span class="brand-tagline" id="brandTagline">VAULT module view</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="index.html" class="nav-link">VAULT</a>
+        <span class="nav-pill">Pilot shell</span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="pl-main">
+    <section class="pl-section">
+      <div class="pl-container">
+        <header class="section-header">
+          <div>
+            <h1 id="pageTitle">Module structure view</h1>
+            <p class="lead" id="pageLead">
+              This page reads a single JSON file generated from a SharePoint list and
+              rendered by this shell. It is meant to keep the conversation on structure,
+              not personalities.
+            </p>
+          </div>
+          <div class="callout">
+            <p class="muted small" id="metaPath">
+              Data source: <code>/data/&lt;file&gt;.json</code>
+            </p>
+            <p class="muted small" id="metaInfo"></p>
+          </div>
+        </header>
+
+        <div id="status" class="status-bar">
+          Loading current metrics from latest snapshot
+        </div>
+
+        <div class="filters-row">
+          <label class="filter-label">
+            Filter by category
+            <select id="categoryFilter">
+              <option value="all">All categories</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="metrics-table" aria-describedby="tableCaption">
+            <caption id="tableCaption" class="muted">
+              Each row is one metric defined in SharePoint and published through Power Automate.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Metric</th>
+                <th scope="col">Category</th>
+                <th scope="col">Value</th>
+                <th scope="col">Notes</th>
+              </tr>
+            </thead>
+            <tbody id="metricsBody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pl-footer">
+    <div class="pl-container footer-inner">
+      <span>© <span id="year"></span> PublicLogic LLC</span>
+      <span class="muted">Working shell for VAULT module views.</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

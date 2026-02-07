@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Quick Setup — Google Workspace (Sutton)</title>
+<style>body{font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;margin:24px;line-height:1.55;color:#0f1f2a} code,pre{background:#f6f8fa;padding:.2rem .4rem;border-radius:6px}</style>
+</head><body>
+<h1>Quick Setup — Google Workspace (Sutton)</h1>
+<p><strong>Goal:</strong> Be live in under 30 minutes. These steps are human‑readable and safe to delegate.</p>
+<ol>
+  <li>Create shared inboxes: <code>rao@town.sutton.ma.us</code> and <code>clerk-intake@town.sutton.ma.us</code>.</li>
+  <li>Add Gmail labels: <code>vault/intake</code>, <code>vault/hold</code>, <code>vault/published</code>.</li>
+  <li>Create a Shared Drive: <code>Sutton_VAULTCLERK</code> with folder <code>/intake_scans</code> (300 dpi PDFs).</li>
+  <li>Create a Google Sheet: <code>Phone_311_Log</code> with headers <code>datetime,caller,subject,location,notes</code>.</li>
+  <li>Point Polimorphic form endpoint to <code>/intake</code>.</li>
+</ol>
+<h2>Apps Script: Label Creator (optional)</h2>
+<p>In Gmail, open <em>Settings → Advanced → Apps Script</em>, create a script, and paste this:</p>
+<pre>
+function createVaultLabels() {
+  const labels = ["vault/intake","vault/hold","vault/published"];
+  labels.forEach(name => GmailApp.createLabel(name));
+  Logger.log("Labels ready.");
+}
+</pre>
+<h2>Filters (optional)</h2>
+<p>Create a filter: If <em>To</em> is <code>rao@town.sutton.ma.us</code> then apply label <code>vault/intake</code>.</p>
+<h2>Drive Structure</h2>
+<pre>Sutton_VAULTCLERK/
+└─ intake_scans/  ← 300 dpi PDFs
+</pre>
+<h2>Phone/311 Log (CSV template)</h2>
+<p>Import the included <code>phone311_template.csv</code> into a Google Sheet named <code>Phone_311_Log</code>.</p>
+</body></html>

@@ -1,0 +1,11 @@
+
+PublicLogic VAULTCLERK™ Pilot License
+Copyright (c) 2025 PublicLogic LLC
+
+Permission is hereby granted to the Town of Sutton, Massachusetts (the “Municipality”),
+and PublicLogic’s designated partners (Polimorphic, Capital Strategic Solutions, PublicInsight)
+to use this repository for pilot operations, internal evaluation, and implementation planning.
+
+Redistribution or sublicensing outside of the above parties requires written permission from PublicLogic LLC.
+All schema, folder doctrine, automation specifications, documentation, and training materials herein remain
+the intellectual property of PublicLogic LLC. All rights reserved.

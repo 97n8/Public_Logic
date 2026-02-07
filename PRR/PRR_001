@@ -1,0 +1,193 @@
+# VAULTPRR™
+## Canonical System Architecture, Domain Model, Enforcement, and Retention
+Framework as a Standard™ • v1.0 • Massachusetts Public Records Requests (M.G.L. c.66 §10, 950 CMR 32.00)
+
+This file is the canonical build contract for VAULTPRR™.
+It is written to match the Polymorphic diagram language Parth shared: locked semantics, abstract spine, domain objects, then an executable lifecycle.
+
+---
+
+## How to read this
+1. Start with the Canonical Architecture Map. This is the block diagram Parth wanted.
+2. Use the Executable Lifecycle as the step graph the runtime enforces.
+3. Use the Asset Taxonomy and Retention Schedule to implement storage, locking, and disposal behavior.
+4. Treat timers and gates as CASE computed fields and path rules.
+
+---
+
+## Canonical Architecture Map
+Legend on the left, abstract control spine in the center, domain model on the right.
+This is not a workflow diagram. This is the system contract.
+
+```mermaid
+flowchart LR
+
+%% ============================================================
+%% VAULTPRR™ CANONICAL SYSTEM ARCHITECTURE AND DOMAIN MODEL
+%% ============================================================
+
+%% ---------------------------
+%% LEFT RAIL LEGEND
+%% ---------------------------
+subgraph L["Legend and Semantics (LOCK THIS)"]
+direction TB
+
+subgraph LT["Step Types"]
+direction TB
+LT1["FormStep<br/>Intake and submission"]
+LT2["SystemEvent<br/>Compute and enforce"]
+LT3["ReviewStep<br/>Authority decision"]
+LT4["ManualStep<br/>Search and gather"]
+LT5["DocumentStep<br/>Generate artifact"]
+LT6["SendEmailStep<br/>Notify and deliver"]
+LT7["PaymentStep<br/>Estimate and invoice"]
+LT8["DecisionGate<br/>Branching rule"]
+end
+
+subgraph LC["Record Classes"]
+direction TB
+LC1["KEEPER: Permanent"]
+LC2["Reference: 7 years"]
+LC3["Transactional: 1 to 2 years"]
+end
+
+subgraph LM["Immutability"]
+direction TB
+LM1["LOCKED artifact<br/>No in place edits"]
+LM2["Versioned replacement only<br/>Superseded chain stored in CASE"]
+end
+
+subgraph LD["Statutory Timers"]
+direction TB
+LD1["T10: Initial written response due<br/>10 business days from effective receipt"]
+LD2["T20: Petition window due<br/>If needed for extension"]
+LD3["T25: Municipal outer limit<br/>Unless requester agreement or petition granted"]
+LD4["T90: Appeal window tracking<br/>Stored as CASE field"]
+end
+
+subgraph LS["Implementation Stack"]
+direction TB
+LS1["PublicLogic™: Framework"]
+LS2["Polymorphic: Runtime"]
+LS3["PublicInsight™: Training"]
+end
+end
+
+%% ---------------------------
+%% CENTER ABSTRACT CONTROL SPINE
+%% ---------------------------
+subgraph C["Abstract Control Spine (NO LABELS INSIDE BOXES)"]
+direction TB
+S0((START))
+S1[" "]
+S2[" "]
+S3[" "]
+S4[" "]
+S5[" "]
+S6[" "]
+S7[" "]
+S8((END))
+S0 --> S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7 --> S8
+S3 -.->|Clarify loop| S2
+S3 -.->|No records| S8
+S5 -.->|Withhold| S8
+S7 -.->|Non payment| S8
+end
+
+%% ---------------------------
+%% RIGHT RAIL DOMAIN MODEL
+%% ---------------------------
+subgraph R["Domain Model (Build Targets)"]
+direction TB
+
+subgraph CASE["CASE Workspace (PRR CASE)"]
+direction TB
+CASE1["CaseID: UUID"]
+CASE2["CharterID: String"]
+CASE3["RAOOwner: UserID"]
+CASE4["RequesterIdentity: name, email, phone, address"]
+CASE5["IntakeChannel: Email, Mail, Portal, Phone, InPerson"]
+CASE6["Scope: Text (versioned)"]
+CASE7["EffectiveReceiptDate: Date<br/>Next business day if weekend, holiday, or closure"]
+CASE8["DeadlineModel:<br/>T10, T20, T25, ExtensionThrough, AppealEnd"]
+CASE9["FeesAllowed: Boolean"]
+CASE10["Status: Enum<br/>ClosureReason: Enum"]
+end
+
+subgraph PROC["Process"]
+direction TB
+PROC1["ProcessID: UUID"]
+PROC2["CaseID: UUID (FK)"]
+PROC3["ActiveStepID: UUID"]
+PROC4["EnforcementRules:<br/>BlockForwardProgressOnMissingCapture<br/>DisableFeesIfT10Missed<br/>RequireAgreementOrPetitionIfForecastBeyondT25"]
+end
+
+subgraph STEP["Step"]
+direction TB
+STEP1["StepID: UUID"]
+STEP2["StepType: Form, SystemEvent, Review, Manual, Document, Payment, Email, DecisionGate"]
+STEP3["KeeperClass: Permanent, Reference, Transactional"]
+STEP4["Locked: Boolean"]
+STEP5["RequiredCapture: Array of strings"]
+end
+
+subgraph ASSET["Asset (All documents live here)"]
+direction TB
+AS1["AssetID: UUID"]
+AS2["CaseID: UUID (FK)"]
+AS3["AssetType: Enum"]
+AS4["SourceChannel and SourceSystem"]
+AS5["NativeFormat and ConvertedFormat"]
+AS6["Hash: SHA 256 optional"]
+AS7["RedactionStatus and ExemptionTags"]
+AS8["RetentionPolicy, Locked, VersionChain"]
+end
+
+subgraph PATH["Path"]
+direction TB
+PATH1["FromStepID to ToStepID"]
+PATH2["Condition expression"]
+PATH3["TollRule expression"]
+PATH4["GateRule expression<br/>T10Met, FeesAllowed, PetitionRequired"]
+end
+
+subgraph PERM["Permission"]
+direction TB
+PERM1["Role: RAO, Custodian, Counsel, Admin"]
+PERM2["GrantedTo: UserID or GroupID"]
+PERM3["CaseID: UUID (FK)"]
+end
+
+subgraph LOG["Log"]
+direction TB
+LOG1["Timestamp"]
+LOG2["Actor"]
+LOG3["Action"]
+LOG4["StepID"]
+LOG5["AssetIDsAffected"]
+end
+
+end
+
+%% ---------------------------
+%% SPINE ATTACHMENTS (SIDE CALLOUTS ONLY)
+%% ---------------------------
+S1 --- CALLOUT1["Intake (FormStep)<br/>KEEPER Permanent"]
+S2 --- CALLOUT2["Compute timers and validity (SystemEvent)<br/>T10, T20, T25, EffectiveReceiptDate"]
+S3 --- CALLOUT3["RAO assessment (ReviewStep)<br/>KEEPER Permanent"]
+S4 --- CALLOUT4["Search and gather (ManualStep)<br/>KEEPER Permanent"]
+S5 --- CALLOUT5["Exemption and segregability (ReviewStep)<br/>KEEPER Permanent"]
+S6 --- CALLOUT6["Response packaging (DocumentStep)<br/>LOCKED and KEEPER Permanent"]
+S7 --- CALLOUT7["Fees, payment, delivery (DecisionGate, PaymentStep, SendEmailStep)"]
+
+classDef spine fill:#f4f5f7,stroke:#9aa4b2,color:#111,stroke-width:1px;
+classDef keeper fill:#e8f5e9,stroke:#2e7d32,color:#111;
+classDef review fill:#fff3e0,stroke:#ef6c00,color:#111;
+classDef manual fill:#e3f2fd,stroke:#1565c0,color:#111;
+classDef locked fill:#2e7d32,stroke:#1b5e20,color:#fff;
+
+class S1,S2,S3,S4,S5,S6,S7 spine;
+class CALLOUT1,CALLOUT2 keeper;
+class CALLOUT3,CALLOUT5 review;
+class CALLOUT4 manual;
+class CALLOUT6 locked;

@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PublicLogic – Universal Intake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #475569;
+      --navy: #1e3a5f;
+      --green: #1f6a3e;
+      --border: #d7ded7;
+      --surface: #ffffff;
+      --bg: #f4f6f5;
+
+      --radius-pill: 999px;
+      --radius-lg: 0.85rem;
+      --radius-md: 0.65rem;
+
+      --shadow-subtle: 0 3px 10px rgba(15, 23, 42, 0.04);
+
+      --transition: 130ms ease;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(31, 106, 62, 0.06), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(30, 64, 175, 0.06), transparent 55%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .pl-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.6rem;
+    }
+
+    /* Header */
+
+    .pl-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .brand-name {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--muted);
+      padding: 0.36rem 0.9rem;
+      font-size: 0.88rem;
+      border-radius: var(--radius-pill);
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .nav-link:hover {
+      background: rgba(31, 106, 62, 0.10);
+      color: var(--green);
+    }
+
+    .nav-link.active {
+      background: var(--green);
+      color: #ffffff;
+    }
+
+    /* Main */
+
+    .pl-main {
+      padding: 2.2rem 0 3rem;
+    }
+
+    .page-header {
+      margin-bottom: 1.2rem;
+    }
+
+    .page-header h1 {
+      margin: 0 0 0.25rem;
+      color: var(--navy);
+      font-size: 1.6rem;
+    }
+
+    .page-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      max-width: 720px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.3fr);
+      gap: 1.6rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.35rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .card h2 {
+      margin: 0 0 0.4rem;
+      color: var(--navy);
+      font-size: 1.1rem;
+    }
+
+    .small {
+      font-size: 0.8rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .soft-divider {
+      border: none;
+      border-bottom: 1px solid var(--border);
+      margin: 0.9rem 0 0.8rem;
+    }
+
+    /* Form */
+
+    form {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .field-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .field-hint {
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      font: inherit;
+      padding: 0.45rem 0.6rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--ink);
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.3rem;
+    }
+
+    .pill-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid #d7ded7;
+      background: #f4f6f5;
+      font-size: 0.8rem;
+    }
+
+    .pill-option input {
+      margin: 0;
+    }
+
+    .radio-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.3rem;
+    }
+
+    .radio-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid #d7ded7;
+      background: #f9faf9;
+      font-size: 0.8rem;
+    }
+
+    .radio-option input {
+      margin: 0;
+    }
+
+    /* Button */
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.2rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      background: #1f6a3e;
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition:
+        background var(--transition),
+        box-shadow var(--transition),
+        transform var(--transition);
+    }
+
+    .btn-primary:hover {
+      background: #175133;
+      box-shadow: 0 4px 12px rgba(23, 81, 51, 0.35);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .form-note {
+      margin-top: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* Sidebar */
+
+    .small-heading {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 0.2rem 0 0.25rem;
+    }
+
+    .steps-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.85rem;
+    }
+
+    .steps-list li {
+      padding: 0.2rem 0;
+    }
+
+    .meta-list {
+      list-style: none;
+      margin: 0.1rem 0 0.6rem;
+      padding: 0;
+      font-size: 0.82rem;
+    }
+
+    .meta-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    /* Footer */
+
+    .pl-footer {
+      border-top: 1px solid var(--border);
+      background: #f9fafb;
+      padding: 0.75rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .field-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="pl-header">
+    <div class="pl-container header-inner">
+      <a href="https://publiclogic.org" class="brand">
+        <span class="brand-name">PublicLogic</span>
+        <span class="brand-tagline">Smart Systems. Stronger Communities.</span>
+      </a>
+
+      <nav class="nav">
+        <a href="../../index.html" class="nav-link">Workspace home</a>
+        <a href="https://publiclogic978.sharepoint.com" class="nav-link">HQ</a>
+        <a href="https://outlook.office.com/mail" class="nav-link">Email</a>
+        <a href="https://www.office.com/launch/word" class="nav-link">Word</a>
+        <a href="https://www.office.com/launch/excel" class="nav-link">Excel</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="pl-main">
+    <div class="pl-container">
+
+      <header class="page-header">
+        <h1>Universal Intake</h1>
+        <p>
+          One form for everything. Use this to start a municipal project, a research initiative,
+          or a joint build. Submitting creates an item in the intake SharePoint list. The flows
+          then build the folders, create files, and move the work into the boards.
+        </p>
+      </header>
+
+      <div class="layout">
+
+        <!-- Form -->
+        <section class="card">
+          <h2>New intake</h2>
+
+          <form id="intakeForm">
+            <!-- Step 1: Who is this for -->
+            <div class="field-group">
+              <span class="field-label">Step 1. Who is this for?</span>
+              <div class="field-row">
+                <div class="field-group">
+                  <label class="field-label" for="orgName">Town or organization</label>
+                  <input type="text" id="orgName" name="OrgName" required>
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="timeline">Rough timing</label>
+                  <select id="timeline" name="Timeline">
+                    <option value="">Select</option>
+                    <option value="discovery">Discovery or scoping only</option>
+                    <option value="start-soon">Start within three months</option>
+                    <option value="start-later">Start within three to six months</option>
+                    <option value="long-term">Longer term or to be decided</option>
+                  </select>
+                </div>
+              </div>
+              <p class="field-hint">
+                This gives us a basic sense of who the work is for and how soon it might start.
+              </p>
+            </div>
+
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label" for="contactName">Primary contact</label>
+                <input type="text" id="contactName" name="PrimaryContact" required>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="contactEmail">Contact email</label>
+                <input type="email" id="contactEmail" name="ContactEmail" required>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label" for="contactPhone">Contact phone</label>
+                <input type="tel" id="contactPhone" name="ContactPhone">
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="internalOwner">Internal owner</label>
+                <input type="text" id="internalOwner" name="InternalOwner" placeholder="Who on our side is driving this?">
+              </div>
+            </div>
+
+            <hr class="soft-divider">
+
+            <!-- Step 2: Track -->
+            <div class="field-group">
+              <span class="field-label">Step 2. What track fits best?</span>
+              <div class="radio-row">
+                <label class="radio-option">
+                  <input type="radio" name="EngagementTrack" value="MunicipalSystems" required>
+                  <span>Municipal systems and automation</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="EngagementTrack" value="Research">
+                  <span>Research and evaluation (PublicInsight, PublicPulse, EFRI)</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="EngagementTrack" value="Both">
+                  <span>Both system build and research</span>
+                </label>
+              </div>
+              <p class="field-hint">
+                Pick the closest match. This helps us route between VAULT builds and
+                research initiatives with Allie and the PublicInsight work.
+              </p>
+            </div>
+
+            <!-- Work type -->
+            <div class="field-group">
+              <label class="field-label" for="workType">Type of work</label>
+              <select id="workType" name="WorkType" required>
+                <option value="">Select</option>
+                <option value="pilot">Municipal pilot</option>
+                <option value="module-build">Module build or expansion</option>
+                <option value="records-vault">Records and VAULT</option>
+                <option value="sop-training">SOP and training</option>
+                <option value="research-initiative">Research initiative or study</option>
+                <option value="burnout-readiness">Burnout and readiness work (EFRI, PublicInstinct)</option>
+                <option value="advisory">Advisory or planning</option>
+                <option value="other">Other</option>
+              </select>
+              <p class="field-hint">
+                This becomes the base category in the SharePoint intake list.
+              </p>
+            </div>
+
+            <!-- Modules -->
+            <div class="field-group">
+              <span class="field-label">Step 3. What is mainly in play?</span>
+              <div class="pill-row">
+                <label class="pill-option">
+                  <input type="checkbox" name="Modules" value="VAULT">
+                  <span>VAULT core</span>
+                </label>
+                <label class="pill-option">
+                  <input type="checkbox" name="Modules" value="VAULTCLERK">
+                  <span>VAULTCLERK</span>
+                </label>
+                <label class="pill-option">
+                  <input type="checkbox" name="Modules" value="VAULTFIX">
+                  <span>VAULTFIX</span>
+                </label>
+                <label class="pill-option">
+                  <input type="checkbox" name="Modules" value="MS4">
+                  <span>MS4</span>
+                </label>
+                <label class="pill-option">
+                  <input type="checkbox" name="Modules" value="CIP">
+                  <span>CIP</span>
+                </label>
+                <label class="pill-option">
+                  <input type="checkbox" name="Modules" value="TIME">
+                  <span>TIME and payroll</span>
+                </label>
+                <label class="pill-option">
+                  <input type="checkbox" name="Modules" value="PublicInsight">
+                  <span>PublicInsight and PublicPulse</span>
+                </label>
+                <label class="pill-option">
+                  <input type="checkbox" name="Modules" value="EFRI">
+                  <span>EFRI and PublicInstinct</span>
+                </label>
+                <label class="pill-option">
+                  <input type="checkbox" name="Modules" value="Other">
+                  <span>Other</span>
+                </label>
+              </div>
+              <p class="field-hint">
+                For the SharePoint list you can store this as a single text field joined by commas,
+                or as a multi choice column.
+              </p>
+            </div>
+
+            <!-- Research focus -->
+            <div class="field-group">
+              <label class="field-label" for="researchFocus">If research or EFRI is involved, what are we looking at?</label>
+              <textarea id="researchFocus" name="ResearchFocus" placeholder="For example: EFRI readiness index with staff, burnout and recovery trends, PublicInsight survey on workflow pain points."></textarea>
+              <p class="field-hint">
+                Keep this plain. What group, what question, and what kind of data or pattern we are
+                trying to understand. This helps Allie line it up with the research frameworks.
+              </p>
+            </div>
+
+            <hr class="soft-divider">
+
+            <!-- Summary -->
+            <div class="field-group">
+              <label class="field-label" for="summary">Short summary</label>
+              <textarea id="summary" name="Summary" required placeholder="One or two sentences that a Town Manager or Board could understand at a glance."></textarea>
+              <p class="field-hint">
+                This becomes the title or description for the intake list item and can be reused in
+                board packets and simple motions.
+              </p>
+            </div>
+
+            <!-- Notes -->
+            <div class="field-group">
+              <label class="field-label" for="notes">Notes or context</label>
+              <textarea id="notes" name="Notes" placeholder="Optional extra detail. Funding sources, partners, known pain points, or constraints."></textarea>
+            </div>
+
+            <!-- Hidden fields that the flow can use -->
+            <input type="hidden" name="Source" value="PL-Workspace">
+            <input type="hidden" name="Status" value="New">
+
+            <button type="submit" class="btn-primary">Submit intake</button>
+            <p class="form-note">
+              When wired to Power Automate this will create a new item in the Universal Intake
+              SharePoint list and start the project flow. That flow can then build the folder tree,
+              drop the starter files, and post the project to the boards.
+            </p>
+          </form>
+        </section>
+
+        <!-- Sidebar explanation -->
+        <aside class="card">
+          <h2>What this form does</h2>
+          <p class="small muted">
+            This form is the top of the tree. It covers both municipal system work and research
+            initiatives, including the PublicInsight and EFRI work. You fill in the basics and the
+            system builds the structure.
+          </p>
+
+          <hr class="soft-divider">
+
+          <h3 class="small-heading">SharePoint list</h3>
+          <p class="small muted">
+            In Microsoft 365 create a list such as <strong>PL_UniversalIntake</strong> with
+            columns that match these field names:
+          </p>
+          <ul class="meta-list">
+            <li><span>OrgName</span><span>Single line of text</span></li>
+            <li><span>PrimaryContact</span><span>Single line of text</span></li>
+            <li><span>ContactEmail</span><span>Single line of text</span></li>
+            <li><span>ContactPhone</span><span>Single line of text</span></li>
+            <li><span>InternalOwner</span><span>Single line of text</span></li>
+            <li><span>Timeline</span><span>Choice</span></li>
+            <li><span>EngagementTrack</span><span>Choice</span></li>
+            <li><span>WorkType</span><span>Choice</span></li>
+            <li><span>Modules</span><span>Single line or multi choice</span></li>
+            <li><span>ResearchFocus</span><span>Multiple lines</span></li>
+            <li><span>Summary</span><span>Multiple lines</span></li>
+            <li><span>Notes</span><span>Multiple lines</span></li>
+            <li><span>Source</span><span>Single line of text</span></li>
+            <li><span>Status</span><span>Choice</span></li>
+          </ul>
+
+          <h3 class="small-heading">Flow outline</h3>
+          <ul class="steps-list">
+            <li>Trigger: When an HTTP request is received in Power Automate.</li>
+            <li>Parse the JSON body using these field names.</li>
+            <li>Create an item in <strong>PL_UniversalIntake</strong>.</li>
+            <li>Use that item to build the folder tree and starter files in SharePoint.</li>
+            <li>Post the project to the Processing board and send any alerts.</li>
+            <li>For research work, flag the item for the PublicInsight and EFRI tracking views.</li>
+          </ul>
+
+          <p class="small muted">
+            The form does not hold any data. Everything lives in SharePoint and in the flows, so
+            files stay secure and auditable.
+          </p>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="pl-footer">
+    <div class="pl-container footer-inner">
+      <span>© <span id="year"></span> PublicLogic LLC</span>
+      <span class="muted">Universal Intake connected to Microsoft 365 and SharePoint.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Set year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Basic submit handler – replace the URL with your Power Automate HTTP trigger
+    document.getElementById("intakeForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+
+      // Join module checkboxes into one string
+      const modules = formData.getAll("Modules");
+      formData.delete("Modules");
+      formData.set("Modules", modules.join(", "));
+
+      const payload = {};
+      formData.forEach((value, key) => {
+        payload[key] = value;
+      });
+
+      try {
+        // Replace with your flow URL
+        const flowUrl = "https://YOUR_POWER_AUTOMATE_ENDPOINT_URL_HERE";
+
+        await fetch(flowUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        alert("Intake submitted. The project will appear in the intake list once the flow runs.");
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        alert("There was a problem submitting the intake. Please try again or contact support.");
+      }
+    });
+  </script>
+</body>
+</html>

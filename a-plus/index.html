@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a1f1a" />
+  <title>A+ | PublicLogic</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <div class="app" id="app">
+    <header class="top">
+      <div class="brand">
+        <div class="brand__mark">A+</div>
+        <div class="brand__text">
+          <div class="brand__title">A+</div>
+          <div class="brand__sub">PublicLogic</div>
+        </div>
+      </div>
+
+      <div class="user" role="group" aria-label="Active user">
+        <button class="user__btn" data-user="Nate" aria-pressed="true">Nate</button>
+        <button class="user__btn" data-user="Allie" aria-pressed="false">Allie</button>
+      </div>
+    </header>
+
+    <main class="stack">
+      <section class="panel" style="--delay: 40ms" aria-label="Owned">
+        <h2>Owned</h2>
+        <ul class="list" id="owned-list"></ul>
+      </section>
+
+      <section class="panel" style="--delay: 120ms" aria-label="Shared">
+        <h2>Shared</h2>
+        <ul class="list" id="shared-list"></ul>
+      </section>
+
+      <section class="panel" style="--delay: 200ms" aria-label="Parked">
+        <h2>Parked</h2>
+        <ul class="list" id="parked-list"></ul>
+      </section>
+
+      <section class="panel" style="--delay: 280ms" aria-label="Signals">
+        <h2>Signals</h2>
+        <div class="signal-block">
+          <div class="signal-title">Calendar</div>
+          <ul class="list" id="calendar-list"></ul>
+        </div>
+        <div class="signal-block">
+          <div class="signal-title">Prompts</div>
+          <ul class="list" id="prompt-list"></ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <nav class="action-bar" aria-label="Quick actions">
+    <button class="action" data-create="task">+ Task</button>
+    <button class="action" data-create="lead">+ Lead</button>
+    <button class="action" data-create="project">+ Project</button>
+  </nav>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

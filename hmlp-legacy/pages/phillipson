@@ -1,0 +1,10 @@
+// pages/phillipston.js
+import { PhillipstonApp } from "../src/phillipston/index.js";
+
+export async function renderPhillipston({ cfg, auth, sp }) {
+  return {
+    title: "Phillipston",
+    subtitle: "Internal Operations & Public Records",
+    content: PhillipstonApp({ cfg, auth, sp })
+  };
+}

@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PublicLogic Acronym Register</title>
+  <style>
+    :root{
+      --ink:#111316;
+      --muted:#6b7280;
+      --bg:#f7f7f8;
+      --card:#ffffff;
+      --accent:#1f6feb;
+      --rule:#e6e7eb;
+      --radius:16px;
+    }
+    html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif}
+    .wrap{max-width:1100px;margin:auto;padding:32px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
+    .brand{display:flex;flex-direction:column}
+    h1{font-size:clamp(28px,3vw,40px);margin:0 0 4px 0}
+    .tag{color:var(--muted);font-size:14px}
+    .tools{display:flex;gap:8px}
+    button, .btn{appearance:none;border:1px solid var(--rule);background:var(--card);padding:10px 14px;border-radius:10px;cursor:pointer}
+    button:hover,.btn:hover{border-color:var(--accent)}
+    .grid{display:grid;grid-template-columns:260px 1fr;gap:24px}
+    @media (max-width: 900px){.grid{grid-template-columns:1fr}}
+    nav{position:sticky;top:16px;background:transparent}
+    .navcard{background:var(--card);border:1px solid var(--rule);border-radius:var(--radius);padding:16px}
+    .navcard h3{margin:0 0 8px 0;font-size:16px}
+    .navcard a{display:block;padding:6px 8px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:14px}
+    .navcard a:hover{background:#f1f4ff}
+
+    section{background:var(--card);border:1px solid var(--rule);border-radius:var(--radius);padding:18px 18px 10px 18px;margin-bottom:16px}
+    section h2{margin:0 0 12px 0;font-size:18px}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:10px 8px;text-align:left;vertical-align:top}
+    thead th{font-weight:600;border-bottom:2px solid var(--rule)}
+    tbody tr+tr td{border-top:1px solid var(--rule)}
+    .acr{font-weight:700;letter-spacing:.3px}
+    footer{margin-top:28px;color:var(--muted);font-size:14px}
+    .hr{height:1px;background:var(--rule);margin:16px 0}
+    .pill{display:inline-block;font-size:12px;border:1px solid var(--rule);padding:2px 8px;border-radius:999px;margin-left:8px;color:var(--muted)}
+    .kicker{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <h1>PublicLogic Acronym Register</h1>
+        <div class="kicker">Smart Systems. Stronger Communities.</div>
+      </div>
+      <div class="tools">
+        <button onclick="window.print()" title="Print or Save as PDF">Print</button>
+        <a class="btn" download="PublicLogic_Acronym_Register.html" href="#" onclick="downloadHTML(event)">Download HTML</a>
+      </div>
+    </header>
+
+    <div class="grid">
+      <nav>
+        <div class="navcard">
+          <h3>Jump to</h3>
+          <a href="#core">Core Systems</a>
+          <a href="#governance">Governance & Administration</a>
+          <a href="#finance">Finance & Fiscal Management</a>
+          <a href="#landuse">Land Use & Development</a>
+          <a href="#safety">Public Safety & Health</a>
+          <a href="#infrastructure">Infrastructure & Facilities</a>
+          <a href="#workforce">Workforce & HR</a>
+          <a href="#licensing">Licensing & Community</a>
+          <a href="#environment">Environment & Recreation</a>
+          <a href="#records">Records & Compliance</a>
+          <a href="#engagement">Engagement & Research</a>
+          <a href="#strategic">Strategic & Regional Development</a>
+        </div>
+      </nav>
+
+      <main>
+        <!-- Core Systems -->
+        <section id="core">
+          <h2>Core Systems<span class="pill">Core</span></h2>
+          <table>
+            <thead><tr><th>Acronym</th><th>Full Name</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td class="acr">CONNECT</td><td>Connected Government Framework</td><td>The intake and automation backbone that unifies municipal workflows.</td></tr>
+              <tr><td class="acr">VAULT</td><td>Verified Automation & Universal Logic Template</td><td>Records compliance and lifecycle automation engine.</td></tr>
+              <tr><td class="acr">ARCHIVE</td><td>Automated Records Compliance Hub & Integrated Verification Engine</td><td>Transparency, open data, and public access layer.</td></tr>
+              <tr><td class="acr">LOGICLAB</td><td>Logic Laboratory</td><td>Research sandbox for operational and behavioral experimentation.</td></tr>
+              <tr><td class="acr">COMPLYENGINE</td><td>Compliance Engine</td><td>Automated MGL citation, retention mapping, and validation logic.</td></tr>
+              <tr><td class="acr">METRIX</td><td>Metrics & Reporting Dashboard</td><td>Live KPI and performance visualization across modules.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Governance & Administration -->
+        <section id="governance">
+          <h2>Governance & Administration</h2>
+          <table>
+            <thead><tr><th>Acronym</th><th>Full Name</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td class="acr">CLERK</td><td>Clerk Operations System</td><td>Meeting postings, filings, and election workflows.</td></tr>
+              <tr><td class="acr">BOARD</td><td>Board & Committee Manager</td><td>Appointments, terms, and oath tracking.</td></tr>
+              <tr><td class="acr">TM</td><td>Town Meeting Manager</td><td>Article creation, motions, and certification.</td></tr>
+              <tr><td class="acr">BYLAW</td><td>Bylaw Tracker</td><td>Codification and Attorney General submission tracking.</td></tr>
+              <tr><td class="acr">POLICY</td><td>Policy Register</td><td>Adoption, review cycles, and version control.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Finance & Fiscal Management -->
+        <section id="finance">
+          <h2>Finance & Fiscal Management</h2>
+          <table>
+            <thead><tr><th>Acronym</th><th>Full Name</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td class="acr">FISCAL</td><td>Fiscal Management Suite</td><td>Budget development, analysis, and collaboration.</td></tr>
+              <tr><td class="acr">APEX</td><td>Accounts Payable Exchange</td><td>Turnover and warrant automation for departments.</td></tr>
+              <tr><td class="acr">PROCURE</td><td>Procurement Manager</td><td>30B bids, quotes, and contract routing.</td></tr>
+              <tr><td class="acr">CIP</td><td>Capital Improvement Planning</td><td>Project pipeline and scoring framework.</td></tr>
+              <tr><td class="acr">REVEX</td><td>Revolving & Enterprise Fund Manager</td><td>Revolving fund and enterprise oversight.</td></tr>
+              <tr><td class="acr">GRANT</td><td>Grant Management Portal</td><td>Application intake, reporting, and compliance.</td></tr>
+              <tr><td class="acr">COLLECT</td><td>Collections Workflow</td><td>Receipts, commitments, and turnovers.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Land Use & Development -->
+        <section id="landuse">
+          <h2>Land Use & Development</h2>
+          <table>
+            <thead><tr><th>Acronym</th><th>Full Name</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td class="acr">PLAN</td><td>Planning Portal</td><td>ANR, subdivision, and site plan management.</td></tr>
+              <tr><td class="acr">PERMIT</td><td>Unified Permitting Hub</td><td>Centralized permitting for all building-related work.</td></tr>
+              <tr><td class="acr">INSPECT</td><td>Inspectional Services Tracker</td><td>Building, wiring, plumbing, and gas inspections.</td></tr>
+              <tr><td class="acr">ZBA</td><td>Zoning Board of Appeals</td><td>Variances, appeals, and decisions.</td></tr>
+              <tr><td class="acr">CONSERVE</td><td>Conservation Tracker</td><td>NOI, RDA, and enforcement workflow.</td></tr>
+              <tr><td class="acr">HEAR</td><td>Public Hearing Manager</td><td>Hearing scheduling, notice creation, and records.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Public Safety & Health -->
+        <section id="safety">
+          <h2>Public Safety & Health</h2>
+          <table>
+            <thead><tr><th>Acronym</th><th>Full Name</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td class="acr">FIRE</td><td>Fire Permitting System</td><td>Burn, oil, LP, and fireworks permits.</td></tr>
+              <tr><td class="acr">PD</td><td>Police Department Portal</td><td>Details, firearms licensing, and records.</td></tr>
+              <tr><td class="acr">BOH</td><td>Board of Health Portal</td><td>Septic, food, and housing workflows.</td></tr>
+              <tr><td class="acr">PAWS</td><td>Public Animal Welfare System</td><td>Animal control, licensing, and enforcement.</td></tr>
+              <tr><td class="acr">EM</td><td>Emergency Management</td><td>Emergency plans, drills, and incident logs.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Infrastructure & Facilities -->
+        <section id="infrastructure">
+          <h2>Infrastructure & Facilities</h2>
+          <table>
+            <thead><tr><th>Acronym</th><th>Full Name</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td class="acr">FIX</td><td>Field Issue Exchange</td><td>DPW and facilities service request system.</td></tr>
+              <tr><td class="acr">DPW</td><td>Public Works Operations</td><td>Work orders, roads, and stormwater management.</td></tr>
+              <tr><td class="acr">FACILITY</td><td>Facilities Maintenance Manager</td><td>Preventive maintenance and inspection tracking.</td></tr>
+              <tr><td class="acr">TREE</td><td>Tree Warden Tracker</td><td>Public shade tree permits and hearings.</td></tr>
+              <tr><td class="acr">FLEET</td><td>Fleet Management</td><td>Vehicle maintenance and fuel tracking.</td></tr>
+              <tr><td class="acr">SOLID</td><td>Solid Waste Manager</td><td>Hauler permits and recycling compliance.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Workforce & HR -->
+        <section id="workforce">
+          <h2>Workforce & HR</h2>
+          <table>
+            <thead><tr><th>Acronym</th><th>Full Name</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td class="acr">HR</td><td>Human Resources</td><td>Personnel files, evaluations, and postings.</td></tr>
+              <tr><td class="acr">TIME</td><td>Timesheet & Payroll</td><td>Employee time, leave, and pay submissions.</td></tr>
+              <tr><td class="acr">TRAIN</td><td>Training & Certification Tracker</td><td>MCPPO, OSHA, and ethics training compliance.</td></tr>
+              <tr><td class="acr">BENEFIT</td><td>Employee Benefits Manager</td><td>Health, retirement, and insurance tracking.</td></tr>
+              <tr><td class="acr">UNION</td><td>Collective Bargaining Portal</td><td>Contract, grievance, and negotiation record.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Licensing & Community -->
+        <section id="licensing">
+          <h2>Licensing & Community</h2>
+          <table>
+            <thead><tr><th>Acronym</th><th>Full Name</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td class="acr">LICENSE</td><td>General Licensing Portal</td><td>Common victualler, liquor, taxi, and dealer licenses.</td></tr>
+              <tr><td class="acr">DOG</td><td>Dog & Kennel Licensing</td><td>Annual and kennel registration.</td></tr>
+              <tr><td class="acr">DBA</td><td>Business Certificate Manager</td><td>“Doing Business As” filings and renewals.</td></tr>
+              <tr><td class="acr">EVENT</td><td>Event Permitting</td><td>One-day, entertainment, and facility use permits.</td></tr>
+              <tr><td class="acr">PEDDLER</td><td>Peddler & Solicitor Permitting</td><td>Hawker and door-to-door licenses.</td></tr>
+              <tr><td class="acr">FILM</td><td>Filming & Property Use Manager</td><td>Filming permits and insurance documentation.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Environment & Recreation -->
+        <section id="environment">
+          <h2>Environment & Recreation</h2>
+          <table>
+            <thead><tr><th>Acronym</th><th>Full Name</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td class="acr">PLAY</td><td>Parks & Recreation</td><td>Field scheduling and program coordination.</td></tr>
+              <tr><td class="acr">ENERGY</td><td>Energy & Climate Manager</td><td>MVP and energy tracking initiatives.</td></tr>
+              <tr><td class="acr">CEM</td><td>Cemetery Management</td><td>Burial permits, lot sales, and care tracking.</td></tr>
+              <tr><td class="acr">LIB</td><td>Library Management Portal</td><td>Trustee reports and state aid compliance.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Records & Compliance -->
+        <section id="records">
+          <h2>Records & Compliance</h2>
+          <table>
+            <thead><tr><th>Acronym</th><th>Full Name</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td class="acr">FOIA</td><td>Freedom of Information Access</td><td>Public records request intake and tracking.</td></tr>
+              <tr><td class="acr">ETHICS</td><td>Ethics & Conflict Disclosure</td><td>Training, acknowledgments, and disclosures.</td></tr>
+              <tr><td class="acr">ADA</td><td>ADA & Accessibility Tracker</td><td>Grievance management and transition planning.</td></tr>
+              <tr><td class="acr">CYBER</td><td>Cybersecurity & IT Compliance</td><td>Incident logging and system security tracking.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Engagement & Research -->
+        <section id="engagement">
+          <h2>Engagement & Research</h2>
+          <table>
+            <thead><tr><th>Acronym</th><th>Full Name</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td class="acr">SERVE</td><td>Volunteer Management System</td><td>Onboarding, CORI, and assignments.</td></tr>
+              <tr><td class="acr">ENGAGE</td><td>Resident Engagement Platform</td><td>Surveys and citizen feedback loops.</td></tr>
+              <tr><td class="acr">INSIGHT</td><td>Public Insight Analytics</td><td>Data-driven engagement and sentiment analysis.</td></tr>
+              <tr><td class="acr">LOGIC</td><td>Human Logic Framework</td><td>Organizational behavior and burnout research.</td></tr>
+              <tr><td class="acr">EQUITY</td><td>Equity & Access Tracker</td><td>ADA, DEI, and inclusion case management.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Strategic & Regional Development -->
+        <section id="strategic">
+          <h2>Strategic & Regional Development</h2>
+          <table>
+            <thead><tr><th>Acronym</th><th>Full Name</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr><td class="acr">STRAT</td><td>Strategic Plan Tracker</td><td>Goal alignment and Select Board priorities.</td></tr>
+              <tr><td class="acr">ONESTOP</td><td>One Stop Grant Portal</td><td>Grant and capital project tracking.</td></tr>
+              <tr><td class="acr">HOUSING</td><td>Housing & Redevelopment Tracker</td><td>40B/40R project management.</td></tr>
+              <tr><td class="acr">REGCOLLAB</td><td>Regional Collaboration Hub</td><td>Inter-municipal agreements and shared services.</td></tr>
+              <tr><td class="acr">MVP</td><td>Municipal Vulnerability Preparedness</td><td>Climate and resilience project oversight.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <div class="hr"></div>
+        <footer>
+          <div><strong>PublicLogic</strong></div>
+          <div>Founded by Nathan Boudreau • Research Partner: Dr. Allison Rothschild</div>
+          <div>Smart Systems. Stronger Communities.</div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    function downloadHTML(e){
+      e.preventDefault();
+      const blob = new Blob([document.documentElement.outerHTML], {type:"text/html"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'PublicLogic_Acronym_Register.html';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url), 500);
+    }
+  </script>
+</body>
+</html>

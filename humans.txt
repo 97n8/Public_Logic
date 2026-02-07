@@ -1,0 +1,15 @@
+/* TEAM */
+Nathan Boudreau
+  Role: Founder & Principal
+  Location: Massachusetts
+
+Dr. Allison Weiss Rothschild
+  Role: Research & Behavioral Systems Lead
+
+/ THANKS */
+Built with care for towns that serve the public.
+
+/ TECHNOLOGY */
+HTML, CSS, JavaScript
+Mermaid for diagrams
+Hosted on Netlify

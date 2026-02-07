@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI for Impact Pilot – Introduction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: letter;
+      margin: 1in 0.75in;
+    }
+   
+    :root {
+      --navy: #0a2540;
+      --blue: #1a5f9e;
+      --blue-light: #e8f1f8;
+      --slate: #425466;
+      --gray: #6b7c93;
+      --border: #d8dfe7;
+      --bg-highlight: #f6f9fc;
+      --green: #0d6847;
+      --green-light: #e6f4ed;
+    }
+   
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      line-height: 1.68;
+      color: var(--navy);
+      max-width: 7.5in;
+      margin: 0 auto;
+      font-size: 11.75pt;
+      padding: 0 0.5in;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+   
+    h1, h2, h3 {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--navy);
+      margin-top: 1.4em;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+    }
+   
+    h1 {
+      font-size: 21pt;
+      text-align: center;
+      margin-bottom: 0.3em;
+      letter-spacing: -0.02em;
+    }
+   
+    h2 {
+      font-size: 13.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 0.4em;
+      margin-top: 2.2em;
+    }
+   
+    h3 {
+      font-size: 12.5pt;
+      margin-top: 1.3em;
+      color: var(--blue);
+    }
+   
+    p {
+      margin: 1em 0;
+    }
+   
+    ul, ol {
+      margin: 0.8em 0 0.8em 1.5em;
+    }
+   
+    li {
+      margin-bottom: 0.45em;
+    }
+   
+    .header-block {
+      text-align: center;
+      margin: 0 0 2.2em;
+      padding-bottom: 1.3em;
+      border-bottom: 1px solid var(--border);
+    }
+   
+    .header-logo {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 0.9em;
+      border-radius: 4px;
+    }
+   
+    .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 11pt;
+      color: var(--gray);
+      margin-top: 0;
+      letter-spacing: 0.03em;
+    }
+   
+    .tagline {
+      font-style: italic;
+      font-size: 12.5pt;
+      color: var(--slate);
+      margin-top: 1em;
+    }
+   
+    .free-badge {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 9.5pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35em 0.9em;
+      margin-top: 1.1em;
+      border-radius: 3px;
+    }
+   
+    .highlight {
+      background: var(--bg-highlight);
+      padding: 0.9em 1.1em;
+      border-left: 4px solid var(--blue);
+      margin: 1.5em 0;
+      font-style: italic;
+    }
+   
+    .highlight strong {
+      font-style: normal;
+    }
+   
+    .highlight-green {
+      background: var(--green-light);
+      border-left-color: var(--green);
+    }
+   
+    .example-box {
+      background: #fdf8f3;
+      border: 1px solid #e8d5c4;
+      padding: 1.1em 1.3em;
+      margin: 1.5em 0;
+      font-size: 11pt;
+    }
+   
+    .example-box strong {
+      font-family: 'Inter', sans-serif;
+      color: var(--navy);
+      display: block;
+      margin-bottom: 0.45em;
+      font-size: 10.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+   
+    /* Flow Diagram */
+    .flow-section {
+      margin: 2.2em 0;
+      page-break-inside: avoid;
+    }
+   
+    .flow-diagram {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 100%;
+      margin: 1.6em auto;
+      font-family: 'Inter', sans-serif;
+    }
+   
+    .flow-step {
+      display: flex;
+      align-items: stretch;
+    }
+   
+    .flow-phase {
+      width: 100px;
+      padding: 0.85em 0.55em;
+      text-align: center;
+      font-size: 10.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid;
+    }
+   
+    .flow-content {
+      flex: 1;
+      padding: 0.85em 1.1em;
+      border: 2px solid;
+      border-left: none;
+    }
+   
+    .flow-title {
+      font-weight: 700;
+      font-size: 11pt;
+      margin-bottom: 0.25em;
+    }
+   
+    .flow-desc {
+      font-size: 10pt;
+      color: var(--slate);
+    }
+   
+    .flow-step-1 .flow-phase { background: var(--navy); color: white; border-color: var(--navy); }
+    .flow-step-1 .flow-content { background: var(--blue-light); border-color: var(--navy); }
+   
+    .flow-step-2 .flow-phase { background: var(--blue); color: white; border-color: var(--blue); border-top: none; }
+    .flow-step-2 .flow-content { background: var(--bg-highlight); border-color: var(--blue); border-top: none; }
+   
+    .flow-step-3 .flow-phase { background: var(--slate); color: white; border-color: var(--slate); border-top: none; }
+    .flow-step-3 .flow-content { background: white; border-color: var(--slate); border-top: none; }
+   
+    .flow-step-4 .flow-phase { background: var(--green); color: white; border-color: var(--green); border-top: none; }
+    .flow-step-4 .flow-content { background: var(--green-light); border-color: var(--green); border-top: none; }
+   
+    .flow-caption {
+      text-align: center;
+      font-size: 10pt;
+      color: var(--gray);
+      margin-top: 1.1em;
+      font-style: italic;
+    }
+   
+    /* Definitions */
+    .definitions {
+      background: var(--bg-highlight);
+      padding: 1.1em 1.3em;
+      margin: 1.6em 0;
+      border: 1px solid var(--border);
+      font-size: 11pt;
+    }
+   
+    .definitions dt {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      color: var(--navy);
+      margin-top: 0.9em;
+    }
+   
+    .definitions dt:first-child {
+      margin-top: 0;
+    }
+   
+    .definitions dd {
+      margin: 0.3em 0 0 0;
+      color: var(--slate);
+    }
+   
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.6em 0;
+      font-size: 11pt;
+    }
+   
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.7em 0.9em;
+      vertical-align: top;
+    }
+   
+    th {
+      background: var(--navy);
+      color: white;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 10.5pt;
+      letter-spacing: 0.03em;
+    }
+   
+    td:first-child {
+      color: var(--gray);
+    }
+   
+    td:last-child {
+      color: var(--navy);
+    }
+   
+    /* Team Section */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.3em;
+      margin: 1.4em 0;
+    }
+   
+    .team-member {
+      padding: 0.9em 1.1em;
+      border: 1px solid var(--border);
+      background: var(--bg-highlight);
+    }
+   
+    .team-member h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 0 0 0.35em;
+    }
+   
+    .team-member p {
+      font-size: 10.5pt;
+      color: var(--slate);
+      margin: 0;
+      line-height: 1.55;
+    }
+   
+    /* Value List */
+    .value-list {
+      background: var(--green-light);
+      border: 1px solid var(--green);
+      padding: 1.1em 1.3em;
+      margin: 1.6em 0;
+    }
+   
+    .value-list h3 {
+      color: var(--green);
+      margin: 0 0 0.7em;
+      font-size: 11.5pt;
+    }
+   
+    .value-list ul {
+      margin: 0;
+      padding-left: 1.3em;
+    }
+   
+    .value-list li {
+      color: var(--navy);
+      font-size: 11pt;
+    }
+   
+    /* Next Steps */
+    .next-steps {
+      background: var(--navy);
+      color: white;
+      padding: 1.3em 1.5em;
+      margin: 2.2em 0 1.6em;
+      border-radius: 4px;
+    }
+   
+    .next-steps h2 {
+      color: white;
+      border-bottom-color: rgba(255,255,255,0.3);
+      margin-top: 0;
+      font-size: 12.5pt;
+    }
+   
+    .next-steps p {
+      margin: 0.7em 0;
+      font-size: 11.5pt;
+    }
+   
+    .next-steps .action {
+      margin-top: 1.1em;
+      font-size: 12pt;
+    }
+   
+    .next-steps .action strong {
+      display: block;
+      margin-bottom: 0.25em;
+    }
+   
+    .next-steps a {
+      color: #a5d6ff;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+   
+    .next-steps .commitment {
+      margin-top: 1.1em;
+      padding-top: 0.9em;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 10.5pt;
+      opacity: 0.9;
+    }
+   
+    /* Signature */
+    .signature {
+      margin-top: 2.2em;
+      text-align: right;
+      font-style: italic;
+      font-size: 11pt;
+      color: var(--slate);
+    }
+   
+    .signature strong {
+      font-style: normal;
+      color: var(--navy);
+    }
+   
+    /* Footer */
+    .footer {
+      margin-top: 3.2em;
+      padding-top: 1.1em;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 9.5pt;
+      color: var(--gray);
+    }
+   
+    @media print {
+      body {
+        font-size: 11.25pt;
+        padding: 0;
+      }
+      .next-steps, .flow-phase, .free-badge, .value-list, .highlight, .highlight-green, .example-box, .team-member, th {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .page-break-before {
+        page-break-before: always;
+      }
+      h2 { page-break-after: avoid; }
+      .highlight, .example-box, .definitions, .team-grid, .value-list, .next-steps {
+        page-break-inside: avoid;
+      }
+      table { page-break-inside: avoid; }
+      p { orphans: 3; widows: 3; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-block">
+    <img src="https://www.publiclogic.org/assets/ai-for-impact-og.png" alt="AI for Impact Pilot" class="header-logo" />
+    <div class="subtitle">PublicLogic × Polimorphic</div>
+    <div class="tagline">A Stewardship-First Governance Initiative</div>
+    <div class="free-badge">No-Cost Pilot Program</div>
+  </div>
+
+  <h2>What Municipal Teams Experience Every Day</h2>
+  <p>
+    Work in a town hall rarely arrives as a clearly defined project. It arrives as interruptions.
+    An email that might be a public records request. A phone call that suddenly creates a deadline.
+    A walk-in that becomes an obligation. A forwarded message with "FYI" and no clear next step.
+  </p>
+  <p>
+    Staff are then expected to determine what the work actually is, who is responsible for it,
+    what rules apply, what timelines matter, and how to bring it to closure. All of this happens while managing everything else.
+  </p>
+  <div class="example-box">
+    <strong>Example</strong>
+    A resident calls about a tree near their property line. The call gets routed to DPW, who determines
+    it's on private property. But the resident mentioned the tree "might be diseased and could fall on the road."
+    Now it's potentially a public safety issue—does that trigger an inspection obligation? Who's responsible
+    for documenting that the town was notified? If the tree falls six months later, what's the record?
+    Currently, this lives in someone's memory or a forwarded email chain.
+  </div>
+  <p>
+    The issue isn't the tree. It's that nobody knows what the call activated—or whether it activated anything at all.
+  </p>
+  <div class="highlight">
+    <strong>The result:</strong> important obligations often live in inboxes, personal notes, or memory.
+    Follow-through depends on individual judgment and availability rather than shared structure.
+    When someone is out, leaves, or becomes overloaded, work can stall or reappear later under pressure.
+  </div>
+  <p>
+    This is not a staffing problem. It is a <strong>structure problem</strong>.
+    The work is real. The pressure is real. What is missing is a system designed to hold it.
+  </p>
+
+  <h2 class="page-break-before">How the Pilot Works</h2>
+  <p>
+    AI for Impact is a no-cost pilot delivered jointly by PublicLogic and Polimorphic.
+  </p>
+  <p>
+    <strong>PublicLogic leads the initial review</strong>, working with staff to understand current workflows,
+    how work enters the organization, where handoffs occur, and where things tend to become unclear or
+    difficult to track. Nathan Boudreau and Dr. Allison Weiss Rothschild conduct this work together—combining
+    governance design with attention to real human capacity under pressure. This step is practical and collaborative.
+    It focuses on listening, mapping what exists today, and identifying opportunities to make day-to-day work
+    easier to manage and easier to sustain.
+  </p>
+  <p>
+    PublicLogic's work is included as part of the overall Polimorphic package. It happens first and helps
+    ensure that any technology work is grounded in how the town actually operates.
+  </p>
+  <p>
+    Polimorphic supports implementation only after this structure is in place, translating agreed-upon
+    workflows into well-defined, supported systems.
+  </p>
+  <h3>A Note on AI</h3>
+  <p>
+    This pilot uses AI tools carefully and transparently. Any automation is implemented only after
+    human governance structures are clear—staff will always know what's automated, what remains human judgment, and how to
+    override automated steps when circumstances require it. AI supports the work; it does not replace judgment or operate beyond staff visibility.
+  </p>
+  <p>
+    Every participating community receives a <strong>custom summary report</strong> that reflects what was learned,
+    highlights key pressure points, and outlines practical options for improvement. Communities keep this
+    report whether or not they choose to move forward.
+  </p>
+  <div class="highlight highlight-green">
+    Comparable reviews and workflow assessments are typically procured as paid consulting engagements,
+    often budgeted in the <strong>mid five-figure range</strong>. As part of this pilot, the full review
+    and summary report are provided at no cost to participating communities.<br><br>
+    <strong>There is no obligation, no sales pressure, and no catch.</strong>
+  </div>
+
+  <h2 class="page-break-before">Pilot Flow Overview</h2>
+  <div class="flow-section">
+    <div class="flow-diagram">
+      <div class="flow-step flow-step-1">
+        <div class="flow-phase">Assess</div>
+        <div class="flow-content">
+          <div class="flow-title">Workflow Review</div>
+          <div class="flow-desc">PublicLogic works with staff to review selected workflows, focusing on clarity, ownership, and follow-through.</div>
+        </div>
+      </div>
+      <div class="flow-step flow-step-2">
+        <div class="flow-phase">Govern</div>
+        <div class="flow-content">
+          <div class="flow-title">Structure Installation</div>
+          <div class="flow-desc">PublicLogic helps establish clear roles, expectations, and boundaries so work can be managed consistently and does not rely on individual memory or heroics.</div>
+        </div>
+      </div>
+      <div class="flow-step flow-step-3">
+        <div class="flow-phase">Implement</div>
+        <div class="flow-content">
+          <div class="flow-title">System Support</div>
+          <div class="flow-desc">Polimorphic supports automation and system setup based on the agreed structure, using carefully controlled tools where appropriate.</div>
+        </div>
+      </div>
+      <div class="flow-step flow-step-4">
+        <div class="flow-phase">Sustain</div>
+        <div class="flow-content">
+          <div class="flow-title">Ongoing Operations</div>
+          <div class="flow-desc">The town retains clear processes, documentation, and support so work continues smoothly during absences, turnover, and busy periods.</div>
+        </div>
+      </div>
+    </div>
+    <p class="flow-caption">
+      Structure first, then automation. Never the reverse.
+    </p>
+  </div>
+
+  <h2>Key Terms (Plain Language)</h2>
+  <dl class="definitions">
+    <dt>VAULT</dt>
+    <dd>PublicLogic's governance framework. It provides clear structure for who decides, who is responsible, how work moves, and how it is documented so it holds up over time.</dd>
+    <dt>CASE</dt>
+    <dd>A structured workspace for a specific piece of municipal work. Each CASE has clear ownership, visible status, required documentation, and a clear end point, consistent with applicable public records and retention requirements.</dd>
+    <dt>Kismet</dt>
+    <dd>The forms, templates, and automated steps created during the pilot. These are town-owned, non-proprietary tools that support daily operations and can be reused and updated over time.</dd>
+  </dl>
+
+  <h2 class="page-break-before">Before and After the Pilot</h2>
+  <table>
+    <tr>
+      <th style="width:48%">Before</th>
+      <th style="width:52%">After</th>
+    </tr>
+    <tr>
+      <td>Requests arrive through many informal channels</td>
+      <td>Work enters through a consistent intake path</td>
+    </tr>
+    <tr>
+      <td>Responsibility is implied rather than assigned</td>
+      <td>Ownership is clear from the start</td>
+    </tr>
+    <tr>
+      <td>Staff spend time tracking down information</td>
+      <td>Tasks move through visible steps</td>
+    </tr>
+    <tr>
+      <td>Compliance is reconstructed under deadline</td>
+      <td>Documentation is created as work proceeds</td>
+    </tr>
+    <tr>
+      <td>Closure is assumed rather than documented</td>
+      <td>Closure is clear and provable</td>
+    </tr>
+  </table>
+
+  <h2>What Changes for Staff</h2>
+  <p>
+    After a workflow is restructured through the pilot, staff no longer need to decide on the fly
+    whether something "counts," who owns it, or whether silence represents approval or risk.
+  </p>
+  <div class="highlight">
+    Those questions are answered by design. Staff can focus on the substance of the work
+    instead of carrying the administrative uncertainty around it.
+  </div>
+  <p>
+    Clear structure also changes who can do the work. When obligations, deadlines, and handoffs are visible
+    and systematic rather than held in memory or tribal knowledge, municipalities can more confidently
+    rely on part-time staff, trained volunteers, and employees with disabilities—people who may have
+    struggled in "wild west" operations but thrive when expectations are explicit and consistent.
+    This expands the available workforce while improving reporting and accountability across the board.
+  </p>
+
+ <h2>Why This Team</h2>
+<div class="team-grid">
+  <div class="team-member">
+    <h4>Nathan Boudreau, MPA, MCPPO</h4>
+    <p>
+      Designs governance structures so authority, responsibility, and continuity live in shared systems rather than individual memory. His work focuses on making municipal operations defensible under real conditions, including audits, turnover, and deadline pressure. With a strong background in procurement and compliance-driven environments, he emphasizes documentation and statutory alignment. His modernization approach was recognized at the 2025 Massachusetts Digital Government Summit for its impact on staff retention and service continuity.
+    </p>
+  </div>
+  <div class="team-member">
+    <h4>Dr. Allison Weiss Rothschild, PsyD, MSW, LICSW, BCBA, LABA</h4>
+    <p>
+      Brings behavioral systems insight to ensure workflows align with real human capacity under pressure. Her work helps prevent designs that succeed on paper but fail in practice, ensuring systems remain usable, sustainable, and supportive when staff are stretched thin or operating during absences.
+    </p>
+  </div>
+</div>
+<p style="margin-top:0.8em;">
+  <strong>Polimorphic</strong> provides implementation support, system configuration, and ongoing operational assistance once structure is established.
+</p>
+
+  <div class="value-list page-break-before">
+    <h3>What Participating Communities Receive</h3>
+    <ul>
+      <li>A tailored review of selected workflows</li>
+      <li>A clear picture of where staff time and attention are under the most strain</li>
+      <li>A written summary with practical options for improvement</li>
+      <li>Any tools or materials created during the pilot, retained by the town</li>
+      <li>Work that is typically commissioned as a paid consulting engagement, provided at no cost as part of the pilot</li>
+    </ul>
+    <p style="font-size: 10pt; color: #425466; margin: 0.8em 0 0 0;">
+      Communities own all materials produced during the pilot outright and may use them for internal operations, procurement decisions, or budget justification without restriction.
+    </p>
+  </div>
+
+  <h2>Why This Matters Now</h2>
+  <p>
+    Institutional memory is thinning due to retirements and turnover. Compliance expectations continue
+    to grow. New tools are being introduced faster than underlying processes can absorb them.
+  </p>
+  <p>
+    This pilot exists to help towns <strong>put structure in place first</strong>, so improvements
+    are sustainable rather than fragile.
+  </p>
+
+  <div class="next-steps">
+    <h2>Getting Started</h2>
+    <p>
+      The pilot is free. There is no obligation to proceed beyond the initial review.
+    </p>
+    <div class="action">
+      <strong>First step:</strong>
+      A 45-minute conversation to identify one or two workflows to review and confirm fit.
+    </div>
+    <p>
+      <strong>Reply to this email or <a href="mailto:nate@publiclogic.org?subject=AI%20for%20Impact%20Pilot%20-%20Interested">click here to reach Nathan directly</a>.</strong><br>
+      Or schedule a time: <a href="https://calendly.com/nate-publiclogic/pilot">calendly.com/nate-publiclogic/pilot</a>
+    </p>
+    <p class="commitment">
+      <strong>What we ask from the town:</strong> Staff availability for conversations and access to
+      existing process materials. Nothing more unless you choose to move forward.
+    </p>
+  </div>
+
+  <div class="signature">
+    <strong>Nathan Boudreau, MPA, MCPPO</strong><br/>
+    <strong>Dr. Allison Weiss Rothschild</strong><br/>
+    PublicLogic × Polimorphic<br/>
+    January 2026
+  </div>
+
+  <div class="footer">
+    Confidential • Prepared for prospective municipal partners<br/>
+    info@publiclogic.org • www.publiclogic.org
+  </div>
+</body>
+</html>

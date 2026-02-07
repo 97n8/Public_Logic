@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+  <meta name="description" content="Contact PublicLogic for governance discussions, discovery sessions, or to explore fit. Direct review by principals — no pressure." />
+  <meta name="author" content="PublicLogic LLC">
+  <title>Contact — PublicLogic</title>
+
+  <!-- Performance & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://publiclogic.org/contact.html">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Contact — PublicLogic" />
+  <meta property="og:description" content="Contact PublicLogic for governance discussions, discovery sessions, or to explore fit. Direct review by principals — no pressure." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://publiclogic.org/contact.html" />
+  <meta property="og:image" content="https://publiclogic.org/PL_FB_Logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="PublicLogic — Governance That Survives Real Life" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact — PublicLogic" />
+  <meta name="twitter:description" content="Contact PublicLogic for governance discussions, discovery sessions, or to explore fit. Direct review by principals — no pressure." />
+  <meta name="twitter:image" content="https://publiclogic.org/PL_FB_Logo.png" />
+
+  <style>
+    :root {
+      --primary: #059669;
+      --accent: #a7f3d0;
+      --light-bg: #d1fae5;
+      --dark: #111827;
+      --gray: #4b5563;
+      --white: #ffffff;
+      --focus: #0ea5e9;
+    }
+
+    html:focus-within { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html:focus-within { scroll-behavior: auto; }
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.65;
+      color: var(--dark);
+      margin: 0;
+      background: var(--light-bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+      z-index: 999;
+      background: var(--primary);
+      color: white;
+      padding: 1rem;
+      font-weight: 700;
+      border-radius: .5rem;
+    }
+    .skip-link:focus { top: 1rem; left: 1rem; }
+
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: .375rem; }
+
+    .container { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; text-align: center; }
+
+    header[role="banner"] {
+      background: var(--primary);
+      color: var(--white);
+      padding: clamp(1.5rem, 4vw, 2.5rem) 0 1rem;
+    }
+
+    .wordmark { font-size: clamp(2.6rem, 8vw, 3.4rem); font-weight: 900; letter-spacing: -0.03em; margin: 0 0 0.5rem 0; line-height: 1; }
+    .wordmark .public { color: var(--white); }
+    .wordmark .logic { color: var(--accent); }
+
+    .strapline { font-size: clamp(1.1rem, 4vw, 1.4rem); font-weight: 600; margin: 0 0 1rem 0; opacity: 0.95; }
+
+    nav[aria-label] ul { list-style: none; padding: 0; margin: 0.5rem 0 0; display: inline-flex; flex-wrap: wrap; justify-content: center; gap: clamp(0.9rem, 3vw, 1.5rem); }
+    nav a { color: var(--white); text-decoration: none; font-weight: 700; font-size: clamp(0.95rem, 3vw, 1.1rem); padding: 0.5rem 0.9rem; border-radius: 0.375rem; transition: background 140ms ease; }
+    nav a:hover, nav a:focus-visible { background: rgba(255,255,255,.18); }
+    nav a[aria-current="page"] { background: rgba(255,255,255,.24); }
+
+    .hero { padding: clamp(2rem, 6vw, 3.5rem) 1rem 2rem; background: linear-gradient(to bottom, #e8f5e9, var(--light-bg)); }
+    .hero h1 { font-size: clamp(2.2rem, 6.5vw, 3.2rem); margin: 0 0 1rem; color: var(--primary); font-weight: 900; letter-spacing: -0.02em; }
+    .lead { font-size: clamp(1.15rem, 3.8vw, 1.35rem); max-width: 58rem; margin: 0 auto 1.5rem; font-weight: 500; }
+
+    .section { padding: clamp(2rem, 8vw, 4rem) 0; }
+    .promo {
+      background: white;
+      padding: clamp(1.25rem, 4vw, 2rem);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      margin: 1.5rem auto;
+      max-width: 68rem;
+      text-align: left;
+    }
+    .email-links {
+      text-align: center;
+      margin: 1.5rem 0;
+      font-size: 1.2rem;
+    }
+    .email-links a {
+      color: var(--primary);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .email-links a:hover { text-decoration: underline; }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      margin: 1rem 0 0.4rem;
+      font-weight: 700;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    textarea { min-height: 120px; }
+    button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 800;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: background 0.2s;
+    }
+    button:hover { background: #047857; }
+
+    .disclaimer {
+      font-size: 0.9rem;
+      color: var(--gray);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .cta { padding: clamp(3rem, 10vw, 5rem) 1rem; background: var(--primary); color: var(--white); border-radius: 16px; margin: 2.5rem 0; }
+    .button { display: inline-block; padding: 1rem 2rem; background: var(--white); color: var(--primary); font-weight: 900; text-decoration: none; border-radius: 60px; font-size: 1.05rem; min-width: 13rem; box-shadow: 0 8px 24px rgba(0,0,0,0.15); transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease; }
+    .button:hover, .button:focus-visible { background: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+
+    footer { text-align: center; padding: 2.5rem 1rem; color: var(--gray); font-size: 1rem; border-top: 1px solid var(--accent); }
+
+    @media (max-width: 768px) {
+      header[role="banner"] { padding: 1.75rem 0 1.25rem; }
+      .wordmark { font-size: clamp(2.2rem, 12vw, 3rem); margin-bottom: .5rem; }
+      .strapline { font-size: 1.1rem; margin-bottom: 1rem; }
+      nav[aria-label] ul { gap: 0.75rem 1.25rem; flex-direction: column; }
+      nav a { padding: 0.5rem 0.9rem; }
+      .hero { padding: 2rem 1rem 1.5rem; }
+      main { padding: 1.5rem 0 3rem; }
+      .promo { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header role="banner">
+    <div class="container">
+      <h1 class="wordmark"><span class="public">Public</span><span class="logic">Logic</span></h1>
+      <p class="strapline">Governance That Survives Real Life</p>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/frameworks.html">Frameworks</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/writing.html">Writing</a></li>
+          <li><a href="/contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="container">
+    <section class="hero" aria-labelledby="page-title">
+      <h1 id="page-title" class="page-title">Contact</h1>
+      <p class="lead">Start with a conversation. Direct review by principals — no pressure.</p>
+    </section>
+
+    <section class="section promo">
+      <h2>How We Engage</h2>
+      <p>Most relationships begin with a focused initial conversation. We listen for how authority, responsibility, and continuity are currently held, and whether structural governance work would be appropriate.</p>
+      <p>There is no hard sell. The goal is to understand fit and what a phased path could look like, if any.</p>
+      <div class="email-links">
+        <p>Reach us directly:<br>
+        <a href="mailto:info@publiclogic.org">info@publiclogic.org</a></p>
+        <p>Messages are reviewed directly by the principals.</p>
+      </div>
+    </section>
+
+    <section class="section promo">
+      <h2>Send a Message</h2>
+      <form action="https://formspree.io/f/your-form-id" method="POST"> <!-- Replace with your actual Formspree or endpoint -->
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <label for="organization">Organization / Town</label>
+        <input type="text" id="organization" name="organization">
+        <label for="role">Role</label>
+        <input type="text" id="role" name="role">
+        <label for="topic">Topic</label>
+        <select id="topic" name="topic" required>
+          <option value="">Select...</option>
+          <option value="fit">Initial fit conversation</option>
+          <option value="pilot">Pilot / implementation</option>
+          <option value="partnership">Partnership</option>
+          <option value="research">Research & training</option>
+          <option value="other">Other</option>
+        </select>
+        <label for="interest">Primary concern or pressure</label>
+        <select id="interest" name="interest">
+          <option value="">Select...</option>
+          <option value="transition">Leadership or staff transition</option>
+          <option value="compliance">Compliance, audit, or records pressure</option>
+          <option value="authority">Unclear authority or decision boundaries</option>
+          <option value="systems">Systems that no longer reliably hold responsibility</option>
+          <option value="unsure">Unsure / hard to name</option>
+        </select>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Briefly describe your current situation or need..."></textarea>
+        <label for="referral">How did you hear about PublicLogic?</label>
+        <input type="text" id="referral" name="referral">
+        <button type="submit">Send Message</button>
+      </form>
+      <p class="disclaimer">We respond as promptly as possible while reviewing inquiries carefully.</p>
+      <p class="disclaimer">By submitting, you agree PublicLogic may contact you regarding your inquiry. Your information will not be sold or used for unrelated marketing.</p>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>
+      Governance That Survives Real Life<br>
+      Helping towns build governance that holds when people cannot.<br>
+      © 2026 PublicLogic LLC — Gardner, Massachusetts
+    </p>
+  </footer>
+</body>
+</html>

@@ -1,163 +1,232 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <title>PublicLogic</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#022c22" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b2f24" />
+  <meta name="description" content="PublicLogic builds governed operational systems for municipalities — secure, compliant, and people-first." />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
 
   <style>
     :root {
-      --bg: #022c22;
-      --muted-white: rgba(255,255,255,0.55);
-      --accent: rgba(52,211,153,0.95);
-      --accent-border: rgba(52,211,153,0.25);
-      --text: rgba(255,255,255,0.95);
+      color-scheme: light;
+      --ink: #0b2f24;
+      --mint: #dff4ee;
+      --mint-2: #cfeee4;
+      --line: rgba(15, 55, 43, 0.12);
+      --accent: #0f7a5b;
+      --accent-2: #0c5b45;
     }
 
-    html, body {
+    * { box-sizing: border-box; }
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      background: var(--bg);
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--ink);
+      background: radial-gradient(circle at top, #f6fbf9 0%, #eef7f3 45%, #e7f2ed 100%);
     }
 
-    /* Loader overlay */
-    .loader {
-      position: fixed;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      color: var(--text);
-      z-index: 9999;
-      background: rgba(2,44,34,0.92);
-      transition: opacity .28s ease, visibility .28s ease;
-      pointer-events: auto;
-      opacity: 1;
-      visibility: visible;
-    }
-    .loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+    a { color: inherit; text-decoration: none; }
+
+    .shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    .badge {
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 7vw;
+    }
+
+    .brand {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--accent-border);
-      background: rgba(0,0,0,0.25);
-      color: var(--accent);
-      font-weight: 900;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      font-size: 11px;
-      margin-bottom: 14px;
-    }
-
-    .title {
-      font-size: 20px;
-      font-weight: 900;
+      gap: 12px;
+      font-weight: 800;
       letter-spacing: -0.02em;
-      margin: 0 0 6px;
-      text-align: center;
     }
 
-    .sub {
-      margin: 0;
-      text-align: center;
-      color: var(--muted-white);
-      font-weight: 700;
-      font-size: 13px;
-    }
-
-    .loader-inner {
-      text-align: center;
-      max-width: 420px;
-      padding: 18px;
-    }
-
-    .spinner {
+    .brand img {
       width: 36px;
       height: 36px;
-      border-radius: 50%;
-      border: 3px solid rgba(255,255,255,0.12);
-      border-top-color: var(--accent);
-      margin: 14px auto 0;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* App container (left empty — your SPA / SSR will render here) */
-    #app {
-      min-height: 100vh;
-      height: 100dvh;
-      background: var(--bg);
+      border-radius: 12px;
+      border: 1px solid rgba(15, 55, 43, 0.15);
+      background: #fff;
+      box-shadow: 0 8px 18px rgba(9, 46, 35, 0.12);
     }
 
-    .noscript-note {
-      margin-top: 12px;
-      display: inline-block;
-      color: var(--accent);
-      border: 1px solid rgba(52,211,153,0.18);
-      padding: 10px 14px;
-      border-radius: 8px;
-      text-decoration: none;
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(11, 47, 36, 0.7);
+    }
+
+    .hero {
+      padding: 40px 7vw 32px;
+      display: grid;
+      gap: 24px;
+      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0 0 18px;
+      color: rgba(11, 47, 36, 0.7);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 12px 18px;
+      border-radius: 999px;
       font-weight: 700;
-      background: rgba(0,0,0,0.12);
+      font-size: 14px;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent-2);
+      box-shadow: 0 14px 30px rgba(12, 91, 69, 0.18);
+    }
+
+    .btn-ghost {
+      background: #fff;
+      border-color: var(--line);
+      color: var(--ink);
+    }
+
+    .panel {
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 40px rgba(15, 55, 43, 0.08);
+    }
+
+    .panel h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+
+    .panel p {
+      margin: 0;
+      color: rgba(11, 47, 36, 0.66);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      padding: 0 7vw 40px;
+    }
+
+    .footer {
+      margin-top: auto;
+      padding: 16px 7vw 28px;
+      font-size: 12px;
+      color: rgba(11, 47, 36, 0.6);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--mint);
+      color: var(--accent-2);
+      border: 1px solid var(--mint-2);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
   </style>
 </head>
-
 <body>
+  <div class="shell">
+    <div class="nav">
+      <div class="brand">
+        <img src="/icon-192.png" alt="PublicLogic logo" />
+        <span>PublicLogic</span>
+      </div>
+      <div class="nav-links">
+        <a href="mailto:nate@publiclogic.org">Contact</a>
+        <a href="/os/">PublicLogic OS</a>
+      </div>
+    </div>
 
-  <!-- Loader overlay -->
-  <div class="loader" id="loader" role="status" aria-live="polite" aria-busy="true">
-    <div class="loader-inner">
-      <div class="badge" aria-hidden="true">PublicLogic</div>
-      <p class="title">Loading…</p>
-      <p class="sub">Smart Systems. Stronger Communities.</p>
-      <div class="spinner" aria-hidden="true"></div>
-
-      <noscript>
-        <div style="margin-top:16px;color:var(--muted-white);font-size:13px">
-          JavaScript is required to load the app. <a class="noscript-note" href="/app" aria-label="Open PublicLogic app">Open the app</a>
+    <section class="hero">
+      <div>
+        <span class="tag">Governed Operations</span>
+        <h1>Smart systems for municipal teams.</h1>
+        <p>
+          PublicLogic builds secure, compliant operational systems for towns and agencies.
+          We help teams capture intake, manage public records, and retain institutional memory —
+          with clear governance and accountable workflows.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="/os/#/dashboard">Enter PublicLogic OS</a>
+          <a class="btn btn-ghost" href="/os/#/phillipston">Phillipston CaseSpace</a>
         </div>
-      </noscript>
+      </div>
+      <div class="panel">
+        <h3>Public Records Requests</h3>
+        <p>
+          Resident intake, staff processing, deadlines, and archival workflows
+          aligned to Massachusetts law. Built for clarity and continuity.
+        </p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <h3>CaseSpace Environments</h3>
+        <p>Each town runs inside a governed, standalone space with its own policies and audit trail.</p>
+      </div>
+      <div class="panel">
+        <h3>Secure by default</h3>
+        <p>Microsoft 365 + SharePoint integrations with role-based access and defensible records.</p>
+      </div>
+      <div class="panel">
+        <h3>People-first operations</h3>
+        <p>Designed for fast intake and clean follow‑through — without overloading staff.</p>
+      </div>
+    </section>
+
+    <div class="footer">
+      <span>PublicLogic — Smarter Systems. Stronger Communities.</span>
+      <span>Lawrence, Massachusetts</span>
     </div>
   </div>
-
-  <!-- App root — your SPA/SSR should render here (Next.js, CRA, etc.) -->
-  <div id="app"></div>
-
-  <script>
-    // Simple loader that fades out when the page has loaded.
-    // If you want the loader to respond to router-level loading
-    // or hydration, wire this to your framework (React useEffect/useTransition).
-    (function () {
-      const loader = document.getElementById('loader');
-
-      function hideLoader() {
-        if (!loader.classList.contains('hidden')) {
-          loader.classList.add('hidden');
-          loader.setAttribute('aria-busy', 'false');
-          setTimeout(() => {
-            try { loader.remove(); } catch (e) { /* ignore */ }
-          }, 300);
-        }
-      }
-
-      // Hide when the top-level window fires load.
-      window.addEventListener('load', hideLoader);
-
-      // Safety fallback (in case load never fires)
-      setTimeout(hideLoader, 12000);
-    })();
-  </script>
-
 </body>
 </html>

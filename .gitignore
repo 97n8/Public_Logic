@@ -3,3 +3,7 @@ node_modules/
 dist/
 .cache/
 .vercel/
+
+# Local duplicate backups (safe to ignore)
+os/config 2.js
+os/index 2.html
